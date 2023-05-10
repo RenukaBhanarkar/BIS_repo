@@ -1,0 +1,324 @@
+.shadow-1 {
+            box-shadow: 0 0 2px 0 rgba(0, 0, 0, .07), 0 1px 1px 0 rgba(0, 0, 0, .04)!important;
+        }
+        
+        .quiz-left-side.shadow-1 {}
+        
+        .quiz-left-side ul {
+            height: 236px;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0px;
+            margin: 0px;
+            overflow: auto;
+            margin: 0px;
+            justify-content: space-around;
+        }
+        
+        div#afterSubmitHide {	
+            display: flex;	
+            flex-wrap: wrap;	
+            height: 300px;	
+            overflow: auto;	
+        }	
+        /* width */	
+div#afterSubmitHide::-webkit-scrollbar {	
+    width: 3px;	
+  }	
+  	
+  /* Track */	
+  div#afterSubmitHide::-webkit-scrollbar-track {	
+    	
+    border-radius: 10px;	
+  }	
+   	
+  /* Handle */	
+  div#afterSubmitHide::-webkit-scrollbar-thumb {	
+    background: red; 	
+    border-radius: 10px;	
+  }	
+  	
+  /* Handle on hover */	
+  div#afterSubmitHide::-webkit-scrollbar-thumb:hover {	
+    background: #b30000; 	
+  }	
+        .quiz-left-side #afterSubmitHide span {
+            border: 1px solid;
+            padding: 8px 0px 0px;
+            border-radius: 50%;
+            height: 35px;
+            margin-right: 10px;
+            width: 35px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            text-align: center;
+            background: white;
+            display: block;
+        }
+        
+        .quiz-title {
+            font-size: 17px;
+            border-bottom: 1px dashed;
+            padding-bottom: 11px;
+        }
+        
+        #regForm {
+            background-color: #ffffff;
+            margin: 10px auto;
+            min-width: 300px;
+        }
+        /* Mark input boxes that gets an error on validation: */
+        
+        input.invalid {
+            background-color: #ffdddd;
+        }
+        /* Hide all steps by default: */
+        
+        .tab {
+            display: none;
+        }
+        
+        button {
+            cursor: pointer;
+        }
+        
+        button:hover {
+            opacity: 0.8;
+        }
+        
+        #prevBtn {
+            background-color: #bbbbbb;
+        }
+        /* Make circles that indicate the steps of the form: */
+        
+        .step {
+            height: 30px;
+            width: 30px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;
+            padding: 5px 10px 0px;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+            margin-right: 19px;
+        }
+        
+        .step.active {
+            opacity: 1;
+            background: #185ab2;
+            color: white;
+        }
+        /* Mark the steps that are finished and valid: */
+        
+        .step.finish {
+            background-color: #04AA6D;
+        }
+        
+        .inner-section h3 {
+            font-size: 18px;
+            padding: 15px 23px;
+            border-bottom: 1px dashed #ccc;
+            font-weight: 600;
+        }
+        
+        .quiz-ans-section p {
+            font-size: 14px;
+            margin: 24px 0px;
+            padding: 0px 15px;
+        }
+        
+        .quiz-ans-section ul li {
+            line-height: 30px;
+            list-style: none;
+            font-size: 14px;
+        }
+        
+        .quiz-radio-btn {
+            margin-right: 15px;
+        }
+        
+        .Quiz-circle {
+            height: 12px;
+            width: 12px;
+            margin-right: 10px;
+            display: inline-block;
+            position: absolute;
+            top: 6px;
+            left: -25px;
+            border-radius: 50%;
+        }
+        
+        .Quiz-circle.red {
+            background: #e30404;
+        }
+        
+        .Quiz-circle.green {
+            background: #048e2a;
+        }
+        
+        .Quiz-circle.gray {
+            background: #bbbbbb;
+        }
+        
+        .Quiz-circle.blue {
+            background: #040491;
+        }
+        
+        .as-color ol li {
+            position: relative;
+            list-style: none;
+            line-height: 29px;
+        }
+        /* .margin-quiz {
+            margin: 83px 0px;
+        } */
+        
+        .ans-green {
+            background-color: #048e2a !important;
+            color: white;
+        }
+        
+        .ans-red {
+            background-color: #e30404 !important;
+            color: white;
+        }
+        
+        .ans-blue {
+            background-color: #040491 !important;
+            color: white;
+        }
+        
+        .ans-gray {
+            background-color: #bbbbbb !important;
+            color: white;
+        }
+        
+        .thank_you_box {
+            text-align: center;
+            margin: 34px 0px;
+        }
+        
+        .text_box {
+            margin: 39px 0px 0px;
+            line-height: 46px;
+        }
+        
+        .text_box h4 {
+            font-size: 35px;
+            color: red;
+            margin: 0px;
+            font-weight: 700;
+        }
+        
+        .text_box p {
+            font-size: 17px;
+            /* color: #0000a6; */
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .Certificate-link {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+        
+        .text_box p {
+            font-size: 25px;
+            color: #0000a6;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .Certificate-link {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            margin-top: 12px;
+        }
+        
+        .thank_you_box img {
+            width: 143px;
+            margin-top: 60px;
+        }
+        
+        .purple {
+            background-color: #5d5dc2 !important;
+        }
+        
+        .orange {
+            background-color: orange !important;
+        }
+        
+        .quiz-left-side-main {
+            width: 75%;
+            margin: 58px 0px 45px 27px;
+            height: fit-content;
+        }
+        
+        .quiz-right-side-main {
+            width: 20%;
+            height: 100%;
+            background: #ededed96;
+            color: #373434;
+            border-radius: 7px px 0px 0px 7px;
+            padding: 18px 18px;
+            height: auto;
+        }
+        
+        .Quiz_section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .user-icon {
+            width: 13%;
+            height: 35px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .user-name {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        
+        .nav-bar-user-icon-section {
+            width: 76%;
+            text-align: left;
+            padding: 5px 12px 0px;
+        }
+        
+        .user-profile-font,
+        .user-profile-font b {
+            font-size: 15px;
+        }
+        
+        .time-left {
+            margin: 5px 0px 0px 0px;
+        }
+        
+        .timer {
+            background: green;
+            font-weight: 600;
+            color: white;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        
+        .time-left {
+            margin: 0px 0px 20px;
+            font-weight: 600;
+        }
+        
+        #right-bar-ans-none {
+            background: white;
+            padding: 9px 16px;
+        }
+
+        .quiz-option ul li{	
+            margin-bottom: 10px;	
+        }

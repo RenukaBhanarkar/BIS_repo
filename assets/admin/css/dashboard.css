@@ -1,0 +1,65 @@
+body{
+    font-size: 14px;
+}
+a:hover {
+    text-decoration: none;
+}
+.sidebar .nav-item .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    /* width: 14rem; */
+}
+.sidebar {
+    width: 20rem!important;
+}
+.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover, .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
+    background-color: #33a0ed;
+    color: white;
+}
+.bg-gradient-primary {
+    background-image: linear-gradient(180deg,#064b93 10%,#be2222 100%);
+    background-size: cover;
+}
+.card.border-left-primary.shadow.h-100.py-2 i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff85;
+    font-size: 40px;
+}
+
+.card-body{
+    padding: 20px;
+}
+.border-top {
+    border-top: 3px solid #2957a3!important;
+}
+.table-bordered {
+    border: 1px solid #e3e6f0;
+    color: black;
+}
+.text-font{
+    font-size: 14px;
+    font-weight: 700;
+}
+.input-font{
+    font-size: 0.875rem;
+}
+.submit_btn{
+    background: aliceblue;
+    text-align: right
+}
+.prizes-section {
+    background: antiquewhite;
+    border-radius: 0px 50px 50px 0px;
+}
+.row.standard_club {
+    background: antiquewhite;
+    padding: 14px;
+}
+.card.shadow{
+    width: 100% !important;
+}
