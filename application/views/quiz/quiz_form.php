@@ -162,10 +162,11 @@
                          <span class="error_text"><?php echo form_error('start_time'); ?></span> -->
 
 
-
+                                  <div class="">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Preview
                                     </button>
+                                    </div>
                                 </div>
 
                                 <!-- Modal -->
@@ -180,10 +181,10 @@
                                             <div class="modal-body">
                                                 <img id="outputbanner" width="100%" />
                                             </div>
-                                            <div class="modal-footer">
+                                            <!-- <div class="modal-footer">
                                                 <button type="button" onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -254,10 +255,10 @@
                                             <div class="modal-body">
                                                 <img id="outputFirst" width="100%" />
                                             </div>
-                                            <div class="modal-footer">
+                                            <!-- <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" onclick="resetFirst();" data-bs-dismiss="modal">ReSet</button>
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -304,10 +305,10 @@
                                             <div class="modal-body">
                                                 <img id="outputSecond" width="100%" />
                                             </div>
-                                            <div class="modal-footer">
+                                            <!-- <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" onclick="resetSecond();" data-bs-dismiss="modal">ReSet</button>
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -353,10 +354,10 @@
                                             <div class="modal-body">
                                                 <img id="outputThird" width="100%" />
                                             </div>
-                                            <div class="modal-footer">
+                                            <!-- <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" onclick="resetThird();" data-bs-dismiss="modal">ReSet</button>
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -402,10 +403,10 @@
                                             <div class="modal-body">
                                                 <img id="outputConsol" width="100%" />
                                             </div>
-                                            <div class="modal-footer">
+                                            <!-- <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" onclick="resetConsol();" data-bs-dismiss="modal">ReSet</button>
                                                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -446,7 +447,9 @@
 
                                 <span class="error_text"><?php echo form_error('que_bank_id'); ?></span>
                             </div>
+                            <div class="">
                             <button type="button" class="btn btn-sm  btn-primary text-white"  id="fetch_que_bank">Fetch Question Banks</button>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="mb-2 col-md-4">
@@ -499,7 +502,7 @@
 
                         <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a> -->
-                            <input type="submit" name="Submit" class="btn btn-success btn-sm text-white" id="btnsubmit">
+                            <input type="submit" name="Submit" class="btn btn-success btn-sm text-white btnsubmit" id="btnsubmit">
                             <!-- <a class="btn btn-danger btn-sm text-white cancelQuiz" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
                             <a class="btn btn-danger btn-sm text-white cancelQuiz" >Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
@@ -567,7 +570,11 @@
             URL.revokeObjectURL(outputbanner.src);
         }
     };
-
+//     $(".btnsubmit").click(function(){
+//     $('input').css('border','1px solid red');
+//     $('textarea').css('border','1px solid red');
+//     $('select').css('border','1px solid red');
+// });
     function resetbanner() {
         $("#banner_img").val('');
         $("#outputbanner").hide();

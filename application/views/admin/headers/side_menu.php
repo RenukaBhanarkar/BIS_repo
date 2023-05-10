@@ -97,7 +97,7 @@
                     <h6 class="collapse-header">Standards Club</h6>
                     <a class="collapse-item" href="<?php echo base_url(); ?>quiz/organizing_quiz">Competitions</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>wall_of_wisdom">Wall of Wisdom</a>
-                    <a class="collapse-item" href="<?php echo base_url(); ?>admin/yourwall/">Your Wall</a>
+                    <a class="collapse-item" href="<?php echo base_url(); ?>admin/your_wall_list/">Your Wall</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>learningscience/lsv_standards_dashboard/">Classroom</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>admin/byTheMentors">By the Mentors</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>admin/cmsManagenent_dashboard">CMS</a>
