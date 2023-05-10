@@ -48,10 +48,11 @@ class Subadmin extends CI_Controller
             redirect(base_url() . "Admin/dashboard", 'refresh');
         }
     }
-    public function admin_creation_view()
+    public function admin_creation_view($id)
     {
+        $data['detail'] = $this->Admin_model->getAdminDetail($id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('subadmin/admin_creation_view');
+        $this->load->view('subadmin/admin_creation_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function admin_creation_form()

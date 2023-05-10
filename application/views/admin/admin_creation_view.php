@@ -1,7 +1,7 @@
-    <div class="container-fluid">
+<div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Admin Details</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Quiz Creation</h1>
                         
                     </div>
 <!-- Content Row -->
@@ -13,43 +13,43 @@
                                <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Department</label>
                                     <div>
-                                        <p>IT Services</p>
+                                        <p><?php echo $detail['name'] ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Email ID</label>
                                     <div>
-                                        <p>its@bis.gov.in</p>
+                                        <p><?php echo $detail['email_id']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Designation</label>
                                     <div>
-                                        <p>Head(ITSD)</p>
+                                        <p><?php echo $detail['role']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Branch</label>
                                     <div>
-                                        <p>BIS HQ</p>
+                                        <p><?php echo $detail['branch']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Post</label>
                                     <div>
-                                        <p>Super Admin</p>
+                                        <p><?php echo $detail['post']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Department<sup class="text-danger">*</sup></label>
                                     <div>
-                                        <p>IT Services Department</p>
+                                        <p><?php echo $detail['department']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Username<sup class="text-danger">*</sup></label>
                                     <div>
-                                        <p>its@bis.gov.in</p>
+                                        <p><?php echo $detail['username']; ?></p>
                                     </div>    
                                 </div>
                               </div>
@@ -80,24 +80,18 @@
                       </div>
                     </div>
                     </div>
-<!-- /.container-fluid -->
 
-<!-- </div>
-</div>
-                    </div>
-                   </div> -->
-                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
+                <!-- <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Bureau of Indian Standards 2022</span>
                     </div>
-                </div>
+                </div> -->
             </footer>
             <!-- End of Footer -->
 
@@ -108,6 +102,6 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    <!-- <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-    </a>
+    </a> -->

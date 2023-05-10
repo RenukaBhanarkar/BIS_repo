@@ -47,6 +47,7 @@
                 </div>
             </div>
         </li>
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 1) {   ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities_1" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
@@ -64,6 +65,7 @@
                 </div>
             </div>
         </li>
+        <?php } ?>
     <?php } ?>
 
 

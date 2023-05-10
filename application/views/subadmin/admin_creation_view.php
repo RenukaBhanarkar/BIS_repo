@@ -20,50 +20,56 @@
                                <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Department</label>
                                     <div>
-                                        <p>IT Services</p>
+                                    <p><?php echo $detail['department']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Email ID</label>
                                     <div>
-                                        <p>its@bis.gov.in</p>
+                                    <p><?php echo $detail['email_id']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Designation</label>
                                     <div>
-                                        <p>Head(ITSD)</p>
+                                    <p><?php echo $detail['role']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Branch</label>
                                     <div>
-                                        <p>BIS HQ</p>
+                                    <p><?php echo $detail['branch']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Post</label>
                                     <div>
-                                        <p>Super Admin</p>
+                                    <p><?php echo $detail['post']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Department<sup class="text-danger">*</sup></label>
                                     <div>
-                                        <p>IT Services Department</p>
+                                    <p><?php echo $detail['department']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Username<sup class="text-danger">*</sup></label>
                                     <div>
-                                        <p>its@bis.gov.in</p>
+                                    <p><?php echo $detail['username']; ?></p>
                                     </div>    
                                 </div>
                               </div>
                           </div>
+                          <?php if (encryptids("D", $_SESSION['admin_type']) == 1){ ?>
                           <div class="col-md-12 submit_btn p-3">
                                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/admin_creation_list'">Back</a>
                           </div>  
+                          <?php }else if(encryptids("D", $_SESSION['admin_type']) == 2){ ?>
+                            <div class="col-md-12 submit_btn p-3">
+                            <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/admin_creation_list'">Back</a>
+                            <?php } ?>
+                            </div>
                            <!-- Modal -->
                            <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -99,13 +105,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Bureau of Indian Standards 2022</span>
-                    </div>
-                </div>
-            </footer>
+            
             <!-- End of Footer -->
 
         </div>
@@ -115,6 +115,6 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    <!-- <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-    </a>
+    </a> -->

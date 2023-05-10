@@ -51,7 +51,8 @@
                                             </button>
                       <!--   <a class="btn btn-success btn-sm text-white update" >Update</a> -->
                         <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
-                         <a class="btn btn-warning btn-sm text-white" onclick="resetFields()">Reset</a>
+                         <!-- <a class="btn btn-warning btn-sm text-white" onclick="resetFields()">Reset</a> -->
+                         <a class="btn btn-warning btn-sm text-white reset" >Reset</a>
                     </div>
                 </div>
             </div>
@@ -221,7 +222,30 @@
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {                       
-                        
+                        window.location.replace('<?php echo base_url().'subadmin/admin_creation_list' ?>');
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
+
+    $('.reset').on('click',function(){
+        Swal.fire({
+                    title: 'Do you want to Reset?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Reset',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        // $('#edit_admin').get(0).reset();
+                        $('#username').val('');
+                        $('#email').val('');
+                        $('#department').val('');
+                        $('#role').val('');
+
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')

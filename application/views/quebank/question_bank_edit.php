@@ -4,6 +4,19 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Quiz Bank Form</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { echo "Sub"; }?>
+                 Admin Dashboard
+                </a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
+                <li class="breadcrumb-item" ><a href="<?php echo base_url().'subadmin/questionBankList';?>">Question Bank List</a></li>
+                
+                </ol>
+            </nav>
         </div>
         <?php
         if ($this->session->flashdata('MSG')) {
@@ -145,8 +158,8 @@
                                                             <img id="outputbanner" style="width:450px;" />
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+                                                            <!-- <button type="button" onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -621,7 +634,9 @@
                                     </table>
                                 </div>
                                 <div class="col-md-12 submit_btn p-3">
-                                    <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#submitForm">Submit</a>
+                                    <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#submitForm">Submit</a> -->
+                                    <button class="btn btn-success btn-sm text-white" id="saveQueBank">Submit</button>
+                                    <button class="btn btn-danger btn-sm text-white cancel_qb_form">Cancel</button>
                                     <div id="err_que_bank"></div>
                                     <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
                                         <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white"> -->
@@ -820,6 +835,16 @@
                     var que_bank_id = $('#que_bank_id').val();
                     var no_of_ques = $("#no_of_ques").val();
 
+                    Swal.fire({
+                                title: 'Are you sure you want to Submit?',
+                                showDenyButton: true,
+                                showCancelButton: false,
+                                confirmButtonText: 'Submit',
+                                denyButtonText: `Cancel`,
+                                }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {  
+
                     jQuery.ajax({
                         type: "GET",
                         url: '<?php echo base_url(); ?>subadmin/toCheckNoOfQueInBank/?id=' + que_bank_id + '&no=' + no_of_ques,
@@ -827,6 +852,7 @@
                         success: function(res) {
                             // console.log(res);
                             if (res.status == 0) {
+                                Swal.fire(res.message);
                                 if ($("#err_que_bank").next(".validation").length == 0) {
                                     $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please add questions equal to total no of questions in bank</div>");
                                 }
@@ -845,6 +871,12 @@
                             console.log(error);
                         }
                     });
+
+                } else if (result.isDenied) {
+                                    // Swal.fire('Changes are not saved', '', 'info')
+                                }
+                                })
+
                 });
                 $('input[type=radio][name=que_type]').change(function() {
                     var lan = $('input[name="language"]:checked').val();
@@ -940,6 +972,17 @@
                         var url = $('#que_bank_form').attr('action');
                         var userForm = document.getElementById("que_bank_form");
                         var fd = new FormData(userForm);
+
+                        Swal.fire({
+                                title: 'Are you sure you want to Update?',
+                                showDenyButton: true,
+                                showCancelButton: false,
+                                confirmButtonText: 'Update',
+                                denyButtonText: `Cancel`,
+                                }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {  
+
                         jQuery.ajax({
                             type: "POST",
                             url: url,
@@ -950,10 +993,10 @@
                             contentType: false,
                             success: function(res) {
                                 if (res.status == 0) {
-                                    alert(res.message);
+                                    Swal.fire(res.message);
 
                                 } else {
-                                    alert(res.message);
+                                    Swal.fire(res.message);
                                     var form = document.getElementById("que_bank_form");
                                     var elements = form.elements;
                                     for (var i = 0, len = elements.length; i < len; ++i) {
@@ -973,6 +1016,12 @@
                                 console.log(error);
                             }
                         });
+
+                    } else if (result.isDenied) {
+                                    // Swal.fire('Changes are not saved', '', 'info')
+                                }
+                                })
+
                     } else {
                         return false;
                     }
@@ -1551,9 +1600,9 @@
                             // enctype :'multipart/form-data',
                             success: function(res) {
                                 if (res.status == 0) {
-                                    alert(res.message);
+                                    Swal.fire(res.message);
                                 } else {
-                                    alert(res.message);
+                                    Swal.fire(res.message);
                                     $('#que').val('');
                                     $('#que_h').val('');
                                     $('#que_image').val('');
@@ -1989,12 +2038,39 @@
                 });
             }
 
+            // function deleteQuestion(que_id) {
+            //     var c = confirm("Are you sure to delete these details? ");
+            //     if (c == true) {
+            //         // const $loader = $('.igr-ajax-loader');
+            //         //$loader.show();
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
+            //             data: {
+            //                 que_id: que_id,
+            //             },
+            //             success: function(result) {
+            //                 $('#row' + que_id).css({
+            //                     'display': 'none'
+            //                 });
+            //             },
+            //             error: function(result) {
+            //                 alert("Error,Please try again.");
+            //             }
+            //         });
+            //     }
+            // }
             function deleteQuestion(que_id) {
-                var c = confirm("Are you sure to delete these details? ");
-                if (c == true) {
-                    // const $loader = $('.igr-ajax-loader');
-                    //$loader.show();
-                    $.ajax({
+                Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    
+                    if (result.isConfirmed) {                       
+                        $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
                         data: {
@@ -2004,12 +2080,18 @@
                             $('#row' + que_id).css({
                                 'display': 'none'
                             });
+                            Swal.fire('Question Deleted');
                         },
                         error: function(result) {
-                            alert("Error,Please try again.");
+                            Swal.fire("Error,Please try again.");
                         }
                     });
-                }
+                                                  
+                    } else if (result.isDenied) {
+                       
+                    }
+                    })             
+               
             }
             $("#no_of_ques").keydown(function(e) {
 
@@ -2033,4 +2115,23 @@
             //         e.preventDefault();
             //     }
             // });
+            $('.cancel_qb_form').on('click',function(){
+                Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        // location.href='<?php echo base_url();?>subadmin/questionBankList'"
+                        // window.location(<?php echo base_url();?>subadmin/questionBankList);
+                       // Swal.fire('Saved!', '', 'success')           
+                       window.location.href = "<?php echo base_url();?>subadmin/questionBankList";                     
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+            })
         </script>
