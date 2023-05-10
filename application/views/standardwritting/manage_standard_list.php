@@ -45,8 +45,8 @@
                               <td>Pending</td>
                               <td>Reason</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/create_standard_edit" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm mr-2" >Delete</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >Archive</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Sent for Approval</a>
