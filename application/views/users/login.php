@@ -37,7 +37,7 @@ i.fa.password.fa-eye-slash {
                                     ?>
                              <form action="<?php echo base_url(); ?>users/authUser" method="post">
                                  <div class="from-group mb-4">
-                                     <input type="text" class="form-control form-control-md" name="username" id="username" placeholder="Email / Mobile Number">
+                                     <input type="text" class="form-control form-control-md" name="username" id="username" placeholder="Email">
                                      <span id="err_username" class="text-danger"></span>
                                  </div>
                                  <div class="from-group mb-2">
