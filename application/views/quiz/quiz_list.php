@@ -358,6 +358,7 @@
                                 // $('#row' + quiz_id).css({
                                 //     'display': 'none'
                                 // });
+                                location.reload();
                                 console.log(result);
                             },
                             error: function(result) {

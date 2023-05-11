@@ -490,7 +490,7 @@ class Admin_model extends CI_Model {
         //$this->db->where('quiz.start_time <=' ,$current_time); 
         //$this->db->where('quiz.end_time >=' ,$current_time); 
         $this->db->where('quiz.status',5); 
-        $this->db->order_by('tbl_quiz_details.created_on','desc');
+        $this->db->order_by('quiz.created_on','desc');
         
         $res = array();
         $rs = array();

@@ -58,7 +58,7 @@
                                  $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
                                  ?>
                                  <td><?= $timeTaken ?></td> 
-                                 <td><?= $users['prize']?></td>
+                                 <!-- <td><?php //echo $users['prize']?></td> -->
                                 <td><a href="<?php echo base_url();?>Quiz/answer_key_list/<?= $users['user_id'] ;?>/<?= $users['quiz_id'] ;?>" class="btn btn-primary btn-sm mr-2">Answer Key</a></td>
                                   
                                  </tr>
