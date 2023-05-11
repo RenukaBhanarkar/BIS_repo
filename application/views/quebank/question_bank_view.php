@@ -286,9 +286,9 @@
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
                 </div>
     </div>
-    <div class="col-md-12 submit_btn p-3">
+    <!-- <div class="col-md-12 submit_btn p-3">
         <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Back</a>
-    </div>
+    </div> -->
 </div>
 <!-- Modal -->
 <!--<div class="modal fade" id="view_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

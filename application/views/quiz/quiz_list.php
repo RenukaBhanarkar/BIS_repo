@@ -105,8 +105,9 @@
 
                             if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
                              <a href="editquiz/<?=  $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
-                             <a href="sendToCreate/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Create</a>                         
+                             <!-- <a href="sendToCreate/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Create</a>                          -->
 
+                             <a data-id="<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2 create">Create</a> 
                             
                              <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
                           <?php } ?>
@@ -262,11 +263,40 @@
             });
         });
     }*/
+    // function deleteRecord(quiz_id) {
+    //         var c = confirm("Are you sure to delete this record ?");
+    //         if (c == true) {
+    //             // const $loader = $('.igr-ajax-loader');
+    //             //$loader.show();
+    //             $.ajax({
+    //                 type: 'POST',
+    //                 url: '<?php echo base_url(); ?>quiz/deleteQuiz',
+    //                 data: {
+    //                     id: quiz_id,
+    //                 },
+    //                 success: function(result) {
+    //                     $('#row' + quiz_id).css({
+    //                         'display': 'none'
+    //                     });
+    //                 },
+    //                 error: function(result) {
+    //                     alert("Error,Please try again.");
+    //                 }
+    //             });
+
+    //         }
+    //     }
     function deleteRecord(quiz_id) {
-            var c = confirm("Are you sure to delete this record ?");
-            if (c == true) {
-                // const $loader = $('.igr-ajax-loader');
-                //$loader.show();
+      Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {  
+            
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>quiz/deleteQuiz',
@@ -282,9 +312,14 @@
                         alert("Error,Please try again.");
                     }
                 });
+              } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
 
-            }
+            
         }
+
 
 
     function publishQuiz(que_id){
@@ -301,4 +336,39 @@
       $('#create').modal('show');  
       $('#createquiz').attr('href','sendApprove/'+que_id);
     }
+
+    $('#example').on('click','.create',function(){
+      var id = $(this).attr('data-id');
+      Swal.fire({
+                    title: 'Are you sure you want to Create?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Create',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                      $.ajax({
+                            // type: 'POST',
+                            url: '<?php echo base_url(); ?>sendToCreate'+id,
+                            // data: {
+                            //     id: quiz_id,
+                            // },
+                            success: function(result) {
+                                // $('#row' + quiz_id).css({
+                                //     'display': 'none'
+                                // });
+                                console.log(result);
+                            },
+                            error: function(result) {
+                                alert("Error,Please try again.");
+                            }
+                        });
+
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
     </script>

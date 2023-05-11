@@ -156,8 +156,23 @@
       <p>Miscellaneous For You</p>
     </div>
    <div class="row">
-        
-          <div class="col-md-3">
+   <?php if(!empty($competition)){
+           foreach($competition as $list){ ?>
+           <div class="col-md-3">
+            <div class="quiz-section">
+              <div class="quiz-box">
+                <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
+              </div>
+              <div class="Quiz-button">
+                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition</span></a>
+              </div>
+              <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;"><?php echo $list['competiton_name']; ?></p>
+            </div>
+          </div>
+
+      <?php  }} ?>
+          
+          <!-- <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -174,12 +189,12 @@
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
               </div>
               <div class="Quiz-button">
-                  <a href="<?php echo base_url(); ?>users/about_competition" class="btn startQuiz"> <span>Start Competition</span></a>
+                  <a href="#" class="btn startQuiz"> <span>Start Competition</span></a>
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div>
-          <div class="col-md-3">
+          </div> -->
+          <!-- <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -200,8 +215,8 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div>
-          <div class="col-md-3">
+          </div> -->
+          <!-- <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -222,8 +237,8 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div>
-          <div class="col-md-3">
+          </div> -->
+          <!-- <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -233,18 +248,7 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="quiz-section">
-              <div class="quiz-box">
-                <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
-              </div>
-              <div class="Quiz-button">
-                  <a href="#" class="btn startQuiz"> <span>Start Competition</span></a>
-              </div>
-              <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
-            </div>
-          </div>
+          </div> -->
           
        
       </div>

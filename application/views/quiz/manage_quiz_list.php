@@ -6,7 +6,9 @@
         <h1 class="h3 mb-0 text-gray-800">Manage Quiz</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                Sub <?php } ?> Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
@@ -84,17 +86,20 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                            
                           <?php if ($quiz['status'] == 1 ) { ?>
-                            <a href="sendApprove/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Send To Approve</a>
+                            <!-- <a href="sendApprove/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Send To Approve</a> -->
 
+                            <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send To Approve</a>
                           <?php } ?>
 
                           <?php if ($quiz['status'] == 3 || $quiz['status'] == 6) { ?>
-                            <a href="publishQuiz/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Publish</a>
+                            <!-- <a href="publishQuiz/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Publish</a> -->
+                            <button data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 publish">Publish</button>
 
                           <?php } ?>
                           <?php if ($quiz['status'] == 5) { ?>
 
-                            <a href="unPublishQuiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2">UnPublish</a>
+                            <!-- <a href="unPublishQuiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2">UnPublish</a> -->
+                            <button data-id="<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 unpublish">UnPublish</button>
 
                           <?php } ?>
                           <!-- 6-unpublished 7-closed-->
@@ -105,7 +110,8 @@
 
                           <?php if ($quiz['status'] == 1 || $quiz['status'] == 3 || $quiz['status'] == 4 || $quiz['status'] == 10) { ?>
                             <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>      
-                            <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
+                            <!-- <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button>  -->
+                            <button data-id="<?= $quiz['id'] ?>" class="btn btn-danger btn-sm mr-2 delete">Delete</button> 
                           <?php } ?>
                         <?php } ?>
                       </td>
@@ -198,11 +204,42 @@
       $('#create').modal('show');  
       $('#createquiz').attr('href','sendApprove/'+que_id);
     }
+        // function deleteRecord(quiz_id) {
+        //     var c = confirm("Are you sure to delete this record ?");
+        //     if (c == true) {
+        //         // const $loader = $('.igr-ajax-loader');
+        //         //$loader.show();
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: '<?php echo base_url(); ?>quiz/deleteQuiz',
+        //             data: {
+        //                 id: quiz_id,
+        //             },
+        //             success: function(result) {
+        //                 $('#row' + quiz_id).css({
+        //                     'display': 'none'
+        //                 });
+        //             },
+        //             error: function(result) {
+        //                 alert("Error,Please try again.");
+        //             }
+        //         });
+
+        //     }
+        // }
         function deleteRecord(quiz_id) {
-            var c = confirm("Are you sure to delete this record ?");
-            if (c == true) {
-                // const $loader = $('.igr-ajax-loader');
-                //$loader.show();
+          Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        
+                       // Swal.fire('Saved!', '', 'success')                                
+                    
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>quiz/deleteQuiz',
@@ -219,13 +256,33 @@
                     }
                 });
 
-            }
+              } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+
+            
         }
 
         $('#listView').on('click', '#archiveQuiz', function(e) {
           e.preventDefault();
           const $root = $(this);
           var id = $root.data('id');
+
+
+
+          Swal.fire({
+                    title: 'Are you sure you want to Archive?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Archive',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        
+                       // Swal.fire('Saved!', '', 'success')                                
+                    
           jQuery.ajax({
             type: "POST",
             url: '<?php echo base_url(); ?>quiz/changeStatus',
@@ -236,10 +293,10 @@
             },
             success: function(res) {
               if (res.status == 0) {
-                alert(res.message);
+                Swal.fire(res.message);
 
               } else {
-                alert(res.message);
+                Swal.fire(res.message);
                 window.location.replace("<?php echo base_url(); ?>quiz/manage_quiz_list");
               }
             },
@@ -249,6 +306,150 @@
             }
           });
 
+        } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+
+
         });
+      });
+    </script>
+    <script>
+       $('#listView').on('click', '.publish', function(e) {
+        var id =$(this).attr('data-id');
+        e.preventDefault();
+        Swal.fire({
+                    title: 'Are you sure you want to Publish?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Publish',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                      jQuery.ajax({                                  
+                                  url: '<?php echo base_url(); ?>quiz/publishQuiz/'+id,                                 
+                                  success: function(res) {
+                                    if (res) {
+                                      // Swal.fire(res.message);
+                                      location.reload();
+                                    } else {
+                                      alert(res.message);
+                                      window.location.replace("<?php echo base_url(); ?>quiz/manage_quiz_list");
+                                    }
+                                  },
+                                  error: function(xhr, status, error) {                                    
+                                    console.log(error);
+                                  }
+                                });
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+       });
+       $('#listView').on('click', '.unpublish', function(e) {
+        var id =$(this).attr('data-id');
+        e.preventDefault();
+        Swal.fire({
+                    title: 'Are you sure you want to Unublish?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Unublish',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                      jQuery.ajax({                                  
+                                  url: '<?php echo base_url(); ?>quiz/unPublishQuiz/'+id,                                 
+                                  success: function(res) {
+                                    if (res) {
+                                      // Swal.fire(res.message);
+                                      location.reload();
+                                    } else {
+                                      alert(res.message);
+                                      window.location.replace("<?php echo base_url(); ?>quiz/manage_quiz_list");
+                                    }
+                                  },
+                                  error: function(xhr, status, error) {                                    
+                                    console.log(error);
+                                  }
+                                });
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+       })
+    </script>
+    <script>
+      $('#listView').on('click','.delete',function(){
+        var quiz_id=$(this).attr('data-id');
+        Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                              $.ajax({
+                                      type: 'POST',
+                                      url: '<?php echo base_url(); ?>quiz/deleteQuiz',
+                                      data: {
+                                          id: quiz_id,
+                                      },
+                                      success: function(result) {
+                                          $('#row' + quiz_id).css({
+                                              'display': 'none'
+                                          });
+                                      },
+                                      error: function(result) {
+                                          alert("Error,Please try again.");
+                                      }
+                                  });
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+
+      });
+
+      $('#listView').on('click','.send_to_approve',function(){
+        var quiz_id=$(this).attr('data-id');
+        Swal.fire({
+                    title: 'Are you sure you want to Send for Approval?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                              $.ajax({
+                                      // type: 'POST',
+                                      url: '<?php echo base_url(); ?>quiz/sendApprove/'+quiz_id,
+                                      // data: {
+                                      //     id: quiz_id,
+                                      // },
+                                      success: function(result) {
+                                          // $('#row' + quiz_id).css({
+                                          //     'display': 'none'
+                                          // });
+                                          location.reload();
+                                      },
+                                      error: function(result) {
+                                          alert("Error,Please try again.");
+                                      }
+                                  });
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+
       });
     </script>
