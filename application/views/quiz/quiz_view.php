@@ -145,9 +145,9 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($firstprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if(empty($firstprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                            <?php   } else { ?>
                                   <p><img src="../../<?= $firstprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
@@ -177,9 +177,9 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($secondprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if(empty($secondprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                             <?php } else { ?>
                                   <p><img src="../../<?= $secondprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
@@ -209,10 +209,10 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($thirdprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
-                                  <p><img src="../../<?= $fourthprize['prize_img']; ?>" style="width:200px;"></p>
+                            <?php if(empty($thirdprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                             <?php } else { ?>
+                                  <p><img src="../../<?= $thirdprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
@@ -241,9 +241,9 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($fourthprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if(empty($fourthprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                             <?php } else { ?>
                                   <p><img src="../../<?= $fourthprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
@@ -290,7 +290,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Language</label>
                             <div>
-                                <p id="qbquestion"></p>
+                                <p id="language"></p>
                             </div>
                         </div>
                     </div>
@@ -620,6 +620,14 @@
                 $("#qbid").text(res.result.que_bank_id);
                 $("#qbtitle").text(res.result.title);
                 $("#qbquestion").text(res.result.no_of_ques);
+                if (res.result.language == 1){
+                    var lang = "English";
+                } if (res.result.language == 2){
+                    var lang = "Hindi";
+                }else{
+                    var lang = "English and Hindi";
+                }
+                $("#language").text(lang);
                 getQuestionListByQueBankId(id)
             }
         });

@@ -350,7 +350,7 @@
                     if (result.isConfirmed) {                       
                       $.ajax({
                             // type: 'POST',
-                            url: '<?php echo base_url(); ?>sendToCreate'+id,
+                            url: '<?php echo base_url(); ?>quiz/sendToCreate/'+id,
                             // data: {
                             //     id: quiz_id,
                             // },

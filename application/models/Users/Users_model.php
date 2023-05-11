@@ -744,10 +744,14 @@
             // $this->db->where('id',$quiz_id); 
             // $quiz = $this->db->get('tbl_quiz_details')->row_array();
             // $curr_que_bank_id= $quiz['que_bank_id'];
-
+            //echo "qui".$quiz_id;
             $this->db->where('quiz_linked_id', $quiz_id);
             $queBank = $this->db->get('tbl_que_bank')->row_array();
+
             $replica_of_qb_id = $queBank['replica_of_qb_id'];
+            // echo json_encode( $queBank);
+            // echo  "replica_of_qb_id". $replica_of_qb_id ;
+            // exit();
             if ($replica_of_qb_id != 0) {
                 // this is replica of que bank
                 $this->db->where('que_bank_id', $replica_of_qb_id);

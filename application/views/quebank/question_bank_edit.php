@@ -422,7 +422,7 @@
                                     </div>
                                     <div class="col-md-12 submit_btn p-3">
                                         <a class="btn btn-primary btn-sm text-white" id="createQuestion">Add New Question</a>
-                                        <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                                        <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
                                     </div>
                                 </form><!-- end que creation -->
                         <?php }
@@ -447,11 +447,12 @@
                                             </tr>
                                         </thead>
                                         <?php if (!empty($allRecords)) {
+                                              $i = 1;
                                             foreach ($allRecords as $row) { ?>
 
                                                 <tbody id="que_body">
                                                     <?php
-                                                    $i = 1;
+                                                  
                                                     foreach ($row['queList'] as $r) {
                                                      
                                                     ?>
@@ -470,25 +471,27 @@
                                                                 <?php
                                                                 if ($r['language'] == 1 ||  $r['language'] == 3) {
                                                                     echo $r['que'];
+                                                                    if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
+                                                                        <br>
+                                                                        <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
+                                                                      <?php  } 
                                                                 } else {
                                                                     echo "--";
-                                                                }
+                                                                } ?>
 
-                                                                if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
-                                                                    <br>
-                                                                    <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
-                                                                <?php } ?>
+                                                               
                                                             </td>
                                                             <td>
                                                                 <?php if ($r['language'] == 2 ||  $r['language'] == 3) {
                                                                     echo $r['que_h'];
+                                                                    if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
+                                                                        <br>
+                                                                        <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
+                                                                    <?php } 
                                                                 } else {
                                                                     echo "--";
-                                                                }
-                                                                if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
-                                                                    <br>
-                                                                    <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
-                                                                <?php } ?>
+                                                                } ?>
+                                                                
                                                             </td>
                                                             <td><?php echo $r['no_of_options']; ?></td>
 
@@ -626,10 +629,10 @@
                                                             <td><span class="btn btn-sm btn-danger deletedata" onclick="deleteQuestion(<?php echo $r['que_id']; ?>);" data-id='<?php echo $r['que_id']; ?>'>Delete</td>
 
                                                         </tr>
-                                                    <?php } ?>
+                                                    <?php $i++; } ?>
 
                                                 </tbody>
-                                        <?php $i++ ;}
+                                        <?php  }
                                         } ?>
                                     </table>
                                 </div>
@@ -1877,7 +1880,7 @@
                             } else if (data[i].que_type == 2) {
                                 var type = "Image";
                             } else {
-                                var type = "Both";
+                                var type = "Text and Image";
                             }
                             if (data[i].que_type == 2) {
                                 if (data[i].que == 0 || data[i].que == '') {

@@ -191,7 +191,7 @@
                                         // $('#designation').val(res.data.designation);
                                         // $('#branch').val(res.data.branch);
                                         // $('#post').val(res.data.post);
-                                        // $('#department').val(res.data.department);
+                                         $('#department').val(res.data.department);
 
                                     }
                                 });
@@ -231,6 +231,7 @@
                             var email = $("#email").val();
                             var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
                             var department = $("#department").val();
+                            var username = $("#name").val();
 
                             if (uid == "") {
                                 if ($("#err_uid").next(".validation").length == 0) // only add if not added
@@ -241,10 +242,10 @@
                                     $("#uid").focus();
                                 }
                                 allfields = false;
-                            } else if (!(uid.length > 6)) {
+                            } else if ((uid.length < 8)) {
                                 if ($("#err_uid").next(".validation").length == 0) // only add if not added
                                 {
-                                    $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter minimum 6 characters</div>");
+                                    $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter minimum 8 characters</div>");
                                 }
                                 if (!focusSet) {
                                     $("#uid").focus();
@@ -284,6 +285,17 @@
                             } else {
                                 $("#department").next(".validation").remove(); // remove it
                             }
+                            if (!username.length) {
+                                if ($("#name").next(".validation").length == 0) {
+                                    $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter name</div>");
+                                }
+                                allfields = false;
+                                if (!focusSet) {
+                                    $("#name").focus();
+                                }
+                            } else {
+                                $("#name").next(".validation").remove(); // remove it
+                            }
                             if (role == "" || role== null) {
                                 if ($("#role").next(".validation").length == 0) {
                                     $("#role").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select role.</div>");
@@ -295,7 +307,7 @@
                             } else {
                                 $("#role").next(".validation").remove(); // remove it
                             }
-                            if (allfields) {
+                            if (allfields) {                                
                                 jQuery.ajax({
                                     type: "GET",
                                     url: 'getUniqueEmail/?email=' + email,
