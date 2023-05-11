@@ -271,7 +271,7 @@
 
                             if (!department.length) {
                                 if ($("#department").next(".validation").length == 0) {
-                                    $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter building name</div>");
+                                    $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter department</div>");
                                 }
                                 allfields = false;
                                 if (!focusSet) {
