@@ -6,7 +6,9 @@
             <h1 class="h3 mb-0 text-gray-800">Closed Quiz</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { echo "Sub"; } ?>
+                 Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
@@ -85,6 +87,8 @@
         </div>
        </div>
     <!-- /.container-fluid -->
-
+    <div class="col-md-12 submit_btn p-3">
+        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>quiz/quiz_dashboard'">Back</a>
+    </div>
 </div>
 <!-- End of Main Content -->

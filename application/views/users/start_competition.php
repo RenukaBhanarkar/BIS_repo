@@ -172,19 +172,20 @@
         <div class="inner_wall">
             <div class="row mt-5">
                 <div class="col-sm-12">
-                    <h4>
-                    Lorem ipsum dolor sit amet, consectetur</h4>
+                    <!-- <h4>Lorem ipsum dolor sit amet, consectetur</h4>competition -->
+                    <h4><?php echo $competition['competiton_name']; ?></h4>
                     <div class="your_wall_main_card_view">
                         <div class="yourWall_image">
-                            <img src="<?=base_url();?>assets/images/world_stander/revised.png" alt="not found" class="w-100 h-100">
-                            <span><i class="fa fa-calendar icons"></i>12/03/2023</span>
+                            <img src="<?=base_url().$competition['thumbnail'];?>" alt="not found" class="w-100 h-100">
+                            
                         </div>
                         <div class="Text-container_view ">
-                            <h6 class="yourWall_title_view ">
+                            <!-- <h6 class="yourWall_title_view ">
                                  Lorem ipsum dolor sit amet, consectetur
-                            </h6>
+                            </h6> -->
                             <div class="Your_Wall_Description_view">
-                                 Safe and high-quality packaging can have a positive impact on consumers by offering protection, health & safety, convenience, environmental benefits. Therefore, investing in safe and high-quality packaging is a must for any business that wants to ensure safety of its customers, protect its products, build its brand. Safe and high-quality packaging can have a positive impact on consumers by offering protection, health & safety, convenience, environmental benefits. Therefore, investing in safe and high-quality packaging is a must for any business that wants to ensure safety of its customers, protect its products, build its brand. Safe and high-quality packaging can have a positive impact on consumers by offering protection, health & safety, convenience, environmental benefits. Therefore, investing in safe and high-quality packaging is a must for any business that wants to ensure safety of its customers, protect its products, build its brand.
+                                 <!-- Safe and high-quality packaging can have a positive impact on consumers by offering protection, health & safety, convenience, environmental benefits. Therefore, investing in safe and high-quality packaging is a must for any business that wants to ensure safety of its customers, protect its products, build its brand. Safe and high-quality packaging can have a positive impact on consumers by offering protection, health & safety, convenience, environmental benefits. Therefore, investing in safe and high-quality packaging is a must for any business that wants to ensure safety of its customers, protect its products, build its brand. Safe and high-quality packaging can have a positive impact on consumers by offering protection, health & safety, convenience, environmental benefits. Therefore, investing in safe and high-quality packaging is a must for any business that wants to ensure safety of its customers, protect its products, build its brand. -->
+                            <?php echo $competition['description']; ?>
                             </div>
                             
 
@@ -242,29 +243,39 @@
 
     </div>
 </div>
+
 <div class="container">
+        <?php
+            if ($this->session->flashdata('MSG')) {
+                echo $this->session->flashdata('MSG');
+            }
+        ?>
                 <div class="bg-light-comment p-3" style="background: #b6b2b2;">
                     <!-- <div class="Comment_image">
                         <img src="../assets/images/user_image.png">
                     </div> -->
                     
                     <div class="row">
+                        <form action="<?php echo base_url().'users/competition_response_record/'; ?>" id="comp_form" name="competition_response" method="post" enctype="multipart/form-data">
                         <div class="col-sm-12">
                                 <div class="form-group ">
-                                    <textarea class="form-control w-100" rows="8" id="file_show" placeholder="Share Your Comments......" name="description"></textarea>
+                                    <textarea class="form-control w-100" rows="8" id="answer" placeholder="Share Your Comments......" name="answer"></textarea>
 
+                                    <input type="hidden" name="comp_id" value="<?php echo $competition['competitionn_id']; ?>">
                                     
                                 </div>
                         </div>
                         
                         <div class="col-sm-6 mt-3">
                             <div class="file-upload-wrapper" data-text="Select your file">
-                                <input type="file" class="file-upload-field" name="image" value="">
+                                <input type="file" class="file-upload-field" name="image" id="image" value="">
                             </div>
                         </div>
                         <div class="button-group  mt-3" style="text-align:end;">
-                                        <button type="submit" class="btn btn-success">Save</button>
+                                        <button onclick="return submitCompetition(event)" type="submit" class="btn btn-success">Save</button>
                                     </div>
+                        
+                    </form>
                         
                     </div>
                     
@@ -275,7 +286,7 @@
     $(document).ready(function () 
     { 
        
-        $("#file_show").click(function(){
+        $("#answer").click(function(){
          $(".file-upload-wrapper").show();
       });
 
@@ -285,4 +296,36 @@
   //  $("#file_show").click(function(){
  // $(".file-upload-wrapper").show();
 //});
+function submitCompetition(event){
+    event.preventDefault();
+var isValid=true;
+   var answer =$('#answer').val();
+    if(answer==""){
+        Swal.fire("Please enter answer");
+        // alert('enter response');
+        isValid=false;
+    }
+
+    if(isValid){
+        Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $('#comp_form').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        // alert('kjh');
+       
+        return true;
+    }
+}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

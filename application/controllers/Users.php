@@ -497,6 +497,7 @@ class Users extends CI_Controller
     //     }
     // }
     public function standard(){
+        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $data = array();
         $data['banner_data'] = $this->Admin_model->bannerAllData();
         $data['images'] = $this->Admin_model->images();
@@ -505,6 +506,7 @@ class Users extends CI_Controller
         $data['events'] = $this->Admin_model->events();
         $allquize = $this->Users_model->getStdClubQuizAll();
         $data['allquize'] = $allquize;
+        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4');
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_club',$data);
         $this->load->view('users/footers/footer');  
@@ -1561,17 +1563,71 @@ class Users extends CI_Controller
     //     $this->load->view('users/about_quiz', $data);
     //     $this->load->view('users/footers/footer');
     // }
-    public function about_competition()
+    public function about_competition($id)
     {
+        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+        $data['competition']=$this->Miscellaneous_competition->viewCompetition($id);
+        // print_r($data); die;
         $this->load->view('users/headers/header');
-        $this->load->view('users/about_competition');
+        $this->load->view('users/about_competition',$data);
         $this->load->view('users/footers/footer');
     }
-    public function start_competition()
+    public function start_competition($id)
     {
+        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+        $data['competition']=$this->Miscellaneous_competition->viewCompetition($id);
         $this->load->view('users/headers/header');
-        $this->load->view('users/start_competition');
+        $this->load->view('users/start_competition',$data);
         $this->load->view('users/footers/footer');
+    }
+    public function competition_response_record(){
+        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+      //  print_r($_SESSION);
+        // die;
+        $c_id=$this->input->post('comp_id');
+       
+        $user_id=$this->session->userdata('admin_id');     
+        if($user_id=="" ||$user_id==null){
+          //  $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this Competition.", "SS"));
+          $this->session->set_flashdata('MSG', ShowAlert("You have not Loggedin", "SS"));
+            redirect(base_url() . "users/login", 'refresh');
+        }else{
+            $data['user_id']=encryptids('D',$user_id);
+            $data['competiton_id']=$this->input->post('comp_id');
+            $response=$this->Miscellaneous_competition->ckeckCompAttempt($data);
+            // print_r($response); die;
+            if(!empty($response)){
+                $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this Competition.", "SS"));
+                redirect(base_url() . "users/start_competition/$c_id", 'refresh');
+                die;
+            }
+
+        }
+          
+        $data['user_id']=encryptids('D',$user_id);
+        $data['answer_text']=$this->input->post('answer');
+        $data['competiton_id']=$this->input->post('comp_id');
+
+
+        if (!file_exists('uploads/competition/response_images')) { mkdir('uploads/competition/response_images', 0777, true); }
+        if (!($_FILES['image']['name'] == "")) {
+            $path = 'uploads/competition/response_images/';
+            $other_image1 = $path . time() . 'comp_response_img' . $_FILES['image']['name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], $other_image1);
+        } else {
+            $other_image1 = "";
+        }
+
+        $data['image']=$other_image1;
+
+        
+        $response=$this->Miscellaneous_competition->submitCompResponse($data);
+        if($response){
+            echo "success";
+        }else{
+            echo "Failed";
+        }
+
     }
     public function all_creative_task()
     {
