@@ -4,7 +4,12 @@
         <h1 class="h3 mb-0 text-gray-800">Quiz View</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                    <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
@@ -324,9 +329,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 submit_btn p-3">
+                <!-- <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Quiz/quiz_list'">Back</a>
-                </div>
+                </div> -->
                 <!-- Modal -->
                 <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -350,7 +355,7 @@
         </div>
         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
             <div class="col-12 mt-3">
-                <form name="quiz_reg" action="<?= base_url() . 'Admin/updateQuizStatus/' . $quizdata['id'] ?>" method="post" enctype="multipart/form-data">
+                <form name="quiz_reg" id="quiz_reg" action="<?= base_url() . 'Admin/updateQuizStatus/' . $quizdata['id'] ?>" method="post" enctype="multipart/form-data">
                     <div class="row" id="remarkdiv">
                         <div class="mb-2 col-md-8">
                             <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
@@ -364,9 +369,11 @@
             <div class="col-md-12 submit_btn p-3">
                 <!-- <a id="approve" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval">Approval</a> -->
                 <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve">
+                <!-- <input type="button" name="Approval" value="Approve" class="btn btn-success btn-sm text-white approve" id="approve"> -->
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
                 <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
                 <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-danger btn-sm text-white cancel" id="cancel" >Cancel</a>
             </div>
             <?php } ?>
             </form>
@@ -633,4 +640,41 @@
         });
         // body...
     }
+
+    $('#cancel').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        window.location.replace('<?php echo base_url().'Quiz/manage_quiz_list' ?>');
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
+
+    $('.approve').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Approve?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Approve',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                      //  window.location.replace('<?php echo base_url().'Quiz/manage_quiz_list' ?>');
+                      $('#quiz_reg').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
 </script>

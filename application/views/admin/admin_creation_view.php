@@ -1,8 +1,19 @@
 <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Quiz Creation</h1>
-                        
+                        <h1 class="h3 mb-0 text-gray-800">Admin Creation View</h1>
+                        <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 1) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Super Admin Dashboard</a></li>
+                <?php } ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/users';?>" >User Management</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/admin_creation_list';?>" >Admin Creation</a></li>
+                <li class="breadcrumb-item active">Admin Creation View</li>
+                
+                
+                </ol>
+            </nav>
                     </div>
 <!-- Content Row -->
 <div class="row">
@@ -11,7 +22,7 @@
                            <div class="card-body"> 
                             <div class="row">
                                <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Department</label>
+                                    <label class="d-block text-font">Name</label>
                                     <div>
                                         <p><?php echo $detail['name'] ?></p>
                                     </div>    
@@ -22,6 +33,7 @@
                                         <p><?php echo $detail['email_id']; ?></p>
                                     </div>    
                                 </div>
+                                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Designation</label>
                                     <div>
@@ -52,6 +64,7 @@
                                         <p><?php echo $detail['username']; ?></p>
                                     </div>    
                                 </div>
+                                <?php } ?>
                               </div>
                           </div>
                           <div class="col-md-12 submit_btn p-3">
