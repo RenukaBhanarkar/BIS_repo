@@ -61,7 +61,7 @@
                       <td><?= date("d-m-Y", strtotime($quiz['start_date'])); ?></td>
                       <td><?= date("d-m-Y", strtotime($quiz['end_date'])); ?></td>
                       <td><?= $quiz['total_question'] ?></td>
-                      <td><?= $quiz['qbquestion'] ?></td>
+                      <td><?= $quiz['no_of_ques'] ?></td>
                       <td><?= $quiz['total_mark'] ?></td>
                       <td><?= $quiz['status_name'] ?></td>
                       <td class="d-flex border-bottom-0">
@@ -103,7 +103,7 @@
                             <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?= $quiz['id'] ?>" id="archiveQuiz">Archive</button>
                           <?php } ?>
 
-                          <?php if ($quiz['status'] == 1 || $quiz['status'] == 4 || $quiz['status'] == 10) { ?>
+                          <?php if ($quiz['status'] == 1 || $quiz['status'] == 3 || $quiz['status'] == 4 || $quiz['status'] == 10) { ?>
                             <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>      
                             <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
                           <?php } ?>

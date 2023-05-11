@@ -34,7 +34,7 @@
                         <div class="text_box">
                             <h4>Thank You </h4>
                             <p>For Participating In The Quiz </p>
-                            <p class="Certificate-link"><a href="#">Click here</a> to download the Certificate</p>
+                            <!-- <p class="Certificate-link"><a href="#">Click here</a> to download the Certificate</p> -->
                         </div>
                     </div>
                 </div>

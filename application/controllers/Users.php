@@ -2393,6 +2393,7 @@ class Users extends CI_Controller
                                             // first time
                                             $que_details = $this->Users_model->viewQuestion($quiz_id);
                                             $data['que_details'] = $que_details;
+                                          
                                             $quiz = $this->Users_model->viewQuiz($quiz_id);
                                             $data['quizdata'] = $quiz;
                                             $data['user_id'] = $user_id;
@@ -2525,12 +2526,26 @@ class Users extends CI_Controller
 
                         $formdata2['total_question'] = $total_question;
                         $formdata2['total_mark'] = $total_mark;
+
+
                         $formdata2['start_time'] = $start_time;
-                        $formdata2['end_time'] = date('h:i:s');
+                        $end_t = date('h:i:s');
+                        $formdata2['end_time'] = $end_t;
+
+
+
+                        $st_time = strtotime($start_time);
+                        $en_time = strtotime($end_t);
+                        $diff = $en_time - $st_time;
+                        $time_taken =abs($diff);
+
+
+
                         $formdata2['correct_ques'] = $correct_ques;
                         $formdata2['wrong_ques'] = $wrong_ques;
                         $formdata2['not_ans_ques'] = $not_ans_ques;
                         $formdata2['selected_lang'] = $selected_lang;
+                        $formdata2['time_taken'] = $time_taken;
 
                         $ans = $total_mark / $total_question;
                         

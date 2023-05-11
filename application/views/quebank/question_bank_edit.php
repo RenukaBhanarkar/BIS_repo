@@ -629,7 +629,7 @@
                                                     <?php } ?>
 
                                                 </tbody>
-                                        <?php }
+                                        <?php $i++ ;}
                                         } ?>
                                     </table>
                                 </div>
