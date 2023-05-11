@@ -2,7 +2,15 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Admin Creation</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Subadmin Creation</h1>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/users';?>" >User Management</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url().'subadmin/admin_creation_list';?>" >Subadmin Creation</a></li>
+                            
+                            <li class="breadcrumb-item active" aria-current="page">Subadmin Creation Form</li>
+                
+                </ol>
                     </div>
 
                     <?php
@@ -78,8 +86,10 @@
                                                 Submit
                                             </button>
                                             <!-- <a class="btn btn-success btn-sm text-white" onclick="return validateForm();">Submit</a> -->
-                                            <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
-                                            <a class="btn btn-warning btn-sm text-white" onclick="resetFields()">Reset</a>
+                                            <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
+                                            <a class="btn btn-danger btn-sm text-white cancel" >Cancel</a>
+                                            <!-- <a class="btn btn-warning btn-sm text-white" onclick="resetFields()">Reset</a> -->
+                                            <a class="btn btn-warning btn-sm text-white reset" >Reset</a>
                                         </div>
                                         <!-- Modal -->
                                         <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,13 +127,7 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Bureau of Indian Standards 2022</span>
-                        </div>
-                    </div>
-                </footer>
+              
                 <!-- End of Footer -->
 
                 </div>
@@ -340,4 +344,40 @@
 
                         });
                     });
+
+                    $('.cancel').on('click',function(){
+                        Swal.fire({
+                                title: 'Are you sure you want to Cancel?',
+                                showDenyButton: true,
+                                showCancelButton: false,
+                                confirmButtonText: 'Cancel',
+                                denyButtonText: `Close`,
+                                }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {                       
+                                    window.location.replace('<?php echo base_url().'subadmin/admin_creation_list' ?>');
+                                // Swal.fire('Saved!', '', 'success')                                
+                                } else if (result.isDenied) {
+                                    // Swal.fire('Changes are not saved', '', 'info')
+                                }
+                                })
+                    })
+                    $('.reset').on('click',function(){
+                        Swal.fire({
+                                title: 'Are you sure you want to Reset?',
+                                showDenyButton: true,
+                                showCancelButton: false,
+                                confirmButtonText: 'Reset',
+                                denyButtonText: `Cancel`,
+                                }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {                       
+                                //  $('#add_admin').reset();
+                                $('#add_admin').get(0).reset();
+                                // Swal.fire('Saved!', '', 'success')                                
+                                } else if (result.isDenied) {
+                                    // Swal.fire('Changes are not saved', '', 'info')
+                                }
+                                })
+                    })
                 </script>

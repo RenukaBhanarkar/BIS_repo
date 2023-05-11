@@ -96,7 +96,8 @@
                                            
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
-                                                <a class="btn btn-success btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/replicateQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" >Replicate</a>                                           
+                                                <!-- <a class="btn btn-success btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/replicateQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" >Replicate</a>                                            -->
+                                                <a class="btn btn-success btn-sm mr-2 replicate" data-id="<?php echo encryptids('E', $row['que_bank_id']) ?>" >Replicate</a>
                                                 <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4 )) { 
                                                     
                                                     if($row['quiz_title'] == "" ){ ?>
@@ -128,6 +129,11 @@
                 </div>
             </div>
         </div>
+        <?php if(encryptids("D", $_SESSION['admin_type']) == 3){ ?>
+            <div class="col-md-12 submit_btn p-3">
+                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>quiz/quiz_dashboard'">Back</a>
+            </div>
+        <?php } ?>
     </div>
     <!-- /.container-fluid -->
 
@@ -327,6 +333,26 @@
             });
         });
     </script>
-
+<script>
+    $('#listView').on('click','.replicate',function(){
+       // alert("jhgfghj");
+ var id = $(this).attr('data-id');
+ Swal.fire({
+                    title: 'Are you sure you want to Replicate?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Replicate',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        window.location.replace('<?php echo base_url(); ?>subadmin/replicateQuestionBank?id='+id);
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    });
+</script>
 
     </body>

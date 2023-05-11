@@ -479,8 +479,10 @@
                                     </div>
                                     <div class="col-md-12 submit_btn p-3">
                                         <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a> -->
+                                        <!-- <a class="btn btn-success btn-sm text-white" id="saveQueBank">Submit</a> -->
                                         <a class="btn btn-success btn-sm text-white" id="saveQueBank">Submit</a>
-                                        <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                                        <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
+                                        <button class="btn btn-danger btn-sm text-white cancel_qb_form">Cancel</button>
                                         <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                                         <div id="err_que_bank"></div>
                                     </div>
@@ -1836,12 +1838,39 @@
                 });
             }
 
+            // function deleteQuestion(que_id) {
+            //     var c = confirm("Are you sure to delete these details? ");
+            //     if (c == true) {
+            //         // const $loader = $('.igr-ajax-loader');
+            //         //$loader.show();
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
+            //             data: {
+            //                 que_id: que_id,
+            //             },
+            //             success: function(result) {
+            //                 $('#row' + que_id).css({
+            //                     'display': 'none'
+            //                 });
+            //             },
+            //             error: function(result) {
+            //                 alert("Error,Please try again.");
+            //             }
+            //         });
+            //     }
+            // }
             function deleteQuestion(que_id) {
-                var c = confirm("Are you sure to delete these details? ");
-                if (c == true) {
-                    // const $loader = $('.igr-ajax-loader');
-                    //$loader.show();
-                    $.ajax({
+                Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
                         data: {
@@ -1851,12 +1880,17 @@
                             $('#row' + que_id).css({
                                 'display': 'none'
                             });
+                            Swal.fire('Questiion Deleted');
                         },
                         error: function(result) {
                             alert("Error,Please try again.");
                         }
                     });
-                }
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })                
             }
             $("#no_of_ques").keydown(function(e) {
 
@@ -1880,6 +1914,25 @@
             //         e.preventDefault();
             //     }
             // });
+            $('.cancel_qb_form').on('click',function(){
+                Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        // location.href='<?php echo base_url();?>subadmin/questionBankList'"
+                        // window.location(<?php echo base_url();?>subadmin/questionBankList);
+                       // Swal.fire('Saved!', '', 'success')           
+                       window.location.href = "<?php echo base_url();?>subadmin/questionBankList";                     
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+            })
         </script>
         <!-- Footer -->
 

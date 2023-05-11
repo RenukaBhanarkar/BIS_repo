@@ -285,6 +285,36 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/revised_standard_list');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function view_standards()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/view_standards');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function submission_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/submission_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function assign_review()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/assign_review');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_under_review()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_under_review');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_reviewed()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
  
 
 }

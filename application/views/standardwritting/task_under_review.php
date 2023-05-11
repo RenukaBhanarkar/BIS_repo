@@ -3,14 +3,14 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Review Management</h1>
+            <h1 class="h3 mb-0 text-gray-800">Task Under Review</h1>
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_writting_dashboard';?>" >Standard Writting</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Review Management</li>
+                <li class="breadcrumb-item active" aria-current="page">Task Under Review</li>
                 
                 </ol>
             </nav>
@@ -23,44 +23,38 @@
                     <table id="example" class="table-bordered nowrap" style="width:100%">
                         <thead>
                             <tr>
+                                <!-- <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th> -->
                                 <th>Sr. No.</th>
-                                <th>Competition ID</th>
-                                <th>Name of Competition</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Banner</th>
+                                <th>ID</th>
+                                <th>Description</th>
+                                <th>PDF</th>
+                                <th>Image</th>
                                 <th>Status</th>
-                                <th>Submitted Task</th>
-                                <th>Task Under Review</th>
-                                <th>Reviewed Task</th>
+                                <th>Name Of Evaluator</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                            <tr>
+                              <!-- <td><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></td> -->
                               <td>1</td>
-                              <td>12345</td>
-                              <td>Miscellaneous Competition</td>
-                              <td>12/03/2023</td>
-                              <td>12/03/2023</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
+                              <td>12346</td>
+                              <td>XYZ</td>
+                              <td><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="5%"></td>
+                              <td><img src="<?= base_url();?>" alt="#" class="" width="10%"></td>
                               <td>Pending</td>
-                              <td>task</td>
-                              <td>task</td>
-                              <td>task</td>
+                              <td>XYZ</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>Standardswritting/assign_review/" class="btn btn-success btn-sm mr-2" >Assign For Review</a>
-                                 <a href="<?php echo base_url(); ?>Standardswritting/task_under_review/" class="btn btn-info btn-sm mr-2" >Task Under Review</a>
-                                 <a href="<?php echo base_url(); ?>Standardswritting/submission_view/" class="btn btn-primary btn-sm mr-2" >View Details</a>
-                                 <a href="<?php echo base_url(); ?>Standardswritting/task_reviewed" class="btn btn-warning btn-sm mr-2" >Task Reviewed</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2" >View Details</a>
                               </td>
 
                         </tbody>
                     </table>
                 </div>
             </div>
+                <div class="col-md-12 submit_btn p-3">
+                    <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm text-white" >Back</a>
+                </div>
         </div>
     </div>
     <!-- /.container-fluid -->
-
-    

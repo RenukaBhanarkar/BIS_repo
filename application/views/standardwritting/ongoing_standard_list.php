@@ -45,7 +45,7 @@
                               <td>Pending</td>
                               <td>task</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/submission_view" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                               </td>
 

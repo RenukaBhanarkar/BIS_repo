@@ -64,6 +64,15 @@ class Admin_model extends CI_Model {
         }
         return $rs;
     }
+    public function getAdminDetail($id){
+        $this->db->select('ta.*,tmar.*');
+        $this->db->from('tbl_admin ta');
+        $this->db->join('tbl_mst_admin_role tmar','tmar.admin_type=ta.designation');
+        $this->db->where('ta.id',$id);        
+         $query = $this->db->get();
+         $result=$query->result_array();
+         return $result[0];       
+    }
     public function getAllSubAdmin(){      
         $this->db->select('a.*,r.role,r.admin_type');
         $this->db->from('tbl_admin a');

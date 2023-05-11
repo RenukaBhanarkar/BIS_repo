@@ -47,6 +47,7 @@
                 </div>
             </div>
         </li>
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 1) {   ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities_1" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
@@ -64,6 +65,7 @@
                 </div>
             </div>
         </li>
+        <?php } ?>
     <?php } ?>
 
 
@@ -97,7 +99,7 @@
                     <h6 class="collapse-header">Standards Club</h6>
                     <a class="collapse-item" href="<?php echo base_url(); ?>quiz/organizing_quiz">Competitions</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>wall_of_wisdom">Wall of Wisdom</a>
-                    <a class="collapse-item" href="<?php echo base_url(); ?>admin/yourwall/">Your Wall</a>
+                    <a class="collapse-item" href="<?php echo base_url(); ?>admin/your_wall_list/">Your Wall</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>learningscience/lsv_standards_dashboard/">Classroom</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>admin/byTheMentors">By the Mentors</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>admin/cmsManagenent_dashboard">CMS</a>
