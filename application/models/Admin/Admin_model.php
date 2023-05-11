@@ -67,7 +67,7 @@ class Admin_model extends CI_Model {
     public function getAdminDetail($id){
         $this->db->select('ta.*,tmar.*');
         $this->db->from('tbl_admin ta');
-        $this->db->join('tbl_mst_admin_role tmar','tmar.admin_type=ta.designation');
+        $this->db->join('tbl_mst_admin_role tmar','tmar.admin_type=ta.designation','left');
         $this->db->where('ta.id',$id);        
          $query = $this->db->get();
          $result=$query->result_array();
