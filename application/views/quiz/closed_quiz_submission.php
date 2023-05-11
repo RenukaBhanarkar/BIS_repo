@@ -53,7 +53,12 @@
                                  <td><?= date("d-m-Y", strtotime($users['created_on']));?></td> 
                                 
                                  <td><?= $users['score']?></td>
-                                 <td><?= $users['time_taken']?></td> 
+                                 <?php 
+                                 $t =  $users['time_taken'];
+                                 $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+                                 ?>
+                                 <td><?= $timeTaken ?></td> 
+                                 <td><?= $users['prize']?></td>
                                 <td><a href="<?php echo base_url();?>Quiz/answer_key_list/<?= $users['user_id'] ;?>/<?= $users['quiz_id'] ;?>" class="btn btn-primary btn-sm mr-2">Answer Key</a></td>
                                   
                                  </tr>

@@ -250,6 +250,7 @@ class Subadmin extends CI_Controller
             $dbObj = array(
                 'name' =>  $name,
                 'email_id' => $email,
+                'username' => $email,
                 'designation'    =>$designation,
                 'department' => $department,
 

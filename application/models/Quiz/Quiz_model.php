@@ -36,7 +36,15 @@ class Quiz_model extends CI_Model {
     {
         $this->db->where('prize_id',$prize_id); 
         $this->db->where('quiz_id',$quiz_id); 
-        return $quiz = $this->db->get('tbl_prizes')->row_array();
+      
+        $query = $this->db->get('tbl_prizes');
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            $rs =$query->row_array();
+        }
+       // echo json_encode($rs) ; exit();
+        // return $quiz = $this->db->get('tbl_prizes')->row_array();
+        return $rs;
     }
     public function deleteData($id)
     {
@@ -283,14 +291,18 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         $rs = array();
         $this->db->select('*'); 
         $this->db->from('tbl_prizes'); 
-        $this->db->where('id',$id); 
+        $this->db->where('quiz_id',$id); 
         $query=$this->db->get();
+       // echo json_encode($query->result_array());
+        $prizes_details = array();
         $count =0;
         if($query->num_rows() > 0){
+           
             foreach ($query->result_array() as $row) {
                 $count =  $count + $row['no_of_prize'];
                 array_push($rs,$row);
             }
+            $prizes_details = $rs;
         }
         
         $this->db->select('tbl_quiz_submission_details.*,
@@ -302,7 +314,53 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         $this->db->order_by('score', 'desc'); 
         $this->db->order_by('time_taken', 'desc');    
         $this->db->limit($count);   
-        return $this->db->get('tbl_quiz_submission_details')->result_array(); 
+        //return  $this->db->get('tbl_quiz_submission_details')->result_array();
+
+
+        $result =  $this->db->get('tbl_quiz_submission_details')->result_array();
+
+        $first = 0;
+        $second = 0;
+        $third = 0;
+        $fourth = 0;
+       // echo json_encode($prizes_details);
+        foreach ($prizes_details as $prize) {
+            if($prize['prize_id'] == 1 ){
+                $first = $prize['no_of_prize'];
+            }
+            if($prize['prize_id'] == 2 ){
+                $sec = $prize['no_of_prize'];
+                $second = $first +  $sec;
+            }
+            if($prize['prize_id'] == 3){
+                $thi = $prize['no_of_prize'];
+                $third =  $second +  $thi;
+            }
+            if($prize['prize_id'] == 4 ){
+                $fou= $prize['no_of_prize'];
+                $fourth =  $third +  $fou;
+            }
+        }
+        // echo "f".$first ;
+        // echo "s".$second ;
+        // echo "t".$third ;
+        // echo "for".$fourth ;exit();
+        $cnt = 1;
+        $rsNew = array();
+        foreach ($result as $row){
+           if($cnt <= $first){
+            $row['prize'] = "First Prize";
+           }else if($cnt <= $second){
+            $row['prize'] = "Second Prize";
+           }else if($cnt <= $third){
+            $row['prize'] = "Third Prize";
+           }else if($cnt <= $fourth){
+            $row['prize'] = "Concelation Prize";
+           }
+           $cnt++;
+           array_push($rsNew,$row);
+        }
+        return $rsNew;
     }
 
 

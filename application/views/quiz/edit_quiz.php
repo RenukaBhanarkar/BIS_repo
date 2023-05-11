@@ -178,9 +178,7 @@
 
                 <div class="active" id="delete_preview">
                   <button class="btn btn-danger btn-sm del_icon">Delete</button>
-                  <!-- <button type="button" id="preview" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          Preview
-                      </button> -->
+                  
                   <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalView">
                     View
                   </button>
@@ -191,7 +189,6 @@
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Last Uoloaded Banner Image Preview</h5>
 
-                          <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -199,9 +196,7 @@
                         <div class="modal-body">
                           <img src="../../<?php echo $quizdata['banner_img']; ?>" style="width:450px;" />
                         </div>
-                        <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                      </div> -->
+                  
                       </div>
                     </div>
                   </div>
@@ -215,8 +210,7 @@
                     <span class="error_text">
                       accept only jpg,jpeg,png
                     </span>
-                    <!-- <input type="hidden" name="old_img" value="" id="bannerimg1">
-                <input type="hidden" name="id" value="" id="id1"> -->
+                   
                     <span class="error_text">
                       <?php //echo form_error('title'); 
                       ?>
@@ -231,37 +225,7 @@
 
 
 
-                <!-- <div class="d-flex">
-                  <div>
-                    <input type="file" id="banner_img" accept="image/jpeg,image/png" name="banner_img" class="form-control-file" onchange="loadFileBanner(event)">
-                    <input type="hidden" name="lastbanner" value="<?php echo $quizdata['banner_img']; ?>">
-                  </div>
-                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Preview
-                  </button> &nbsp;
-                  <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalView">
-                    View
-                  </button>
-                </div> -->
-
-                <!-- Modal -->
-                <!-- <div class="modal fade" id="exampleModalView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Last Uoloaded Banner Image Preview</h5>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <img src="../../<?php echo $quizdata['banner_img']; ?>" style="width:450px;" />
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+               
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -277,8 +241,7 @@
                         <img id="outputbanner" style="width:450px;" />
                       </div>
                       <div class="modal-footer">
-                        <!-- <button type="button" onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button> -->
+                      
                       </div>
                     </div>
                   </div>
@@ -298,13 +261,13 @@
             <div class="row mt-2">
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes<sup class="text-danger">*</sup></label>
-                <!-- <input type="text" class="form-control input-font" name="fprize" id="fprizes" placeholder="Enter Prizes" value="<?php echo set_value('fprize', $firstprize['no_of_prize']); ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')"> -->
+               
                 <input type="text" class="form-control input-font" name="fprize" id="fprizes" placeholder="Enter Prizes" value="<?php if (!empty($firstprize['no_of_prize'])) {                                                                                                                     echo  $firstprize['no_of_prize'];                                                                                                   } else {        echo 0; } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                 <span class="error_text"><?php echo form_error('fprizes'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Prize Details<sup class="text-danger">*</sup></label>
-                <!-- <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Details" value="<?php //echo set_value('fdetails', $firstprize['prize_details']);    ?>"> -->
+              
 
                 <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($firstprize['prize_details'])) { echo  $firstprize['prize_details']; } else {echo "";} ?>">
 
@@ -325,7 +288,7 @@
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Last Uoloaded Banner Image Preview</h5>
 
-                          <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+                        
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -362,8 +325,7 @@
                     <span class="error_text">
                       accept only jpg,jpeg,png
                     </span>
-                    <!-- <input type="hidden" name="old_img" value="" id="bannerimg1">
-                <input type="hidden" name="id" value="" id="id1"> -->
+                   
                     <span class="error_text">
                       <?php //echo form_error('title'); 
                       ?>
@@ -385,8 +347,7 @@
                         <img id="outputFirst" style="width: 450px;" />
                       </div>
                       <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" onclick="resetFirst();" data-bs-dismiss="modal">ReSet</button>
-                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button> -->
+                       
                       </div>
                     </div>
                   </div>
@@ -405,35 +366,38 @@
             <div class="row mt-2">
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes</label>
-                <!-- <input type="text" class="form-control input-font" name="sprize" id="sprizes" placeholder="Total Number of Questions" value="<?php echo set_value('sprizes', $secondprize['no_of_prize']) ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')"> -->
+               
                 <input type="text" class="form-control input-font" name="sprize" id="sprizes" placeholder="Enter Prizes" value="<?php if (!empty($secondprize['no_of_prize'])) {  echo  $secondprize['no_of_prize']; } else { echo 0; } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
 
                 <span class="error_text"><?php echo form_error('sprizes'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Prize Details</label>
-                <!-- <input type="text" class="form-control input-font" name="sdetails" id="sdetails" placeholder="Enter Details" value="<?php //echo set_value('sdetails', $secondprize['prize_details']) 
-                                                                                                                                                ?>"> -->
+               
 
                 <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($secondprize['prize_details'])) { echo  $secondprize['prize_details'];  } else {   echo "";    } ?>">
 
               </div>
+
+
+
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Icon (Image upload)</label>
-
+                <?php if (!empty($secondprize['no_of_prize'])) {  ?>
                 <div class="active" id="delete_preview2">
                   <button class="btn btn-danger btn-sm del_icon2">Delete</button>
                   <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecondView">
                     View
                   </button>
-                  <!-- Modal -->
+
+                  <!-- View Modal -->
                   <div class="modal fade" id="exampleModalSecondView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Last Uploaded Second Prize Image Preview</h5>
 
-                          <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+                        
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -444,12 +408,14 @@
                       </div>
                     </div>
                   </div>
+                   <!-- end View Modal -->
                 </div>
-
+                <?php } else { ?> 
                 <div class="row" id="add_file2">
                   <div class="col-6">
-                    <input type="file" id="sprize_img" accept="image/jpeg,image/png,image/jpg" name="sprize_img" class="form-control-file" id="icon_file2" onchange="loadFileSecond(event)">
-                    <input type="hidden" name="lastsprize_img" value="<?php echo $secondprize['prize_img']; ?>">
+                    <input type="file" id="sprize_img" accept="image/jpeg,image/png,image/jpg" name="sprize_img" class="form-control-file" id="icon_file2" onchange="loadFileSecond(event)"> 
+
+                    <input type="hidden" name="lastsprize_img"  value="<?php if(!empty($secondprize['prize_img'])) { echo $secondprize['prize_img']; } ?>">
                     <span class="error_text">
                       accept only jpg,jpeg,png
                     </span>
@@ -458,10 +424,12 @@
                       <?php //echo form_error('title'); 
                       ?>
                     </span>
+                    <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalSecond"> Preview
+                  </button>
+
                   </div>
 
-                  <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalSecond"> Preview
-                  </button>
+                
 
                   <div class="modal fade" id="exampleModalSecond" tabindex="-1" aria-labelledby="exampleModalSecond" aria-hidden="true">
                     <div class="modal-dialog">
@@ -480,7 +448,7 @@
                     </div>
                   </div>
                 </div>
-
+                <?php } ?>
 
               </div>
             </div>
@@ -493,34 +461,34 @@
             <div class="row mt-2">
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes</label>
-                <!-- <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Total Number of Questions" value="<?php echo set_value('tprize', $thirdprize['no_of_prize']) ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')"> -->
+                
                 <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php if (!empty($thirdprize['no_of_prize'])) { echo  $thirdprize['no_of_prize'];} else {  echo 0; } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                 <span class="error_text"><?php echo form_error('tprize'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Prize Details</label>
-                <!-- <input type="text" class="form-control input-font" name="tdetails" id="tdetails" placeholder="Enter Details" value="<?php //echo set_value('tdetails', $thirdprize['prize_details']) 
-                                                                                                                                          ?>"> -->
+            
                 <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($thirdprize['prize_details'])) {  echo  $thirdprize['prize_details'];} else { echo "";} ?>">
                 <span class="error_text"><?php echo form_error('tdetails'); ?></span>
               </div>
+
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Icon (Image upload)</label>
-
-
+                <?php if (!empty($thirddprize['no_of_prize'])) {  ?>
                 <div class="active" id="delete_preview3">
                   <button class="btn btn-danger btn-sm del_icon3">Delete</button>
                   <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalThirdView">
                     View
                   </button>
-                  <!-- Modal -->
+
+                  <!-- View Modal -->
                   <div class="modal fade" id="exampleModalThirdView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Last Uploaded Third Prize Image Preview</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Last Uploaded Second Prize Image Preview</h5>
 
-                          <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+                        
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -531,12 +499,14 @@
                       </div>
                     </div>
                   </div>
+                   <!-- end View Modal -->
                 </div>
-
+                <?php } else { ?> 
                 <div class="row" id="add_file3">
                   <div class="col-6">
-                    <input type="file" id="tprize_img" accept="image/jpeg,image/png,image/jpg" name="tprize_img" class="form-control-file" onchange="loadFileThird(event)">
-                    <input type="hidden" name="lasttprize_img" value="<?php echo $thirdprize['prize_img']; ?>">
+                    <input type="file" id="tprize_img" accept="image/jpeg,image/png,image/jpg" name="sprize_img" class="form-control-file" id="icon_file3" onchange="loadFileThird(event)"> 
+
+                    <input type="hidden" name="lasttprize_img"  value="<?php if(!empty($thirdprize['prize_img'])) { echo $thirdprize['prize_img']; } ?>">
                     <span class="error_text">
                       accept only jpg,jpeg,png
                     </span>
@@ -545,12 +515,14 @@
                       <?php //echo form_error('title'); 
                       ?>
                     </span>
-                  </div>
-
-                  <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalThird"> Preview
+                    <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalThird"> Preview
                   </button>
 
-                  <div class="modal fade" id="exampleModalThird" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  </div>
+
+                
+
+                  <div class="modal fade" id="exampleModalThird" tabindex="-1" aria-labelledby="exampleModalThird" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -566,11 +538,15 @@
                       </div>
                     </div>
                   </div>
-                </div>         
+                </div>
+                <?php } ?>
 
-                
               </div>
+
+             
             </div>
+
+            <!-- 3rd end -->
             <div class="row mt-2">
               <div class="col-md-4 prizes-section">
                 <h4 class="m-2">Consolation Prizes</h4>
@@ -579,19 +555,92 @@
             <div class="row mt-2">
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes</label>
-                <!-- <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Number of prizes" value="<?php echo set_value('cprize', $fourthprize['no_of_prize']) ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')"> -->
+              
                 <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php if (!empty($fourthprize['no_of_prize'])) { echo  $fourthprize['no_of_prize']; } else { echo 0;} ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                 <span class="error_text"><?php echo form_error('cprize'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Prize Details<sup class="text-danger">*</sup></label>
-                <!-- <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php // echo set_value('cdetails', $fourthprize['prize_details'])  ?>"> -->
+             
 
                 <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($fourthprize['prize_details'])) {echo  $fourthprize['prize_details']; } else { echo "";} ?>">
 
                 <span class="error_text"><?php echo form_error('cdetails'); ?></span>
               </div>
+
               <div class="mb-2 col-md-4">
+                <label class="d-block text-font">Icon (Image upload)</label>
+                <?php if (!empty($fourthprize['no_of_prize'])) {  ?>
+                <div class="active" id="delete_preview4">
+                  <button class="btn btn-danger btn-sm del_icon4">Delete</button>
+                  <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFourthView">
+                    View
+                  </button>
+
+                  <!-- View Modal -->
+                  <div class="modal fade" id="exampleModalFourthView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Last Uploaded Consolation Prize Image Preview</h5>
+
+                        
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <img src="../../<?php echo $fourthprize['prize_img']; ?>" style="width:450px;" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <!-- end View Modal -->
+                </div>
+                <?php } else { ?> 
+                <div class="row" id="add_file4">
+                  <div class="col-6">
+                    <input type="file" id="cprize_img" accept="image/jpeg,image/png,image/jpg" name="cprize_img" class="form-control-file" id="icon_file4" onchange="loadFileFourth(event)"> 
+
+                    <input type="hidden" name="lastcprize_img"  value="<?php if(!empty($fouthprize['prize_img'])) { echo $fourthprize['prize_img']; } ?>">
+                    <span class="error_text">
+                      accept only jpg,jpeg,png
+                    </span>
+
+                    <span class="error_text">
+                      <?php //echo form_error('title'); 
+                      ?>
+                    </span>
+                    <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFourth"> Preview
+                  </button>
+
+                  </div>
+
+                
+
+                  <div class="modal fade" id="exampleModalFourth" tabindex="-1" aria-labelledby="exampleModalFourth" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Consolation Prize Icon Image</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <img id="outputFourth" style="width: 450px;" />
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php } ?>
+
+              </div>
+                  
+
+             <!-- <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Icon (Image upload)</label>
 
 
@@ -600,14 +649,14 @@
                   <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFourthView">
                     View
                   </button>
-                  <!-- Modal -->
+                 
                   <div class="modal fade" id="exampleModalFourthView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Last Uploaded Consolation Prize Image Preview</h5>
 
-                          <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+                         
                           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                           </button>
@@ -622,9 +671,7 @@
 
                 <div class="row" id="add_file4">
                   <div class="col-6">
-                    <!-- <input type="file" id="cprize_img" accept="image/jpeg,image/png,image/jpg" name="cprize_img" class="form-control-file" id="icon_file4" onchange="loadFileFourth(event)"> -->
-                    <!-- <input type="hidden" name="lastcprize_img" value="<?php //echo $fourthprize['prize_img']; 
-                                                                            ?>"> -->
+                   
 
                     <input type="file" id="cprize_img" accept="image/jpeg,image/png,image/jpg" onchange="loadFileFourth(event)" name="cprize_img" class="form-control-file">
                     <input type="hidden" name="lastcprize_img" value="<?php echo $fourthprize['prize_img']; ?>">
@@ -660,7 +707,7 @@
                 </div>
 
                 
-              </div>
+              </div> -->
             </div>
             <div class="row mt-2">
               <div class="col-md-4 prizes-section">
@@ -753,7 +800,7 @@
               </div>
             </div>
           </div>
-          <!-- FIRST PRIZE -->
+          <!-- 4th PRIZE -->
 
 
           <!-- Modal -->
@@ -1323,38 +1370,38 @@
 
 
 
-  $('#delete_preview2').show();
-  $('#add_file2').hide();
-  $('#icon_file2').attr('required', false);
-  // $('#outputicon').attr('src',)
-  $('.del_icon2').on('click', function() {
-    $('#delete_preview2').hide();
-    $('#add_file2').show();
-    // $('#icon_file').add('attr','required');
-    $('#sprize_img').attr('required', true);
-  });
+  // $('#delete_preview2').show();
+  // $('#add_file2').hide();
+  // $('#icon_file2').attr('required', false);
+  // // $('#outputicon').attr('src',)
+  // $('.del_icon2').on('click', function() {
+  //   $('#delete_preview2').hide();
+  //   $('#add_file2').show();
+  //   // $('#icon_file').add('attr','required');
+  //   $('#sprize_img').attr('required', true);
+  // });
 
 
-  $('#delete_preview3').show();
-  $('#add_file3').hide();
-  $('#tprize_img').attr('required', false);
-  // $('#outputicon').attr('src',)
-  $('.del_icon3').on('click', function() {
-    $('#delete_preview3').hide();
-    $('#add_file3').show();
-    // $('#icon_file').add('attr','required');
-    $('#tprize_img').attr('required', true);
-  });
+  // $('#delete_preview3').show();
+  // $('#add_file3').hide();
+  // $('#tprize_img').attr('required', false);
+  // // $('#outputicon').attr('src',)
+  // $('.del_icon3').on('click', function() {
+  //   $('#delete_preview3').hide();
+  //   $('#add_file3').show();
+  //   // $('#icon_file').add('attr','required');
+  //   $('#tprize_img').attr('required', true);
+  // });
 
 
-  $('#delete_preview4').show();
-  $('#add_file4').hide();
-  $('#icon_file4').attr('required', false);
-  // $('#outputicon').attr('src',)
-  $('.del_icon4').on('click', function() {
-    $('#delete_preview4').hide();
-    $('#add_file4').show();
-    // $('#icon_file').add('attr','required');
-    $('#cprize_img').attr('required', true);
-  });
+  // $('#delete_preview4').show();
+  // $('#add_file4').hide();
+  // $('#icon_file4').attr('required', false);
+  // // $('#outputicon').attr('src',)
+  // $('.del_icon4').on('click', function() {
+  //   $('#delete_preview4').hide();
+  //   $('#add_file4').show();
+  //   // $('#icon_file').add('attr','required');
+  //   $('#cprize_img').attr('required', true);
+  // });
 </script>

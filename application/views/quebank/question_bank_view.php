@@ -83,15 +83,28 @@
                                                             echo "Text and Image";
                                                         } ?>
                                                     </td>
-                                                    <td>
+
+                                                   
+                                                     <td>
                                                         <?php if ($r['language'] == 1  || $r['language'] == 3) {
-                                                            echo $r['que'];
+                                                             echo $r['que'];
+                                                            if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
+                                                                <br>
+                                                                <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
+                                                            <?php } 
+                                                           
                                                         }else { echo "--";}  ?>
                                                     </td>
 
+
+                                                   
                                                     <td> 
                                                         <?php if ($r['language'] == 2 || $r['language'] == 3) {
                                                                 echo $r['que_h'];
+                                                                if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
+                                                                    <br>
+                                                                    <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
+                                                                <?php } 
                                                         } else { echo "--";} ?>
                                                     </td>
                                                     <!-- <td>

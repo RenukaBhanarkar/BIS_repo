@@ -34,10 +34,10 @@
                                 <th>Name</th>
                                 <th>Email ID</th>
                                 <th>Contact No.</th>
-                                <th>Date</th>
-                                
+                                <th>Date</th>                                
                                 <th>Score</th>
                                 <th>Time Taken</th>
+                                <th>Prize</th>
                                 <!-- <th>Prize</th> -->
                                 
                             </tr>
@@ -57,7 +57,13 @@
                                
                                 
                                 <td><?= $user['score']?></td>
-                                <td><?= $user['time_taken']?> Seconds</td>
+                                <?php 
+                                 $t =  $user['time_taken'];
+                                 $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+                                 ?>
+                                 <td><?= $timeTaken ?></td> 
+                                 <td><?= $user['prize']?></td>
+                                <!-- <td><?= $user['time_taken']?> Seconds</td> -->
                                 <!-- <td>
                                     <select id="prize" name="prize[]" class="form-control input-font" value="prize">
                                         <option value="0">Select Option</option>
@@ -81,9 +87,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-12" style="text-align: end; padding: 31px;">
-                <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Declared</a>
-            </div>
+            
             <div class="modal fade" id="submitForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">

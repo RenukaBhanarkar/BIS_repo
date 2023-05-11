@@ -79,11 +79,12 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                             <?php } else { ?>
                                                 <p class="qustion-ans"> <?= $i++ . " . " .  $details['que_h'] ?> </p>
                                             <?php }   ?>
-                                            <?php if ($details['que_type'] == 2 || $details['que_type'] == 3) { ?>
-
-                                                <img width="200" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $details['que_bank_id']; ?>/<?php echo $details['image']; ?>">
-                                            <?php }  ?>
+                                            
                                         </div>
+                                        <?php if ($details['que_type'] == 2 || $details['que_type'] == 3) { ?>
+                                                <div>
+                                                <img width="200" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $details['que_bank_id']; ?>/<?php echo $details['image']; ?>"></div>
+                                            <?php }  ?>
 
                                         <div class="quiz-option">
                                             <input type="hidden" value="<?= $details['que_id'] ?>" name="que_id[]">
@@ -299,7 +300,8 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                 <?php
                                 foreach ($que_details as $key => $details) {
                                     $key++; ?>
-                                    <span id="counter<?= $details['que_id'] ?>" class="ans-red" onclick="que(<?= $key; ?>)"><?= $key; ?></span>
+                                    <span id="counter<?= $details['que_id'] ?>" class="ans-red" onclick="que(<?= $key; ?>)">
+                                    <?= $key; ?></span>
                                 <?php } ?>
                             </div>
 
@@ -372,6 +374,9 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             var k = $(".viewedQuestion .quiz-option .k_value").val();
             var switching_type = $(".viewedQuestion .quiz-option .switching_type").val();
             var is_valid = true;
+            if(n != -1){
+
+         
             if (switching_type == 2) {
                 var sel_option = $('input[name="option' + res + k + '"]:checked').val();
                 if (sel_option == undefined) {
@@ -440,7 +445,30 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             } else {
                 Swal.fire('It is mandetory to answer the question.')
             }
+        }else{
+            $(".tab.viewedQuestion").removeClass("viewedQuestion");
+                var valid = true;
+              
+                var x = document.getElementsByClassName("tab");
+               
+                x[currentTab].style.display = "none";
+               
+                currentTab = currentTab + n;
+                // if you have reached the end of the form...
+                if (currentTab >= x.length) {
+                 
+                    document.getElementById("afterSubmitHide").style.display = "none";
+                   
+                    console.log('hello')
+                    return false;
 
+                }
+                // Otherwise, display the correct tab:
+                showTab(currentTab);
+                if (valid) {
+                    document.getElementsByClassName("step")[currentTab].className += " finish";
+                }
+        }
 
 
         }
