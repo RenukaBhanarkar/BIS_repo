@@ -368,12 +368,14 @@
             <?php if( $quizdata['status']==2){?>
             <div class="col-md-12 submit_btn p-3">
                 <!-- <a id="approve" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval">Approval</a> -->
-                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve">
+                <!-- <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve"> -->
                 <!-- <input type="button" name="Approval" value="Approve" class="btn btn-success btn-sm text-white approve" id="approve"> -->
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
                 <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
                 <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
                 <a class="btn btn-danger btn-sm text-white cancel" id="cancel" >Cancel</a>
+                <button data-id="<?php echo $quizdata['id']; ?>" class="btn btn-success btn-sm text-white approve">Approve</button>
+                
             </div>
             <?php } ?>
             </form>
@@ -659,7 +661,9 @@
                     })
     })
 
-    $('.approve').on('click',function(){
+    $('.approve').on('click',function(e){
+        e.preventDefault();
+        var id =$(this).attr('data-id');
         Swal.fire({
                     title: 'Are you sure you want to Approve?',
                     showDenyButton: true,
@@ -668,10 +672,23 @@
                     denyButtonText: `Cancel`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                      //  window.location.replace('<?php echo base_url().'Quiz/manage_quiz_list' ?>');
-                      $('#quiz_reg').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
+                    if (result.isConfirmed) { 
+                        $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url(); ?>Admin/updateQuizStatus/'+id,
+                        data: {
+                            status_id: '3',
+                            remark: '',
+                        },
+                        success: function(result) {
+                            window.location.replace('<?php echo base_url().'Quiz/manage_quiz_list' ?>');
+                        },
+                        error: function(result) {
+                            alert("Error,Please try again.");
+                        }
+                    });                      
+                    
+                                                  
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
