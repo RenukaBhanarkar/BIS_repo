@@ -170,7 +170,7 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
     public function getAnswerKeyForUser($user_id,$quiz_id){
 
          $this->db->select(' 
-        tbl_user_quiz.selected_op,tbl_user_quiz.quiz_id,tbl_user_quiz.user_id,tbl_user_quiz.mark_review,
+        tbl_user_quiz.selected_op,tbl_user_quiz.quiz_id,tbl_user_quiz.user_id,
         tbl_que_details.*,
         tbl_quiz_details.language_id,
         tbl_quiz_submission_details.selected_lang,
@@ -274,18 +274,34 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
             tbl_users.user_mobile'); 
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
-        $this->db->order_by('score', 'desc');    
+        $this->db->order_by('score', 'desc');   
+        $this->db->order_by('time_taken', 'desc');   
         return $this->db->get('tbl_quiz_submission_details')->result_array(); 
     }
     public function resultDeclarationList($id)
     { 
-       $this->db->select('tbl_quiz_submission_details.*,
+        $rs = array();
+        $this->db->select('*'); 
+        $this->db->from('tbl_prizes'); 
+        $this->db->where('id',$id); 
+        $query=$this->db->get();
+        $count =0;
+        if($query->num_rows() > 0){
+            foreach ($query->result_array() as $row) {
+                $count =  $count + $row['no_of_prize'];
+                array_push($rs,$row);
+            }
+        }
+        
+        $this->db->select('tbl_quiz_submission_details.*,
             tbl_users.user_name,
             tbl_users.email,
             tbl_users.user_mobile'); 
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
-        $this->db->order_by('score', 'desc');    
+        $this->db->order_by('score', 'desc'); 
+        $this->db->order_by('time_taken', 'desc');    
+        $this->db->limit($count);   
         return $this->db->get('tbl_quiz_submission_details')->result_array(); 
     }
 

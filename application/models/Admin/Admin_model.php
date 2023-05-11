@@ -453,8 +453,9 @@ class Admin_model extends CI_Model {
     }
     public function getAllManageQuiz()
     { 
-        $this->db->select('tbl_quiz_details.*,tbl_mst_status.status_name'); 
-        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_quiz_details.status'); 
+        $this->db->select('tbl_quiz_details.*,tbl_mst_status.status_name,tbl_que_bank.no_of_ques'); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_quiz_details.status');
+        $this->db->join('tbl_que_bank','tbl_que_bank.que_bank_id = tbl_quiz_details.que_bank_id');  
         $this->db->where_in('tbl_quiz_details.status',array(2,3,4,5,6,1));
         $this->db->where('tbl_quiz_details.start_date >=' ,date("Y-m-d")); 
         return $this->db->get('tbl_quiz_details')->result_array(); 

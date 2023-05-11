@@ -58,7 +58,7 @@
                                                 <th>Ques Type</th>
                                                 <th>Ques Title Eng</th>
                                                 <th>Ques Title Hindi</th>
-                                                <th>Image Ques</th>
+                                                <!-- <th>Image Ques</th> -->
                                                 <th>Number of Options</th>
                                                 <th>English Options </th>
                                                 <th>Hindi Options</th>
@@ -94,12 +94,12 @@
                                                                 echo $r['que_h'];
                                                         } else { echo "--";} ?>
                                                     </td>
-                                                    <td>
+                                                    <!-- <td>
                                                     <?php if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
                                                             <br>
                                                             <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
                                                         <?php } else { echo "--";} ?>
-                                                    </td>
+                                                    </td> -->
 
                                                     <td><?php echo $r['no_of_options']; ?></td>
 

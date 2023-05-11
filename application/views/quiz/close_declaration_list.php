@@ -29,15 +29,16 @@
                     <table id="example" class="table-bordered display nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                <!-- <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th> -->
                                 <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email ID</th>
                                 <th>Contact No.</th>
                                 <th>Date</th>
-                                <th>Time</th>
+                                
                                 <th>Score</th>
-                                <th>Prize</th>
+                                <th>Time Taken</th>
+                                <!-- <th>Prize</th> -->
                                 
                             </tr>
                         </thead>
@@ -45,7 +46,7 @@
                             <?php $j = 1;
                                  foreach ($UsersDetails as $key => $user): ?>
                             <tr>
-                                <td><input class="form-control-input" type="checkbox" value="<?= $user['user_id']?>" id="flexCheckDefault" name="check[]"></td>
+                                <!-- <td><input class="form-control-input" type="checkbox" value="<?= $user['user_id']?>" id="flexCheckDefault" name="check[]"></td> -->
                                 <input type="hidden" name="user_id[]"value="<?= $user['user_id']?>">
                                 <input type="hidden" name="quiz_id"value="<?= $user['quiz_id']?>">
                                 <td><?= $j;?></td>
@@ -53,9 +54,11 @@
                                 <td><?= $user['email']?></td>
                                 <td><?= $user['user_mobile']?></td>
                                 <td><?= $user['created_on']?></td>
-                                <td><?= $user['start_time']?></td>
+                               
+                                
                                 <td><?= $user['score']?></td>
-                                <td>
+                                <td><?= $user['time_taken']?> Seconds</td>
+                                <!-- <td>
                                     <select id="prize" name="prize[]" class="form-control input-font" value="prize">
                                         <option value="0">Select Option</option>
                                         <option value="1">First Prize</option>
@@ -64,10 +67,9 @@
                                        
                                         <option value="5">Consolation Prize</option>
                                     </select>
-                                </td>
-                                
+                                </td> -->
                             </tr>
-                            
+                             
                             <?php $j++; endforeach ?>
                             
                             

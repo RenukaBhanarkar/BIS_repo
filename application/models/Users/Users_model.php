@@ -801,7 +801,16 @@
             $que_bank_id = $quiz['que_bank_id'];
             $total_question = $quiz['total_question'];
             $query = $this->db->query("SELECT * FROM tbl_que_details WHERE que_bank_id='$que_bank_id' ORDER BY RAND ( ) LIMIT $total_question");
-            return $query->result_array();
+            //echo json_encode( $query->result_array());exit();
+
+            $rs = array();
+            $res = $query->result_array();
+            foreach ($res as $row){
+                $row['selected_op'] = 0;
+                array_push($rs,$row);
+            }
+            
+            return $rs;
         }
         public function getQuestionDetailsForPartiallyAppered($user_id,$quiz_id,$question_list){
             $this->db->select('*');

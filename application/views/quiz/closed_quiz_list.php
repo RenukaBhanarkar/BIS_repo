@@ -60,12 +60,12 @@
                                     <!-- <button onClick="location.href='closed_quiz_view'" class="btn btn-primary btn-sm mr-2">View</button> -->
                                     <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
                                     <a href="<?php echo base_url();?>Quiz/closed_quiz_submission/<?= $quiz['id']?>" class="btn btn-warning btn-sm mr-2">View submission</a>
-                                   
+                                    <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                     <?php if ($quiz['status']!= 11) { ?> 
                                     <a href="<?php echo base_url();?>Quiz/close_declaration_list/<?= $quiz['id']?>" class="btn btn-success btn-sm mr-2">Result Declaration</a>
                                   <?php }else{
                                     echo "Result declared";
-                                  } ?>
+                                  } }?>
                                   </td>
                                  </tr>
 

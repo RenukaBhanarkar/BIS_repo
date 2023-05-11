@@ -191,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php }  else { echo "Second Prizes not available"; } ?>
+                    <?php }  ?>
                     <?php if (!empty ($thirdprize) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
@@ -223,7 +223,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php }  else { echo "Third Prizes not available"; } ?>
+                    <?php }?>
                     <?php if (!empty ($fourthprize) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
@@ -255,7 +255,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php } else { echo "Consolation Prizes not available"; } ?>
+                    <?php } ?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Available for</h4>

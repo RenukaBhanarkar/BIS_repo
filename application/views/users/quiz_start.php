@@ -48,8 +48,9 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             <div class="Quiz_section ">
                 <div class="quiz-left-side-main shadow">
                     <h3 class="quiz_title_heading"><?= $quizdata['title'] ?></h3>
-                    <h3><?= $msg ?></h3>
+                  
                     <form id="regForm" action="<?= base_url() . 'Users/quiz_submit' ?>" method="post" enctype="multipart/form-data">
+                        <input type ="hidden" id="total_que_count" value=" <?= count($que_details); ?>" />
                         <?php $setLang = $_SESSION["quiz_lang_id"]; ?>
                         <div class="inner-section " id="qustions-tab">
                             <?php // echo  $user_id; 
@@ -59,15 +60,12 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                             <input type="hidden" value="<?= $quizdata['id'] ?>" name="quiz_id">
 
                             <?php $i = 1;
-
                             $marks = $quizdata['total_mark'] / $quizdata['total_question'];
-
                             ?>
                           
                             <?php
                             $k = 1;
                             foreach ($que_details as $key => $details) {
-
                             ?>
 
 
@@ -288,7 +286,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                             </div>
                         </div>
                         <div class="time-left">
-                            Time left - <span class="timer"> <span class="countdown"></span></span>
+                            Time left :  <span class="timer"> <span class="countdown"></span></span>
                         </div>
                         <div Id="right-bar-ans-none">
 
@@ -331,9 +329,12 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <script src="<?= base_url(); ?>assets/js/font_resize.js"></script>
     <script src="<?= base_url(); ?>assets/js/tab.js"></script>
     <script src="<?= base_url(); ?>assets/js/dark_mode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
     </script>
     <script>
+        var total_ques = $("#total_que_count").val();
+        var app_que_count = 1;
         $('#submit_button').hide();
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
@@ -365,7 +366,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             //... and run a function that will display the correct step indicator:
             fixStepIndicator(n)
         }
-
+         
         function nextPrev(n) {
             var res = $(".viewedQuestion .quiz-option .active_question_id").val();
             var k = $(".viewedQuestion .quiz-option .k_value").val();
@@ -378,7 +379,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                 }
             }
             if (is_valid == true) {
-
+                app_que_count++;
                 ////////////// SAVING QUE DETAILS START 
                 var quiz_id = "<?= $quizdata['id']; ?>";
                 var user_id = "<?= $user_id; ?>";
@@ -437,7 +438,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                     document.getElementsByClassName("step")[currentTab].className += " finish";
                 }
             } else {
-                alert('It is mandetory to answer the question.')
+                Swal.fire('It is mandetory to answer the question.')
             }
 
 
@@ -451,11 +452,17 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             var k = $(".viewedQuestion .quiz-option .k_value").val();
             var switching_type = $(".viewedQuestion .quiz-option .switching_type").val();
             var is_valid = true;
+            
             if (switching_type == 2) {
-                var sel_option = $('input[name="option' + n + '"]').val();
-                if (sel_option == undefined) {
-                    is_valid = false;
+                if(total_ques  != app_que_count){
+                    var sel_option = $('input[name="option' + n + '"]').val();
+                    if (sel_option == undefined) {
+                        is_valid = false;
+                    }
+                }else{
+                    is_valid = true;
                 }
+               
             }
             if (is_valid == true) {
                 $(".tab.viewedQuestion").removeClass("viewedQuestion");
@@ -485,9 +492,11 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                     // document.getElementsByClassName("step")[currentTab].className += " finish";
                 }
             } else {
-                alert('It is mandetory to answer the question.')
+                Swal.fire('It is mandetory to answer the question.')
             }
-        }
+        } 
+      
+
 
         function validateForm() {
             // This function deals with validation of the form fields
