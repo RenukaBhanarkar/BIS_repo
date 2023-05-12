@@ -406,7 +406,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url(); ?>admin/rejectbtTheMentor"  method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>admin/rejectbtTheMentor" id="reject_form" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Reason of Rejection<sup class="text-danger">*</sup></label>
                             <!-- <input type="text" class="form-control" id="reseon" name="reason" required> -->
@@ -419,7 +419,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger" >Reject</button>
+                    <button type="submit" class="btn btn-danger reject" >Reject</button>
                     </form>
                 </div>
             </div>
@@ -446,6 +446,14 @@
     // scrollX: true,
 
     // });
+    $('.reject').on('click',function(){
+        $('#reject_form').addClass('was-validated');
+      var reason =$('#reseon').val();
+        if(reason==""){
+            $('#reason').attr('required',true);
+            $('#err_title').text('This value is require');
+        }
+    })
 $(document).ready(function () {
     $('#example_1').DataTable({
         //scrollX: true,

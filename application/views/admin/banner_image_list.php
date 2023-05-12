@@ -155,7 +155,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="<?php echo base_url(); ?>admin/update_bannnerimage" class="was-validated" method="post" enctype="multipart/form-data" >
+            <form action="<?php echo base_url().'Admin/update_bannnerimage'; ?>" id="update_ban" class="was-validated" method="post" enctype="multipart/form-data" >
                 <div class="row">
                     <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
@@ -233,7 +233,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-primary update">Update</button>
                 </div>
             </form>
             </div>
@@ -382,6 +382,26 @@ var loadFileThumbnail = function(event)
     }
     </script>
 <script>
+    // $('.update').on('click',function(e){
+    //     e.preventDefault();
+    //     $('#update_ban').attr('href','<?php echo base_url().'Admin/update_bannnerimage'; ?>');
+    //     Swal.fire({
+    //                 title: 'Are you sure you want to Upadte?',
+    //                 showDenyButton: true,
+    //                 showCancelButton: false,
+    //                 confirmButtonText: 'Upadte',
+    //                 denyButtonText: `Cancel`,
+    //                 }).then((result) => {
+    //                 /* Read more about isConfirmed, isDenied below */
+    //                 if (result.isConfirmed) {                       
+    //                    // $('#update_ban').submit();
+    //                    // Swal.fire('Saved!', '', 'success')                                
+    //                 } else if (result.isDenied) {
+    //                     // Swal.fire('Changes are not saved', '', 'info')
+    //                 }
+    //                 })
+        
+    // });
     // function deleteBanner(que_id) {
     //     // var c = confirm("Are you sure to delete this survey details? ");
     //     $('#delete').modal('show');

@@ -109,9 +109,10 @@
                                     <!-- <button onclick="submitButton()" class="btn btn-primary mb-2" type="submit">Submit</button>
                                     <button onclick="" class="btn btn-danger mb-2" type="submit">Submit</button> -->
 
-                                    <button onclick="return submitButton(event)" class="btn btn-primary mb-2" type="submit">Submit</button>
+                                    <button onclick="return submitButton(event)" class="btn btn-primary btn-sm text-white mb-2" type="submit">Submit</button>
                                     <!-- <button onclick="location.reload('<?php echo base_url(); ?>admin/footer_links')"  class="btn btn-danger mb-2" type="cancle">Cancle</button> -->
-                                    <a href="<?php echo base_url(); ?>admin/footer_links" class="btn btn-danger mb-2">Cancle</a>
+                                    <!-- <a href="<?php echo base_url(); ?>admin/footer_links" class="btn btn-danger mb-2">Cancle</a> -->
+                                    <button class="btn btn-danger btn-sm text-white mb-2 cancel">Cancel</button>
                                 </td>
                             </tr>
     </div>
@@ -164,6 +165,24 @@
 //              }
 //     });
 // });
+$('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        window.location.replace('<?php echo base_url().'admin/footer_links' ?>');
+                      
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+});
 
 function submitButton(event) {
     event.preventDefault();

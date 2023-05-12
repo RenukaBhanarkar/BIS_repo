@@ -37,20 +37,29 @@
                                         <div class="row">
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
-                                                <input type="file" class="form-control input-font" name="image" id="" required="" accept="image/png">
-                                                <span class="error_text">
-                                                    acceps jpg,jpeg and png only
-                                                    <?php //echo form_error('title'); 
-                                                    ?>
+                                                <div class="d-flex">
+                                                    <div class="col-9">
+                                                <input type="file" class="form-control input-font" name="image" id="add_new_photo" required="" accept="image/*" onchange="addphotos(event)">
+                                                <div class="invalid-feedback">
+                                                This value is required
+                                                </div>
+                                                <span class="text-danger" id="err_add_image">
+                                                                                                
                                                 </span>
+                                                </div>
+                                                <div class="col-2">
+                                                <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#Previewimg1">
+                                                    Preview
+                                                </button>
+                                                </div>
+                                                </div>
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Caption</label>
                                                 <input type="text" class="form-control input-font" name="title" id="" required="">
-                                                <span class="error_text">
-                                                    <?php //echo form_error('title'); 
-                                                    ?>
-                                                </span>
+                                                <div class="invalid-feedback">
+                                                This value is required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -290,20 +299,91 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="Previewimg1" tabindex="-1" aria-labelledby="PreviewimgLabel1" aria-hidden="true">
+    <div class="modal-dialog" style="max-width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PreviewimgLabel">Image Preview </h5>
+
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <img id="outputThumbnail1" width="100%" />
+            </div>
+            <div class="modal-footer">              
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End of Main Content -->
 <script>
     $(document).ready(function() {
         $('.delete').on('click', function() {
-            $('#delete').modal('show');
+          //  $('#delete').modal('show');
             id = $(this).attr('data-id');
-            console.log(id);
-            $('#abcd').attr('href', '<?php echo base_url(); ?>admin/deletePhotos/' + id);
+            // console.log(id);
+            // $('#abcd').attr('href', '<?php echo base_url(); ?>admin/deletePhotos/' + id);
+            Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $.ajax({
+                            url:'<?php echo base_url()."admin/deletePhotos/"; ?>' + id,
+                            success:function(result){
+                                location.reload();
+                            }
+                        })
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
         })
     })
 
     var loadFileThumbnail = function(event) {
         //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail');
+
+        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        console.log(outputThumbnail.src);
+        outputThumbnail.onload = function() {
+            URL.revokeObjectURL(outputThumbnail.src);
+        }
+    };
+    var addphotos = function(event) {
+        $('#add_photo').addClass('was-validated');
+        var fileSize = $('#add_new_photo')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#add_new_photo").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#add_new_photo').val('');
+            // $('#lessSize').modal('show');
+           // $('#err_add_image').text('This value is required');
+            Swal.fire('File size should be greater than 20KB');
+        }else if(fileSize > 204800){
+            $('#add_new_photo').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire('File size should be less than 200KB')
+           // $('#err_add_image').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#add_new_photo').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire('Only jpg,jpeg,png allowed')
+          //  $('#err_add_image').text('This value is required');
+        }else{
+            $('#err_add_image').text('');
+        }
+        //  $("#Previewimg").show();
+        var outputThumbnail = document.getElementById('outputThumbnail1');
 
         outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
         console.log(outputThumbnail.src);

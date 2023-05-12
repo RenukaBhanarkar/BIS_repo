@@ -89,7 +89,7 @@
                             foreach ($video as $list_v) { ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewImage">View Video</button></td>
+                                    <td><button class="btn btn-primary view_video" data-toggle="modal" data-id="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list_v['video']; ?>" data-target="#viewImage">View Video</button></td>
                                     <td><?php echo $list_v['title'] ?></td>
                                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                         <td class="d-flex border-bottom-0">
@@ -107,9 +107,14 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <video width="320" height="240" controls>
-                                                                <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list_v['video']; ?>" type=video/mp4>
-                                                            </video>
+                                                            <!-- <video width="320" height="240" controls>
+                                                                <source src="http://localhost:8080/BIS/bis_akshay/uploads/learning_Science/video/1683930485videoedit_change.mp4" id="video_preview" type=video/mp4*>
+                                                            </video> -->
+                                                            <video width="100%" height="100%" id="video_preview" controls="">
+                                                                <source src="" type="video/mp4">
+                                                                <source src="movie.ogg" type="video/ogg">
+                                                            
+                                                        </video>
                                                         </div>
 
                                                     </div>
@@ -312,5 +317,9 @@ $('#newform').on('click','.save',function(){
         $('#err_caption').text('');
         $('#err_video').text('');
     }
+});
+$('#videos').on('click','.view_video',function(){
+    var id =$(this).attr('data-id');
+    $('#video_preview').attr('src',id);
 });
 </script>

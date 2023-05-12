@@ -38,12 +38,41 @@
                                 <div class="row">
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Image</label>
-                                        <input type="file" class="form-control input-font" name="image" id="" required="" accept="image/jpeg" title="please select File">
-                                        <span class="error_text">only .jpg, .jpeg and .png allowed
-                                            <?php //echo form_error('title'); ?>
-                                        </span>
-                                        <div class="invalid-feedback">Please Select File
-                                                                        </div>
+                                        <div class="d-flex">
+                                            <div class="row">
+                                                <div class="col-8">
+                                            <input type="file" class="form-control input-font" name="image" id="addimage" required="" accept="image/jpeg" title="please select File" onchange="loadFileThumbnail1(event)">
+                                            <span class="error_text"></span>
+                                            <div class="invalid-feedback">Please Select File
+                                                                            </div>
+                                                                            </div>
+                                            <div class="col-2">
+                                            <button type="button" id="preview" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModaladd">
+                                                Preview
+                                            </button>
+                                            <div class="modal fade" id="exampleModaladd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                    <div class="modal-dialog" style="max-width:700px;">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                        <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
+
+                                                                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">×</span>
+                                                                                        </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                        <img src="" id="outputThumbnail" width="100%"/>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                        <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button> -->
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                    </div>
+                                                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Title</label>
@@ -182,41 +211,38 @@
                                                                                             <!-- Modal -->
                                                             </div>
                                                             <div class="" id="add_file">
-                                                            <!-- <input type="file" class="form-control input-font" name="follow_us"
-                                                                id="icon_file" value=""  accept="image/*">
-                                                                <?php //echo form_error('title'); ?>
-                                                            <input type="hidden" id="old_img" name="old_img" value="">                                                            <span class="error_text">
-                                                            <input type="hidden" id="id" name="id" value="">   -->
-
-
+                                                                <div class="d-flex">
+                                                            <div class="col-9">
                                                             <input type="file" class="form-control input-font" name="image"
-                                                                id="icon_file" value=""  accept="image/*">
+                                                                id="updated_image" value=""  accept="image/*" onchange="loadFileThumbnail3(event)">
+                                                                <span class="text-danger" id="err_updated_image"></span>
                                                             <input type="hidden" name="old_img" id="image" value="">
                                                             <input type="hidden" name="id" id="id" value="">
+                                                            </div>
+                                                            <div class="col-2">
                                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg1"> Preview 
                                                             </button>
-                                                            <span class="error_text">
-                                                                <?php //echo form_error('title'); ?>
-                                                            </span>
+                                                            </div>
+                                                            </div>
 
                                                             <div class="modal fade" id="Previewimg1" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
-                                    <div class="modal-dialog" style="max-width:700px;">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="PreviewimgLabel">Image Preview</h5>
+                                                                <div class="modal-dialog" style="max-width:700px;">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                    <h5 class="modal-title" id="PreviewimgLabel">Update Image Preview</h5>
 
-                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        <img id="icon_file"width="100%"/>
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div> 
+                                                                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                    <img src="" id="outputThumbnailUpadted" width="100%"/>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                    <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                                    <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div> 
                                                             
                                                             </div>
                                                            
@@ -241,7 +267,7 @@
                                                     <div class="modal-footer">
                                                         <button class="btn btn-secondary" type="button"
                                                             data-dismiss="modal">Cancel</button>
-                                                        <button onclick="submitButton()" class="btn btn-primary">Update</button>
+                                                        <button onclick="return submitButton(event)" class="btn btn-primary">Update</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,6 +311,78 @@
     </div>
 </div>
 <script type="text/javascript">
+var loadFileThumbnail1 = function(event) 
+    {
+        var fileSize = $('#addimage')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#addimage").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#addimage').val('');
+            // $('#lessSize').modal('show');
+            Swal.fire("File size should be more than 20KB")
+            $('#err_update_banner').text('This value is required');
+        }else if(fileSize > 204800){
+            $('#addimage').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire("File size should be less than 200KB")
+            $('#err_update_banner').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#addimage').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire("Only jpg,jpeg,png files allowed")
+            $('#err_update_banner').text('This value is required');
+        }else{
+            $('#err_update_banner').text('');
+        }
+       //  $("#Previewimg").show();
+        var outputThumbnail = document.getElementById('outputThumbnail');
+        
+        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        console.log(outputThumbnail.src);
+        outputThumbnail.onload = function()
+        {
+            URL.revokeObjectURL(outputThumbnail.src);
+        }
+    };
+    var loadFileThumbnail3 = function(event) 
+    {
+        var fileSize = $('#updated_image')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#updated_image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#updated_image').val('');
+            // $('#lessSize').modal('show');
+            Swal.fire("File size should be more than 20KB")
+            $('#err_updated_image').text('This value is required');
+        }else if(fileSize > 204800){
+            $('#updated_image').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire("File size should be less than 200KB")
+            $('#err_updated_image').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#updated_image').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire("Only jpg,jpeg,png files allowed")
+            $('#err_updated_image').text('This value is required');
+        }else{
+            $('#err_updated_image').text('');
+        }
+       //  $("#Previewimg").show();
+        var outputThumbnail = document.getElementById('outputThumbnailUpadted');
+        
+        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        console.log(outputThumbnail.src);
+        outputThumbnail.onload = function()
+        {
+            URL.revokeObjectURL(outputThumbnail.src);
+        }
+    };
     var loadFileThumbnail = function(event) 
     {
         // $("#outputThumbnail").show();
@@ -341,7 +439,7 @@
                                 $('#delete_preview').hide();
                                 $('#add_file').show();
                                 // $('#icon_file').add('attr','required');
-                                $('#icon_file').attr('required',true);
+                                $('#updated_image').attr('required',true);
             });
 
             $("#err_title").text("");
@@ -369,7 +467,8 @@
     }
 
 
-    function submitButton() {
+    function submitButton(event) {
+        event.preventDefault();
              var title = $("#title").val();
              var link= $("#link").val();
              var is_valid = true;
@@ -400,8 +499,24 @@
              }            
 
              if (is_valid) { 
-                $('#updateform').attr('action','<?php echo base_url(); ?>admin/update_useful_links');                
-                 return true;
+                
+                 Swal.fire({
+                    title: 'Are you sure you want to Update?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Update',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $('#updateform').attr('action','<?php echo base_url(); ?>admin/update_useful_links');                
+                // return true;
+                $('#updateform').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
              } else {
                  return false;
              }
