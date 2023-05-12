@@ -84,7 +84,7 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                            
                           <?php if ($quiz['status'] == 1 ) { ?>
-                            <a href="sendApprove/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Send To Approve</a>
+                            <a href="sendApprove/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Send For Approve</a>
 
                           <?php } ?>
 
