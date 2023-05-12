@@ -45,7 +45,7 @@
                         </div>
                         <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Hindi Title of Quiz<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Title of Quiz in Hindi<sup class="text-danger">*</sup></label>
                                 <textarea type="text" class="form-control input-font" name="title_hindi" id="title_hindi" value="<?php echo set_value('title_hindi') ?>" placeholder="Enter Hindi Title Of Quiz"></textarea>
                                 <span class="error_text"><?php echo form_error('title_hindi'); ?></span>
                             </div>
@@ -447,7 +447,7 @@
 
                                 <span class="error_text"><?php echo form_error('que_bank_id'); ?></span>
                             </div>
-                            <div class="">
+                            <div class="" style="padding-top: 30px;">
                             <button type="button" class="btn btn-sm  btn-primary text-white"  id="fetch_que_bank">Fetch Question Banks</button>
                             </div>
                         </div>
@@ -473,22 +473,22 @@
                         </div>
                         <div class="row mt-2">
                             <div class="mb-2 col-md-12 table-responsive">
-                                <table id="example" class="table-bordered" style="width:100%">
+                                <table id="example" class="table-bordered nowrap" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>Question No.</th>
                                             <th>Type</th>
-                                            <th>Question</th>
+                                            <th>Question in English</th>
                                             <th>Question in Hindi</th>
-                                            <th>Eng Option 1</th>
+                                            <th>English Option 1</th>
                                             <th>Hindi Option 1</th>
-                                            <th>Eng Option 2</th>
+                                            <th>English Option 2</th>
                                             <th>Hindi Option 2</th>
-                                            <th>Eng Option 3</th>
+                                            <th>English Option 3</th>
                                             <th>Hindi Option 3</th>
-                                            <th>Eng Option 4</th>
+                                            <th>English Option 4</th>
                                             <th>Hindi Option 4</th>
-                                            <th>Eng Option 5</th>
+                                            <th>English Option 5</th>
                                             <th>Hindi Option 5</th>
                                             <th>Correct Option</th>
                                         </tr>
