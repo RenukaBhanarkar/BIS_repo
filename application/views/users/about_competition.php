@@ -238,12 +238,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="quiz-image shadow">
-                    <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="image-section" alt="Bis Quiz Images" />
+                    <img src="<?php echo base_url().$competition['thumbnail']; ?>" class="image-section" alt="Bis Quiz Images" />
                 </div>
             </div>
             <div class="col-sm-7">
                 <div class="Quiz_text">
-                    <h3 class="main-title">Miscellaneous Competition</h3>
+                    <h3 class="main-title"><?php echo $competition['competiton_name']; ?></h3>
                     <!-- <p class="time-and-qus" style="color:white;">
                         <span class="number-quiz"><span class="question_no">10</span><span class="quiz-text">Questions</span>
                         </span>
@@ -252,7 +252,7 @@
                     </p> -->
                     <div class="d-flex">
                         <p class="time-start-end d-flex" style="margin-bottom:0px;">
-                            <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2">12/03/2023<span style="margin-left: 12px;">12:00:00</span></span>
+                            <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?php echo $competition['start_date']; ?><span style="margin-left: 12px;">12:00:00</span></span>
                             </span>
                         </p>
                         <!-- <p class="time-start-end d-flex" style="margin-bottom:0px; margin-left: 8px;">
@@ -262,7 +262,7 @@
                     </div>
                     <div class="d-flex">
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px;">
-                            <span class="start-end-time-title">End Date <span class="quiz-text-date m-2">12/03/2023<span style="margin-left: 12px;">12:00:00</span>
+                            <span class="start-end-time-title">End Date <span class="quiz-text-date m-2"><?php echo $competition['end_date']; ?><span style="margin-left: 12px;">12:00:00</span>
                             </span>
                         </p>
                        <!--  <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
