@@ -188,11 +188,15 @@
                 if($query->num_rows() > 0){
                     $res = $query->result_array();
                     foreach($res as $row){
-                        if($row['start_date'] == date("Y-m-d") ){
+                        if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                            if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                                array_push($rs,$row);
+                            }
+                        }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
                             if($row['start_time'] <= $current_time){
                                 array_push($rs,$row);
                             }
-                        }else if($row['end_date'] == date("Y-m-d") ){
+                        }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
                             if($row['end_time'] >= $current_time){
                                 array_push($rs,$row);
                             }
@@ -202,7 +206,7 @@
                     }
                 }
                 return $rs;  
-                }
+        }
        
         public function getStdClubQuizAll()
         {
@@ -232,11 +236,15 @@
             if($query->num_rows() > 0){
                 $res = $query->result_array();
                 foreach($res as $row){
-                    if($row['start_date'] == date("Y-m-d") ){
+                    if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                        if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                            array_push($rs,$row);
+                        }
+                    }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
                         if($row['start_time'] <= $current_time){
                             array_push($rs,$row);
                         }
-                    }else if($row['end_date'] == date("Y-m-d") ){
+                    }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
                         if($row['end_time'] >= $current_time){
                             array_push($rs,$row);
                         }
@@ -718,11 +726,26 @@
             if($query->num_rows() > 0){
                 $res = $query->result_array();
                 foreach($res as $row){
-                    if($row['start_date'] == date("Y-m-d") ){
+                    // if($row['start_date'] == date("Y-m-d") ){
+                    //     if($row['start_time'] <= $current_time){
+                    //         array_push($rs,$row);
+                    //     }
+                    // }else if($row['end_date'] == date("Y-m-d") ){
+                    //     if($row['end_time'] >= $current_time){
+                    //         array_push($rs,$row);
+                    //     }
+                    // }else{
+                    //     array_push($rs,$row);
+                    // }
+                    if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                        if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                            array_push($rs,$row);
+                        }
+                    }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
                         if($row['start_time'] <= $current_time){
                             array_push($rs,$row);
                         }
-                    }else if($row['end_date'] == date("Y-m-d") ){
+                    }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
                         if($row['end_time'] >= $current_time){
                             array_push($rs,$row);
                         }

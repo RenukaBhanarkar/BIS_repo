@@ -53,7 +53,7 @@
                                  <td><?= date("d-m-Y", strtotime($quiz['start_date']));?></td>
                                  <td><?= date("d-m-Y", strtotime($quiz['end_date']));?></td>
                                  <td><?= $quiz['total_question']?></td>
-                                 <td><?= $quiz['qbquestion']?></td>
+                                 <td><?= $quiz['no_of_ques']?></td>
                                  <td><?= $quiz['total_mark']?></td>
                                  <td>Closed</td>
                                  <td class="d-flex border-bottom-0" style="width: 315px; word-break: normal;">
@@ -61,11 +61,11 @@
                                     <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
                                     <a href="<?php echo base_url();?>Quiz/closed_quiz_submission/<?= $quiz['id']?>" class="btn btn-warning btn-sm mr-2">View submission</a>
                                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                                    <?php if ($quiz['status']!= 11) { ?> 
+                                    <?php if ($quiz['result_declared'] == 0) { ?> 
                                     <a href="<?php echo base_url();?>Quiz/close_declaration_list/<?= $quiz['id']?>" class="btn btn-success btn-sm mr-2">Result Declaration</a>
-                                  <?php }else{
-                                    echo "Result declared";
-                                  } }?>
+                                  <?php }else{ ?>
+                                     <p><strong style="color:blue;padding-left:10px">Result declared</strong></p> 
+                                  <?php } }?>
                                   </td>
                                  </tr>
 

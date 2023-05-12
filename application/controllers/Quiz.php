@@ -91,7 +91,7 @@ class Quiz extends CI_Controller
         $ClosedQuiz = $this->Quiz_model->getAllClosedQuizeNew();
         $data = array();
         $data['ClosedQuiz'] = $ClosedQuiz; 
-         
+        
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Quiz/closed_quiz_list',$data);
@@ -1139,9 +1139,10 @@ class Quiz extends CI_Controller
     { 
         $id = encryptids("D", $id);
         $ResultData = $this->Quiz_model->getResultDeclarationList($id);
-        $quiz_id= $ResultData['quiz_id']; 
-        $data['ResultDatas']=$ResultData; 
-        $users = $this->Quiz_model->resultDeclareUser($quiz_id); 
+        //$quiz_id= $ResultData['quiz_id']; 
+        $data['ResultData']=$ResultData; 
+
+        $users = $this->Quiz_model->resultDeclareUser($id); 
         $data['UsersDetails']=$users;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('quiz/result_declaration_view',$data);
@@ -1154,36 +1155,28 @@ class Quiz extends CI_Controller
        
         $data['UsersDetails']=$users; 
         $getQuizinfo = $this->Quiz_model->getQuizinfo($quiz_id); 
-        $data['Quizinfo']=$getQuizinfo; 
-     
-        //   foreach ($users as $r1){
-        //             $formdata['user_id']= $r1['user_id'];
-        //             $formdata['prize']= $r1['prize'];
-        //             $formdata['quiz_id']= $r1['quiz_id'];
-        //             $this->Quiz_model->insertResultDesc($formdata);
-        //   }
+        $data['Quizinfo']=$getQuizinfo;                
+
+            $Declaration=$this->Quiz_model->isExistResultDeclaration($quiz_id);
+            //echo json_encode($Declaration);exit();
            
+            if (empty($Declaration)) {
                     
+                    foreach ($users as $r1){
+                    $formdata['user_id']= $r1['user_id'];
+                    $formdata['prize']= $r1['prize'];
+                    $formdata['quiz_id']= $r1['quiz_id'];
+                    $formdata['created_on']= date('Y-m-d h:i:s'); 
+                    $this->Quiz_model->insertResultDesc($formdata);
+                    }   
 
-        //     $Declaration=$this->Quiz_model->getMstResultDeclaration($quiz_id);
-        //     if (empty($Declaration)) {
-
-        //     //$Submission=$this->Quiz_model->getSubmission($quizId);
-
-        //     //$totalgetSubmission=count($users);
-
-        //    // $Winners=$this->Quiz_model->getWinners($quizId);
-        //     $totalgetWinners=count($users);
-            
-        //     $formdata2['quiz_id']=$quiz_id;
-        //    // $formdata2['total_submission']=$totalgetSubmission;
-        //     $formdata2['total_winner']=$totalgetWinners;
-        //     $formdata2['declare_on']=date('Y-m-d h:i:s');
-        //     // print_r($formdata2);
-        //     $this->Quiz_model->insertMstResultDeclaration($formdata2);           
-        //     }
-            
-
+                    $dbobj = array(
+                        "result_declared" =>1
+                    );
+                    $this->Quiz_model->updateResultDeclaration($quiz_id,$dbobj);
+                          
+            }
+          
 
        
 

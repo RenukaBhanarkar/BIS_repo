@@ -58,10 +58,10 @@
                                 
                                 <td><?= $user['score']?></td>
                                 <?php 
-                                 $t =  $user['time_taken'];
-                                 $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+                                //  $t =  $user['time_taken'];
+                                //  $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
                                  ?>
-                                 <td><?= $timeTaken ?></td> 
+                                 <td><?= $user['time_taken']; ?> Seconds</td> 
                                  <td><?= $user['prize']?></td>
                                 <!-- <td><?= $user['time_taken']?> Seconds</td> -->
                                 <!-- <td>
