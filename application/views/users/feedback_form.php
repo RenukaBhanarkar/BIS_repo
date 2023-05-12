@@ -4,7 +4,7 @@
 <?php if($this->session->flashdata()){
                 echo $this->session->flashdata('MSG');
             } ?>
-<form action="<?php echo base_url(); ?>users/add_feedback_form_data" name="addfeedback" id="addFeedback" method="post">
+<form action="<?php echo base_url(); ?>users/add_feedback_form_data" name="addfeedback" id="addFeedback" method="post" class="">
 
 <div class="bloginfo">
     
@@ -16,8 +16,9 @@
     <div class="row">
             <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Name</label>
-                <input type="text" class="form-control input-font" name="name" id="name" value="" placeholder="Enter Title">
+                <input type="text" class="form-control input-font" name="name" id="name" value="" placeholder="Enter Title" minlength="2" maxlength="200" aria-describedby="inputGroupPrepend" required>
                 <span class="text-danger" id="err_name"></span>
+                
             </div>
             <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Mobile Number</label>
@@ -26,23 +27,23 @@
             </div>
             <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Email</label>
-                <input type="email" class="form-control input-font" name="email" id="email" placeholder="Enter Email" >
+                <input type="email" class="form-control input-font" name="email" id="email" placeholder="Enter Email" required>
                 <span class="text-danger" id="err_email"></span>
             </div>
             <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Subject</label>
-                <input type="text" class="form-control input-font" name="subject" id="subject" placeholder="Enter Subject" >
+                <input type="text" class="form-control input-font" name="subject" id="subject" placeholder="Enter Subject" minlength="2" maxlength="200" required>
                 <span class="text-danger" id="err_subject"></span>
             </div>
             <div class="mb-2 col-md-8">
                 <label class="d-block text-font">Description</label>
-                <textarea type="text" class="form-control input-font" name="description" id="description" placeholder="Enter Description" ></textarea>
+                <textarea type="text" class="form-control input-font" name="description" id="description" placeholder="Enter Description" required></textarea>
                 <span class="text-danger" id="err_description"></span>
             </div>
     </div>
     <div class="row">
             <div class="col-md-12 p-3 text-end">
-                <button onclick="return submitFeedback(event)" type="submit" name="submit1" class="btn btn-success" >Submit</button>
+                <button type="submit" onclick="return submitFeedback(event)"  name="submit1" class="btn btn-success" >Submit</button>
                 <button class="btn btn-danger" type="button" onclick="location.href='#'">Cancel</button>
                 <button class="btn btn-warning" type="reset">Reset</button>
             </div>
@@ -50,9 +51,30 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">   
+<script type="text/javascript">  
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
     function submitFeedback(event){
         event.preventDefault();
+        $('#addFeedback').addClass('was-validated');
         allfield=true;
         var name=$('#name').val();
         var email=$('#email').val();
