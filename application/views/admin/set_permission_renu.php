@@ -77,7 +77,7 @@
                                         <label class="custom-control-label" for="163_mainModuleChk">Quiz Competition</label>
                                     </div>
                                 </td>
-                                <!-- ************* CREATE QUIZ START ***************** -->
+
                                 <td>
                                     <div class="custom-control custom-checkbox mr-3">
                                         <input type="checkbox" value="1" name="subModule[]" class="custom-control-input 163_mainModuleChk" data-moduleid="163_mainModuleChk" data-submoduleid="173_subModuleChk" id="173_subModuleChk" onclick="checkSubmodules(this);">
@@ -377,19 +377,17 @@
                             </tr>
 
                             <!-- *************  Closed Competition END ***************** -->
-                             <!-- *************  Review Competition START ***************** -->
+                            <!-- *************  Review Competition START ***************** -->
                             <tr>
                                 <td>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="11" name="subModule[]" 
-                                        class="custom-control-input 263_mainModuleChk" data-moduleid="263_mainModuleChk" data-submoduleid="278_subModuleChk" id="278_subModuleChk" onclick="checkSubmodules(this);" >
+                                        <input type="checkbox" value="11" name="subModule[]" class="custom-control-input 263_mainModuleChk" data-moduleid="263_mainModuleChk" data-submoduleid="278_subModuleChk" id="278_subModuleChk" onclick="checkSubmodules(this);">
                                         <label class="custom-control-label" for="278_subModuleChk">Review Competition</label>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" name="reviewComp[]" value="1" 
-                                        class="custom-control-input 263_mainModuleChk 278_subModuleChk accessSelected" data-moduleid="263_mainModuleChk" data-submoduleid="278_subModuleChk" id="278_viewChk" onclick="checkAccess(this);"  >
+                                        <input type="checkbox" name="reviewComp[]" value="1" class="custom-control-input 263_mainModuleChk 278_subModuleChk accessSelected" data-moduleid="263_mainModuleChk" data-submoduleid="278_subModuleChk" id="278_viewChk" onclick="checkAccess(this);">
                                         <label class="custom-control-label" for="278_viewChk"></label>
                                     </div>
                                 </td>
@@ -397,22 +395,117 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                           
+
                             <!-- ************* Review Competition END ***************** -->
                             <!-- /*
                                     3 - Miscellaneous Competition
                             */-->
                             <!-- *************  CREATE START ***************** -->
                             <!-- *************  END ***************** -->
-                             <!-- ************* MANAGE START ***************** -->
+                            <!-- ************* MANAGE START ***************** -->
                             <!-- *************  END ***************** -->
-                             <!-- *************  ONGOING START ***************** -->
+                            <!-- *************  ONGOING START ***************** -->
                             <!-- *************  END ***************** -->
-                             <!-- *************  CLOSED START ***************** -->
+                            <!-- *************  CLOSED START ***************** -->
                             <!-- *************  END ***************** -->
-                             <!-- *************  REVIEW START ***************** -->
+                            <!-- *************  REVIEW START ***************** -->
                             <!-- *************  END ***************** -->
-                           
+
+                            <!-- ************* Miscellaneous Competition END ***************** -->
+                            <!-- /*
+                                    4 - Wall of wisdom Competition
+                            */-->
+                            <tr>
+
+                                <td>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox"  value="4" name="mainModule[]"  class="custom-control-input 266_mainModuleChk" data-moduleid="266_mainModuleChk" data-submoduleid="181_subModuleChk" id="181_subModuleChk" onclick="checkSubmodules(this);" >
+                                        <label class="custom-control-label" for="181_subModuleChk">Wall of Wisdom</label>
+                                    </div>
+                                </td>
+                                <td></td>
+
+                                <td>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox"  value="1"  name="wallOfWisdom[]" class="custom-control-input 266_mainModuleChk 181_subModuleChk accessSelected" data-moduleid="266_mainModuleChk" data-submoduleid="181_subModuleChk" id="281_viewChk" onclick="checkAccess(this);" >
+                                        <label class="custom-control-label" for="281_viewChk"></label>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="2"  name="wallOfWisdom[]"  class="custom-control-input 266_mainModuleChk 181_subModuleChk accessSelected" data-moduleid="266_mainModuleChk" data-submoduleid="181_subModuleChk" id="282_addChk" onclick="checkAccess(this);"  >
+                                        <label class="custom-control-label" for="282_addChk"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="3"  name="wallOfWisdom[]" class="custom-control-input 266_mainModuleChk 181_subModuleChk accessSelected" data-moduleid="266_mainModuleChk" data-submoduleid="181_subModuleChk" id="283_updateChk" onclick="checkAccess(this);"  >
+                                        <label class="custom-control-label" for="283_updateChk"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="4"  name="wallOfWisdom[]" class="custom-control-input 266_mainModuleChk 181_subModuleChk accessSelected" data-moduleid="266_mainModuleChk" data-submoduleid="181_subModuleChk" id="284_deleteChk" onclick="checkAccess(this);"  >
+                                        <label class="custom-control-label" for="284_deleteChk"></label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- /*
+                                    5 - Your Wall
+                            */-->
+                            <tr>
+
+
+							<td>
+								<div class="custom-control custom-checkbox mr-3">
+									<input type="checkbox" class="custom-control-input 366_mainModuleChk" data-moduleid="366_mainModuleChk" data-submoduleid="481_subModuleChk" id="481_subModuleChk" onclick="checkSubmodules(this);" checked="">
+									<label class="custom-control-label" for="481_subModuleChk">Your Wall</label>
+								</div>
+							</td>
+
+
+
+
+
+							<td></td>
+
+							<td>
+								<div class="custom-control custom-checkbox mr-3">
+									<input type="checkbox" class="custom-control-input 366_mainModuleChk 481_subModuleChk accessSelected" data-moduleid="366_mainModuleChk" data-submoduleid="481_subModuleChk" id="481_viewChk" onclick="checkAccess(this);" value="481#View" checked="">
+									<label class="custom-control-label" for="481_viewChk"></label>
+								</div>
+							</td>
+
+							<td>
+								<div class="custom-control custom-checkbox mr-3">
+									<input type="checkbox" class="custom-control-input 366_mainModuleChk 481_subModuleChk accessSelected" data-moduleid="366_mainModuleChk" data-submoduleid="481_subModuleChk" id="482_addChk" onclick="checkAccess(this);" value="482#Add" checked="">
+									<label class="custom-control-label" for="482_addChk"></label>
+								</div>
+							</td>
+							<td>
+								<div class="custom-control custom-checkbox mr-3">
+									<input type="checkbox" class="custom-control-input 366_mainModuleChk 481_subModuleChk accessSelected" data-moduleid="366_mainModuleChk" data-submoduleid="481_subModuleChk" id="483_updateChk" onclick="checkAccess(this);" value="483#Update" checked="">
+									<label class="custom-control-label" for="483_updateChk"></label>
+								</div>
+							</td>
+							<td>
+								<div class="custom-control custom-checkbox mr-3">
+									<input type="checkbox" class="custom-control-input 366_mainModuleChk 481_subModuleChk accessSelected" data-moduleid="366_mainModuleChk" data-submoduleid="481_subModuleChk" id="484_deleteChk" onclick="checkAccess(this);" value="484#Delete" checked="">
+									<label class="custom-control-label" for="484_deleteChk"></label>
+								</div>
+							</td>
+
+
+
+
+
+
+
+
+						</tr>
+
 
                         </tbody>
                     </table>
