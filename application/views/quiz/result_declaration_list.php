@@ -22,6 +22,7 @@
     <div class="row">
         <div class="col-12 mt-3">
             <div class="card border-top card-body table-responsive">
+                <?php if(!empty ($DeclarationList)) { ?> 
                 <table id="example" class="table-bordered display nowrap" style="width:100%">
                     <thead>
                         <tr>
@@ -39,20 +40,20 @@
                             
                         </tr>
                     </thead>
-                    <!-- <?php print_r($UsersDetails)?> -->
+                   
                     <tbody>
                         <?php foreach ($DeclarationList as $key => $value): ?>
                         <tr>
                             <td><?= $key+1?></td>
                             <td><?= $value['title']?></td>
-                            <td><?= $value['quizId']?></td>
-                            <td><?= $value['startDate']?></td>
+                            <td><?= $value['quiz_id']?></td>
+                            <td><?= $value['start_date']?></td>
                             <td><?= $value['total_mark']?></td>
-                            <td><?= $value['total_submission']?></td>
-                            <td><?= $value['total_winner']?></td>
-                            <td><?= $value['declare_on']?></td>
+                            <td><?= $value['total_submissions']?></td>
+                            <td><?= $value['total_winners']?></td>
+                            <td><?= $value['declared_on']?></td>
                             <td>
-                                <?php $id= encryptids("E", $value['id'] )?>
+                                <?php $id= encryptids("E", $value['quiz_id'] )?>
                                 <a href="<?php echo base_url();?>Quiz/result_declaration_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
                             </td>
                             
@@ -67,6 +68,9 @@
                         
                     </tbody>
                 </table>
+                <?php } else { ?>
+                <div class="alert alert-warning">Details are not available</div>
+                <?php } ?> 
             </div>
         </div>
     </div>

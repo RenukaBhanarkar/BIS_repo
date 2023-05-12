@@ -20,50 +20,52 @@
         <div class="col-12 mt-3">
             <div class="card border-top">
                 <div class="card-body">
+                    <?php foreach ($ResultData as $row) { ?> 
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Quiz</label>
                             <div>
-                                <p><?=$ResultDatas['title']?></p>
+                                <p><?=$row['title']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Quiz Id</label>
                             <div>
-                                <p><?=$ResultDatas['quizId']?></p>
+                                <p><?=$row['quiz_id']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Quiz Date</label>
+                            <label class="d-block text-font">Quiz Start Date</label>
                             <div>
-                                <p><?=$ResultDatas['startDate']?></p>
+                                <p><?=$row['start_date']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Marks</label>
                             <div>
-                                <p><?=$ResultDatas['total_mark']?></p>
+                                <p><?=$row['total_mark']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Submission</label>
                             <div>
-                                <p><?=$ResultDatas['total_submission']?></p>
+                                <p><?=$row['total_submissions']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Winners</label>
                             <div>
-                                <p><?=$ResultDatas['total_winner']?></p>
+                                <p><?=$row['total_winners']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Declared on</label>
                             <div>
-                                <p><?=$ResultDatas['declare_on']?></p>
+                                <p><?=$row['declared_on']?></p>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                     <div class="row">
                         <div class="col-12 mt-3 table-responsive">
                             <table id="example" class="table-bordered display nowrap" style="width:100%">
@@ -74,7 +76,7 @@
                                         <th>Email ID</th>
                                         <th>Contact No.</th>
                                         <th>Date</th>
-                                        <th>Time</th>
+                                        <th>Time Taken</th>
                                         <th>Score</th>
                                         <th>Prize</th>
                                         
@@ -88,17 +90,18 @@
                                         <td><?= $value['email']?></td>
                                         <td><?= $value['user_mobile']?></td>
                                         <td><?= $value['created_on']?></td>
-                                        <td><?= $value['start_time']?></td>
+                                        <td><?= $value['time_taken']?></td>
                                         <td><?= $value['score']?></td>
-                                        <td>
+                                        <td><?= $value['userprize']?></td>
+                                        <!-- <td>
                                             <?php 
-                                            if ($value['userprize']==1) { $prize='First Prize'; } 
-                                            if ($value['userprize']==2) { $prize='Second Prize'; } 
-                                            if ($value['userprize']==3) { $prize='Third Prize'; } 
-                                            if ($value['userprize']==4) { $prize='Consolation Prize'; } 
+                                            // if ($value['userprize']==1) { $prize='First Prize'; } 
+                                            // if ($value['userprize']==2) { $prize='Second Prize'; } 
+                                            // if ($value['userprize']==3) { $prize='Third Prize'; } 
+                                            // if ($value['userprize']==4) { $prize='Consolation Prize'; } 
                                             ?>
-                                            <?= $prize?>
-                                        </td>
+                                           
+                                        </td> -->
                                         <!-- <td>First Prize</td> -->
                                         
                                     </tr>
