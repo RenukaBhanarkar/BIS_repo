@@ -1,6 +1,9 @@
     <!-- Begin Page Content -->
     <style>
-        #opt_blk_eng .form-control,#opt_blk_hin .form-control  {margin-top: 13px;}
+        #opt_blk_eng .form-control,
+        #opt_blk_hin .form-control {
+            margin-top: 13px;
+        }
     </style>
     <div class="container-fluid">
 
@@ -9,13 +12,13 @@
             <h1 class="h3 mb-0 text-gray-800">Question Bank Form</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'subadmin/questionBankList';?>" >Question Bank List</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Question Bank Form</li>
-                
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>">Sub Admin Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competitions</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/quiz_dashboard'; ?>">Quiz Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'subadmin/questionBankList'; ?>">Question Bank List</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Question Bank Form</li>
+
                 </ol>
             </nav>
         </div>
@@ -38,7 +41,7 @@
                             <div class="row">
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Question Bank Title<sup class="text-danger">*</sup></label>
-                                    <input type="text" class="form-control input-font" name="title" id="title" placeholder="Enter Question Bank Title">
+                                    <input type="text" class="form-control input-font" name="title" id="title" minlength="10" maxlength="500" placeholder="Enter Question Bank Title">
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Total Number of Question<sup class="text-danger">*</sup></label>
@@ -106,7 +109,7 @@
                             <div class="row" id="question-eng">
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Question in English<sup class="text-danger">*</sup></label>
-                                    <textarea type="text" class="form-control input-font" name="que" id="que" placeholder="Enter Question"></textarea>
+                                    <textarea type="text" class="form-control input-font" minlength="10" maxlength="5000" name="que" id="que" placeholder="Enter Question"></textarea>
                                 </div>
                                 <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Question in Hindi<sup class="text-danger">*</sup></label>
@@ -116,7 +119,7 @@
                             <div class="row" id="question-hindi" style="display:none;">
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Question in Hindi<sup class="text-danger">*</sup></label>
-                                    <textarea type="text" class="form-control input-font" name="que_h" id="que_h" placeholder="Question in Hindi"></textarea>
+                                    <textarea type="text" class="form-control input-font" minlength="10" maxlength="5000" name="que_h" id="que_h" placeholder="Question in Hindi"></textarea>
                                 </div>
                             </div>
                             <div class="row" id="image-block" style="display:none;">
@@ -169,65 +172,65 @@
                             </div>
                             <div class="row" id="options_blk" style="display:none;">
                                 <div class="col-md-2 col-sm-2 col-lg-2 " id="opt1_type_blk">
-                                    
-                                    <div class="row"  id="opt1_div">
+
+                                    <div class="row" id="opt1_div">
                                         <div class="col-md-12">
                                             <label class="d-block text-font mr-3">Option 1</label>
-                                                <select class="form-control input-font" id="opt_type_1" name="opt_type_1" aria-label="Default select example">
-                                                        <option value="1">Text</option>
-                                                        <option value="2">Image</option>
-                                                </select>                                               
+                                            <select class="form-control input-font" id="opt_type_1" name="opt_type_1" aria-label="Default select example">
+                                                <option value="1">Text</option>
+                                                <option value="2">Image</option>
+                                            </select>
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="row" id="opt2_div">
                                         <div class="col-md-12">
                                             <label class="d-block text-font mr-3">Option 2</label>
-                                                <select class="form-control input-font" id="opt_type_2" name="opt_type_2" aria-label="Default select example">
-                                                        <option value="1">Text</option>
-                                                        <option value="2">Image</option>
-                                                </select>                                               
+                                            <select class="form-control input-font" id="opt_type_2" name="opt_type_2" aria-label="Default select example">
+                                                <option value="1">Text</option>
+                                                <option value="2">Image</option>
+                                            </select>
                                         </div>
-                                    </div> 
+                                    </div>
 
                                     <div class="row" id="opt3_div">
                                         <div class="col-md-12">
                                             <label class="d-block text-font mr-3">Option 3</label>
-                                                <select class="form-control input-font" id="opt_type_3" name="opt_type_3" aria-label="Default select example">
-                                                        <option value="1">Text</option>
-                                                        <option value="2">Image</option>
-                                                </select>                                               
+                                            <select class="form-control input-font" id="opt_type_3" name="opt_type_3" aria-label="Default select example">
+                                                <option value="1">Text</option>
+                                                <option value="2">Image</option>
+                                            </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="row" id="opt4_div">
                                         <div class="col-md-12">
                                             <label class="d-block text-font mr-3">Option 4</label>
-                                                <select class="form-control input-font" id="opt_type_4" name="opt_type_4" aria-label="Default select example">
-                                                        <option value="1">Text</option>
-                                                        <option value="2">Image</option>
-                                                </select>                                               
+                                            <select class="form-control input-font" id="opt_type_4" name="opt_type_4" aria-label="Default select example">
+                                                <option value="1">Text</option>
+                                                <option value="2">Image</option>
+                                            </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="row" id="opt5_div">
                                         <div class="col-md-12">
                                             <label class="d-block text-font mr-3">Option 5</label>
-                                                <select class="form-control input-font" id="opt_type_5" name="opt_type_5" aria-label="Default select example">
-                                                        <option value="1">Text</option>
-                                                        <option value="2">Image</option>
-                                                </select>                                               
+                                            <select class="form-control input-font" id="opt_type_5" name="opt_type_5" aria-label="Default select example">
+                                                <option value="1">Text</option>
+                                                <option value="2">Image</option>
+                                            </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
 
 
                                 <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_eng">
-                                <label class="d-block text-font mr-3">English Option</label>
+                                    <label class="d-block text-font mr-3">English Option</label>
 
                                     <div class="row mt-3" id="opt1_blk">
                                         <div class="mb-2  d-flex">
-                                           
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option1_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option1" id="option1" style="margin-top:0px;">
+                                                    <input class="form-control input-font" type="text" name="option1" id="option1" maxlength="500" style="margin-top:0px;">
                                                 </div>
 
                                                 <div class="form-check" style="padding-left:0px;" id="option1_image_blk">
@@ -238,10 +241,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt2_blk">
                                         <div class="mb-2  d-flex">
-                                           
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option2_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option2" id="option2" style="margin-top:0px;">
+                                                    <input class="form-control input-font" type="text" name="option2" id="option2" maxlength="500" style="margin-top:0px;">
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option2_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option2_image" id="option2_image" style="margin-top:10px;">
@@ -251,10 +254,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt3_blk">
                                         <div class="mb-2  d-flex">
-                                            
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option3_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option3" id="option3" style="margin-top:0px;">
+                                                    <input class="form-control input-font" type="text" name="option3" id="option3" maxlength="500" style="margin-top:0px;">
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option3_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option3_image" id="option3_image" style="margin-top:13px;">
@@ -264,10 +267,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt4_blk">
                                         <div class="mb-2  d-flex">
-                                            
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option4_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option4" id="option4" style="margin-top:0px;">
+                                                    <input class="form-control input-font" type="text" name="option4" id="option4" maxlength="500" style="margin-top:0px;">
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option4_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option4_image" id="option4_image" style="margin-top:15px;">
@@ -277,10 +280,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt5_blk">
                                         <div class="mb-2  d-flex">
-                                           
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option5_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option5" id="option5" style="margin-top:0px;">
+                                                    <input class="form-control input-font" type="text" name="option5" id="option5" maxlength="500" style="margin-top:0px;">
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option5_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option5_image" id="option5_image" style="margin-top:13px;">
@@ -290,12 +293,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_hin">
-                                <label class="d-block text-font mr-3">Hindi Option</label>
+                                    <label class="d-block text-font mr-3">Hindi Option</label>
                                     <div class="row mt-3" id="opt1_blk_h">
                                         <div class="mb-2  d-flex">
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option1_h_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option1_h" id="option1_h" style="margin-top:0px;" required>
+                                                    <input class="form-control input-font" type="text" name="option1_h" id="option1_h" maxlength="500" style="margin-top:0px;" required>
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option1_h_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option1_h_image" id="option1_h_image" style="margin-top:0px;">
@@ -305,10 +308,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt2_blk_h">
                                         <div class="mb-2  d-flex">
-                                            
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option2_h_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option2_h" id="option2_h" style="margin-top:0px;" required>
+                                                    <input class="form-control input-font" type="text" name="option2_h" id="option2_h" maxlength="500" style="margin-top:0px;" required>
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option2_h_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option2_h_image" id="option2_h_image" style="margin-top:10px;">
@@ -318,10 +321,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt3_blk_h">
                                         <div class="mb-2  d-flex">
-                                            
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option3_h_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option3_h" id="option3_h" style="margin-top:0px;" required>
+                                                    <input class="form-control input-font" type="text" name="option3_h" id="option3_h" maxlength="500" style="margin-top:0px;" required>
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option3_h_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option3_h_image" id="option3_h_image" style="margin-top:13px;">
@@ -331,10 +334,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt4_blk_h">
                                         <div class="mb-2  d-flex">
-                                            
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option4_h_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option4_h" id="option4_h" style="margin-top:0px;">
+                                                    <input class="form-control input-font" type="text" name="option4_h" id="option4_h" maxlength="500" style="margin-top:0px;">
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option4_h_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option4_h_image" id="option4_h_image" style="margin-top:15px;">
@@ -344,10 +347,10 @@
                                     </div>
                                     <div class="row mt-3" id="opt5_blk_h">
                                         <div class="mb-2  d-flex">
-                                            
+
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option5_h_text_blk">
-                                                    <input class="form-control input-font" type="text" name="option5_h" id="option5_h" style="margin-top:0px;" required>
+                                                    <input class="form-control input-font" type="text" name="option5_h" id="option5_h" maxlength="500" style="margin-top:0px;" required>
                                                 </div>
                                                 <div class="form-check" style="padding-left:0px;" id="option5_h_image_blk">
                                                     <input class="form-control-file input-font" type="file" name="option5_h_image" id="option5_h_image" style="margin-top:13px;">
@@ -355,8 +358,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
 
                                 <div class="col-md-2 col-sm-2 col-lg-2 " id="corr_opt_blk">
@@ -519,7 +520,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Cancel</button>
+                                                    <button type="button" class="btn btn-primary" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList'">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -536,6 +537,31 @@
         </div>
         <!-- End of Content Wrapper -->
         <script>
+            // (function() {
+            //     'use strict'
+
+            //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            //     var forms = document.querySelectorAll('.needs-validation')
+
+            //     // Loop over them and prevent submission
+            //     Array.prototype.slice.call(forms)
+            //         .forEach(function(form) {
+            //             form.addEventListener('submit', function(event) {
+            //                 if (!form.checkValidity()) {
+            //                     event.preventDefault()
+            //                     event.stopPropagation()
+            //                 }
+
+            //                 form.classList.add('was-validated')
+            //             }, false)
+            //         })
+            // })()
+
+
+
+
+
+
             document.getElementById('headerid').style.pointerEvents = 'none';
             //Banner Image Preview
             var loadFileBanner = function(event) {
@@ -665,7 +691,7 @@
                         $("#option5_h_image_blk").show();
                     }
                 });
-              
+
 
                 // $("#saveQueBank").click(function() {
                 // window.location.replace("<?php echo base_url(); ?>subadmin/question_bank_list");
@@ -673,6 +699,7 @@
                 $('#queBankCreation').on('click', '#saveQueBank', function(e) {
                     e.preventDefault();
                     var focusSet = false;
+                   // $('#questions_form').addClass('was-validated');
                     var allfields = true;
                     var que_bank_id = $('#que_bank_id').val();
                     var no_of_ques = $("#no_of_ques").val();
@@ -704,43 +731,43 @@
                     // });
 
                     Swal.fire({
-                    title: 'Are you sure you want to Submit?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Submit',
-                    denyButtonText: `Cancel`,
+                        title: 'Are you sure you want to Submit?',
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: 'Submit',
+                        denyButtonText: `Cancel`,
                     }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        jQuery.ajax({
-                        type: "GET",
-                        url: '<?php echo base_url(); ?>subadmin/toCheckNoOfQueInBank/?id=' + que_bank_id + '&no=' + no_of_ques,
-                        dataType: 'json',
-                        success: function(res) {
-                            // console.log(res);
-                            if (res.status == 0) {
-                                if ($("#err_que_bank").next(".validation").length == 0) {
-                                    $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please add questions equal to total no of questions in bank</div>");
-                                }
-                                if (!focusSet) {
-                                    $("#err_que_bank").focus();
-                                }
-                            } else {
-                                $("#err_que_bank").next(".validation").remove();
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            jQuery.ajax({
+                                type: "GET",
+                                url: '<?php echo base_url(); ?>subadmin/toCheckNoOfQueInBank/?id=' + que_bank_id + '&no=' + no_of_ques,
+                                dataType: 'json',
+                                success: function(res) {
+                                    // console.log(res);
+                                    if (res.status == 0) {
+                                        if ($("#err_que_bank").next(".validation").length == 0) {
+                                            $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please add questions equal to total no of questions in bank</div>");
+                                        }
+                                        if (!focusSet) {
+                                            $("#err_que_bank").focus();
+                                        }
+                                    } else {
+                                        $("#err_que_bank").next(".validation").remove();
 
-                                window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
-                            }
+                                        window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
+                                    }
 
-                        },
-                        error: function(xhr, status, error) {
-                            //toastr.signuperr('Failed to add '+xData.name+' in wishlist.');
-                            console.log(error);
+                                },
+                                error: function(xhr, status, error) {
+                                    //toastr.signuperr('Failed to add '+xData.name+' in wishlist.');
+                                    console.log(error);
+                                }
+                            });
+                            // Swal.fire('Saved!', '', 'success')                                
+                        } else if (result.isDenied) {
+                            // Swal.fire('Changes are not saved', '', 'info')
                         }
-                    });
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
                     })
 
 
@@ -797,14 +824,15 @@
                 $('#que_bank_form').on('click', '#createQueBank', function(e) {
                     e.preventDefault();
                     var focusSet = false;
+                   // $('#que_bank_form').addClass('was-validated');
                     var allfields = true;
                     var title = $("#title").val();
                     var no_of_ques = $("#no_of_ques").val();
                     // var total_marks = $("#total_marks").val();
 
-                    if (title == "") {
+                    if (title == "" || title.length < 10 || title.length > 500) {
                         if ($("#title").next(".validation").length == 0) {
-                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter title</div>");
+                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter valid title with minimum length 10 and maximum length 500 characters.</div>");
                         }
                         if (!focusSet) {
                             $("#title").focus();
@@ -813,7 +841,7 @@
                     } else {
                         $("#title").next(".validation").remove();
                     }
-                    if (no_of_ques == "") {
+                    if (no_of_ques == "" || no_of_ques == 0) {
                         if ($("#no_of_ques").next(".validation").length == 0) {
                             $("#no_of_ques").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter no of ques</div>");
                         }
@@ -873,60 +901,60 @@
                         // });
 
                         Swal.fire({
-                    title: 'Are you sure you want to create?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Create',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        jQuery.ajax({
-                            type: "POST",
-                            url: url,
-                            dataType: 'json',
-                            data: fd,
-                            cache: false,
-                            processData: false,
-                            contentType: false,
-                            success: function(res) {
-                                if (res.status == 0) {
-                                    // alert(res.message);
-                                    Swal.fire(res.message);
+                            title: 'Are you sure you want to create?',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Create',
+                            denyButtonText: `Cancel`,
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                jQuery.ajax({
+                                    type: "POST",
+                                    url: url,
+                                    dataType: 'json',
+                                    data: fd,
+                                    cache: false,
+                                    processData: false,
+                                    contentType: false,
+                                    success: function(res) {
+                                        if (res.status == 0) {
+                                            // alert(res.message);
+                                            Swal.fire(res.message);
 
-                                } else {
-                                    // alert(res.message);
-                                    Swal.fire(res.message);
-                                    var form = document.getElementById("que_bank_form");
-                                    var elements = form.elements;
-                                    for (var i = 0, len = elements.length; i < len; ++i) {
-                                        elements[i].readOnly = true;
+                                        } else {
+                                            // alert(res.message);
+                                            Swal.fire(res.message);
+                                            var form = document.getElementById("que_bank_form");
+                                            var elements = form.elements;
+                                            for (var i = 0, len = elements.length; i < len; ++i) {
+                                                elements[i].readOnly = true;
+                                            }
+                                            var language = $('input[name="language"]:checked').val();
+
+                                            $("#que_language").val(language);
+                                            $('input[name="language"]').attr('disabled', 'disabled');
+                                            $('#que_bank_id').val(res.id);
+                                            $('#questions_form').show();
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                                        console.log(error);
                                     }
-                                    var language = $('input[name="language"]:checked').val();
-
-                                    $("#que_language").val(language);
-                                    $('input[name="language"]').attr('disabled', 'disabled');
-                                    $('#que_bank_id').val(res.id);
-                                    $('#questions_form').show();
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
-                                console.log(error);
+                                });
+                                // Swal.fire('Saved!', '', 'success')                                
+                            } else if (result.isDenied) {
+                                // Swal.fire('Changes are not saved', '', 'info')
                             }
-                        });
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
+                        })
 
 
                     } else {
                         return false;
                     }
                 });
-                 
+
                 $(document).on("change", "#no_of_options", function() {
                     $('#options_blk').show();
                     var lang = $('input[name="language"]:checked').val();
@@ -958,23 +986,23 @@
                         $('#r1').show();
                         $('#r2').show();
                         $('#opt1_div').show();
-                         $('#opt2_div').show();
+                        $('#opt2_div').show();
                     } else if (no_of_options == 3) {
                         $('#r1').show();
                         $('#r2').show();
                         $('#r3').show();
                         $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
+                        $('#opt2_div').show();
+                        $('#opt3_div').show();
                     } else if (no_of_options == 4) {
                         $('#r1').show();
                         $('#r2').show();
                         $('#r3').show();
                         $('#r4').show();
                         $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
+                        $('#opt2_div').show();
+                        $('#opt3_div').show();
+                        $('#opt4_div').show();
                     } else if (no_of_options == 5) {
                         $('#r1').show();
                         $('#r2').show();
@@ -982,15 +1010,15 @@
                         $('#r4').show();
                         $('#r5').show();
                         $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
-                         $('#opt5_div').show();
+                        $('#opt2_div').show();
+                        $('#opt3_div').show();
+                        $('#opt4_div').show();
+                        $('#opt5_div').show();
 
                     }
 
                     if (lang == 1) {
-                     
+
                         if (no_of_options == 2) {
 
                             $('#opt1_blk').show();
@@ -1004,17 +1032,17 @@
                             $('#opt3_blk').show();
 
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
                         } else if (no_of_options == 4) {
                             $('#opt1_blk').show();
                             $('#opt2_blk').show();
                             $('#opt3_blk').show();
                             $('#opt4_blk').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
+                            $('#opt4_div').show();
                         } else if (no_of_options == 5) {
                             $('#opt1_blk').show();
                             $('#opt2_blk').show();
@@ -1022,39 +1050,39 @@
                             $('#opt4_blk').show();
                             $('#opt5_blk').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
-                         $('#opt5_div').show();
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
+                            $('#opt4_div').show();
+                            $('#opt5_div').show();
 
                         }
 
                     } else if (lang == 2) {
-                      
+
                         if (no_of_options == 2) {
                             $('#opt1_blk_h').show();
                             $('#opt2_blk_h').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                        
+                            $('#opt2_div').show();
+
 
                         } else if (no_of_options == 3) {
                             $('#opt1_blk_h').show();
                             $('#opt2_blk_h').show();
                             $('#opt3_blk_h').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                        
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
+
                         } else if (no_of_options == 4) {
                             $('#opt1_blk_h').show();
                             $('#opt2_blk_h').show();
                             $('#opt3_blk_h').show();
                             $('#opt4_blk_h').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
+                            $('#opt4_div').show();
                         } else if (no_of_options == 5) {
                             $('#opt1_blk_h').show();
                             $('#opt2_blk_h').show();
@@ -1062,15 +1090,15 @@
                             $('#opt4_blk_h').show();
                             $('#opt5_blk_h').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
-                         $('#opt5_div').show();
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
+                            $('#opt4_div').show();
+                            $('#opt5_div').show();
 
                         }
 
                     } else {
-                    
+
                         if (no_of_options == 2) {
                             $('#opt1_blk').show();
                             $('#opt2_blk').show();
@@ -1114,10 +1142,10 @@
                             $('#opt4_blk_h').show();
                             $('#opt5_blk_h').show();
                             $('#opt1_div').show();
-                         $('#opt2_div').show();
-                         $('#opt3_div').show();
-                         $('#opt4_div').show();
-                         $('#opt5_div').show();
+                            $('#opt2_div').show();
+                            $('#opt3_div').show();
+                            $('#opt4_div').show();
+                            $('#opt5_div').show();
 
                         }
                     }
@@ -1149,7 +1177,7 @@
                         if ($("#que_image").val() != '') {
                             var fileSize = $('#que_image')[0].files[0].size;
 
-                            if (fileSize > 204800 ) {
+                            if (fileSize > 204800) {
                                 if ($("#imgError").next(".validation").length == 0) {
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file size less than 200 KB </div>");
                                 }
@@ -1501,10 +1529,10 @@
                             success: function(res) {
                                 if (res.status == 0) {
                                     // alert(res.message);
-                                    Swal.fire(res.message); 
+                                    Swal.fire(res.message);
                                 } else {
                                     // alert(res.message);
-                                    Swal.fire(res.message); 
+                                    Swal.fire(res.message);
                                     $('#que').val('');
                                     $('#que_h').val('');
                                     $('#que_image').val('');
@@ -1564,7 +1592,7 @@
 
                     var fileSize = $("#option" + id + "_image")[0].files[0].size;
 
-                    if (fileSize > 204800 ) {
+                    if (fileSize > 204800) {
                         i++;
 
                         if ($("#imgErrorNew" + id).next(".validation").length == 0) {
@@ -1618,7 +1646,7 @@
 
                     var fileSize = $("#option" + id + "_h_image")[0].files[0].size;
 
-                    if (fileSize > 204800 ) {
+                    if (fileSize > 204800) {
                         i++;
 
                         if ($("#imgErrorNewHindi" + id).next(".validation").length == 0) {
@@ -1764,7 +1792,7 @@
                                         var op4 = data[i].opt4_e;
                                     }
                                 }
-                                if ( data[i].no_of_options == 5) {
+                                if (data[i].no_of_options == 5) {
                                     if (data[i].opt5_e == 0 || data[i].opt5_e == '') {
                                         var op5_img = data[i].option5_image;
                                         var op5 = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op5_img + '">';
@@ -1867,30 +1895,30 @@
                     showCancelButton: false,
                     confirmButtonText: 'Delete',
                     denyButtonText: `Cancel`,
-                    }).then((result) => {
+                }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
+                    if (result.isConfirmed) {
                         $.ajax({
-                        type: 'POST',
-                        url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
-                        data: {
-                            que_id: que_id,
-                        },
-                        success: function(result) {
-                            $('#row' + que_id).css({
-                                'display': 'none'
-                            });
-                            Swal.fire('Questiion Deleted');
-                        },
-                        error: function(result) {
-                            alert("Error,Please try again.");
-                        }
-                    });
-                       // Swal.fire('Saved!', '', 'success')                                
+                            type: 'POST',
+                            url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
+                            data: {
+                                que_id: que_id,
+                            },
+                            success: function(result) {
+                                $('#row' + que_id).css({
+                                    'display': 'none'
+                                });
+                                Swal.fire('Questiion Deleted');
+                            },
+                            error: function(result) {
+                                alert("Error,Please try again.");
+                            }
+                        });
+                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
-                    })                
+                })
             }
             $("#no_of_ques").keydown(function(e) {
 
@@ -1914,24 +1942,24 @@
             //         e.preventDefault();
             //     }
             // });
-            $('.cancel_qb_form').on('click',function(){
+            $('.cancel_qb_form').on('click', function() {
                 Swal.fire({
                     title: 'Are you sure you want to Cancel?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Cancel',
                     denyButtonText: `Close`,
-                    }).then((result) => {
+                }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        // location.href='<?php echo base_url();?>subadmin/questionBankList'"
-                        // window.location(<?php echo base_url();?>subadmin/questionBankList);
-                       // Swal.fire('Saved!', '', 'success')           
-                       window.location.href = "<?php echo base_url();?>subadmin/questionBankList";                     
+                    if (result.isConfirmed) {
+                        // location.href='<?php echo base_url(); ?>subadmin/questionBankList'"
+                        // window.location(<?php echo base_url(); ?>subadmin/questionBankList);
+                        // Swal.fire('Saved!', '', 'success')           
+                        window.location.href = "<?php echo base_url(); ?>subadmin/questionBankList";
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
-                    })
+                })
             })
         </script>
         <!-- Footer -->

@@ -6,15 +6,17 @@
             <h1 class="h3 mb-0 text-gray-800">Quiz Bank Form</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >
-                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { echo "Sub"; }?>
-                 Admin Dashboard
-                </a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
-                <li class="breadcrumb-item" ><a href="<?php echo base_url().'subadmin/questionBankList';?>">Question Bank List</a></li>
-                
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>">
+                            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {
+                                echo "Sub";
+                            } ?>
+                            Admin Dashboard
+                        </a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competitions</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/quiz_dashboard'; ?>">Quiz Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'subadmin/questionBankList'; ?>">Question Bank List</a></li>
+
                 </ol>
             </nav>
         </div>
@@ -119,7 +121,7 @@
                                         <div class="row" id="question-eng">
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Question in English<sup class="text-danger">*</sup></label>
-                                                <input type="text" class="form-control input-font" name="que" id="que" placeholder="Enter Question">
+                                                <input type="text" class="form-control input-font" minlength="10" maxlength="5000" name="que" id="que" placeholder="Enter Question">
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -127,7 +129,7 @@
                                         <div class="row" id="question-hindi">
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Question in Hindi<sup class="text-danger">*</sup></label>
-                                                <input type="text" class="form-control input-font" name="que_h" id="que_h" placeholder="Question in Hindi">
+                                                <input type="text" minlength="10" maxlength="5000" class="form-control input-font" name="que_h" id="que_h" placeholder="Question in Hindi">
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -229,17 +231,13 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_eng">
                                             <label class="d-block text-font mr-3">English Option</label>
-
                                             <div class="row mt-3" id="opt1_blk">
                                                 <div class="mb-2  d-flex">
-
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option1_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option1" id="option1">
+                                                            <input class="form-control input-font" type="text" name="option1" id="option1" maxlength="500">
                                                         </div>
 
                                                         <div class="form-check" style="padding-left:0px;" id="option1_image_blk">
@@ -253,7 +251,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option2_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option2" id="option2">
+                                                            <input class="form-control input-font" type="text" name="option2" id="option2" maxlength="500">
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option2_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option2_image" id="option2_image">
@@ -266,7 +264,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option3_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option3" id="option3">
+                                                            <input class="form-control input-font" type="text" name="option3" id="option3" maxlength="500">
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option3_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option3_image" id="option3_image">
@@ -279,7 +277,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option4_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option4" id="option4">
+                                                            <input class="form-control input-font" maxlength="500" type="text" name="option4" id="option4">
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option4_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option4_image" id="option4_image">
@@ -292,7 +290,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option5_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option5" id="option5">
+                                                            <input class="form-control input-font" maxlength="500" type="text" name="option5" id="option5">
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option5_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option5_image" id="option5_image">
@@ -307,7 +305,7 @@
                                                 <div class="mb-2  d-flex">
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option1_h_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option1_h" id="option1_h" required>
+                                                            <input class="form-control input-font" type="text" name="option1_h" maxlength="500" id="option1_h" required>
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option1_h_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option1_h_image" id="option1_h_image">
@@ -320,7 +318,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option2_h_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option2_h" id="option2_h" required>
+                                                            <input class="form-control input-font" type="text" name="option2_h" maxlength="500" id="option2_h" required>
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option2_h_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option2_h_image" id="option2_h_image">
@@ -333,7 +331,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option3_h_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option3_h" id="option3_h" required>
+                                                            <input class="form-control input-font" type="text" name="option3_h" maxlength="500" id="option3_h" required>
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option3_h_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option3_h_image" id="option3_h_image">
@@ -346,7 +344,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option4_h_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option4_h" id="option4_h">
+                                                            <input class="form-control input-font" type="text" name="option4_h" maxlength="500" id="option4_h">
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option4_h_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option4_h_image" id="option4_h_image">
@@ -359,7 +357,7 @@
 
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option5_h_text_blk">
-                                                            <input class="form-control input-font" type="text" name="option5_h" id="option5_h" required>
+                                                            <input class="form-control input-font" type="text" name="option5_h" maxlength="500" id="option5_h" required>
                                                         </div>
                                                         <div class="form-check" style="padding-left:0px;" id="option5_h_image_blk">
                                                             <input class="form-control-file input-font" type="file" name="option5_h_image" id="option5_h_image">
@@ -440,21 +438,21 @@
                                                 <th>Hindi <br> Question <br>Title </th>
 
                                                 <th>Number of <br>Options</th>
-                                                 <th>English <br>Options </th>
-                                                 <th>Hindi <br>Options</th> 
+                                                <th>English <br>Options </th>
+                                                <th>Hindi <br>Options</th>
                                                 <th>Correct Option No</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <?php if (!empty($allRecords)) {
-                                              $i = 1;
+                                            $i = 1;
                                             foreach ($allRecords as $row) { ?>
 
                                                 <tbody id="que_body">
                                                     <?php
-                                                  
+
                                                     foreach ($row['queList'] as $r) {
-                                                     
+
                                                     ?>
                                                         <tr id="row<?php echo $r['que_id']; ?>">
                                                             <td><?php echo $i; ?></td>
@@ -474,12 +472,12 @@
                                                                     if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
                                                                         <br>
                                                                         <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
-                                                                      <?php  } 
+                                                                <?php  }
                                                                 } else {
                                                                     echo "--";
                                                                 } ?>
 
-                                                               
+
                                                             </td>
                                                             <td>
                                                                 <?php if ($r['language'] == 2 ||  $r['language'] == 3) {
@@ -487,149 +485,147 @@
                                                                     if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
                                                                         <br>
                                                                         <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
-                                                                    <?php } 
+                                                                <?php }
                                                                 } else {
                                                                     echo "--";
                                                                 } ?>
-                                                                
+
                                                             </td>
                                                             <td><?php echo $r['no_of_options']; ?></td>
 
                                                             <?php
-                                                    // $opt1_e = $opt2_e = $opt3_e = $opt4_e = $opt5_e = "NA";
-                                                    // $opt1_h = $opt2_h = $opt3_h = $opt4_h = $opt5_h = "NA";
-                                                    if ($r['option1_image'] != "") {                                                       
-                                                        $op1_img = $r['option1_image'];
-                                                        $opt1_e = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op1_img.'>';
-                                                    }else{
-                                                        if($r['opt1_e']!=""){
-                                                            $opt1_e = $r['opt1_e'];
-                                                        }else{
-                                                            $opt1_e = "NA";
-                                                        }
-                                                       
-                                                    }
-                                                    if ($r['option2_image'] != "") {
-                                                        $op2_img = $r['option2_image'];
-                                                        $opt2_e = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op2_img.'>';
-                                                    }else{
-                                                        if($r['opt2_e']!=""){
-                                                            $opt2_e = $r['opt2_e'];
-                                                        }else{
-                                                            $opt2_e = "NA";
-                                                        }
-                                                      
-                                                    }
-                                                    if ($r['option3_image'] != "") {
-                                                        $op3_img = $r['option3_image'];
-                                                        $opt3_e = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op3_img.'>';
-                                                    }else{
-                                                        if($r['opt3_e']!=""){
-                                                            $opt3_e = $r['opt3_e'];
-                                                        }else{
-                                                            $opt3_e = "NA";
-                                                        }
-                                                      
-                                                    }
-                                                    if ($r['option4_image'] != "") {
-                                                        $op4_img = $r['option4_image'];
-                                                        $opt4_e = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op4_img.'>';
-                                                    }else{
-                                                       
-                                                        if($r['opt4_e']!=""){
-                                                            $opt4_e = $r['opt4_e'];
-                                                        }else{
-                                                            $opt4_e = "NA";
-                                                        }
-                                                    }
-                                                    if ($r['option5_image'] != "") {
-                                                        $op5_img = $r['option5_image'];
-                                                        $opt5_e = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op5_img.'>';
-                                                    }else{
-                                                       
-                                                        if($r['opt5_e']!=""){
-                                                            $opt5_e = $r['opt5_e'];
-                                                        }else{
-                                                            $opt5_e = "NA";
-                                                        }
-                                                    }
-                                                    if ($r['option1_h_image'] != "") {
-                                                        $op1_h_img = $r['option1_h_image'];
-                                                        $opt1_h = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op1_h_img.'>';
-                                                    }else{
-                                                       
-                                                        if($r['opt1_h']!=""){
-                                                            $opt1_h = $r['opt1_h'];
-                                                        }else{
-                                                            $opt1_h = "NA";
-                                                        }
-                                                    }
-                                                    if ($r['option2_h_image'] != "") {
-                                                        $op2_h_img = $r['option2_h_image'];
-                                                        $opt2_h = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op2_h_img.'>';
-                                                    }else{
-                                                      
-                                                        if($r['opt2_h']!=""){
-                                                            $opt2_h = $r['opt2_h'];
-                                                        }else{
-                                                            $opt2_h = "NA";
-                                                        }
-                                                    }
-                                                    if ($r['option3_h_image'] != "") {
-                                                        $op3_h_img = $r['option3_h_image'];
-                                                        $opt3_h = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op3_h_img.'>';
-                                                    }else{
-                                                       
-                                                        if($r['opt3_h']!=""){
-                                                            $opt3_h = $r['opt3_h'];
-                                                        }else{
-                                                            $opt3_h = "NA";
-                                                        }
-                                                    }
-                                                    if ($r['option4_h_image'] != "") {
-                                                        $op4_h_img = $r['option4_h_image'];
-                                                        $opt4_h = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op4_h_img.'>';
-                                                    }else{
-                                                        
-                                                        if($r['opt4_e']!=""){
-                                                            $opt4_h = $r['opt4_e'];
-                                                        }else{
-                                                            $opt4_h = "NA";
-                                                        }
-                                                    }
-                                                    if ($r['option5_h_image'] != "") {
-                                                        $op5_h_img = $r['option5_h_image'];
-                                                        $opt5_h = '<img width="100" src='.base_url().'uploads/que_img/bankid'. $r['que_bank_id']. '/' .$op5_h_img.'>';
-                                                    }else{
-                                                       
-                                                        if($r['opt5_h']!=""){
-                                                            $opt5_h = $r['opt5_h'];
-                                                        }else{
-                                                            $opt5_h = "NA";
-                                                        }
-                                                    }
+                                                            // $opt1_e = $opt2_e = $opt3_e = $opt4_e = $opt5_e = "NA";
+                                                            // $opt1_h = $opt2_h = $opt3_h = $opt4_h = $opt5_h = "NA";
+                                                            if ($r['option1_image'] != "") {
+                                                                $op1_img = $r['option1_image'];
+                                                                $opt1_e = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op1_img . '>';
+                                                            } else {
+                                                                if ($r['opt1_e'] != "") {
+                                                                    $opt1_e = $r['opt1_e'];
+                                                                } else {
+                                                                    $opt1_e = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option2_image'] != "") {
+                                                                $op2_img = $r['option2_image'];
+                                                                $opt2_e = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op2_img . '>';
+                                                            } else {
+                                                                if ($r['opt2_e'] != "") {
+                                                                    $opt2_e = $r['opt2_e'];
+                                                                } else {
+                                                                    $opt2_e = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option3_image'] != "") {
+                                                                $op3_img = $r['option3_image'];
+                                                                $opt3_e = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op3_img . '>';
+                                                            } else {
+                                                                if ($r['opt3_e'] != "") {
+                                                                    $opt3_e = $r['opt3_e'];
+                                                                } else {
+                                                                    $opt3_e = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option4_image'] != "") {
+                                                                $op4_img = $r['option4_image'];
+                                                                $opt4_e = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op4_img . '>';
+                                                            } else {
 
-                                                    ?>
-                                                    <td>
-                                                        <?php if ($r['language'] == 1 || $r['language'] == 3) {
-                                                            echo "1. " . $opt1_e . '<br>2. ' . $opt2_e . '<br>3. ' . $opt3_e . '<br>4. ' . $opt4_e . '<br>5. ' . $opt5_e;
-                                                        } else {
-                                                            echo "NA";
-                                                        }
-                                                        ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php if ($r['language'] == 2 || $r['language'] == 3) {
-                                                            echo "1. " . $opt1_h . '<br>2. ' . $opt2_h . '<br>3. ' . $opt3_h . '<br>4. ' . $opt4_h . '<br>5. ' . $opt5_h; ?>
-                                                        <?php } else {
-                                                            echo "NA";
-                                                        } ?>
-                                                    </td>
+                                                                if ($r['opt4_e'] != "") {
+                                                                    $opt4_e = $r['opt4_e'];
+                                                                } else {
+                                                                    $opt4_e = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option5_image'] != "") {
+                                                                $op5_img = $r['option5_image'];
+                                                                $opt5_e = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op5_img . '>';
+                                                            } else {
+
+                                                                if ($r['opt5_e'] != "") {
+                                                                    $opt5_e = $r['opt5_e'];
+                                                                } else {
+                                                                    $opt5_e = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option1_h_image'] != "") {
+                                                                $op1_h_img = $r['option1_h_image'];
+                                                                $opt1_h = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op1_h_img . '>';
+                                                            } else {
+
+                                                                if ($r['opt1_h'] != "") {
+                                                                    $opt1_h = $r['opt1_h'];
+                                                                } else {
+                                                                    $opt1_h = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option2_h_image'] != "") {
+                                                                $op2_h_img = $r['option2_h_image'];
+                                                                $opt2_h = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op2_h_img . '>';
+                                                            } else {
+
+                                                                if ($r['opt2_h'] != "") {
+                                                                    $opt2_h = $r['opt2_h'];
+                                                                } else {
+                                                                    $opt2_h = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option3_h_image'] != "") {
+                                                                $op3_h_img = $r['option3_h_image'];
+                                                                $opt3_h = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op3_h_img . '>';
+                                                            } else {
+
+                                                                if ($r['opt3_h'] != "") {
+                                                                    $opt3_h = $r['opt3_h'];
+                                                                } else {
+                                                                    $opt3_h = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option4_h_image'] != "") {
+                                                                $op4_h_img = $r['option4_h_image'];
+                                                                $opt4_h = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op4_h_img . '>';
+                                                            } else {
+
+                                                                if ($r['opt4_e'] != "") {
+                                                                    $opt4_h = $r['opt4_e'];
+                                                                } else {
+                                                                    $opt4_h = "NA";
+                                                                }
+                                                            }
+                                                            if ($r['option5_h_image'] != "") {
+                                                                $op5_h_img = $r['option5_h_image'];
+                                                                $opt5_h = '<img width="100" src=' . base_url() . 'uploads/que_img/bankid' . $r['que_bank_id'] . '/' . $op5_h_img . '>';
+                                                            } else {
+
+                                                                if ($r['opt5_h'] != "") {
+                                                                    $opt5_h = $r['opt5_h'];
+                                                                } else {
+                                                                    $opt5_h = "NA";
+                                                                }
+                                                            }
+
+                                                            ?>
+                                                            <td>
+                                                                <?php if ($r['language'] == 1 || $r['language'] == 3) {
+                                                                    echo "1. " . $opt1_e . '<br>2. ' . $opt2_e . '<br>3. ' . $opt3_e . '<br>4. ' . $opt4_e . '<br>5. ' . $opt5_e;
+                                                                } else {
+                                                                    echo "NA";
+                                                                }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php if ($r['language'] == 2 || $r['language'] == 3) {
+                                                                    echo "1. " . $opt1_h . '<br>2. ' . $opt2_h . '<br>3. ' . $opt3_h . '<br>4. ' . $opt4_h . '<br>5. ' . $opt5_h; ?>
+                                                                <?php } else {
+                                                                    echo "NA";
+                                                                } ?>
+                                                            </td>
                                                             <td><?php echo $r['corr_opt_e']; ?></td>
                                                             <td><span class="btn btn-sm btn-danger deletedata" onclick="deleteQuestion(<?php echo $r['que_id']; ?>);" data-id='<?php echo $r['que_id']; ?>'>Delete</td>
 
                                                         </tr>
-                                                    <?php $i++; } ?>
+                                                    <?php $i++;
+                                                    } ?>
 
                                                 </tbody>
                                         <?php  }
@@ -653,8 +649,8 @@
                                                 <h5 class="modal-title" id="exampleModalLabel">Submit Form</h5>
                                                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
                                             </div>
                                             <div class="modal-body">
                                                 <p>Are you sure you want to Submit?</p>
@@ -700,6 +696,25 @@
 
         <!-- End of Content Wrapper -->
         <script>
+            // (function() {
+            //     'use strict'
+
+            //     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            //     var forms = document.querySelectorAll('.needs-validation')
+
+            //     // Loop over them and prevent submission
+            //     Array.prototype.slice.call(forms)
+            //         .forEach(function(form) {
+            //             form.addEventListener('submit', function(event) {
+            //                 if (!form.checkValidity()) {
+            //                     event.preventDefault()
+            //                     event.stopPropagation()
+            //                 }
+
+            //                 form.classList.add('was-validated')
+            //             }, false)
+            //         })
+            // })()
             //Banner Image Preview
             var loadFileBanner = function(event) {
                 $("#outputbanner").show();
@@ -839,46 +854,46 @@
                     var no_of_ques = $("#no_of_ques").val();
 
                     Swal.fire({
-                                title: 'Are you sure you want to Submit?',
-                                showDenyButton: true,
-                                showCancelButton: false,
-                                confirmButtonText: 'Submit',
-                                denyButtonText: `Cancel`,
-                                }).then((result) => {
-                                /* Read more about isConfirmed, isDenied below */
-                                if (result.isConfirmed) {  
+                        title: 'Are you sure you want to Submit?',
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: 'Submit',
+                        denyButtonText: `Cancel`,
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
 
-                    jQuery.ajax({
-                        type: "GET",
-                        url: '<?php echo base_url(); ?>subadmin/toCheckNoOfQueInBank/?id=' + que_bank_id + '&no=' + no_of_ques,
-                        dataType: 'json',
-                        success: function(res) {
-                            // console.log(res);
-                            if (res.status == 0) {
-                                Swal.fire(res.message);
-                                if ($("#err_que_bank").next(".validation").length == 0) {
-                                    $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please add questions equal to total no of questions in bank</div>");
+                            jQuery.ajax({
+                                type: "GET",
+                                url: '<?php echo base_url(); ?>subadmin/toCheckNoOfQueInBank/?id=' + que_bank_id + '&no=' + no_of_ques,
+                                dataType: 'json',
+                                success: function(res) {
+                                    // console.log(res);
+                                    if (res.status == 0) {
+                                        Swal.fire(res.message);
+                                        if ($("#err_que_bank").next(".validation").length == 0) {
+                                            $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please add questions equal to total no of questions in bank</div>");
+                                        }
+                                        if (!focusSet) {
+                                            $("#err_que_bank").focus();
+                                        }
+                                    } else {
+                                        $("#err_que_bank").next(".validation").remove();
+
+                                        window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
+                                    }
+
+                                },
+                                error: function(xhr, status, error) {
+                                    //toastr.signuperr('Failed to add '+xData.name+' in wishlist.');
+                                    console.log(error);
                                 }
-                                if (!focusSet) {
-                                    $("#err_que_bank").focus();
-                                }
-                            } else {
-                                $("#err_que_bank").next(".validation").remove();
+                            });
 
-                                window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
-                            }
-
-                        },
-                        error: function(xhr, status, error) {
-                            //toastr.signuperr('Failed to add '+xData.name+' in wishlist.');
-                            console.log(error);
+                        } else if (result.isDenied) {
+                            // Swal.fire('Changes are not saved', '', 'info')
                         }
-                    });
-
-                } else if (result.isDenied) {
-                                    // Swal.fire('Changes are not saved', '', 'info')
-                                }
-                                })
+                    })
 
                 });
                 $('input[type=radio][name=que_type]').change(function() {
@@ -937,9 +952,9 @@
                     var no_of_ques = $("#no_of_ques").val();
                     // var total_marks = $("#total_marks").val();
 
-                    if (title == "") {
+                    if (title == "" || title.length < 10 || title.length > 500) {
                         if ($("#title").next(".validation").length == 0) {
-                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter title</div>");
+                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter valid title with minimum length 10 and maximum length 500 characters.</div>");
                         }
                         if (!focusSet) {
                             $("#title").focus();
@@ -948,7 +963,7 @@
                     } else {
                         $("#title").next(".validation").remove();
                     }
-                    if (no_of_ques == "") {
+                    if (no_of_ques == "" || no_of_ques == 0) {
                         if ($("#no_of_ques").next(".validation").length == 0) {
                             $("#no_of_ques").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter no of ques</div>");
                         }
@@ -977,53 +992,53 @@
                         var fd = new FormData(userForm);
 
                         Swal.fire({
-                                title: 'Are you sure you want to Update?',
-                                showDenyButton: true,
-                                showCancelButton: false,
-                                confirmButtonText: 'Update',
-                                denyButtonText: `Cancel`,
-                                }).then((result) => {
-                                /* Read more about isConfirmed, isDenied below */
-                                if (result.isConfirmed) {  
+                            title: 'Are you sure you want to Update?',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Update',
+                            denyButtonText: `Cancel`,
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
 
-                        jQuery.ajax({
-                            type: "POST",
-                            url: url,
-                            dataType: 'json',
-                            data: fd,
-                            cache: false,
-                            processData: false,
-                            contentType: false,
-                            success: function(res) {
-                                if (res.status == 0) {
-                                    Swal.fire(res.message);
+                                jQuery.ajax({
+                                    type: "POST",
+                                    url: url,
+                                    dataType: 'json',
+                                    data: fd,
+                                    cache: false,
+                                    processData: false,
+                                    contentType: false,
+                                    success: function(res) {
+                                        if (res.status == 0) {
+                                            Swal.fire(res.message);
 
-                                } else {
-                                    Swal.fire(res.message);
-                                    var form = document.getElementById("que_bank_form");
-                                    var elements = form.elements;
-                                    for (var i = 0, len = elements.length; i < len; ++i) {
-                                        elements[i].readOnly = true;
+                                        } else {
+                                            Swal.fire(res.message);
+                                            var form = document.getElementById("que_bank_form");
+                                            var elements = form.elements;
+                                            for (var i = 0, len = elements.length; i < len; ++i) {
+                                                elements[i].readOnly = true;
+                                            }
+                                            var language = $('input[name="language"]:checked').val();
+
+                                            $("#que_language").val(language);
+                                            $('input[name="language"]').attr('disabled', 'disabled');
+                                            // $('#que_bank_id').val(res.id);
+                                            $('#que_bank_id').val(que_bank_id);
+                                            $('#questions_form').show();
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                                        console.log(error);
                                     }
-                                    var language = $('input[name="language"]:checked').val();
+                                });
 
-                                    $("#que_language").val(language);
-                                    $('input[name="language"]').attr('disabled', 'disabled');
-                                    // $('#que_bank_id').val(res.id);
-                                    $('#que_bank_id').val(que_bank_id);
-                                    $('#questions_form').show();
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
-                                console.log(error);
+                            } else if (result.isDenied) {
+                                // Swal.fire('Changes are not saved', '', 'info')
                             }
-                        });
-
-                    } else if (result.isDenied) {
-                                    // Swal.fire('Changes are not saved', '', 'info')
-                                }
-                                })
+                        })
 
                     } else {
                         return false;
@@ -1252,7 +1267,7 @@
                         if ($("#que_image").val() != '') {
                             var fileSize = $('#que_image')[0].files[0].size;
 
-                            if (fileSize > 204800 ) {
+                            if (fileSize > 204800) {
                                 if ($("#imgError").next(".validation").length == 0) {
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file size less than 200 KB </div>");
                                 }
@@ -1665,7 +1680,7 @@
 
                     var fileSize = $("#option" + id + "_image")[0].files[0].size;
 
-                    if (fileSize > 204800 ) {
+                    if (fileSize > 204800) {
                         i++;
 
                         if ($("#imgErrorNew" + id).next(".validation").length == 0) {
@@ -1719,7 +1734,7 @@
 
                     var fileSize = $("#option" + id + "_h_image")[0].files[0].size;
 
-                    if (fileSize > 204800 ) {
+                    if (fileSize > 204800) {
                         i++;
 
                         if ($("#imgErrorNewHindi" + id).next(".validation").length == 0) {
@@ -1767,7 +1782,7 @@
 
                     var fileSize = $("#option" + id + "_image")[0].files[0].size;
 
-                    if (fileSize > 204800 ) {
+                    if (fileSize > 204800) {
                         i++;
 
                         if ($("#imgErrorNew" + id).next(".validation").length == 0) {
@@ -1821,7 +1836,7 @@
 
                     var fileSize = $("#option" + id + "_h_image")[0].files[0].size;
 
-                    if (fileSize > 204800 ) {
+                    if (fileSize > 204800) {
                         i++;
 
                         if ($("#imgErrorNewHindi" + id).next(".validation").length == 0) {
@@ -2070,31 +2085,31 @@
                     showCancelButton: false,
                     confirmButtonText: 'Delete',
                     denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    
-                    if (result.isConfirmed) {                       
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
                         $.ajax({
-                        type: 'POST',
-                        url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
-                        data: {
-                            que_id: que_id,
-                        },
-                        success: function(result) {
-                            $('#row' + que_id).css({
-                                'display': 'none'
-                            });
-                            Swal.fire('Question Deleted');
-                        },
-                        error: function(result) {
-                            Swal.fire("Error,Please try again.");
-                        }
-                    });
-                                                  
+                            type: 'POST',
+                            url: '<?php echo base_url(); ?>subadmin/deleteQuestion',
+                            data: {
+                                que_id: que_id,
+                            },
+                            success: function(result) {
+                                $('#row' + que_id).css({
+                                    'display': 'none'
+                                });
+                                Swal.fire('Question Deleted');
+                            },
+                            error: function(result) {
+                                Swal.fire("Error,Please try again.");
+                            }
+                        });
+
                     } else if (result.isDenied) {
-                       
+
                     }
-                    })             
-               
+                })
+
             }
             $("#no_of_ques").keydown(function(e) {
 
@@ -2118,23 +2133,23 @@
             //         e.preventDefault();
             //     }
             // });
-            $('.cancel_qb_form').on('click',function(){
+            $('.cancel_qb_form').on('click', function() {
                 Swal.fire({
                     title: 'Are you sure you want to Cancel?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Cancel',
                     denyButtonText: `Close`,
-                    }).then((result) => {
+                }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        // location.href='<?php echo base_url();?>subadmin/questionBankList'"
-                        // window.location(<?php echo base_url();?>subadmin/questionBankList);
-                       // Swal.fire('Saved!', '', 'success')           
-                       window.location.href = "<?php echo base_url();?>subadmin/questionBankList";                     
+                    if (result.isConfirmed) {
+                        // location.href='<?php echo base_url(); ?>subadmin/questionBankList'"
+                        // window.location(<?php echo base_url(); ?>subadmin/questionBankList);
+                        // Swal.fire('Saved!', '', 'success')           
+                        window.location.href = "<?php echo base_url(); ?>subadmin/questionBankList";
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
-                    })
+                })
             })
         </script>
