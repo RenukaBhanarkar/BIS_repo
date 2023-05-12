@@ -744,10 +744,14 @@
             // $this->db->where('id',$quiz_id); 
             // $quiz = $this->db->get('tbl_quiz_details')->row_array();
             // $curr_que_bank_id= $quiz['que_bank_id'];
-
+            //echo "qui".$quiz_id;
             $this->db->where('quiz_linked_id', $quiz_id);
             $queBank = $this->db->get('tbl_que_bank')->row_array();
+
             $replica_of_qb_id = $queBank['replica_of_qb_id'];
+            // echo json_encode( $queBank);
+            // echo  "replica_of_qb_id". $replica_of_qb_id ;
+            // exit();
             if ($replica_of_qb_id != 0) {
                 // this is replica of que bank
                 $this->db->where('que_bank_id', $replica_of_qb_id);
@@ -801,7 +805,16 @@
             $que_bank_id = $quiz['que_bank_id'];
             $total_question = $quiz['total_question'];
             $query = $this->db->query("SELECT * FROM tbl_que_details WHERE que_bank_id='$que_bank_id' ORDER BY RAND ( ) LIMIT $total_question");
-            return $query->result_array();
+            //echo json_encode( $query->result_array());exit();
+
+            $rs = array();
+            $res = $query->result_array();
+            foreach ($res as $row){
+                $row['selected_op'] = 0;
+                array_push($rs,$row);
+            }
+            
+            return $rs;
         }
         public function getQuestionDetailsForPartiallyAppered($user_id,$quiz_id,$question_list){
             $this->db->select('*');

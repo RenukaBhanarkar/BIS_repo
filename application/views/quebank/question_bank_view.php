@@ -58,7 +58,7 @@
                                                 <th>Ques Type</th>
                                                 <th>Ques Title Eng</th>
                                                 <th>Ques Title Hindi</th>
-                                                <th>Image Ques</th>
+                                                <!-- <th>Image Ques</th> -->
                                                 <th>Number of Options</th>
                                                 <th>English Options </th>
                                                 <th>Hindi Options</th>
@@ -83,23 +83,36 @@
                                                             echo "Text and Image";
                                                         } ?>
                                                     </td>
-                                                    <td>
+
+                                                   
+                                                     <td>
                                                         <?php if ($r['language'] == 1  || $r['language'] == 3) {
-                                                            echo $r['que'];
+                                                             echo $r['que'];
+                                                            if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
+                                                                <br>
+                                                                <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
+                                                            <?php } 
+                                                           
                                                         }else { echo "--";}  ?>
                                                     </td>
 
+
+                                                   
                                                     <td> 
                                                         <?php if ($r['language'] == 2 || $r['language'] == 3) {
                                                                 echo $r['que_h'];
+                                                                if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
+                                                                    <br>
+                                                                    <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
+                                                                <?php } 
                                                         } else { echo "--";} ?>
                                                     </td>
-                                                    <td>
+                                                    <!-- <td>
                                                     <?php if ($r['que_type'] == 2 || $r['que_type'] == 3) { ?>
                                                             <br>
                                                             <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $r['que_bank_id']; ?>/<?php echo $r['image']; ?>">
                                                         <?php } else { echo "--";} ?>
-                                                    </td>
+                                                    </td> -->
 
                                                     <td><?php echo $r['no_of_options']; ?></td>
 
@@ -286,9 +299,9 @@
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
                 </div>
     </div>
-    <div class="col-md-12 submit_btn p-3">
+    <!-- <div class="col-md-12 submit_btn p-3">
         <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Back</a>
-    </div>
+    </div> -->
 </div>
 <!-- Modal -->
 <!--<div class="modal fade" id="view_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

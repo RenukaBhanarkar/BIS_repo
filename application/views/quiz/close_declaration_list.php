@@ -29,15 +29,16 @@
                     <table id="example" class="table-bordered display nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                <!-- <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th> -->
                                 <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email ID</th>
                                 <th>Contact No.</th>
-                                <th>Date</th>
-                                <th>Time</th>
+                                <th>Date</th>                                
                                 <th>Score</th>
+                                <th>Time Taken</th>
                                 <th>Prize</th>
+                                <!-- <th>Prize</th> -->
                                 
                             </tr>
                         </thead>
@@ -45,7 +46,7 @@
                             <?php $j = 1;
                                  foreach ($UsersDetails as $key => $user): ?>
                             <tr>
-                                <td><input class="form-control-input" type="checkbox" value="<?= $user['user_id']?>" id="flexCheckDefault" name="check[]"></td>
+                                <!-- <td><input class="form-control-input" type="checkbox" value="<?= $user['user_id']?>" id="flexCheckDefault" name="check[]"></td> -->
                                 <input type="hidden" name="user_id[]"value="<?= $user['user_id']?>">
                                 <input type="hidden" name="quiz_id"value="<?= $user['quiz_id']?>">
                                 <td><?= $j;?></td>
@@ -53,9 +54,17 @@
                                 <td><?= $user['email']?></td>
                                 <td><?= $user['user_mobile']?></td>
                                 <td><?= $user['created_on']?></td>
-                                <td><?= $user['start_time']?></td>
+                               
+                                
                                 <td><?= $user['score']?></td>
-                                <td>
+                                <?php 
+                                 $t =  $user['time_taken'];
+                                 $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+                                 ?>
+                                 <td><?= $timeTaken ?></td> 
+                                 <td><?= $user['prize']?></td>
+                                <!-- <td><?= $user['time_taken']?> Seconds</td> -->
+                                <!-- <td>
                                     <select id="prize" name="prize[]" class="form-control input-font" value="prize">
                                         <option value="0">Select Option</option>
                                         <option value="1">First Prize</option>
@@ -64,10 +73,9 @@
                                        
                                         <option value="5">Consolation Prize</option>
                                     </select>
-                                </td>
-                                
+                                </td> -->
                             </tr>
-                            
+                             
                             <?php $j++; endforeach ?>
                             
                             
@@ -79,9 +87,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-12" style="text-align: end; padding: 31px;">
-                <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Declared</a>
-            </div>
+            
             <div class="modal fade" id="submitForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">

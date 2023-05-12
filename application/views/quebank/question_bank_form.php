@@ -419,7 +419,7 @@
                                 <!-- <a class="btn btn-primary btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Create</a> -->
                                 <a class="btn btn-primary btn-sm text-white" id="createQuestion">Create</a>
                                 <!-- <input type="submit" name="Submit" id="createQueBank" class="btn btn-info btn-sm"> -->
-                                <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                                <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
                             </div>
                             <div class="row">
                                 <div class="col-12 mt-3">
@@ -1677,7 +1677,7 @@
                             } else if (data[i].que_type == 2) {
                                 var type = "Image";
                             } else {
-                                var type = "Both";
+                                var type = "Text and Image";
                             }
                             if (data[i].que_type == 2) {
                                 if (data[i].que == 0 || data[i].que == '') {

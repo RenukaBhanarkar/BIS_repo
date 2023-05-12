@@ -4,7 +4,12 @@
         <h1 class="h3 mb-0 text-gray-800">Quiz View</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                    <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
@@ -145,9 +150,9 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($firstprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if(empty($firstprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                            <?php   } else { ?>
                                   <p><img src="../../<?= $firstprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
@@ -177,16 +182,16 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($secondprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if(empty($secondprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                             <?php } else { ?>
                                   <p><img src="../../<?= $secondprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
                         </div>
                     </div>
-                    <?php }  else { echo "Second Prizes not available"; } ?>
+                    <?php }  ?>
                     <?php if (!empty ($thirdprize) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
@@ -209,16 +214,16 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($thirdprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
-                                  <p><img src="../../<?= $fourthprize['prize_img']; ?>" style="width:200px;"></p>
+                            <?php if(empty($thirdprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                             <?php } else { ?>
+                                  <p><img src="../../<?= $thirdprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
                         </div>
                     </div>
-                    <?php }  else { echo "Third Prizes not available"; } ?>
+                    <?php }?>
                     <?php if (!empty ($fourthprize) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
@@ -241,16 +246,16 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($fourthprize['prize_img']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if(empty($fourthprize['prize_img'])) { ?>                              
+                                <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" width="100"alt="" class="join_img">
+                             <?php } else { ?>
                                   <p><img src="../../<?= $fourthprize['prize_img']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
                         </div>
                     </div>
-                    <?php } else { echo "Consolation Prizes not available"; } ?>
+                    <?php } ?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Available for</h4>
@@ -290,7 +295,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Language</label>
                             <div>
-                                <p id="qbquestion"></p>
+                                <p id="language"></p>
                             </div>
                         </div>
                     </div>
@@ -324,9 +329,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 submit_btn p-3">
+                <!-- <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Quiz/quiz_list'">Back</a>
-                </div>
+                </div> -->
                 <!-- Modal -->
                 <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -350,7 +355,7 @@
         </div>
         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
             <div class="col-12 mt-3">
-                <form name="quiz_reg" action="<?= base_url() . 'Admin/updateQuizStatus/' . $quizdata['id'] ?>" method="post" enctype="multipart/form-data">
+                <form name="quiz_reg" id="quiz_reg" action="<?= base_url() . 'Admin/updateQuizStatus/' . $quizdata['id'] ?>" method="post" enctype="multipart/form-data">
                     <div class="row" id="remarkdiv">
                         <div class="mb-2 col-md-8">
                             <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
@@ -363,10 +368,14 @@
             <?php if( $quizdata['status']==2){?>
             <div class="col-md-12 submit_btn p-3">
                 <!-- <a id="approve" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval">Approval</a> -->
-                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve">
+                <!-- <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve"> -->
+                <!-- <input type="button" name="Approval" value="Approve" class="btn btn-success btn-sm text-white approve" id="approve"> -->
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
                 <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
                 <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-danger btn-sm text-white cancel" id="cancel" >Cancel</a>
+                <button data-id="<?php echo $quizdata['id']; ?>" class="btn btn-success btn-sm text-white approve">Approve</button>
+                
             </div>
             <?php } ?>
             </form>
@@ -620,9 +629,69 @@
                 $("#qbid").text(res.result.que_bank_id);
                 $("#qbtitle").text(res.result.title);
                 $("#qbquestion").text(res.result.no_of_ques);
+                if (res.result.language == 1){
+                    var lang = "English";
+                } if (res.result.language == 2){
+                    var lang = "Hindi";
+                }else{
+                    var lang = "English and Hindi";
+                }
+                $("#language").text(lang);
                 getQuestionListByQueBankId(id)
             }
         });
         // body...
     }
+
+    $('#cancel').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        window.location.replace('<?php echo base_url().'Quiz/manage_quiz_list' ?>');
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
+
+    $('.approve').on('click',function(e){
+        e.preventDefault();
+        var id =$(this).attr('data-id');
+        Swal.fire({
+                    title: 'Are you sure you want to Approve?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Approve',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) { 
+                        $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url(); ?>Admin/updateQuizStatus/'+id,
+                        data: {
+                            status_id: '3',
+                            remark: '',
+                        },
+                        success: function(result) {
+                            window.location.replace('<?php echo base_url().'Quiz/manage_quiz_list' ?>');
+                        },
+                        error: function(result) {
+                            alert("Error,Please try again.");
+                        }
+                    });                      
+                    
+                                                  
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
 </script>

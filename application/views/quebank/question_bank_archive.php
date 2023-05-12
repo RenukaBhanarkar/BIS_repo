@@ -29,7 +29,7 @@
                                 <th>Quiz Bank ID</th>
                                 <th>Question Bank Title</th>
                                 <th>Number of Questions</th>
-                                <th>Total Marks</th>
+                              
                                 <th>Date Created</th>
                                 <th>Last Edited</th>
                                 <th>Linked Quiz</th>
@@ -48,7 +48,7 @@
                                         <td><?php echo $row['que_bank_id']; ?></td>
                                         <td><?php echo $row['title']; ?></td>
                                         <td><?php echo $row['no_of_ques']; ?></td>
-                                        <td><?php echo $row['total_marks']; ?></td>
+                                       
                                         <td><?php echo date('d-m-Y', strtotime($row["created_on"])) ?></td>
                                         <?php if ($row["modified_on"]) { ?>
                                             <td><?php echo date('d-m-Y', strtotime($row["modified_on"])) ?></td>

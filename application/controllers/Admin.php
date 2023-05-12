@@ -838,7 +838,7 @@ class Admin extends CI_Controller
                   $msg = "Dear " . $name .
                     " <p>You are added on the BIS Portal as Admin . Your login credentials for the portal are:
                     </p>
-                    <p>Username: " . $username . "</p>
+                    <p>Username: " . $email_id . "</p>
                     <p>Password: " . $random_pass . "</p>";
                 $subject = "Login Credentials for the BIS Portal.";
 
@@ -898,7 +898,8 @@ class Admin extends CI_Controller
         if (empty($data)) {
             $dbObj = array(
                 'name' =>  $name,
-                'email_id' => $email,               
+                'email_id' => $email, 
+                'username' => $email,               
                 'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
                 'modified_by' => $admin_id,
             );

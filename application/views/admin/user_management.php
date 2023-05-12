@@ -5,8 +5,11 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">User Management</h1>
                         <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard'; ?>">Super Admin Dashboard</a></li>
-                        
+                        <?php if (encryptids("D", $_SESSION['admin_type']) == 1) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Super Admin Dashboard</a></li>
+                <?php }else{ ?>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard'; ?>">Admin Dashboard</a></li>
+                        <?php } ?>
                         <li class="breadcrumb-item active" aria-current="page"><a href="">Admin Creation</a></li>
                         </ol>
                     </div>
@@ -82,13 +85,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <!-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Bureau of Indian Standards 2022</span>
                     </div>
                 </div>
-            </footer>
+            </footer> -->
             <!-- End of Footer -->
 
         </div>

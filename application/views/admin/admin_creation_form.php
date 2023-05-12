@@ -126,7 +126,7 @@
                     } else{
                         $("#err_uid").next(".validation").remove(); // remove it
                     }
-                    if (uid.length <=7) {
+                    if (uid.length < 8) {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
                             $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter minimum 8 characters</div>");
@@ -165,6 +165,30 @@
                   
 
                 });
+                //unique  email
+                $("#email").change(function() {
+                            var email = $("#email").val();
+                            jQuery.ajax({
+                                type: "GET",
+                                url: 'getUniqueEmail/?email=' + email,
+                                dataType: 'json',
+                                success: function(response) {
+                                    res = JSON.parse(response);
+                                    status = res.status;
+                                    if (status == 'false') {
+                                        $("#email").text("Email-Id already exist. Please enter another email.");
+                                        document.getElementById('email').value = '';
+                                        $("#email").focus();
+                                    } else {
+                                        $("#email").text("");
+                                    }
+                                },
+                                error: function(response) {
+                                    alert("Error,Please try again.");
+                                   // console.log(response);
+                                }
+                            });
+                        });
                 $('#add_admin').on('click', '#Submit', function(e) {
                     e.preventDefault();
                     var focusSet = false;
@@ -172,6 +196,8 @@
                     var is_valid = true;
                     var uid = $("#uid").val();
                     var email = $("#email").val();
+                    var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+                    var username = $("#name").val();
                     if (uid == "") {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
@@ -182,10 +208,10 @@
                         }
                        
                         allfields = false;
-                    } else if (!(uid.length > 6)) {
+                    } else if ((uid.length < 8)) {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
-                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter minimum 6 characters</div>");
+                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter minimum 8 characters</div>");
                         }
                         if (!focusSet) {
                             $("#uid").focus();
@@ -194,6 +220,36 @@
                     } else {
                         $("#err_uid").next(".validation").remove(); // remove it
                     }
+                    if (email == "") {
+                                if ($("#email").next(".validation").length == 0) {
+                                    $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter email</div>");
+                                }
+                                allfields = false;
+                                if (!focusSet) {
+                                    $("#email").focus();
+                                }
+                            } else if (!email.match(email_verify)) {
+                                if ($("#email").next(".validation").length == 0) {
+                                    $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter valid Email</div>");
+                                }
+                                allfields = false;
+                                if (!focusSet) {
+                                    $("#email").focus();
+                                }
+                            } else {
+                                $("#email").next(".validation").remove(); // remove it
+                            }
+                            if (!username.length) {
+                                if ($("#name").next(".validation").length == 0) {
+                                    $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter name</div>");
+                                }
+                                allfields = false;
+                                if (!focusSet) {
+                                    $("#name").focus();
+                                }
+                            } else {
+                                $("#name").next(".validation").remove(); // remove it
+                            }
                     if (allfields) {
 
                         Swal.fire({
