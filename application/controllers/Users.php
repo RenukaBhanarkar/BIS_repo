@@ -277,8 +277,11 @@ class Users extends CI_Controller
             $username        = clearText($this->input->post('username'));
             $password        = clearText($this->input->post('password'));
 
+            /*
+            
+            
+            
             //////////////////////START/////////////
-
             $curl_req = curl_init();
             // $parameters = json_encode(array("userid" => $username, "password" => $password));
             $parameters  = "userid=" . $username . "&password=" . $password;
@@ -303,7 +306,7 @@ class Users extends CI_Controller
             $output = json_decode($response, true);
 
             $userData = array();
-            //if(!empty($output)){ }
+            if(!empty($output)){ 
             if ($output['status_code'] == 1) {
                 $userData = $output['data'];
                 //echo json_encode($userData);echo "<br>";
@@ -390,7 +393,14 @@ class Users extends CI_Controller
 
                 redirect(base_url() . "Users/welcome", 'refresh');
                 return true;
-            } else {
+            } }else {
+
+
+
+
+
+
+                */
                 $user = $this->Admin_model->getLoginUsers($username, $password);
                 if (empty($user)) {
                     $this->session->set_flashdata('MSG', ShowAlert("Invalid username or password.", "DD"));
@@ -407,6 +417,7 @@ class Users extends CI_Controller
                 // 	return true;
                 // }
                 else {
+
                     $admin_id        = encryptids("E", $user['id']);
                     $admin_email        = encryptids("E", $user['email_id']);
                     $admin_name      = encryptids("E", $user['name']);
@@ -433,6 +444,18 @@ class Users extends CI_Controller
                     );
 
                     if ($user['admin_type'] == 1 || $user['admin_type'] == 2 || $user['admin_type'] == 3) {
+                          if ($user['admin_type'] == 3) {
+                            // get permission 
+                            $main_mod_per = $this->Admin_model->mainModulePermission($admin_id);
+                            $sub_mod_per = $this->Admin_model->subModulePermission($admin_id);
+                         //   $activity_per = $this->Admin_model->activityPermission($admin_id);
+                            $sess_permissions = array(
+                                "main_mod_per" => $main_mod_per,
+                                "sub_mod_per" => $sub_mod_per,
+                                "activity_per" => $activity_per,
+                             );
+                             $this->session->set_userdata($sess_permissions);
+                          }
 
                         $this->session->set_userdata($sess_arr);
 
@@ -444,7 +467,7 @@ class Users extends CI_Controller
                         return true;
                     }
                 }
-            }
+           /* }*/
 
             ///////////////////////END/////////////
 

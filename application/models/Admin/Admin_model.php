@@ -3,6 +3,81 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin_model extends CI_Model {
 
+    public function mainModulePermission($id){
+        $admin_id = encryptids("D", $id);
+     
+        $this->db->select('main_module_id');
+        $this->db->from('tbl_set_permissions');
+        $this->db->where('user_id',$admin_id);
+        $this->db->group_by('main_module_id');
+        $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row['main_module_id']);
+            }
+        }
+        //$result = array_values($rs);
+       // echo json_encode($rs);exit();
+       return $rs;
+       
+    }
+    public function subModulePermission($id){
+        $admin_id = encryptids("D", $id);
+     
+        $this->db->select('sub_module_id');
+        $this->db->from('tbl_set_permissions');
+        $this->db->where('user_id',$admin_id);
+        $this->db->where('sub_module_id !=',0);
+        $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row['sub_module_id']);
+            }
+        }
+       // echo json_encode($rs);exit();
+       return $rs;
+        
+    }
+    public function activityPermission($id){
+        $admin_id = encryptids("D", $id);
+        
+        $this->db->select('main_module_id,sub_module_id,permissions');
+        $this->db->from('tbl_set_permissions');
+        $this->db->where('user_id',$admin_id);
+       
+        $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row);
+            }
+        }
+     //  echo json_encode($rs);exit();
+       return $rs;
+        
+    }
+    public function getUsersPermissions($sub_module_id){
+         $admin_id =encryptids("D", $_SESSION['admin_id']);
+        
+        $this->db->select('permissions');
+        $this->db->from('tbl_set_permissions');
+        $this->db->where('user_id',$admin_id);
+        $this->db->where('sub_module_id',$sub_module_id);
+        $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+
+            $result = $query->row_array();
+            $rs = $result['permissions'];           
+            $rs = explode(',',$rs);
+        }
+     //  echo json_encode($rs);exit();
+       
+       return $rs;
+        
+    }
     public function getLoginUsers($username,$password)
     {
         $this->db->where('username',$username);
@@ -20,6 +95,20 @@ class Admin_model extends CI_Model {
         $query = $this->db->select('*')
         ->from('tbl_admin')
         ->where('id',$id)       
+        ->get();
+   
+        $rs = array();
+        if ($query->num_rows() > 0) {
+        $rs = $query->row_array();
+        }
+        return $rs;
+    }
+    public function getDetailsAdminById($id){
+        $query = $this->db->select('admin.*,r.role')
+        ->from('tbl_admin admin')
+        ->join('tbl_mst_admin_role r','r.admin_type = admin.designation')
+        
+        ->where('admin.id',$id)       
         ->get();
    
         $rs = array();
@@ -84,6 +173,34 @@ class Admin_model extends CI_Model {
         $rs = array();
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
+                
+                array_push($rs,$row);
+            }
+        }
+        return $rs;
+    }
+    public function getAllSubAdminNew(){      
+        $this->db->select('a.*,r.role,r.admin_type');
+        $this->db->from('tbl_admin a');
+        $this->db->join('tbl_mst_admin_role r','r.admin_type = a.designation');
+        $this->db->where('a.is_active',1); 
+        $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
+        $this->db->order_by('a.id', 'ASC');
+         $query = $this->db->get();
+        // echo json_encode($query->result_array());exit();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                $this->db->select('*');
+                $this->db->from('tbl_set_permissions');
+                $this->db->where('user_id',$row['id']);      
+                $q = $this->db->get();
+       
+                if ($q->num_rows() > 0) {
+                  $row['set_permissions']= 1;
+                }else{
+                  $row['set_permissions']= 0;
+                }
                 array_push($rs,$row);
             }
         }

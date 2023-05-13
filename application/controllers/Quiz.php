@@ -885,6 +885,16 @@ class Quiz extends CI_Controller
         $allquize = $this->Quiz_model->getAllQuize();
         $data = array();
         $data['allquize'] = $allquize;
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(1, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+
+      
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('quiz/quiz_list', $data);
