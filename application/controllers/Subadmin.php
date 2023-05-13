@@ -862,6 +862,14 @@ class Subadmin extends CI_Controller
     {
         $data = array();
         $data['allRecords'] = $this->Que_bank_model->getAllQueBankForSubadmin();
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(5, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
        // echo json_encode( $data['allRecords']);exit();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('quebank/question_bank_list', $data);

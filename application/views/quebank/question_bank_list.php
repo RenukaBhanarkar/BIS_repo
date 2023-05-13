@@ -6,34 +6,36 @@
             <h1 class="h3 mb-0 text-gray-800">Question Bank List</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
-                <?php }else{ ?>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                    <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>">Sub Admin Dashboard</a></li>
+                    <?php } else { ?>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>">Admin Dashboard</a></li>
                     <?php } ?>
-                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Question Bank List</li>
-                
+                    <!-- <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>" >Sub Admin Dashboard</a></li> -->
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competitions</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/quiz_dashboard'; ?>">Quiz Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Question Bank List</li>
+
                 </ol>
             </nav>
         </div>
 
         <!-- Content Row -->
         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-        <div class="row">
-            <div class="col-12">
-                <div class="card border-top card-body">
-                    <div>
-                        <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_form'">Create New Bank</button>
-                        <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_archive'">Archive</button>
+            <?php if (in_array(2, $permissions)) { ?>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-top card-body">
+                            <div>
+                                <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_form'">Create New Bank</button>
+                                <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_archive'">Archive</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <?php } ?>
+        <?php }
+        } ?>
         <?php
         if ($this->session->flashdata('MSG')) {
             echo $this->session->flashdata('MSG');
@@ -49,11 +51,11 @@
                                 <th>Quiz Bank ID</th>
                                 <th>Question Bank Title</th>
                                 <th>Number of Questions</th>
-                              
+
                                 <th>Date Created</th>
                                 <th>Last Edited</th>
                                 <th>Linked Quiz </th>
-                                
+
                                 <th>Status</th>
                                 <th>Reason of Rejection</th>
                                 <th>Action</th>
@@ -63,13 +65,13 @@
                             <?php if (!empty($allRecords)) {
                                 $i = 1;
                                 foreach ($allRecords as $row) { ?>
-                                   
+
                                     <tr id="row<?php echo $row['que_bank_id']; ?>">
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $row['que_bank_id']; ?></td>
                                         <td><?php echo $row['title']; ?></td>
                                         <td><?php echo $row['no_of_ques']; ?></td>
-                                        
+
                                         <td><?php echo date('d-m-Y', strtotime($row["created_on"])) ?></td>
                                         <?php if ($row["modified_on"]) { ?>
                                             <td><?php echo date('d-m-Y', strtotime($row["modified_on"])) ?></td>
@@ -77,52 +79,74 @@
                                             <td>--</td>
                                         <?php } ?>
                                         <td><?php echo $row['quiz_title']; ?></td>
-                                        
+
                                         <td><?php echo $row['status_name']; ?></td>
                                         <?php if ($row["rejection_reason"] != "") { ?>
-                                        <td><?php echo $row['rejection_reason']; ?></td>
-                                        <?php }else{ ?> 
-                                        <td>--</td>
+                                            <td><?php echo $row['rejection_reason']; ?></td>
+                                        <?php } else { ?>
+                                            <td>--</td>
                                         <?php } ?>
                                         <td class="d-flex border-bottom-0">
 
-                                        <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
-                                            <?php if (($row['status'] == 2) ) {  ?>
-                                            <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">Approve / Reject</a> 
+                                            <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+                                                <?php if (($row['status'] == 2)) {  ?>
+                                                    <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">Approve / Reject</a>
 
-                                            <?php } else{ ?>
-                                                <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">View</a> 
+                                                <?php } else { ?>
+                                                    <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">View</a>
 
                                                 <?php } ?>
-                                        <?php }?>
-                                        <?php if (encryptids("D", $_SESSION['admin_type']) == 3)  { ?>
-                                            <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">View</a> 
                                             <?php } ?>
-                                           
-                                            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-
-                                                <!-- <a class="btn btn-success btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/replicateQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" >Replicate</a>                                            -->
-                                                <a class="btn btn-success btn-sm mr-2 replicate" data-id="<?php echo encryptids('E', $row['que_bank_id']) ?>" >Replicate</a>
-                                                <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4 )) { 
-                                                    
-                                                    if($row['quiz_title'] == "" ){ ?>
-                                                     
-                                                    <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="Edit">
-                                                        Edit
-                                                    </a>
-                                                    <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['que_bank_id']; ?>)">Delete</button>
-
-                                                    <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="archiveQueBank">Archive</button>
 
 
-                                            <?php } } } ?>
-                                            
-                                           
+
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                                                <?php if (($row['status'] == 1) || ($row['status'] == 4 ))  { ?>
+                                                <?php if (in_array(1, $permissions)) { ?>
+                                                    <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">View</a>
+                                            <?php }   } ?>
+
+                                            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+
+
+                                                <a class="btn btn-success btn-sm mr-2 replicate" data-id="<?php echo encryptids('E', $row['que_bank_id']) ?>">Replicate</a>
+
+                                                <?php if (in_array(3, $permissions)) { ?>
+                                                <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
+
+                                                    if ($row['quiz_title'] == "") { ?>
+
+                                                        <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="Edit">
+                                                            Edit
+                                                        </a>
+
+                                                       
+                                                    <?php } ?>
+                                                <?php } } ?>
+                                                <?php if (in_array(4, $permissions)) { ?>
+                                                <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
+
+                                                    if ($row['quiz_title'] == "") { ?>
+
+                                                        <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['que_bank_id']; ?>)">Delete</button>
+                                                      
+
+                                                    <?php } ?>
+                                                <?php } } ?>
+
+                                                <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
+
+                                                    if ($row['quiz_title'] == "") { ?>
+                                                        <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="archiveQueBank">Archive</button>
+                                                    <?php } ?>
+                                                <?php }  ?>
+                                            <?php } ?>
+
+                                            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                                <?php if (($row['status'] == 1) || ($row['status'] == 4)) { ?>
                                                     <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="sendForApproval">Send For Approval</button>
-                                            <?php  } } ?>
+                                            <?php  }
+                                            } ?>
 
                                         </td>
                                 <?php $i++;
@@ -134,9 +158,9 @@
                 </div>
             </div>
         </div>
-        <?php if(encryptids("D", $_SESSION['admin_type']) == 3){ ?>
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
             <div class="col-md-12 submit_btn p-3">
-                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>quiz/quiz_dashboard'">Back</a>
+                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>quiz/quiz_dashboard'">Back</a>
             </div>
         <?php } ?>
     </div>
@@ -145,11 +169,12 @@
     </div>
     <!-- End of Main Content -->
     <script>
-         $(document).ready(function () {
-    $('#listView').DataTable({
-        // scrollX: true,
-    });
-    });
+        $(document).ready(function() {
+            $('#listView').DataTable({
+                // scrollX: true,
+            });
+        });
+
         function deleteRecord(que_bank_id) {
             // var c = confirm("Are you sure to delete this record ?");
             // if (c == true) {
@@ -173,35 +198,35 @@
 
             // }
             Swal.fire({
-                    title: 'Do you want to Delete?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Delete',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        $.ajax({
-                                type: 'POST',
-                                url: '<?php echo base_url(); ?>subadmin/deleteQueBank',
-                                data: {
-                                    que_bank_id: que_bank_id,
-                                },
-                                success: function(result) {
-                                    $('#row' + que_bank_id).css({
-                                        'display': 'none'
-                                    });
-                                    Swal.fire('Questionbank deleted Successfully');
-                                },
-                                error: function(result) {
-                                    Swal.fire("Error,Please try again.");
-                                }
+                title: 'Do you want to Delete?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Delete',
+                denyButtonText: `Cancel`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url(); ?>subadmin/deleteQueBank',
+                        data: {
+                            que_bank_id: que_bank_id,
+                        },
+                        success: function(result) {
+                            $('#row' + que_bank_id).css({
+                                'display': 'none'
                             });
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
+                            Swal.fire('Questionbank deleted Successfully');
+                        },
+                        error: function(result) {
+                            Swal.fire("Error,Please try again.");
+                        }
+                    });
+                    // Swal.fire('Saved!', '', 'success')                                
+                } else if (result.isDenied) {
+                    // Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
         }
         $(document).ready(function() {
             $('#listView').on('click', '#sendForApproval', function(e) {
@@ -238,37 +263,37 @@
                     showCancelButton: false,
                     confirmButtonText: 'Send for Approval',
                     denyButtonText: `Cancel`,
-                    }).then((result) => {
+                }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
+                    if (result.isConfirmed) {
                         jQuery.ajax({
-                    type: "POST",
-                    url: '<?php echo base_url(); ?>subadmin/changeStatus',
-                    dataType: 'json',
-                    data: {
-                        "id": id,
-                        "status": 2
-                    },
-                    success: function(res) {
-                        if (res.status == 0) {
-                            Swal.fire(res.message);
+                            type: "POST",
+                            url: '<?php echo base_url(); ?>subadmin/changeStatus',
+                            dataType: 'json',
+                            data: {
+                                "id": id,
+                                "status": 2
+                            },
+                            success: function(res) {
+                                if (res.status == 0) {
+                                    Swal.fire(res.message);
 
-                        } else {
-                            Swal.fire(res.message);
-                            window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        //toastr.error('Failed to add '+xData.name+' in wishlist.');
-                        console.log(error);
-                    }
-                });
-                       // Swal.fire('Saved!', '', 'success')                                
+                                } else {
+                                    Swal.fire(res.message);
+                                    window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                                console.log(error);
+                            }
+                        });
+                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
-                    })
-                  // ------- sweet alert End ----
+                })
+                // ------- sweet alert End ----
 
             });
             $('#listView').on('click', '#archiveQueBank', function(e) {
@@ -297,67 +322,67 @@
                 //         console.log(error);
                 //     }
                 // });
-// -----sweet alert start ----
+                // -----sweet alert start ----
                 Swal.fire({
                     title: 'Are you sure you want to Archive?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Archive',
                     denyButtonText: `Cancel`,
-                    }).then((result) => {
+                }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
+                    if (result.isConfirmed) {
                         jQuery.ajax({
-                                    type: "POST",
-                                    url: '<?php echo base_url(); ?>subadmin/changeStatus',
-                                    dataType: 'json',
-                                    data: {
-                                        "id": id,
-                                        "status": 9
-                                    },
-                                    success: function(res) {
-                                        if (res.status == 0) {
-                                            Swal.fire(res.message);
+                            type: "POST",
+                            url: '<?php echo base_url(); ?>subadmin/changeStatus',
+                            dataType: 'json',
+                            data: {
+                                "id": id,
+                                "status": 9
+                            },
+                            success: function(res) {
+                                if (res.status == 0) {
+                                    Swal.fire(res.message);
 
-                                        } else {
-                                            Swal.fire(res.message);                                           
-                                            window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
-                                        }
-                                    },
-                                    error: function(xhr, status, error) {
-                                        //toastr.error('Failed to add '+xData.name+' in wishlist.');
-                                        console.log(error);
-                                    }
-                                    });
-                       // Swal.fire('Saved!', '', 'success')                                
+                                } else {
+                                    Swal.fire(res.message);
+                                    window.location.replace("<?php echo base_url(); ?>subadmin/questionBankList");
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                                console.log(error);
+                            }
+                        });
+                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
-                    })
-// -----sweet alert End ----
+                })
+                // -----sweet alert End ----
             });
         });
     </script>
-<script>
-    $('#listView').on('click','.replicate',function(){
-       // alert("jhgfghj");
- var id = $(this).attr('data-id');
- Swal.fire({
-                    title: 'Are you sure you want to Replicate?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Replicate',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        window.location.replace('<?php echo base_url(); ?>subadmin/replicateQuestionBank?id='+id);
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-    });
-</script>
+    <script>
+        $('#listView').on('click', '.replicate', function() {
+            // alert("jhgfghj");
+            var id = $(this).attr('data-id');
+            Swal.fire({
+                title: 'Are you sure you want to Replicate?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Replicate',
+                denyButtonText: `Cancel`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location.replace('<?php echo base_url(); ?>subadmin/replicateQuestionBank?id=' + id);
+                    // Swal.fire('Saved!', '', 'success')                                
+                } else if (result.isDenied) {
+                    // Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+        });
+    </script>
 
     </body>
