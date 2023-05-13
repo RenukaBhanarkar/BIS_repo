@@ -29,10 +29,10 @@ class Subadmin extends CI_Controller
 
         $pageData['page_menu_select'] = "view_admin";
         $admintype = encryptids("D", $this->session->userdata('admin_type'));
-        $allRecords = $this->Admin_model->getAllSubAdmin();
+        //$allRecords = $this->Admin_model->getAllSubAdmin();
+        $allRecords = $this->Admin_model->getAllSubAdminNew();
         $pageData['allRecords'] = $allRecords;
-        // echo  $admintype;
-        // exit();
+       
         if ($admintype == 2) {
             if (!$this->Admin_model->checkAdminLogin()) {
                 redirect(base_url() . "Admin", 'refresh');

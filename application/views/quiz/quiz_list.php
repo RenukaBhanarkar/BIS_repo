@@ -64,56 +64,58 @@
                       <td><?= $quiz['no_of_ques'] ?></td>
                       <td><?= $quiz['total_mark'] ?></td>
                       <td><?= $quiz['status_name'] ?></td>
-                      <!-- <td class="d-flex border-bottom-0">
-
-                          <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                          <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                 
-                            <?php if ($quiz['status'] == 1 ) { ?>
-                            
-                              <a href="sendToCreate/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Create</a>                         
-
-                            <?php } ?>
-                          <?php } ?>
-
-                        <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                        <?php //if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-
-                          <?php //if ($quiz['status'] == 3 || $quiz['status'] == 6) { ?>
-                            <a href="publishQuiz/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Publish</a>
-
-                          <?php //} ?>
-                          <?php //if ($quiz['status'] == 5) { ?>
-
-                            <a href="unPublishQuiz/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">UnPublish</a>
-                          <?php //} ?>
-
-                          <?php //if ($quiz['status'] == 1 || $quiz['status'] == 4) { ?>
-                             <a href="editquiz/<?=  $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
-                            <a href="sendApprove/<?=  $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Create</a>
-                             <button onClick="" class="btn btn-danger btn-sm mr-2">Delete</button> 
-
-                          <?php // } ?>
-                        <?php // } ?>
-                      </td> -->
+                     
                       <td>
-                      <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                        
-                          <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                 
-                            <?php
+                         <!-- for admin -->
+                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+                         <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
 
-                            if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
-                             <a href="editquiz/<?=  $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
-                             <!-- <a href="sendToCreate/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Create</a>                          -->
+                         <?php } ?>
 
+
+
+
+
+
+
+
+
+                         <!-- for subadmin -->
+                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+
+                         <?php if(in_array(1,$permissions)){ ?>                         
+                          <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
+
+                         <?php } ?>
+
+                         <?php if(in_array(2,$permissions)){ ?>
+                          <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
+                                                         
                              <a data-id="<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2 create">Create</a> 
                             
+                           
+                          <?php } ?>
+
+                         <?php } ?>
+
+
+                         <?php if(in_array(3,$permissions)){ ?>
+                          <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
+                             <a href="editquiz/<?=  $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
+                            
+                          <?php } ?>
+
+                         <?php } ?>
+
+                         <?php if(in_array(4,$permissions)){ ?>
+                          <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
+                             
                              <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
                           <?php } ?>
 
-                          <?php } ?>
-
+                         <?php } ?>                      
+                         
+                         <?php } ?>    
 
                       </td>
 
