@@ -797,7 +797,7 @@
                             } else if (data[i].que_type == 2) {
                                 var type = "Image";
                             } else {
-                                var type = "Both";
+                                var type = "Text and Image";
                             }
                             if (data[i].que_type == 2) {
                                 if (data[i].que == 0 || data[i].que == '') {

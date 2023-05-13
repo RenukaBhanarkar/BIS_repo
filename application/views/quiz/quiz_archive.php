@@ -46,7 +46,7 @@
                       <td><?= date("d-m-Y", strtotime($quiz['start_date'])); ?></td>
                       <td><?= date("d-m-Y", strtotime($quiz['end_date'])); ?></td>
                       <td><?= $quiz['total_question'] ?></td>
-                      <td><?= $quiz['qbquestion'] ?></td>
+                      <td><?= $quiz['no_of_ques'] ?></td>
                       <td><?= $quiz['total_mark'] ?></td>
                       <td><?= $quiz['status_name'] ?></td>
                       <td class="d-flex border-bottom-0">

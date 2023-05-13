@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="language" value="3"  <?php if($row['language']== 3){echo "checked";}?> >
-                                            <label class="form-check-label"  >Both</label>
+                                            <label class="form-check-label"  >English and Hindi</label>
                                         </div>
                                     </div>
                                 </div>
@@ -1140,7 +1140,7 @@
                             } else if (data[i].que_type == 2) {
                                 var type = "Image";
                             } else {
-                                var type = "Both";
+                                var type = "Text and Image";
                             }
                             if (data[i].que == 0 || data[i].que == '') {
                                 var engQue = "";

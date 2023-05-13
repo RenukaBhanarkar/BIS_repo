@@ -508,7 +508,7 @@ class Admin extends CI_Controller
         
         $mainModule = $this->input->post('mainModule');
         $subModule = $this->input->post('subModule');
-
+        // 1 - QUIZ
         $createQuiz = $this->input->post('createQuiz');
         $manageQuiz = $this->input->post('manageQuiz');
         $ongoingQuiz = $this->input->post('ongoingQuiz');
@@ -516,14 +516,18 @@ class Admin extends CI_Controller
         $queBank = $this->input->post('queBank');
         $result = $this->input->post('result');   
         
-        
+        // 2 - STANDARD WRITING
         $createComp = $this->input->post('createComp');
         $manageComp = $this->input->post('manageComp');
         $ongoingComp = $this->input->post('ongoingComp');
         $closedComp = $this->input->post('closedComp');
         $reviewComp = $this->input->post('reviewComp');
+        
+        // 3 - Miscellaneous Competition
 
 
+        // 4 - WALL OF WISDOM
+        $wallOfWisdom = $this->input->post('wallOfWisdom');
 
 
         if (empty($mainModule) && empty($subModule)) {
@@ -532,7 +536,7 @@ class Admin extends CI_Controller
         }
         if (empty($data)) {
             /******************  
-             * QUIZ START 
+             * 1. QUIZ START 
              * ****************/
             if(in_array(1,$mainModule)){
                 if(in_array(1,$subModule)){
@@ -578,7 +582,7 @@ class Admin extends CI_Controller
             }
             
              /******************  
-             * STANDARD WRITING
+             * 2 .STANDARD WRITING
              * ****************/
             if(in_array(2,$mainModule)){
                 if(in_array(7,$subModule)){
@@ -616,8 +620,31 @@ class Admin extends CI_Controller
                 }               
             }
              /******************  
-             * STANDARD WRITING
+             * 3 .Miscellaneous Competition
              * ****************/
+
+              /******************  
+             * 4 .Wall of wisdom
+             * ****************/
+             
+            if(in_array(4,$mainModule)){
+               
+                    $wallOfWisdom = implode(',',$wallOfWisdom);
+                    $mainM = 1; $subM = 0;
+                    $id = $this->insertPerData($user_id,$mainM,$subM,$wallOfWisdom);                   
+                           
+            }
+              /******************  
+             * 5 . Your Wall
+             * ****************/
+             
+             if(in_array(4,$mainModule)){
+               
+                $wallOfWisdom = implode(',',$wallOfWisdom);
+                $mainM = 1; $subM = 0;
+                $id = $this->insertPerData($user_id,$mainM,$subM,$wallOfWisdom);                   
+                       
+        }
 
         }
         if ($id) {
@@ -631,6 +658,8 @@ class Admin extends CI_Controller
         echo  json_encode($data);
         exit();
     }
+
+
     public function insertPerData($user_id,$mainM,$subM,$permissions){
         $admin_id = encryptids("D", $this->session->userdata('admin_id'));
         $dataObj = array(

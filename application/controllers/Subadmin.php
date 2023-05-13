@@ -901,7 +901,7 @@ class Subadmin extends CI_Controller
                 'language' => $language,
                // 'total_marks' => $total_marks,
                 'is_active' => 1,
-                'status' => 1,
+                'status' => 0,
                 'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
                 'modified_by' => $admin_id,
             );
