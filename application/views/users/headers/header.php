@@ -122,10 +122,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
 		    <ul>
 		      <li>
-			<a class="capital" title="Edit Profile" data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</a>
+			<a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/my_profile_view">My Profile</a>
 		      </li>
 		      <li>
-			<a class="capital" title="My Activity" href="/user/115324241">My Activity</a>
+			      <a class="capital" title="My Activity" href="<?php echo base_url(); ?>users/my_activity_list">My Activity</a>
 		      </li>
 		      <li>
 		    	<a class="capital" title="Notifications" href="/notification/list">Notifications</a>
