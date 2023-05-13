@@ -44,8 +44,8 @@
     <div class="row">
             <div class="col-md-12 p-3 text-end">
                 <button type="submit" onclick="return submitFeedback(event)"  name="submit1" class="btn btn-success" >Submit</button>
-                <button class="btn btn-danger" type="button" onclick="location.href='#'">Cancel</button>
-                <button class="btn btn-warning" type="reset">Reset</button>
+                <button class="btn btn-danger cancel" type="button" >Cancel</button>
+                <button class="btn btn-warning reset" >Reset</button>
             </div>
     </div>
     </form>
@@ -159,6 +159,44 @@
             return false;          
         }
     }
+
+    $('.cancel').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        window.location.replace('<?php echo base_url().'Users/welcome' ?>');
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
+
+    $('.reset').on('click',function(e){
+        e.preventDefault();
+        Swal.fire({
+                    title: 'Are you sure you want to Reset?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Reset',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $('#addFeedback').get(0).reset();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
+   
 
 //});
 </script>

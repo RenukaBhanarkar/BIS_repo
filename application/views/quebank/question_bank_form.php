@@ -44,7 +44,7 @@
                                     <input type="text" class="form-control input-font" name="title" id="title" minlength="10" maxlength="500" placeholder="Enter Question Bank Title">
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Total Number of Question<sup class="text-danger">*</sup></label>
+                                    <label class="d-block text-font">Total Number of Questions<sup class="text-danger">*</sup></label>
                                     <input type="text" class="form-control input-font" name="no_of_ques" id="no_of_ques" placeholder="Enter Total Number of Question">
                                 </div>
                                 <!-- <div class="mb-2 col-md-4">
@@ -72,8 +72,8 @@
                                 </div>
                             </div>
                             <div class="col-md-12 submit_btn p-3">
-                                <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
-                                <input type="submit" name="Submit" id="createQueBank" class="btn btn-info btn-sm">
+                                <a class="btn btn-danger btn-sm text-white" href="<?php echo base_url() . 'subadmin/questionBankList' ?>">Cancel</a>
+                                <input type="submit" name="Submit" value="Create" id="createQueBank" class="btn btn-info btn-sm">
 
                             </div>
                         </form>
@@ -105,6 +105,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- <div class="mb-2 col-md-4">
+                                </div>
+                                <div class="mb-2 col-md-4" id="input_text">
+                                      <img src="<?=base_url();?>assets/admin/img/input text.jpg">
+                                </div>
+                                <div class="mb-2 col-md-4" id="input_img">
+                                     <img src="<?=base_url();?>assets/admin/img/input image.jpg">
+                                </div>
+                                <div class="mb-2 col-md-4" id="input_text">
+                                     <img src="<?=base_url();?>assets/admin/img/input both.jpg">
+                                </div> -->
                             </div>
                             <div class="row" id="question-eng">
                                 <div class="mb-2 col-md-12">
@@ -431,10 +442,10 @@
                                                     <th>Sr. No.</th>
                                                     <th>Question Id</th>
                                                     <th>Question Type</th>
-                                                    <th>English <br>Question <br>Title</th>
-                                                    <th>Hindi <br> Question <br>Title </th>
+                                                    <th>English Question Title</th>
+                                                    <th>Hindi Question Title </th>
                                                     <!-- <th>Image</th> -->
-                                                    <th>Number of <br>Options</th>
+                                                    <th>Number of Options</th>
                                                     <th>English Options </th>
                                                     <th>Hindi Options</th>
                                                     <th>Correct Option No</th>
@@ -536,6 +547,10 @@
             <!-- End of Main Content -->
         </div>
         <!-- End of Content Wrapper -->
+        <script>
+            CKEDITOR.replace('que');
+            CKEDITOR.replace('que_h');
+        </script>
         <script>
             // (function() {
             //     'use strict'

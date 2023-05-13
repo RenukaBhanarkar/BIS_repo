@@ -208,7 +208,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url(); ?>wall_of_wisdom/editWallOfWisdom" name="updatepost" class="was-validated" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>wall_of_wisdom/editWallOfWisdom" id="updatepost" name="updatepost" class="was-validated" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Title<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control" id="title1" name="title" minlength="5" maxlength="250" placeholder="Enter Title" required>
@@ -231,16 +231,20 @@
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class=""  id="add_file">
                                 <div class="d-flex">
-                                        <div>
+                                    <div class="row">
+                                        <div class="col-10">
                                             <input type="file" id="document2" name="document" class="form-control" onchange="loadFileThumbnail(event)" >
                                             <span  class="error_text" id="imgerror3" style="color:red;"></span>
                                             <input type="hidden" id="image1" name="old_doc" value="">
                                             <input type="hidden" id="id1" name="id">
                                             <span class="error_text"><?php echo form_error('banner_img');?></span>
                                         </div>
+                                        <div class="col-2">
                                         <button type="button" id="preview123456" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg">
                                             Preview
                                         </button>
+                                        </div>
+                                        </div>
 
                                         <div class="modal fade" id="Previewimg" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width:700px;">
@@ -301,7 +305,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                    <button onclick="return updateButton()" type="submit" name="submit" class="btn btn-primary" >Update</button>
+                    <button onclick="return updateButton(event)" type="submit"  class="btn btn-primary" >Update</button>
                     </form>
                 </div>
             </div>
@@ -553,6 +557,30 @@ $('.save').on('click',function(){
 
 var loadFileThumbnail = function(event) 
     {
+        var fileSize = $('#document2')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#document2").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#document2').val('');
+            // $('#lessSize').modal('show');
+            $('#imgerror3').text('This value is required');
+            Swal.fire('File size should be greater than 20KB')
+        }else if(fileSize > 204800){
+            $('#document2').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire('File size should be less than 200KB')
+            $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#document2').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
        //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail');
         
@@ -565,6 +593,30 @@ var loadFileThumbnail = function(event)
     };
     var loadFileThumbnail1 = function(event) 
     {
+        var fileSize = $('#document1')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#document1").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#document1').val('');
+            // $('#lessSize').modal('show');
+            $('#err_icon_file').text('This value is required');
+            Swal.fire('File size should be greater than 20KB')
+        }else if(fileSize > 204800){
+            $('#document1').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire('File size should be less than 200KB')
+            $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#document1').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
        //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail1');
         
@@ -617,10 +669,10 @@ var loadFileThumbnail = function(event)
                 $("#err_description").text("Please Enter minimum 5 Characters");
                 $("#description").focus();
                  is_valid = false;
-            } else if ((description.length > 2000)) {
+            } else if ((description.length > 5000)) {
                 is_valid = false;
                 // alert('Description length must be less than 2000 characters ');
-                $("#err_description").text("Maximum 2000 characters allowed");
+                $("#err_description").text("Maximum 5000 characters allowed");
                 $("#description").focus();
                 //  is_valid = false;
                 
@@ -714,8 +766,8 @@ var loadFileThumbnail = function(event)
         });
         })
         
-        function updateButton() {
-            // event.preventDefault();
+        function updateButton(event) {
+             event.preventDefault();
            
            var title = $("#title1").val();
            // var description = $("#description").val();
@@ -748,8 +800,8 @@ var loadFileThumbnail = function(event)
                $("#err_description1").text("Please Enter minimum 5 Characters");
                $("#description").focus();
                var is_valid = false;
-           } else if ((description.length > 2000)) {
-               $("#err_description1").text("Maximum 2000 characters allowed");
+           } else if ((description.length > 5000)) {
+               $("#err_description1").text("Maximum 5000 characters allowed");
                $("#description").focus();
                var is_valid = false;
            } else {
@@ -826,24 +878,24 @@ var loadFileThumbnail = function(event)
 
 
                if (is_valid) {
-               return true;
-            // Swal.fire({
-            //                 title: 'Do you want to Submit?',
-            //                 showDenyButton: true,
-            //                 showCancelButton: false,
-            //                 confirmButtonText: 'Submit',
-            //                 denyButtonText: `Cancel`,
-            //                 }).then((result) => {
-            //                 /* Read more about isConfirmed, isDenied below */
-            //                 if (result.isConfirmed) {
-            //                     Swal.fire('Saved!', '', 'success')
-            //                     // return true;
-            //                     // $('#updatepost').submit();
-            //                     // return true;
-            //                 } else if (result.isDenied) {
-            //                     Swal.fire('Changes are not saved', '', 'info')
-            //                 }
-            //                 })
+            //   return true;
+            Swal.fire({
+                            title: 'Do you want to Update?',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Update',
+                            denyButtonText: `Cancel`,
+                            }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                             //  Swal.fire('Saved!', '', 'success') 
+                                // return true;
+                                $('#updatepost').submit();
+                                // return true;
+                            } else if (result.isDenied) {
+                                Swal.fire('Changes are not saved', '', 'info')
+                            }
+                            })
            } else {
                return false;
            }
@@ -934,18 +986,46 @@ var loadFileThumbnail = function(event)
         //     })
         // }
 
-        function approve(que_id){
-            // var c = confirm("Are you sure to Approve activity? ");
-            // if (c == true) {
-                $('#approve').modal('show');
-                $('.approve').on('click', function() {
-                // const $loader = $('.igr-ajax-loader');
-                //$loader.show();
-                $.ajax({
+        // function approve(que_id){
+        //     // var c = confirm("Are you sure to Approve activity? ");
+        //     // if (c == true) {
+        //         $('#approve').modal('show');
+        //         $('.approve').on('click', function() {
+        //         // const $loader = $('.igr-ajax-loader');
+        //         //$loader.show();
+        //         $.ajax({
+        //             type: 'POST',
+        //             url: '<?php echo base_url(); ?>Wall_of_wisdom/approve_activity',
+        //             data: {
+        //                 que_id: que_id,
+        //             },
+        //             success: function(result) {
+
+        //                 location.reload();
+        //             },
+        //             error: function(result) {
+        //                 alert("Error,Please try again.");
+        //             }
+        //         });
+
+        //     })
+        // }
+        $('#wow_table').on('click','.approve',function(){
+            var id = $(this).attr('data-id');
+            Swal.fire({
+                    title: 'Are you sure you want to Approve?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Approve',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>Wall_of_wisdom/approve_activity',
                     data: {
-                        que_id: que_id,
+                        que_id: id,
                     },
                     success: function(result) {
 
@@ -955,9 +1035,12 @@ var loadFileThumbnail = function(event)
                         alert("Error,Please try again.");
                     }
                 });
-
-            })
-        }
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        })
 
         // function sendPublish(que_id) {           
         //         $('#publish').modal('show');
@@ -1029,20 +1112,20 @@ var loadFileThumbnail = function(event)
 
 
 
-        $('#updatepost').submit( 'click',function() { 
-            // alert("cvx");
-                    // e.preventDefault();
-                    var focusSet = false;
-                    var allfields = true;
-                    var title = $("#title").val();
-                    var description = $("#description").val(); 
+        // $('#updatepost').submit( 'click',function() { 
+        //     // alert("cvx");
+        //             // e.preventDefault();
+        //             var focusSet = false;
+        //             var allfields = true;
+        //             var title = $("#title").val();
+        //             var description = $("#description").val(); 
 
-                    if ($("#document2").val() == '') {
-                        alert('please select Image');
-                        $("#document1").val('');
-                       false;
-                        allfields = false;
-                    }
+        //             if ($("#document2").val() == '') {
+        //                 alert('please select Image');
+        //                 $("#document1").val('');
+        //                false;
+        //                 allfields = false;
+        //             }
                    
 
 
@@ -1052,39 +1135,39 @@ var loadFileThumbnail = function(event)
 
 
 
-                    if (title == "" || title== null) {
-                        if ($("#title").next(".validation").length == 0) // only add if not added
-                        {
-                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz Title </div>");
-                        }
-                        if (!focusSet) { $("#title").focus(); }
-                        allfields = false;
-                    } else {
-                        allfields =true;
-                        $("#title").next(".validation").remove(); // remove it
-                    } 
+        //             if (title == "" || title== null) {
+        //                 if ($("#title").next(".validation").length == 0) // only add if not added
+        //                 {
+        //                     $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz Title </div>");
+        //                 }
+        //                 if (!focusSet) { $("#title").focus(); }
+        //                 allfields = false;
+        //             } else {
+        //                 allfields =true;
+        //                 $("#title").next(".validation").remove(); // remove it
+        //             } 
 
-                    if (description == "" || description== null) {
-                        // if ($("#description").next(".validation").length == 0) // only add if not added
-                        // {
-                        //     $("#description_error").show();
-                        // }
-                        // if (!focusSet) { $("#description").focus(); }
-                        allfields = false;
-                    } else {
-                        allfields =true;
-                            $("#description_error").hide();
+        //             if (description == "" || description== null) {
+        //                 // if ($("#description").next(".validation").length == 0) // only add if not added
+        //                 // {
+        //                 //     $("#description_error").show();
+        //                 // }
+        //                 // if (!focusSet) { $("#description").focus(); }
+        //                 allfields = false;
+        //             } else {
+        //                 allfields =true;
+        //                     $("#description_error").hide();
 
-                    } 
+        //             } 
 
-                    if (allfields) { 
-                        $('#addwall').submit();
-                        return true;
-                    } else {
-                        return false;
-                    }
-                    // $('#addwall').submit();
-                });
+        //             if (allfields) { 
+        //                 $('#addwall').submit();
+        //                 return true;
+        //             } else {
+        //                 return false;
+        //             }
+        //             // $('#addwall').submit();
+        //         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>

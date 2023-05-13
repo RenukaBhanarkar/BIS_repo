@@ -2828,6 +2828,18 @@ class Users extends CI_Controller
         exit();
     }
     //////////////////// FRONT END QUIZ START ////////////////////
+    public function my_profile_view()
+    {
+        $this->load->view('users/headers/header');
+        $this->load->view('users/my_profile_view');
+        $this->load->view('users/footers/footer');
+    }
+    public function my_activity_list()
+    {
+        $this->load->view('users/headers/header');
+        $this->load->view('users/my_activity_list');
+        $this->load->view('users/footers/footer');
+    }
     
  
 }

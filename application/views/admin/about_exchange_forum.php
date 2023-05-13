@@ -387,8 +387,8 @@ var loadFileThumbnail = function(event)
                 // $("#description").focus();
                
                 is_valid = false;  
-            } else if((description.length) > 1000){
-               $("#err_descriptions").text("Only 1000 Characters Allowed");                
+            } else if((description.length) > 5000){
+               $("#err_descriptions").text("Only 5000 Characters Allowed");                
                 is_valid = false;  
             }else{
                 $("#err_descriptions").text("");   
@@ -546,8 +546,8 @@ console.log(description.length);
                  $("#description1").focus();
                  $('#updateform').addClass('');
                  is_valid = false;  
-             } else if((description.length) > 1000){
-                $("#err_description").text("Only 1000 Characters Allowed");
+             } else if((description.length) > 5000){
+                $("#err_description").text("Only 5000 Characters Allowed");
                  $("#description1").focus();
                  is_valid = false;  
              }
