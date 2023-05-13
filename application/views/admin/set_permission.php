@@ -1546,7 +1546,7 @@
 
 							<td>
 								<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="15_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 7_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="15_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="15_viewChk"></label>
 								</div>
 							</td>
@@ -1554,7 +1554,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="16_addChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 7_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="16_addChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="16_addChk"></label>
 								</div>
 							</td>
@@ -1563,7 +1563,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="17_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 7_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="17_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="17_updateChk"></label>
 								</div>
 							</td>
@@ -1572,7 +1572,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="18_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 7_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="7_subModuleChk" id="18_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="18_deleteChk"></label>
 								</div>
 							</td>
@@ -1598,7 +1598,7 @@
 
 							<td>
 								<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="19_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 8_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="19_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="19_viewChk"></label>
 								</div>
 							</td>
@@ -1606,7 +1606,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="20_addChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 8_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="20_addChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="20_addChk"></label>
 								</div>
 							</td>
@@ -1615,7 +1615,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="21_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 8_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="21_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="21_updateChk"></label>
 								</div>
 							</td>
@@ -1624,7 +1624,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="22_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 8_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="8_subModuleChk" id="22_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="22_deleteChk"></label>
 								</div>
 							</td>
@@ -1642,7 +1642,7 @@
 
 							<td>
 								<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="23_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 9_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="23_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="23_viewChk"></label>
 								</div>
 							</td>
@@ -1650,7 +1650,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="24_addChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 9_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="24_addChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="24_addChk"></label>
 								</div>
 							</td>
@@ -1659,7 +1659,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="25_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 9_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="25_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="25_updateChk"></label>
 								</div>
 							</td>
@@ -1668,7 +1668,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="26_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 9_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="9_subModuleChk" id="26_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="26_deleteChk"></label>
 								</div>
 							</td>
@@ -1686,7 +1686,7 @@
 
 							<td>
 								<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="27_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="27_viewChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="27_viewChk"></label>
 								</div>
 							</td>
@@ -1694,7 +1694,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="28_addChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="28_addChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="28_addChk"></label>
 								</div>
 							</td>
@@ -1703,7 +1703,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="29_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="29_updateChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="29_updateChk"></label>
 								</div>
 							</td>
@@ -1712,7 +1712,7 @@
 
 							<td>
 							<div class="custom-control custom-checkbox mr-3">
-									<input type="checkbox" class="custom-control-input 7_mainModuleChk 6_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="30_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
+									<input type="checkbox" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="30_deleteChk" onclick="checkAccess(this);" value="77#View" checked="">
 									<label class="custom-control-label" for="30_deleteChk"></label>
 								</div>
 							</td>
