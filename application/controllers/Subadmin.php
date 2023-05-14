@@ -865,7 +865,7 @@ class Subadmin extends CI_Controller
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
             if (in_array(5, $_SESSION['sub_mod_per'])) { 
-                $sub_model_id = 1;
+                $sub_model_id = 5;
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;

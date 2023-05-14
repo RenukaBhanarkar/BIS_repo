@@ -74,7 +74,7 @@ class Quiz extends CI_Controller
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
             if (in_array(3, $_SESSION['sub_mod_per'])) { 
-                $sub_model_id = 1;
+                $sub_model_id = 3;
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;
@@ -102,7 +102,7 @@ class Quiz extends CI_Controller
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
             if (in_array(4, $_SESSION['sub_mod_per'])) { 
-                $sub_model_id = 1;
+                $sub_model_id = 4;
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;
@@ -1097,7 +1097,7 @@ class Quiz extends CI_Controller
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
             if (in_array(2, $_SESSION['sub_mod_per'])) { 
-                $sub_model_id = 1;
+                $sub_model_id = 2;
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;
@@ -1165,8 +1165,8 @@ class Quiz extends CI_Controller
         $data['DeclarationList']=$users; 
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
-            if (in_array(5, $_SESSION['sub_mod_per'])) { 
-                $sub_model_id = 1;
+            if (in_array(6, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 6;
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;

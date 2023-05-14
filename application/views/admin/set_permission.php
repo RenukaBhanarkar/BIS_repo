@@ -1765,15 +1765,15 @@
             } else {
                 $("#err_module").next(".validation").remove();
             }
-            if (subModule == "" || subModule == undefined || subModule == null) {
-                if ($("#err_submodule").next(".validation").length == 0) {
-                    $("#err_submodule").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select atleast one sub module </div>");
-                }
-                Swal.fire("Please select atleast one sub module");
-                allfields = false;
-            } else {
-                $("#err_submodule").next(".validation").remove();
-            }
+            // if (subModule == "" || subModule == undefined || subModule == null) {
+            //     if ($("#err_submodule").next(".validation").length == 0) {
+            //         $("#err_submodule").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select atleast one sub module </div>");
+            //     }
+            //     Swal.fire("Please select atleast one sub module");
+            //     allfields = false;
+            // } else {
+            //     $("#err_submodule").next(".validation").remove();
+            // }
             if (allfields) {
                 // var mainModule = [];
                 // $.each($("input[name='mainModule']:checked"), function(){
