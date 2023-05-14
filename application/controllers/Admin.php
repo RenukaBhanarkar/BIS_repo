@@ -30,14 +30,184 @@ class Admin extends CI_Controller
         $user_id =   encryptids("D", $this->input->get('id'));
         $data['user_id'] = $user_id;
         $data['user_details'] = $this->Admin_model->getDetailsAdminById($user_id);
+        $main_mod_per = array();
+        $sub_mod_per = array();
+        $activity_per = array();
+        $sub_mod_1 = array();
+        $sub_mod_2 = array();
+        $sub_mod_3 = array();
+        $sub_mod_4 = array();
+        $sub_mod_5 = array();
+        $sub_mod_6 = array();
+        $sub_mod_7 = array();
+        $sub_mod_8 = array();
+        $sub_mod_9 = array();
+        $sub_mod_10 = array();
+        $sub_mod_11 = array();
+        $sub_mod_12 = array();
+        $sub_mod_13 = array();
+        $sub_mod_14 = array();
+
+
+        $sub_mod_15 = array();
+        $sub_mod_16 = array();
+        $sub_mod_17 = array();
+        $sub_mod_18 = array();
+        $sub_mod_19 = array();
+        $sub_mod_20 = array();
+        $sub_mod_21 = array();
+        $sub_mod_22 = array();
+        $sub_mod_23 = array();
+        $sub_mod_24 = array();
+        $sub_mod_25 = array();
+        $sub_mod_26 = array();
+        $sub_mod_27 = array();
+        $sub_mod_28 = array();
+
+        $sub_mod_29 = array();
+        $sub_mod_30 = array();
+        $sub_mod_31 = array();
+        $sub_mod_32 = array();
+        $sub_mod_33 = array();
+        $sub_mod_34 = array();
+        $sub_mod_35 = array();
+        $sub_mod_36 = array();
+        $sub_mod_37 = array();
+        $sub_mod_38 = array();
+        $sub_mod_39 = array();
+        $sub_mod_40 = array();
+
+        $main_mod_4 = array();
+        $main_mod_5 = array();
+        $main_mod_7 = array();
+        $main_mod_9 = array();
+        $main_mod_13 = array();
+
+
+
 
         // to check user permissions 
         $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
+        $id= encryptids("E", $user_id);
         if($set_permission){
-            $main_mod_per = $this->Admin_model->mainModulePermission($user_id);
-            $sub_mod_per = $this->Admin_model->subModulePermission($user_id);
-            $activity_per = $this->Admin_model->activityPermission($user_id);
+            $main_mod_per = $this->Admin_model->mainModulePermission($id);
+            $sub_mod_per = $this->Admin_model->subModulePermission($id);
+
+
+            $sub_mod_1 = $this->Admin_model->getUsersPermissionsByUserid($user_id,1);
+            $sub_mod_2 = $this->Admin_model->getUsersPermissionsByUserid($user_id,2);
+            $sub_mod_3 = $this->Admin_model->getUsersPermissionsByUserid($user_id,3);
+            $sub_mod_4 = $this->Admin_model->getUsersPermissionsByUserid($user_id,4);
+            $sub_mod_5 = $this->Admin_model->getUsersPermissionsByUserid($user_id,5);
+            $sub_mod_6 = $this->Admin_model->getUsersPermissionsByUserid($user_id,6);
+            $sub_mod_7 = $this->Admin_model->getUsersPermissionsByUserid($user_id,7);
+            $sub_mod_8 = $this->Admin_model->getUsersPermissionsByUserid($user_id,8);
+            $sub_mod_9 = $this->Admin_model->getUsersPermissionsByUserid($user_id,9);
+            $sub_mod_10 = $this->Admin_model->getUsersPermissionsByUserid($user_id,10);
+
+            $sub_mod_11 = $this->Admin_model->getUsersPermissionsByUserid($user_id,11);
+            $sub_mod_12 = $this->Admin_model->getUsersPermissionsByUserid($user_id,12);
+            $sub_mod_13 = $this->Admin_model->getUsersPermissionsByUserid($user_id,13);
+            $sub_mod_14 = $this->Admin_model->getUsersPermissionsByUserid($user_id,14);
+            $sub_mod_15= $this->Admin_model->getUsersPermissionsByUserid($user_id,15);
+            $sub_mod_16 = $this->Admin_model->getUsersPermissionsByUserid($user_id,16);
+            $sub_mod_17= $this->Admin_model->getUsersPermissionsByUserid($user_id,17);
+            $sub_mod_18 = $this->Admin_model->getUsersPermissionsByUserid($user_id,18);
+            $sub_mod_19 = $this->Admin_model->getUsersPermissionsByUserid($user_id,19);
+            $sub_mod_20 = $this->Admin_model->getUsersPermissionsByUserid($user_id,20);
+
+            $sub_mod_21 = $this->Admin_model->getUsersPermissionsByUserid($user_id,21);
+            $sub_mod_22 = $this->Admin_model->getUsersPermissionsByUserid($user_id,22);
+            $sub_mod_23 = $this->Admin_model->getUsersPermissionsByUserid($user_id,23);
+            $sub_mod_24 = $this->Admin_model->getUsersPermissionsByUserid($user_id,24);
+            $sub_mod_25= $this->Admin_model->getUsersPermissionsByUserid($user_id,25);
+            $sub_mod_26 = $this->Admin_model->getUsersPermissionsByUserid($user_id,26);
+            $sub_mod_27= $this->Admin_model->getUsersPermissionsByUserid($user_id,27);
+            $sub_mod_28 = $this->Admin_model->getUsersPermissionsByUserid($user_id,28);
+            $sub_mod_29 = $this->Admin_model->getUsersPermissionsByUserid($user_id,29);
+            $sub_mod_30 = $this->Admin_model->getUsersPermissionsByUserid($user_id,30);
+
+
+            $sub_mod_31 = $this->Admin_model->getUsersPermissionsByUserid($user_id,31);
+            $sub_mod_32 = $this->Admin_model->getUsersPermissionsByUserid($user_id,32);
+            $sub_mod_33 = $this->Admin_model->getUsersPermissionsByUserid($user_id,33);
+            $sub_mod_34 = $this->Admin_model->getUsersPermissionsByUserid($user_id,34);
+            $sub_mod_35= $this->Admin_model->getUsersPermissionsByUserid($user_id,35);
+            $sub_mod_36 = $this->Admin_model->getUsersPermissionsByUserid($user_id,36);
+            $sub_mod_37= $this->Admin_model->getUsersPermissionsByUserid($user_id,37);
+            $sub_mod_38 = $this->Admin_model->getUsersPermissionsByUserid($user_id,38);
+            $sub_mod_39 = $this->Admin_model->getUsersPermissionsByUserid($user_id,39);
+            $sub_mod_40 = $this->Admin_model->getUsersPermissionsByUserid($user_id,40);  
+            
+         
+
+            $main_mod_4  =  $this->Admin_model->permissionsByUseridMainModule($user_id,4);
+            $main_mod_5  =  $this->Admin_model->permissionsByUseridMainModule($user_id,5);
+
+            $main_mod_7  =  $this->Admin_model->permissionsByUseridMainModule($user_id,7);
+
+            $main_mod_9  =  $this->Admin_model->permissionsByUseridMainModule($user_id,9);
+            $main_mod_13  =  $this->Admin_model->permissionsByUseridMainModule($user_id,13);
+
+
         }
+        $data['main_mod_per'] = $main_mod_per;
+        $data['sub_mod_per'] = $sub_mod_per;
+
+        $data['sub_mod_1'] = $sub_mod_1;
+        $data['sub_mod_2'] = $sub_mod_2;
+        $data['sub_mod_3'] = $sub_mod_3;
+        $data['sub_mod_4'] = $sub_mod_4;
+        $data['sub_mod_5'] = $sub_mod_5;
+        $data['sub_mod_6'] = $sub_mod_6;
+        $data['sub_mod_7'] = $sub_mod_7;
+        $data['sub_mod_8'] = $sub_mod_8;
+        $data['sub_mod_9'] = $sub_mod_9;
+        $data['sub_mod_10'] = $sub_mod_10;
+
+        $data['sub_mod_11'] = $sub_mod_11;
+        $data['sub_mod_12'] = $sub_mod_12;
+        $data['sub_mod_13'] = $sub_mod_13;
+        $data['sub_mod_14'] = $sub_mod_14;
+        $data['sub_mod_15'] = $sub_mod_15;
+        $data['sub_mod_16'] = $sub_mod_16;
+        $data['sub_mod_17'] = $sub_mod_17;
+        $data['sub_mod_18'] = $sub_mod_18;
+        $data['sub_mod_19'] = $sub_mod_19;
+        $data['sub_mod_20'] = $sub_mod_20;
+
+        $data['sub_mod_21'] = $sub_mod_21;
+        $data['sub_mod_22'] = $sub_mod_22;
+        $data['sub_mod_23'] = $sub_mod_23;
+        $data['sub_mod_24'] = $sub_mod_24;
+        $data['sub_mod_25'] = $sub_mod_25;
+        $data['sub_mod_26'] = $sub_mod_26;
+        $data['sub_mod_27'] = $sub_mod_27;
+        $data['sub_mod_28'] = $sub_mod_28;
+        $data['sub_mod_29'] = $sub_mod_29;
+        $data['sub_mod_30'] = $sub_mod_30;
+
+        $data['sub_mod_31'] = $sub_mod_31;
+        $data['sub_mod_32'] = $sub_mod_32;
+        $data['sub_mod_33'] = $sub_mod_33;
+        $data['sub_mod_34'] = $sub_mod_34;
+        $data['sub_mod_35'] = $sub_mod_35;
+        $data['sub_mod_36'] = $sub_mod_36;
+        $data['sub_mod_37'] = $sub_mod_37;
+        $data['sub_mod_38'] = $sub_mod_38;
+        $data['sub_mod_39'] = $sub_mod_39;
+        $data['sub_mod_40'] = $sub_mod_40;
+
+
+        $data['main_mod_4'] = $main_mod_4;
+        $data['main_mod_5'] = $main_mod_5;
+        $data['main_mod_7'] = $main_mod_7;
+        $data['main_mod_9'] = $main_mod_9;
+        $data['main_mod_13'] = $main_mod_13;
+       
+
+
+        
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/set_permission', $data);
@@ -53,6 +223,10 @@ class Admin extends CI_Controller
 
 
         $user_id = $this->input->post('user_id');
+        $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
+        if($set_permission){
+            $this->Admin_model->deleteSetPermissions($user_id);
+        }
 
         $mainModule = $this->input->post('mainModule');
         $subModule = $this->input->post('subModule');

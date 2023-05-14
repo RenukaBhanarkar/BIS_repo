@@ -85,6 +85,22 @@ class Que_bank_model extends CI_Model {
         }
         return $rs;
     }
+
+    public function getListOfSavedQueBank(){
+        $query = $this->db->select('qb.*,s.status_name')
+            ->from('tbl_que_bank qb')
+            ->join('tbl_mst_status s', 'qb.status = s.id', 'left')           
+            ->where_in('qb.status', array(0))
+            ->get();
+       
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row);
+            }
+        }
+        return $rs;
+    }
     public function getAllQueBankForSubadmin(){      
         $query = $this->db->select('qb.*,s.status_name,quiz.title as quiz_title')
             ->from('tbl_que_bank qb')
