@@ -333,24 +333,41 @@ class Quiz extends CI_Controller
         $prize1 = $this->Quiz_model->getPrizeId($prize_id,$id); 
         
         $data['firstprize']=$prize1;
+        $old_first_prize = $prize1['no_of_prize'];
         //end First Prizr Data
 
         //get Second Prize Data
         $prize_id=2;
         $prize2 = $this->Quiz_model->getPrizeId($prize_id,$id); 
         $data['secondprize']=$prize2;
+        if(empty($prize2)){
+            $old_sec_prize = 0;
+        }else{
+            $old_sec_prize = $prize2['no_of_prize'];
+        }
+       
         //End Second Prize data
 
         //get Third Prize Data
         $prize_id=3;
         $prize3 = $this->Quiz_model->getPrizeId($prize_id,$id); 
         $data['thirdprize']=$prize3;
+        if(empty($prize3)){
+            $old_third_prize = 0;
+        }else{
+            $old_third_prize = $prize3['no_of_prize'];
+        }
         //End Third Prize data
 
         //get Fourth Prize Data
         $prize_id=4;
         $prize4 = $this->Quiz_model->getPrizeId($prize_id,$id); 
         $data['fourthprize']=$prize4; 
+        if(empty($prize4)){
+            $old_fourth_prize = 0;
+        }else{
+            $old_fourth_prize = $prize4['no_of_prize'];
+        }
 
         $data['quizlavel']=$quizlavel;
         $data['getAvailability']=$getAvailability;
@@ -368,6 +385,7 @@ class Quiz extends CI_Controller
             $fprize_imgsize=$_FILES['fprize_img']['size'];
             $sprize_imgsize=$_FILES['sprize_img']['size'];
             $tprize_imgsize=$_FILES['tprize_img']['size'];
+            $cprize_imgsize=$_FILES['cprize_img']['size'];
             if ($banner_imgsize > 0 ) 
             {
                 $bannerpath = 'uploads/quiz_img/'; 
@@ -407,6 +425,16 @@ class Quiz extends CI_Controller
             else
             {
                 $tprize_imglocation=$this->input->post('lasttprize_img');
+            }
+
+            if ($cprize_imgsize > 0) 
+            {
+                $cprize_imglocation = $prizepath . time() .'prize_img'. $_FILES['cprize_img']['name']; 
+                move_uploaded_file($_FILES['cprize_img']['tmp_name'], $cprize_imglocation);
+            } 
+            else
+            {
+                $cprize_imglocation=$this->input->post('lastcprize_img');
             }
                              
             $formdata = array(); 
@@ -469,26 +497,52 @@ class Quiz extends CI_Controller
                 $formdata1['no_of_prize'] = $this->input->post('fprize');
                 $formdata1['prize_details'] = $this->input->post('fdetails'); 
                 $formdata1['prize_img'] = $fprize_imglocation;
+                $this->Quiz_model->updatePrize($fprize_id,$id,$formdata1);
 
                 $sprize_id = 2;
-                $formdata2['no_of_prize'] = $this->input->post('sprize');
+                $sprize = $this->input->post('sprize');
+                $formdata2['no_of_prize'] = $this->input->post('sprize');               
                 $formdata2['prize_details'] = $this->input->post('sdetails');
                 $formdata2['prize_img'] = $sprize_imglocation;
+                
+                if( $sprize != 0){
+                    if($old_sec_prize == 0){
+                        $this->Quiz_model->updatePrize($sprize_id,$id,$formdata2);
+                    }else{
+                        $this->Quiz_model->insertPrize($sprize_id,$id,$formdata2);
+                    }
+                    
+                }
+               
 
                 $tprize_id = 3;
+                $tprize = $this->input->post('tprize');
                 $formdata3['no_of_prize'] = $this->input->post('tprize');
                 $formdata3['prize_details'] = $this->input->post('tdetails');
                 $formdata3['prize_img'] =$tprize_imglocation;
-     
+
+                if( $tprize != 0){
+                    if($old_third_prize == 0){
+                        $this->Quiz_model->updatePrize($tprize_id,$id,$formdata3);
+                    }else{
+                        $this->Quiz_model->insertPrize($tprize_id,$id,$formdata3);
+                    }
+                    
+                }              
+
                 $cprize_id = 4;
+                $cprize = $this->input->post('cprize');
                 $formdata4['no_of_prize'] = $this->input->post('cprize');
                 $formdata4['prize_details'] = $this->input->post('cdetails');
-                $formdata4['prize_img'] = "NA";
-
-                $this->Quiz_model->updatePrize($fprize_id,$id,$formdata1);
-                $this->Quiz_model->updatePrize($sprize_id,$id,$formdata2);
-                $this->Quiz_model->updatePrize($tprize_id,$id,$formdata3);
-                $this->Quiz_model->updatePrize($cprize_id,$id,$formdata4);  
+                $formdata4['prize_img'] = $cprize_imglocation;
+                if( $cprize != 0){
+                    if($old_third_prize == 0){
+                        $this->Quiz_model->updatePrize($cprize_id,$id,$formdata4); 
+                    }else{
+                        $this->Quiz_model->insertPrize($cprize_id,$id,$formdata4);
+                    }
+                    
+                }    
 
                 $this->session->set_flashdata('MSG', ShowAlert("Record Update Successfully", "SS"));
                 redirect(base_url() . "quiz/quiz_list", 'refresh');
@@ -878,7 +932,7 @@ class Quiz extends CI_Controller
 
         $formdata['modify_by'] = $modify_by;
         $formdata['modify_on'] = date('Y-m-d : h:i:s');
-        $formdata['status']=1;
+        $formdata['status']=2;
         
         $quiz_id = $this->Quiz_model->sendToCreate($id,$formdata);
         if ($quiz_id==1) 
@@ -1039,7 +1093,7 @@ class Quiz extends CI_Controller
         $allquize = $this->Admin_model->getAllManageQuiz();
         $data = array();
         $data['allquize'] = $allquize; 
-
+        //echo json_encode($allquize);exit();
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
             if (in_array(2, $_SESSION['sub_mod_per'])) { 
