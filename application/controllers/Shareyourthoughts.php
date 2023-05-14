@@ -8,6 +8,8 @@ class Shareyourthoughts extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Users/Users_model');
+        $this->load->model('Admin/Admin_model');
+
         $this->load->model('Shareyourthoughts/Shareyourthoughts_model');
     } 
     public function index()
@@ -38,7 +40,18 @@ class Shareyourthoughts extends CI_Controller
             $row['comments'] = $comments;
             array_push($data, $row);
         }         
+        
         $data['getData'] = $data;
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(29, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 29;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+        // $data['permissions'] = $permissions;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Shareyourthoughts/item_proposal_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -111,6 +124,15 @@ class Shareyourthoughts extends CI_Controller
             array_push($data, $row);
         }         
         $data['getData'] = $data; 
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(30, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 30;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Shareyourthoughts/important_draft_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -187,6 +209,14 @@ class Shareyourthoughts extends CI_Controller
             array_push($data, $row);
         }         
         $data['getData'] = $data; 
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(31, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 31;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Shareyourthoughts/standard_publish_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -268,6 +298,14 @@ public function standard_under_list()
             array_push($data, $row);
         }         
         $data['getData'] = $data;  
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(32, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 32;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Shareyourthoughts/standard_under_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -341,7 +379,15 @@ public function standard_revised_list()
             $row['comments'] = $comments;
             array_push($data, $row);
         }         
-        $data['getData'] = $data; 
+        $data['getData'] = $data;
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(33, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 33;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        } 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Shareyourthoughts/standard_revised_list',$data);
         $this->load->view('admin/footers/admin_footer');

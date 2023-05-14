@@ -45,7 +45,13 @@
                             <td><?= $value['status_name']?></td>
                             <td class="d-flex">
                                 <?php $id= encryptids("E", $value['id'] )?>
-                                <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+
+                                <!-- <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a> -->
+
+
+                                <?php if (in_array(1, $permissions)) { ?>
+                                    <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php }?>
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                 
                                 <button onclick="updateLsvStandards('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Restore</button>

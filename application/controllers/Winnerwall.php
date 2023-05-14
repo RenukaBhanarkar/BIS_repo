@@ -32,6 +32,14 @@ class Winnerwall extends CI_Controller
         $data = array();
         $data['winnerwall'] = $this->Winnerwall_model->getWinnerWallList();
 
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(9, $_SESSION['main_mod_per'])) { 
+                 $main_model_id = 9;
+                $permissions = $this->Admin_model->getUsersPermissionsMain($main_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->view('admin/headers/admin_header');
         $this->load->view('winnerwall/winner_wall_list',$data);
         $this->load->view('admin/footers/admin_footer');

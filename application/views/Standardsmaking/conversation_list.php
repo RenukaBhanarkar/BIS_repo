@@ -5,18 +5,18 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">In Conversation with Expert</h1>
         <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardsmaking/conversation_dashboard';?>" >In Conversation with Expert</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Conversation List</li>
                 
-                </ol>
-            </nav>
+            </ol>
+        </nav>
     </div>
     <!-- Content Row -->
-     <?php if (encryptids("D", $_SESSION['admin_type']) == 3  ){ ?>
-    
+    <?php if (encryptids("D", $_SESSION['admin_type']) == 3  ){ ?>
+    <?php if (in_array(2, $permissions)) { ?>
     <div class="row">
         <div class="col-12">
             <div class="card border-top card-body">
@@ -26,8 +26,8 @@
             </div>
         </div>
     </div>
-<?php }?>
-
+    <?php }?>
+    <?php }?>
     <?php
     if ($this->session->flashdata('MSG')) {
     echo $this->session->flashdata('MSG');
@@ -58,29 +58,32 @@
                             <td><?= $value['status_name'];?></td>
                             <td class="d-flex">
                                 <?php $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php if (in_array(1, $permissions)) { ?>
                                 <a href="conversation_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
-                                 <?php if ($user_id == 3  ){ ?>
-
-
-
-
+                                <?php } ?>
+                                <?php if ($user_id == 3  ){ ?>
                                 <?php if ($value['status']!=5) {?>
+
+                                <?php if (in_array(3, $permissions)) { ?>
+                                    <a href="conversation_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <?php } ?>
+
+                                <?php if (in_array(4, $permissions)) { ?>
+                                     <button onclick="deleteConversation(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                <?php } ?>
+
                                 
-                                <a href="conversation_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a> 
+                               
                                 
-                                 <button onclick="deleteConversation(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
- 
-                                 <button onclick="updateStatusConversation('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Publish</button>
+                                <button onclick="updateStatusConversation('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Publish</button>
                                 <?php }?>
                                 
-                                <?php if ($value['status'] == 5) {?> 
+                                <?php if ($value['status'] == 5) {?>
                                 <button onclick="updateStatusConversation('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Unpublish</button>
                                 <?php }?>
                                 
-
-                                 <button onclick="updateStatusConversation('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-primary btn-sm mr-2 delete_img">Archives</button>
-                             <?php }?>
-
+                                <button onclick="updateStatusConversation('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-primary btn-sm mr-2 delete_img">Archives</button>
+                                <?php }?>
                             </td>
                         </tr>
                         <?php } ?>
@@ -134,52 +137,51 @@
 </body>
 <!-- Modal -->
 <script type="text/javascript">
-
-function updateStatusConversation(id,status) 
-    {
-        console.log(status)
-        if (status==5)  { $(".sms").text('Publish'); } 
-        if (status==6)  { $(".sms").text('Unpublish'); }
-        if (status==9)  { $(".sms").text('Archives'); }
-        $('#updatemodel').modal('show');
-        $('.updatestatus').on('click', function() 
-        {
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo base_url(); ?>Standardsmaking/updateStatusConversation',
-                data: {
-                    id: id,
-                    status: status,
-                },
-                success: function(result) 
-                {
-                    location.reload();
-                },
-                error: function(result) {
-                    alert("Error,Please try again.");
-                }
-            });
-        });
-    }
-     function deleteConversation(id) 
-    {
-        $('#delete').modal('show');
-        $('.deletecall').on('click', function() 
-        {
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo base_url(); ?>Standardsmaking/deleteConversation',
-                data: {
-                    id: id,
-                },
-                success: function(result) 
-                {
-                    location.reload();
-                },
-                error: function(result) {
-                    alert("Error,Please try again.");
-                }
-            });
-        });
-    }
+function updateStatusConversation(id,status)
+{
+console.log(status)
+if (status==5)  { $(".sms").text('Publish'); }
+if (status==6)  { $(".sms").text('Unpublish'); }
+if (status==9)  { $(".sms").text('Archives'); }
+$('#updatemodel').modal('show');
+$('.updatestatus').on('click', function()
+{
+$.ajax({
+type: 'POST',
+url: '<?php echo base_url(); ?>Standardsmaking/updateStatusConversation',
+data: {
+id: id,
+status: status,
+},
+success: function(result)
+{
+location.reload();
+},
+error: function(result) {
+alert("Error,Please try again.");
+}
+});
+});
+}
+function deleteConversation(id)
+{
+$('#delete').modal('show');
+$('.deletecall').on('click', function()
+{
+$.ajax({
+type: 'POST',
+url: '<?php echo base_url(); ?>Standardsmaking/deleteConversation',
+data: {
+id: id,
+},
+success: function(result)
+{
+location.reload();
+},
+error: function(result) {
+alert("Error,Please try again.");
+}
+});
+});
+}
 </script>

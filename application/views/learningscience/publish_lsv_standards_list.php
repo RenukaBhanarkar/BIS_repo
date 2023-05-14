@@ -54,9 +54,12 @@
                               <td><?= $value['status_name']?></td> 
                               <td><?= $value['updated_on']?></td>
                               <td class="" style="width:559px;">
-                                 <?php $id= encryptids("E", $value['id'] )?>
+                                 <?php $id= encryptids("E", $value['id'] )?> 
 
-                                <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                 <?php if (in_array(1, $permissions)) { ?>
+                                    <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php }?>
+
                                 
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
