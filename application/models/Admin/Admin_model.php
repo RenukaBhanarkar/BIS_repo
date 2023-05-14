@@ -78,6 +78,26 @@ class Admin_model extends CI_Model {
        return $rs;
         
     }
+     public function getUsersPermissionsMain($main_module_id){
+         $admin_id =encryptids("D", $_SESSION['admin_id']);
+        
+        $this->db->select('permissions');
+        $this->db->from('tbl_set_permissions');
+        $this->db->where('user_id',$admin_id);
+        $this->db->where('main_module_id',$main_module_id);
+        $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+
+            $result = $query->row_array();
+            $rs = $result['permissions'];           
+            $rs = explode(',',$rs);
+        }
+     //  echo json_encode($rs);exit();
+       
+       return $rs;
+        
+    }
     public function getLoginUsers($username,$password)
     {
         $this->db->where('username',$username);

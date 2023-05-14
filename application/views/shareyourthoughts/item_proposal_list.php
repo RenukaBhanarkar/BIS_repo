@@ -47,7 +47,13 @@
                             <td><?= $value['current_bis_dept'] ?></td>
                             <td><?= $value['comments'] ?></td>
                             <td><?= date("d-m-Y", strtotime($value['created_on']));?></td>
-                            <td> <a href="<?php echo base_url(); ?>Shareyourthoughts/item_proposal_view/<?= $id ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a></td>
+                            <td> 
+                                
+                                <?php if (in_array(1, $permissions)) { ?>
+                                <a href="<?php echo base_url(); ?>Shareyourthoughts/item_proposal_view/<?= $id ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a>
+                                <?php } else { echo "-"; }?>
+
+                            </td>
                             
                         </td>
                         <?php  }?>

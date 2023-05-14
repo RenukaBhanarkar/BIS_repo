@@ -116,7 +116,7 @@ class Admin extends CI_Controller
         //13 - Banner Image world of standard
         $worldOfStd = $this->input->post('worldOfStd');
 
-        if (empty($mainModule) && empty($subModule)) {
+        if (empty($mainModule)) {
             $data['status'] = 0;
             $data['message'] = 'Please enter atleast one Main Module and Sub module';
         }
