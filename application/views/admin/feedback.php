@@ -6,7 +6,11 @@
         <h1 class="h3 mb-0 text-gray-800">Feedback List</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/'; ?>">Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/cmsManagenent_dashboard'; ?>">CMS</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="#">Feedback List</a></li>
@@ -124,11 +128,18 @@
                                         <td><?php echo date("d-m-Y", strtotime($list['created_on'])); ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                         <td class="d-flex border-bottom-0">
-                                        
+                                        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                            <?php  if(in_array(1,$permissions)){ ?>
                                             <a href="<?php echo base_url().'admin/feedback_detail/'.encryptids("E",$list['id']); ?>"  class="btn btn-primary btn-sm mr-2 text-white" >View</a>
+                                            <?php } ?>
+                                            <?php  if(in_array(4,$permissions)){ ?>
                                             <button onclick="return delete_feedback('<?=$list['id']?>')" class="btn btn-danger btn-sm mr-2">Delete</button>
+                                            <?php } ?>
                                             <button onclick="return archive('<?=$list['id']?>')" class="btn btn-info btn-sm mr-2 archive" data-id="<?=$list['id']?>">Archive</button>
 
+                                            <?php }else{ ?>
+                                                <a href="<?php echo base_url().'admin/feedback_detail/'.encryptids("E",$list['id']); ?>"  class="btn btn-primary btn-sm mr-2 text-white" >View</a>
+                                            <?php } ?>
                                             
                                         </td>
                                         <?php } ?>

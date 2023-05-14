@@ -15,6 +15,7 @@
 
         </div>
         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            
             <!-- Content Row -->
 
             <!-- Content Row -->
@@ -22,7 +23,9 @@
                 <div class="col-12">
                     <div class="card border-top card-body">
                         <div>
+                        <?php if(in_array(2,$permissions)){ ?>
                             <button type="button" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">Add New Post</button>
+                            <?php } ?>
                             <a href="<?php echo base_url(); ?>wall_of_wisdom/archive" type="button" class="btn btn-primary btn-sm mr-2" >Archive</a>
                         </div>
                     </div>
@@ -76,16 +79,22 @@
                                             </a>
                                             <?php 
                                             if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                             
                                             <?php if($list_wow['status'] == 1){ ?>
                                             <button onclick="sendapproval('<?php echo $list_wow['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white send_approval" data-id ='<?php echo $list_wow['id']; ?>'>Send For Approval</button>
                                             <button class="btn btn-primary btn-sm mr-2 archive" onclick="sendArchive('<?php echo $list_wow['id']; ?>')" data-id ='<?php echo $list_wow['id']; ?>'>Archive</button>
                                            <?php } ?>
                                            
                                             <?php if (!($list_wow['status'] == 5 || $list_wow['status'] == 2)) { ?>
+                                                <?php //if($permissions['2']=='1'){ ?>
+                                                    <?php  if(in_array(3,$permissions)){ ?>
                                                 <button onclick="edit('<?php echo $list_wow['id']; ?>')" class="btn btn-warning btn-sm mr-2 text-white">Edit</button>
+                                                <?php  } ?>
                                                 <!-- <button onclick="deleteWOW('<?php echo $list_wow['id']; ?>')" data-id ='<?php echo $list_wow['id']; ?>' class="btn btn-danger btn-sm mr-2 delete" data-bs-toggle="modal" data-bs-target="#delete">Delete</button> -->
+                                                <?php  if(in_array(4,$permissions)){ ?>
                                                 <button onclick="deleteWOW('<?php echo $list_wow['id']; ?>')" data-id ='<?php echo $list_wow['id']; ?>' class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
-                                            <?php } } ?>
+                                                <?php } ?>
+                                            <?php  } } ?>
 
 
                                            <?php 

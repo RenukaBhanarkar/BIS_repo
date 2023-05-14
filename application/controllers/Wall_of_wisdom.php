@@ -8,10 +8,23 @@ class Wall_of_wisdom extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
+        $this->load->model('Admin/Admin_model');
         date_default_timezone_set("Asia/Calcutta");
     }
 
     public function index(){
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+          //  print_r($_SESSION); die;
+            if (in_array(4, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }else{
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+       // print_r($data); die;
         //echo "hello"; die;
         //$this->load->model('admin/Wall_of_wisdom_model');
         $data['wall_of_wisdom']=$this->wow->getAllWOW();
@@ -123,10 +136,10 @@ class Wall_of_wisdom extends CI_Controller
             $que_id = $this->input->post('que_id');
             $id = $this->wall_of_wisdom_model->wowUnpublish($que_id);
             if ($id) {
-                $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));
+                $this->session->set_flashdata('MSG', ShowAlert("Record Unpublished Successfully", "SS"));
                 
             } else {
-                $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));               
+                $this->session->set_flashdata('MSG', ShowAlert("Failed Successfully", "SS"));               
             }
             
             
@@ -173,10 +186,10 @@ class Wall_of_wisdom extends CI_Controller
             $que_id = $this->input->post('que_id');
             $id = $this->wow->send_for_approval($que_id);
             if ($id) {
-                $this->session->set_flashdata('MSG', ShowAlert("Record Approved Successfully", "SS"));
+                $this->session->set_flashdata('MSG', ShowAlert("Record Send For Approval Successfully", "SS"));
                 
             } else {
-                $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));               
+                $this->session->set_flashdata('MSG', ShowAlert("Record Send For Approval Successfully", "SS"));               
             }
             
             

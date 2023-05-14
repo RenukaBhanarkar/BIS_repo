@@ -7,7 +7,11 @@
         <h1 class="h3 mb-0 text-gray-800">Latest News</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Latest News</li>
@@ -22,7 +26,9 @@
         <div class="col-12">
             <div class="card border-top card-body">
                 <div>
+                <?php  if(in_array(2,$permissions)){ ?>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#latestform">New Post</button>
+                    <?php } ?>
                     <a href="<?php echo base_url().'/admin/archived_news' ?>" type="button" class="btn btn-primary btn-sm mr-2" >Archived News</a>
                     <div class="modal fade" id="latestform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         
@@ -121,12 +127,18 @@
                                     
                                     <td class="d-flex border-bottom-0">
                                     <?php if(encryptids("D", $_SESSION['admin_type']) == 3){ ?>
+                                        <?php  if(in_array(1,$permissions)){ ?>
                                     <a  href="letest_news_view/<?=encryptids("E",$list['id']);?>" class="btn btn-primary btn-sm mr-2 text-white">View</a>
+                                    <?php } ?>
                                     <?php if($list['status']=='5'){ ?>
                                         <button  class="btn btn-warning btn-sm mr-2 text-white unpublish" data-id="<?=encryptids("E",$list['id']);?>" >Unpublish</button>
                                    <?php }else if(!($list['status']=='5')){ ?>
+                                    <?php  if(in_array(3,$permissions)){ ?>
                                     <button  class="btn btn-info btn-sm mr-2 text-white edit" data-id="<?=encryptids("E",$list['id']);?>" data-toggle="modal" data-target="#editform">Edit</button>
+                                    <?php } ?>
+                                    <?php  if(in_array(4,$permissions)){ ?>
                                             <button  class="btn btn-danger btn-sm mr-2 text-white delete" data-id="<?=encryptids("E",$list['id']);?>" >Delete</button>
+                                            <?php } ?>
                                             <button  class="btn btn-success btn-sm mr-2 text-white publish" data-id="<?=encryptids("E",$list['id']);?>" >Publish</button>                                            
                                             <button  class="btn btn-primary btn-sm mr-2 text-white archive" data-id="<?=encryptids("E",$list['id']);?>" >Archive</button>
 
@@ -187,16 +199,18 @@
                                                             </div> -->
                             <div class=""  id="add_file">
                                 <div class="d-flex">
-                                        <div>
+                                        <div class="col-9">
                                             <input type="file" id="document2" name="document" class="form-control" onchange="loadFileThumbnail(event)" >
                                             <span  class="error_text" id="imgerror3" style="color:red;"></span>
                                             <input type="hidden" id="image1" name="old_doc" value="">
                                             <input type="hidden" id="id1" name="id">
                                             <span class="error_text"><?php echo form_error('banner_img');?></span>
                                         </div>
+                                        <div class="col-2">
                                         <button type="button" id="preview123456" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg">
                                             Preview
                                         </button>
+                                        </div>
 
                                         <div class="modal fade" id="Previewimg" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
                                             <div class="modal-dialog" style="max-width:700px;">
@@ -404,6 +418,19 @@
                
            } else {
                $("#err_description").text("");
+           }
+
+           var abcd= $('#document2').attr('required');
+           console.log(abcd);
+           if(abcd=="required"){
+            //alert('jhgkjdf');
+            var pqr = $('#document2').val();
+            if(pqr==""){
+                is_valid=false;
+                $('#imgerror3').text('This value is required');
+            }else{
+                
+            }
            }
 
 

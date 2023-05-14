@@ -21,7 +21,8 @@
        
         <!-- Content Row -->
         <div class="row">
-
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+        <?php  if(in_array(21,$permissions)){ ?>
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/banner_image_list">
@@ -36,8 +37,11 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
 
             <!-- Earnings (Monthly) Card Example -->
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+        <?php  if(in_array(22,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/about_exchange_forum">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -51,7 +55,10 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
 
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php  if(in_array(23,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/contact_us">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -65,7 +72,10 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
 
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php  if(in_array(24,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/footer_links">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -79,7 +89,11 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
 
+
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php  if(in_array(25,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/gallery">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -92,6 +106,10 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
+
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php  if(in_array(26,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/feedback">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -104,18 +122,24 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php  if(in_array(27,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/letest_news">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
-                            <h5 class="font-weight-bold text-danger mb-1">Letest News</h5>
+                            <h5 class="font-weight-bold text-danger mb-1">Latest News</h5>
                            
                         </div>
                     </div>
                 </div>
                 </a>
             </div>
+            <?php } } ?>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php  if(in_array(28,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/upcoming_events">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -128,6 +152,7 @@
                 </div>
                 </a>
             </div>
+            <?php } } ?>
 
 
           </div>
