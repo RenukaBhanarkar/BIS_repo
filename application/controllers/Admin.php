@@ -1653,6 +1653,8 @@ class Admin extends CI_Controller
               }
 
               $data['permissions'] =  $_SESSION['sub_mod_per'];
+          }else{
+            $data[]="";
           }
          // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
@@ -1769,6 +1771,17 @@ class Admin extends CI_Controller
 
     public function about_exchange_forum()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(22, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 22;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['about_exchange_forum'] = $this->admin_model->aboutExchangeForumData();
         $this->load->view('admin/headers/admin_header');
@@ -1880,6 +1893,17 @@ class Admin extends CI_Controller
 
     public function contact_us()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(23, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 23;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['contact_us'] = $this->admin_model->contactUsData();
         $this->load->view('admin/headers/admin_header');
