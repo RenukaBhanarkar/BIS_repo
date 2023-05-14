@@ -1798,7 +1798,7 @@
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-
+                        
                         jQuery.ajax({
                             type: "POST",
                             url: url,
