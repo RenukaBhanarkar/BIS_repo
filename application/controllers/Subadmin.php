@@ -382,14 +382,17 @@ class Subadmin extends CI_Controller
         $que_type = $this->input->post('que_type');
         $que = "";
         $que_h = "";
+        $que = $this->input->post('que');
+        // echo "fefbefbeb";
+        // echo  $que ;exit();
         if ($que_language == 1) {
             if ($que_type == 1 || $que_type == 3) {
-                $que = clearText($this->input->post('que'));
+                $que = $this->input->post('que');
             }
         }
         if ($que_language == 2) {
             if ($que_type == 1 || $que_type == 3) {
-                $que_h = clearText($this->input->post('que_h'));
+                $que_h = $this->input->post('que_h');
             }
         }
         if ($que_language == 3) {

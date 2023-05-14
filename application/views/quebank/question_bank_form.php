@@ -1238,7 +1238,9 @@
 
                     if (language == 1 || language == 3) {
                         if (que_type == 1 || que_type == 3) {
-                            var que = $("#que").val();
+                           // var que = $("#que").val();
+                           var que = CKEDITOR.instances['que'].getData();
+                           // alert(que);
                             if (que == "") {
                                 if ($("#que").next(".validation").length == 0) {
                                     $("#que").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter question</div>");
@@ -1379,7 +1381,8 @@
                     }
                     if (language == 2 || language == 3) {
                         if (que_type == 1 || que_type == 3) {
-                            var que_h = $("#que_h").val();
+                           // var que_h = $("#que_h").val();
+                           var que_h = CKEDITOR.instances['que_h'].getData();
                             if (que_h == "") {
                                 if ($("#que_h").next(".validation").length == 0) {
                                     $("#que_h").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter question in hindi</div>");
@@ -1532,6 +1535,17 @@
                         var url = $('#questions_form').attr('action');
                         var userForm = document.getElementById("questions_form");
                         var fd = new FormData(userForm);
+                        if (language == 1 || language == 3) {
+                            if (que_type == 1 || que_type == 3) {
+                                fd.append('que', que);
+                            }
+                        }
+                        if (language == 2 || language == 3) {
+                            if (que_type == 1 || que_type == 3) {
+                                fd.append('que_h', que_h);
+                            }
+                        }
+                       
                         jQuery.ajax({
                             type: "POST",
                             url: url,
