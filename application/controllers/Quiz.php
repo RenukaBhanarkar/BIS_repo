@@ -71,6 +71,14 @@ class Quiz extends CI_Controller
         $allquize = $this->Admin_model->onGoingQuizNew();
         $data = array();
         $data['allquize'] = $allquize;
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(3, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->view('admin/headers/admin_header');;
         $this->load->view('Quiz/ongoing_quiz_list', $data);
         $this->load->view('admin/footers/admin_footer');
@@ -91,7 +99,14 @@ class Quiz extends CI_Controller
         $ClosedQuiz = $this->Quiz_model->getAllClosedQuizeNew();
         $data = array();
         $data['ClosedQuiz'] = $ClosedQuiz; 
-        
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(4, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Quiz/closed_quiz_list',$data);
@@ -1020,11 +1035,19 @@ class Quiz extends CI_Controller
     }
 
     public function manage_quiz_list()
-    {
-       
+    {       
         $allquize = $this->Admin_model->getAllManageQuiz();
         $data = array();
         $data['allquize'] = $allquize; 
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(2, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('quiz/manage_quiz_list',$data);
@@ -1086,7 +1109,14 @@ class Quiz extends CI_Controller
 
         $users = $this->Quiz_model->resultDeclarationListdata(); 
         $data['DeclarationList']=$users; 
-      
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(5, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->view('admin/headers/admin_header');;
         $this->load->view('Quiz/result_declaration_list',$data);
         $this->load->view('admin/footers/admin_footer');

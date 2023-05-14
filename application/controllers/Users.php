@@ -277,7 +277,7 @@ class Users extends CI_Controller
             $username        = clearText($this->input->post('username'));
             $password        = clearText($this->input->post('password'));
 
-            /*
+            
             
             
             
@@ -400,7 +400,7 @@ class Users extends CI_Controller
 
 
 
-                */
+                
                 $user = $this->Admin_model->getLoginUsers($username, $password);
                 if (empty($user)) {
                     $this->session->set_flashdata('MSG', ShowAlert("Invalid username or password.", "DD"));
@@ -467,7 +467,7 @@ class Users extends CI_Controller
                         return true;
                     }
                 }
-           /* }*/
+            }
 
             ///////////////////////END/////////////
 

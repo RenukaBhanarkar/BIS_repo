@@ -25,8 +25,7 @@
                 <?php if(!empty ($DeclarationList)) { ?> 
                 <table id="example" class="table-bordered display nowrap" style="width:100%">
                     <thead>
-                        <tr>
-                            
+                        <tr>                            
                             <th>Sr. No.</th>
                             <th>Name of Quiz</th>
                             <th>Quiz ID</th>
@@ -35,8 +34,7 @@
                             <th>Total Submission</th>
                             <th>Total Winners</th>
                             <th>Declared on</th>
-                            <th>Action</th>
-                            
+                            <th>Action</th>                        
                             
                         </tr>
                     </thead>
@@ -53,8 +51,16 @@
                             <td><?= $value['total_winners']?></td>
                             <td><?= $value['declared_on']?></td>
                             <td>
+                            <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                                 <?php $id= encryptids("E", $value['quiz_id'] )?>
                                 <a href="<?php echo base_url();?>Quiz/result_declaration_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <?php } ?>
+                            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                <?php if (in_array(1, $permissions)) { ?>
+                                <?php $id= encryptids("E", $value['quiz_id'] )?>
+                                <a href="<?php echo base_url();?>Quiz/result_declaration_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <?php } } ?>
+
                             </td>
                             
                         </tr>
