@@ -54,7 +54,7 @@
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font" text-font>Description of Quiz<sup class="text-danger">*</sup></label>
                                 <textarea class="form-control input-font" placeholder="Enter Description of Quiz" name="description" id="description"></textarea>
-                                <div class='validation' id="description_error" style='color:red;margin-bottom:15px;'>Please Enter Quiz Description </div>
+                                <div class='validation' id="description_error" style='color:red;margin-bottom:15px;'>This value is required. </div>
 
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font" text-font>Tearms and Conditions of Quiz<sup class="text-danger">*</sup></label>
                                 <textarea class="form-control input-font" placeholder="Enter Tearms and Conditions of Quiz" name="terms_conditions" id="terms_conditions"><?php echo set_value('terms_conditions'); ?></textarea>
-                                <div class='validation' id="terms_conditions_error" style='color:red;margin-bottom:15px;'>Please Enter Quiz Term & Condition </div>
+                                <div class='validation' id="terms_conditions_error" style='color:red;margin-bottom:15px;'>This value is required. </div>
                             </div>
                         </div>
                         <div class="row">
@@ -973,7 +973,7 @@
 
         if (title == "" || title == null) {
             if ($("#title").next(".validation").length == 0) {
-                $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz Title </div>");
+                $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
             }
             if (!focusSet) {
                 $("#title").focus();
@@ -987,7 +987,7 @@
 
         if (title_hindi == "" || title_hindi == null) {
             if ($("#title_hindi").next(".validation").length == 0) {
-                $("#title_hindi").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz title_hindi </div>");
+                $("#title_hindi").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#title_hindi").focus();
@@ -1029,7 +1029,7 @@
         var duration = $("#duration").val();
         if (duration == "" || duration == null) {
             if ($("#duration").next(".validation").length == 0) {
-                $("#duration").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz Duration (In Minutes) </div>");
+                $("#duration").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#duration").focus();
@@ -1042,7 +1042,7 @@
         var total_mark = $("#total_mark").val();
         if (total_mark == "" || total_mark == null) {
             if ($("#total_mark").next(".validation").length == 0) {
-                $("#total_mark").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz Total Marks </div>");
+                $("#total_mark").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
             }
             if (!focusSet) {
                 $("#total_mark").focus();
@@ -1055,7 +1055,7 @@
         var total_question = $("#total_question").val();
         if (total_question == "" || total_question == null) {
             if ($("#total_question").next(".validation").length == 0) {
-                $("#total_question").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Total Number of Questions In Quiz</div>");
+                $("#total_question").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#total_question").focus();
@@ -1068,7 +1068,7 @@
         var start_date = $("#start_date").val();
         if (start_date == "" || start_date == null) {
             if ($("#start_date").next(".validation").length == 0) {
-                $("#start_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz Start Date</div>");
+                $("#start_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#start_date").focus();
@@ -1081,7 +1081,7 @@
         var start_time = $("#start_time").val();
         if (start_time == "" || start_time == null) {
             if ($("#start_time").next(".validation").length == 0) {
-                $("#start_time").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz Start Time</div>");
+                $("#start_time").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#start_time").focus();
@@ -1094,7 +1094,7 @@
         var end_date = $("#end_date").val();
         if (end_date == "" || end_date == null) {
             if ($("#end_date").next(".validation").length == 0) {
-                $("#end_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz End Date</div>");
+                $("#end_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#end_date").focus();
@@ -1107,7 +1107,7 @@
         var end_time = $("#end_time").val();
         if (end_time == "" || end_time == null) {
             if ($("#end_time").next(".validation").length == 0) {
-                $("#end_time").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz Start Time</div>");
+                $("#end_time").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#end_time").focus();
@@ -1120,7 +1120,7 @@
         var language_id = $("#language_id").val();
         if (language_id == "" || language_id == null) {
             if ($("#language_id").next(".validation").length == 0) {
-                $("#language_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz Language </div>");
+                $("#language_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
             }
             if (!focusSet) {
                 $("#language_id").focus();
@@ -1133,7 +1133,7 @@
         var banner_img = $("#banner_img").val();
         if (banner_img == "" || banner_img == null) {
             if ($("#banner_img").next(".validation").length == 0) {
-                $("#banner_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz Banner Image</div>");
+                $("#banner_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#banner_img").focus();
@@ -1146,7 +1146,7 @@
         var fprizes = $("#fprizes").val();
         if (fprizes == "" || fprizes == null) {
             if ($("#fprizes").next(".validation").length == 0) {
-                $("#fprizes").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter First Prize </div>");
+                $("#fprizes").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
             }
             if (!focusSet) {
                 $("#fprizes").focus();
@@ -1159,7 +1159,7 @@
         var fdetails = $("#fdetails").val();
         if (fdetails == "" || fdetails == null) {
             if ($("#fdetails").next(".validation").length == 0) {
-                $("#fdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter First Prize Details</div>");
+                $("#fdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#fdetails").focus();
@@ -1199,7 +1199,7 @@
             var sdetails = $("#sdetails").val();
             if (sdetails == "" || sdetails == null) {
                 if ($("#sdetails").next(".validation").length == 0) {
-                    $("#sdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Second Prize Details</div>");
+                    $("#sdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                 }
                 if (!focusSet) {
                     $("#sdetails").focus();
@@ -1241,7 +1241,7 @@
             var tdetails = $("#tdetails").val();
             if (tdetails == "" || tdetails == null) {
                 if ($("#tdetails").next(".validation").length == 0) {
-                    $("#tdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Third Prize Details</div>");
+                    $("#tdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                 }
                 if (!focusSet) {
                     $("#tdetails").focus();
@@ -1283,7 +1283,7 @@
             var cdetails = $("#cdetails").val();
             if (cdetails == "" || cdetails == null) {
                 if ($("#cdetails").next(".validation").length == 0) {
-                    $("#cdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Consolation Prizes Details</div>");
+                    $("#cdetails").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                 }
                 if (!focusSet) {
                     $("#cdetails").focus();
@@ -1296,7 +1296,7 @@
         var availability_id = $("#availability_id").val();
         if (availability_id == "" || availability_id == null) {
             if ($("#availability_id").next(".validation").length == 0) {
-                $("#availability_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Available for</div>");
+                $("#availability_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#availability_id").focus();
@@ -1309,7 +1309,7 @@
         var que_bank_id = $("#que_bank_id").val();
         if (que_bank_id == "" || que_bank_id == null) {
             if ($("#que_bank_id").next(".validation").length == 0) {
-                $("#que_bank_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Select Question Bank</div>");
+                $("#que_bank_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#que_bank_id").focus();
@@ -1322,7 +1322,7 @@
         var quiz_level_id = $("#quiz_level_id :selected").val();
         if (quiz_level_id == "" || quiz_level_id == null) {
             if ($("#quiz_level_id").next(".validation").length == 0) {
-                $("#quiz_level_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Select quiz livel</div>");
+                $("#quiz_level_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
                 $("#quiz_level_id").focus();
@@ -1335,7 +1335,7 @@
             var region_id = $("#region_id :selected").val();
             if (region_id == "" || region_id == null) {
                 if ($("#region_id").next(".validation").length == 0) {
-                    $("#region_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  select level </div>");
+                    $("#region_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                 }
                 if (!focusSet) {
                     $("#region_id").focus();
@@ -1349,7 +1349,7 @@
             var branch_id = $("#branch_id :selected").val();
             if (branch_id == "" || branch_id == null) {
                 if ($("#branch_id").next(".validation").length == 0) {
-                    $("#branch_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  select branch</div>");
+                    $("#branch_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                 }
                 if (!focusSet) {
                     $("#branch_id").focus();

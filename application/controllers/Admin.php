@@ -31,6 +31,14 @@ class Admin extends CI_Controller
         $data['user_id'] = $user_id;
         $data['user_details'] = $this->Admin_model->getDetailsAdminById($user_id);
 
+        // to check user permissions 
+        $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
+        if($set_permission){
+            $main_mod_per = $this->Admin_model->mainModulePermission($user_id);
+            $sub_mod_per = $this->Admin_model->subModulePermission($user_id);
+            $activity_per = $this->Admin_model->activityPermission($user_id);
+        }
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/set_permission', $data);
         $this->load->view('admin/footers/admin_footer');

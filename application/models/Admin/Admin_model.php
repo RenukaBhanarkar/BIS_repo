@@ -58,6 +58,18 @@ class Admin_model extends CI_Model {
        return $rs;
         
     }
+    public function toCheckSetPermissions($user_id){
+        $this->db->select('*');
+                $this->db->from('tbl_set_permissions');
+                $this->db->where('user_id',$user_id);      
+                $q = $this->db->get();
+       
+                if ($q->num_rows() > 0) {
+                  return true;
+                }else{
+                    return false;
+                }
+    }
     public function getUsersPermissions($sub_module_id){
          $admin_id =encryptids("D", $_SESSION['admin_id']);
         

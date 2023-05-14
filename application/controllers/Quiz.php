@@ -932,7 +932,7 @@ class Quiz extends CI_Controller
 
         $formdata['modify_by'] = $modify_by;
         $formdata['modify_on'] = date('Y-m-d : h:i:s');
-        $formdata['status']=2;
+        $formdata['status']=1;
         
         $quiz_id = $this->Quiz_model->sendToCreate($id,$formdata);
         if ($quiz_id==1) 

@@ -117,7 +117,7 @@
                     if (uid == "") {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
-                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter unique  UID</div>");
+                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         allFields = false;
                         if (!focusSet) {
@@ -201,7 +201,7 @@
                     if (uid == "") {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
-                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter unique  UID</div>");
+                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) {
                             $("#uid").focus();
@@ -222,7 +222,7 @@
                     }
                     if (email == "") {
                                 if ($("#email").next(".validation").length == 0) {
-                                    $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter email</div>");
+                                    $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 allfields = false;
                                 if (!focusSet) {
@@ -241,7 +241,7 @@
                             }
                             if (!username.length) {
                                 if ($("#name").next(".validation").length == 0) {
-                                    $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter name</div>");
+                                    $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 allfields = false;
                                 if (!focusSet) {

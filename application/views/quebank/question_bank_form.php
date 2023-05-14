@@ -844,10 +844,33 @@
                     var title = $("#title").val();
                     var no_of_ques = $("#no_of_ques").val();
                     // var total_marks = $("#total_marks").val();
-
-                    if (title == "" || title.length < 10 || title.length > 500) {
+                   
+                    if (title == "" ) {
+                       
                         if ($("#title").next(".validation").length == 0) {
-                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter valid title with minimum length 10 and maximum length 500 characters.</div>");
+                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'> This value is required.</div>");
+                        }
+                        if (!focusSet) {
+                            $("#title").focus();
+                        }
+                        allfields = false;
+                    } else 
+                    if (  title.length < 10 ) {
+                      
+                        $("#title").next(".validation").remove();
+                        if ($("#title").next(".validation").length == 0) {
+                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter valid title with minimum length 10 characters.</div>");
+                        }
+                        if (!focusSet) {
+                            $("#title").focus();
+                        }
+                        allfields = false;
+                    } else
+                    if (  title.length > 500 ) {
+                        alert ('third');
+                        $("#title").next(".validation").remove();
+                        if ($("#title").next(".validation").length == 0) {
+                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter valid title with maximum length 500 characters.</div>");
                         }
                         if (!focusSet) {
                             $("#title").focus();
@@ -858,7 +881,7 @@
                     }
                     if (no_of_ques == "" || no_of_ques == 0) {
                         if ($("#no_of_ques").next(".validation").length == 0) {
-                            $("#no_of_ques").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter no of ques</div>");
+                            $("#no_of_ques").after("<div class='validation' style='color:red;margin-bottom:15px;'> This value is required.</div>");
                         }
                         if (!focusSet) {
                             $("#no_of_ques").focus();
@@ -1178,7 +1201,7 @@
                     if (que_type == 2 || que_type == 3) {
                         if ($("#que_image").val() == '') {
                             if ($("#imgError").next(".validation").length == 0) {
-                                $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select image</div>");
+                                $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'> This value is required.</div>");
                             }
                             if (!focusSet) {
                                 $("#imgError").focus();
@@ -1192,7 +1215,7 @@
                         if ($("#que_image").val() != '') {
                             var fileSize = $('#que_image')[0].files[0].size;
 
-                            if (fileSize > 204800) {
+                            if ( fileSize > 204800) {
                                 if ($("#imgError").next(".validation").length == 0) {
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file size less than 200 KB </div>");
                                 }
@@ -1225,7 +1248,7 @@
                     var no_of_options = $("#no_of_options").val();
                     if (no_of_options == 0) {
                         if ($("#no_of_options").next(".validation").length == 0) {
-                            $("#no_of_options").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter no of options</div>");
+                            $("#no_of_options").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) {
                             $("#no_of_options").focus();
@@ -1243,7 +1266,7 @@
                            // alert(que);
                             if (que == "") {
                                 if ($("#que").next(".validation").length == 0) {
-                                    $("#que").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter question</div>");
+                                    $("#que").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 if (!focusSet) {
                                     $("#que").focus();
@@ -1260,7 +1283,7 @@
                                 var option1 = $("#option1").val();
                                 if (option1 == "") {
                                     if ($("#option1").next(".validation").length == 0) {
-                                        $("#option1").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter option 1</div>");
+                                        $("#option1").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option1").focus();
@@ -1284,7 +1307,7 @@
                                 var option2 = $("#option2").val();
                                 if (option2 == "") {
                                     if ($("#option2").next(".validation").length == 0) {
-                                        $("#option2").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter option 2</div>");
+                                        $("#option2").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2").focus();
@@ -1309,7 +1332,7 @@
 
                                 if (option3 == "") {
                                     if ($("#option3").next(".validation").length == 0) {
-                                        $("#option3").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter option 3</div>");
+                                        $("#option3").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3").focus();
@@ -1335,7 +1358,7 @@
 
                                 if (option4 == "") {
                                     if ($("#option4").next(".validation").length == 0) {
-                                        $("#option4").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter option 4</div>");
+                                        $("#option4").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4").focus();
@@ -1360,7 +1383,7 @@
                                 var option5 = $("#option5").val();
                                 if (option5 == "") {
                                     if ($("#option5").next(".validation").length == 0) {
-                                        $("#option5").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter option 5</div>");
+                                        $("#option5").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5").focus();
@@ -1385,7 +1408,7 @@
                            var que_h = CKEDITOR.instances['que_h'].getData();
                             if (que_h == "") {
                                 if ($("#que_h").next(".validation").length == 0) {
-                                    $("#que_h").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter question in hindi</div>");
+                                    $("#que_h").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 if (!focusSet) {
                                     $("#que_h").focus();
@@ -1402,7 +1425,7 @@
                                 var option1_h = $("#option1_h").val();
                                 if (option1_h == "") {
                                     if ($("#option1_h").next(".validation").length == 0) {
-                                        $("#option1_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter Hindi option 1</div>");
+                                        $("#option1_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option1_h").focus();
@@ -1425,7 +1448,7 @@
                                 var option2_h = $("#option2_h").val();
                                 if (option2_h == "") {
                                     if ($("#option2_h").next(".validation").length == 0) {
-                                        $("#option2_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter Hindi option 2</div>");
+                                        $("#option2_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2_h").focus();
@@ -1449,7 +1472,7 @@
                                 var option3_h = $("#option3_h").val();
                                 if (option3_h == "") {
                                     if ($("#option3_h").next(".validation").length == 0) {
-                                        $("#option3_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter Hindi option 3</div>");
+                                        $("#option3_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3_h").focus();
@@ -1473,7 +1496,7 @@
                                 var option4_h = $("#option4_h").val();
                                 if (option4_h == "") {
                                     if ($("#option4_h").next(".validation").length == 0) {
-                                        $("#option4_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter Hindi option 4</div>");
+                                        $("#option4_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4_h").focus();
@@ -1497,7 +1520,7 @@
                                 var option5_h = $("#option5_h").val();
                                 if (option5_h == "") {
                                     if ($("#option5_h").next(".validation").length == 0) {
-                                        $("#option5_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please enter Hindi option 5</div>");
+                                        $("#option5_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5_h").focus();
@@ -1520,7 +1543,7 @@
 
                     if ($('input[name="correct_answer"]:checked').length == 0) {
                         if ($("#cor_opt").next(".validation").length == 0) {
-                            $("#cor_opt").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select correct option </div>");
+                            $("#cor_opt").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
                         }
                         if (!focusSet) {
                             $("#cor_opt").focus();
