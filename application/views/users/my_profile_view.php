@@ -28,25 +28,25 @@
                             <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" style="font-weight: 600;">Name</label>
                                     <div>
-                                        <p>Anis Mulani</p>
+                                        <p><?php echo $user_profile['user_name']; ?></p>
                                     </div>    
                             </div>
                             <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" style="font-weight: 600;">Email Id</label>
                                     <div>
-                                        <p>anismulani1999@gmail.com</p>
+                                        <p><?php echo $user_profile['email']; ?></p>
                                     </div>    
                             </div>
                             <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" style="font-weight: 600;">Date of birth</label>
                                     <div>
-                                        <p>12/03/2003</p>
+                                        <p><?php echo $user_profile['date_of_birth']; ?></p>
                                     </div>    
                             </div>
                             <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" style="font-weight: 600;">Gender</label>
                                     <div>
-                                        <p>Male</p>
+                                        <p>-</p>
                                     </div>    
                             </div>
                             <div class="mb-2 col-md-4">
@@ -58,7 +58,7 @@
                             <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" style="font-weight: 600;">Contact Number</label>
                                     <div>
-                                        <p>7057085889</p>
+                                        <p><?php echo $user_profile['user_mobile']; ?></p>
                                     </div>    
                             </div>
                     </div>

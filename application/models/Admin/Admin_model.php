@@ -594,7 +594,7 @@ class Admin_model extends CI_Model {
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_quiz_details.status');
         $this->db->join('tbl_que_bank','tbl_que_bank.que_bank_id = tbl_quiz_details.que_bank_id');  
         $this->db->where_in('tbl_quiz_details.status',array(2,3,4,5,6,1));
-        $this->db->where('tbl_quiz_details.start_date >=' ,date("Y-m-d")); 
+        $this->db->where('tbl_quiz_details.start_date <=' ,date("Y-m-d")); 
         $this->db->order_by('tbl_quiz_details.created_on','desc');
         return $this->db->get('tbl_quiz_details')->result_array(); 
 
