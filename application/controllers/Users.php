@@ -2831,8 +2831,10 @@ class Users extends CI_Controller
     public function my_profile_view()
     {
         $UserId = $this->session->userdata('admin_id');
+        $user_id = encryptids("D", $UserId);
       //  echo $UserId; die;
-        $data['user_profile']=$this->Users_model->getUsersDetailsByUserId('1800003696');
+        // $data['user_profile']=$this->Users_model->getUsersDetailsByUserId('1800003696');
+        $data['user_profile']=$this->Users_model->getUsersDetailsByUserId( $user_id);
         // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/my_profile_view',$data);
@@ -2841,8 +2843,11 @@ class Users extends CI_Controller
     public function my_activity_list()
     {
     //    print_r($_SESSION); die;
+    $UserId = $this->session->userdata('admin_id');
+    $user_id = encryptids("D", $UserId);
       $this->load->model('Quiz_model');
-      $data['quiz']=$this->Quiz_model->getQuizByUserid('2105239181');      
+    //  $data['quiz']=$this->Quiz_model->getQuizByUserid('2105239181');    
+    $data['quiz']=$this->Quiz_model->getQuizByUserid($user_id);   
         $this->load->view('users/headers/header');
         $this->load->view('users/my_activity_list',$data);
         $this->load->view('users/footers/footer');
