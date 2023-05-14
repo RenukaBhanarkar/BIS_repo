@@ -23,19 +23,22 @@
 
         <!-- Content Row -->
         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-            <?php if (in_array(2, $permissions)) { ?>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card border-top card-body">
-                            <div>
-                                <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_form'">Create New Bank</button>
-                                <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_archive'">Archive</button>
-                            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-top card-body">
+                        <div>
+                            <?php if (in_array(2, $permissions)) { ?>
+
+                                <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_form'">Create New Bank</button>                             
+
+                            <?php } ?>
+                            <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_archive'">Archive</button>
+                            <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/question_bank_saved'">Saved Question Bank</button>
                         </div>
                     </div>
                 </div>
-        <?php }
-        } ?>
+            </div>
+        <?php  } ?>
         <?php
         if ($this->session->flashdata('MSG')) {
             echo $this->session->flashdata('MSG');
@@ -104,7 +107,8 @@
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                                 <?php if (in_array(1, $permissions)) { ?>
                                                     <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>subadmin/viewQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="View">View</a>
-                                            <?php }   } ?>
+                                            <?php }
+                                            } ?>
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
@@ -112,27 +116,29 @@
                                                 <a class="btn btn-success btn-sm mr-2 replicate" data-id="<?php echo encryptids('E', $row['que_bank_id']) ?>">Replicate</a>
 
                                                 <?php if (in_array(3, $permissions)) { ?>
-                                                <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
+                                                    <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
 
-                                                    if ($row['quiz_title'] == "") { ?>
+                                                        if ($row['quiz_title'] == "") { ?>
 
-                                                        <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="Edit">
-                                                            Edit
-                                                        </a>
+                                                            <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editQuestionBank?id=<?php echo encryptids('E', $row['que_bank_id']) ?>" title="Edit">
+                                                                Edit
+                                                            </a>
 
-                                                       
-                                                    <?php } ?>
-                                                <?php } } ?>
+
+                                                        <?php } ?>
+                                                <?php }
+                                                } ?>
                                                 <?php if (in_array(4, $permissions)) { ?>
-                                                <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
+                                                    <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
 
-                                                    if ($row['quiz_title'] == "") { ?>
+                                                        if ($row['quiz_title'] == "") { ?>
 
-                                                        <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['que_bank_id']; ?>)">Delete</button>
-                                                      
+                                                            <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['que_bank_id']; ?>)">Delete</button>
 
-                                                    <?php } ?>
-                                                <?php } } ?>
+
+                                                        <?php } ?>
+                                                <?php }
+                                                } ?>
 
                                                 <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
 

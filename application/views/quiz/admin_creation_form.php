@@ -133,7 +133,7 @@
                     if (uid == "") {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
-                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter unique  UID</div>");
+                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required .</div>");
                         }
                         allFields = false;
                         if (!focusSet) {
@@ -191,7 +191,7 @@
                     if (uid == "") {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
-                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter unique  UID</div>");
+                            $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) {
                             $("#uid").focus();

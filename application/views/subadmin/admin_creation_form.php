@@ -236,7 +236,7 @@
                             if (uid == "") {
                                 if ($("#err_uid").next(".validation").length == 0) // only add if not added
                                 {
-                                    $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter unique  UID</div>");
+                                    $("#err_uid").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 if (!focusSet) {
                                     $("#uid").focus();
@@ -256,7 +256,7 @@
                             }
                             if (email == "") {
                                 if ($("#email").next(".validation").length == 0) {
-                                    $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter email</div>");
+                                    $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 allfields = false;
                                 if (!focusSet) {
@@ -276,7 +276,7 @@
 
                             if (!department.length) {
                                 if ($("#department").next(".validation").length == 0) {
-                                    $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter department</div>");
+                                    $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 allfields = false;
                                 if (!focusSet) {
@@ -287,7 +287,7 @@
                             }
                             if (!username.length) {
                                 if ($("#name").next(".validation").length == 0) {
-                                    $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter name</div>");
+                                    $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 allfields = false;
                                 if (!focusSet) {
@@ -298,7 +298,7 @@
                             }
                             if (role == "" || role== null) {
                                 if ($("#role").next(".validation").length == 0) {
-                                    $("#role").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select role.</div>");
+                                    $("#role").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
                                 is_valid = false;
                                 if (!focusSet) {

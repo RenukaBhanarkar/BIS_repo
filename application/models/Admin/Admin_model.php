@@ -58,6 +58,18 @@ class Admin_model extends CI_Model {
        return $rs;
         
     }
+    public function toCheckSetPermissions($user_id){
+        $this->db->select('*');
+                $this->db->from('tbl_set_permissions');
+                $this->db->where('user_id',$user_id);      
+                $q = $this->db->get();
+       
+                if ($q->num_rows() > 0) {
+                  return true;
+                }else{
+                    return false;
+                }
+    }
     public function getUsersPermissions($sub_module_id){
          $admin_id =encryptids("D", $_SESSION['admin_id']);
         
@@ -78,6 +90,26 @@ class Admin_model extends CI_Model {
        return $rs;
         
     }
+    public function getUsersPermissionsByUserid($user_id,$sub_module_id){
+       
+       
+       $this->db->select('permissions');
+       $this->db->from('tbl_set_permissions');
+       $this->db->where('user_id',$user_id);
+       $this->db->where('sub_module_id',$sub_module_id);
+       $query = $this->db->get();
+       $rs = array();
+       if ($query->num_rows() > 0) {
+
+           $result = $query->row_array();
+           $rs = $result['permissions'];           
+           $rs = explode(',',$rs);
+       }
+    //  echo json_encode($rs);exit();
+      
+      return $rs;
+       
+   }
      public function getUsersPermissionsMain($main_module_id){
          $admin_id =encryptids("D", $_SESSION['admin_id']);
         
@@ -98,6 +130,43 @@ class Admin_model extends CI_Model {
        return $rs;
         
     }
+    public function permissionsByUseridMainModule($user_id,$main_module_id){
+     
+       
+       $this->db->select('permissions');
+       $this->db->from('tbl_set_permissions');
+       $this->db->where('user_id',$user_id);
+       $this->db->where('main_module_id',$main_module_id);
+       $query = $this->db->get();
+       $rs = array();
+       if ($query->num_rows() > 0) {
+
+           $result = $query->row_array();
+           $rs = $result['permissions'];           
+           $rs = explode(',',$rs);
+       }
+    //  echo json_encode($rs);exit();
+      
+      return $rs;
+       
+   }
+    
+    public function deleteSetPermissions($user_id){
+        $this->db->where('user_id', $user_id);
+        if ($this->db->delete('tbl_set_permissions')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+    ////////////// PERMISSIONS END //////////////////
+     
+
+
+    ////////////////////////////////
     public function getLoginUsers($username,$password)
     {
         $this->db->where('username',$username);
