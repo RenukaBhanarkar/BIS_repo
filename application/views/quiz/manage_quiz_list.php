@@ -68,7 +68,7 @@
                       <td><?= $quiz['status_name'] ?></td>
                       <td class="d-flex border-bottom-0">
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) {
-                          if ($quiz['status'] == 2) { ?>
+                          if ($quiz['status'] == 2 ) { ?>
                             <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
                         <?php }
                         } ?>

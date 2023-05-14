@@ -416,6 +416,7 @@
                     <input type="file" id="sprize_img" accept="image/jpeg,image/png,image/jpg" name="sprize_img" class="form-control-file" id="icon_file2" onchange="loadFileSecond(event)"> 
 
                     <input type="hidden" name="lastsprize_img"  value="<?php if(!empty($secondprize['prize_img'])) { echo $secondprize['prize_img']; } ?>">
+                    
                     <span class="error_text">
                       accept only jpg,jpeg,png
                     </span>
