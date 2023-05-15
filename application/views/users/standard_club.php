@@ -115,7 +115,7 @@
 </section>
 
 <section>
-  <div class="container pt-4 pb-5" id="start-quiz">
+  <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding:3%">
     <div class="row text-center">
       <h3>Quiz Competition</h3>
       <p>Quizzes For You</p>
@@ -148,12 +148,12 @@
 
   </div>
 </section>
-<div class="" style="background-image: url(<?php echo base_url();?>assets/images/competition_bg.png);">
-<section style="background: #ffffffba;">
+<div class="" style="background-image: url(<?php echo base_url();?>assets/images/creative_img.webp);">
+<section>
   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
     <div class="row text-center">
-      <h3 style="font-weight: 700; color: brown;">Creative Task</h3>
-      <p>Miscellaneous For You</p>
+      <h3 style="font-weight: 700; color: white;">Creative Task</h3>
+      <!-- <p>Miscellaneous For You</p> -->
     </div>
    <div class="row">
    <?php if(!empty($competition)){
@@ -166,7 +166,7 @@
               <div class="Quiz-button">
                   <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition</span></a>
               </div>
-              <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;"><?php echo $list['competiton_name']; ?></p>
+              <p class="quiz-text overflow-hidden p-1" style="font-weight: 600; color:white;"><?php echo $list['competiton_name']; ?></p>
             </div>
           </div>
 
@@ -263,17 +263,17 @@
 </div>
 <section id="cta" class="cta">
   
-  <div class="container aos-init aos-animate" data-aos="zoom-out" style="background: #FFF9E9; padding: 0px !important" >
+  <div class="container-fluid aos-init aos-animate" data-aos="zoom-out" style="background: #FFF9E9; padding: 0px !important" >
   <div style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png); padding: 80px">
 <div class="row g-5">
 
-  <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+  <div class="col-lg-7 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
     <h3>Standard Writting</h3>
-    <p> In the Common Core, the first three anchor writing standards require students to write in three important modes: argument/persuasive, informative/explanatory, and narrative. (The bolding is added to the standards.)</p>
+    <p> In the Common Core, the first three anchor writing standards require students to write in three important modes: argument/persuasive, informative/explanatory, and narrative.</p>
     <a class="cta-btn align-self-start" href="#">View All</a>
   </div>
 
-  <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+  <div class="col-lg-5 col-md-6 order-first order-md-last d-flex align-items-center">
     <div class="owl-carousel owl-theme" id="owl-caraousal_standard">
 
       <div class="item">
@@ -302,8 +302,8 @@
   
 </section> 
 
-<section style="background-color: #e3effb94;">
-  <div class="container">
+<section style="background-color: #80808087;">
+  <div class="container-fluid" style="padding: 0% 6% 0% 6%;">
     <div class="row">
       <div class="new-content d-flex" style="margin-left: -37px;">
         <div class="col-md-3 col-lg-3 col-sm-3 m-2">
@@ -358,7 +358,7 @@
 
 </section>
 <div class="creative-discussion" style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
-  <div class="container">
+  <div class="container-fluid" style="padding:3%">
     <div class="creative-wrapper">
       <div class="creative-content">
         <div class="section-title">
@@ -615,7 +615,7 @@
 </div>
 
 <section style="margin-bottom: 38px;">
-  <div class="container">
+  <div class="container-fluid" style="padding:3%">
     <div class="row">
       <div class="col-lg-12 text-center my-2 pt-5">
         <h4>Images & Gallery</h4>
@@ -635,7 +635,7 @@
         foreach ($images as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
             <a href="<?php echo base_url() . 'uploads/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
-              <img class="img-fluid" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:280px;" ; alt="">
+              <img class="img-fluid" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="">
             </a>
           </div>
         <?php } ?>

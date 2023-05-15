@@ -227,13 +227,13 @@ h1 {
         </form>
       </div>
 
-      <div class="header__icons">
+      <!-- <div class="header__icons">
         <i class="material-icons display-this">search</i>
         <i class="material-icons">videocam</i>
         <i class="material-icons">apps</i>
         <i class="material-icons">notifications</i>
         <i class="material-icons display-this">account_circle</i>
-      </div>
+      </div> -->
     </div>
     <!-- Header Ends -->
 

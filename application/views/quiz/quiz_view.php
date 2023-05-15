@@ -32,13 +32,13 @@
                                 <p><?= $quizdata['quiz_id']; ?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-8">
                             <label class="d-block text-font">Quiz Title</label>
                             <div>
                                 <p><?= $quizdata['title']; ?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-12">
                             <label class="d-block text-font">Hindi Title</label>
                             <div>
                                 <p><?= $quizdata['title_hindi']; ?></p>
@@ -65,16 +65,16 @@
                                  
                             </div>
                         </div>
+                        <div class="mb-2 col-md-8">
+                            <label class="d-block text-font">Start Time</label>
+                            <div>
+                                <p><?= $quizdata['start_time']; ?></p>
+                            </div>
+                        </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Quiz end Date</label>
                             <div>
                                 <p><?= date("d-m-Y", strtotime($quizdata['end_date']));?></p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Start Time</label>
-                            <div>
-                                <p><?= $quizdata['start_time']; ?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -300,23 +300,23 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="mb-2 col-md-12 table-responsive">
-                            <table id="example" class="hover table-bordered" style="width:100%">
+                        <div class="mb-2 col-md-12">
+                            <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
                                 <thead>
                                 <tr>
                                             <th>Question No.</th>
                                             <th>Type</th>
                                             <th>Question</th>
                                             <th>Question in Hindi</th>
-                                            <th>Eng Option 1</th>
+                                            <th>English Option 1</th>
                                             <th>Hindi Option 1</th>
-                                            <th>Eng Option 2</th>
+                                            <th>English Option 2</th>
                                             <th>Hindi Option 2</th>
-                                            <th>Eng Option 3</th>
+                                            <th>English Option 3</th>
                                             <th>Hindi Option 3</th>
-                                            <th>Eng Option 4</th>
+                                            <th>English Option 4</th>
                                             <th>Hindi Option 4</th>
-                                            <th>Eng Option 5</th>
+                                            <th>English Option 5</th>
                                             <th>Hindi Option 5</th>
                                             <th>Correct Option</th>
 
@@ -329,9 +329,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-md-12 submit_btn p-3">
+                 <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Quiz/quiz_list'">Back</a>
-                </div> -->
+                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
