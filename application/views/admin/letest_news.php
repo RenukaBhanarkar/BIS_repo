@@ -26,9 +26,10 @@
         <div class="col-12">
             <div class="card border-top card-body">
                 <div>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <?php  if(in_array(2,$permissions)){ ?>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#latestform">New Post</button>
-                    <?php } ?>
+                    <?php } } ?>
                     <a href="<?php echo base_url().'/admin/archived_news' ?>" type="button" class="btn btn-primary btn-sm mr-2" >Archived News</a>
                     <div class="modal fade" id="latestform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         
@@ -429,7 +430,7 @@
                 is_valid=false;
                 $('#imgerror3').text('This value is required');
             }else{
-                
+
             }
            }
 

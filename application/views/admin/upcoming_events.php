@@ -25,9 +25,10 @@
         <div class="col-12">
             <div class="card border-top card-body">
                 <div>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <?php  if(in_array(2,$permissions)){ ?>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#latestform">Add Events</button>
-                    <?php } ?>
+                    <?php } } ?>
                     <!-- <button type="button" class="btn btn-primary btn-sm mr-2" >Archived Events</button> -->
                     <a href="<?php echo base_url().'admin/archived_events' ?>" type="button" class="btn btn-primary btn-sm mr-2" >Archived Events</a>
                     <div class="modal fade" id="latestform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

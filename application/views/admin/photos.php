@@ -6,7 +6,11 @@
         <h1 class="h3 mb-0 text-gray-800">Photos List</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/'; ?>">Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/cmsManagenent_dashboard'; ?>">CMS</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url() . 'admin/gallery'; ?>">Gallery</a></li>
@@ -20,6 +24,7 @@
 
     <div class="col-12">
         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+            <?php  if(in_array(2,$permissions)){ ?>
             <div class="card border-top card-body">
                 <div>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add New Photo</button>
@@ -73,7 +78,7 @@
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php } } ?>
 
         <?php
         if ($this->session->flashdata('MSG')) {
@@ -104,9 +109,12 @@
                                         <td><?php echo $list_photos['title']; ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                             <td class="d-flex border-bottom-0">
-                                                
+                                            <?php  if(in_array(4,$permissions)){ ?>
                                                 <button data-id='<?php echo encryptids("E", $list_photos['id']); ?>' class="btn btn-danger btn-sm mr-2 delete">Delete</button>
+                                                <?php } ?>
+                                                <?php  if(in_array(3,$permissions)){ ?>
                                                 <button onclick="edit('<?php echo $list_photos['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform1">Edit</button>
+                                                <?php } ?>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="viewImageLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
@@ -138,7 +146,7 @@
                                                                 <div class="row">
                                                                     <div class="mb-2 col-md-4">
                                                                         <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
-                                                                        <input type="file" class="form-control input-font" name="" id="">
+                                                                        <input type="file" class="form-control input-font" name="" id="" >
                                                                         <span class="error_text">
                                                                             <?php //echo form_error('title'); 
                                                                             ?>
@@ -246,9 +254,11 @@
                             <div class="row" id="add_file">
                                 <div class="col-9">
                                     <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="icon_file" onchange="loadFileThumbnail(event)">
-                                    <span class="error_text">
-                                        accept only jpg,jpeg,png
+                                    <span class="error_text">                                        
                                     </span>
+                                    <div class="invalid-feedback">
+                                        This value is required
+                                    </div>
                                     <input type="hidden" name="old_img" value="" id="bannerimg1">
                                     <input type="hidden" name="id" value="" id="id1">
                                     <span class="error_text">
@@ -267,11 +277,14 @@
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Caption</label>
-                            <input type="text" class="form-control input-font" name="banner_caption" id="caption1" required="">
+                            <input type="text" class="form-control input-font" name="banner_caption" id="caption1" maxlength="200" required="">
                             <span class="error_text">
                                 <?php //echo form_error('title'); 
                                 ?>
                             </span>
+                            <div class="invalid-feedback">
+                                This value is required
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -348,6 +361,25 @@
 
     var loadFileThumbnail = function(event) {
         //  $("#Previewimg").show();
+        var fileSize = $('#icon_file')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#icon_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#icon_file').val('');          
+            Swal.fire("File size should be more than 20KB")            
+        }else if(fileSize > 204800){
+            $('#icon_file').val('');            
+            Swal.fire("File size should be less than 200KB")           
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#icon_file').val('');            
+            Swal.fire("Only jpg,jpeg,png files allowed")           
+        }else{
+            $('#err_update_banner').text('');
+        }
+
         var outputThumbnail = document.getElementById('outputThumbnail');
 
         outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
