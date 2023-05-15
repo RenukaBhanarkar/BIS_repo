@@ -9,6 +9,21 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Edit Quiz Creation</h1>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Quiz/quiz_list';?>" >Quiz Creation</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Quiz Creation</li>
+                
+                </ol>
+            </nav>
 
   </div>
   <?php
@@ -25,7 +40,7 @@
         <div class="card border-top">
           <div class="card-body">
             <div class="row">
-              <div class="mb-2 col-md-4">
+              <div class="mb-2 col-md-12">
                 <label class="d-block text-font">Title of Quiz<sup class="text-danger">*</sup></label>
                 <input type="text" class="form-control input-font" name="title" id="title" value="<?php echo set_value('title', $quizdata['title']) ?>" placeholder="Enter Quiz Title">
                 <span class="error_text"><?php echo form_error('title'); ?></span>
@@ -793,10 +808,10 @@
 
             <div class="row">
               <div class="col-md-12 submit_btn p-3">
-                <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a>
+                <a class="btn btn-success btn-sm text-white submit" >Submit</a>
                 <!-- <input type="submit" name="Submit" class="btn btn-info btn-sm"> -->
                 <!-- <button id="submitForm"  class="btn btn-info btn-sm">Submit</button> -->
-                <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                <a class="btn btn-danger btn-sm text-white cancel" >Cancel</a>
                 <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
               </div>
             </div>
@@ -1405,4 +1420,38 @@
   //   // $('#icon_file').add('attr','required');
   //   $('#cprize_img').attr('required', true);
   // });
+  $('.cancel').on('click', function() {
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {  
+            window.location.replace('<?php echo base_url().'Quiz/quiz_list' ?>');
+              } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
+
+    $('.submit').on('click', function() {
+    Swal.fire({
+                    title: 'Are you sure you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {  
+           // window.location.replace('<?php echo base_url().'Quiz/quiz_list' ?>');
+           $('#editquiz').submit();
+              } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+    })
 </script>

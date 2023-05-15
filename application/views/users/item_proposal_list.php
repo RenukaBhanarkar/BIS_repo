@@ -1,6 +1,6 @@
 <!-- <link href="<?php echo base_url();?>assets/admin/css/jquery.dataTables.min.css" rel="stylesheet"> -->
     <!-- Begin Page Content -->
-    <div class="container">
+    <div class="container-fluid">
         <!-- Content Row -->
       
         <div class="row">
@@ -12,16 +12,16 @@
              </div>
             <div class="col-12 mt-3">
             <div class="card card-body">
-                <table id="example" class="hover table-bordered" style="width:100%; height:91px;">
-                    <thead style="text-align: center;">
-                        <tr>
-                            <th>Sr. No.</th>
-                            <th>Subject</th>
-                            <th>Name of proposer</th>
-                            <th>Organization Type</th>
-                            <th>Date of receipt</th>
-                            <th>Current Stage</th>
-                            <th>Concerned Bis Department</th>
+                <table id="example" class="hover table-bordered table-responsive" style="width:100%; height:91px;">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th style="text-align: center;">Sr. No.</th>
+                            <th style="text-align: center;">Subject</th>
+                            <th style="text-align: center;">Name of proposer</th>
+                            <th style="text-align: center;">Organization Type</th>
+                            <th style="text-align: center;">Date of receipt</th>
+                            <th style="text-align: center;">Current Stage</th>
+                            <th style="text-align: center;">Concerned Bis Department</th>
                            
                             <th>Action</th>
                         </tr>

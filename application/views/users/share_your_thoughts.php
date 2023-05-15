@@ -37,8 +37,8 @@
 </style>
 <section id="quality-outer my-5">
     <div class="quality_section">
-        <div class="container">
-            <div class="row my-5">
+        <div class="container-fluid">
+            <div class="row my-5" style="margin-left: 11px;">
                 <div class="World_of_standers_inner_Box">
                     <a href="<?php echo base_url().'users/new_work_list' ?>">
                     <div class="World_of_standers_image_box">
@@ -97,7 +97,7 @@
                 <div class="World_of_standers_inner_Box">
                     <a href="<?php echo base_url().'users/discussion_forum_list'?>">
                     <div class="World_of_standers_image_box">
-                        <img src="<?=base_url();?>assets/images/world_stander/revised.png" class="card-img-top" alt="Discussion Forum">
+                        <img src="<?=base_url();?>assets/images/discuss_img.jpeg" class="card-img-top" alt="Discussion Forum">
                        
                     </div>
                     <p class="Title_Section_thoughts">Discussion Forum</p>

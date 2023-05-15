@@ -571,6 +571,7 @@
         }
     };
 //     $(".btnsubmit").click(function(){
+//         $('#quiz_reg').addClass('was-validated');
 //     $('input').css('border','1px solid red');
 //     $('textarea').css('border','1px solid red');
 //     $('select').css('border','1px solid red');
