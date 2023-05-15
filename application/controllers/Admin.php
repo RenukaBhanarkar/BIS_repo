@@ -24,6 +24,704 @@ class Admin extends CI_Controller
         }
         return true;
     }
+    public function set_permission()
+    {
+        $data = array();
+        $user_id =   encryptids("D", $this->input->get('id'));
+        $data['user_id'] = $user_id;
+        $data['user_details'] = $this->Admin_model->getDetailsAdminById($user_id);
+        $main_mod_per = array();
+        $sub_mod_per = array();
+        $activity_per = array();
+        $sub_mod_1 = array();
+        $sub_mod_2 = array();
+        $sub_mod_3 = array();
+        $sub_mod_4 = array();
+        $sub_mod_5 = array();
+        $sub_mod_6 = array();
+        $sub_mod_7 = array();
+        $sub_mod_8 = array();
+        $sub_mod_9 = array();
+        $sub_mod_10 = array();
+        $sub_mod_11 = array();
+        $sub_mod_12 = array();
+        $sub_mod_13 = array();
+        $sub_mod_14 = array();
+
+
+        $sub_mod_15 = array();
+        $sub_mod_16 = array();
+        $sub_mod_17 = array();
+        $sub_mod_18 = array();
+        $sub_mod_19 = array();
+        $sub_mod_20 = array();
+        $sub_mod_21 = array();
+        $sub_mod_22 = array();
+        $sub_mod_23 = array();
+        $sub_mod_24 = array();
+        $sub_mod_25 = array();
+        $sub_mod_26 = array();
+        $sub_mod_27 = array();
+        $sub_mod_28 = array();
+
+        $sub_mod_29 = array();
+        $sub_mod_30 = array();
+        $sub_mod_31 = array();
+        $sub_mod_32 = array();
+        $sub_mod_33 = array();
+        $sub_mod_34 = array();
+        $sub_mod_35 = array();
+        $sub_mod_36 = array();
+        $sub_mod_37 = array();
+        $sub_mod_38 = array();
+        $sub_mod_39 = array();
+        $sub_mod_40 = array();
+
+        $main_mod_4 = array();
+        $main_mod_5 = array();
+        $main_mod_7 = array();
+        $main_mod_9 = array();
+        $main_mod_13 = array();
+
+
+
+
+        // to check user permissions 
+        $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
+        $id= encryptids("E", $user_id);
+        if($set_permission){
+            $main_mod_per = $this->Admin_model->mainModulePermission($id);
+            $sub_mod_per = $this->Admin_model->subModulePermission($id);
+
+
+            $sub_mod_1 = $this->Admin_model->getUsersPermissionsByUserid($user_id,1);
+            $sub_mod_2 = $this->Admin_model->getUsersPermissionsByUserid($user_id,2);
+            $sub_mod_3 = $this->Admin_model->getUsersPermissionsByUserid($user_id,3);
+            $sub_mod_4 = $this->Admin_model->getUsersPermissionsByUserid($user_id,4);
+            $sub_mod_5 = $this->Admin_model->getUsersPermissionsByUserid($user_id,5);
+            $sub_mod_6 = $this->Admin_model->getUsersPermissionsByUserid($user_id,6);
+            $sub_mod_7 = $this->Admin_model->getUsersPermissionsByUserid($user_id,7);
+            $sub_mod_8 = $this->Admin_model->getUsersPermissionsByUserid($user_id,8);
+            $sub_mod_9 = $this->Admin_model->getUsersPermissionsByUserid($user_id,9);
+            $sub_mod_10 = $this->Admin_model->getUsersPermissionsByUserid($user_id,10);
+
+            $sub_mod_11 = $this->Admin_model->getUsersPermissionsByUserid($user_id,11);
+            $sub_mod_12 = $this->Admin_model->getUsersPermissionsByUserid($user_id,12);
+            $sub_mod_13 = $this->Admin_model->getUsersPermissionsByUserid($user_id,13);
+            $sub_mod_14 = $this->Admin_model->getUsersPermissionsByUserid($user_id,14);
+            $sub_mod_15= $this->Admin_model->getUsersPermissionsByUserid($user_id,15);
+            $sub_mod_16 = $this->Admin_model->getUsersPermissionsByUserid($user_id,16);
+            $sub_mod_17= $this->Admin_model->getUsersPermissionsByUserid($user_id,17);
+            $sub_mod_18 = $this->Admin_model->getUsersPermissionsByUserid($user_id,18);
+            $sub_mod_19 = $this->Admin_model->getUsersPermissionsByUserid($user_id,19);
+            $sub_mod_20 = $this->Admin_model->getUsersPermissionsByUserid($user_id,20);
+
+            $sub_mod_21 = $this->Admin_model->getUsersPermissionsByUserid($user_id,21);
+            $sub_mod_22 = $this->Admin_model->getUsersPermissionsByUserid($user_id,22);
+            $sub_mod_23 = $this->Admin_model->getUsersPermissionsByUserid($user_id,23);
+            $sub_mod_24 = $this->Admin_model->getUsersPermissionsByUserid($user_id,24);
+            $sub_mod_25= $this->Admin_model->getUsersPermissionsByUserid($user_id,25);
+            $sub_mod_26 = $this->Admin_model->getUsersPermissionsByUserid($user_id,26);
+            $sub_mod_27= $this->Admin_model->getUsersPermissionsByUserid($user_id,27);
+            $sub_mod_28 = $this->Admin_model->getUsersPermissionsByUserid($user_id,28);
+            $sub_mod_29 = $this->Admin_model->getUsersPermissionsByUserid($user_id,29);
+            $sub_mod_30 = $this->Admin_model->getUsersPermissionsByUserid($user_id,30);
+
+
+            $sub_mod_31 = $this->Admin_model->getUsersPermissionsByUserid($user_id,31);
+            $sub_mod_32 = $this->Admin_model->getUsersPermissionsByUserid($user_id,32);
+            $sub_mod_33 = $this->Admin_model->getUsersPermissionsByUserid($user_id,33);
+            $sub_mod_34 = $this->Admin_model->getUsersPermissionsByUserid($user_id,34);
+            $sub_mod_35= $this->Admin_model->getUsersPermissionsByUserid($user_id,35);
+            $sub_mod_36 = $this->Admin_model->getUsersPermissionsByUserid($user_id,36);
+            $sub_mod_37= $this->Admin_model->getUsersPermissionsByUserid($user_id,37);
+            $sub_mod_38 = $this->Admin_model->getUsersPermissionsByUserid($user_id,38);
+            $sub_mod_39 = $this->Admin_model->getUsersPermissionsByUserid($user_id,39);
+            $sub_mod_40 = $this->Admin_model->getUsersPermissionsByUserid($user_id,40);  
+            
+         
+
+            $main_mod_4  =  $this->Admin_model->permissionsByUseridMainModule($user_id,4);
+            $main_mod_5  =  $this->Admin_model->permissionsByUseridMainModule($user_id,5);
+
+            $main_mod_7  =  $this->Admin_model->permissionsByUseridMainModule($user_id,7);
+
+            $main_mod_9  =  $this->Admin_model->permissionsByUseridMainModule($user_id,9);
+            $main_mod_13  =  $this->Admin_model->permissionsByUseridMainModule($user_id,13);
+
+
+        }
+        $data['main_mod_per'] = $main_mod_per;
+        $data['sub_mod_per'] = $sub_mod_per;
+
+        $data['sub_mod_1'] = $sub_mod_1;
+        $data['sub_mod_2'] = $sub_mod_2;
+        $data['sub_mod_3'] = $sub_mod_3;
+        $data['sub_mod_4'] = $sub_mod_4;
+        $data['sub_mod_5'] = $sub_mod_5;
+        $data['sub_mod_6'] = $sub_mod_6;
+        $data['sub_mod_7'] = $sub_mod_7;
+        $data['sub_mod_8'] = $sub_mod_8;
+        $data['sub_mod_9'] = $sub_mod_9;
+        $data['sub_mod_10'] = $sub_mod_10;
+
+        $data['sub_mod_11'] = $sub_mod_11;
+        $data['sub_mod_12'] = $sub_mod_12;
+        $data['sub_mod_13'] = $sub_mod_13;
+        $data['sub_mod_14'] = $sub_mod_14;
+        $data['sub_mod_15'] = $sub_mod_15;
+        $data['sub_mod_16'] = $sub_mod_16;
+        $data['sub_mod_17'] = $sub_mod_17;
+        $data['sub_mod_18'] = $sub_mod_18;
+        $data['sub_mod_19'] = $sub_mod_19;
+        $data['sub_mod_20'] = $sub_mod_20;
+
+        $data['sub_mod_21'] = $sub_mod_21;
+        $data['sub_mod_22'] = $sub_mod_22;
+        $data['sub_mod_23'] = $sub_mod_23;
+        $data['sub_mod_24'] = $sub_mod_24;
+        $data['sub_mod_25'] = $sub_mod_25;
+        $data['sub_mod_26'] = $sub_mod_26;
+        $data['sub_mod_27'] = $sub_mod_27;
+        $data['sub_mod_28'] = $sub_mod_28;
+        $data['sub_mod_29'] = $sub_mod_29;
+        $data['sub_mod_30'] = $sub_mod_30;
+
+        $data['sub_mod_31'] = $sub_mod_31;
+        $data['sub_mod_32'] = $sub_mod_32;
+        $data['sub_mod_33'] = $sub_mod_33;
+        $data['sub_mod_34'] = $sub_mod_34;
+        $data['sub_mod_35'] = $sub_mod_35;
+        $data['sub_mod_36'] = $sub_mod_36;
+        $data['sub_mod_37'] = $sub_mod_37;
+        $data['sub_mod_38'] = $sub_mod_38;
+        $data['sub_mod_39'] = $sub_mod_39;
+        $data['sub_mod_40'] = $sub_mod_40;
+
+
+        $data['main_mod_4'] = $main_mod_4;
+        $data['main_mod_5'] = $main_mod_5;
+        $data['main_mod_7'] = $main_mod_7;
+        $data['main_mod_9'] = $main_mod_9;
+        $data['main_mod_13'] = $main_mod_13;
+       
+
+
+        
+
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/set_permission', $data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function add_permissions()
+    {
+        $data = array();
+        $mainModule = array();
+        $subModule = array();
+        // $createQuiz = array();
+        // $manageQuiz = array();
+
+
+        $user_id = $this->input->post('user_id');
+        $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
+        if($set_permission){
+            $this->Admin_model->deleteSetPermissions($user_id);
+        }
+
+        $mainModule = $this->input->post('mainModule');
+        $subModule = $this->input->post('subModule');
+
+        // echo json_encode($mainModule);
+        // echo json_encode($subModule);
+        // exit();
+        // 1 - QUIZ 1-6
+        $createQuiz = $this->input->post('createQuiz');
+        $manageQuiz = $this->input->post('manageQuiz');
+        $ongoingQuiz = $this->input->post('ongoingQuiz');
+        $closedQuiz = $this->input->post('closedQuiz');
+        $queBank = $this->input->post('queBank');
+        $result = $this->input->post('result');
+
+        // 2 - STANDARD WRITING 7-11
+        $createComp = $this->input->post('createComp');
+        $manageComp = $this->input->post('manageComp');
+        $ongoingComp = $this->input->post('ongoingComp');
+        $closedComp = $this->input->post('closedComp');
+        $reviewComp = $this->input->post('reviewComp');
+
+        // 3 - Miscellaneous Competition 12-16
+        $misCreateComp = $this->input->post('misCreateComp');
+        $misManageComp = $this->input->post('misManageComp');
+        $misOngoingComp = $this->input->post('misOngoingComp');
+        $misClosedComp = $this->input->post('misClosedComp');
+        $misReviewComp = $this->input->post('misReviewComp');
+        // 4 - WALL OF WISDOM
+        $wallOfWisdom = $this->input->post('wallOfWisdom');
+        //  5 - Your Wall
+
+        $yourWall = $this->input->post('yourWall');
+        //   6 - Classroom 17-20
+        $createClassroomPost = $this->input->post('createClassroomPost');
+        $manageClassroomPost = $this->input->post('manageClassroomPost');
+        $publishClassroomPost = $this->input->post('publishClassroomPost');
+        $archiveClassroomPost = $this->input->post('archiveClassroomPost');
+        //7 - By the Mentors
+        $byTheMentors = $this->input->post('byTheMentors');
+
+        // 8 - CMS 21- 28
+        $bannerImage = $this->input->post('bannerImage');
+        $exchangeForum = $this->input->post('exchangeForum');
+        $contactUs = $this->input->post('contactUs');
+        $footerLinks = $this->input->post('footerLinks');
+        $gallery = $this->input->post('gallery');
+        $feedback = $this->input->post('feedback');
+        $latestNews = $this->input->post('latestNews');
+        $UpcomingEvents = $this->input->post('UpcomingEvents');
+        //  9 - Winners Wall
+        $winnersWall = $this->input->post('winnersWall');
+        // 10 - Share your thoughts 29-34
+        $newWork = $this->input->post('newWork');
+        $draft = $this->input->post('draft');
+        $newStd = $this->input->post('newStd');
+        $stdReview = $this->input->post('stdReview');
+        $revisedStd = $this->input->post('revisedStd');
+        $disForum = $this->input->post('disForum');
+        // 11 - Join the Class Room 35-38   
+        $liveSession = $this->input->post('liveSession');
+        $manageSession = $this->input->post('manageSession');
+        $publishedPost = $this->input->post('publishedPost');
+        $archivedPost = $this->input->post('archivedPost');
+        //12 - In Conversation with Expert 39-40
+        $conExpert = $this->input->post('conExpert');
+        $conArchive = $this->input->post('conArchive');
+
+        //13 - Banner Image world of standard
+        $worldOfStd = $this->input->post('worldOfStd');
+
+        if (empty($mainModule)) {
+            $data['status'] = 0;
+            $data['message'] = 'Please enter atleast one Main Module and Sub module';
+        }
+        if (empty($data)) {
+            /******************  
+             * 1. QUIZ START 
+             * ****************/
+            {
+                if (in_array(1, $mainModule)) {
+                    if (in_array(1, $subModule)) {
+                        $createQuiz_per = implode(',', $createQuiz);
+                        $mainM = 1;
+                        $subM = 1;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $createQuiz_per);
+                    }
+                }
+                if (in_array(1, $mainModule)) {
+                    if (in_array(2, $subModule)) {
+                        $manageQuiz_per = implode(',', $manageQuiz);
+                        $mainM = 1;
+                        $subM = 2;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $manageQuiz_per);
+                    }
+                }
+                if (in_array(1, $mainModule)) {
+                    if (in_array(3, $subModule)) {
+                        $ongoingQuiz_per = implode(',', $ongoingQuiz);
+                        $mainM = 1;
+                        $subM = 3;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $ongoingQuiz_per);
+                    }
+                }
+                if (in_array(1, $mainModule)) {
+                    if (in_array(4, $subModule)) {
+                        $closedQuiz_per = implode(',', $closedQuiz);
+                        $mainM = 1;
+                        $subM = 4;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $closedQuiz_per);
+                    }
+                }
+                if (in_array(1, $mainModule)) {
+                    if (in_array(5, $subModule)) {
+                        $queBank_per = implode(',', $queBank);
+                        $mainM = 1;
+                        $subM = 5;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $queBank_per);
+                    }
+                }
+                if (in_array(1, $mainModule)) {
+                    if (in_array(6, $subModule)) {
+                        $result_per = implode(',', $result);
+                        $mainM = 1;
+                        $subM = 6;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $result_per);
+                    }
+                }
+            }
+            /******************  
+             * 2 .STANDARD WRITING
+             * ****************/ 
+            {
+                if (in_array(2, $mainModule)) {
+                    if (in_array(7, $subModule)) {
+                        $createComp = implode(',', $createComp);
+                        $mainM = 2;
+                        $subM = 7;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $createComp);
+                    }
+                }
+                if (in_array(2, $mainModule)) {
+                    if (in_array(8, $subModule)) {
+                        $manageComp = implode(',', $manageComp);
+                        $mainM = 2;
+                        $subM = 8;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $manageComp);
+                    }
+                }
+                if (in_array(2, $mainModule)) {
+                    if (in_array(9, $subModule)) {
+                        $ongoingComp = implode(',', $ongoingComp);
+                        $mainM = 2;
+                        $subM = 9;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $ongoingComp);
+                    }
+                }
+                if (in_array(2, $mainModule)) {
+                    if (in_array(10, $subModule)) {
+                        $closedComp = implode(',', $closedComp);
+                        $mainM = 2;
+                        $subM = 10;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $closedComp);
+                    }
+                }
+                if (in_array(2, $mainModule)) {
+                    if (in_array(11, $subModule)) {
+                        $reviewComp = implode(',', $reviewComp);
+                        $mainM = 2;
+                        $subM = 11;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $reviewComp);
+                    }
+                }
+            }
+            /******************  
+             * 3 .Miscellaneous Competition
+             * ****************/
+            {
+                if (in_array(3, $mainModule)) {
+                    if (in_array(12, $subModule)) {
+                        $misCreateComp = implode(',', $misCreateComp);
+                        $mainM = 3;
+                        $subM = 12;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $misCreateComp);
+                    }
+                }
+                if (in_array(3, $mainModule)) {
+                    if (in_array(13, $subModule)) {
+                        $misManageComp = implode(',', $misManageComp);
+                        $mainM = 3;
+                        $subM = 13;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $misManageComp);
+                    }
+                }
+                if (in_array(3, $mainModule)) {
+                    if (in_array(14, $subModule)) {
+                        $misOngoingComp = implode(',', $misOngoingComp);
+                        $mainM = 3;
+                        $subM = 14;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $misOngoingComp);
+                    }
+                }
+                if (in_array(3, $mainModule)) {
+                    if (in_array(15, $subModule)) {
+                        $misClosedComp = implode(',', $misClosedComp);
+                        $mainM = 3;
+                        $subM = 15;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $misClosedComp);
+                    }
+                }
+                if (in_array(3, $mainModule)) {
+                    if (in_array(16, $subModule)) {
+                        $misReviewComp = implode(',', $misReviewComp);
+                        $mainM = 3;
+                        $subM = 16;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $misReviewComp);
+                    }
+                }
+            }
+            /******************  
+             * 4 .Wall of wisdom
+             * ****************/
+
+            if (in_array(4, $mainModule)) {
+
+                $wallOfWisdom = implode(',', $wallOfWisdom);
+                $mainM = 4;
+                $subM = 0;
+                $id = $this->insertPerData($user_id, $mainM, $subM, $wallOfWisdom);
+            }
+            /******************  
+             * 5 . Your Wall
+             * ****************/
+
+            if (in_array(5, $mainModule)) {
+
+                $yourWall = implode(',', $yourWall);
+                $mainM = 5;
+                $subM = 0;
+                $id = $this->insertPerData($user_id, $mainM, $subM, $yourWall);
+            }
+
+            /******************  
+             * 6 - Classroom 17-20
+             * ****************/
+            {
+                if (in_array(6, $mainModule)) {
+                    if (in_array(17, $subModule)) {
+                        $createClassroomPost = implode(',', $createClassroomPost);
+                        $mainM = 6;
+                        $subM = 17;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $createClassroomPost);
+                    }
+                }
+                if (in_array(6, $mainModule)) {
+                    if (in_array(18, $subModule)) {
+                        $manageClassroomPost = implode(',', $manageClassroomPost);
+                        $mainM = 6;
+                        $subM = 18;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $manageClassroomPost);
+                    }
+                }
+                if (in_array(6, $mainModule)) {
+                    if (in_array(19, $subModule)) {
+                        $publishClassroomPost = implode(',', $publishClassroomPost);
+                        $mainM = 6;
+                        $subM = 19;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $publishClassroomPost);
+                    }
+                }
+                if (in_array(6, $mainModule)) {
+                    if (in_array(20, $subModule)) {
+                        $archiveClassroomPost = implode(',', $archiveClassroomPost);
+                        $mainM = 6;
+                        $subM = 20;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $archiveClassroomPost);
+                    }
+                }
+            }
+            /******************  
+             * 7 - By the Mentors
+             * ****************/
+            if (in_array(7, $mainModule)) {
+
+                $byTheMentors = implode(',', $byTheMentors);
+                $mainM = 7;
+                $subM = 0;
+                $id = $this->insertPerData($user_id, $mainM, $subM, $byTheMentors);
+            }
+            /******************  
+             * 8 - CMS 21- 28
+             * ****************/
+            {
+                if (in_array(8, $mainModule)) {
+                    if (in_array(21, $subModule)) {
+                        $bannerImage = implode(',', $bannerImage);
+                        $mainM = 8;
+                        $subM = 21;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $bannerImage);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(22, $subModule)) {
+                        $exchangeForum = implode(',', $exchangeForum);
+                        $mainM = 8;
+                        $subM = 22;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $exchangeForum);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(23, $subModule)) {
+                        $contactUs = implode(',', $contactUs);
+                        $mainM = 8;
+                        $subM = 23;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $contactUs);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(24, $subModule)) {
+                        $footerLinks = implode(',', $footerLinks);
+                        $mainM = 8;
+                        $subM = 24;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $footerLinks);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(25, $subModule)) {
+                        $gallery = implode(',', $gallery);
+                        $mainM = 8;
+                        $subM = 25;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $gallery);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(26, $subModule)) {
+                        $feedback = implode(',', $feedback);
+                        $mainM = 8;
+                        $subM = 26;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $feedback);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(27, $subModule)) {
+                        $latestNews = implode(',', $latestNews);
+                        $mainM = 8;
+                        $subM = 27;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $latestNews);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(28, $subModule)) {
+                        $UpcomingEvents = implode(',', $UpcomingEvents);
+                        $mainM = 8;
+                        $subM = 28;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $UpcomingEvents);
+                    }
+                }
+            }
+            /******************  
+             * 9 - Winners Wall
+             * ****************/
+            if (in_array(9, $mainModule)) {
+
+                $winnersWall = implode(',', $winnersWall);
+                $mainM = 9;
+                $subM = 0;
+                $id = $this->insertPerData($user_id, $mainM, $subM, $winnersWall);
+            }
+            /******************  
+             * 10 - Share your thoughts 29-34
+             * ****************/
+            {
+                if (in_array(10, $mainModule)) {
+                    if (in_array(29, $subModule)) {
+                        $newWork = implode(',', $newWork);
+                        $mainM = 10;
+                        $subM = 29;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $newWork);
+                    }
+                }
+                if (in_array(10, $mainModule)) {
+                    if (in_array(30, $subModule)) {
+                        $draft = implode(',', $draft);
+                        $mainM = 10;
+                        $subM = 30;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $draft);
+                    }
+                }
+                if (in_array(10, $mainModule)) {
+                    if (in_array(31, $subModule)) {
+                        $newStd = implode(',', $newStd);
+                        $mainM = 10;
+                        $subM = 31;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $newStd);
+                    }
+                }
+                if (in_array(10, $mainModule)) {
+                    if (in_array(32, $subModule)) {
+                        $stdReview = implode(',', $stdReview);
+                        $mainM = 10;
+                        $subM = 32;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $stdReview);
+                    }
+                }
+                if (in_array(10, $mainModule)) {
+                    if (in_array(33, $subModule)) {
+                        $revisedStd = implode(',', $revisedStd);
+                        $mainM = 10;
+                        $subM = 33;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $revisedStd);
+                    }
+                }
+                if (in_array(10, $mainModule)) {
+                    if (in_array(34, $subModule)) {
+                        $disForum = implode(',', $disForum);
+                        $mainM = 10;
+                        $subM = 34;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $disForum);
+                    }
+                }
+            }
+            /******************  
+             * 11 - Join the Class Room 35-38
+             * ****************/
+            {
+                if(in_array(11,$mainModule)){
+                    if(in_array(35,$subModule)){
+                        $liveSession = implode(',',$liveSession);
+                        $mainM = 11; $subM = 35;
+                        $id = $this->insertPerData($user_id,$mainM,$subM,$liveSession);                   
+                    }               
+                }
+                if(in_array(11,$mainModule)){
+                    if(in_array(36,$subModule)){
+                        $manageSession = implode(',',$manageSession);
+                        $mainM = 11; $subM = 36;
+                        $id = $this->insertPerData($user_id,$mainM,$subM,$manageSession);                   
+                    }               
+                }
+                if(in_array(11,$mainModule)){
+                    if(in_array(37,$subModule)){
+                        $publishedPost = implode(',',$publishedPost);
+                        $mainM = 11; $subM = 37;
+                        $id = $this->insertPerData($user_id,$mainM,$subM,$publishedPost);                   
+                    }               
+                }
+                if(in_array(11,$mainModule)){
+                    if(in_array(38,$subModule)){
+                        $archivedPost = implode(',',$archivedPost);
+                        $mainM = 11; $subM = 38;
+                        $id = $this->insertPerData($user_id,$mainM,$subM,$archivedPost);                   
+                    }               
+                }
+            }
+            /******************  
+             * 12 - In Conversation with Expert 39-40
+             * ****************/
+            {
+                if(in_array(12,$mainModule)){
+                    if(in_array(39,$subModule)){
+                        $conExpert = implode(',',$conExpert);
+                        $mainM = 12; $subM = 39;
+                        $id = $this->insertPerData($user_id,$mainM,$subM,$conExpert);                   
+                    }               
+                }
+                if(in_array(12,$mainModule)){
+                    if(in_array(40,$subModule)){
+                        $conArchive = implode(',',$conArchive);
+                        $mainM = 12; $subM = 40;
+                        $id = $this->insertPerData($user_id,$mainM,$subM,$conArchive);                   
+                    }               
+                }
+                
+            }
+            /******************  
+             * 13 - Banner Image world of standard
+             * ****************/
+            if (in_array(13, $mainModule)) {
+                $worldOfStd = implode(',', $worldOfStd);
+                $mainM = 13;
+                $subM = 0;
+                $id = $this->insertPerData($user_id, $mainM, $subM, $worldOfStd);
+            }
+        }
+        if ($id) {
+            $data['status'] = 1;
+            $data['message'] = 'Permissions added Successfully';
+            $data['id'] = $id;
+        } else {
+            $data['status'] = 0;
+            $data['message'] = 'Error, Please try again';
+        }
+        echo  json_encode($data);
+        exit();
+    }
 
     public function login()
     {
@@ -98,6 +796,18 @@ class Admin extends CI_Controller
     }
     public function feedback()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(26, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 26;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+        //  print_r($data); die;
         $this->load->model('Users/Users_model');
         $data['feedback'] = $this->Users_model->get_feedback_data();
         $this->load->view('admin/headers/admin_header');
@@ -140,6 +850,17 @@ class Admin extends CI_Controller
     }
     public function letest_news()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(27, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 27;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         // echo "hiiii"; die;
         $data['news'] = $this->Admin_model->getLetestNews();
         // print_r($data); die;
@@ -316,6 +1037,19 @@ class Admin extends CI_Controller
 
     public function upcoming_events()
     {
+       // print_r($_SESSION); die;
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(28, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 28;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+//print_r($data); die;
         $data['events'] = $this->Admin_model->getEvent();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/upcoming_events', $data);
@@ -490,189 +1224,23 @@ class Admin extends CI_Controller
         $this->load->view('admin/events_view', $data);
         $this->load->view('admin/footers/admin_footer');
     }
-    public function set_permission()
+   
+
+
+    public function insertPerData($user_id, $mainM, $subM, $permissions)
     {
-        $data = array();
-        $user_id =   encryptids("D", $this->input->get('id'));
-        $data['user_id'] = $user_id;
-        $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/set_permission',$data);
-        $this->load->view('admin/footers/admin_footer');
-    }
-    public function add_permissions()
-    {
-        $data = array(); 
-        $mainModule = array(); $subModule = array(); $createQuiz = array(); $manageQuiz = array();       
-       
-        $user_id = $this->input->post('user_id');
-        
-        $mainModule = $this->input->post('mainModule');
-        $subModule = $this->input->post('subModule');
-        // 1 - QUIZ
-        $createQuiz = $this->input->post('createQuiz');
-        $manageQuiz = $this->input->post('manageQuiz');
-        $ongoingQuiz = $this->input->post('ongoingQuiz');
-        $closedQuiz = $this->input->post('closedQuiz');
-        $queBank = $this->input->post('queBank');
-        $result = $this->input->post('result');   
-        
-        // 2 - STANDARD WRITING
-        $createComp = $this->input->post('createComp');
-        $manageComp = $this->input->post('manageComp');
-        $ongoingComp = $this->input->post('ongoingComp');
-        $closedComp = $this->input->post('closedComp');
-        $reviewComp = $this->input->post('reviewComp');
-        
-        // 3 - Miscellaneous Competition
-
-
-        // 4 - WALL OF WISDOM
-        $wallOfWisdom = $this->input->post('wallOfWisdom');
-
-
-        if (empty($mainModule) && empty($subModule)) {
-            $data['status'] = 0;
-            $data['message'] = 'Please enter atleast one Main Module and Sub module';
-        }
-        if (empty($data)) {
-            /******************  
-             * 1. QUIZ START 
-             * ****************/
-            if(in_array(1,$mainModule)){
-                if(in_array(1,$subModule)){
-                    $createQuiz_per = implode(',',$createQuiz);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$createQuiz_per);                   
-                }               
-            }
-            if(in_array(1,$mainModule)){
-                if(in_array(2,$subModule)){
-                    $manageQuiz_per = implode(',',$manageQuiz);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$manageQuiz_per);                   
-                }               
-            }
-            if(in_array(1,$mainModule)){
-                if(in_array(3,$subModule)){
-                    $ongoingQuiz_per = implode(',',$ongoingQuiz);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$ongoingQuiz_per);                   
-                }               
-            }
-            if(in_array(1,$mainModule)){
-                if(in_array(4,$subModule)){
-                    $closedQuiz_per = implode(',',$closedQuiz);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$closedQuiz_per);                   
-                }               
-            }
-            if(in_array(1,$mainModule)){
-                if(in_array(5,$subModule)){
-                    $queBank_per = implode(',',$queBank);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$queBank_per);                   
-                }               
-            }
-            if(in_array(1,$mainModule)){
-                if(in_array(6,$subModule)){
-                    $result_per = implode(',',$result);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$result_per);                   
-                }               
-            }
-            
-             /******************  
-             * 2 .STANDARD WRITING
-             * ****************/
-            if(in_array(2,$mainModule)){
-                if(in_array(7,$subModule)){
-                    $createComp = implode(',',$createComp);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$createComp);                   
-                }               
-            }
-            if(in_array(2,$mainModule)){
-                if(in_array(8,$subModule)){
-                    $manageComp = implode(',',$manageComp);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$manageComp);                   
-                }               
-            }
-            if(in_array(2,$mainModule)){
-                if(in_array(9,$subModule)){
-                    $ongoingComp = implode(',',$ongoingComp);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$ongoingComp);                   
-                }               
-            }
-            if(in_array(2,$mainModule)){
-                if(in_array(10,$subModule)){
-                    $closedComp = implode(',',$closedComp);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$closedComp);                   
-                }               
-            }
-            if(in_array(2,$mainModule)){
-                if(in_array(11,$subModule)){
-                    $reviewComp = implode(',',$reviewComp);
-                    $mainM = 1; $subM = 1;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$reviewComp);                   
-                }               
-            }
-             /******************  
-             * 3 .Miscellaneous Competition
-             * ****************/
-
-              /******************  
-             * 4 .Wall of wisdom
-             * ****************/
-             
-            if(in_array(4,$mainModule)){
-               
-                    $wallOfWisdom = implode(',',$wallOfWisdom);
-                    $mainM = 1; $subM = 0;
-                    $id = $this->insertPerData($user_id,$mainM,$subM,$wallOfWisdom);                   
-                           
-            }
-              /******************  
-             * 5 . Your Wall
-             * ****************/
-             
-             if(in_array(4,$mainModule)){
-               
-                $wallOfWisdom = implode(',',$wallOfWisdom);
-                $mainM = 1; $subM = 0;
-                $id = $this->insertPerData($user_id,$mainM,$subM,$wallOfWisdom);                   
-                       
-        }
-
-        }
-        if ($id) {
-            $data['status'] = 1;
-            $data['message'] = 'Permissions added Successfully';
-            $data['id'] = $id;
-        } else {
-            $data['status'] = 0;
-            $data['message'] = 'Error, Please try again';
-        }
-        echo  json_encode($data);
-        exit();
-    }
-
-
-    public function insertPerData($user_id,$mainM,$subM,$permissions){
         $admin_id = encryptids("D", $this->session->userdata('admin_id'));
         $dataObj = array(
-            'user_id'=> $user_id,
-            'main_module_id'=>$mainM,
-            'sub_module_id'=> $subM,
-            'permissions'=> $permissions,
+            'user_id' => $user_id,
+            'main_module_id' => $mainM,
+            'sub_module_id' => $subM,
+            'permissions' => $permissions,
             'status' => 1,
             'created_by' => $admin_id,
             'created_on' => GetCurrentDateTime('Y-m-d h:i:s')
 
         );
-        $id = $this->Admin_model->insertPermissionData($dataObj); 
+        $id = $this->Admin_model->insertPermissionData($dataObj);
         return $id;
     }
     public function log_dashboard()
@@ -864,7 +1432,7 @@ class Admin extends CI_Controller
             if ($admin_id) {
 
                 // email to Admin to notify  start
-                  $msg = "Dear " . $name .
+                $msg = "Dear " . $name .
                     " <p>You are added on the BIS Portal as Admin . Your login credentials for the portal are:
                     </p>
                     <p>Username: " . $email_id . "</p>
@@ -890,7 +1458,7 @@ class Admin extends CI_Controller
                 $this->email->message($msg);
                 $this->email->send();
                 // email code end
-                
+
 
                 $this->session->set_flashdata('MSG', ShowAlert("New Admin added successfully", "SS"));
                 redirect(base_url() . "Admin/admin_creation_list", 'refresh');
@@ -900,14 +1468,14 @@ class Admin extends CI_Controller
             }
         }
     }
-     public function editAdmin()
+    public function editAdmin()
     {
         $data = array();
         $id =   encryptids("D", $this->input->get('id'));
         $data['record'] = $this->Admin_model->getDetailsById($id);
 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/admin_creation_edit',$data);
+        $this->load->view('admin/admin_creation_edit', $data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function editAdminDetails()
@@ -916,19 +1484,19 @@ class Admin extends CI_Controller
         $admin_id = encryptids("D", $this->session->userdata('admin_id'));
 
         $id = clearText($this->input->post('admin_id'));
-        $name= clearText($this->input->post('username'));
+        $name = clearText($this->input->post('username'));
         $email = clearText($this->input->post('email'));
-     
 
-        if (!$name && !$email ) {
+
+        if (!$name && !$email) {
             $data['status'] = 0;
             $data['message'] = 'Please enter all details';
         }
         if (empty($data)) {
             $dbObj = array(
                 'name' =>  $name,
-                'email_id' => $email, 
-                'username' => $email,               
+                'email_id' => $email,
+                'username' => $email,
                 'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
                 'modified_by' => $admin_id,
             );
@@ -936,19 +1504,18 @@ class Admin extends CI_Controller
         }
         if ($id) {
             $this->session->set_flashdata('MSG', ShowAlert("Admin Updated successfully", "SS"));
-               
         } else {
             $this->session->set_flashdata('MSG', ShowAlert("Failed to update  admin,Please try again", "DD"));
-           
         }
         redirect(base_url() . "Admin/admin_creation_list", 'refresh');
     }
     // ajax call
-    public function deleteAdmin () {
+    public function deleteAdmin()
+    {
         try {
             $admin_id = $this->input->post('id');
             $id = $this->Admin_model->deleteData($admin_id);
-           
+
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
@@ -1075,14 +1642,52 @@ class Admin extends CI_Controller
     }
     public function cmsManagenent_dashboard()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+             // print_r($_SESSION);
+              if (in_array(8, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 8;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+
+              $data['permissions'] =  $_SESSION['sub_mod_per'];
+          }else{
+            $data[]="";
+          }
+         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/cmsManagenent_dashboard');
+        $this->load->view('admin/cmsManagenent_dashboard',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
     public function banner_image_list()
     {
 
+        // if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        //     //  print_r($_SESSION); die;
+        //       if (in_array(21, $_SESSION['sub_mod_per'])) { 
+        //           $sub_model_id = 21;
+        //           $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+        //       }else{
+        //           $sub_model_id = 0;
+        //           $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+        //       }
+        //       $data['permissions'] =  $permissions;
+        //   }
+          if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(21, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 21;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+        // print_r($data); die;
         $data['banner_data'] = $this->Admin_model->bannerAllData();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/banner_image_list', $data);
@@ -1166,6 +1771,17 @@ class Admin extends CI_Controller
 
     public function about_exchange_forum()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(22, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 22;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['about_exchange_forum'] = $this->admin_model->aboutExchangeForumData();
         $this->load->view('admin/headers/admin_header');
@@ -1277,6 +1893,17 @@ class Admin extends CI_Controller
 
     public function contact_us()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(23, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 23;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['contact_us'] = $this->admin_model->contactUsData();
         $this->load->view('admin/headers/admin_header');
@@ -1956,7 +2583,7 @@ class Admin extends CI_Controller
     {
         $data['detail'] = $this->Admin_model->getAdminDetail($id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/admin_creation_view',$data);
+        $this->load->view('admin/admin_creation_view', $data);
         $this->load->view('admin/footers/admin_footer');
     }
 
@@ -2191,6 +2818,17 @@ class Admin extends CI_Controller
     }
     public function byTheMentors()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(4, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 1;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin/By_the_mentor_model');
         // $this->load->model('admin/By_the_mentor_model');        
         $data['archive'] = $this->By_the_mentor_model->all_archievd_btm();
@@ -2409,8 +3047,9 @@ class Admin extends CI_Controller
         $this->load->view('admin/share_your_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
-    
-    public function item_proposal_list(){
+
+    public function item_proposal_list()
+    {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/item_proposal_list');
         $this->load->view('admin/footers/admin_footer');

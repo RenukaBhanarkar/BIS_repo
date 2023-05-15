@@ -29,10 +29,10 @@ class Subadmin extends CI_Controller
 
         $pageData['page_menu_select'] = "view_admin";
         $admintype = encryptids("D", $this->session->userdata('admin_type'));
-        $allRecords = $this->Admin_model->getAllSubAdmin();
+        //$allRecords = $this->Admin_model->getAllSubAdmin();
+        $allRecords = $this->Admin_model->getAllSubAdminNew();
         $pageData['allRecords'] = $allRecords;
-        // echo  $admintype;
-        // exit();
+       
         if ($admintype == 2) {
             if (!$this->Admin_model->checkAdminLogin()) {
                 redirect(base_url() . "Admin", 'refresh');
@@ -321,6 +321,23 @@ class Subadmin extends CI_Controller
         $this->load->view('quebank/question_bank_archive', $data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function question_bank_saved()
+    {
+        $data = array();
+        $data['allRecords'] = $this->Que_bank_model->getListOfSavedQueBank();
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(1, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('quebank/question_bank_saved', $data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    
     // public function question_bank_edit()
     // {
     //     $this->load->view('admin/headers/admin_header');
@@ -382,14 +399,17 @@ class Subadmin extends CI_Controller
         $que_type = $this->input->post('que_type');
         $que = "";
         $que_h = "";
+        $que = $this->input->post('que');
+        // echo "fefbefbeb";
+        // echo  $que ;exit();
         if ($que_language == 1) {
             if ($que_type == 1 || $que_type == 3) {
-                $que = clearText($this->input->post('que'));
+                $que = $this->input->post('que');
             }
         }
         if ($que_language == 2) {
             if ($que_type == 1 || $que_type == 3) {
-                $que_h = clearText($this->input->post('que_h'));
+                $que_h = $this->input->post('que_h');
             }
         }
         if ($que_language == 3) {
@@ -862,6 +882,14 @@ class Subadmin extends CI_Controller
     {
         $data = array();
         $data['allRecords'] = $this->Que_bank_model->getAllQueBankForSubadmin();
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(5, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 5;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
        // echo json_encode( $data['allRecords']);exit();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('quebank/question_bank_list', $data);

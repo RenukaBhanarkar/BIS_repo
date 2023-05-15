@@ -6,7 +6,11 @@
         <h1 class="h3 mb-0 text-gray-800">Banner Image List</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
             </ol>
@@ -17,6 +21,7 @@
 
     <!-- Content Row -->
     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+        <?php if(in_array(2,$permissions)){ ?>
         <div class="col-12">
             <div class="card border-top card-body">
                 <div>
@@ -26,7 +31,9 @@
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
+                                    
                                         <h5 class="modal-title" id="exampleModalLabel">Add Banner Image</h5>
+                                        <?php //} ?>
                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
@@ -66,7 +73,7 @@
                 </div>
 
             </div>
-        <?php } ?>
+        <?php } }?>
         <?php
         if ($this->session->flashdata('MSG')) {
             echo $this->session->flashdata('MSG');
@@ -101,8 +108,12 @@
                                         <td><?php echo $list_banner['caption']; ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                         <td class="d-flex border-bottom-0">
+                                        <?php if(in_array(3,$permissions)){ ?>
                                             <button onclick="edit('<?php echo $list_banner['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform">Edit</button>
+                                            <?php } ?>
+                                            <?php if(in_array(4,$permissions)){ ?>
                                             <button onclick="deleteBanner(' <?php echo $list_banner['id']; ?> ');" data-id='<?php echo $list_banner['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                            <?php } ?>
                                             <!-- Modal -->
 
                                         </td>

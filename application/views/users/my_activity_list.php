@@ -21,14 +21,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if(!empty($quiz)) { $i=1; foreach($quiz as $list){
+                            ?>
+                   
                       <tr>
-                                 <td>1</td>
-                                 <td>12/02/2023 12:00:00</td>
-                                 <td>Quiz Competition</td>
+                                 <td><?php echo $i; ?></td>
+                                 <td><?php echo $list['created_on']; ?></td>
+                                 <td><?php echo $list['title']; ?></td>
                                  <td class="border-bottom-0">
-                                     <a href="#" class="btn btn-primary btn-sm mr-2">Answer Key</a>
+                                     <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a>
                                  </td>
-                                 </tr>
+                        </tr>
+                        <?php    $i++;  } } ?>
                     </tbody>
                 </table>
             </div>    

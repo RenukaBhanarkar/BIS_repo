@@ -317,7 +317,7 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         $this->db->limit($count);   
         //return  $this->db->get('tbl_quiz_submission_details')->result_array();
         $result =  $this->db->get('tbl_quiz_submission_details')->result_array();
-
+        $usersCont = $this->db->get('tbl_quiz_submission_details')->num_rows();
         $first = 0;
         $second = 0;
         $third = 0;
@@ -346,14 +346,16 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         // echo "for".$fourth ;exit();
         $cnt = 1;
         $rsNew = array();
+        //if($cnt <= $usersCont){}
         foreach ($result as $row){
+
            if($cnt <= $first){
             $row['prize'] = "First Prize";
-           }else if($cnt <= $second){
+           }else if($cnt > $first && $cnt <= $second){
             $row['prize'] = "Second Prize";
-           }else if($cnt <= $third){
+           }else if($cnt > $second && $cnt <= $third){
             $row['prize'] = "Third Prize";
-           }else if($cnt <= $fourth){
+           }else if($cnt > $third && $cnt <= $fourth){
             $row['prize'] = "Concelation Prize";
            }
            $cnt++;
@@ -599,6 +601,13 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
     {
         $this->db->where('id',$id); 
         return $quiz = $this->db->get('tbl_quiz_details')->row_array();
+    }
+    public function getQuizByUserid($id){
+        $this->db->select('tqsd.*,tqd.title');
+        $this->db->from('tbl_quiz_submission_details tqsd');
+        $this->db->join('tbl_quiz_details tqd','tqd.id=tqsd.quiz_id');
+        $this->db->where('user_id',$id);
+        return $this->db->get()->result_array(); 
     }
      
 }

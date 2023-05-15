@@ -28,9 +28,20 @@ class Standardsmaking extends CI_Controller
      
     public function conversation_list()
     {
+
+
         $Conversation = $this->Standards_Making_model->getConversationAll();
         $data = array();
         $data['Conversation'] = $Conversation;
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(39, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 39;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Standardsmaking/conversation_list',$data);
@@ -89,6 +100,15 @@ class Standardsmaking extends CI_Controller
         $Conversation = $this->Standards_Making_model->getConversationArchives();
         $data = array();
         $data['Conversation'] = $Conversation;
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(40, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 40;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Standardsmaking/conversation_archives',$data);
@@ -234,6 +254,15 @@ public function updateStatusConversation()
         $data = array();
         $data['liveSessionList'] = $LiveSessionList;
 
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(35, $_SESSION['sub_mod_per'])) { 
+                echo $sub_model_id = 35;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Standardsmaking/live_session_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -336,6 +365,15 @@ public function updateStatusConversation()
         $data = array();
         $data['liveSessionList'] = $LiveSessionList;
 
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(36, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 36;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Standardsmaking/manage_session_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -344,6 +382,15 @@ public function updateStatusConversation()
         $PublishSessionList = $this->Standards_Making_model->getPublishSessionList();
         $data = array();
         $data['liveSessionList'] = $PublishSessionList;
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(37, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 37;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Standardsmaking/publish_list',$data);
@@ -461,6 +508,15 @@ public function updateStatusConversation()
         $PublishSessionList = $this->Standards_Making_model->getArchivedSessionList();
         $data = array();
         $data['liveSessionList'] = $PublishSessionList;
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(38, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 38;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Standardsmaking/live_session_archived',$data);

@@ -51,7 +51,12 @@
 
                                 <?php $id= encryptids("E", $value['id'] )?>
 
+                               
+
+                                <?php if (in_array(1, $permissions)) { ?>
                                 <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php }?>
+
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                  
                                   <button onclick="updateStatusLiveSession('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Restore</button> 

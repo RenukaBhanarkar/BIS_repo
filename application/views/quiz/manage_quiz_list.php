@@ -68,7 +68,7 @@
                       <td><?= $quiz['status_name'] ?></td>
                       <td class="d-flex border-bottom-0">
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) {
-                          if ($quiz['status'] == 2) { ?>
+                          if ($quiz['status'] == 2 ) { ?>
                             <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
                         <?php }
                         } ?>
@@ -79,40 +79,49 @@
                         <?php }
                         } ?>
 
+
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                          <?php if(in_array(1,$permissions)){ ?> 
                           <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                        <?php } ?>
+                        <?php } } ?>
 
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                            
                           <?php if ($quiz['status'] == 1 ) { ?>
-                            <!-- <a href="sendApprove/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Send To Approve</a> -->
-
-                            <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send For Approval</a>
+                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send For Approval</a>
                           <?php } ?>
 
                           <?php if ($quiz['status'] == 3 || $quiz['status'] == 6) { ?>
-                            <!-- <a href="publishQuiz/<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2">Publish</a> -->
+                           
                             <button data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 publish">Publish</button>
 
                           <?php } ?>
                           <?php if ($quiz['status'] == 5) { ?>
 
-                            <!-- <a href="unPublishQuiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2">UnPublish</a> -->
                             <button data-id="<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 unpublish">UnPublish</button>
 
                           <?php } ?>
-                          <!-- 6-unpublished 7-closed-->
+                       
                           <?php if ($quiz['status'] == 6 || $quiz['status'] == 7) { ?>
                            
                             <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?= $quiz['id'] ?>" id="archiveQuiz">Archive</button>
                           <?php } ?>
 
+
+                          <?php if(in_array(3,$permissions)){ ?>  
                           <?php if ($quiz['status'] == 1 || $quiz['status'] == 3 || $quiz['status'] == 4 || $quiz['status'] == 10) { ?>
-                            <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>      
-                            <!-- <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button>  -->
+                            <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>                            
+                          <?php } }?>
+
+                          <?php if(in_array(4,$permissions)){ ?>  
+                          <?php if ($quiz['status'] == 1 || $quiz['status'] == 3 || $quiz['status'] == 4 || $quiz['status'] == 10) { ?>                            
+                           
                             <button data-id="<?= $quiz['id'] ?>" class="btn btn-danger btn-sm mr-2 delete">Delete</button> 
-                          <?php } ?>
+                          <?php } }?>
+
+
+
+
                         <?php } ?>
                       </td>
                     </tr>

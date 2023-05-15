@@ -38,6 +38,15 @@ class Learningscience extends CI_Controller
         $data = array();
         $data['lsvstandardslist'] = $lsvstandardslist;
 
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(17, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 17;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('learningscience/lsv_standards_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -152,6 +161,14 @@ class Learningscience extends CI_Controller
         $lsvStandardsList = $this->Learningscience_model->getlsvManageStandardsList();
         $data = array();
         $data['lsvStandardsList'] = $lsvStandardsList;
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(18, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 18;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('learningscience/manage_lsv_standards_list',$data);
@@ -160,6 +177,16 @@ class Learningscience extends CI_Controller
     public function publish_lsv_standards_list(){
         $PublishLsvStandardsList = $this->Learningscience_model->getPublishLsvStandardsList();
         $data = array();
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(19, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 19;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+
         $data['liveLsvStandardsList'] = $PublishLsvStandardsList;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('learningscience/publish_lsv_standards_list',$data);
@@ -170,6 +197,15 @@ class Learningscience extends CI_Controller
         $ArchivedLsvStandardsList = $this->Learningscience_model->getArchivedLsvStandardsList();
         $data = array();
         $data['ArchivedLsvStandardsList'] = $ArchivedLsvStandardsList;
+
+        $permissions = array();
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (in_array(20, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 20;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('learningscience/lsv_standards_archived',$data);
@@ -300,7 +336,7 @@ class Learningscience extends CI_Controller
             ]);
             return true;
         }
-        redirect(base_url() . "learningscience/manage_session_list", 'refresh');
+        redirect(base_url() . "learningscience/manage_lsv_standards_list", 'refresh');
     }
 
     public function updateLsvStandards(){
@@ -329,7 +365,7 @@ class Learningscience extends CI_Controller
             ]);
             return true;
         }
-        redirect(base_url() . "learningscience/manage_session_list", 'refresh');
+        redirect(base_url() . "learningscience/manage_lsv_standards_list", 'refresh');
     }
 
     public function deleteLvsFile(){

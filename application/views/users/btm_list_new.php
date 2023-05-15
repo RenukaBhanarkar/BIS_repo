@@ -67,7 +67,9 @@
                                         <a href="<?php echo base_url(); ?>admin/view_btm/<?php echo $list_btm1['id'] ?>"><button class="btn btn-info btn-sm mr-2">View</button></a>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {  ?>
                                             <?php if($list_btm1['status'] == '1'){ ?>
+                                                <?php  if(in_array(4,$permissions)){ ?>
                                                 <button onclick="deleteByTheMentor(' <?php echo $list_btm1['id']; ?> ');" data-id='<?php echo $list_btm1['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                                <?php } ?>
                                                 <!-- <button class="btn btn-primary btn-sm mr-2" onclick="sendPublish('<?php echo $list_btm1['id']; ?>')" data-id ='<?php echo $list_btm1['id']; ?>'>Publish</button> -->
                                                 <button onclick="approve('<?php echo $list_btm1['id']; ?>')" class="btn btn-success btn-sm mr-2 text-white approve" data-id='<?php echo $list_btm1['id']; ?>'>Approve</button>
                                                 <!-- <button class="btn btn-primary btn-sm" onclick="sendReject('<?php echo $list_btm1['id']; ?>')" data-id ='<?php echo $list_btm1['id']; ?>'>Reject</button> -->
@@ -193,8 +195,9 @@
                                         data-target="#editform"><i class="fa fa-edit" aria-hidden="true"></i></button> -->
                                         <a href="<?php echo base_url(); ?>admin/view_btm/<?php echo $list_btm['id'] ?>"><button class="btn btn-info btn-sm mr-2">View</button></a>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {  ?>
-                                           
+                                            <?php  if(in_array(4,$permissions)){ ?>
                                                 <button onclick="deleteByTheMentor(' <?php echo $list_btm['id']; ?> ');" data-id='<?php echo $list_btm['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                                <?php } ?>
                                                 <!-- <button class="btn btn-primary btn-sm" onclick="sendPublish('<?php echo $list_btm['id']; ?>')" data-id ='<?php echo $list_btm['id']; ?>'>Publish</button> -->
                                                 <button class="btn btn-primary btn-sm ml-2 archive" onclick="sendArchive('<?php echo $list_btm['id']; ?>')" data-id ='<?php echo $list_btm['id']; ?>'>Archive</button>
                                           

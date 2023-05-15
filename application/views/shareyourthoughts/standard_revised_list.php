@@ -13,7 +13,7 @@
                 
                 </ol>
             </nav>
-        </div>
+        </div> 
 
         <!-- Content Row -->
        <div class="row">
@@ -38,7 +38,12 @@
 							<td><?= $value['depName'] ?></td>
                             <td><?= $value['is_title'] ?></td>
 							<td><?= $value['comments'] ?></td> 
-							<td> <a href="<?php echo base_url(); ?>Shareyourthoughts/standard_revised_view/<?= $id ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a></td>
+							<td>
+                                <?php if (in_array(1, $permissions)) { ?>
+                                 <a href="<?php echo base_url(); ?>Shareyourthoughts/standard_revised_view/<?= $id ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a>
+                                <?php } else { echo "-"; }?>
+
+                            </td>
 							
 						</td>
 						<?php  }?>

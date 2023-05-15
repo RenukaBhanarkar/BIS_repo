@@ -22,21 +22,23 @@
         <!-- Content Row -->
         <div class="row">
             <!-- Earnings (Monthly) Card Example -->
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php if(in_array(1, $_SESSION['main_mod_per'])){ ?> 
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>quiz/quiz_dashboard">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
-                            <h5 class="font-weight-bold text-success mb-1">Quiz Competition</h5>
-                            
+                            <h5 class="font-weight-bold text-success mb-1">Quiz Competition</h5>                          
 
                         </div>
                     </div>
                 </div>
                 </a>
             </div>
-
+            <?php } ?>
             <!-- Earnings (Monthly) Card Example -->
+            <?php if(in_array(2, $_SESSION['main_mod_per'])){ ?> 
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>Standardswritting/standard_writting_dashboard">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -50,6 +52,8 @@
                 </div>
                 </a>
             </div>
+            <?php } ?>
+            <?php if(in_array(3, $_SESSION['main_mod_per'])){ ?> 
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>Standardswritting/miscellaneous_dashboard">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -63,6 +67,52 @@
                 </div>
                 </a>
             </div>
+            <?php } ?>
+            <?php } else { ?>
+               
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="<?php echo base_url(); ?>quiz/quiz_dashboard">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center d-flex">
+                            <h5 class="font-weight-bold text-success mb-1">Quiz Competition</h5>                          
+
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+           
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="<?php echo base_url(); ?>Standardswritting/standard_writting_dashboard">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center d-flex">
+                            <h5 class="font-weight-bold text-primary mb-1">Standard Writting</h5>
+                           
+
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="<?php echo base_url(); ?>Standardswritting/miscellaneous_dashboard">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center d-flex">
+                            <h5 class="font-weight-bold text-danger mb-1">Miscellaneous Competition</h5>
+                            
+
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+           
+            <?php } ?>
+
           </div>
        </div>
     <!-- /.container-fluid -->
