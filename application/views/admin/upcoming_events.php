@@ -49,13 +49,15 @@
                                                    <div class="mb-2 col-md-4">
                                                             <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                                             <div class="d-flex">
-                                                            <div>
+                                                            <div class="col-9">
                                                                 <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
                                                                 <span class="text-danger" id="err_thumbnail"></span>
                                                             </div>
+                                                            <div class="col-2">
                                                             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                                                                 Preview 
                                                             </button>
+                                                            </div>
                                                             </div>
                                                    </div>
                                                    </div>
@@ -266,7 +268,7 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                <img src="" id="outputThumbnail" width="100%"/>
+                <img src="" id="outputThumbnail1" width="100%"/>
                 </div>
                 <div class="modal-footer">
                 <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
@@ -332,7 +334,7 @@
 
                    if(fileSize < 20480){
                     $('#thumbnail').val('');
-                    Swal.fire("File size should be more than 20KB");
+                    Swal.fire("File size should be between 20KB to 200KB");
                     $('#err_thumbnail').text('This value is required');
                    }else if(fileSize > 204800){
                     Swal.fire("File size should be less than 200KB");
@@ -349,7 +351,7 @@
         $('#err_thumbnail').text('This value is required');
        }
        
-        var outputThumbnail = document.getElementById('outputThumbnail');
+        var outputThumbnail = document.getElementById('outputThumbnail1');
         
         outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
         console.log(outputThumbnail.src);
