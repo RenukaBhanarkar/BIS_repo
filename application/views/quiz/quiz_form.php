@@ -564,6 +564,30 @@
     //Banner Image Preview
     var loadFileBanner = function(event) {
         $("#outputbanner").show();
+        var fileSize = $('#banner_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#banner_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#banner_img').val('');
+            // $('#lessSize').modal('show');
+           // $('#err_icon_file').text('This value is required');
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#banner_img').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire('File size should be between 20KB to 200KB')
+            $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#banner_img').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
         var outputbanner = document.getElementById('outputbanner');
         outputbanner.src = URL.createObjectURL(event.target.files[0]);
         outputbanner.onload = function() {
@@ -585,6 +609,26 @@
     //First Prize Image Preview
     var loadFileFirst = function(event) {
         $("#outputFirst").show();
+        var fileSize = $('#fprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#fprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#fprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#fprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#fprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
         var outputFirst = document.getElementById('outputFirst');
         outputFirst.src = URL.createObjectURL(event.target.files[0]);
         outputFirst.onload = function() {
@@ -601,6 +645,26 @@
     //Second Prize Image Preview
     var loadFileSecond = function(event) {
         $("#outputSecond").show();
+        var fileSize = $('#sprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#sprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#sprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#sprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#sprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
         var outputSecond = document.getElementById('outputSecond');
         outputSecond.src = URL.createObjectURL(event.target.files[0]);
         outputSecond.onload = function() {
@@ -617,6 +681,26 @@
     //third Prize Image Preview
     var loadFileThird = function(event) {
         $("#outputThird").show();
+        var fileSize = $('#tprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#tprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#tprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#tprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#tprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
         var outputThird = document.getElementById('outputThird');
         outputThird.src = URL.createObjectURL(event.target.files[0]);
         outputThird.onload = function() {
@@ -633,6 +717,26 @@
     //Consolation Prize Image Preview
     var loadFileConsol = function(event) {
         $("#outputConsol").show();
+        var fileSize = $('#cprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#cprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#cprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#cprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#cprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
         var outputConsol = document.getElementById('outputConsol');
         outputConsol.src = URL.createObjectURL(event.target.files[0]);
         outputConsol.onload = function() {
