@@ -440,6 +440,16 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
             return false;
         }
     }
+    public function updateDataQuiz($quiz_id, $data)
+    {   
+        
+        $this->db->where('id', $quiz_id);
+        if ($this->db->update('tbl_quiz_details', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function updateResultDeclaration($quiz_id, $data)
     {   
         
