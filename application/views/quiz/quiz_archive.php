@@ -52,7 +52,7 @@
                       <td class="d-flex border-bottom-0">
 
                         <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                        <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?= $quiz['quiz_id'] ?>" id="RestoreQuiz">Restore</button>   
+                        <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?= $quiz['id'] ?>" id="RestoreQuiz">Restore</button>   
                        
 
                       </td>

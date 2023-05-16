@@ -71,11 +71,11 @@ $config = array(
 			'label' => 'Number of Prizes',
 			'rules' => 'required'
 		),
-		array(
-			'field' => 'fdetails',
-			'label' => 'Prize Details',
-			'rules' => 'required'
-		),
+		// array(
+		// 	'field' => 'fdetails',
+		// 	'label' => 'Prize Details',
+		// 	'rules' => 'required'
+		// ),
 		
 		
 		array(

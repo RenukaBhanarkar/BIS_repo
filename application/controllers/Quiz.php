@@ -316,6 +316,7 @@ class Quiz extends CI_Controller
         $getAllBranches = array();
         $data=array();
         $quiz = $this->Quiz_model->getQuiz($id);
+        
         if($quiz['quiz_level_id'] == 2){
            // $region_id = $quiz['region_id'];
             $getAllRegions = $this->Quiz_model->getAllRegions(); 
@@ -382,10 +383,34 @@ class Quiz extends CI_Controller
         else 
         {
             $banner_imgsize=$_FILES['banner_img']['size'];
-            $fprize_imgsize=$_FILES['fprize_img']['size'];
-            $sprize_imgsize=$_FILES['sprize_img']['size'];
-            $tprize_imgsize=$_FILES['tprize_img']['size'];
-            $cprize_imgsize=$_FILES['cprize_img']['size'];
+
+            if(!empty($_FILES['fprize_img']['size'] )){
+                $fprize_imgsize=$_FILES['fprize_img']['size'];
+            }else{
+                $fprize_imgsize=0;
+            }
+            //$fprize_imgsize=$_FILES['fprize_img']['size'];
+
+            if(!empty($_FILES['sprize_img']['size'] )){
+                $sprize_imgsize=$_FILES['sprize_img']['size'];
+            }else{
+                $sprize_imgsize=0;
+            }
+            //            $sprize_imgsize=$_FILES['sprize_img']['size'];
+
+            if(!empty($_FILES['tprize_img']['size'] )){
+                $tprize_imgsize=$_FILES['tprize_img']['size'];
+            }else{
+                $tprize_imgsize=0;
+            }
+            //$tprize_imgsize=$_FILES['tprize_img']['size'];
+            if(!empty($_FILES['cprize_img']['size'] )){
+                $cprize_imgsize=$_FILES['cprize_img']['size'];
+            }else{
+                $cprize_imgsize=0;
+            }
+            //$cprize_imgsize=$_FILES['cprize_img']['size'];
+
             if ($banner_imgsize > 0 ) 
             {
                 $bannerpath = 'uploads/quiz_img/'; 
@@ -467,7 +492,7 @@ class Quiz extends CI_Controller
             $formdata['availability_id'] = $this->input->post('availability_id');
           
             $formdata['qbquestion'] = $this->input->post('qbquestion');
-            $formdata['status'] = 1;
+            $formdata['status'] = 10;
             $que_bank_id = $this->input->post('que_bank_id');
             $formdata['que_bank_id']  = $que_bank_id;
 
@@ -506,7 +531,7 @@ class Quiz extends CI_Controller
                 $formdata2['prize_img'] = $sprize_imglocation;
                 
                 if( $sprize != 0){
-                    if($old_sec_prize == 0){
+                    if($old_sec_prize != 0){
                         $this->Quiz_model->updatePrize($sprize_id,$id,$formdata2);
                     }else{
                         $this->Quiz_model->insertPrize($sprize_id,$id,$formdata2);
@@ -522,7 +547,7 @@ class Quiz extends CI_Controller
                 $formdata3['prize_img'] =$tprize_imglocation;
 
                 if( $tprize != 0){
-                    if($old_third_prize == 0){
+                    if($old_third_prize != 0){
                         $this->Quiz_model->updatePrize($tprize_id,$id,$formdata3);
                     }else{
                         $this->Quiz_model->insertPrize($tprize_id,$id,$formdata3);
@@ -536,7 +561,7 @@ class Quiz extends CI_Controller
                 $formdata4['prize_details'] = $this->input->post('cdetails');
                 $formdata4['prize_img'] = $cprize_imglocation;
                 if( $cprize != 0){
-                    if($old_third_prize == 0){
+                    if($old_third_prize != 0){
                         $this->Quiz_model->updatePrize($cprize_id,$id,$formdata4); 
                     }else{
                         $this->Quiz_model->insertPrize($cprize_id,$id,$formdata4);
@@ -1211,7 +1236,7 @@ class Quiz extends CI_Controller
                 'modify_by' => encryptids("D", $_SESSION['admin_type']),
             );
 
-            $id = $this->Quiz_model->updateData($quiz_id, $data);
+            $id = $this->Quiz_model->updateDataQuiz($quiz_id, $data);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Quiz Status updated successfully.';

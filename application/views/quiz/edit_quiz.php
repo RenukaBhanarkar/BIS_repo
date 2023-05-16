@@ -269,7 +269,7 @@
                 <label class="d-block text-font">Prize Details<sup class="text-danger">*</sup></label>
               
 
-                <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($firstprize['prize_details'])) { echo  $firstprize['prize_details']; } else {echo "";} ?>">
+                <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Details" value="<?php if (!empty($firstprize['prize_details'])) { echo  $firstprize['prize_details']; } else {echo "";} ?>">
 
                 <span class="error_text"><?php echo form_error('fdetails'); ?></span>
               </div>
@@ -375,7 +375,7 @@
                 <label class="d-block text-font">Prize Details</label>
                
 
-                <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($secondprize['prize_details'])) { echo  $secondprize['prize_details'];  } else {   echo "";    } ?>">
+                <input type="text" class="form-control input-font" name="sdetails" id="sdetails" placeholder="Enter Details" value="<?php if (!empty($secondprize['prize_details'])) { echo  $secondprize['prize_details'];  } else {   echo "";    } ?>">
 
               </div>
 
@@ -469,7 +469,7 @@
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Prize Details</label>
             
-                <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Details" value="<?php if (!empty($thirdprize['prize_details'])) {  echo  $thirdprize['prize_details'];} else { echo "";} ?>">
+                <input type="text" class="form-control input-font" name="tdetails" id="tdetails" placeholder="Enter Details" value="<?php if (!empty($thirdprize['prize_details'])) {  echo  $thirdprize['prize_details'];} else { echo "";} ?>">
                 <span class="error_text"><?php echo form_error('tdetails'); ?></span>
               </div>
 
