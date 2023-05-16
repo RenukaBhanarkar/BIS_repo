@@ -78,7 +78,7 @@
 </section>
 <section id="quality-outer my-5">
     <div class="quality_section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row my-5">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="item_proposal_list">
@@ -174,7 +174,7 @@
         </div>
     </section>    
     <section style="margin-bottom: 38px;">
-        <div class="container">
+        <div class="container-fluid" style="padding:3%">
             <div class="row">
                <div class="col-lg-12 text-center my-2 pt-5">
                    <h4>Images & Gallery</h4>
@@ -191,7 +191,7 @@
                   <?php if(!empty($images)){ foreach($images as $list){ ?>
                       <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
                           <a href="<?php echo base_url().'uploads/'.$list['image'];?>" class="fancylight popup-btn" data-fancybox-group="light"> 
-                          <img class="img-fluid" src="<?php echo base_url().'uploads/'.$list['image'];?>" style="height:180px; width:280px;"; alt="">
+                          <img class="img-fluid" src="<?php echo base_url().'uploads/'.$list['image'];?>" style="height:180px; width:100%"; alt="">
                           </a>
                       </div>
                   <?php } ?>

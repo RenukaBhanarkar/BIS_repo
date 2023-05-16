@@ -6,7 +6,11 @@
         <h1 class="h3 mb-0 text-gray-800">Upcoming Events</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Upcoming Events</li>
@@ -21,7 +25,10 @@
         <div class="col-12">
             <div class="card border-top card-body">
                 <div>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <?php  if(in_array(2,$permissions)){ ?>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#latestform">Add Events</button>
+                    <?php } } ?>
                     <!-- <button type="button" class="btn btn-primary btn-sm mr-2" >Archived Events</button> -->
                     <a href="<?php echo base_url().'admin/archived_events' ?>" type="button" class="btn btn-primary btn-sm mr-2" >Archived Events</a>
                     <div class="modal fade" id="latestform" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,8 +120,12 @@
                                             <?php if($list['status']=='5'){ ?>
                                                 <button  class="btn btn-warning btn-sm mr-2 text-white unpublish" data-id="<?=encryptids("E",$list['id']);?>" >Unpublish</button>
                                             <?php }else if(!($list['status']=='5')){ ?>
+                                                <?php  if(in_array(3,$permissions)){ ?>
                                                     <button  class="btn btn-info btn-sm mr-2 text-white edit" data-id="<?=encryptids("E",$list['id']);?>" data-toggle="modal" data-target="#editform">Edit</button>
+                                                    <?php } ?>
+                                                    <?php  if(in_array(4,$permissions)){ ?>
                                                     <button  class="btn btn-danger btn-sm mr-2 text-white delete" data-id="<?=encryptids("E",$list['id']);?>" >Delete</button>
+                                                    <?php } ?>
                                                     <button  class="btn btn-success btn-sm mr-2 text-white publish" data-id="<?=encryptids("E",$list['id']);?>" >Publish</button>                                            
                                                     <button  class="btn btn-primary btn-sm mr-2 text-white archive" data-id="<?=encryptids("E",$list['id']);?>" >Archive</button>
 

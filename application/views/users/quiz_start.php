@@ -257,7 +257,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                         </div>
                                     </div>
                                     <div>
-                                    <button type="button" id="review" data-id="<?= $details['que_id'] ?>" class="btn btn-success markForReview  startQuiz me-2" >Mark For Review</button>
+                                    <button type="button" id="review" data-id="<?= $details['que_id'] ?>" class="btn btn-success markForReview  startQuiz me-2" style="background: purple;">Mark For Review</button>
                                     <!--  <input type="checkbox" id="review" name="review[]" value="<?= $details['que_id'] ?>" /> <label for="subscribeNews">Mark For Review</label> -->
                                 </div>
                                 </div>

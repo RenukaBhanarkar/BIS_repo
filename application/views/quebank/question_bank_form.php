@@ -236,7 +236,7 @@
                                 <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_eng">
                                     <label class="d-block text-font mr-3">English Option</label>
 
-                                    <div class="row mt-3" id="opt1_blk">
+                                    <div class="row" id="opt1_blk">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -1283,7 +1283,7 @@
                                 var option1 = $("#option1").val();
                                 if (option1 == "") {
                                     if ($("#option1").next(".validation").length == 0) {
-                                        $("#option1").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option1").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option1").focus();
@@ -1307,7 +1307,7 @@
                                 var option2 = $("#option2").val();
                                 if (option2 == "") {
                                     if ($("#option2").next(".validation").length == 0) {
-                                        $("#option2").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option2").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2").focus();
@@ -1332,7 +1332,7 @@
 
                                 if (option3 == "") {
                                     if ($("#option3").next(".validation").length == 0) {
-                                        $("#option3").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option3").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3").focus();
@@ -1358,7 +1358,7 @@
 
                                 if (option4 == "") {
                                     if ($("#option4").next(".validation").length == 0) {
-                                        $("#option4").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option4").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4").focus();
@@ -1383,7 +1383,7 @@
                                 var option5 = $("#option5").val();
                                 if (option5 == "") {
                                     if ($("#option5").next(".validation").length == 0) {
-                                        $("#option5").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option5").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5").focus();
@@ -1408,7 +1408,7 @@
                            var que_h = CKEDITOR.instances['que_h'].getData();
                             if (que_h == "") {
                                 if ($("#que_h").next(".validation").length == 0) {
-                                    $("#que_h").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
+                                    $("#que_h").after("<div class='validation' style='color:red;'>This value is required.</div>");
                                 }
                                 if (!focusSet) {
                                     $("#que_h").focus();
@@ -1425,7 +1425,7 @@
                                 var option1_h = $("#option1_h").val();
                                 if (option1_h == "") {
                                     if ($("#option1_h").next(".validation").length == 0) {
-                                        $("#option1_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option1_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option1_h").focus();
@@ -1448,7 +1448,7 @@
                                 var option2_h = $("#option2_h").val();
                                 if (option2_h == "") {
                                     if ($("#option2_h").next(".validation").length == 0) {
-                                        $("#option2_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option2_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2_h").focus();
@@ -1472,7 +1472,7 @@
                                 var option3_h = $("#option3_h").val();
                                 if (option3_h == "") {
                                     if ($("#option3_h").next(".validation").length == 0) {
-                                        $("#option3_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option3_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3_h").focus();
@@ -1496,7 +1496,7 @@
                                 var option4_h = $("#option4_h").val();
                                 if (option4_h == "") {
                                     if ($("#option4_h").next(".validation").length == 0) {
-                                        $("#option4_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option4_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4_h").focus();
@@ -1520,7 +1520,7 @@
                                 var option5_h = $("#option5_h").val();
                                 if (option5_h == "") {
                                     if ($("#option5_h").next(".validation").length == 0) {
-                                        $("#option5_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>This value is required.</div>");
+                                        $("#option5_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5_h").focus();

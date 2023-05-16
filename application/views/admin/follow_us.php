@@ -7,7 +7,11 @@
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
             aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
   <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/footer_links';?>" >Footer Link</a></li>
@@ -20,6 +24,7 @@
 
     <div class="col-12">
     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+        <?php  if(in_array(2,$permissions)){ ?>
         <div class="card border-top card-body">
             <div>
                 <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add  New Follow Us link</button>
@@ -39,11 +44,21 @@
 
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Icon</label>
-                                        <input type="file" class="form-control input-font" name="follow_us" id="follow_us" required="">
+                                        <div class="d-flex">
+                                            <div class="col-9">
+                                        <input type="file" class="form-control input-font" name="follow_us" id="follow_us" required="" onchange="loadFileThumbnail1(event)">
                                         <span class="error_text">
-                                            Only jpg,jpeg,png allowed
-                                            <?php //echo form_error('title'); ?>
                                         </span>
+                                        <div class="invalid-feedback">
+                                            This value is required
+                                        </div>
+                                        </div>
+                                        <div class="col-2">
+                                        <button type="button" id="preview" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                            Preview
+                                        </button>
+                                        </div>
+                                        </div>
                                     </div>
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Title</label>
@@ -78,7 +93,28 @@
             </div>
 
         </div>
-        <?php } ?>
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
+
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <img src="" id="outputThumbnail" width="100%"/>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+            <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button> -->
+            </div> 
+        </div>
+        </div>
+        </div>
+        
+        <?php } } ?>
         <?php
         if ($this->session->flashdata('MSG')) {
             echo $this->session->flashdata('MSG');
@@ -105,7 +141,7 @@
                             foreach($follow_us as $list_follow)
                             {?>
                             <tr>
-                                <td>1</td>
+                                <td><?php echo $i; ?></td>
                                 <td><?php if($list_follow['icon']){ ?>                                 
                                     <img src="<?php echo base_url(); ?>uploads/<?php echo $list_follow['icon']?>" width="50">
                                     <?php }else{ echo "No Uploaded";} ?></td>
@@ -113,10 +149,14 @@
                                 <td><?php echo $list_follow['link']; ?></td>
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                 <td class="d-flex border-bottom-0">
+                                <?php  if(in_array(3,$permissions)){ ?>
                                     <button onclick="edit('<?php echo $list_follow['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal"
                                         data-target="#editform">Edit</button>
+                                        <?php } ?>
+                                        <?php  if(in_array(4,$permissions)){ ?>
                                     <button onclick="deleteFollowUs(' <?php echo $list_follow['id']; ?> ');" data-id ='<?php echo $list_follow['id']; ?>'
                                     class="btn btn-danger btn-sm mr-2">Delete</button>
+                                    <?php } ?>
                                     <!-- Modal -->
             
                                     <div class="modal fade " id="editform" tabindex="-1" role="dialog"
@@ -166,11 +206,20 @@
                                                                                             <!-- Modal -->
                                                             </div>
                                                             <div class="" id="add_file">
+                                                                <div class="d-flex">
+                                                                    <div class="col-9">
                                                             <input type="file" class="form-control input-font" name="follow_us"
-                                                                id="icon_file" value=""  accept="image/*">
+                                                                id="icon_file" value=""  accept="image/*" onchange="loadFileThumbnail2(event)">
                                                                 <?php //echo form_error('title'); ?>
                                                             <input type="hidden" id="old_img" name="old_img" value="">                                                            <span class="error_text">
                                                             <input type="hidden" id="id" name="id" value="">  
+                                                            </div>
+                                                            <div class="col-2">
+                                                            <button type="button" id="preview" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                                                    Preview
+                                                                </button>
+                                                            </div>
+                                                            </div>
                                                             
                                                         </div>
                                                         </div>
@@ -193,7 +242,7 @@
                                                     <div class="modal-footer">
                                                         <button  class="btn btn-secondary" type="button"
                                                             data-dismiss="modal">Cancel</button>
-                                                        <button onclick="submitButton()" class="btn btn-primary">Update</button>
+                                                        <button onclick="return submitButton(event)" class="btn btn-primary">Update</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -205,7 +254,7 @@
                                 <?php } ?>
                             </tr>
 
-<?php }} ?>
+<?php $i++; }} ?>
                         </tbody>
                     </table>
                 </div>
@@ -236,18 +285,138 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
+
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <img src="" id="outputThumbnail2" width="100%"/>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+            <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button> -->
+            </div> 
+        </div>
+        </div>
+        </div>
 <!-- End of Main Content -->
 <script>
+    var loadFileThumbnail1 = function(event) 
+    {
+        var fileSize = $('#follow_us')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#follow_us").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 5120){
+            $('#follow_us').val('');
+            // $('#lessSize').modal('show');
+            Swal.fire("File size should be more than 5KB")
+            $('#err_update_banner').text('This value is required');
+        }else if(fileSize > 204800){
+            $('#follow_us').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire("File size should be less than 200KB")
+            $('#err_update_banner').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#follow_us').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire("Only jpg,jpeg,png files allowed")
+            $('#err_update_banner').text('This value is required');
+        }else{
+            $('#err_update_banner').text('');
+        }
+       //  $("#Previewimg").show();
+        var outputThumbnail = document.getElementById('outputThumbnail');
+        
+        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        console.log(outputThumbnail.src);
+        outputThumbnail.onload = function()
+        {
+            URL.revokeObjectURL(outputThumbnail.src);
+        }
+    };
+
+    var loadFileThumbnail2 = function(event) 
+    {
+        var fileSize = $('#icon_file')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#icon_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 5120){
+            $('#icon_file').val('');
+            // $('#lessSize').modal('show');
+            Swal.fire("File size should be more than 5KB")
+            $('#err_update_banner').text('This value is required');
+        }else if(fileSize > 204800){
+            $('#icon_file').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire("File size should be less than 200KB")
+            $('#err_update_banner').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#icon_file').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire("Only jpg,jpeg,png files allowed")
+            $('#err_update_banner').text('This value is required');
+        }else{
+            $('#err_update_banner').text('');
+        }
+       //  $("#Previewimg").show();
+        var outputThumbnail = document.getElementById('outputThumbnail2');
+        
+        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        console.log(outputThumbnail.src);
+        outputThumbnail.onload = function()
+        {
+            URL.revokeObjectURL(outputThumbnail.src);
+        }
+    };
+
     $(document).ready(function(){
         $('#followus').DataTable();
     });
 function deleteFollowUs(que_id) {
-    $('#delete').modal('show');
-        $('.abcd').on('click', function() {
+ //   $('#delete').modal('show');
+    //    $('.abcd').on('click', function() {
                     // var c = confirm("Are you sure to delete this survey details? ");
                     // if (c == true) {
                         // const $loader = $('.igr-ajax-loader');
                         //$loader.show();
+                        // $.ajax({
+                        //     type: 'POST',
+                        //     url: '<?php echo base_url(); ?>admin/deleteFollowUs',
+                        //     data: {
+                        //         que_id: que_id,
+                        //     },
+                        //     success: function(result) {
+                        //         // $('#row' + que_id).css({
+                        //         //     'display': 'none'
+                        //         // });
+                        //        // alert('success' 'refresh');
+                        //         location.reload();
+                        //     },
+                        //     error: function(result) {
+                        //         alert("Error,Please try again.");
+                        //     }
+                        // });
+                        Swal.fire({
+                    title: 'Are you sure you want to Delete?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
                         $.ajax({
                             type: 'POST',
                             url: '<?php echo base_url(); ?>admin/deleteFollowUs',
@@ -265,8 +434,13 @@ function deleteFollowUs(que_id) {
                                 alert("Error,Please try again.");
                             }
                         });
-
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
                     })
+
+                 //   })
                 }
 
                 function edit(que_id){
@@ -306,7 +480,9 @@ function deleteFollowUs(que_id) {
             });          
     }
 
-    function submitButton() {
+    function submitButton(event) {
+        event.preventDefault();
+       // e.preventDefault()
              var title = $("#title1").val();
              var link= $("#link1").val();
              var is_valid = true;
@@ -337,7 +513,22 @@ function deleteFollowUs(que_id) {
 
              if (is_valid) { 
                 $('#updateform').attr('action','<?php echo base_url(); ?>admin/update_followus');                
-                 return true;
+               //  return true;
+                 Swal.fire({
+                    title: 'Are you sure you want to Update?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Update',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $('#updateform').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
              } else {
                  return false;
              }

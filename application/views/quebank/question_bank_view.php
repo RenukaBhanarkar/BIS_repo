@@ -273,9 +273,11 @@
                                 <div class="col-md-12 submit_btn p-3">
                                     <button type="button" class="btn btn-success btn-sm mr-2 changeStatus" data-id="<?php echo $row['que_bank_id']; ?>" data-status="3">Approve</button>
                                     <button type="button" class="btn btn-danger btn-sm mr-2 changeStatus" data-id="<?php echo $row['que_bank_id']; ?>" data-status="4">Reject</button>
+                                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
                                 </div>
 
                             <?php  } ?>
+                           
                             <!-- <?php if ($row['status'] == 3) { ?>
                                 <div class="col-md-12 submit_btn p-3">
                                 <button type="button" class="btn btn-primary btn-sm mr-2 changeStatus" data-id="<?php echo $row['que_bank_id']; ?>"  data-status="5">Publish</button>
@@ -286,6 +288,7 @@
                                 </div>
                             <?php  } ?> -->
                         <?php  } ?>
+                       
                     <?php }
                 } else { ?>
                     <h6>Details are not availaible</h6>
@@ -296,7 +299,15 @@
 
         </div>
                 <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+                <?php if (!($row['status'] == 2)) { ?>
+                                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
+                                <?php } } ?>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                            <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
+                            <?php } ?>
+
+                    <!-- <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a> -->
                 </div>
     </div>
     <!-- <div class="col-md-12 submit_btn p-3">

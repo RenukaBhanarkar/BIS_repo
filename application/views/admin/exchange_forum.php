@@ -256,7 +256,7 @@
          </div>
          <div class="row standard_club">
             
-                <h2 class="h3 mb-0 text-gray-800">Standards Making</h2>
+                <h2 class="h3 mb-0 text-gray-800">World of Standards</h2>
            
          </div> 
             <div class="row mt-3"> 

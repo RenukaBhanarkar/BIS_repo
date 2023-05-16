@@ -949,6 +949,18 @@ class Subadmin extends CI_Controller
 
     public function legal()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(24, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 24;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                //   $sub_model_id = 0;
+                //   $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+         // print_r($permissions); die;
         $this->load->model('admin_model');
         $data['legal'] = $this->admin_model->legal();
         $this->load->view('admin/headers/admin_header');
@@ -1067,6 +1079,28 @@ class Subadmin extends CI_Controller
         redirect(base_url() . "subadmin/winner_wall", 'refresh');
     }
     public function WordOfStandardBanner(){
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+             // print_r($_SESSION); die;
+            //   if (in_array(13, $_SESSION['main_mod_per'])) { 
+            //       $sub_model_id = 1;
+            //       $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            //   }else{
+            //       $sub_model_id = 0;
+            //       $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            //   }
+            //   $data['permissions'] =  $permissions;
+            if (in_array(13, $_SESSION['sub_mod_per'])) { 
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }else{
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+          }else{
+            $data[]="";
+          }
+         // print_r($data); die;
         $data['banner_data']=$this->Admin_model->bannerwosAllData();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/world_of_standard_banner_image_list',$data);

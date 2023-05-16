@@ -143,14 +143,14 @@
                                                 <?php if (($row['status'] == 1) || ($row['status'] == 3) ||  ($row['status'] == 4)) {
 
                                                     if ($row['quiz_title'] == "") { ?>
-                                                        <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="archiveQueBank">Archive</button>
+                                                        <button type="button" class="btn btn-secondary btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="archiveQueBank">Archive</button>
                                                     <?php } ?>
                                                 <?php }  ?>
                                             <?php } ?>
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                                 <?php if (($row['status'] == 1) || ($row['status'] == 4)) { ?>
-                                                    <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="sendForApproval">Send For Approval</button>
+                                                    <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="sendForApproval">Send for Approval</button>
                                             <?php  }
                                             } ?>
 

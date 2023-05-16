@@ -6,7 +6,12 @@
         <h1 class="h3 mb-0 text-gray-800"> World of Standard Banner Image List</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
+            <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li> -->
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
             </ol>
@@ -17,6 +22,7 @@
 
     <!-- Content Row -->
     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+        <?php  if(in_array(2,$permissions)){ ?>
         <div class="col-12">
             <div class="card border-top card-body">
                 <div>
@@ -39,10 +45,10 @@
                                                 <div class="col-6">
                                                 <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="bannerimg" onchange="loadFileThumbnail1(event)" required="">
                                                 <span class="text-danger">
-                                                    only jpg jpeg and png formats allowed
-                                                    <?php //echo form_error('title'); 
-                                                    ?>
                                                 </span>
+                                                <div class="invalid-feedback">
+                                                    This value is required
+                                                </div>
                                                 </div>
                                                 <div class="col-md-4">
                                             <button type="button" id="preview123456" class="btn btn-primary btn-sm ml-2" data-bs-toggle="modal" data-bs-target="#Previewimg1">
@@ -76,7 +82,7 @@
                 </div>
 
             </div>
-        <?php } ?>
+        <?php } } ?>
         <?php
         if ($this->session->flashdata('MSG')) {
             echo $this->session->flashdata('MSG');
@@ -111,8 +117,12 @@
                                         <td><?php echo $list_banner['caption']; ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                         <td class="d-flex border-bottom-0">
+                                        <?php  if(in_array(3,$permissions)){ ?>
                                             <button onclick="edit('<?php echo $list_banner['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform">Edit</button>
+                                            <?php } ?>
+                                            <?php  if(in_array(4,$permissions)){ ?>
                                             <button onclick="deleteBanner(' <?php echo $list_banner['id']; ?> ');" data-id='<?php echo $list_banner['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                            <?php } ?>
                                             <!-- Modal -->
 
                                         </td>
@@ -232,9 +242,11 @@
 
                                                             <div class="col-9">
                                                             <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="icon_file" onchange="loadFileThumbnail(event)">
-                                                            <span class="error_text">      
-                                                                accept only jpg,jpeg,png                      
+                                                            <span class="error_text">
                                                             </span>
+                                                            <div class="invalid-feedback">
+                                                                This value is required
+                                                            </div>
                                                             <input type="hidden" name="old_img" value="" id="bannerimg1">
                                                             <input type="hidden" name="id" value="" id="id1">
                                                             <span class="error_text">
@@ -315,6 +327,30 @@
                                         })
 var loadFileThumbnail = function(event) 
     {
+        var fileSize = $('#icon_file')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#icon_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#icon_file').val('');
+            // $('#lessSize').modal('show');
+            Swal.fire("File size should be more than 20KB")
+            $('#err_update_banner').text('This value is required');
+        }else if(fileSize > 204800){
+            $('#icon_file').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire("File size should be less than 200KB")
+            $('#err_update_banner').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#icon_file').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire("Only jpg,jpeg,png files allowed")
+            $('#err_update_banner').text('This value is required');
+        }else{
+            $('#err_update_banner').text('');
+        }
        //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail');
         
@@ -327,6 +363,30 @@ var loadFileThumbnail = function(event)
     };
     var loadFileThumbnail1 = function(event) 
     {
+        var fileSize = $('#bannerimg')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#bannerimg").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#bannerimg').val('');
+            // $('#lessSize').modal('show');
+            Swal.fire("File size should be more than 20KB")
+            $('#err_update_banner').text('This value is required');
+        }else if(fileSize > 204800){
+            $('#bannerimg').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire("File size should be less than 200KB")
+            $('#err_update_banner').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#bannerimg').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire("Only jpg,jpeg,png files allowed")
+            $('#err_update_banner').text('This value is required');
+        }else{
+            $('#err_update_banner').text('');
+        }
        //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail1');
         

@@ -796,6 +796,18 @@ class Admin extends CI_Controller
     }
     public function feedback()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(26, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 26;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+        //  print_r($data); die;
         $this->load->model('Users/Users_model');
         $data['feedback'] = $this->Users_model->get_feedback_data();
         $this->load->view('admin/headers/admin_header');
@@ -838,6 +850,19 @@ class Admin extends CI_Controller
     }
     public function letest_news()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(27, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 27;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }else{
+            $data['permissions']=""; 
+          }
         // echo "hiiii"; die;
         $data['news'] = $this->Admin_model->getLetestNews();
         // print_r($data); die;
@@ -1014,6 +1039,19 @@ class Admin extends CI_Controller
 
     public function upcoming_events()
     {
+       // print_r($_SESSION); die;
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(28, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 28;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+//print_r($data); die;
         $data['events'] = $this->Admin_model->getEvent();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/upcoming_events', $data);
@@ -1606,14 +1644,52 @@ class Admin extends CI_Controller
     }
     public function cmsManagenent_dashboard()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+             // print_r($_SESSION);
+              if (in_array(8, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 8;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+
+              $data['permissions'] =  $_SESSION['sub_mod_per'];
+          }else{
+            $data[]="";
+          }
+         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/cmsManagenent_dashboard');
+        $this->load->view('admin/cmsManagenent_dashboard',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
     public function banner_image_list()
     {
 
+        // if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        //     //  print_r($_SESSION); die;
+        //       if (in_array(21, $_SESSION['sub_mod_per'])) { 
+        //           $sub_model_id = 21;
+        //           $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+        //       }else{
+        //           $sub_model_id = 0;
+        //           $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+        //       }
+        //       $data['permissions'] =  $permissions;
+        //   }
+          if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(21, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 21;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+        // print_r($data); die;
         $data['banner_data'] = $this->Admin_model->bannerAllData();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/banner_image_list', $data);
@@ -1697,6 +1773,17 @@ class Admin extends CI_Controller
 
     public function about_exchange_forum()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(22, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 22;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['about_exchange_forum'] = $this->admin_model->aboutExchangeForumData();
         $this->load->view('admin/headers/admin_header');
@@ -1808,6 +1895,18 @@ class Admin extends CI_Controller
 
     public function contact_us()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(23, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 23;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
+        //  print_r($permissions); die;
         $this->load->model('admin_model');
         $data['contact_us'] = $this->admin_model->contactUsData();
         $this->load->view('admin/headers/admin_header');
@@ -1907,6 +2006,17 @@ class Admin extends CI_Controller
 
     public function useful_links()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(24, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 24;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['useful_link'] = $this->admin_model->useful_links();
         $this->load->view('admin/headers/admin_header');
@@ -2029,6 +2139,17 @@ class Admin extends CI_Controller
 
     public function follow_us()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(24, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 24;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['follow_us'] = $this->admin_model->follow_us();
         $this->load->view('admin/headers/admin_header');
@@ -2158,6 +2279,17 @@ class Admin extends CI_Controller
 
     public function photos()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(25, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 25;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin_model');
         $data['photos'] = $this->admin_model->allPhotos();
         $this->load->view('admin/headers/admin_header');
@@ -2273,6 +2405,17 @@ class Admin extends CI_Controller
     public function videos()
     {
         if ($this->Admin_model->checkAdminLogin()) {
+            if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+                //  print_r($_SESSION); die;
+                  if (in_array(25, $_SESSION['sub_mod_per'])) { 
+                      $sub_model_id = 25;
+                      $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+                  }else{
+                      $sub_model_id = 0;
+                      $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+                  }
+                  $data['permissions'] =  $permissions;
+              }
             $this->load->model('Admin/Admin_model');
             $data['video'] = $this->Admin_model->allVideos();
             $this->load->view('admin/headers/admin_header');
@@ -2722,6 +2865,17 @@ class Admin extends CI_Controller
     }
     public function byTheMentors()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            //  print_r($_SESSION); die;
+              if (in_array(4, $_SESSION['sub_mod_per'])) { 
+                  $sub_model_id = 1;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }else{
+                  $sub_model_id = 0;
+                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+              }
+              $data['permissions'] =  $permissions;
+          }
         $this->load->model('admin/By_the_mentor_model');
         // $this->load->model('admin/By_the_mentor_model');        
         $data['archive'] = $this->By_the_mentor_model->all_archievd_btm();

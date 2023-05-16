@@ -7,10 +7,14 @@
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
             aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
-  <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-  <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
-  <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/footer_links';?>" >Footer Link</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
+                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/footer_links';?>" >Footer Link</a></li>
             </ol>
         </nav>
     </div>
@@ -20,9 +24,12 @@
 
     <div class="col-12">
     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+        <?php  if(in_array(2,$permissions)){ ?>
         <div class="card border-top card-body">
             <div>
+            
                 <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add New Useful Links</button>
+               
                 <div class="modal fade " id="newform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-xl" role="document">
@@ -89,7 +96,7 @@
                                         <span class="error_text">
                                             <?php //echo form_error('title'); ?>
                                         </span>
-                                        <div class="invalid-feedback">enter valid URL starts with https://
+                                        <div class="invalid-feedback">Enter valid URL
                                                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +112,7 @@
             </div>
 
         </div>
-        <?php } ?>
+        <?php } } ?>
         <?php
         if ($this->session->flashdata('MSG')) {
             echo $this->session->flashdata('MSG');
@@ -141,9 +148,13 @@
                                 <td><?php echo $list_ul['link']; ?></td>
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                 <td class="d-flex border-bottom-0">
+                                <?php  if(in_array(3,$permissions)){ ?>
                                     <button onclick="edit('<?php echo $list_ul['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal"
                                         data-target="#editform">Edit</button>
+                                        <?php } ?>
+                                        <?php  if(in_array(4,$permissions)){ ?>
                                     <button onclick="deleteUsefulLinks(' <?php echo $list_ul['id']; ?> ');" data-id ='<?php echo $list_ul['id']; ?>' class="btn btn-danger btn-sm mr-2">Delete</button>
+                                    <?php } ?>
                                     <!-- Modal -->
                                     <div class="modal fade" id="viewImage" tabindex="-1" role="dialog"
                                         aria-labelledby="viewImageLabel" aria-hidden="true">
@@ -202,8 +213,8 @@
                                                                                         <img src="" id="outputicon" width="100%"/>
                                                                                         </div>
                                                                                         <div class="modal-footer">
-                                                                                        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                                                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                                                                        <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button> -->
                                                                                         </div> 
                                                                                     </div>
                                                                                     </div>
@@ -215,6 +226,9 @@
                                                             <div class="col-9">
                                                             <input type="file" class="form-control input-font" name="image"
                                                                 id="updated_image" value=""  accept="image/*" onchange="loadFileThumbnail3(event)">
+                                                                <div class="invalid-feedback">
+                                                                    This value is required
+                                                                </div>
                                                                 <span class="text-danger" id="err_updated_image"></span>
                                                             <input type="hidden" name="old_img" id="image" value="">
                                                             <input type="hidden" name="id" id="id" value="">
@@ -237,8 +251,8 @@
                                                                     <img src="" id="outputThumbnailUpadted" width="100%"/>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                    <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                                                    <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
+                                                                    <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                                    <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button> -->
                                                                     </div>
                                                                 </div>
                                                                 </div>
@@ -319,10 +333,10 @@ var loadFileThumbnail1 = function(event)
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20480){
+        if(fileSize < 5120){
             $('#addimage').val('');
             // $('#lessSize').modal('show');
-            Swal.fire("File size should be more than 20KB")
+            Swal.fire("File size should be more than 5KB")
             $('#err_update_banner').text('This value is required');
         }else if(fileSize > 204800){
             $('#addimage').val('');
@@ -355,10 +369,10 @@ var loadFileThumbnail1 = function(event)
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20480){
+        if(fileSize < 5120){
             $('#updated_image').val('');
             // $('#lessSize').modal('show');
-            Swal.fire("File size should be more than 20KB")
+            Swal.fire("File size should be more than 5KB")
             $('#err_updated_image').text('This value is required');
         }else if(fileSize > 204800){
             $('#updated_image').val('');

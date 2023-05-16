@@ -6,7 +6,11 @@
         <h1 class="h3 mb-0 text-gray-800">Contact Us</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
+              <?php  } ?>
             <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
             </ol>
@@ -19,11 +23,13 @@
 
     <div class="col-12">
     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+        <?php  if(in_array(2,$permissions)){ ?>
         <?php  if(count($contact_us) < 1){?> 
         <div class="card border-top card-body">
             <div>
-                
+            <?php  if(in_array(2,$permissions)){ ?>
                 <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add Contact Us Details</button>
+                <?php } ?>
              
                 <form id="add_admin" action="<?php echo base_url(); ?>admin/add_contact_us" method="post" enctype="multipart/form-data" class="was-validated">
                     <div class="modal fade " id="newform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -103,7 +109,7 @@
             </div>
 
         </div>
-        <?php  } ?>
+        <?php } } ?>
         <?php } ?>
         <?php
         if ($this->session->flashdata('MSG')) {
@@ -140,10 +146,13 @@
                                         <!-- <td style="word-break: break-all;"><?php echo $list_contact['location']; ?></td> -->
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                         <td class="d-flex border-bottom-0">
-                                        
+                                        <?php  if(in_array(3,$permissions)){ ?>
                                             <button onclick="edit('<?php echo $list_contact['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform">Edit</button>
+                                            <?php } ?>
                                             <!-- <button onClick="" class="btn btn-danger btn-sm mr-2"><i class="fa fa-trash" aria-hidden="true"></i></button> -->
+                                            <?php  if(in_array(4,$permissions)){ ?>
                                             <button onclick="deleteContactus(' <?php echo $list_contact['id']; ?> ');" data-id='<?php echo $list_contact['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                            <?php } ?>
 
                                             <div class="modal fade " id="editform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl" role="document">
