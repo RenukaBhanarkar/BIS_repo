@@ -363,7 +363,7 @@
       <div class="creative-content">
         <div class="section-title">
           <h2>Latest News</h2>
-          <span>Your creativity can make a big impact</span>
+          <!-- <span>Your creativity can make a big impact</span> -->
         </div>
         <div class="creative-list">
           <div class="view view-new-home-page-block view-id-new_home_page_block view-display-id-block_4 view-dom-id-34b0dfa3878c31dc7e3a1ca86b1f55eb">
@@ -380,9 +380,9 @@
                     <div class="views-field views-field-title-field">
                       <div class="field-content"><a href="/task/odop-wall-grand-challenge/" title=" ODOP Wall Grand Challenge"> <?php echo $list['title'];  ?></a></div>
                     </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
+                    <!-- <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
                       <div class="field-content nodtranslate"><span class="date-display-single">May 11 2023 - 5:15am</span></div>
-                    </div>
+                    </div> -->
                     </div> 
 
             <?php } } ?>
@@ -444,7 +444,7 @@
       <div class="discussion-content">
         <div class="section-title">
           <h2>Upcoming Events</h2>
-          <span>Share your suggestions and ideas with us</span>
+          <!-- <span>Share your suggestions and ideas with us</span> -->
         </div>
         <div class="discussion-list">
           <div class="view view-new-home-page-block view-id-new_home_page_block view-display-id-block_5 view-dom-id-5ec1710fc29296967f3f63d10ae4c525">
@@ -465,9 +465,9 @@
                     <div class="views-field views-field-title-field">
                       <div class="field-content"><?php echo $list['title']; ?></div>
                     </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
+                    <!-- <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
                       <div class="field-content nodtranslate"><span class="date-display-single">Jun 1 2023 - 10:45am</span></div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <?php } } ?>

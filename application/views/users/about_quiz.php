@@ -139,6 +139,8 @@
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
+        height: 578px;
+        overflow: auto;
 
     }
 
@@ -224,7 +226,8 @@
 
     /* about quiz end */
 </style>
-<div class="container">
+<div class="container-fluid d-flex">
+    <div class="col-md-9">
     <section id="banner-section">
         <?php if ( $quizdata['language_id'] == 3){?>
             <div class="float-end" id="QuizLang">
@@ -309,6 +312,7 @@
         </div>
 
     </section>
+    
     <section id="quiz-about" class="mb-5">
         <div class="about-inner ">
             <h2 class="about-section">About Quiz</h2>
@@ -325,8 +329,8 @@
 
             </div>
     </section>
-
 </div>
+<div class="col-md-3">
 <section class="-join_section">
     <div class="join_content">
         <div class="bloginfo">
@@ -420,6 +424,9 @@
         </div>
     </div>
 </section>
+</div>
+</div>
+
 
 <script>
      $('.Quiz_text').on('click', '#startQuizLang', function(e) {
