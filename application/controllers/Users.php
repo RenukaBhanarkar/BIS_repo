@@ -497,7 +497,7 @@ class Users extends CI_Controller
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
                 CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
-           // CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
+           //CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
               
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
@@ -606,12 +606,6 @@ class Users extends CI_Controller
                 redirect(base_url() . "Users/welcome", 'refresh');
                 return true;
             } else {
-
-
-
-
-
-
                 
                 $user = $this->Admin_model->getLoginUsers($username, $password);
                 if (empty($user)) {
@@ -686,6 +680,7 @@ class Users extends CI_Controller
 
         }}
     }
+  
     public function logout()
     {
         $this->Admin_model->adminLogout();
@@ -2791,29 +2786,42 @@ class Users extends CI_Controller
                                         //echo json_encode( $PartiallyAppeared );exit();
                                         if( !empty($PartiallyAppeared)){
                                             if(count($PartiallyAppeared)> 0){
-                                            // already partially done quiz
-                                            // get que list of ques bank
-                                            $quiz = $this->Users_model->viewQuiz($quiz_id);
-                                            $data['quizdata'] = $quiz;
-                                            $data['user_id'] = $user_id;
-                                            $data['msg'] =  "Partial Time";
-                                            $user_duration = $PartiallyAppeared['user_quiz_duration'];
-                                            
-                                            $duration_sec = $quiz['duration'] * 60 -  $user_duration  ;
-                                            $minutes =    $duration_sec / 60;
-                                            $seconds =  $duration_sec % 60;
-                                            $data['minutes'] =  $minutes;
-                                            $data['seconds'] =  $seconds;
-                                            if( $duration_sec != 0){
-                                                 $question_list = explode(',',$PartiallyAppeared['question_list_id']);
-                                                // $que_details = $this->Users_model->oldgetQuestionDetailsForPartiallyAppered($question_list);
-                                                $que_details = $this->Users_model->getQuestionDetailsForPartiallyAppered($user_id,$quiz_id,$question_list);
-                                                $data['que_details'] = $que_details;
-                                                $this->load->view('users/quiz_start', $data);
-                                            }else{
-                                                $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this quiz.Please try another quiz.", "SS"));
-                                                redirect(base_url() . "users/about_quiz/$quiz_id", 'refresh');
-                                            }
+                                                // already partially done quiz
+                                                // get que list of ques bank
+                                                $quiz = $this->Users_model->viewQuiz($quiz_id);
+                                                $data['quizdata'] = $quiz;
+                                                $data['user_id'] = $user_id;
+                                                $data['msg'] =  "Partial Time";
+                                                $user_duration = $PartiallyAppeared['user_quiz_duration'];
+
+                                                $user_quiz_start_time = $PartiallyAppeared['user_quiz_start_time'];
+                                                $t_new = time();
+                                                $current_time_new = (date("H:i:s", $t_new));
+
+                                                $already_time_taken_by_user = strtotime($user_quiz_start_time)-strtotime($current_time_new);
+                                                $minutes_taken = date('i', $already_time_taken_by_user);
+                                                $seconds_taken = date('s', $already_time_taken_by_user);
+                                                // $duration_sec = $quiz['duration'] * 60 -  $user_duration  ;
+                                                // $minutes =    $duration_sec / 60;
+                                                // $seconds =  $duration_sec % 60;
+                                                // $data['minutes'] =  $minutes;
+
+
+                                                $data['minutes'] =  $minutes_taken;
+                                                $data['seconds'] =  $seconds_taken;
+                                                if( $minutes_taken >=  $quiz['duration'] ){
+                                                    $duration_sec = 0;
+                                                }
+                                                if( $duration_sec != 0){
+                                                    $question_list = explode(',',$PartiallyAppeared['question_list_id']);
+                                                    // $que_details = $this->Users_model->oldgetQuestionDetailsForPartiallyAppered($question_list);
+                                                    $que_details = $this->Users_model->getQuestionDetailsForPartiallyAppered($user_id,$quiz_id,$question_list);
+                                                    $data['que_details'] = $que_details;
+                                                    $this->load->view('users/quiz_start', $data);
+                                                }else{
+                                                    $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this quiz.Please try another quiz.", "SS"));
+                                                    redirect(base_url() . "users/about_quiz/$quiz_id", 'refresh');
+                                                }
                                            
                                              }
                                         }else{
@@ -2827,7 +2835,7 @@ class Users extends CI_Controller
                                            // $data['duration'] =  $quiz['duration'];
                                            $data['minutes'] =  $quiz['duration'];
                                            $data['seconds'] =  '01';
-                                            $data['msg'] =  "First Time";
+                                           $data['msg'] =  "First Time";
                                             // new code to save ques for future reference
                                            
                                             $que_id_array = array();
@@ -2836,12 +2844,26 @@ class Users extends CI_Controller
                                             }
                                             $quistions_list_id = implode(",",$que_id_array);
                                             $quiz_details_new = $this->Users_model->quizDetailsByQuizId($quiz_id);
+
+                                            $t = time();
+                                            $current_time = (date("H:i:s", $t));
+
+                                            $quiz_duration_new =  $quiz['duration'];
+                                            ///////////
+                                            $time = strtotime($current_time);
+                                           
+                                            $quiz_end_time = date("H:i:s", strtotime('+'.$quiz_duration_new.' minutes', $time));
+
+                                            ///////////////////
+                                          
                                             $dataObj = array(
                                                 'user_id'=> $user_id,
                                                 'quiz_id'=> $quiz_id,
                                                 'question_list_id'=> $quistions_list_id,
                                                 'que_bank_id'=> $quiz_details_new['que_bank_id'],
                                                 'quiz_duration'=> $quiz_details_new['duration'],
+                                                'user_quiz_start_time'=> $current_time,
+                                                'quiz_end_time'=> $quiz_end_time
                                             );
                                             $result= $this->Users_model->insertQuizData($dataObj);
                                             // end     
