@@ -802,9 +802,22 @@
         }
         public function CheckUserPartiallyAppear($quiz_id, $user_id)
         {
-            $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id'");
+            $t = time();
+            $current_time = (date("H:i:s", $t));
+
+            $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id' ");
             return $query->row_array();
         }
+        public function CheckUserPartiallyAppearNew($quiz_id, $user_id)
+        {
+            $t = time();
+            $current_time = (date("H:i:s", $t));
+
+            $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id' WHERE quiz_end_time >  $current_time ");
+            return $query->row_array();
+        }
+
+
         public function oldgetQuestionDetailsForPartiallyAppered($question_list){
             $this->db->select('*');
             $this->db->from('tbl_que_details');
