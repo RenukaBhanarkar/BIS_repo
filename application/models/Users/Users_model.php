@@ -802,9 +802,22 @@
         }
         public function CheckUserPartiallyAppear($quiz_id, $user_id)
         {
-            $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id'");
+            $t = time();
+            $current_time = (date("H:i:s", $t));
+
+            $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id' ");
             return $query->row_array();
         }
+        public function CheckUserPartiallyAppearNew($quiz_id, $user_id)
+        {
+            $t = time();
+            $current_time = (date("H:i:s", $t));
+
+            $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id' AND quiz_end_time < '$current_time'");
+            return $query->row_array();
+        }
+
+
         public function oldgetQuestionDetailsForPartiallyAppered($question_list){
             $this->db->select('*');
             $this->db->from('tbl_que_details');
@@ -1222,7 +1235,7 @@
     public function getItemProposalComments($id)
     { 
         $this->db->select('tbl_new_work_comments.*,tbl_users.user_name'); 
-        // $this->db->where('status ',5); 
+        $this->db->where('status ',5); 
         $this->db->where('new_work_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_new_work_comments.admin_id'); 
         $this->db->order_by('created_on', 'desc'); 
@@ -1237,7 +1250,7 @@
     public function getImportantDraftComments($id)
     { 
         $this->db->select('tbl_important_draft_comments.*,tbl_users.user_name'); 
-        // $this->db->where('status ',5); 
+        $this->db->where('status ',5); 
         $this->db->where('doc_no',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_important_draft_comments.admin_id'); 
         $this->db->order_by('created_on', 'desc'); 
@@ -1252,7 +1265,7 @@
     public function getStandardPublishComments($id)
     { 
         $this->db->select('tbl_standard_publish_comments.*,tbl_users.user_name'); 
-        // $this->db->where('status ',5); 
+        $this->db->where('status ',5); 
         $this->db->where('pk_is_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_standard_publish_comments.admin_id'); 
         $this->db->order_by('created_on', 'desc'); 
@@ -1267,7 +1280,7 @@
     public function getStandardRevisedComments($id)
     { 
         $this->db->select('tbl_standard_revised_comments.*,tbl_users.user_name'); 
-        // $this->db->where('status ',5); 
+        $this->db->where('status ',5); 
         $this->db->where('pk_is_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_standard_revised_comments.admin_id'); 
         $this->db->order_by('created_on', 'desc'); 
@@ -1286,7 +1299,7 @@
     public function getStandardUnderReviewComments($id)
     { 
         $this->db->select('tbl_standard_under_review_comments.*,tbl_users.user_name'); 
-        // $this->db->where('status ',5); 
+        $this->db->where('status ',5); 
         $this->db->where('pk_is_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_standard_under_review_comments.admin_id'); 
         $this->db->order_by('created_on', 'desc'); 
@@ -1325,12 +1338,17 @@
     {
 
         $this->db->select('tbl_discussion_forum_comments.*,tbl_users.user_name'); 
-        // $this->db->where('status ',5); 
+        $this->db->where('status ',5); 
         $this->db->where('forum_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_discussion_forum_comments.admin_id'); 
         $this->db->order_by('created_on', 'desc'); 
         return $this->db->get('tbl_discussion_forum_comments')->result_array();
  
+    }
+
+    public function getWinnerWall()
+    {
+        return $this->db->get('tbl_winner_wall_details')->result_array(); 
     }
 }
 // =======

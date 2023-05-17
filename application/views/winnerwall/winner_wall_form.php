@@ -30,19 +30,16 @@ color: red;
                                     <?php foreach($competation as $list){ ?>
                                     <option value="<?php echo $list['id']; ?>"><?php echo $list['title']; ?></option>
                                     <?php } ?>
-                                </select>
-                                <span class="error_competition"><?php echo form_error('competation');?></span>
+                                </select> 
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Title<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="wall_title" id="wall_title" placeholder="Title of Competition" >
-                                <span class="error_text"><?php echo form_error('title');?></span>
+                                <input type="text" class="form-control input-font" name="wall_title" id="wall_title" placeholder="Title of Competition" > 
                                 
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Date of Competition<sup class="text-danger">*</sup></label>
-                                <input type="date" class="form-control input-font" name="quiz_date" id="quiz_date" placeholder="Name of Competition Date" >
-                                <span class="error_text"><?php echo form_error('title');?></span>
+                                <input type="date" class="form-control input-font" name="quiz_date" id="quiz_date" placeholder="Name of Competition Date" > 
                                 
                             </div>
                         </div>
@@ -65,32 +62,34 @@ color: red;
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name" >
-                                <span class="error_text"><?php echo form_error('title');?></span>
+                                <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name" > 
                                 
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Email ID<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="email" id="email" placeholder="Enter Email ID" >
-                                <span class="error_text"><?php echo form_error('title');?></span>
+                                <input type="text" class="form-control input-font" name="email" id="email" placeholder="Enter Email ID" > 
                                 
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Mobile Number<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="contact_no" id="contact_no" placeholder="Enter Mobile Number" >
-                                <span class="error_text"><?php echo form_error('contact_no');?></span>
+                                <input type="text" class="form-control input-font" name="contact_no" id="contact_no" placeholder="Enter Mobile Number" > 
                                 
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Photo</label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="image" accept="image/jpeg,image/png,image/jpg"  name="image" class="form-control-file">
-                                        <span class="error_text"><?php echo form_error('fprize_img'); ?></span>
+                                        <input type="file" id="image" accept="image/jpeg,image/png,image/jpg"  name="image" class="form-control-file" onchange="loadFileThumbnail(event)" > 
+
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFirst">
+                                    <div>
+                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFirst">
                                     Preview
                                     </button>
+                                         
+                                    </div>
+
+                                   
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModalFirst" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -101,7 +100,7 @@ color: red;
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img id="outputFirst" width="100%" />
+                                                <img id="outputThumbnail" width="100%" />
                                             </div>
                                             
                                         </div>
@@ -111,13 +110,12 @@ color: red;
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Location<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="location" id="location" placeholder="Enter Location"  >
-                                <span class="error_text"><?php echo form_error('location');?></span>
+                                <input type="text" class="form-control input-font" name="location" id="location" placeholder="Enter Location"  > 
                                 
                             </div>
                         </div>
                         <div class="col-md-12 submit_btn p-3" style="text-align: center;">
-                            <button  class="btn btn-success btn-sm text-white"  id="addbtn">Add</button>
+                            <button  class="btn btn-success btn-sm text-white"  id="addbtn" onclick="ShowSubmit();">Add</button>
                         </div>
                         <div class="row">
                             <div class="col-12 mt-3 table-responsive">
@@ -142,7 +140,7 @@ color: red;
                                 </div>
                             </div>
                             <div class="col-md-12 submit_btn p-3">
-                                <a class="btn btn-success btn-sm text-white" onclick="return formubmit(event)">Submit</a>
+                                <a class="btn btn-success btn-sm text-white" onclick="return formubmit(event)" id="formsubmit">Submit</a>
                                 <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
                                 <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                             </div>
@@ -206,6 +204,8 @@ color: red;
 ?>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#formsubmit").hide();
+
 
 });
 var loadFileThumbnail = function(event) 
@@ -236,7 +236,7 @@ var loadFileThumbnail = function(event)
                     if (quiz_id == "" || quiz_id== null) {
                         if ($("#quiz_id").next(".validation").length == 0) // only add if not added
                         {
-                            $("#quiz_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz </div>");
+                            $("#quiz_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#quiz_id").focus(); }
                         allfields = false;
@@ -248,7 +248,7 @@ var loadFileThumbnail = function(event)
                     if (quiz_date == "" || quiz_date== null) {
                         if ($("#quiz_date").next(".validation").length == 0) // only add if not added
                         {
-                            $("#quiz_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz date </div>");
+                            $("#quiz_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
                         }
                         if (!focusSet) { $("#quiz_date").focus(); }
                         allfields = false;
@@ -260,7 +260,7 @@ var loadFileThumbnail = function(event)
                     if (prize == "" || prize== null) {
                         if ($("#prize").next(".validation").length == 0) // only add if not added
                         {
-                            $("#prize").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Prize</div>");
+                            $("#prize").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#prize").focus(); }
                         allfields = false;
@@ -272,7 +272,7 @@ var loadFileThumbnail = function(event)
                     if (name == "" || name== null) {
                         if ($("#name").next(".validation").length == 0) // only add if not added
                         {
-                            $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter name</div>");
+                            $("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#name").focus(); }
                         allfields = false;
@@ -284,7 +284,7 @@ var loadFileThumbnail = function(event)
                     if (email == "" || email== null) {
                         if ($("#email").next(".validation").length == 0) // only add if not added
                         {
-                            $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter email</div>");
+                            $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#email").focus(); }
                         allfields = false;
@@ -296,7 +296,7 @@ var loadFileThumbnail = function(event)
                     if (contact_no == "" || contact_no== null) {
                         if ($("#contact_no").next(".validation").length == 0) // only add if not added
                         {
-                            $("#contact_no").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter contact no</div>");
+                            $("#contact_no").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#contact_no").focus(); }
                         allfields = false;
@@ -308,7 +308,7 @@ var loadFileThumbnail = function(event)
                     if (image == "" || image== null) {
                         if ($("#image").next(".validation").length == 0) // only add if not added
                         {
-                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select image</div>");
+                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#image").focus(); }
                         allfields = false;
@@ -325,7 +325,7 @@ var loadFileThumbnail = function(event)
                     {
                         if ($("#image").next(".validation").length == 0) // only add if not added
                         {
-                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
+                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file of size less than 5 MB </div>");
                         }
                         allfields = false;
                         if (!focusSet) {
@@ -362,7 +362,7 @@ var loadFileThumbnail = function(event)
                     if (location == "" || location== null) {
                         if ($("#location").next(".validation").length == 0) // only add if not added
                         {
-                            $("#location").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter location</div>");
+                            $("#location").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#location").focus(); }
                         allfields = false;
@@ -374,7 +374,7 @@ var loadFileThumbnail = function(event)
                     if (wall_title == "" || wall_title== null) {
                         if ($("#wall_title").next(".validation").length == 0) // only add if not added
                         {
-                            $("#wall_title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter wall_title</div>");
+                            $("#wall_title").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#wall_title").focus(); }
                         allfields = false;
@@ -387,7 +387,7 @@ var loadFileThumbnail = function(event)
                     if (submit_id == "" || submit_id== null) {
                         if ($("#submit_id").next(".validation").length == 0) // only add if not added
                         {
-                            $("#submit_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter submit_id</div>");
+                            $("#submit_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#submit_id").focus(); }
                         allfields = false;
@@ -434,6 +434,7 @@ var loadFileThumbnail = function(event)
                             $("#location").val("");
                             $("#email").val("");
                             displayWall(submit_id);
+                            $("#formsubmit").show();
                         },
                     });
                 } else {
@@ -564,6 +565,8 @@ var loadFileThumbnail = function(event)
                     }
                 })
     }
-    
+    // function ShowSubmit(argument) { 
+    //     $("#formsubmit").show();
+    // }
 
     </script> 

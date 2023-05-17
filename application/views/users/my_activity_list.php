@@ -15,23 +15,39 @@
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
-                            <th>Date and Time of Activity</th>
+                            <th>Date and Time</th>
+                            <th>Type</th>
                             <th>Name of activity</th>
                             <th>Score</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(!empty($quiz)) { $i=1; foreach($quiz as $list){
+                        <?php $i=0; if(!empty($quiz)) { $i=1; foreach($quiz as $list){
                             ?>
                    
                       <tr>
                                  <td><?php echo $i; ?></td>
                                  <td><?php echo $list['created_on']; ?></td>
+                                 <td>Quiz</td>
                                  <td><?php echo $list['title']; ?></td>
                                  <td><?php echo $list['score']; ?></td>
                                  <td class="border-bottom-0">
                                      <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a>
+                                 </td>
+                        </tr>
+                        <?php    $i++;  } } ?>
+                        <?php if(!empty($competition)) { if(!($i==0)){ }else{ $i++; } foreach($competition as $list){
+                            ?>
+                   
+                      <tr>
+                                 <td><?php echo $i; ?></td>
+                                 <td><?php echo $list['created_on']; ?></td>
+                                 <td>Competition</td>
+                                 <td><?php echo $list['competiton_name']; ?></td>
+                                 <td><?php echo $list['score']; ?></td>
+                                 <td class="border-bottom-0">
+                                     <!-- <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a> -->
                                  </td>
                         </tr>
                         <?php    $i++;  } } ?>
