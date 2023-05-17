@@ -98,16 +98,7 @@ height: 201px;
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="input-group search_icon">
-                        <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
-                        <span class="input-group-append">
-                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </div>
+                 
             </div> 
             <div class="winner-content">
                 <div class="owl-carousel owl-theme carouselExampleControlswinner" id="">

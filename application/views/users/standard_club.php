@@ -72,22 +72,27 @@
           <div class="card" style="background: #014e9c; color:white;">
             <div class="card-body new-card text-center mt-2">
               <h5 class="card-title">Winners Wall</h5>
-              <hr>
-                 <div class="owl-carousel owl-theme" id="owl-caraousal_standard">
+              <hr> 
+              <div class="owl-carousel owl-theme" id="owl-caraousal_standard">
+              <?php foreach ($Winnerwall as $key => $value) {?>
+              
                   <div class="item">
                     <div class="quiz-section">
                       <div class="quiz-box_live">
                         <a href="#">
-                        <img src="<?= base_url(); ?>assets/images/background_img.webp" class="inner_image">
-              <p class="card-text p-1"><strong>Anis Mulani</strong></p>
-              <p class="mb-0">k.b.p.v School Satara,Maharashtra</p>
+                        <img src="<?= base_url(); ?><?= $value['image']?>" class="inner_image">
+                        <p class="card-text p-1"><strong><?= $value['name']?></strong></p>
+                        <p class="mb-0"><?= $value['location']?></p>
                         </a>
                       </div>
                       
                     </div>
                   </div>
 
-                </div>
+              
+              <?php } ?>
+                </div> 
+                 
               
               <div class="more_button">
                 <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winners'">More<i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>

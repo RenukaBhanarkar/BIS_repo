@@ -45,9 +45,13 @@
                                         <input type="file" id="video_thumbnail" name="video_thumbnail" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
                                         <span class="error_text"></span>
                                     </div>
-                                    
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg"> Preview
+
+                                    <div>
+                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg"> Preview
                                     </button>
+                                    </div>
+                                    
+                                    
                                 </div>
                                 <?php } else {?>
                                 <label class="d-block">Thumbnail<sup class="text-danger">*</sup></label>
@@ -100,9 +104,12 @@
                                         <span class="error_text"></span>
                                     </div>
                                     
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#VideoPriview">
+                                    <div>
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#VideoPriview">
                                     Preview
                                     </button>
+                                    </div>
+                                    
                                 </div>
                                 
                                 <?php } else {?>
@@ -274,7 +281,7 @@
         {
         if ($("#title").next(".validation").length == 0)
         {
-        $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter  Title </div>");
+        $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
         }
         if (!focusSet) { $("#title").focus(); }
         allfields = false;
@@ -286,7 +293,7 @@
         if (description == "" || description== null) {
         if ($("#description").next(".validation").length == 0) // only add if not added
         {
-        $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter description </div>");
+        $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
         }
         if (!focusSet) { $("#description").focus(); }
         allfields = false;
@@ -300,7 +307,7 @@
         if (video_thumbnail == "" || video_thumbnail== null) {
         if ($("#video_thumbnail").next(".validation").length == 0) // only add if not added
         {
-        $("#video_thumbnail").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select  Image</div>");
+        $("#video_thumbnail").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
         }
         if (!focusSet) { $("#video_thumbnail").focus(); }
         allfields = false;
@@ -355,7 +362,7 @@
         if (video == "" || video== null) {
         if ($("#video").next(".validation").length == 0) // only add if not added
         {
-        $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Video</div>");
+        $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
         }
         if (!focusSet) { $("#video").focus(); }
         allfields = false;

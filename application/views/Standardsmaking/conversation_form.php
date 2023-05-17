@@ -36,10 +36,14 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
                             <div class="d-flex"> 
+                                <div>
                                 <input type="file" id="video_thumbnail" name="video_thumbnail" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
                                 <span class="error_text"></span> 
+                            </div>
+                            <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg">Preview </button>
                             </div>
+                        </div>
                         </div>
                         <div class="modal fade"id="exampleModalImg"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
                             <div class="modal-dialog" style="max-width:700px;">
@@ -51,19 +55,24 @@
                                     <div class="modal-body">
                                         <img id="outputThumbnail"width="100%"/>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button"  onclick="resetimg()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
-                                    </div>
+                                     
                                 </div>
                             </div>
                         </div> 
                         <div class="mb-2 col-md-4">
                             <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
-                                <input type="file" id="video" name="video" class="form-control-file"accept="video/mp4,video/mkv"/>
-                                <span class="error_text"></span>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> Preview  </button>
+                                <div>
+                                    <input type="file" id="video" name="video" class="form-control-file"accept="video/mp4,video/mkv"/>
+                                    <span class="error_text"></span>
+                                </div>
+                                <div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> Preview  </button>
+                                    
+                                </div>
+                                
+
+                                
                             </div>
                         </div> 
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"aria-hidden="true">
@@ -74,22 +83,16 @@
                                         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
                                     </div>
                                     <div class="modal-body"> 
-
-                                        <video width="100%" height="100%" controls>
-                                        <source id="outputvideo" type="video/mp4">
-                                        <source id="" type="video/ogg">
-                                        </video>
+                                        <video width="320" height="240" controls id="outputvideo"width="100%"/>  </video>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button"  onclick="resetvideo()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
-                                    </div>
+                                     
                                 </div>
                             </div>
                         </div> 
                     </div>
                     <div class="col-md-12 submit_btn p-3">
                         <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#" onclick="submitdata()" id="submitdata">Submit</a>
+                        <a class="btn btn-danger btn-sm text-white"  href="conversation_list">Cancle</a>
                         <input type="reset" name="Reset" id="resetform"class="btn btn-warning btn-sm text-white">
                     </div> 
                    <!-- Modal -->
@@ -164,7 +167,7 @@ var loadFileThumbnail = function(event)
                     if (title == "" || title== null) {
                         if ($("#title").next(".validation").length == 0) // only add if not added
                         {
-                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Title </div>");
+                            $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#title").focus(); }
                         allfields = false;
@@ -177,7 +180,7 @@ var loadFileThumbnail = function(event)
                     if (description == "" || description== null) {
                         if ($("#description").next(".validation").length == 0) // only add if not added
                         {
-                            $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter description </div>");
+                            $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#description").focus(); }
                         allfields = false;
@@ -189,7 +192,7 @@ var loadFileThumbnail = function(event)
                     if (video_thumbnail == "" || video_thumbnail== null) {
                         if ($("#video_thumbnail").next(".validation").length == 0) // only add if not added
                         {
-                            $("#video_thumbnail").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Thumbnail Image</div>");
+                            $("#video_thumbnail").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#video_thumbnail").focus(); }
                         allfields = false;
@@ -201,7 +204,7 @@ var loadFileThumbnail = function(event)
                     if (video == "" || video== null) {
                         if ($("#video").next(".validation").length == 0) // only add if not added
                         {
-                            $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Video</div>");
+                            $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                         }
                         if (!focusSet) { $("#video").focus(); }
                         allfields = false;
@@ -248,6 +251,31 @@ var loadFileThumbnail = function(event)
                     {
                         $("#video_thumbnail").next(".validation").remove(); // remove it
                     }
+
+                    if ($("#video").val() != '')
+        {
+        
+        var validExtensions = ['mp4','mkv']; //array of valid extensions
+        var fileName = $("#video").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+        $("#video").next(".validation").remove();
+        if ($.inArray(fileNameExt, validExtensions) == -1)
+        {
+        if ($("#video").next(".validation").length == 0) // only add if not added
+        {
+        $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only MP4,MKV file allowed. </div>");
+        }
+        allfields = false;
+        if (!focusSet)
+        {
+        $("#video").focus();
+        }
+        }
+        else
+        {
+        $("#video").next(".validation").remove(); // remove it
+        }
+        }
                 }
 
                     if (allfields) { 
