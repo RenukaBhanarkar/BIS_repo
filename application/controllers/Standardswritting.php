@@ -8,7 +8,8 @@ class Standardswritting extends CI_Controller
     {
 
         parent::__construct();
-        // $this->load->model('Admin/Admin_model');
+        $this->load->model('Admin/Admin_model');
+        $this->load->helper('comman_fun_helper');
         $this->load->model('Quiz/quiz_model');
         // $this->load->model('Users/Users_model');
         // $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
@@ -114,21 +115,38 @@ class Standardswritting extends CI_Controller
         }
            
           //  echo $thumbnail_imglocation; die;
+          
+              $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     
             $formdata = array();
-          //  $formdata['comp_id'] = date('mdy').$this->random_strings(4);
+           // $formdata['comp_id'] = date('mdy').$this->random_strings(4);
+          // $formdata['comp_id'] = date('mdy').random_strings(4);
+            $formdata['comp_id'] = 'C'.date('mdy').substr(str_shuffle($str_result), 0, 4 );
             $formdata['competiton_name'] = $this->input->post('name');
             $formdata['competition_hindi_name'] = $this->input->post('name_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_condition'] = $this->input->post('terms_conditions');
             $formdata['start_date'] = $this->input->post('start_date');
             $formdata['end_date'] = $this->input->post('end_date');
-            $formdata['comp_level'] = $this->input->post('competition_level_id');
-            $formdata['region'] = $this->input->post('Region');
-            $formdata['branch'] = $this->input->post('Branch');
+            $formdata['comp_level'] = $this->input->post('quiz_level_id');
+            // $formdata['region'] = $this->input->post('region_id');
+            // $formdata['branch'] = $this->input->post('branch_id');
             $formdata['available_for'] = $this->input->post('Available');
             $formdata['thumbnail'] = $thumbnail_imglocation;
             $formdata['status'] = "0";
+
+            if($this->input->post('quiz_level_id')== 1){
+                $formdata['region'] = 0;   
+                $formdata['branch_id'] = 0;              
+            }
+            if($this->input->post('quiz_level_id')== 2){               
+                $formdata['region'] = $this->input->post('region_id');
+                $formdata['branch'] = 0; 
+            }
+            if($this->input->post('quiz_level_id')== 3){
+                $formdata['region'] = 0;   
+                $formdata['branch'] = $this->input->post('branch_id');
+            }
 
        
             $formdata1 = array();
@@ -169,9 +187,53 @@ class Standardswritting extends CI_Controller
 
     }
     public function competition_edit(){
-        print_r($_POST); 
-        print_r($_FILES); 
-       // die;
+      //  echo $id;
+    //     print_r($_POST); 
+    //     print_r($_FILES); 
+    //    die;
+            $formdata['comp_id'] = $this->input->post('comp_id');
+            $formdata['competiton_name'] = $this->input->post('name');
+            $formdata['competition_hindi_name'] = $this->input->post('name_hindi');
+            $formdata['description'] = $this->input->post('description');
+            $formdata['terms_condition'] = $this->input->post('terms_conditions');
+            $formdata['start_date'] = $this->input->post('start_date');
+            $formdata['end_date'] = $this->input->post('end_date');
+            $formdata['comp_level'] = $this->input->post('Level');
+            $formdata['region'] = $this->input->post('Region');
+            $formdata['branch'] = $this->input->post('Branch');
+            $formdata['available_for'] = $this->input->post('Available');
+          //  $formdata['thumbnail'] = $thumbnail_imglocation;
+            $formdata['status'] = "0";
+
+       
+            // $formdata1 = array();
+            // $formdata1['fprize_no']=$this->input->post('fprize');            
+            // $formdata1['fprize_name']=$this->input->post('fdetail');
+            // $formdata1['fprize_image']=$fprize_imglocation;
+
+            // $formdata1['sprize_no']=$this->input->post('sprize');            
+            // $formdata1['sprize_name']=$this->input->post('sdetail');
+            // $formdata1['sprize_image']=$sprize_imglocation;
+
+            // $formdata1['tprize_no']=$this->input->post('tprize');            
+            // $formdata1['tprize_name']=$this->input->post('tdetail');
+            // $formdata1['tprize_image']=$tprize_imglocation;
+
+            // $formdata1['cprize_no']=$this->input->post('cprize');            
+            // $formdata1['cprize_name']=$this->input->post('cdetail');
+            // $formdata1['cprize_image']=$cprize_imglocation;
+//print_r($formdata); die;
+           $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+           $id = $this->Miscellaneous_competition->updateCompetition($formdata);
+//echo $comp_id; die;
+if($id){
+    echo "success";
+    $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+    redirect(base_url() . "Standardswritting/create_competition_list", 'refresh');
+}else{
+    $this->session->set_flashdata('MSG', ShowAlert("Something went wrong", "SS"));
+    redirect(base_url() . "Standardswritting/create_competition_list", 'refresh');
+}
 
         if (!file_exists('uploads/competition/thumbnail')) { mkdir('uploads/competition/thumbnail', 0777, true); }
         if (!file_exists('uploads/competition/prize_img')) { mkdir('uploads/competition/prize_img', 0777, true); }

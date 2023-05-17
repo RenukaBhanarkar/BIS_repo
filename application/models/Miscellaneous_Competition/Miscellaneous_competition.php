@@ -65,11 +65,11 @@ class Miscellaneous_competition extends CI_Model {
     }
     public function viewCompetition($id){
         $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*'); 
-        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status','left'); 
         $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.id'); 
         $this->db->where('tbl_mst_competition_detail.id',$id);
         $result= $this->db->get('tbl_mst_competition_detail')->result_array();
-        return $result[0];
+        return $result['0'];
     }
     public function viewCompetition1($id){
         $this->db->select('tbl_mst_competition_detail.*,tbl_mst_competition_prize.*'); 
@@ -130,5 +130,16 @@ class Miscellaneous_competition extends CI_Model {
         // $query=$this->db->get();
         // return $query->result_array(); 
 
+    }
+    public function updateCompetition($data)
+    {
+        //print_r($data); die;
+        $this->db->where('comp_id',$data['comp_id']);
+        if($this->db->update('tbl_mst_competition_detail',$data)){
+			return true;
+		}else{
+			return false;
+		}
+        
     }
 }
