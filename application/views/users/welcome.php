@@ -39,7 +39,7 @@
                                 <div class="LiveDataBox">
                                      <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons">
                                       <h3 class="text_standard">Standards Club</h3>
-                                     <p class="mb-0">(An initiative to nurture the students as Brand Ambassadors of Quality & Standards)</p>
+                                     <p class="mb-0">(An initiative to nurture the students as Brand Ambassadors of Quality)</p>
                                 </div>
                                 </a>
                             </div>
@@ -48,7 +48,7 @@
                                   <div class="LiveDataBox">
                                       <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons">
                                        <h3 class="text_standard">World of Standards</h3>
-                                       <p class="mb-0">(An initiative to broad base the stakeholder engagement and development of standards)</p>
+                                       <p class="mb-0">(An initiative to broad-base the stakeholder engagement for development of Standards)</p>
                                  </div>
                                  </a>
                             </div>

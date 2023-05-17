@@ -171,6 +171,30 @@
                                                 </div>
                                             </div>
                                         </td>
+                                    <?php }else{ ?>
+                                        <div class="modal fade" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="viewImageLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="viewImageLabel">Video Preview</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- <video width="320" height="240" controls>
+                                                                <source src="http://localhost:8080/BIS/bis_akshay/uploads/learning_Science/video/1683930485videoedit_change.mp4" id="video_preview" type=video/mp4*>
+                                                            </video> -->
+                                                            <video width="100%" height="100%" id="video_preview" controls="">
+                                                                <source src="" type="video/mp4">
+                                                                <source src="movie.ogg" type="video/ogg">
+                                                            
+                                                        </video>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                     <?php } ?>
 
 

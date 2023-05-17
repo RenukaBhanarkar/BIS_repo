@@ -1455,9 +1455,9 @@ footer .main_footer .f_contact ul li i {
 	height: 100%;
 }
 .inner_image {
-	margin-bottom: 10px;
-	width: 60%;
-	height: 165px;
+	width: 75%;
+    height: 193px;
+    display: inherit;
 }
 .card-text {
 	margin-top: 0;

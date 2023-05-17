@@ -613,9 +613,11 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         return $quiz = $this->db->get('tbl_quiz_details')->row_array();
     }
     public function getQuizByUserid($id){
+        $current_date= date('Y-m-d');
         $this->db->select('tqsd.*,tqd.title');
         $this->db->from('tbl_quiz_submission_details tqsd');
         $this->db->join('tbl_quiz_details tqd','tqd.id=tqsd.quiz_id');
+        $this->db->where('tqd.end_date <',$current_date);
         $this->db->where('user_id',$id);
         return $this->db->get()->result_array(); 
     }
