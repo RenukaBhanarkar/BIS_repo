@@ -48,7 +48,7 @@
             if ($output['status_code'] == 1) {
                // $userData = $output['data'];
                 //echo json_encode($userData);echo "<br>";
-               // $user_id = $userData['UserID'];
+                $user_id ='2206274956';
                 //$exist_user = $this->Users_model->toCheckUserExist($user_id);
                 $user_id = 
                 $exist_user = 1;
