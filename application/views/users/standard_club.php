@@ -37,6 +37,72 @@
     height: 193px;
     display: inherit;
 }
+.get-involved-links {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #DDDDDD;
+}
+/* .get-involved-links li{
+  margin-bottom: 30px;
+    width: 9%;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    position: relative;
+} */
+.tab-link {
+    margin-bottom: 30px;
+    width: 19%;
+    background: #FFFFFF;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    position: relative;
+    height: 137px;
+} 
+.nav-link.active:before {
+    display: block;
+}
+.nav-link:before {
+    content: "";
+    display: none;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #50606C;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -4px;
+}
+.nav-link.active:after {
+    width: 100%;
+}
+.nav-link:after {
+    content: "";
+    width: 0px;
+    display: block;
+    background: #50606C;
+    height: 4px;
+    position: absolute;
+    bottom: -32px;
+    left: 0px;
+}
+.nav-link {
+  text-align: center;
+  height: 100%;
+  text-decoration: none;
+    color: darkblue
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: white;
+    background-color: #0d6efd;
+}
+li.tab-link:hover {
+    background: gold;
+}
+
+
+
+
 </style>
 <!-- <section id="exchange_forum">
   <div class="container-fluid">
@@ -72,22 +138,27 @@
           <div class="card" style="background: #014e9c; color:white;">
             <div class="card-body new-card text-center mt-2">
               <h5 class="card-title">Winners Wall</h5>
-              <hr>
-                 <div class="owl-carousel owl-theme" id="owl-caraousal_standard">
+              <hr> 
+              <div class="owl-carousel owl-theme" id="owl-caraousal_standard">
+              <?php foreach ($Winnerwall as $key => $value) {?>
+              
                   <div class="item">
                     <div class="quiz-section">
                       <div class="quiz-box_live">
                         <a href="#">
-                        <img src="<?= base_url(); ?>assets/images/background_img.webp" class="inner_image">
-              <p class="card-text p-1"><strong>Anis Mulani</strong></p>
-              <p class="mb-0">k.b.p.v School Satara,Maharashtra</p>
+                        <img src="<?= base_url(); ?><?= $value['image']?>" class="inner_image">
+                        <p class="card-text p-1"><strong><?= $value['name']?></strong></p>
+                        <p class="mb-0"><?= $value['location']?></p>
                         </a>
                       </div>
                       
                     </div>
                   </div>
 
-                </div>
+              
+              <?php } ?>
+                </div> 
+                 
               
               <div class="more_button">
                 <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winners'">More<i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>
@@ -131,24 +202,227 @@
     </div>
   </div>
 </section>
-<!-- <section>
-  <div class="container">
-<div class="get-involved-links">
-            <div class="tab-link active"><a href="#" rel="tab-1" class="do-icon" title="Do/Task"><i></i>Quiz</a></div>
-            <div class="tab-link"><a href="#" rel="tab-2" class="discuss-icon" title="Discuss"><i></i>Standards Writing</a></div>
-            <div class="tab-link"><a href="#" rel="tab-3" class="poll-icon" title="Poll/Survey"><i></i>Essay Writing</a></div>
-            <div class="tab-link"><a href="#" rel="tab-4" class="blog-icon" title="Blog"><i></i>Poster Making</a></div>
-            <div class="tab-link"><a href="#" rel="tab-5" class="talk-icon" title="Talk"><i></i>More</a></div>
-            <div class="tab-link"><a href="#" rel="tab-6" class="quiz-icon" title="Quiz"><i></i>Quiz</a></div>
-            <div class="tab-link"><a href="#" rel="tab-7" class="prime-icon" title="MG Prime"><i></i>MG Prime</a></div>
-            <div class="tab-link"><a href="#" rel="tab-8" class="campaign-icon" title="Campaign"><i></i>Campaign</a></div>
-            <div class="tab-link"><a href="#" rel="tab-9" class="pledge-icon" title="Pledge"><i></i>Pledge</a></div>
-            <div class="tab-link"><a href="#" rel="tab-10" class="podcast-icon" title="Podcast"><i></i>Podcast</a></div>
-        </div>
-        </div>
+<!-- <section class="container">
+<ul class="nav nav-pills mb-3" role="tablist">
+              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab">Quiz</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1">Standards Writing</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1">Essay Writing</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1">Poster Making</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1">More</a></li>
+</ul>
 </section> -->
+<section style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
 
-<section>
+  <div class="container-fluid pt-5">
+  <div class="row text-center">
+      <h3 style="font-weight: 600; color: brown;">Events & Competitions</h3>
+      
+</div>
+<ul class="get-involved-links nav nav-pills mb-3" role="tablist">
+            <li class="tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><h3 class="tabl_title">Quiz</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">Standard Writing</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">Essay Writing</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">Poster Making</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">More</h3></a></li>
+ </ul>
+ <div class="tab-content">
+       <div class="tab-pane fade active show" id="tab1" role="tabpanel">
+          <div class="" >
+              <section>
+                <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                  <div class="row text-center">
+                    <h3 style="font-weight: 700; color: black;">Quiz</h3>
+                    <!-- <p>Miscellaneous For You</p> -->
+                  </div>
+                <div class="row">
+                        <?php if (empty($allquize)) { ?>
+                              <div class="alert alert-danger">
+                                <strong>Sorry!</strong> Quizes are not available.
+                              </div>
+                    <?php  } else {  ?>
+                      <div class="row">
+                        <?php foreach ($allquize as $key => $quize) {  ?>
+                          <div class="col-md-3">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                            </div>
+                          </div>
+                        <?php  } ?>
+                      </div>
+                    <?php } ?>
+                </div>
+                <div class="view-button">
+                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                </div>
+             </div>
+            </section>
+          </div>
+        </div><!-- End Tab 1 Content -->
+        <div class="tab-pane fade" id="tab2" role="tabpanel">
+        <div class="" >
+              <section>
+                <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                  <div class="row text-center">
+                    <h3 style="font-weight: 700; color: black;">Standard Writing</h3>
+                    <!-- <p>Miscellaneous For You</p> -->
+                  </div>
+                <div class="row">
+                        <?php if (empty($allquize)) { ?>
+                              <div class="alert alert-danger">
+                                <strong>Sorry!</strong> Quizes are not available.
+                              </div>
+                    <?php  } else {  ?>
+                      <div class="row">
+                        <?php foreach ($allquize as $key => $quize) {  ?>
+                          <div class="col-md-3">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                            </div>
+                          </div>
+                        <?php  } ?>
+                      </div>
+                    <?php } ?>
+                </div>
+                <div class="view-button">
+                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                </div>
+             </div>
+            </section>
+          </div>
+        </div><!-- End Tab 2 Content -->
+        <div class="tab-pane fade" id="tab3" role="tabpanel">
+        <div class="" >
+              <section>
+                <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                  <div class="row text-center">
+                    <h3 style="font-weight: 700; color: black;">Essay Writing</h3>
+                    <!-- <p>Miscellaneous For You</p> -->
+                  </div>
+                <div class="row">
+                        <?php if (empty($allquize)) { ?>
+                              <div class="alert alert-danger">
+                                <strong>Sorry!</strong> Quizes are not available.
+                              </div>
+                    <?php  } else {  ?>
+                      <div class="row">
+                        <?php foreach ($allquize as $key => $quize) {  ?>
+                          <div class="col-md-3">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                            </div>
+                          </div>
+                        <?php  } ?>
+                      </div>
+                    <?php } ?>
+                </div>
+                <div class="view-button">
+                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                </div>
+             </div>
+            </section>
+          </div>
+        </div><!-- End Tab 3 Content -->
+        <div class="tab-pane fade" id="tab4" role="tabpanel">
+        <div class="" >
+              <section>
+                <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                  <div class="row text-center">
+                    <h3 style="font-weight: 700; color: black;">Poster Making</h3>
+                    <!-- <p>Miscellaneous For You</p> -->
+                  </div>
+                <div class="row">
+                        <?php if (empty($allquize)) { ?>
+                              <div class="alert alert-danger">
+                                <strong>Sorry!</strong> Quizes are not available.
+                              </div>
+                    <?php  } else {  ?>
+                      <div class="row">
+                        <?php foreach ($allquize as $key => $quize) {  ?>
+                          <div class="col-md-3">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                            </div>
+                          </div>
+                        <?php  } ?>
+                      </div>
+                    <?php } ?>
+                </div>
+                <div class="view-button">
+                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                </div>
+             </div>
+            </section>
+          </div>
+
+        </div><!-- End Tab 4 Content -->
+        <div class="tab-pane fade" id="tab5" role="tabpanel">
+        <div class="" >
+              <section>
+                <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                  <div class="row text-center">
+                    <h3 style="font-weight: 700; color: black;">More</h3>
+                    <!-- <p>Miscellaneous For You</p> -->
+                  </div>
+                <div class="row">
+                        <?php if (empty($allquize)) { ?>
+                              <div class="alert alert-danger">
+                                <strong>Sorry!</strong> Quizes are not available.
+                              </div>
+                    <?php  } else {  ?>
+                      <div class="row">
+                        <?php foreach ($allquize as $key => $quize) {  ?>
+                          <div class="col-md-3">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                            </div>
+                          </div>
+                        <?php  } ?>
+                      </div>
+                    <?php } ?>
+                </div>
+                <div class="view-button">
+                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                </div>
+             </div>
+            </section>
+          </div>
+
+        </div><!-- End Tab 4 Content -->
+ </div>
+</div>
+</section>
+
+<!-- <section>
   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding:3%">
     <div class="row text-center">
       <h3>Events</h3>
@@ -181,13 +455,13 @@
     <?php } ?>
 
   </div>
-</section>
-<div class="" style="background-image: url(<?php echo base_url();?>assets/images/creative_img.webp);">
+</section> -->
+<!-- <div class="" style="background-image: url(<?php echo base_url();?>assets/images/creative_img.webp);">
 <section>
   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
     <div class="row text-center">
       <h3 style="font-weight: 700; color: white;">Creative Task</h3>
-      <!-- <p>Miscellaneous For You</p> -->
+      <p>Miscellaneous For You</p>
     </div>
    <div class="row">
    <?php if(!empty($competition)){
@@ -206,7 +480,7 @@
 
       <?php  }} ?>
           
-          <!-- <div class="col-md-3">
+          <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -227,8 +501,8 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div> -->
-          <!-- <div class="col-md-3">
+          </div> 
+          <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -249,8 +523,8 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div> -->
-          <!-- <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -271,8 +545,8 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div> -->
-          <!-- <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
             <div class="quiz-section">
               <div class="quiz-box">
                 <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" class="w-100 border-2">
@@ -282,7 +556,7 @@
               </div>
               <p class="quiz-text overflow-hidden p-1" style="font-weight: 600;">Competition Title</p>
             </div>
-          </div> -->
+          </div> 
           
        
       </div>
@@ -294,7 +568,7 @@
 
   </div>
 </section>
-</div>
+</div> -->
 <!-- <section id="cta" class="cta">
   
   <div class="container-fluid aos-init aos-animate" data-aos="zoom-out" style="background: #FFF9E9; padding: 0px !important" >
@@ -343,7 +617,7 @@
         <div class="col-md-3 col-lg-3 col-sm-3 m-2">
           <a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>">
             <div class="card image-card" style="width:100%;">
-              <img src="<?= base_url(); ?>assets/images/wall_1.jpg" class="card-img-top" alt="...">
+              <img src="<?= base_url(); ?>assets/images/wisdom.jpeg" class="card-img-top" alt="...">
               <div class="card-body-new">
                 <p class="card-text">Wall Of Wisdom</p>
               </div>
@@ -366,7 +640,7 @@
         <div class="col-md-3 col-lg-3 col-sm-3 m-2">
           <a href="<?php echo base_url() . 'users/yourwall' ?>">
             <div class="card image-card" style="width:100%;">
-              <img src="<?= base_url(); ?>assets/images/wall_3.jpg" class="card-img-top" alt="...">
+              <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg" class="card-img-top" alt="...">
               <div class="card-body-new">
                 <p class="card-text">Your Wall</p>
               </div>
@@ -377,7 +651,7 @@
           <a href="<?php echo base_url() . "users/byTheMentor" ?>">
             <div class="card image-card" style="width:100%;">
 
-              <img src="<?= base_url(); ?>assets/images/wall_4.jpg" class="card-img-top" alt="...">
+              <img src="<?= base_url(); ?>assets/images/mentors1.jpg" class="card-img-top" alt="...">
               <div class="card-body-new">
                 <p class="card-text">By the Mentors</p>
               </div>
@@ -485,9 +759,9 @@
 </div> -->
 
 <section style="margin-bottom: 38px;">
-  <div class="container-fluid" style="padding:3%">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12 text-center my-2 pt-5">
+      <div class="col-lg-12 text-center my-2 pt-3">
         <h4>Images & Gallery</h4>
       </div>
     </div>
@@ -500,7 +774,7 @@
         <li style="padding: 0px;"><button onclick="abcd()" class="btn btn-outline-dark vdo" id="vdo">Video</button></li>
       </ul>
     </div>
-    <div class="portfolio-item row" id="photo_gallary">
+    <div class="portfolio-item row" id="photo_gallary" style="margin-left: 10px;">
       <?php if (!empty($images)) {
         foreach ($images as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
@@ -522,10 +796,10 @@
         foreach ($videos as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
             <!-- <a href="<?php echo base_url() . 'uploads/' . $list['video']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
-              <video class="img-fluid" src="<?php echo base_url() . 'uploads/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
+              <video class="img-fluid" src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
             </a> -->
             <video class="img-fluid" controls>
-              <source src="<?php echo base_url() . 'uploads/' . $list['video']; ?>" type="video/mp4">
+              <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4">
             </video>
           </div>
           <?php if (count($videos) > 7) { ?>

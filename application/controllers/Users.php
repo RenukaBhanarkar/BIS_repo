@@ -771,6 +771,8 @@ class Users extends CI_Controller
         $data['news'] = $this->Admin_model->news();
         $data['events'] = $this->Admin_model->events();
         $allquize = $this->Users_model->getStdClubQuizAll();
+
+        $data['Winnerwall'] = $this->Users_model->getWinnerWall();
         $data['allquize'] = $allquize;
         $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4');
         $this->load->view('users/headers/header');
@@ -3215,7 +3217,10 @@ class Users extends CI_Controller
     $user_id = encryptids("D", $UserId);
       $this->load->model('Quiz_model');
     //  $data['quiz']=$this->Quiz_model->getQuizByUserid('2105239181');    
+    $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+    $data['competition']= $this->Miscellaneous_competition->ckeckCompAttemptByUser($user_id);
     $data['quiz']=$this->Quiz_model->getQuizByUserid($user_id);   
+   // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/my_activity_list',$data);
         $this->load->view('users/footers/footer');

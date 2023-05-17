@@ -252,7 +252,7 @@ var quiz_id = $("#quiz_id").val();
 if (quiz_id == "" || quiz_id== null) {
 if ($("#quiz_id").next(".validation").length == 0) // only add if not added
 {
-$("#quiz_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Quiz </div>");
+$("#quiz_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#quiz_id").focus(); }
 allfields = false;
@@ -263,7 +263,7 @@ var quiz_date = $("#quiz_date").val();
 if (quiz_date == "" || quiz_date== null) {
 if ($("#quiz_date").next(".validation").length == 0) // only add if not added
 {
-$("#quiz_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Quiz date </div>");
+$("#quiz_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#quiz_date").focus(); }
 allfields = false;
@@ -274,7 +274,7 @@ var prize = $("#prize").val();
 if (prize == "" || prize== null) {
 if ($("#prize").next(".validation").length == 0) // only add if not added
 {
-$("#prize").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Prize</div>");
+$("#prize").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#prize").focus(); }
 allfields = false;
@@ -285,7 +285,7 @@ var name = $("#name").val();
 if (name == "" || name== null) {
 if ($("#name").next(".validation").length == 0) // only add if not added
 {
-$("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter name</div>");
+$("#name").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#name").focus(); }
 allfields = false;
@@ -296,7 +296,7 @@ var email = $("#email").val();
 if (email == "" || email== null) {
 if ($("#email").next(".validation").length == 0) // only add if not added
 {
-$("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter email</div>");
+$("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#email").focus(); }
 allfields = false;
@@ -307,7 +307,7 @@ var contact_no = $("#contact_no").val();
 if (contact_no == "" || contact_no== null) {
 if ($("#contact_no").next(".validation").length == 0) // only add if not added
 {
-$("#contact_no").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter contact no</div>");
+$("#contact_no").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#contact_no").focus(); }
 allfields = false;
@@ -362,7 +362,7 @@ var location = $("#location").val();
 if (location == "" || location== null) {
 if ($("#location").next(".validation").length == 0) // only add if not added
 {
-$("#location").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter location</div>");
+$("#location").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
 }
 if (!focusSet) { $("#location").focus(); }
 allfields = false;

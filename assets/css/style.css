@@ -1436,9 +1436,9 @@ footer .main_footer .f_contact ul li i {
 	color: salmon;
 	font-weight: 600;
 }
-.innerBox:hover {
+/* .innerBox:hover {
 	background-color: #0089d0;
-}
+} */
 
 .card {
 	position: relative;
@@ -1454,11 +1454,7 @@ footer .main_footer .f_contact ul li i {
 	/* border-top: 4px solid green; */
 	height: 100%;
 }
-.inner_image {
-	width: 75%;
-    height: 193px;
-    display: inherit;
-}
+
 .card-text {
 	margin-top: 0;
 	margin-bottom: 0rem;
@@ -2592,4 +2588,7 @@ label.d-block.text-font {
 .stand_img{
 	/* width: 300px; */
 	height: 340px;
+}
+h3.tabl_title {
+    margin-top: 47px;
 }

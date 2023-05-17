@@ -257,7 +257,7 @@ public function updateStatusConversation()
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
             if (in_array(35, $_SESSION['sub_mod_per'])) { 
-                echo $sub_model_id = 35;
+                 $sub_model_id = 35;
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;

@@ -266,7 +266,12 @@
                     
                 </div>
                 <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/manage_competition_list/'">Back</a>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { 
+  if($quizdata['status']==2 ){  ?>
+<button class="btn btn-primary btn-sm float-right ml-2 text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
+<button class="btn btn-danger btn-sm float-right ml-2 text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
+<?php } } ?>
+                    <a class="btn btn-primary btn-sm ml-2 text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/manage_competition_list/'">Back</a>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -322,8 +327,8 @@
 <!-- <?php echo $quizdata['status']; ?> -->
 <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { 
   if($quizdata['status']==2 ){  ?>
-<button class="btn btn-primary btn-sm text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
-<button class="btn btn-danger btn-sm text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
+<button class="btn btn-primary btn-sm float-right m-2 text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
+<button class="btn btn-danger btn-sm float-right m-2 text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
 <?php } } ?>
 </div>
 
@@ -360,7 +365,7 @@
                                 },
                                 success: function(res) {
                                 if (res) {
-                                  //  location.reload();
+                                    location.reload();
                                 } else {
                                     alert("error");
                                 }

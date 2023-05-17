@@ -79,7 +79,7 @@
 <section id="quality-outer my-5">
     <div class="quality_section">
         <div class="container-fluid">
-            <div class="row my-5">
+            <div class="row">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="item_proposal_list">
                     <div class="World_of_standers_image_box">
@@ -174,7 +174,7 @@
         </div>
     </section>    
     <section style="margin-bottom: 38px;">
-        <div class="container-fluid" style="padding:3%">
+        <div class="container-fluid" style="padding: 0px 36px 0px 36px;">
             <div class="row">
                <div class="col-lg-12 text-center my-2 pt-5">
                    <h4>Images & Gallery</h4>
@@ -206,7 +206,7 @@
              <?php if(!empty($videos)){ foreach($videos as $list){ ?>
                       <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
                           <a href="<?php echo base_url().'uploads/'.$list['video'];?>" class="fancylight popup-btn" data-fancybox-group="light"> 
-                          <video class="img-fluid" src="<?php echo base_url().'uploads/'.$list['video'];?>" style="height:180px; width:280px; padding:20px;"; alt="">
+                          <video class="img-fluid" src="<?php echo base_url().'uploads/cms/gallary/video/'.$list['video'];?>" style="height:180px; width:280px; padding:20px;"; alt="">
                           </a>
                       </div>
                       <?php if(count($videos) > 7){ ?>
