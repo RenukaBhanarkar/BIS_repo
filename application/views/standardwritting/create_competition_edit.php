@@ -27,6 +27,7 @@
                                 <label class="d-block text-font">Name of Competition</label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo $competition['competiton_name']; ?>" required="">
                                 <span class="error_text" id="err_name"><?php echo form_error('name'); ?></span>
+                                <input type="hidden" name="comp_id" value="<?php echo $competition['comp_id']; ?>">
                             </div>
                     </div>
                     <div class="row">

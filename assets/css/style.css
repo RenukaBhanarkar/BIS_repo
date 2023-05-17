@@ -2568,7 +2568,7 @@ label.d-block.text-font {
     position: absolute;
     left: 50%;
 	transform: translate(-50%, 0px);
-    bottom: 47px;
+    /* bottom: 47px; */
     font-family: "montserratsemibold", sans-serif;
 }
 .creative-discussion .discussion-content {

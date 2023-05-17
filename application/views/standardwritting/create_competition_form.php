@@ -26,20 +26,30 @@
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo set_value('name') ?>" required="">
+                                <div class="invalid-feedback">
+                                    This value is required
+                                </div>
                                 <span class="error_text" id="err_name"><?php echo form_error('name'); ?></span>
+                                
                             </div>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo set_value('name_hindi') ?>" required="">
+                                <div class="invalid-feedback">
+                                    This value is required
+                                </div>
                                 <span class="error_text" id="err_name_hindi"><?php echo form_error('name_hindi'); ?></span>
                             </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
                              <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
-                             <textarea name="description" id="description"><?php echo set_value('description') ?></textarea>
+                             <textarea name="description" id="description" required><?php echo set_value('description') ?></textarea>
+                             <div class="invalid-feedback">
+                                    This value is required
+                                </div>
                              <div class='validation' id="description_error" style='color:red;margin-bottom:15px;'> </div>
                         </div>
                     </div>
@@ -64,22 +74,23 @@
                         <div class="mb-2 col-md-4">
                                 <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
-                                <div>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                <div class="col-9">
+                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" required onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
+                                    <div class="invalid-feedback">
+                                    This value is required
+                                    </div>
                                 </div>
+                                <div class="col-2">
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                                     Preview 
                                 </button>
                                 </div>
+                                </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
-                                <!-- <select id="Level" name="Level" class="form-control input-font" value="">
-                                    <option value="1">All India Level</option>
-                                    <option value="2">Regional Level</option>
-                                    <option value="2">Branch Level</option>
-                                </select> -->
+                                
                                 <select id="competition_level_id" name="competition_level_id" class="form-control input-font">
                                     <option value="" selected disabled>Select Level of Competition</option>
                                     <?php foreach ($quizlavel as $lavel) { ?>
@@ -87,24 +98,59 @@
                                     <?php } ?>
                                 </select>
                                 <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
-                        </div>
-                        <div class="mb-2 col-md-4">
+                        </div> -->
+                        <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Region<sup class="text-danger">*</sup></label>
                                 <select id="Region" name="Region" class="form-control input-font" value="">
                                     <option value="1">All India Level</option>
                                     <option value="2">Regional Level</option>
                                     <option value="2">Branch Level</option>
                                 </select>
-                        </div>
-                        <div class="mb-2 col-md-4">
+                        </div> -->
+                        <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Branch<sup class="text-danger">*</sup></label>
                                 <select id="Branch" name="Branch" class="form-control input-font" value="">
                                     <option value="1">All India Level</option>
                                     <option value="2">Regional Level</option>
                                     <option value="2">Branch Level</option>
                                 </select>
+                        </div> -->
+                        <div class="row col-12">
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
+                                <select id="quiz_level_id" name="quiz_level_id" class="form-control input-font" required>
+                                    <option value="" selected disabled>Select Level of Competition</option>
+                                    <?php foreach ($quizlavel as $lavel) { ?>
+                                        <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
+                                    <?php } ?>
+                                </select>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
+                                <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
+                            </div>
+                            <div class="mb-2 col-md-4" id="region_id_blk">
+                                <label class="d-block text-font" id="region_title">Regional Level<sup class="text-danger">*</sup></label>
+                                <select id="region_id" name="region_id" class="form-control input-font">
+                                    <!-- <option value="" selected disabled>--select--</option>
+                                    <option value="#">Maharashtra</option>
+                                    <option value="#">Karnataka</option> -->
+
+                                </select>
+                                <span class="error_text"><?php echo form_error('region_id'); ?></span>
+
+                            </div>
+                            <div class="mb-2 col-md-4" id="branch_id_blk">
+                                <label class="d-block text-font" id="branch_title">Branch<sup class="text-danger">*</sup></label>
+                                <select id="branch_id" name="branch_id" class="form-control input-font">
+                                 
+                                </select>
+                                <span class="error_text"><?php echo form_error('branch_id'); ?></span>
+
+                            </div>
+
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-6">
                                 <label class="d-block text-font">Available For<sup class="text-danger">*</sup></label>
                                 <select id="Available" name="Available" class="form-control input-font" value="">
                                     <option value="1">School</option>
@@ -125,10 +171,16 @@
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
                                 <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
                                 <input type="text" class="form-control input-font" name="fdetail" id="fdetail" placeholder="Enter Prizes" value="<?php echo set_value('fdetail') ?>" required="">
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
@@ -149,11 +201,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?php echo set_value('sprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?php echo set_value('sprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo set_value('sdetail') ?>" required="">
+                                <input type="text" class="form-control input-font" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo set_value('sdetail') ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
@@ -174,11 +226,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php echo set_value('tprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php echo set_value('tprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo set_value('tdetail') ?>" required="">
+                                <input type="text" class="form-control input-font" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo set_value('tdetail') ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
@@ -199,11 +251,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php echo set_value('cprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php echo set_value('cprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo set_value('cdetail') ?>" required="">
+                                <input type="text" class="form-control input-font" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo set_value('cdetail') ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
@@ -313,6 +365,8 @@
         </div>
  </body>
 <script>
+    $('#region_id_blk').hide();
+    $('#branch_id_blk').hide();
     var loadcPrizeImage = function(event) {
         // $("#outputConsol").show();
         var outputConsol = document.getElementById('outputConsol');
@@ -361,13 +415,19 @@
         CKEDITOR.replace( 'description' );
         CKEDITOR.replace( 'terms_conditions' );
 </script>
-<script>
+<script>   
     function submitForm(event){
+        $('#competition_reg').addClass('was-validated');
         event.preventDefault();
         var name =$('#name').val();
         var name_hindi =$('#name_hindi').val();
         var start_date =$('#start_date').val();
         var end_date =$('#end_date').val();
+        var description = CKEDITOR.instances['description'].getData();
+        var terms_conditions = CKEDITOR.instances['terms_conditions'].getData();
+        var thumbnail =$('#thumbnail').val();
+        
+
 
        var isvalid =true;
        if(name==""){
@@ -380,6 +440,26 @@
        }else{
 
        }
+       if(description==""){
+        $('#description_error').text('This value is required');
+        isvalid =false;
+       }else{
+
+       }
+       if(terms_conditions==""){
+        $('#terms_conditions_error').text('This value is required');
+        isvalid =false;
+       }else{
+
+       }
+
+       if(thumbnail==""){
+        $('#terms_conditions_error').text('This value is required');
+        isvalid =false;
+       }else{
+
+       }
+
        if(start_date==""){
         isvalid =false;
        }else{
@@ -410,4 +490,61 @@
                     })
                 }
     }
+
+    $(document).on("change", "#quiz_level_id", function(e) {
+            e.preventDefault();
+            var quiz_level_id = $("#quiz_level_id :selected").val();
+            if (quiz_level_id == 1) {
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").hide();
+            } else if (quiz_level_id == 2) {
+                $("#region_id_blk").show();
+                $("#branch_id_blk").hide();
+                $("#region_title").text("Regional Level");
+                var postdata = "id=2";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>quiz/getAllRegions",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#region_id');
+                    selectbox.empty();
+                    $("#region_id").next(".validation").remove();
+                    $('#region_id').append('<option value="" selected disabled>Select Region </option>');
+                    $.each(res.region, function(index, value) {
+                        $('#region_id').append('<option value="' + value.pki_region_id + '">' + value.uvc_region_title + '</option>');
+                    });
+
+                }
+            });
+
+            } else if (quiz_level_id == 3) {
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").show();
+                $("#branch_title").text("Branch Level");
+                var postdata = "id=3";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>quiz/getAllBranches",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#branch_id');
+                    selectbox.empty();
+                    $("#branch_id").next(".validation").remove();
+                    $('#branch_id').append('<option value="" selected disabled>Select Branch </option>');
+                    $.each(res.region, function(index, value) {
+                        $('#branch_id').append('<option value="' + value.pki_id + '">' + value.uvc_department_name + '</option>');
+                    });
+                }
+            });
+            }
+        });
 </script>

@@ -15,7 +15,7 @@
                      </a>
                  </div>
                 <div class="platform">
-                         <h4>(A platform for exchange of information & online activities on Standards)</h4>
+                         <h4>(A platform for exchange of information and conducting Standards based activities)</h4>
                  </div>
              </div>
         <div class="col-md-2">
@@ -38,8 +38,8 @@
                                 <a href="<?=base_url();?>users/standard">
                                 <div class="LiveDataBox">
                                      <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons">
-                                      <h3 class="text_standard">Standard Club</h3>
-                                     <p class="mb-0">(An initiative to nurture the standards as Brand Ambassadors of Quality & Standards)</p>
+                                      <h3 class="text_standard">Standards Club</h3>
+                                     <p class="mb-0">(An initiative to nurture the students as Brand Ambassadors of Quality & Standards)</p>
                                 </div>
                                 </a>
                             </div>
