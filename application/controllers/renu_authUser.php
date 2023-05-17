@@ -1,5 +1,6 @@
 <?php 
-      renu_authUser()
+    
+    public function  renu_authUser()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -50,7 +51,7 @@
                 //echo json_encode($userData);echo "<br>";
                 $user_id ='2206274956';
                 //$exist_user = $this->Users_model->toCheckUserExist($user_id);
-                $user_id = 
+               // $user_id = 
                 $exist_user = 1;
                 if (!$exist_user) {
                     $comm_id = "";
