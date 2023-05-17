@@ -131,7 +131,7 @@
     </div>
   </div>
 </section>
-<section>
+<!-- <section>
   <div class="container">
 <div class="get-involved-links">
             <div class="tab-link active"><a href="#" rel="tab-1" class="do-icon" title="Do/Task"><i></i>Quiz</a></div>
@@ -139,14 +139,14 @@
             <div class="tab-link"><a href="#" rel="tab-3" class="poll-icon" title="Poll/Survey"><i></i>Essay Writing</a></div>
             <div class="tab-link"><a href="#" rel="tab-4" class="blog-icon" title="Blog"><i></i>Poster Making</a></div>
             <div class="tab-link"><a href="#" rel="tab-5" class="talk-icon" title="Talk"><i></i>More</a></div>
-            <!-- <div class="tab-link"><a href="#" rel="tab-6" class="quiz-icon" title="Quiz"><i></i>Quiz</a></div>
+            <div class="tab-link"><a href="#" rel="tab-6" class="quiz-icon" title="Quiz"><i></i>Quiz</a></div>
             <div class="tab-link"><a href="#" rel="tab-7" class="prime-icon" title="MG Prime"><i></i>MG Prime</a></div>
             <div class="tab-link"><a href="#" rel="tab-8" class="campaign-icon" title="Campaign"><i></i>Campaign</a></div>
             <div class="tab-link"><a href="#" rel="tab-9" class="pledge-icon" title="Pledge"><i></i>Pledge</a></div>
-            <div class="tab-link"><a href="#" rel="tab-10" class="podcast-icon" title="Podcast"><i></i>Podcast</a></div> -->
+            <div class="tab-link"><a href="#" rel="tab-10" class="podcast-icon" title="Podcast"><i></i>Podcast</a></div>
         </div>
         </div>
-</section>
+</section> -->
 
 <section>
   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding:3%">
