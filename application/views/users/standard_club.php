@@ -32,8 +32,13 @@
   #news_slider .owl-nav {
     display: none;
   }
+  .owl-carousel .owl-item img {
+	width: 75%;
+    height: 193px;
+    display: inherit;
+}
 </style>
-<section id="exchange_forum">
+<!-- <section id="exchange_forum">
   <div class="container-fluid">
     <div class="row">
       <div class="exchange_section d-flex">
@@ -58,19 +63,32 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <section id="winners_content">
   <div class="container-fluid">
     <div class="row">
       <div class="inner_content d-flex p-0">
         <div class="col-sm-3">
-          <div class="card pt-3" style="background: #014e9c; color:white;">
-            <div class="card-body new-card text-center">
-              <h5 class="card-title">Winners of the Quiz</h5>
+          <div class="card" style="background: #014e9c; color:white;">
+            <div class="card-body new-card text-center mt-2">
+              <h5 class="card-title">Winners Wall</h5>
               <hr>
-              <img src="<?= base_url(); ?>assets/images/background_img.webp" class="inner_image">
-              <p class="card-text"><strong>Anis Mulani</strong></p>
+                 <div class="owl-carousel owl-theme" id="owl-caraousal_standard">
+                  <div class="item">
+                    <div class="quiz-section">
+                      <div class="quiz-box_live">
+                        <a href="#">
+                        <img src="<?= base_url(); ?>assets/images/background_img.webp" class="inner_image">
+              <p class="card-text p-1"><strong>Anis Mulani</strong></p>
               <p class="mb-0">k.b.p.v School Satara,Maharashtra</p>
+                        </a>
+                      </div>
+                      
+                    </div>
+                  </div>
+
+                </div>
+              
               <div class="more_button">
                 <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winners'">More<i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>
               </div>
@@ -113,12 +131,28 @@
     </div>
   </div>
 </section>
+<section>
+  <div class="container">
+<div class="get-involved-links">
+            <div class="tab-link active"><a href="#" rel="tab-1" class="do-icon" title="Do/Task"><i></i>Quiz</a></div>
+            <div class="tab-link"><a href="#" rel="tab-2" class="discuss-icon" title="Discuss"><i></i>Standards Writing</a></div>
+            <div class="tab-link"><a href="#" rel="tab-3" class="poll-icon" title="Poll/Survey"><i></i>Essay Writing</a></div>
+            <div class="tab-link"><a href="#" rel="tab-4" class="blog-icon" title="Blog"><i></i>Poster Making</a></div>
+            <div class="tab-link"><a href="#" rel="tab-5" class="talk-icon" title="Talk"><i></i>More</a></div>
+            <!-- <div class="tab-link"><a href="#" rel="tab-6" class="quiz-icon" title="Quiz"><i></i>Quiz</a></div>
+            <div class="tab-link"><a href="#" rel="tab-7" class="prime-icon" title="MG Prime"><i></i>MG Prime</a></div>
+            <div class="tab-link"><a href="#" rel="tab-8" class="campaign-icon" title="Campaign"><i></i>Campaign</a></div>
+            <div class="tab-link"><a href="#" rel="tab-9" class="pledge-icon" title="Pledge"><i></i>Pledge</a></div>
+            <div class="tab-link"><a href="#" rel="tab-10" class="podcast-icon" title="Podcast"><i></i>Podcast</a></div> -->
+        </div>
+        </div>
+</section>
 
 <section>
   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding:3%">
     <div class="row text-center">
-      <h3>Quiz Competition</h3>
-      <p>Quizzes For You</p>
+      <h3>Events</h3>
+      <hr>
     </div>
     <?php if (empty($allquize)) { ?>
       <div class="alert alert-danger">
@@ -261,7 +295,7 @@
   </div>
 </section>
 </div>
-<section id="cta" class="cta">
+<!-- <section id="cta" class="cta">
   
   <div class="container-fluid aos-init aos-animate" data-aos="zoom-out" style="background: #FFF9E9; padding: 0px !important" >
   <div style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png); padding: 80px">
@@ -290,9 +324,9 @@
       </div>
 
     </div>
-     <!-- <div class="img">
+      <div class="img">
           <img src="<?= base_url(); ?>assets/images/standard.avif" alt="" class="img-standard">
-        </div> -->
+        </div>
   </div>
 
 </div>
@@ -300,7 +334,7 @@
 </div>
   </div>
   
-</section> 
+</section>  -->
 
 <section style="background-color: #80808087;">
   <div class="container-fluid" style="padding: 0% 6% 0% 6%;">
@@ -357,13 +391,13 @@
   </div>
 
 </section>
-<div class="creative-discussion" style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
+<!-- <div class="creative-discussion" style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
   <div class="container-fluid" style="padding:3%">
     <div class="creative-wrapper">
       <div class="creative-content">
         <div class="section-title">
           <h2>Latest News</h2>
-          <!-- <span>Your creativity can make a big impact</span> -->
+           <span>Your creativity can make a big impact</span> 
         </div>
         <div class="creative-list">
           <div class="view view-new-home-page-block view-id-new_home_page_block view-display-id-block_4 view-dom-id-34b0dfa3878c31dc7e3a1ca86b1f55eb">
@@ -380,56 +414,13 @@
                     <div class="views-field views-field-title-field">
                       <div class="field-content"><a href="/task/odop-wall-grand-challenge/" title=" ODOP Wall Grand Challenge"> <?php echo $list['title'];  ?></a></div>
                     </div>
-                    <!-- <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
+                     <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
                       <div class="field-content nodtranslate"><span class="date-display-single">May 11 2023 - 5:15am</span></div>
-                    </div> -->
+                    </div> 
                     </div> 
 
             <?php } } ?>
-              <!-- <div class="views-row views-row-1 views-row-odd views-row-first">
-
-                <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/odopthumbnail.jpg" width="510" height="340" alt=" ODOP Wall Grand Challenge" title=" ODOP Wall Grand Challenge">
-                    <a href="/task/odop-wall-grand-challenge/" title="Make Your Contribution">Make Your Contribution</a></span> </div>
-                <div class="views-field views-field-title-field">
-                  <div class="field-content"><a href="/task/odop-wall-grand-challenge/" title=" ODOP Wall Grand Challenge"> ODOP Wall Grand Challenge</a></div>
-                </div>
-                <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                  <div class="field-content nodtranslate"><span class="date-display-single">May 11 2023 - 5:15am</span></div>
-                </div>
-              </div>
-              <div class="views-row views-row-2 views-row-even">
-
-                <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnailkhelomascot.jpg" width="510" height="340" alt="Suggest a Name of the Mascot for Khelo India University Games 2022" title="Suggest a Name of the Mascot for Khelo India University Games 2022">
-                    <a href="/task/suggest-name-mascot-khelo-india-university-games-2022/" title="Make Your Contribution">Make Your Contribution</a></span> </div>
-                <div class="views-field views-field-title-field">
-                  <div class="field-content"><a href="/task/suggest-name-mascot-khelo-india-university-games-2022/" title="Suggest a Name of the Mascot for Khelo India University Games 2022">Suggest a Name of the Mascot for Khelo India University Games 2022</a></div>
-                </div>
-                <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                  <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 10:45am</span></div>
-                </div>
-              </div> -->
-              <!-- <div class="views-row views-row-3 views-row-odd">
-
-                <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/slogan_thumbnail.png" width="510" height="340" alt="Suggest a Slogan for Khelo India University Games 2022" title="Suggest a Slogan for Khelo India University Games 2022">
-                    <a href="/task/suggest-slogan-khelo-india-university-games-2022/" title="Make Your Contribution">Make Your Contribution</a></span> </div>
-                <div class="views-field views-field-title-field">
-                  <div class="field-content"><a href="/task/suggest-slogan-khelo-india-university-games-2022/" title="Suggest a Slogan for Khelo India University Games 2022">Suggest a Slogan for Khelo India University Games 2022</a></div>
-                </div>
-                <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                  <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 10:45am</span></div>
-                </div>
-              </div> -->
-              <!-- <div class="views-row views-row-4 views-row-even views-row-last">
-
-                <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_anthem.jpg" width="510" height="340" alt="Compose an Anthem for Khelo India University Games 2022" title="Compose an Anthem for Khelo India University Games 2022">
-                    <a href="/task/compose-anthem-khelo-india-university-games-2022/" title="Make Your Contribution">Make Your Contribution</a></span> </div>
-                <div class="views-field views-field-title-field">
-                  <div class="field-content"><a href="/task/compose-anthem-khelo-india-university-games-2022/" title="Compose an Anthem for Khelo India University Games 2022">Compose an Anthem for Khelo India University Games 2022</a></div>
-                </div>
-                <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                  <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 10:45am</span></div>
-                </div>
-              </div> -->
+              
             </div>
 
 
@@ -444,7 +435,7 @@
       <div class="discussion-content">
         <div class="section-title">
           <h2>Upcoming Events</h2>
-          <!-- <span>Share your suggestions and ideas with us</span> -->
+          <span>Share your suggestions and ideas with us</span>
         </div>
         <div class="discussion-list">
           <div class="view view-new-home-page-block view-id-new_home_page_block view-display-id-block_5 view-dom-id-5ec1710fc29296967f3f63d10ae4c525">
@@ -465,51 +456,13 @@
                     <div class="views-field views-field-title-field">
                       <div class="field-content"><?php echo $list['title']; ?></div>
                     </div>
-                    <!-- <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
+                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
                       <div class="field-content nodtranslate"><span class="date-display-single">Jun 1 2023 - 10:45am</span></div>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
                 <?php } } ?>
-                <!-- <div class="item">
-                  <div class="views-row views-row-2 views-row-even">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_5.jpg" width="510" height="340" alt="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact" title="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact">
-                        <a href="/group-issue/share-your-inputs-role-manthan-empowering-women-entrepreneurs-and-startups-scale/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 5:15am</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="views-row views-row-1 views-row-odd views-row-first">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_2_1.png" width="510" height="340" alt="Inviting ideas for preparing India’s workforce for the Future of Work" title="Inviting ideas for preparing India’s workforce for the Future of Work">
-                        <a href="/group-issue/inviting-ideas-preparing-india%E2%80%99s-workforce-future-work/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Inviting ideas for preparing India’s workforce for the Future of Work</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">Jun 1 2023 - 10:45am</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="views-row views-row-2 views-row-even">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_5.jpg" width="510" height="340" alt="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact" title="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact">
-                        <a href="/group-issue/share-your-inputs-role-manthan-empowering-women-entrepreneurs-and-startups-scale/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 5:15am</span></div>
-                    </div>
-                  </div>
-                </div> -->
+               
               </div>
 
 
@@ -526,93 +479,10 @@
           </div>
         </div>
 <hr>
-        <!-- <div class="section-title">
-          <h2>Latest News</h2>
-          <span>Share your suggestions and ideas with us</span>
-        </div> -->
-        <!-- <div class="discussion-list">
-          <div class="view view-new-home-page-block view-id-new_home_page_block view-display-id-block_5 view-dom-id-5ec1710fc29296967f3f63d10ae4c525">
-
-
-
-
-            <div class="view-content">
-
-              <div class="owl-carousel owl-theme" id="news_slider">
-                <div class="item">
-                  <div class="views-row views-row-1 views-row-odd views-row-first">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_2_1.png" width="510" height="340" alt="Inviting ideas for preparing India’s workforce for the Future of Work" title="Inviting ideas for preparing India’s workforce for the Future of Work">
-                        <a href="/group-issue/inviting-ideas-preparing-india%E2%80%99s-workforce-future-work/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Inviting ideas for preparing India’s workforce for the Future of Work</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">Jun 1 2023 - 10:45am</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="views-row views-row-2 views-row-even">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_5.jpg" width="510" height="340" alt="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact" title="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact">
-                        <a href="/group-issue/share-your-inputs-role-manthan-empowering-women-entrepreneurs-and-startups-scale/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 5:15am</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="views-row views-row-1 views-row-odd views-row-first">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_2_1.png" width="510" height="340" alt="Inviting ideas for preparing India’s workforce for the Future of Work" title="Inviting ideas for preparing India’s workforce for the Future of Work">
-                        <a href="/group-issue/inviting-ideas-preparing-india%E2%80%99s-workforce-future-work/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Inviting ideas for preparing India’s workforce for the Future of Work</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">Jun 1 2023 - 10:45am</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="views-row views-row-2 views-row-even">
-
-                    <div class="views-field views-field-nothing"> <span class="field-content"><img src="https://mygov.in/sites/default/files/master_image/thumbnail_5.jpg" width="510" height="340" alt="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact" title="Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact">
-                        <a href="/group-issue/share-your-inputs-role-manthan-empowering-women-entrepreneurs-and-startups-scale/" title="Share your views">Share your views</a></span> </div>
-                    <div class="views-field views-field-title-field">
-                      <div class="field-content">Share your inputs on the Role of Manthan in empowering women entrepreneurs and startups to scale up innovation for a larger social Impact</div>
-                    </div>
-                    <div class="views-field views-field-field-deadline"> <span class="views-label views-label-field-deadline">Last Date: </span>
-                      <div class="field-content nodtranslate"><span class="date-display-single">May 1 2023 - 5:15am</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-            </div>
-
-
-
-
-
-
-          </div>
-        </div> -->
-
-
-        <!--a href="/home/58/do/" class="seeMore">See All</a-->
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <section style="margin-bottom: 38px;">
   <div class="container-fluid" style="padding:3%">

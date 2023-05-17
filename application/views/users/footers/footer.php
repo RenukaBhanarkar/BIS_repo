@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="col-sm-4 col-lg-4 footer_text">
+                        <div class="col-sm-6 col-lg-6 footer_text">
                             <h4>Accessibility & Help</h4>
                             <ul>
                                 <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
@@ -14,7 +14,7 @@
                                 <!-- <li><a href="#">Accessibility</a></li> -->
                             </ul>
                         </div>
-                        <div class="col-sm-4 col-lg-4 footer_text">
+                        <div class="col-sm-6 col-lg-6 footer_text">
                             <h4>Legal</h4>
                             <div class="col-lg-12 footer_text">
                                 <ul>
@@ -35,7 +35,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-lg-4 footer_text">
+                        <!-- <div class="col-sm-4 col-lg-4 footer_text">
                             <h4>Other Links</h4>
                             <div class="col-lg-12 footer_text">
                                 <ul>
@@ -46,7 +46,7 @@
 
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-3">
