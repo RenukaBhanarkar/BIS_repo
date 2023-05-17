@@ -3431,7 +3431,10 @@ class Users extends CI_Controller
     $user_id = encryptids("D", $UserId);
       $this->load->model('Quiz_model');
     //  $data['quiz']=$this->Quiz_model->getQuizByUserid('2105239181');    
+    $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+    $data['competition']= $this->Miscellaneous_competition->ckeckCompAttemptByUser($user_id);
     $data['quiz']=$this->Quiz_model->getQuizByUserid($user_id);   
+   // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/my_activity_list',$data);
         $this->load->view('users/footers/footer');

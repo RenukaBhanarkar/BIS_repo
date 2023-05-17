@@ -142,4 +142,13 @@ class Miscellaneous_competition extends CI_Model {
 		}
         
     }
+    public function ckeckCompAttemptByUser($data){        
+         $this->db->select('tucar.*,tmcd.competiton_name');
+         $this->db->from('tbl_users_competition_attempt_record tucar');
+         $this->db->join('tbl_mst_competition_detail tmcd','tmcd.id=tucar.competiton_id');
+        // $this->db->where('competiton_id',$data['competiton_id']);
+         $this->db->where('tucar.user_id',$data);
+         $query=$this->db->get();
+         return $query->result_array();
+     }
 }
