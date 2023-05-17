@@ -275,10 +275,7 @@ class Users extends CI_Controller
         } else {
 
             $username        = clearText($this->input->post('username'));
-            $password        = clearText($this->input->post('password'));
-
-            
-            
+            $password        = clearText($this->input->post('password'));        
             
             
             //////////////////////START/////////////
@@ -286,8 +283,8 @@ class Users extends CI_Controller
             // $parameters = json_encode(array("userid" => $username, "password" => $password));
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
-               // CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
-            CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
+            CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
+           // CURLOPT_URL => 'http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
               
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
