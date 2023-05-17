@@ -488,10 +488,7 @@ class Users extends CI_Controller
         } else {
 
             $username        = clearText($this->input->post('username'));
-            $password        = clearText($this->input->post('password'));
-
-            
-            
+            $password        = clearText($this->input->post('password'));        
             
             
             //////////////////////START/////////////

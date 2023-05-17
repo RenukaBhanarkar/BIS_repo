@@ -17,6 +17,7 @@
                             <th>Sr. No.</th>
                             <th>Date and Time of Activity</th>
                             <th>Name of activity</th>
+                            <th>Score</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -28,6 +29,7 @@
                                  <td><?php echo $i; ?></td>
                                  <td><?php echo $list['created_on']; ?></td>
                                  <td><?php echo $list['title']; ?></td>
+                                 <td><?php echo $list['score']; ?></td>
                                  <td class="border-bottom-0">
                                      <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a>
                                  </td>
