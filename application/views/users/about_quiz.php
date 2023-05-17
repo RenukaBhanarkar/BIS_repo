@@ -323,7 +323,7 @@
     </section>
     <section id="quiz-about" class="mb-5">
         <div class="about-inner">
-            <h2 class="about-section">Team's and Conditions</h2>
+            <h2 class="about-section">Terms and Conditions</h2>
             <div class="About_point ">
                 <?= $quizdata['terms_conditions']; ?>
 

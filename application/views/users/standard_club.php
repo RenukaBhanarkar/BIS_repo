@@ -46,7 +46,7 @@
         <div class="col-md-8" id="Forum">
           <div class="bis_welcome">
             <a href="">
-              <h2>An initiative to nurture the students as Brand Ambassadors of Quality & standards</h2>
+              <h2>'An initiative to nurture the students as Brand Ambassadors of Quality'</h2>
             </a>
           </div>
         </div>

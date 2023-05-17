@@ -15,7 +15,7 @@
                      </a>
                  </div>
                 <div class="platform">
-                         <h4>(A platform for exchange of information & online activities on Standards)</h4>
+                         <h4>(A platform for exchange of information and conducting Standards based activities)</h4>
                  </div>
              </div>
         <div class="col-md-2">
