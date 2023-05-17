@@ -796,10 +796,10 @@ li.tab-link:hover {
         foreach ($videos as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
             <!-- <a href="<?php echo base_url() . 'uploads/' . $list['video']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
-              <video class="img-fluid" src="<?php echo base_url() . 'uploads/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
+              <video class="img-fluid" src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
             </a> -->
             <video class="img-fluid" controls>
-              <source src="<?php echo base_url() . 'uploads/' . $list['video']; ?>" type="video/mp4">
+              <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4">
             </video>
           </div>
           <?php if (count($videos) > 7) { ?>
