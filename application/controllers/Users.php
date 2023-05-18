@@ -353,6 +353,8 @@ class Users extends CI_Controller
                         'standard_club_dept_id' =>  $userData['StandardClubDeptID'],
                         'standard_club_region' =>  $userData['StandardClubRegion'],
                         'standard_club_category' =>  $userData['StandardClubCategory'],
+                        'standard_club_state' =>  $userData['StandardClubState'],
+                        'standard_club_district' =>  $userData['StandardClubDistrict'],
 
                         'comm_id' =>  $comm_id,
                         'comm_name' =>  $comm_name,
@@ -1793,8 +1795,8 @@ class Users extends CI_Controller
         }
         // print_r($formdata); die;
 
-        $this->load->model('admin/by_the_mentor_model');
-        $uid = $this->by_the_mentor_model->add_user($formdata1);
+        // $this->load->model('admin/by_the_mentor_model');
+        // $uid = $this->by_the_mentor_model->add_user($formdata1);
 
         // print_r($uid);
 
@@ -1804,9 +1806,23 @@ class Users extends CI_Controller
         $formdata['document'] = $btm_document;
         $formdata['status'] = "1";
         // print_r($formdata); die;
+        
         $this->load->model('admin/by_the_mentor_model');
+        $response=$this->by_the_mentor_model->get_email($formdata['user_id']);
+        $email_id=$response['email'];
+    //  $email_id="sakhare.akshay51@gmail.com";
+   // $email_id="vol.bhagyashree@gmail.com";
+        
+        
         $id = $this->by_the_mentor_model->add_btm($formdata);
         if ($id) {
+            
+            $response=$this->by_the_mentor_model->get_email( $formdata['user_id']);
+            //$email_id=$response['email'];
+            $subject="Exchange forunm notification";        
+            $msg="Your response has been submitted successfully and is under review.";
+            $this->by_the_mentor_model->send_email($msg,$subject,$email_id);
+
             $this->session->set_flashdata('MSG', ShowAlert("Response Submitted Successfully", "SS"));
             redirect(base_url() . "users/byTheMentor", 'refresh');
         } else {
@@ -2072,6 +2088,7 @@ class Users extends CI_Controller
         $data['events'] = $this->Admin_model->events();
         $this->load->model('Admin/by_the_mentor_model');
         $data['by_the_mentor'] = $this->by_the_mentor_model->get_btm($id);
+        //print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/users_by_the_mentor_detail', $data);
         $this->load->view('users/footers/footer');

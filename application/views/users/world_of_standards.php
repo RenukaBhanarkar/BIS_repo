@@ -76,7 +76,7 @@
 
     </div>
 </section>
-<section id="quality-outer my-5">
+<section id="quality-outer my-5" style="padding-top: 49px;">
     <div class="quality_section">
         <div class="container-fluid">
             <div class="row">

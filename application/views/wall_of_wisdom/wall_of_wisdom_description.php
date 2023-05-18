@@ -179,7 +179,7 @@
     <div class="your_wall_Outer_Box">
         <div class="inner_wall">
             <div class="row mt-5">
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                     <h4>
                 <?php echo $wow['title']; ?></h4>
                     <div class="your_wall_main_card_view">
@@ -206,90 +206,7 @@
 
 
                 </div>
-                <div class="col-sm-3">
-                    <div class="right_side">
-                        <div class="title_right">
-                            <h6>Upcomming Events</h6>
-                            <div class="owl-carousel owl-theme" id="owl-caraousal_news">
-                            <?php if(!(empty($events))){ foreach($events as $list){ ?>
-                                <div class="item">
-                                    <div class="quiz-section">
-                                        <div class="quiz-box_live" style="height: 172px;">
-                                            <a href="#"><img src="<?php echo base_url().'uploads/cms/events/'.$list['thumbnail'];?>" class="h-100" ></a>
-                                        </div>
-                                        <p class="quiz-text overflow-hidden p-1" > <a href="#"><?php echo $list['title']; ?></a></p>
-                                    </div>
-                                </div>
-                                <?php }} ?>
-                                <!-- <div class="item">
-                                    <div class="quiz-section">
-                                        <div class="quiz-box_live">
-                                            <a href="#"><img src="<?php echo base_url();?>/assets/images/whats_news.jpg"></a>
-                                        </div>
-                                        <p class="quiz-text overflow-hidden p-1" > <a href="#">Photography Competition- Share the unknown spots of Mizoram</a></p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="quiz-section">
-                                        <div class="quiz-box_live">
-                                            <a href="#"><img src="<?php echo base_url();?>/assets/images/whats_news.jpg"></a>
-                                        </div>
-                                        <p class="quiz-text overflow-hidden p-1" > <a href="#">Photography Competition- Share the unknown spots of Mizoram</a></p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="quiz-section">
-                                        <div class="quiz-box_live">
-                                            <a href="#"><img src="<?php echo base_url();?>/assets/images/whats_news.jpg"></a>
-                                        </div>
-                                        <p class="quiz-text overflow-hidden p-1" > <a href="#">Photography Competition- Share the unknown spots of Mizoram</a></p>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="quiz-section">
-                                        <div class="quiz-box_live">
-                                            <a href="#"><img src="<?php echo base_url();?>/assets/images/whats_news.jpg"></a>
-                                        </div>
-                                        <p class="quiz-text overflow-hidden p-1" > <a href="#">Photography Competition- Share the unknown spots of Mizoram</a></p>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <!-- <div class="banner_image">
-                                <img src="<?php echo base_url();?>/assets/images/whats_news.jpg" class="w-100">
-                                <p>Photography Competition- Share the unknown spots of Mizoram</p>
-                            </div> -->
-                        </div>
-                        <div class="title_right mt-3">
-                            <h6>Latest News</h6>
-                            <div class="banner_image_tending">
-                                <?php if(!(empty($news))){ foreach($news as $list){ ?>
-                                <div class="tranding_outer_box">
-                                    <div class="image_tranding">
-                                        <img src="<?php echo base_url().'uploads/letest_news/'.$list['thumbnail'];?>" class="w-100 h-100">
-                                    </div>
-                                    <div class="text_container_tranding">
-                                        <!-- <span class="bg-success text-white Btn-do">Do</span> -->
-                                        <a href="#" class="tending_para "><?php echo $list['description']; ?></a>
-                                    </div>
-                                </div>
-                                <?php } } ?>
-                                <!-- <div class="tranding_outer_box">
-                                    <div class="image_tranding">
-                                        <img src="<?php echo base_url();?>/assets/images/2.jpg" class="w-100 h-100">
-                                    </div>
-                                    <div class="text_container_tranding">
-                                        <span class="bg-success text-white Btn-do">Do</span>
-                                        <a href="#" class="tending_para d-block">Photography Competition- Share the
-                                            unknown
-                                            spots of
-                                            Mizoram</a>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                
 
             </div>
         </div>

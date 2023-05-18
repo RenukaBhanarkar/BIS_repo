@@ -57,7 +57,7 @@
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.12);
     border-radius: 2px;
     position: relative;
-    height: 137px;
+    height: 153px;
 } 
 .nav-link.active:before {
     display: block;
@@ -99,8 +99,17 @@
 li.tab-link:hover {
     background: gold;
 }
-
-
+.owl-nav{
+  display: none;
+}
+.owl-dots{
+  display: none;
+}
+li.tab-link:hover {
+    transition: all .5s;
+    transform: scale(1.2);
+    z-index: 1;
+}
 
 
 </style>
@@ -219,11 +228,11 @@ li.tab-link:hover {
       
 </div>
 <ul class="get-involved-links nav nav-pills mb-3" role="tablist">
-            <li class="tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><h3 class="tabl_title">Quiz</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">Standard Writing</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">Essay Writing</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">Poster Making</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><h3 class="tabl_title">More</h3></a></li>
+            <li class="tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">Quiz</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">Standard Writing</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">Essay Writing</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/more_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
  </ul>
  <div class="tab-content">
        <div class="tab-pane fade active show" id="tab1" role="tabpanel">
