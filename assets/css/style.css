@@ -1433,8 +1433,9 @@ footer .main_footer .f_contact ul li i {
 	color: #2957a3;
 }
 .text_standard {
-	color: salmon;
+	color: white;
 	font-weight: 600;
+	padding-top: 47px;
 }
 /* .innerBox:hover {
 	background-color: #0089d0;

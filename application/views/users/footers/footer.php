@@ -1,3 +1,13 @@
+<style class="">
+ 
+ a.dropdown-item:hover {
+    background: none;
+}
+i.fa.fa-chevron-down {
+    padding-top: 20px;
+    margin-left: 9px;
+}
+</style>
 <footer>
     <div class="main_footer">
         <div class="triangle"></div>
@@ -6,34 +16,66 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-sm-6 col-lg-6 footer_text">
-                            <h4>Accessibility & Help</h4>
-                            <ul>
+                            <!-- <div class="dropdown">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">Accessibility & Help</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background: none; border: 0px solid rgba(0,0,0,.15); color:white;">
+                                        <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/feedback_form" style="color: white;">Feedback</a></li>
+                                        <li><a class="dropdown-item" href="#" style="color: white;">Help</a></li>
+                                        <li><a class="dropdown-item" href="#" style="color: white;">Sitemap</a></li>
+                                         <li><a href="#">Accessibility</a></li>
+                                    </ul>
+                            </div> -->
+                            <div class="d-flex">
+                            <h4 id="helf_toggle" style="cursor: pointer;">Accessibility & Help</h4>
+                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </div>
+                            <ul id="toggle_show">
                                 <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
                                 <li><a href="#">Help</a></li>
                                 <li><a href="#">Sitemap</a></li>
-                                <!-- <li><a href="#">Accessibility</a></li> -->
+                                <li><a href="#">Accessibility</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-6 col-lg-6 footer_text">
-                            <h4>Legal</h4>
+                            <!-- <div class="dropdown col-lg-12 footer_text">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">Legal</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background: none; border: 0px solid rgba(0,0,0,.15); color:white;" data-popper-placement="bottom-start">
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/terms_condition">Terms & Conditions</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/privacy_policy">Privacy Policy</a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/hyperlinking_policy">Hyper Linking
+                                                    Policy</a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/disclaimer">Disclaimer</a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/copyright">Copyright Policy</a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/cmap">Website Content Contribution,
+                                                    Moderation & Approval Policy (CMAP)</a></li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/cap">Content Archival Policy (CAP)</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/content_review_policy">Content Review Policy (CRP)</a></li>
+                                    </ul>
+                            </div> -->
+                            <div class="d-flex">
+                             <h4 id="legal_toggle" style="cursor: pointer;">Legal</h4>
+                             <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                             </div>
                             <div class="col-lg-12 footer_text">
-                                <ul>
-                                    <li><a href="<?php echo base_url(); ?>users/terms_condition">Terms & Conditions</a>
+                                <ul id="legal_show">
+                                    <li><a  href="<?php echo base_url(); ?>users/terms_condition">Terms & Conditions</a>
                                     </li>
-                                    <li><a href="<?php echo base_url(); ?>users/privacy_policy">Privacy Policy</a></li>
-                                    <li><a href="<?php echo base_url(); ?>users/hyperlinking_policy">Hyper Linking
+                                    <li><a  href="<?php echo base_url(); ?>users/privacy_policy">Privacy Policy</a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/hyperlinking_policy">Hyper Linking
                                             Policy</a></li>
-                                    <li><a href="<?php echo base_url(); ?>users/disclaimer">Disclaimer</a></li>
-                                    <li><a href="<?php echo base_url(); ?>users/copyright">Copyright Policy</a></li>
-                                    <li><a href="<?php echo base_url(); ?>users/cmap">Website Content Contribution,
+                                    <li><a  href="<?php echo base_url(); ?>users/disclaimer">Disclaimer</a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/copyright">Copyright Policy</a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/cmap">Website Content Contribution,
                                             Moderation & Approval Policy (CMAP)</a></li>
-                                    <li><a href="<?php echo base_url(); ?>users/cap">Content Archival Policy (CAP)</a>
+                                    <li><a  href="<?php echo base_url(); ?>users/cap">Content Archival Policy (CAP)</a>
                                     </li>
-                                    <li><a href="<?php echo base_url(); ?>users/content_review_policy">Content Review
+                                    <li><a  href="<?php echo base_url(); ?>users/content_review_policy">Content Review
                                             Policy (CRP)</a></li>
 
                                 </ul>
-                            </div>
+                            </div> 
                         </div>
                         <!-- <div class="col-sm-4 col-lg-4 footer_text">
                             <h4>Other Links</h4>
@@ -99,6 +141,16 @@
 <script src="<?php echo base_url(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/font_resize.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/dark_mode.js"></script>
+<script>
+$(document).ready(function(){
+  $("#helf_toggle").click(function(){
+    $("#toggle_show").toggle();
+  });
+  $("#legal_toggle").click(function(){
+    $("#legal_show").toggle();
+  });
+});
+</script>
 <script>
     $(document).ready(function () {
     $('#example').DataTable();
@@ -263,6 +315,9 @@ $('#owl-caraousal_standard').owlCarousel({
     loop:true,
     margin:10,
     nav:true,
+    autoplay:true,
+    autoplayTimeout:1000,
+    autoplayHoverPause:true,
     responsive:{
         0:{
             items:1
