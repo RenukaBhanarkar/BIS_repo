@@ -35,10 +35,10 @@
                         <div class="row table_data ">
                             
                             <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
-                            <div style="background:#0000007a;">
+                            <div style="background:#00000099;">
                                 <a href="<?=base_url();?>users/standard">
                                 <div class="LiveDataBox" style="height: 182px;">
-                                     <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons">
+                                     <!-- <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons"> -->
                                       <h3 class="text_standard">Standards Club</h3>
                                      <p class="mb-0">(An initiative to nurture the students as Brand Ambassadors of Quality)</p>
                                 </div>
@@ -46,10 +46,10 @@
                                 </div>
                             </div>
                             <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
-                            <div style="background:#0000007a;">
+                            <div style="background:#00000099;">
                                 <a href="<?=base_url();?>users/quality_index">
                                   <div class="LiveDataBox" style="height: 182px;">
-                                      <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons">
+                                      <!-- <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons"> -->
                                        <h3 class="text_standard">World of Standards</h3>
                                        <p class="mb-0">(An initiative to broad-base the stakeholder engagement for development of Standards)</p>
                                  </div>
