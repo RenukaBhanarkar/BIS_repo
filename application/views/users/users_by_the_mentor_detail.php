@@ -190,7 +190,7 @@
     <div class="your_wall_Outer_Box">
         <div class="inner_wall">
             <div class="row mt-5">
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                     
                     <div class="your_wall_main_card_view">
                         <div class="yourWall_image">
@@ -207,11 +207,11 @@
                             </p>
 
                         </div>
-                        <div class="" style="text-align: end; margin-right: 23px;">
+                        <!-- <div class="" style="text-align: end; margin-right: 23px;">
                             <button class="btn btn-primary mb-4 mr-4">
                                 By <?php echo $by_the_mentor['user_name']; ?>
                             </button>
-                        </div>
+                        </div> -->
                         
                         <div class="row" style="padding:10px;">
                         <?php if(!($by_the_mentor['other_image1'])==""){ ?>
@@ -256,9 +256,20 @@
                             <a class="btn btn-info mb-4 mr-4"  href="<?php echo base_url().'uploads/by_the_mentors/doc/'.$by_the_mentor['document']; ?>" target="_blank"><img  src="<?php echo base_url().'assets/admin/img/pdf.png'; ?>" width="100px"/></a>
                             </a>
                     </div>
-                        
-                        
-                    <?php } ?>
+                   <?php } ?>
+                   <div class="row mentor_person">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3" style="text-align:center;">
+                        <h4>By: <?php echo $by_the_mentor['user_name']; ?></h4>
+                        <span>
+                            <?php echo $by_the_mentor['standard_club_name']; ?>
+                        </span>
+                         <p>
+                            <?php echo $by_the_mentor['standard_club_district']; ?>, <?php echo $by_the_mentor['standard_club_state']; ?>
+                        </p>
+                    <span></span>
+                    </div>
+                   </div>
                         
                     </div>
                     
@@ -266,7 +277,7 @@
 
 
                 </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <div class="right_side">
                         <div class="title_right">
                             <h6>Upcomming Events</h6>
@@ -292,28 +303,17 @@
                                     <img src="<?php echo base_url().'uploads/letest_news/'.$list['thumbnail'];?>" class="w-100 h-100">
                                     </div>
                                     <div class="text_container_tranding">
-                                        <!-- <span class="bg-success text-white Btn-do">Do</span> -->
+                                        
                                         <a href="#" class="tending_para "><?php echo $list['description']; ?></a>
                                     </div>
                                 </div>
                                 <?php } } ?>
-                                <!-- <div class="tranding_outer_box">
-                                    <div class="image_tranding">
-                                        <img src="<?php echo base_url();?>/assets/images/2.jpg" class="w-100 h-100">
-                                    </div>
-                                    <div class="text_container_tranding">
-                                        <span class="bg-success text-white Btn-do">Do</span>
-                                        <a href="#" class="tending_para d-block">Photography Competition- Share the
-                                            unknown
-                                            spots of
-                                            Mizoram</a>
-                                    </div>
-                                </div> -->
+                                
                             </div>
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
         </div>

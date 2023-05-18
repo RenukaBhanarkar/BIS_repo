@@ -216,9 +216,9 @@ h5{
                 <div class="left"></div><div class="right"></div>
              </div>
         <div class="static-content" id="mentorForm_hide">
-           <?php if($this->session->flashdata()){
+           <!-- <?php if($this->session->flashdata()){
                 echo $this->session->flashdata('MSG');
-            } ?>
+            } ?> -->
             <form action="javascript:;" class="" method="post" id="updateform" enctype="multipart/form-data">
             <div class="row">
                   <div class="mb-3 col-md-4">
@@ -231,7 +231,7 @@ h5{
                   <div class="mb-3 col-md-4">
                           <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                               <div class="">
-                                    <input type="file" class="form-control input-font" name="image" id="document2" required accept="image/*">
+                                    <input type="file" class="form-control input-font" name="image" id="document2" required accept="image/*" onchange="Thumbnail(event)">
                                     <span style="color:red;" id="err_image"></span>
                               </div>
                   </div>
@@ -249,10 +249,11 @@ h5{
                                     <input type="file" class="form-control input-font" name="thumbnail" id="thumbnail" accept="image/*">
                               </div>
                   </div> -->
-                  <div class="mb-3 col-md-12">
+                  <div class="mb-3 col-md-12 des">
                           <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                           <textarea class="form-control input-font" name="description" id="description" required minlength="5" maxlength="2000"></textarea>
                               <span style="color:red;"  id="err_description"></span>
+                              <span>Only 5000 characters allowed</span>
                   </div>
                 </div>
                 <div class="row">
@@ -299,6 +300,9 @@ h5{
                     
                    
                    
+            </div>
+            <div class="row mb-5">
+                <span class="text-danger" >The image size should be between 20 to 200KB only</span>
             </div>
                   <div class="mb-3 col-md-12">
                        <div class="mentor_submit">
@@ -467,15 +471,18 @@ console.log('clicked');
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#image_src2').val('');
-            $('#lessSize').modal('show');
-        }else if(fileSize > 200000){
+           // $('#lessSize').modal('show');
+           Swal.fire('Image size should be between 20KB to 200KB only');
+        }else if(fileSize > 204800){
             $('#image_src2').val('');
-            $('#greaterSize').modal('show');
+           // $('#greaterSize').modal('show');
+           Swal.fire('Image size should be between 20KB to 200KB only');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#image_src2').val('');
-            $('#invalidfiletype').modal('show');
+           // $('#invalidfiletype').modal('show');
+           Swal.fire('Only jpg,jpeg,png files allowed');
         }
        //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail');
@@ -490,6 +497,44 @@ console.log('clicked');
         $('#img_2').hide();
     };
 
+    var Thumbnail =function(event){
+        var fileSize = $('#document2')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#document2").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#document2').val('');
+           // $('#lessSize').modal('show');
+           $('#err_image').text('This value is required');
+           Swal.fire('Image size should be between 20KB to 200KB only');
+        }else if(fileSize > 204800){
+            $('#document2').val('');
+           // $('#greaterSize').modal('show');
+           $('#err_image').text('This value is required');
+           Swal.fire('Image size should be between 20KB to 200KB only');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#document2').val('');
+           // $('#invalidfiletype').modal('show');
+           $('#err_image').text('This value is required');
+           Swal.fire('Only jpg,jpeg,png files allowed');
+        }else{
+            $('#err_image').text('');
+        }
+       //  $("#Previewimg").show();
+        // var outputThumbnail = document.getElementById('outputThumbnail');
+        
+        // outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        // console.log(outputThumbnail.src);
+        // outputThumbnail.onload = function()
+        // {
+        //     URL.revokeObjectURL(outputThumbnail.src);
+        // }
+        // $('#display_img_2').show();
+        // $('#img_2').hide();
+    }
+
     var loadFileThumbnail1 = function(event) 
     {
 
@@ -499,15 +544,18 @@ console.log('clicked');
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#image_src3').val('');
-            $('#lessSize').modal('show');
-        }else if(fileSize > 200000){
+           // $('#lessSize').modal('show');
+           Swal.fire('Image size should be between 20KB to 200KB only');
+        }else if(fileSize > 204800){
             $('#image_src3').val('');
-            $('#greaterSize').modal('show');
+            //$('#greaterSize').modal('show');
+            Swal.fire('Image size should be between 20KB to 200KB only');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#image_src3').val('');
-            $('#invalidfiletype').modal('show');
+            //$('#invalidfiletype').modal('show');
+            Swal.fire('Only jpg,jpeg,png files allowed');
         }
 
        //  $("#Previewimg").show();
@@ -532,12 +580,14 @@ console.log('clicked');
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#image_src4').val('');
-            $('#lessSize').modal('show');
-        }else if(fileSize > 200000){
+            //$('#lessSize').modal('show');
+            Swal.fire('Image size should be between 20KB to 200KB only');
+        }else if(fileSize > 204800){
             $('#image_src4').val('');
-            $('#greaterSize').modal('show');
+            //$('#greaterSize').modal('show');
+            Swal.fire('Image size should be between 20KB to 200KB only');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#image_src4').val('');
             $('#invalidfiletype').modal('show');
@@ -567,10 +617,12 @@ console.log('clicked');
             console.log(fileSize);
         if(fileSize < 20000){
             $('#image_src5').val('');
-            $('#lessSize').modal('show');
+           // $('#lessSize').modal('show');
+            Swal.fire('Image size should be between 20KB to 200KB only');
         }else if(fileSize > 200000){
             $('#image_src5').val('');
-            $('#greaterSize').modal('show');
+            //$('#greaterSize').modal('show');
+            Swal.fire('Image size should be between 20KB to 200KB only');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#image_src5').val('');
             $('#invalidfiletype').modal('show');
@@ -598,6 +650,16 @@ console.log('clicked');
     $('.sure').modal('show');
 
   }
+//   $(CKEDITOR.instances['description']).on('keyup',function(){
+//     var description = CKEDITOR.instances['description'].getData(); 
+//     var remaining_length= 5000-description.length;
+//     console.log(remaining_length);
+//     console.log(description.length);
+//     $('#err_description').text(description.length);
+
+//   });
+  
+  
   function submitButton(event) {
     event.preventDefault();
              var title = $("#title").val();
@@ -624,21 +686,23 @@ console.log('clicked');
                  $("#link1").focus();
                  is_valid = false;
              } else if (description.length < 10 ) {
-                 $("#err_description").text("Description should be 10 to 2000 characters");
+                 $("#err_description").text("Description should be 10 to 5000 characters");
                  $("#description").focus();
                  is_valid = false;
-             } else if (description.length > 2000 ){
+             } else if (description.length > 5000 ){
                 // return false;
                 console.log(description.length)
                 // alert("character length excedded")
-                Swal.fire('Description suould lessthan 2000 characters')
+                Swal.fire('Description suould less than 5000 characters')
                 
-                $("#err_description").text("Description should be 5 to 2000 characters");
+                $("#err_description").text("Description should be 5 to 5000 characters");
                  $("#description").focus();
                 is_valid = false;
                   return false;
              }else {
-                 $("#err_description").text("");
+                var remain_length=5000-description.length;
+                // $("#err_description").text("Remaining length is "+remain_length);
+                $("#err_description").text("");
 
              }     
              
@@ -703,7 +767,7 @@ console.log('clicked');
                     //    return false;
                    } else {
                     // return true;
-                       is_valid = true;
+                      // is_valid = true;
                        $("#imgerror3").next(".validation").remove(); // remove it
                    }
                }else{
@@ -783,7 +847,7 @@ console.log('clicked');
                            $("#upload_pdf").focus();
                        }
                    } else {
-                       is_valid = true;
+                      // is_valid = true;
                        $("#imgerror3").next(".validation").remove(); // remove it
                    }
                }else{
@@ -829,7 +893,7 @@ console.log('clicked');
                             }).then((result) => {
                             /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
-                                Swal.fire('Saved!', '', 'success')
+                               // Swal.fire('Saved!', '', 'success')
                                 $('#updateform').submit();
                             } else if (result.isDenied) {
                                 Swal.fire('Changes are not saved', '', 'info')
