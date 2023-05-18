@@ -658,7 +658,7 @@ class Users extends CI_Controller
                             $sess_permissions = array(
                                 "main_mod_per" => $main_mod_per,
                                 "sub_mod_per" => $sub_mod_per,
-                                "activity_per" => $activity_per,
+                                //"activity_per" => $activity_per,
                              );
                              $this->session->set_userdata($sess_permissions);
                           }

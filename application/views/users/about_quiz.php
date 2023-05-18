@@ -344,7 +344,11 @@
                 <h3>First Prize</h3>
 
                 <div class="start_content">
-                    <img src="<?php echo base_url(); ?><?php echo $row['prize_img'];?>" alt="" class="join_img">
+                    <?php if ($row['prize_img'] == ""){ ?> 
+                    <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" alt="" class="join_img">
+                    <?php } else { ?>
+                        <img src="<?php echo base_url(); ?><?php echo $row['prize_img'];?>" alt="" class="join_img">
+                    <?php } ?>
                 </div>
 
                 <div class="#">

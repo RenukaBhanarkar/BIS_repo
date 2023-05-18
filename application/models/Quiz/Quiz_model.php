@@ -284,7 +284,7 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
         $this->db->order_by('score', 'desc');   
-        $this->db->order_by('time_taken', 'desc');   
+        $this->db->order_by('time_taken', 'Asc');   
         return $this->db->get('tbl_quiz_submission_details')->result_array(); 
     }
     public function resultDeclarationList($id)
