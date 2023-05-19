@@ -139,7 +139,7 @@
     <div class="your_wall_Outer_Box">
         <div class="inner_wall">
             <div class="row mt-5">
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                 <h6 class="yourWall_title_view ">
                             <?php echo $published_wall['title']; ?>                                
                             </h6>
@@ -211,7 +211,7 @@
 
 
                 </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <div class="right_side">
                         <div class="title_right">
                             <h6>Upcomming Events</h6>
@@ -237,28 +237,17 @@
                                     <img src="<?php echo base_url().'uploads/letest_news/'.$list['thumbnail'];?>" class="w-100 h-100">
                                     </div>
                                     <div class="text_container_tranding">
-                                        <!-- <span class="bg-success text-white Btn-do">Do</span> -->
+                                        
                                         <a href="#" class="tending_para "><?php echo $list['description']; ?></a>
                                     </div>
                                 </div>
                                 <?php } } ?>
-                                <!-- <div class="tranding_outer_box">
-                                    <div class="image_tranding">
-                                        <img src="<?php echo base_url();?>/assets/images/2.jpg" class="w-100 h-100">
-                                    </div>
-                                    <div class="text_container_tranding">
-                                        <span class="bg-success text-white Btn-do">Do</span>
-                                        <a href="#" class="tending_para d-block">Photography Competition- Share the
-                                            unknown
-                                            spots of
-                                            Mizoram</a>
-                                    </div>
-                                </div> -->
+                               
                             </div>
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
         </div>

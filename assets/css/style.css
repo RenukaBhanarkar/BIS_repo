@@ -2590,3 +2590,10 @@ label.d-block.text-font {
 	/* width: 300px; */
 	height: 340px;
 }
+h3.tabl_title {
+    margin-top: 47px;
+}
+.mentor_person{
+	text-align: end;
+    margin-right: 10px;
+}

@@ -174,13 +174,16 @@
                         <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
-                                    <div>
+                                    <div class="col-9">
                                     <input type="file" class="file-control" name="image" id="image_thumb" value="" required accept="image/*" onchange="loadFileThumbnail5(event)" >
+                                    <span class="text-danger" id="err_thumb"></span>
                                     
                                    </div>
+                                   <div class="col-2">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFirst">
                                         Preview
                                     </button>
+                                    </div>
                                 </div>
                                 <span id="err_image" class="text-danger"></span>
 
@@ -440,8 +443,10 @@ $('#image_thumb').on('change', function(){
                          is_valid = false;
                         allfields = false;
                         $("#image_thumb").val('');
+                        $('#err_thumb').text('This value is required')
                         // alert("Please select file size less than 500 KB");
-                        $('#greaterSize').modal('show');
+                       // $('#greaterSize').modal('show');
+                       Swal.fire('File size should be between 20 to 200KB')
                        
                         if (!focusSet) {
                             $("#image").focus();
@@ -449,7 +454,9 @@ $('#image_thumb').on('change', function(){
                         return false;
                     } else if(fileSize < 20480){
                         $("#image_thumb").val('');
-                        $('#lessSize').modal('show');
+                        $('#err_thumb').text('This value is required')
+                       // $('#lessSize').modal('show');
+                       Swal.fire('File size should be between 20 to 200KB')
                         is_valid = false;
                         allfields = false;
                                                
@@ -467,8 +474,10 @@ $('#image_thumb').on('change', function(){
                     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                     if ($.inArray(fileNameExt, validExtensions) == -1) {
                         $('#image_thumb').val('');
+                        $('#err_thumb').text('This value is required')
                         // alert("Invalid file type");
-                        $('#invalidfiletype').modal('show');
+                       // $('#invalidfiletype').modal('show');
+                       Sal.fire('only jpg,jpeg,png files allowed')
                    
                         allFields = false;
                         $("#err_image").text("This value is required");

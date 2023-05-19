@@ -76,9 +76,9 @@
                           <a class="btn btn-primary btn-sm mr-2 " href="<?php echo base_url(); ?>admin/set_permission?id=<?php echo encryptids('E', $row['id']) ?>"> Set Permission  </a>
                           
 
-                          <?php if($row['set_permissions'] == 1){ ?> 
+                          <!-- <?php if($row['set_permissions'] == 1){ ?> 
                             <p><strong style="color:blue"> Permissions Granted</strong></p>
-                          <?php } ?> 
+                          <?php } ?>  -->
 
                         </td>
                       </tr>

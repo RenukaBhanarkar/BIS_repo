@@ -136,7 +136,7 @@
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {  ?>
                                             <?php if(!($list_btm['status_name'] == 'Published')){ ?>
                                                 <!-- <button onclick="deleteByTheMentor(' <?php echo $list_btm['id']; ?> ');" data-id='<?php echo $list_btm['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button> -->
-                                                <button class="btn btn-success btn-sm publish" onclick="sendPublish('<?php echo $list_btm['id']; ?>')" data-id ='<?php echo $list_btm['id']; ?>'>Publish</button>
+                                                <button class="btn btn-success btn-sm publish" onclick="sendPublish('<?php echo $list_btm['id']; ?>')" data-id ='<?php echo $list_btm['id']; ?>' data-email="<?php echo $list_btm['email']; ?>">Publish</button>
                                                 <button class="btn btn-primary btn-sm ml-2 archive" onclick="sendArchive('<?php echo $list_btm['id']; ?>')" data-id ='<?php echo $list_btm['id']; ?>'>Archive</button>
                                             <?php }else if($list_btm['status_name'] == 'Published'){ ?>
                                                 <button class="btn btn-primary btn-sm unpublish" onclick="sendUnPublish('<?php echo $list_btm['id']; ?>')" data-id ='<?php echo $list_btm['id']; ?>'>UnPublish</button>
@@ -792,6 +792,7 @@ function reject(que_id){
 
     $('#example_1').on('click','.publish',function(){
         var id=$(this).attr('data-id');
+        var email=$(this).attr('data-email');
         Swal.fire({
                     title: 'Are you sure you want to Publish ?',
                     showDenyButton: true,
@@ -806,6 +807,7 @@ function reject(que_id){
                             url: '<?php echo base_url(); ?>admin/btm_publish',
                             data: {
                                 que_id: id,
+                                email: email,
                             },
                             success: function(result) {
                                 Swal.fire("Record Published Successfully.");

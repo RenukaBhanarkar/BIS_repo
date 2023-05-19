@@ -54,10 +54,16 @@
                                 
                                  <td><?= $users['score']?></td>
                                  <?php 
-                                //  $t =  $users['time_taken'];
-                                //  $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+                                 $t =  $users['time_taken'];
+                                 $h = (int)$t/3600;
+                                 $m= (int)$t/60%60;
+                                 $s= (int)$t%60;
+
+                                 $timeTaken = sprintf('%02d:%02d:%02d', ($h),($m),($s) );
                                  ?>
-                                 <td><?= $users['time_taken'] ?> Seconds</td> 
+
+                                <td><?= $timeTaken ?> </td> 
+                                 <!-- <td><?= $users['time_taken'] ?> Seconds</td>  -->
                                  <!-- <td><?php //echo $users['prize']?></td> -->
                                 <td><a href="<?php echo base_url();?>Quiz/answer_key_list/<?= $users['user_id'] ;?>/<?= $users['quiz_id'] ;?>" class="btn btn-primary btn-sm mr-2">Answer Key</a></td>
                                   

@@ -2928,13 +2928,21 @@ class Admin extends CI_Controller
     }
     public function btm_publish()
     {
+        
         try {
             $this->load->model('admin/By_the_mentor_model');
-            $que_id = $this->input->post('que_id');
+            $que_id = $this->input->post('que_id');            
+            $email_id=$this->input->post('email');
+           //$email_id="vol.bhagyashree@gmail.com";
+            $msg="Your content has been approved and published on the forum";
+            $subject="Exchange forum noification";
+            $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
             $id = $this->By_the_mentor_model->btmPublish($que_id);
+        
             if ($id) {
                 $data['status'] = 1;
-                $data['message'] = 'Publish successfully.';
+                $data['message'] = 'Publish successfully.';                
+                
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to publish, Please try again.';

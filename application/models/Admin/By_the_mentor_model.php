@@ -110,7 +110,7 @@ class By_the_mentor_model extends CI_Model {
     public function get_btm($id){
         
         //$this->db->select('tyw.*,ta.name,ta.email_id,tms.status_name');
-        $this->db->select('btm.*,tms.status_name,tu.user_name,tu.email,tu.user_mobile,btm.created_on');
+        $this->db->select('btm.*,tms.status_name,tu.user_name,tu.email,tu.user_mobile,btm.created_on,tu.standard_club_name,tu.standard_club_state,tu.standard_club_district');
         // $this->db->select('btm.*,tms.status_name');
         $this->db->from('tbl_by_the_mentors as btm');
        $this->db->join('tbl_users tu','tu.user_id=btm.user_id');
@@ -193,6 +193,44 @@ class By_the_mentor_model extends CI_Model {
         $query=$this->db->get();
         $res=$query->result_array();
         return $res;
+    }
+    public function get_email($id){
+        $this->db->select('email');
+        $this->db->from('tbl_users');
+        $this->db->where('user_id',$id);
+        $query=$this->db->get();
+        $res=$query->result_array();
+        return $res[0];
+
+    }
+    public function send_email($msg,$subject,$email_id){
+        // echo $msg."  ".$email_id." ".$subject;
+        // die;
+        // $msg = "Dear " . $name .
+        //             " <p>You are added on the BIS Portal as Admin . Your login credentials for the portal are:
+        //             </p>
+        //             <p>Username: " . $email_id . "</p>
+        //             <p>Password: " . $random_pass . "</p>";
+             //   $subject = "Login Credentials for the BIS Portal.";
+
+                $config = array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'exchangeforum1@gmail.com',
+                    'smtp_pass' => 'niycbrjxnzfazrud',
+                    'mailtype' => 'html',
+                    'charset' => 'iso-8859-1',
+                );
+
+                $this->load->library('email', $config);
+                $this->email->initialize($config); // add this line
+                $this->email->set_newline("\r\n");
+                $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                $this->email->to($email_id);
+                $this->email->subject($subject);
+                $this->email->message($msg);
+                $this->email->send();
     }
 
 }

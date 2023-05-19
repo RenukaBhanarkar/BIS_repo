@@ -148,7 +148,7 @@ class Subadmin extends CI_Controller
         // );
 
 
-        // echo json_encode($response);exit();
+        // echo json_encode($responseNew);exit();
         if (empty($responseNew)) {
             $data['status'] = 0;
             $data['message'] = 'Failed to get details , Please enter valid USER ID.';
