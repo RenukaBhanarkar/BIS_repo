@@ -96,9 +96,9 @@
   color: white;
     background-color: #0d6efd;
 }
-li.tab-link:hover {
+/* li.tab-link:hover {
     background: gold;
-}
+} */
 .owl-nav{
   display: none;
 }
