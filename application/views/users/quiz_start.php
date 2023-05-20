@@ -300,7 +300,8 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                 <?php
                                 foreach ($que_details as $key => $details) {
                                     $key++; ?>
-                                    <span id="counter<?= $details['que_id'] ?>" class="ans-red" onclick="que(<?= $key; ?>)">
+                                    <span id="counter<?= $details['que_id'] ?>" 
+                                    <?php if($details['selected_op']== 1 || $details['selected_op']== 2 ||$details['selected_op']== 3 ||$details['selected_op']== 4 ||$details['selected_op']== 5 ){echo "class='ans-green'";}else {echo "class='ans-red'";}?>  onclick="que(<?= $key; ?>)">
                                     <?= $key; ?></span>
                                 <?php } ?>
                             </div>

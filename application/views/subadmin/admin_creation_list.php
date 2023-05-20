@@ -60,7 +60,7 @@
                         <td><?php echo $i; ?></td>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['email_id']; ?></td>
-                        <td><?php echo $row['department']; ?></td>
+                        <td><?php echo $row['uvc_department_name']; ?></td>
                          <td><?php echo $row['role']; ?></td>
                         <!--<td><?php echo $row['branch']; ?></td>
                         <td><?php echo $row['post']; ?></td>

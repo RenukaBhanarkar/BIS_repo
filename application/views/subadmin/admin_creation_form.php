@@ -43,12 +43,21 @@
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font" text-font>Email<sup class="text-danger">*</sup></label>
-                                                <input type="text" class="form-control input-font" placeholder="Enter email" name="email" id="email"></input>
+                                                <input type="text" class="form-control input-font" placeholder="Enter email" name="email" id="email" readonly></input>
                                                 <div id="email"></div>
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Department<sup class="text-danger">*</sup></label>
-                                                <input type="text" class="form-control input-font" name="department" id="department" placeholder="Enter Department">
+                                                <select id="department" name="department" class="form-control input-font">
+                                                    <option value="" selected disabled>Select department</option>
+                                                    <?php foreach ($departments as $department) { ?>
+                                                        <option value="<?php echo $department['pki_id'] ?>"><?php echo $department['uvc_department_name'] ?></option>
+                                                    <?php } ?>
+
+                                                </select>
+
+                                                <!-- <input type="text" class="form-control input-font" name="department" id="department" placeholder="Enter Department"> -->
+
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Assign Role<sup class="text-danger">*</sup></label>
@@ -186,12 +195,12 @@
                                         // console.log(res.user.vc_name);
                                         $('#name').val(res.user.vc_name);
                                         $('#email').val(res.user.vc_email);
-                                        // $("#name").attr("disabled", true);
+                                         //$("#name").attr("disabled", true);
                                         // $("#email").attr("disabled", true);
                                         // $('#designation').val(res.data.designation);
                                         // $('#branch').val(res.data.branch);
                                         // $('#post').val(res.data.post);
-                                         $('#department').val(res.data.department);
+                                        // $('#department').val(res.data.department);
 
                                     }
                                 });
@@ -274,7 +283,7 @@
                                 $("#email").next(".validation").remove(); // remove it
                             }
 
-                            if (!department.length) {
+                            if (department == "" || department== null) {
                                 if ($("#department").next(".validation").length == 0) {
                                     $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
                                 }
