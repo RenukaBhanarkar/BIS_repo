@@ -60,6 +60,11 @@ class Subadmin extends CI_Controller
         $data = array();
         $roles = $this->Admin_model->getAllRoles();
         $data['roles'] = $roles;
+
+        $departments = $this->Admin_model->getAllDepartments();
+        $data['departments'] = $departments;
+
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('subadmin/admin_creation_form',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -148,7 +153,7 @@ class Subadmin extends CI_Controller
         // );
 
 
-        // echo json_encode($response);exit();
+        // echo json_encode($responseNew);exit();
         if (empty($responseNew)) {
             $data['status'] = 0;
             $data['message'] = 'Failed to get details , Please enter valid USER ID.';
@@ -224,6 +229,10 @@ class Subadmin extends CI_Controller
 
         $roles = $this->Admin_model->getAllRoles();
         $data['roles'] = $roles;
+
+        $departments = $this->Admin_model->getAllDepartments();
+        $data['departments'] = $departments;
+
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('subadmin/subadmin_edit',$data);

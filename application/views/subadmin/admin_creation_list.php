@@ -60,7 +60,7 @@
                         <td><?php echo $i; ?></td>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['email_id']; ?></td>
-                        <td><?php echo $row['department']; ?></td>
+                        <td><?php echo $row['uvc_department_name']; ?></td>
                          <td><?php echo $row['role']; ?></td>
                         <!--<td><?php echo $row['branch']; ?></td>
                         <td><?php echo $row['post']; ?></td>
@@ -76,9 +76,9 @@
                           <a class="btn btn-primary btn-sm mr-2 " href="<?php echo base_url(); ?>admin/set_permission?id=<?php echo encryptids('E', $row['id']) ?>"> Set Permission  </a>
                           
 
-                          <?php if($row['set_permissions'] == 1){ ?> 
+                          <!-- <?php if($row['set_permissions'] == 1){ ?> 
                             <p><strong style="color:blue"> Permissions Granted</strong></p>
-                          <?php } ?> 
+                          <?php } ?>  -->
 
                         </td>
                       </tr>

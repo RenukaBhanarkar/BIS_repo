@@ -243,9 +243,10 @@ class Admin_model extends CI_Model {
         return $rs;
     }
     public function getAdminDetail($id){
-        $this->db->select('ta.*,tmar.*');
+        $this->db->select('ta.*,tmar.*,b.uvc_department_name');
         $this->db->from('tbl_admin ta');
         $this->db->join('tbl_mst_admin_role tmar','tmar.admin_type=ta.designation','left');
+        $this->db->join('tbl_mst_branch b','ta.department = b.pki_id','left');
         $this->db->where('ta.id',$id);        
          $query = $this->db->get();
          $result=$query->result_array();
@@ -269,9 +270,10 @@ class Admin_model extends CI_Model {
         return $rs;
     }
     public function getAllSubAdminNew(){      
-        $this->db->select('a.*,r.role,r.admin_type');
+        $this->db->select('a.*,r.role,r.admin_type,b.uvc_department_name');
         $this->db->from('tbl_admin a');
         $this->db->join('tbl_mst_admin_role r','r.admin_type = a.designation');
+        $this->db->join('tbl_mst_branch b','a.department = b.pki_id','left');
         $this->db->where('a.is_active',1); 
         $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
         $this->db->order_by('a.id', 'ASC');
@@ -309,6 +311,20 @@ class Admin_model extends CI_Model {
         }
         return $rs;
     }
+    public function getAllDepartments(){
+        $this->db->select('pki_id,uvc_department_name');
+        $this->db->from('tbl_mst_branch');               
+        $this->db->order_by('uvc_department_name', 'ASC');
+         $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row);
+            }
+        }
+        return $rs;
+    }
+    
 
     public function adminLogout(){        
         // print_r($this->session); die;
