@@ -60,10 +60,30 @@
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Competition Start Time</label>
+                            <div>
+                                
+                                <p><?= date("h:m:s", strtotime($quizdata['start_time']));?></p>
+                                 
+                            </div>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                        </div>
+                        <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Competition end Date</label>
                             <div>
                                 <p><?= date("d-m-Y", strtotime($quizdata['end_date']));?></p>
                             </div>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Competition End Time</label>
+                            <div>
+                                
+                                <p><?= date("h:m:s", strtotime($quizdata['end_time']));?></p>
+                                 
+                            </div>
+                        </div>
+                        <div class="mb-2 col-md-4">
                         </div>
                         <!-- <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Time</label>
@@ -98,7 +118,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
                             <div>
-                                <p><?= $quizdata['comp_level']; ?></p>
+                                <p><?= $quizdata['title']; ?></p>
                             </div>
                         </div>
                         <!-- <div class="mb-2 col-md-4">
@@ -119,6 +139,12 @@
                             <label class="d-block text-font">Upload Competition Banner</label>
                             <div>
                                 <p><img src="<?php echo base_url().$quizdata['thumbnail']; ?>" style="width:200px;"></p>
+                            </div>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Score</label>
+                            <div>
+                                <p><?php echo $quizdata['score']; ?></p>
                             </div>
                         </div>
                     </div>
@@ -211,7 +237,7 @@
                             <?php if($quizdata['tprize_image']== '') { 
                                 echo "NA";
                              } else { ?>
-                                  <p><img src="<?php echo base_url().$quizdata['sprize_image']; ?>" style="width:200px;"></p>
+                                  <p><img src="<?php echo base_url().$quizdata['tprize_image']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>

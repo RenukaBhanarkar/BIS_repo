@@ -67,12 +67,28 @@
                                 <span class="error_text"><?php echo form_error('start_date'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
+                            <input type="time" class="form-control input-font" name="start_time" id="start_time" placeholder="Select Date" value="">
+                            <span class="error_text"><?php echo form_error('start_time'); ?></span>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                           
+                        </div>
+                        <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">End Date</label>
-                                <input type="date" class="form-control input-font" name="end_date" id="end_date" value="<?php echo set_value('end_date') ?>" required="">
+                                <input type="date" class="form-control input-font" name="end_date" id="end_date" value="" required="">
                                 <span class="error_text"><?php echo form_error('end_date'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
+                            <label class="d-block text-font"> End Time<sup class="text-danger">*</sup></label>
+                            <input type="time" class="form-control input-font" name="end_time" id="end_time" placeholder="Select Date" value="">
+                            <span class="error_text"><?php echo form_error('end_time'); ?></span>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                           
+                        </div>
+                        <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" required onchange="loadThumbnail(event)">
@@ -88,6 +104,27 @@
                                 </div>
                                 </div>
                         </div>
+                        <div class="mb-2 col-md-4">
+                        <label class="d-block text-font">Total Score<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="">
+                            <span class="error_text"><?php echo form_error('score'); ?></span>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Type of Competition<sup class="text-danger">*</sup></label>
+                                <select id="comp_type" name="comp_type" class="form-control input-font" required>
+                                    <option value="" selected disabled>Select Type of Competition</option>
+                                    <!-- <?php foreach ($quizlavel as $lavel) { ?>
+                                        <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
+                                    <?php } ?> -->
+                                    <option value="eassy">Eassy</option>
+                                    <option value="poster">poster Making</option>
+                                    <option value="eassy1">Eassy 1</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
+                                <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
+                            </div>
                         <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
                                 

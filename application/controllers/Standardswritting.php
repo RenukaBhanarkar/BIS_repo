@@ -171,7 +171,10 @@ class Standardswritting extends CI_Controller
            // $id = $this->Miscellaneous_competition->insertCompPrizes($formdata1);
            
             if($comp_id){
-                $formdata1['competitionn_id']=$comp_id;
+                
+                $res=$this->Miscellaneous_competition->getCompId($comp_id);
+               // print_r($res); die;
+                $formdata1['competitionn_id']=$res['comp_id'];
                 $id = $this->Miscellaneous_competition->insertCompPrizes($formdata1);
                 // print_r($formdata1);
                 // die;
@@ -188,9 +191,10 @@ class Standardswritting extends CI_Controller
     }
     public function competition_edit(){
       //  echo $id;
-    //     print_r($_POST); 
+       // print_r($_POST); 
+    //    echo "<br>";
     //     print_r($_FILES); 
-    //    die;
+     //  die;
             $formdata['comp_id'] = $this->input->post('comp_id');
             $formdata['competiton_name'] = $this->input->post('name');
             $formdata['competition_hindi_name'] = $this->input->post('name_hindi');
@@ -199,29 +203,149 @@ class Standardswritting extends CI_Controller
             $formdata['start_date'] = $this->input->post('start_date');
             $formdata['end_date'] = $this->input->post('end_date');
             $formdata['comp_level'] = $this->input->post('Level');
-            $formdata['region'] = $this->input->post('Region');
-            $formdata['branch'] = $this->input->post('Branch');
+            $formdata['start_time'] = $this->input->post('start_time');
+            $formdata['end_time'] = $this->input->post('end_time');
+            $formdata['score'] = $this->input->post('score');
+            // $formdata['region'] = $this->input->post('Region');
+            // $formdata['branch'] = $this->input->post('Branch');
             $formdata['available_for'] = $this->input->post('Available');
           //  $formdata['thumbnail'] = $thumbnail_imglocation;
             $formdata['status'] = "0";
 
+
+            if($formdata['comp_level']=='2'){
+                $formdata['region'] = $this->input->post('Region');
+                $formdata['branch']='0';
+            }else if($formdata['comp_level']=='3'){
+                $formdata['branch'] = $this->input->post('Branch');
+                $formdata['region']='0';
+            }else{
+                $formdata['branch']='0';
+                $formdata['region']='0';
+            }
+
+
+            $oldDocument = "";
+            $oldDocument = $this->input->post('thumbnailold_image');
+            $document = "";
+
+        if (!empty($_FILES['thumbnail']['tmp_name'])) {
+           
+            $path='uploads/competition/thumbnail/';
+            $document = 'comp_thumbnail' . time() . '.jpg';
+            $config['upload_path'] = './uploads/competition/thumbnail/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size']    = '250';
+            $config['max_width']  = '3024';
+            $config['max_height']  = '2024';
+            $config['file_name'] = $document;
+            $document=$path.$document;
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('thumbnail')) {
+                //$err[]=$this->upload->display_errors();
+                $data['status'] = 0;
+                $data['message'] = $this->upload->display_errors();
+            }
+        } else {
+            if (!empty($oldDocument)) {
+                $document =  $oldDocument;
+            }
+        }
+        // print_r($formdata); die;
+        if ($document) {
+            $formdata['thumbnail'] = $document;
+        }
+
+        if(!empty($_FILES['fprize_image']['tmp_name'])){
+            $fprize_imgsize=$_FILES['fprize_image']['size'];
+        }else{
+            $fprize_imgsize=0;
+        }
+        $prizepath = 'uploads/competition/prize_img/';
+        if ($fprize_imgsize > 0) 
+        {
+            $fprize_imglocation = $prizepath . time() .'fprize_img'. $_FILES['fprize_image']['name']; 
+            move_uploaded_file($_FILES['fprize_image']['tmp_name'], $fprize_imglocation); 
+        }
+        else
+        {
+            $fprize_imglocation=$this->input->post('fold_image');
+        }
+
+
+        if(!empty($_FILES['sprize_image']['tmp_name'])){
+            $sprize_imgsize=$_FILES['sprize_image']['size'];
+        }else{
+            $sprize_imgsize=0;
+        }
+        $prizepath = 'uploads/competition/prize_img/';
+        if ($sprize_imgsize > 0) 
+        {
+            $sprize_imglocation = $prizepath . time() .'sprize_img'. $_FILES['sprize_image']['name']; 
+            move_uploaded_file($_FILES['sprize_image']['tmp_name'], $sprize_imglocation); 
+        }
+        else
+        {
+            $sprize_imglocation=$this->input->post('sold_image');
+        }
+
+        if(!empty($_FILES['tprize_image']['tmp_name'] )){
+            $tprize_imgsize=$_FILES['tprize_image']['size'];
+        }else{
+            $tprize_imgsize=0;
+        }
+        $prizepath = 'uploads/competition/prize_img/';
+        if ($tprize_imgsize > 0) 
+        {
+            $tprize_imglocation = $prizepath . time() .'tprize_img'. $_FILES['tprize_image']['name']; 
+            move_uploaded_file($_FILES['tprize_image']['tmp_name'], $tprize_imglocation); 
+        }
+        else
+        {
+            $tprize_imglocation=$this->input->post('told_image');
+        }
+
+
+        if(!empty($_FILES['cprize_image']['tmp_name'] )){
+            $cprize_imgsize=$_FILES['cprize_image']['size'];
+        }else{
+            $cprize_imgsize=0;
+        }
+        $prizepath = 'uploads/competition/prize_img/';
+        if ($cprize_imgsize > 0) 
+        {
+            $cprize_imglocation = $prizepath . time() .'cprize_img'. $_FILES['cprize_image']['name']; 
+            move_uploaded_file($_FILES['cprize_image']['tmp_name'], $cprize_imglocation); 
+        }
+        else
+        {
+            $cprize_imglocation=$this->input->post('cold_image');
+        }
+
        
             // $formdata1 = array();
-            // $formdata1['fprize_no']=$this->input->post('fprize');            
-            // $formdata1['fprize_name']=$this->input->post('fdetail');
-            // $formdata1['fprize_image']=$fprize_imglocation;
+            $formdata1['fprize_no']=$this->input->post('fprize');            
+            $formdata1['fprize_name']=$this->input->post('fdetail');
+            $formdata1['fprize_image']=$fprize_imglocation;
 
-            // $formdata1['sprize_no']=$this->input->post('sprize');            
-            // $formdata1['sprize_name']=$this->input->post('sdetail');
-            // $formdata1['sprize_image']=$sprize_imglocation;
+            $formdata1['sprize_no']=$this->input->post('sprize');            
+            $formdata1['sprize_name']=$this->input->post('sdetail');
+            $formdata1['sprize_image']=$sprize_imglocation;
 
-            // $formdata1['tprize_no']=$this->input->post('tprize');            
-            // $formdata1['tprize_name']=$this->input->post('tdetail');
-            // $formdata1['tprize_image']=$tprize_imglocation;
+            $formdata1['tprize_no']=$this->input->post('tprize');            
+            $formdata1['tprize_name']=$this->input->post('tdetail');
+            $formdata1['tprize_image']=$tprize_imglocation;
 
-            // $formdata1['cprize_no']=$this->input->post('cprize');            
-            // $formdata1['cprize_name']=$this->input->post('cdetail');
-            // $formdata1['cprize_image']=$cprize_imglocation;
+            $formdata1['cprize_no']=$this->input->post('cprize');            
+            $formdata1['cprize_name']=$this->input->post('cdetail');
+            $formdata1['cprize_image']=$cprize_imglocation;
+
+            $formdata1['competitionn_id']=$this->input->post('comp_id');
+
+        //   print_r($formdata1); die;
+            $this->Miscellaneous_competition->UpdateCompPrizes($formdata1);
+
 //print_r($formdata); die;
            $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
            $id = $this->Miscellaneous_competition->updateCompetition($formdata);
@@ -252,10 +376,39 @@ if($id){
     }
     public function create_competition_edit($id)
     {
-        $data['competition'] = $this->Miscellaneous_competition->viewCompetition($id);
-        // print_r($data); die;
+        $data = $this->Miscellaneous_competition->viewCompetition($id);
+      // print_r($data['branch']); die;
+       $level=$data['comp_level'];
+       $branch=$data['branch'];
+        $this->load->model('Quiz/Quiz_model');
+        $quizlavel = $this->Quiz_model->getQuizLevel();
+        $data['quizlavel']=$quizlavel;
+        // $getAllRegions = array();
+        // $getAllBranches = array();
+      //  $data=array();
+       // $quiz = $this->Quiz_model->getQuiz($id);
+        
+        if($level == 2){
+           // $region_id = $quiz['region_id'];
+            $data['getAllRegions'] = $this->Quiz_model->getAllRegions(); 
+        }
+        if($level == 3){
+           // $region_id = $quiz['branch_id'];
+            $data['getAllBranches'] = $this->Quiz_model->getAllBranches(); 
+        }
+
+         $data['competition'] = $this->Miscellaneous_competition->viewCompetition($id);
+       // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/create_competition_edit',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function competition_submission_view($id)
+    {
+        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition($id);
+        //  print_r($data); die;
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/competition_submission_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function view_competition($id){
@@ -376,6 +529,15 @@ if($id){
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/task_reviewed');
         $this->load->view('admin/footers/admin_footer');
+    }
+    public function delete($id){
+      //  echo $id; die;
+        $res=$this->Miscellaneous_competition->delete_comp($id);
+        if($res){
+            return true;
+        }else{
+            return false;
+        }
     }
  
 

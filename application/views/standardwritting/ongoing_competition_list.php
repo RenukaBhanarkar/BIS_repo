@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Competition</a></li>
-                <!-- <li class="breadcrumb-item active" aria-current="page">Manage New Competition</li> -->
+                <li class="breadcrumb-item active" aria-current="page">Ongoing Competition</li>
                 
                 </ol>
             </nav>
@@ -35,25 +35,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <!-- <tr>
-                              <td>1</td>
-                              <td>12345</td>
-                              <td>Miscellaneous Competition</td>
-                              <td>12/03/2023</td>
-                              <td>12/03/2023</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
-                              <td>Pending</td>
-                              <td>task</td>
-                              <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
-                              </td>
-
-                           </tr> -->
+                          
                            <?php if(!empty($competition)){ $i=1;
                             foreach($competition as $list){ ?>
+                            <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo "123"; ?></td>
+                            <td><?php echo $list['comp_id'];; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
@@ -61,10 +48,11 @@
                             <td><?php echo $list['status_name'];  ?></td>
                             <td>Submited task</td>
                             <td>
-                            <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                            <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url().''; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                             </td>
-                            <?php } } ?>
+                            </tr>
+                            <?php $i++; } } ?>
                         </tbody>
                     </table>
                 </div>
