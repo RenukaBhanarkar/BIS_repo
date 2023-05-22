@@ -25,11 +25,18 @@
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" text-font>Email<sup class="text-danger">*</sup></label>
-                                    <input type="email" value="<?php echo $record['email_id'] ?>" class="form-control input-font" placeholder="Enter email" name="email" id="email"></input>
+                                    <input type="email" value="<?php echo $record['email_id'] ?>" class="form-control input-font" placeholder="Enter email" name="email" id="email" readonly></input>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" text-font>Department<sup class="text-danger">*</sup></label>
-                                    <input type="text" value="<?php echo $record['department'] ?>" class="form-control input-font" placeholder="Enter Department" name="department" id="department"></input>
+                                    <select id="department" name="department" class="form-control input-font">
+                                                    <option value="" selected disabled>Select department</option>
+                                                    <?php foreach ($departments as $department) { ?>
+                                                        <option value="<?php echo $department['pki_id'] ?>"<?php if ($department['pki_id'] == $record['department']) { echo "selected"; } ?> ><?php echo $department['uvc_department_name'] ?></option>
+                                                    <?php } ?>
+
+                                                </select>
+                                    <!-- <input type="text" value="<?php echo $record['department'] ?>" class="form-control input-font" placeholder="Enter Department" name="department" id="department"></input> -->
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Assign Role<sup class="text-danger">*</sup></label>
@@ -97,7 +104,7 @@
                 if (username == "") {
                     if ($("#username").next(".validation").length == 0) // only add if not added
                     {
-                        $("#username").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter user name </div>");
+                        $("#username").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
                     }
                     if (!focusSet) {
                         $("#username").focus();
@@ -118,7 +125,7 @@
                 }
                 if (email == "") {
                     if ($("#email").next(".validation").length == 0) {
-                        $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter email</div>");
+                        $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
                     }
                     allfields = false;
                     if (!focusSet) {
@@ -126,7 +133,7 @@
                     }
                 } else if (!email.match(email_verify)) {
                     if ($("#email").next(".validation").length == 0) {
-                        $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter valid Email</div>");
+                        $("#email").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
                     }
                     allfields = false;
                     if (!focusSet) {
@@ -138,7 +145,7 @@
                 if (department == "") {
                     if ($("#department").next(".validation").length == 0) // only add if not added
                     {
-                        $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter department </div>");
+                        $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.  </div>");
                     }
                     if (!focusSet) {
                         $("#department").focus();
@@ -151,7 +158,7 @@
                 if (designation == "") {
                     if ($("#role").next(".validation").length == 0) // only add if not added
                     {
-                        $("#role").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select role </div>");
+                        $("#role").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.  </div>");
                     }
                     if (!focusSet) {
                         $("#role").focus();

@@ -273,7 +273,21 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
 
        
     }
-   
+    public function getbranchDetailsByPkid($id)
+    { 
+        $rs = array();
+        $this->db->select('*'); 
+        $this->db->from('tbl_mst_branch'); 
+        $this->db->where('pki_id',$id); 
+        $query=$this->db->get();
+      
+        if($query->num_rows() > 0){
+           
+            $rs = $query->row_array();
+          
+        }
+        return $rs;
+    }
 
     public function getQuizSubmissionUsers($id)
     { 

@@ -25,7 +25,7 @@
                                 <input type="hidden" value="<?php echo $record['email_id'] ?>" name="old_email_id" id="old_email_id" />
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font" text-font>Email<sup class="text-danger">*</sup></label>
-                                    <input type="email" value="<?php echo $record['email_id'] ?>" class="form-control input-font" placeholder="Enter email" name="email" id="email"></input>
+                                    <input type="email" value="<?php echo $record['email_id'] ?>" class="form-control input-font" placeholder="Enter email" name="email" id="email" readonly></input>
                                 </div>
                         </div>
                     <?php } ?>

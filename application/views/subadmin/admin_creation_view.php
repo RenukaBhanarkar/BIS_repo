@@ -50,7 +50,7 @@
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Department<sup class="text-danger">*</sup></label>
                                     <div>
-                                    <p><?php echo $detail['department']; ?></p>
+                                    <p><?php echo $detail['uvc_department_name']; ?></p>
                                     </div>    
                                 </div>
                                 <!-- <div class="mb-2 col-md-4">

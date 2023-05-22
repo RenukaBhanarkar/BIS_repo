@@ -58,7 +58,7 @@
                             foreach($competition as $list){ ?>
                              <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo "123"; ?></td>
+                            <td><?php echo $list['comp_id']; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
@@ -67,11 +67,11 @@
                             <td>Submited task</td>
                             <td></td>
                             <td>
-                            <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                            <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                             </td>
                              </tr>
-                            <?php } } ?>
+                            <?php $i++; } } ?>
                         </tbody>
                     </table>
                 </div>

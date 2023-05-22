@@ -12,6 +12,19 @@ class Miscellaneous_competition extends CI_Model {
 		}
         
     }
+    public function getCompId($id){
+        $this->db->select('comp_id');
+        $this->db->from('tbl_mst_competition_detail');
+        $this->db->where('id',$id);
+        $query=$this->db->get();
+        $result=$query->result_array();
+        return $result[0];
+    }
+    public function delete_comp($id){
+        $this->db->delete('tbl_mst_competition_detail',['comp_id'=>$id]);
+        $this->db->delete('tbl_mst_competition_prize',['competitionn_id'=>$id]);
+        return true;
+    }
 
     public function insertCompPrizes($data){
         if($this->db->insert('tbl_mst_competition_prize',$data)){
@@ -64,9 +77,10 @@ class Miscellaneous_competition extends CI_Model {
         return $this->db->get('tbl_mst_competition_detail')->result_array();
     }
     public function viewCompetition($id){
-        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*'); 
+        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*,tbl_mst_quiz_level.title'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status','left'); 
-        $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.id'); 
+        $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.comp_id'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id=tbl_mst_competition_detail.comp_level');
         $this->db->where('tbl_mst_competition_detail.id',$id);
         $result= $this->db->get('tbl_mst_competition_detail')->result_array();
         return $result['0'];
@@ -133,7 +147,7 @@ class Miscellaneous_competition extends CI_Model {
     }
     public function updateCompetition($data)
     {
-        //print_r($data); die;
+        // print_r($data); die;
         $this->db->where('comp_id',$data['comp_id']);
         if($this->db->update('tbl_mst_competition_detail',$data)){
 			return true;
@@ -141,6 +155,14 @@ class Miscellaneous_competition extends CI_Model {
 			return false;
 		}
         
+    }
+    public function UpdateCompPrizes($data){
+        $this->db->where('competitionn_id',$data['competitionn_id']);
+        if($this->db->update('tbl_mst_competition_prize',$data)){
+			return true;
+		}else{
+			return false;
+		}
     }
     public function ckeckCompAttemptByUser($data){        
          $this->db->select('tucar.*,tmcd.competiton_name');
@@ -150,5 +172,14 @@ class Miscellaneous_competition extends CI_Model {
          $this->db->where('tucar.user_id',$data);
          $query=$this->db->get();
          return $query->result_array();
+     }
+     public function SubmittedCompetition($comp_id){
+        $this->db->select('tucar.*,tu.user_mobile,tu.email,tu.user_name,tmcd.competiton_name');
+        $this->db->from('tbl_users_competition_attempt_record tucar');
+        $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
+        $this->db->join('tbl_mst_competition_detail tmcd','tmcd.id=tucar.competiton_id');
+        $this->db->where('competiton_id',$comp_id);        
+        $query=$this->db->get();
+        return $query->result_array(); 
      }
 }

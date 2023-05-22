@@ -35,7 +35,7 @@
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font" text-font>Email<sup class="text-danger">*</sup></label>
-                                                <input type="text" class="form-control input-font" placeholder="Enter email" name="email" id="email"></input>
+                                                <input type="text" class="form-control input-font" readonly placeholder="Enter email" name="email" id="email"></input>
                                                 <div id="err_email"></div>
                                             </div>
                                             <!-- <div class="mb-2 col-md-4">
