@@ -307,6 +307,21 @@
                                 <?php }
                              }else{ ?>
                                 <p id="countdown"> </p>
+                                <p id="ShowLoginButton" style="display:none">
+                                <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                    
+                                    if ($user_type != "") { 
+                                        if($quizdata['language_id'] != 3){ ?>
+                                            <a href="<?= base_url(); ?>users/quiz_start/<?= $quizdata['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                        <?php  }else{ ?>
+                                        
+                                            <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz</span></a>
+                                        <?php  }
+                                    } else { ?>
+                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz</span></a>
+                                    <?php } ?>
+                                </p>
+
                              <?php } ?>
                 
                           
@@ -488,7 +503,8 @@ var x = setInterval(function() {
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
+    $('#ShowLoginButton').css('display','block');
+    //document.getElementById("countdown").innerHTML = "EXPIRED";
   }
 }, 1000);
 </script>

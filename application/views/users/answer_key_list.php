@@ -193,13 +193,8 @@
                                             $option5 = $opt5_h; 
                                       }
                                 ?>
-<<<<<<< HEAD
                                 <!-- <ol>
                                     <li><?php echo  $option1 ;?></li>
-=======
-                                <ol>
-                                    <li style="border:2px solid green; padding:10px;"><?php echo  $option1 ;?></li>
->>>>>>> 5ca25b1289bf8bb0186cae06767e4209693112ed
                                     <li><?php echo  $option2 ;?></li>
                                     <li><?php echo  $option3 ;?></li>
                                     <li style="border:2px solid red; padding:10px;"><?php echo  $option4 ;?></li>
