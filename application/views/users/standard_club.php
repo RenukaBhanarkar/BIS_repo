@@ -787,9 +787,9 @@ li.tab-link:hover {
       <?php if (!empty($images)) {
         foreach ($images as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-            <a href="<?php echo base_url() . 'uploads/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
-              <img class="img-fluid" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="">
-            </a>
+            <!-- <a href="<?php echo base_url() . 'uploads/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light"> -->
+              <img class="img-fluid" id="gal_img" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
+            <!-- </a> -->
           </div>
         <?php } ?>
         <?php if (count($images) > 7) { ?>
@@ -808,7 +808,7 @@ li.tab-link:hover {
               <video class="img-fluid" src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
             </a> -->
             <video class="img-fluid" controls>
-              <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4">
+              <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4" >
             </video>
           </div>
           <?php if (count($videos) > 7) { ?>
@@ -821,7 +821,26 @@ li.tab-link:hover {
     </div>
   </div>
 </section>
+<!-- <button type="button" id="preview" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
+      Preview 
+  </button>   -->
+                               <!-- Modal -->
+  <div class="modal fade" id="thumbnailexampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="max-width:700px;">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
 
+          <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+          </button>
+          </div>
+          <div class="modal-body">
+          <img src="" id="outputicon" width="100%"/>
+          </div>
+      </div>
+      </div>
+  </div> 
 
 
 
@@ -830,6 +849,17 @@ li.tab-link:hover {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
 <script>
+  $(document).ready(function(){
+ 
+  $('#photo_gallary').on('click','#gal_img',function(){
+    console.log("jhgjh");
+    var id= $(this).attr('src');
+    //alert(id);
+    console.log(id);
+   $('#outputicon').attr('src',id);
+
+  })
+})
   $('#photo_gallary').show();
 
   function abcd() {
