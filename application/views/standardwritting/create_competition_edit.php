@@ -41,12 +41,13 @@
                         <div class="mb-2 col-md-12">
                              <label class="d-block text-font">Description</label>
                              <textarea name="description" id="description"><?php echo $competition['description']; ?></textarea>
+                             <div class='validation' id="description_error" style='color:red;margin-bottom:15px;'> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
                              <label class="d-block text-font">Terms & Conditions</label>
-                             <textare aname="terms_conditions" id="terms_conditions"><?php echo $competition['terms_condition']; ?></textare>
+                             <textarea name="terms_conditions" id="terms_conditions"><?php echo $competition['terms_condition']; ?></textarea>
                              <div class='validation' id="terms_conditions_error" style='color:red;margin-bottom:15px;'> </div>
                         </div>
                     </div>
@@ -57,12 +58,28 @@
                                 <span class="error_text"><?php echo form_error('start_date'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
+                            <input type="time" class="form-control input-font" name="start_time" id="start_time" placeholder="Select Date" value="<?php echo set_value('start_time', $competition['start_time']); ?>">
+                            <span class="error_text"><?php echo form_error('start_time'); ?></span>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                           
+                        </div>
+                        <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">End Date</label>
                                 <input type="date" class="form-control input-font" name="end_date" id="end_date" value="<?php echo $competition['end_date']; ?>" required="">
                                 <span class="error_text"><?php echo form_error('end_date'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
+                            <label class="d-block text-font"> End Time<sup class="text-danger">*</sup></label>
+                            <input type="time" class="form-control input-font" name="end_time" id="end_time" placeholder="Select Date" value="<?php echo set_value('end_time', $competition['end_time']); ?>">
+                            <span class="error_text"><?php echo form_error('end_time'); ?></span>
+                        </div>
+                        <div class="mb-2 col-md-4">
+                           
+                        </div>
+                        <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <!-- <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -108,6 +125,11 @@
                                 </div>
                         </div>
                         <div class="mb-2 col-md-4">
+                        <label class="d-block text-font">Total Score<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="<?php echo set_value('end_time', $competition['score']); ?>">
+                            <span class="error_text"><?php echo form_error('score'); ?></span>
+                        </div>
+                        <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
                                 <select id="Level" name="Level" class="form-control input-font" value="<?php echo $competition['comp_level']; ?>">
                                     <option value="1">All India Level</option>
@@ -130,12 +152,79 @@
                                     <option value="2">Regional Level</option>
                                     <option value="2">Branch Level</option>
                                 </select>
+                        </div> -->
+                        <div class="row col-12">
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
+                                <select id="quiz_level_id" name="Level" class="form-control input-font"  required>
+                                    
+                                    <?php foreach ($quizlavel as $lavel) { ?>
+                                        <option value="<?php echo $lavel['id'] ?>"<?php if ($competition['comp_level'] == $lavel['id']) echo "selected"; ?>><?php echo $lavel['title'] ?></option>
+                                    <?php } ?>
+                                </select>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
+                                <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
+                            </div>
+                            <?php if (!empty($getAllRegions)) { ?>
+                            <div class="mb-2 col-md-4" id="region_id_blk">
+                                <label class="d-block text-font" id="region_title">Regional Level<sup class="text-danger">*</sup></label>
+                                <select id="region_id" name="Region" class="form-control input-font" value="<?php echo $competition['region']; ?>">
+                                <?php
+                                foreach ($getAllRegions as $region) { ?>
+                                <option <?php if ($competition['region'] == $region['pki_region_id']) echo "selected"; ?> value="<?php echo $region['pki_region_id'] ?>"> <?php echo $region['uvc_region_title']; ?> </option>
+                                <?php
+                                } ?>
+                                </select>
+                                <span class="error_text"><?php echo form_error('region_id'); ?></span>
+
+                            </div>
+                            <?php  }else{ ?>
+                                <div class="mb-2 col-md-4" id="region_id_blk" <?php if($competition['region']=='0' || $competition['region']==null){ echo 'Style="display:none;"'; } ?>>
+                                <label class="d-block text-font" id="region_title">Regional Level<sup class="text-danger">*</sup></label>
+                                <select id="region_id" name="Region" class="form-control input-font" value="<?php echo $competition['region']; ?>">
+                                <?php
+                                foreach ($getAllRegions as $region) { ?>
+                                <option <?php if ($competition['region'] == $region['pki_region_id']) echo "selected"; ?> value="<?php echo $region['pki_region_id'] ?>"> <?php echo $region['uvc_region_title']; ?> </option>
+                                <?php
+                                } ?>
+                                </select>
+                                <span class="error_text"><?php echo form_error('region_id'); ?></span>
+
+                            </div>
+
+                                
+                            <?php } ?>
+                            <?php if (!empty($getAllBranches)) { ?>
+                            <div class="mb-2 col-md-4" id="branch_id_blk">
+                                <label class="d-block text-font" id="branch_title">Branch<sup class="text-danger">*</sup></label>
+                                <select id="branch_id" name="Branch" class="form-control input-font" value="<?php echo $competition['branch']; ?>">
+                                <?php
+                                foreach ($getAllBranches as $branch) { ?>
+                                <option <?php if ($competition['branch'] == $branch['pki_id']) echo "selected"; ?> value="<?php echo $branch['pki_id'] ?>"> <?php echo $branch['uvc_department_name']; ?> </option>
+                                <?php } ?>
+                                </select>
+                                <span class="error_text"><?php echo form_error('branch_id'); ?></span>
+
+                            </div>
+                            <?php }else{?>
+                                <div class="mb-2 col-md-4" <?php if($competition['branch']=='0' || $competition['branch']==null){ echo 'Style="display:none;"'; } ?> id="branch_id_blk">
+                                <label class="d-block text-font" id="branch_title">Branch<sup class="text-danger">*</sup></label>
+                                <select id="branch_id" name="branch_id" class="form-control input-font" value="<?php echo $competition['branch']; ?>">
+                                
+                                </select>
+                                <span class="error_text"><?php echo form_error('branch_id'); ?></span>
+
+                            </div>
+                            <?php } ?>
+
                         </div>
                         <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Available For<sup class="text-danger">*</sup></label>
-                                <select id="Available" name="Available" class="form-control input-font" value="<?php echo $competition['available_for']; ?>">
-                                    <option value="1">School</option>
-                                    <option value="2">Higher Qualification</option>
+                                <select id="Available" name="Available" class="form-control input-font" >
+                                    <option value="1" <?php if($competition['available_for']=='1'){ echo 'selected'; } ?> >School</option>
+                                    <option value="2" <?php if($competition['available_for']=='2'){ echo 'selected'; } ?> >Higher Qualification</option>
                                 </select>
                         </div>
                     </div>
@@ -386,7 +475,7 @@
                     <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Update</a> -->
                             <button onclick="return updateCompetition(event)" type="submit" class="btn btn-success btn-sm text-white" >Update</button>
-                            <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                            <a class="btn btn-danger btn-sm text-white cancel" >Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -778,6 +867,8 @@
         var level = $('#level').val();
         var Available = $('#Available').val();
 
+        var fprize =$('#fprize').val();
+
         var isValid=true;
 
         if(name==""){
@@ -791,6 +882,32 @@
             isValid=false;
         }else{
             $('#err_name_hindi').text('');
+        }
+
+        if(terms_conditions==""){
+            $('#terms_conditions_error').text('This value is required');
+            isValid=false;
+        }else if(terms_conditions.length < 10 || terms_conditions.length >5000){
+            $('#terms_conditions_error').text('Character length should be between 10 to 5000');
+            isValid=false;
+        }else{
+            $('#err_name_hindi').text('');
+        }
+        if(description==""){
+            $('#description_error').text('This value is required');
+            isValid=false;
+        }else if(description.length < 10 || description.length >5000){
+            $('#description_error').text('Character length should be between 10 to 5000');
+            isValid=false;
+        }else{
+            $('#description_error').text('');
+        }
+
+        if(fprize < 1){
+            Swal.fire('Enter first prize');
+            isValid=false;
+        }else{
+
         }
 
         if(isValid){
@@ -813,5 +930,79 @@
         }
     }
 
+    $(document).on("change", "#quiz_level_id", function(e) {
+            e.preventDefault();
+            var quiz_level_id = $("#quiz_level_id :selected").val();
+            if (quiz_level_id == 1) {
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").hide();
+            } else if (quiz_level_id == 2) {
+                $("#region_id_blk").show();
+                $("#branch_id_blk").hide();
+                $("#region_title").text("Regional Level");
+                var postdata = "id=2";  
 
+
+            $.ajax({
+                url: "<?= base_url() ?>quiz/getAllRegions",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#region_id');
+                    selectbox.empty();
+                    $("#region_id").next(".validation").remove();
+                    $('#region_id').append('<option value="" selected disabled>Select Region </option>');
+                    $.each(res.region, function(index, value) {
+                        $('#region_id').append('<option value="' + value.pki_region_id + '">' + value.uvc_region_title + '</option>');
+                    });
+
+                }
+            });
+
+            } else if (quiz_level_id == 3) {
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").show();
+                $("#branch_title").text("Branch Level");
+                var postdata = "id=3";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>quiz/getAllBranches",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#branch_id');
+                    selectbox.empty();
+                    $("#branch_id").next(".validation").remove();
+                    $('#branch_id').append('<option value="" selected disabled>Select Branch </option>');
+                    $.each(res.region, function(index, value) {
+                        $('#branch_id').append('<option value="' + value.pki_id + '">' + value.uvc_department_name + '</option>');
+                    });
+                }
+            });
+            }
+        });
+
+$('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url(); ?>Standardswritting/create_competition_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
 </script>

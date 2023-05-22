@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Competition</a></li>
-                <!-- <li class="breadcrumb-item active" aria-current="page">Manage New Competition</li> -->
+                <li class="breadcrumb-item active" aria-current="page">Manage Competition</li>
                 
                 </ol>
             </nav>
@@ -58,7 +58,7 @@
                             foreach($competition as $list){ ?>
                             <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo "123"; ?></td>
+                            <td><?php echo $list['comp_id'];; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>

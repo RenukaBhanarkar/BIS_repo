@@ -2590,10 +2590,31 @@ label.d-block.text-font {
 	/* width: 300px; */
 	height: 340px;
 }
-h3.tabl_title {
+/* h3.tabl_title {
     margin-top: 47px;
-}
+} */
 .mentor_person{
 	text-align: end;
     margin-right: 10px;
 }
+.correct_answer{
+	position: absolute;
+    margin-left: -111px;
+    margin-top: -168px;
+    padding: 5px;
+    /* border: 2px solid green; */
+    border-radius: 5px 50px 50px 5px;
+    background: green;
+    color: white;
+}
+.incorrect_answer{
+	position: absolute;
+    margin-left: -92px;
+    margin-top: -77px;
+    padding: 5px;
+    /* border: 2px solid green; */
+    border-radius: 5px 50px 50px 5px;
+    background: red;
+    color: white;
+}
+

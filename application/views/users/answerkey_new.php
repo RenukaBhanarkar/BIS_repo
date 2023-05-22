@@ -11,33 +11,30 @@
     border-radius: 0.35rem;
     border-top: 3px solid #2957a3!important;
 }
-
-    .green {color:darkgreen !important;}
-    .red {color:red !important;}
-</style>
-<div class="container">
-    <!-- Page Heading -->
-    <div class="row mt-5">
+</style>    
+<link href="<?php echo base_url();?>assets/admin/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Begin Page Content -->
+    <div class="container"> 
+        <div class="row mt-5">
            <div class="bloginfo">
-                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Answer Key</h3>
+                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">My Activity</h3>
             </div>
             <div class="heading-underline" style="width: 200px;">
                 <div class="left"></div><div class="right"></div>
              </div>
-        </div>
-    <!-- Content Row -->
-    <div class="row">
-    <div class="proposal_view mb-5">
+            <div class="proposal_view mb-5">
+            <div class="row">
+            </div>
         <div class="col-12 mt-3">
             <div class="card border-top">
                 <div class="card-body">
                     <?php 
                     $j = 1;
                     foreach($answerKey as $row) { ?> 
-                    <div class="row" style="background: aliceblue;">
+                    <div class="row">
                         <div class="mb-2 col-md-12 d-flex">
-                            <label class="d-block text-font mt-2">Question <?= $j ?>  :</label>
-                            <div class="ml-2 mt-2">
+                            <label class="d-block text-font">Question <?= $j ?>  :</label>
+                            <div class="ml-2">
                             <?php if ($row['language_id'] == 1 || $row['language_id'] == 3) { ?>
                                         <p class="qustion-ans"> <?=  $row['que'] ?> </p>        
                                         <?php } else{ ?> 
@@ -193,59 +190,29 @@
                                             $option5 = $opt5_h; 
                                       }
                                 ?>
-<<<<<<< HEAD
-                                <!-- <ol>
-                                    <li><?php echo  $option1 ;?></li>
-=======
                                 <ol>
-                                    <li style="border:2px solid green; padding:10px;"><?php echo  $option1 ;?></li>
->>>>>>> 5ca25b1289bf8bb0186cae06767e4209693112ed
+                                    <li><?php echo  $option1 ;?></li>
                                     <li><?php echo  $option2 ;?></li>
                                     <li><?php echo  $option3 ;?></li>
-                                    <li style="border:2px solid red; padding:10px;"><?php echo  $option4 ;?></li>
+                                    <li><?php echo  $option4 ;?></li>
                                     <li><?php echo  $option5 ;?></li>
-                                </ol> -->
-                                <ol>
-                                    <li 
-                                    <?php if($row['corr_opt_e']== 1) {echo "class='green'";} ?>
-                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
-                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 1)) {echo "class='red'";} ?>> <?php echo  $option1 ;?></li>
-                                    <li <?php if($row['corr_opt_e']== 2) {echo "class='green'";} ?>
-                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
-                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 2)) {echo "class='red'";} ?>><?php echo  $option2 ;?></li>
-                                    <li <?php if($row['corr_opt_e']== 3) {echo "class='green'";} ?>
-                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
-                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 3)) {echo "class='red'";} ?>><?php echo  $option3 ;?></li>
-                                    <li <?php if($row['corr_opt_e']== 4) {echo "class='green'";} ?>
-                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
-                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 4)) {echo "class='red'";} ?>><?php echo  $option4 ;?></li>
-                                    <li <?php if($row['corr_opt_e']== 5) {echo "class='green'";} ?>
-                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
-                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 5)) {echo "class='red'";} ?>><?php echo  $option5 ;?></li>
                                 </ol>
-                                
                              
                             </div>
-                            <div class="correct_answer">Correct Answer</div>
-                            <div class="incorrect_answer">Your Answer</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4 d-flex">
-                            <div class="d-flex" style="display: flex; border: 2px solid green;">
                             <label class="d-block text-font">Correct Option :</label>
                             <div class="ml-2">
                                 <p><?php echo $row['corr_opt_e'];?></p>
                             </div>
-                            </div>
                         </div>
                         <div class="mb-2 col-md-4 d-flex">
-                        <div class="d-flex" style="display: flex; border: 2px solid red;">
                             <label class="d-block text-font">Selected Option:</label>
                             <div class="ml-2">
                                 <p><?php echo $row['selected_op'];?></p>
                             </div>
-                        </div>
                         </div>
                         <!-- <div class="mb-2 col-md-4 d-flex">
                             <label class="d-block text-font">Marked For Review:</label>
@@ -313,15 +280,25 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>Users/my_activity_list/'">Back</a>
-                </div>
+                
             </div>
         </div>
     </div>
-</div>
-</div>
+             <div class="col-md-12 submit_btn p-3" style="text-align: end;">
+                               <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>Users/welcome'">Back</a>
+             </div>  
+             </div>
+             
+        </div>
+       </div>
+       
+    <!-- /.container-fluid -->
+    <script src="<?php echo base_url();?>assets/admin/js/jquery.dataTables.min.js"></script>
 
-
-
-<!-- End of Main Content -->
+    <!-- Core plugin JavaScript-->
+    <script src="<?php echo base_url();?>assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+    });
+   </script>
