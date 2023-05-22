@@ -3250,6 +3250,11 @@ class Users extends CI_Controller
         $this->load->view('users/answer_key_list',$data);
         $this->load->view('users/footers/footer');
     }
+    public function answerkey_new(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/answerkey_new');
+        $this->load->view('users/footers/footer');
+    }
     
  
 }
