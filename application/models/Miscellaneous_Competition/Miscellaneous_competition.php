@@ -81,7 +81,7 @@ class Miscellaneous_competition extends CI_Model {
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status','left'); 
         $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.comp_id'); 
         $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id=tbl_mst_competition_detail.comp_level');
-        $this->db->where('tbl_mst_competition_detail.id',$id);
+        $this->db->where('tbl_mst_competition_detail.comp_id',$id);
         $result= $this->db->get('tbl_mst_competition_detail')->result_array();
         return $result['0'];
     }
@@ -93,12 +93,13 @@ class Miscellaneous_competition extends CI_Model {
         $result= $this->db->get('tbl_mst_competition_detail')->result_array();
         return $result[0];
     }
-    public function getPublishedComp($limit){
+    public function getPublishedComp($limit,$type){
         $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
-        $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.id');
+        $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id=tbl_mst_competition_detail.comp_id');
         $this->db->where_in('tbl_mst_competition_detail.status','5');
        $this->db->where('tbl_mst_competition_detail.end_date >=' ,date("Y-m-d")); 
+       $this->db->where('tbl_mst_competition_detail.type',$type);
        $this->db->limit($limit);
         return $this->db->get('tbl_mst_competition_detail')->result_array();
     }

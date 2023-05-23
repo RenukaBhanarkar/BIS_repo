@@ -72,9 +72,9 @@ class Standardswritting extends CI_Controller
         $this->load->model('Quiz/Quiz_model');
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $formdataall['quizlavel']=$quizlavel;
-        // print_r($_POST); 
+    //    print_r($_POST); 
         // print_r($_FILES);
-        // die;
+    //    die;
 
         if (!file_exists('uploads/competition/thumbnail')) { mkdir('uploads/competition/thumbnail', 0777, true); }
         if (!file_exists('uploads/competition/prize_img')) { mkdir('uploads/competition/prize_img', 0777, true); }
@@ -129,15 +129,20 @@ class Standardswritting extends CI_Controller
             $formdata['start_date'] = $this->input->post('start_date');
             $formdata['end_date'] = $this->input->post('end_date');
             $formdata['comp_level'] = $this->input->post('quiz_level_id');
-            // $formdata['region'] = $this->input->post('region_id');
-            // $formdata['branch'] = $this->input->post('branch_id');
+            $formdata['type'] = $this->input->post('comp_type');
+            $formdata['score'] = $this->input->post('score');
             $formdata['available_for'] = $this->input->post('Available');
             $formdata['thumbnail'] = $thumbnail_imglocation;
             $formdata['status'] = "0";
 
+            $start = $this->input->post('start_time');
+            $formdata['start_time'] = date("H:i:s", strtotime($start));
+            $end = $this->input->post('end_time');
+            $formdata['end_time'] = date("H:i:s", strtotime($end));
+
             if($this->input->post('quiz_level_id')== 1){
                 $formdata['region'] = 0;   
-                $formdata['branch_id'] = 0;              
+                $formdata['branch'] = 0;              
             }
             if($this->input->post('quiz_level_id')== 2){               
                 $formdata['region'] = $this->input->post('region_id');

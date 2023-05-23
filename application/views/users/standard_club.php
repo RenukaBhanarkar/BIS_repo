@@ -320,22 +320,22 @@ li.tab-link:hover {
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                 <div class="row">
-                        <?php if (empty($allquize)) { ?>
+                        <?php if (empty($essy_writing)) { ?>
                               <div class="alert alert-danger">
-                                <strong>Sorry!</strong> Quizes are not available.
+                                <strong>Sorry!</strong> Competition are not available.
                               </div>
                     <?php  } else {  ?>
                       <div class="row">
-                        <?php foreach ($allquize as $key => $quize) {  ?>
+                        <?php foreach ($essy_writing as $list) {  ?>
                           <div class="col-md-3">
                             <div class="quiz-section">
                               <div class="quiz-box">
-                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                                <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
                               </div>
-                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $list['competiton_name'] ?></p>
                             </div>
                           </div>
                         <?php  } ?>
@@ -358,22 +358,22 @@ li.tab-link:hover {
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                 <div class="row">
-                        <?php if (empty($allquize)) { ?>
+                        <?php if (empty($poster)) { ?>
                               <div class="alert alert-danger">
-                                <strong>Sorry!</strong> Quizes are not available.
+                                <strong>Sorry!</strong> Competition are not available.
                               </div>
                     <?php  } else {  ?>
                       <div class="row">
-                        <?php foreach ($allquize as $key => $quize) {  ?>
+                        <?php foreach ($poster as $list) {  ?>
                           <div class="col-md-3">
                             <div class="quiz-section">
                               <div class="quiz-box">
-                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                                <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
                               </div>
-                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $list['competiton_name']; ?></p>
                             </div>
                           </div>
                         <?php  } ?>
@@ -397,22 +397,22 @@ li.tab-link:hover {
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                 <div class="row">
-                        <?php if (empty($allquize)) { ?>
+                        <?php if (empty($competition)) { ?>
                               <div class="alert alert-danger">
                                 <strong>Sorry!</strong> Quizes are not available.
                               </div>
                     <?php  } else {  ?>
                       <div class="row">
-                        <?php foreach ($allquize as $key => $quize) {  ?>
+                        <?php foreach ($competition as $list) {  ?>
                           <div class="col-md-3">
                             <div class="quiz-section">
                               <div class="quiz-box">
-                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                                <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition</span></a>
                               </div>
-                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                              <p class="quiz-text overflow-hidden p-1"><?php echo $list['competiton_name']; ?></p>
                             </div>
                           </div>
                         <?php  } ?>
