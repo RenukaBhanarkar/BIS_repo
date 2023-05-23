@@ -286,9 +286,53 @@
                         </p>
                         <?php }?>
                     </div>
-                    <?php
 
-                    $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                            <?php   
+                            date_default_timezone_set("Asia/Calcutta");
+                            $start_time = strtotime($quizdata['start_time']);
+                            $end_time = strtotime($quizdata['end_time']);
+                            $current_time = strtotime (date('Y-m-d h:i:s'));
+                            if($current_time >= $start_time && $current_time <= $end_time ){
+                                $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                    
+                                if ($user_type != "") { 
+                                     if($quizdata['language_id'] != 3){ ?>
+                                         <a href="<?= base_url(); ?>users/quiz_start/<?= $quizdata['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                    <?php  }else{ ?>
+                                    
+                                        <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz</span></a>
+                                    <?php  }
+                                  } else { ?>
+                                    <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz</span></a>
+                                <?php }
+                             }else{ ?>
+                                <p id="countdown"> </p>
+                                <p id="ShowLoginButton" style="display:none">
+                                <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                    
+                                    if ($user_type != "") { 
+                                        if($quizdata['language_id'] != 3){ ?>
+                                            <a href="<?= base_url(); ?>users/quiz_start/<?= $quizdata['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                        <?php  }else{ ?>
+                                        
+                                            <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz</span></a>
+                                        <?php  }
+                                    } else { ?>
+                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz</span></a>
+                                    <?php } ?>
+                                </p>
+
+                             <?php } ?>
+                
+                          
+
+
+                    
+                    
+
+                    <!-- <?php
+
+                    /*$user_type = encryptids("D", $this->session->userdata('admin_type'));
                     
                     if ($user_type != "") { 
                          if($quizdata['language_id'] != 3){ ?>
@@ -301,7 +345,9 @@
 
                     <?php  } else { ?>
                         <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz</span></a>
-                    <?php } ?>
+                    <?php } */ ?> -->
+
+
                     <?php
                     if ($this->session->flashdata('MSG')) {
                         echo $this->session->flashdata('MSG');
@@ -430,7 +476,38 @@
 </section>
 </div>
 </div>
+<script>
+// Set the date we're counting down to
+var startTime = <?php echo $quizdata['start_time'];?>;
+var countDownDate = new Date(startTime).getTime();
 
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="countdown"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    $('#ShowLoginButton').css('display','block');
+    //document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
 
 <script>
      $('.Quiz_text').on('click', '#startQuizLang', function(e) {

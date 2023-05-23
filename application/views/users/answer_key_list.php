@@ -11,6 +11,9 @@
     border-radius: 0.35rem;
     border-top: 3px solid #2957a3!important;
 }
+
+    .green {color:darkgreen !important;}
+    .red {color:red !important;}
 </style>
 <div class="container">
     <!-- Page Heading -->
@@ -190,12 +193,30 @@
                                             $option5 = $opt5_h; 
                                       }
                                 ?>
-                                <ol>
-                                    <li style="border:2px solid green; padding:10px;"><?php echo  $option1 ;?></li>
+                                <!-- <ol>
+                                    <li><?php echo  $option1 ;?></li>
                                     <li><?php echo  $option2 ;?></li>
                                     <li><?php echo  $option3 ;?></li>
                                     <li style="border:2px solid red; padding:10px;"><?php echo  $option4 ;?></li>
                                     <li><?php echo  $option5 ;?></li>
+                                </ol> -->
+                                <ol>
+                                    <li 
+                                    <?php if($row['corr_opt_e']== 1) {echo "class='green'";} ?>
+                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
+                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 1)) {echo "class='red'";} ?>> <?php echo  $option1 ;?></li>
+                                    <li <?php if($row['corr_opt_e']== 2) {echo "class='green'";} ?>
+                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
+                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 2)) {echo "class='red'";} ?>><?php echo  $option2 ;?></li>
+                                    <li <?php if($row['corr_opt_e']== 3) {echo "class='green'";} ?>
+                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
+                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 3)) {echo "class='red'";} ?>><?php echo  $option3 ;?></li>
+                                    <li <?php if($row['corr_opt_e']== 4) {echo "class='green'";} ?>
+                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
+                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 4)) {echo "class='red'";} ?>><?php echo  $option4 ;?></li>
+                                    <li <?php if($row['corr_opt_e']== 5) {echo "class='green'";} ?>
+                                    <?php if($row['corr_opt_e']== $row['selected_op']) {echo "class='green'";} ?> 
+                                    <?php if(($row['corr_opt_e'] != $row['selected_op'] ) && ( $row['selected_op'] == 5)) {echo "class='red'";} ?>><?php echo  $option5 ;?></li>
                                 </ol>
                                 
                              

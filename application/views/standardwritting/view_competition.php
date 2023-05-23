@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <?php } ?>
-                    <?php if (!empty ($quizdata['sprize_image']) ){ ?> 
+                    <?php if (!empty ($quizdata['sprize_no']) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">2<sup>nd</sup>Prizes</h4>
@@ -212,7 +212,7 @@
                         </div>
                     </div>
                     <?php }  else { echo "Second Prizes not available"; } ?>
-                    <?php if (!empty ($quizdata['tprize_image']) ){ ?> 
+                    <?php if (!empty ($quizdata['tprize_no']) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">3<sup>nd</sup>Prizes</h4>
@@ -244,7 +244,7 @@
                         </div>
                     </div>
                     <?php }  else { echo "Third Prizes not available"; } ?>
-                    <?php if (!empty ($quizdata['cprize_image']) ){ ?> 
+                    <?php if (!empty ($quizdata['cprize_no']) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Consolation Prizes</h4>

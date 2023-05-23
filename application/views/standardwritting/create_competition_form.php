@@ -68,7 +68,7 @@
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
-                            <input type="time" class="form-control input-font" name="start_time" id="start_time" placeholder="Select Date" value="">
+                            <input type="text" class="form-control input-font timepicker" name="start_time" id="start_time" placeholder="Select Date" value="">
                             <span class="error_text"><?php echo form_error('start_time'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -81,7 +81,8 @@
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font"> End Time<sup class="text-danger">*</sup></label>
-                            <input type="time" class="form-control input-font" name="end_time" id="end_time" placeholder="Select Date" value="">
+                            <input type="text" class="form-control input-font timepicker" name="end_time" id="end_time" placeholder="Select Date" value="">
+                            
                             <span class="error_text"><?php echo form_error('end_time'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -116,9 +117,11 @@
                                     <!-- <?php foreach ($quizlavel as $lavel) { ?>
                                         <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
                                     <?php } ?> -->
-                                    <option value="eassy">Eassy</option>
-                                    <option value="poster">poster Making</option>
-                                    <option value="eassy1">Eassy 1</option>
+                                    <option value="1">Essay Writing</option>
+                                    <option value="2">Poster Making</option>
+                                    <option value="3">Case Study</option>
+                                    <option value="3">Artical writing</option>
+                                    <option value="3">Paper Writing</option>
                                 </select>
                                 <div class="invalid-feedback">
                                 This value is required
@@ -584,4 +587,12 @@
             });
             }
         });
+$(document).ready(function(){
+    $(".timepicker").click(function(){
+        $(".bootstrap-timepicker-widget .glyphicon-chevron-up").html("<i class='fa fa-chevron-up' aria-hidden='true'></i>");
+    $(".bootstrap-timepicker-widget .glyphicon-chevron-down").html("<i class='fa fa-chevron-down' aria-hidden='true'></i>");
+    });
+    $(".timepicker").timepicker();
+})
+        
 </script>
