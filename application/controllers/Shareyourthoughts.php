@@ -138,7 +138,7 @@ class Shareyourthoughts extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function important_draft_view($id){
-        $id = encryptids("D", $id);
+        $id = encryptids("D", $id); 
         $data['getData']=$this->Shareyourthoughts_model->getImportantDraftComments($id);
         $this->load->view('admin/headers/admin_header');
          $this->load->view('Shareyourthoughts/important_draft_view',$data);
@@ -549,7 +549,7 @@ public function create_discussion_form()
     } 
     $this->load->view('admin/footers/admin_footer');
 } 
-
+ 
 
     public function Manage_discussion_list()
     {
@@ -651,4 +651,57 @@ public function DeleteImageDiscussionForum(){
     }
 
     
+    public function discussion_comments_view($id)
+    {
+        $id = encryptids("D", $id); 
+        $data['getData']=$this->Shareyourthoughts_model->getDiscussionComments($id);
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('Shareyourthoughts/discussion_comments_view',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+
+
+    public function updateDiscussionComments(){
+        try {
+            $id = $this->input->post('id');
+            $formdata['status'] = $this->input->post('status'); 
+            $id = $this->Shareyourthoughts_model->updateDiscussionComments($formdata,$id);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Shareyourthoughts/discussion_comments_view", 'refresh');
+    }
+     public function deleteDiscussionComments(){
+        try {
+            $id = $this->input->post('id');
+            $id = $this->Shareyourthoughts_model->deleteDiscussionComments($id);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Deleted successfully.';
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Shareyourthoughts/discussion_comments_view", 'refresh');
+    }
 }

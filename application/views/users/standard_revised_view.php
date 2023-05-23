@@ -65,7 +65,7 @@
                             </div>
                     </div>    
              </div> <div class="col-md-12 submit_btn p-3" style="text-align: end;">
-                               <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>users/standard_under_list'">Back</a>
+                               <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>users/standard_revised_list'">Back</a>
                         </div>  
              </div>
         </div>

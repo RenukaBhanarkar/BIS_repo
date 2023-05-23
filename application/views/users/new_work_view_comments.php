@@ -10,7 +10,7 @@ background-clip: border-box;
 border: 1px solid #e3e6f0;
 border-radius: 0.35rem;
 border-top: 3px solid #2957a3!important;
-}
+} 
 </style>
 <link href="<?php echo base_url();?>assets/admin/css/jquery.dataTables.min.css" rel="stylesheet">
 <!-- Begin Page Content -->
@@ -67,7 +67,7 @@ border-top: 3px solid #2957a3!important;
                 
             </div>
             <div class="col-md-12 submit_btn p-3" style="text-align: end;">
-                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>users/important_draft_list'">Back</a>
+                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>users/new_work_list'">Back</a>
             </div>
         </div>
         

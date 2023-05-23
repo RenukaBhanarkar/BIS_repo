@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/share_your_dashboard';?>" >Share Your Thoughts</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/discussion_forum_dashboard';?>" >Discussion Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Shareyourthoughts/discussion_forum_dashboard';?>" >Discussion Forum</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Ongoing Discussion</li>
                 
             </ol>
@@ -36,7 +36,8 @@
                             <td><?= date("d-m-Y", strtotime($value['start_date']));?></td>
                             <td><?= date("d-m-Y", strtotime($value['end_date']));?></td>  
                             <td class="d-flex">
-                                <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a>
+                                <?php $id = encryptids("E", $value['id']);?>
+                                <a href="<?php echo base_url(); ?>Shareyourthoughts/discussion_comments_view/<?= $id ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a>
                             </td>
                         </tr>
                         

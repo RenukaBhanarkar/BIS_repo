@@ -15,7 +15,7 @@
 <link href="<?php echo base_url();?>assets/admin/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Begin Page Content -->
     <div class="container">
-        <!-- Content Row -->
+        <!-- Content Row --> 
       
         <div class="row mt-5"> 
            <div class="bloginfo">
