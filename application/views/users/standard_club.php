@@ -639,7 +639,7 @@ li.tab-link:hover {
 
             <div class="card image-card" style="width:100%;">
 
-              <img src="<?= base_url(); ?>assets/images/learning_new.jpeg" class="card-img-top" alt="...">
+              <img src="<?= base_url(); ?>assets/images/classroom.jpg" class="card-img-top" alt="...">
               <div class="card-body-new">
                 <p class="card-text">Classroom</p>
               </div>
@@ -771,7 +771,7 @@ li.tab-link:hover {
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 text-center my-2 pt-3">
-        <h4>Images & Gallery</h4>
+        <h4>Images & Video Gallery</h4>
       </div>
     </div>
     <div class="portfolio-menu mt-2 mb-4">

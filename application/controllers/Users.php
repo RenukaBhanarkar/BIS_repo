@@ -1301,6 +1301,12 @@ class Users extends CI_Controller
         $this->load->view('users/sitemap');
         $this->load->view('users/footers/footer');
     }
+    public function help()
+    {
+        $this->load->view('users/headers/header');
+        $this->load->view('users/help');
+        $this->load->view('users/footers/footer');
+    }
     public function terms_condition()
     {
         $data = $this->Users_model->get_legal_data('tc');
