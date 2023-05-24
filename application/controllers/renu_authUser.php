@@ -43,7 +43,7 @@
         //     //print_r($output); die;
             $userData = array();
             $output = array(
-                'status_code'=>1
+                'status_code'=>0
             );
             if(!empty($output)){ 
             if ($output['status_code'] == 1) {

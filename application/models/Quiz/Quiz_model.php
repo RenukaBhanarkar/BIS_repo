@@ -106,6 +106,13 @@ class Quiz_model extends CI_Model {
 		}
     }
     
+    public function updatePrize($prize_id,$quiz_id,$formdata)
+{
+   
+    $this->db->where('prize_id', $prize_id);
+    $this->db->where('quiz_id',$quiz_id);
+    $this->db->update('tbl_prizes', $formdata);
+}
 
 public function updateQuiz($id,$formdata)
 {
@@ -113,13 +120,7 @@ public function updateQuiz($id,$formdata)
     return $this->db->update('tbl_quiz_details', $formdata);
 }
 
-public function updatePrize($prize_id,$quiz_id,$formdata)
-{
-   
-    $this->db->where('prize_id', $prize_id);
-    $this->db->where('quiz_id',$quiz_id);
-    $this->db->update('tbl_prizes', $formdata);
-}
+
 
  public function viewQuiz($id)
     { 
@@ -459,6 +460,16 @@ public function updatePrize($prize_id,$quiz_id,$formdata)
         
         $this->db->where('id', $quiz_id);
         if ($this->db->update('tbl_quiz_details', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updatePrizeImg($quiz_id,$prize_id, $data){
+        $this->db->where('quiz_id', $quiz_id);
+        $this->db->where('prize_id',$prize_id);
+        if ($this->db->update('tbl_prizes', $data)) {
             return true;
         } else {
             return false;
