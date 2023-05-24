@@ -479,6 +479,11 @@ class Users extends CI_Controller
 
         }
     }*/
+
+    /****************************************************
+     * 
+     * correct auth user
+     */
     public function authUser()
     {
 
@@ -682,6 +687,7 @@ class Users extends CI_Controller
 
         }}
     }
+   
     
     public function logout()
     {

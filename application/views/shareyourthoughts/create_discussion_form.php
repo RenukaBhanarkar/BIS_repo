@@ -7,8 +7,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/share_your_dashboard';?>" >Share Your Thoughts</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/discussion_forum_dashboard';?>" >Discussion Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Shareyourthoughts/share_your_dashboard';?>" >Share Your Thoughts</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Shareyourthoughts/discussion_forum_dashboard';?>" >Discussion Forum</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Create New Discussion</li>
                 
             </ol>
@@ -39,10 +39,14 @@
                                 <input type="file" id="image" name="image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadImage(event)">
                                 <span class="error_text"></span>
                             </div>
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
+                            <div>
+                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                             Preview
                             </button>
 
+                                
+                            </div>
+                           
                             <div class="modal fade" id="ThumbnailModal" tabindex="-1" aria-labelledby="ThumbnailModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width:700px;">
                                     <div class="modal-content">
@@ -123,7 +127,7 @@ CKEDITOR.replace( 'description' );
         {
             if ($("#title").next(".validation").length == 0) 
             {
-                $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Title</div>");
+                $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value required.</div>");
             }
             if (!focusSet) { $("#title").focus(); }
             allfields = false;
@@ -139,7 +143,7 @@ CKEDITOR.replace( 'description' );
         {
             if ($("#start_date").next(".validation").length == 0) 
             {
-                $("#start_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select start date</div>");
+                $("#start_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value required.</div>");
             }
             if (!focusSet) { $("#start_date").focus(); }
             allfields = false;
@@ -154,7 +158,7 @@ CKEDITOR.replace( 'description' );
         {
             if ($("#end_date").next(".validation").length == 0) 
             {
-                $("#end_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select end date</div>");
+                $("#end_date").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value required.</div>");
             }
             if (!focusSet) { $("#end_date").focus(); }
             allfields = false;
@@ -170,7 +174,7 @@ CKEDITOR.replace( 'description' );
         {
             if ($("#description").next(".validation").length == 0)
             {
-                $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter description </div>");
+                $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value required. </div>");
             }
             if (!focusSet) { $("#description").focus(); }
             allfields = false;
@@ -185,7 +189,7 @@ CKEDITOR.replace( 'description' );
         {
             if ($("#image").next(".validation").length == 0) // only add if not added
             {
-                $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select image Image</div>");
+                $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value required.</div>");
             }
             if (!focusSet) { $("#image").focus(); }
             allfields = false;

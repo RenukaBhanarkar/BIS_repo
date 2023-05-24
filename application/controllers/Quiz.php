@@ -302,7 +302,7 @@ class Quiz extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }*/
 
-    public function editquiz($id)
+    public function oldeditquiz($id)
     {
        $this->load->view('admin/headers/admin_header');
       
@@ -581,6 +581,465 @@ class Quiz extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
 
+    public function editquiz($id)
+    {
+        
+      
+        $quizlavel = $this->Quiz_model->getQuizLevel();
+        $getAvailability = $this->Quiz_model->getAvailability();
+        $getQuizLanguage = $this->Quiz_model->getQuizLanguage(); 
+        //$getAllQb = $this->Quiz_model->getAllQb();       
+            
+        //quize Data 
+        $getAllRegions = array();
+        $getAllBranches = array();
+        $data=array();
+        $quiz = $this->Quiz_model->getQuiz($id);
+        
+        if($quiz['quiz_level_id'] == 2){
+          
+            $getAllRegions = $this->Quiz_model->getAllRegions(); 
+        }
+        if($quiz['quiz_level_id'] == 3){
+           
+            $getAllBranches = $this->Quiz_model->getAllBranches(); 
+        }
+        $data['quizlavel']=$quizlavel;
+        $data['getAvailability']=$getAvailability;
+        $data['getQuizLanguage']=$getQuizLanguage;
+        $data['getAllRegions']=$getAllRegions;
+        $data['getAllBranches']=$getAllBranches;
+        $data['quizdata']=$quiz; 
+        //End Quize Data
+
+        //Get First Prize data
+        $prize_id=1;
+        $prize1 = $this->Quiz_model->getPrizeId($prize_id,$id);         
+        $data['firstprize']=$prize1;
+         //get Second Prize Data
+         $prize_id=2;
+         $prize2 = $this->Quiz_model->getPrizeId($prize_id,$id); 
+         $data['secondprize']=$prize2;
+         //get Third Prize Data
+         $prize_id=3;
+         $prize3 = $this->Quiz_model->getPrizeId($prize_id,$id); 
+         $data['thirdprize']=$prize3;
+        //get Fourth Prize Data
+        $prize_id=4;
+        $prize4 = $this->Quiz_model->getPrizeId($prize_id,$id); 
+        $data['fourthprize']=$prize4; 
+
+        if(empty($prize1['prize_img'])){
+            $exist_fp = 0;
+        }else{
+            $exist_fp = 1;
+        }
+        $data['exist_fp']=$exist_fp; 
+
+
+        if(empty($prize2['prize_img'])){
+            $exist_sp = 0;
+        }else{
+            $exist_sp = 1;
+        }
+        $data['exist_sp']=$exist_sp; 
+
+
+
+        if(empty($prize3['prize_img'])){
+            $exist_tp = 0;
+        }else{
+            $exist_tp = 1;
+        }
+        $data['exist_tp']=$exist_tp; 
+
+
+        if(empty($prize4['prize_img'])){
+            $exist_cp = 0;
+        }else{
+            $exist_cp = 1;
+        }
+        $data['exist_cp']=$exist_cp; 
+        
+         
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('quiz/edit_quiz',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function editquizsubmit($id){
+        $quizlavel = $this->Quiz_model->getQuizLevel();
+        $getAvailability = $this->Quiz_model->getAvailability();
+        $getQuizLanguage = $this->Quiz_model->getQuizLanguage(); 
+        //$getAllQb = $this->Quiz_model->getAllQb();       
+            
+        //quize Data 
+        $getAllRegions = array();
+        $getAllBranches = array();
+        $data=array();
+        $quiz = $this->Quiz_model->getQuiz($id);
+        
+        if($quiz['quiz_level_id'] == 2){
+          
+            $getAllRegions = $this->Quiz_model->getAllRegions(); 
+        }
+        if($quiz['quiz_level_id'] == 3){
+           
+            $getAllBranches = $this->Quiz_model->getAllBranches(); 
+        }
+        $data['quizlavel']=$quizlavel;
+        $data['getAvailability']=$getAvailability;
+        $data['getQuizLanguage']=$getQuizLanguage;
+        $data['getAllRegions']=$getAllRegions;
+        $data['getAllBranches']=$getAllBranches;
+        $data['quizdata']=$quiz; 
+        //End Quize Data
+
+        //Get First Prize data
+        $prize_id=1;
+        $prize1 = $this->Quiz_model->getPrizeId($prize_id,$id);         
+        $data['firstprize']=$prize1;
+         //get Second Prize Data
+         $prize_id=2;
+         $prize2 = $this->Quiz_model->getPrizeId($prize_id,$id); 
+         $data['secondprize']=$prize2;
+         //get Third Prize Data
+         $prize_id=3;
+         $prize3 = $this->Quiz_model->getPrizeId($prize_id,$id); 
+         $data['thirdprize']=$prize3;
+        //get Fourth Prize Data
+        $prize_id=4;
+        $prize4 = $this->Quiz_model->getPrizeId($prize_id,$id); 
+        $data['fourthprize']=$prize4; 
+       
+
+
+           
+            if ($this->form_validation->run('quiz_form_validation_rule') == FALSE) 
+            {
+                $this->load->view('quiz/editquiz/'.$id,$data);
+            } 
+            else 
+            {
+                $banner_imgsize=$_FILES['banner_img']['size'];
+
+               
+                $fp_img = $this->input->post('fp_img');
+
+                if($fp_img == 1){
+                    if(!file_exists($_FILES['fprize_img']['tmp_name']) || !is_uploaded_file($_FILES['fprize_img']['tmp_name'])) {
+                        $fprize_imgsize = 0;
+                    }else{
+                        $fprize_imgsize = 1;
+                    }
+                }else{
+                    $fprize_imgsize = 0;
+                }
+                
+                $sp_img = $this->input->post('sp_img');
+
+                if($sp_img == 1){
+                    if(!file_exists($_FILES['sprize_img']['tmp_name']) || !is_uploaded_file($_FILES['sprize_img']['tmp_name'])) {
+                        $sprize_imgsize = 0;
+                    }else{
+                        $sprize_imgsize = 1;
+                    }
+                }else{
+                    $sprize_imgsize = 0;
+                }
+                $tp_img = $this->input->post('tp_img');
+
+                if($tp_img == 1){
+                    if(!file_exists($_FILES['tprize_img']['tmp_name']) || !is_uploaded_file($_FILES['tprize_img']['tmp_name'])) {
+                        $tprize_imgsize = 0;
+                    }else{
+                        $tprize_imgsize = 1;
+                    }
+                }else{
+                    $tprize_imgsize = 0;
+                }
+                $cp_img = $this->input->post('cp_img');
+
+                if($cp_img == 1){
+                    if(!file_exists($_FILES['cprize_img']['tmp_name']) || !is_uploaded_file($_FILES['cprize_img']['tmp_name'])) {
+                        $cprize_imgsize = 0;
+                    }else{
+                        $cprize_imgsize = 1;
+                    }
+                }else{
+                    $cprize_imgsize = 0;
+                }
+                
+    
+                if ($banner_imgsize > 0 ) 
+                {
+                    $bannerpath = 'uploads/quiz_img/'; 
+                    $banner_imglocation = $bannerpath . time() .'quiz_banner_img'. $_FILES['banner_img']['name']; 
+    
+                    move_uploaded_file($_FILES['banner_img']['tmp_name'], $banner_imglocation);
+                }
+                else
+                {
+                    $banner_imglocation=$this->input->post('lastbanner');
+                }
+    
+                $prizepath = 'uploads/prize_img/';
+                if ($fprize_imgsize > 0) 
+                {
+                    $fprize_imglocation = $prizepath . time() .'prize_img'. $_FILES['fprize_img']['name']; 
+    
+                    move_uploaded_file($_FILES['fprize_img']['tmp_name'], $fprize_imglocation);                     
+                }
+                else
+                {
+                    $fprize_imglocation=$this->input->post('lastfprize_img');
+                }
+    
+                if ($sprize_imgsize > 0) 
+                {
+                    $sprize_imglocation = $prizepath . time()  .'prize_img'.$_FILES['sprize_img']['name'];
+    
+                    move_uploaded_file($_FILES['sprize_img']['tmp_name'], $sprize_imglocation);
+                } 
+                else
+                {
+                    $sprize_imglocation=$this->input->post('lastsprize_img');
+                }
+              
+                if ($tprize_imgsize > 0) 
+                {
+                    $tprize_imglocation = $prizepath . time() .'prize_img'. $_FILES['tprize_img']['name']; 
+                    move_uploaded_file($_FILES['tprize_img']['tmp_name'], $tprize_imglocation);
+                } 
+                else
+                {
+                    $tprize_imglocation=$this->input->post('lasttprize_img');
+                }
+    
+                if ($cprize_imgsize > 0) 
+                {
+                    $cprize_imglocation = $prizepath . time() .'prize_img'. $_FILES['cprize_img']['name']; 
+                    move_uploaded_file($_FILES['cprize_img']['tmp_name'], $cprize_imglocation);
+                } 
+                else
+                {
+                    $cprize_imglocation=$this->input->post('lastcprize_img');
+                }
+                                 
+                $formdata = array(); 
+                $formdata['title'] = $this->input->post('title');
+                $formdata['title_hindi'] = $this->input->post('title_hindi');
+                $formdata['description'] = $this->input->post('description');
+                $formdata['terms_conditions'] = $this->input->post('terms_conditions');
+                $formdata['duration'] = $this->input->post('duration');
+                $formdata['total_question'] = $this->input->post('total_question');
+                $formdata['total_mark'] = $this->input->post('total_mark');
+                $formdata['start_date'] = $this->input->post('start_date');
+                $formdata['start_time'] = $this->input->post('start_time');
+                $formdata['end_date'] = $this->input->post('end_date');
+                $formdata['end_time'] = $this->input->post('end_time');
+                $formdata['quiz_level_id'] = $this->input->post('quiz_level_id');
+                if($this->input->post('quiz_level_id')== 2){
+                    $formdata['region_id'] = $this->input->post('region_id');
+                }  else{
+                    $formdata['region_id'] = 0;
+                }      
+                if($this->input->post('quiz_level_id')== 3){
+                    $formdata['branch_id'] = $this->input->post('branch_id');
+                }  else{
+                    $formdata['branch_id'] = 0;
+                }       
+                $formdata['switching_type'] = $this->input->post('switching_type');
+               
+                $formdata['banner_img'] = $banner_imglocation;
+                $formdata['language_id'] = $this->input->post('language_id');
+                $formdata['availability_id'] = $this->input->post('availability_id');
+              
+                $formdata['qbquestion'] = $this->input->post('qbquestion');
+                $formdata['status'] = 10;
+                $que_bank_id = $this->input->post('que_bank_id');
+                $formdata['que_bank_id']  = $que_bank_id;
+    
+                $old_que_bank_id= $this->input->post('old_que_bank_id');
+                
+    
+                $encAdminId = $this->session->userdata('admin_id');
+                $modify_by = encryptids("D", $encAdminId);
+                $formdata['modify_by'] = $modify_by;
+                $formdata['modify_on'] = date('Y-m-d : h:i:s');
+    
+                $quiz_id = $this->Quiz_model->updateQuiz($id,$formdata);
+                if($old_que_bank_id != $que_bank_id){
+                    $dbArray = array(
+                        'quiz_linked_id' => $id
+                    );
+                   
+                    $this->Que_bank_model->updateQueBankbyQuizid($que_bank_id,$dbArray);
+                    $dbArray = array(
+                        'quiz_linked_id' => 0
+                    );
+                    $this->Que_bank_model->updateQueBankbyQuizid($old_que_bank_id,$dbArray);
+                }    
+                if ($quiz_id) 
+                { 
+                    $fprize_id = 1;
+                    $formdata1['no_of_prize'] = $this->input->post('fprize');
+                    $formdata1['prize_details'] = $this->input->post('fdetails'); 
+                    $formdata1['prize_img'] = $fprize_imglocation;
+                    $this->Quiz_model->updatePrize($fprize_id,$id,$formdata1);
+    
+                    $sprize_id = 2;
+                    $sprize = $this->input->post('sprize');
+                    if(!empty($prize2)){
+                        $old_no_sec_prize = $prize2['no_of_prize'];
+                    }else{
+                        $old_no_sec_prize = 0;
+                    }
+                   
+                    if($sprize != 0){
+                        if($old_no_sec_prize != 0){
+                            $formdata2['no_of_prize'] = $this->input->post('sprize');               
+                            $formdata2['prize_details'] = $this->input->post('sdetails');
+                            $formdata2['prize_img'] = $sprize_imglocation;                         
+                            $this->Quiz_model->updatePrize($sprize_id,$id,$formdata2);
+                        }else{
+                            $formdata2['quiz_id'] = $id;
+                            $formdata2['prize_id'] = 2;                        
+                            $formdata2['no_of_prize'] = $this->input->post('sprize');               
+                            $formdata2['prize_details'] = $this->input->post('sdetails');
+                            $formdata2['prize_img'] = $sprize_imglocation;                            
+                            $this->Quiz_model->insertPrize($formdata2);
+                        }
+                        
+                    }
+                   
+    
+                    $tprize_id = 3;
+                    $tprize = $this->input->post('tprize');
+                    if(!empty($prize3)){
+                        $old_no_third_prize = $prize3['no_of_prize'];
+                    }else{
+                        $old_no_third_prize = 0;
+                    }
+    
+                    if( $tprize != 0){
+                        if($old_no_third_prize != 0){
+                            $formdata3['no_of_prize'] = $this->input->post('tprize');
+                            $formdata3['prize_details'] = $this->input->post('tdetails');
+                            $formdata3['prize_img'] =$tprize_imglocation;
+                            $this->Quiz_model->updatePrize($tprize_id,$id,$formdata3);
+                        }else{
+                            $formdata3['quiz_id'] = $id;
+                            $formdata3['prize_id'] = 3;  
+                            $formdata3['no_of_prize'] = $this->input->post('tprize');
+                            $formdata3['prize_details'] = $this->input->post('tdetails');
+                            $formdata3['prize_img'] =$tprize_imglocation;
+                            $this->Quiz_model->insertPrize($formdata3);
+                        }
+                        
+                    }              
+    
+                    $cprize_id = 4;
+                    $cprize = $this->input->post('cprize');
+                    if(!empty($prize4)){
+                        $old_no_fourth_prize = $prize3['no_of_prize'];
+                    }else{
+                        $old_no_fourth_prize = 0;
+                    }
+                    if( $cprize != 0){
+                        if($old_no_fourth_prize != 0){
+                            $formdata4['no_of_prize'] = $this->input->post('cprize');
+                            $formdata4['prize_details'] = $this->input->post('cdetails');
+                            $formdata4['prize_img'] = $cprize_imglocation;
+                            $this->Quiz_model->updatePrize($cprize_id,$id,$formdata4); 
+                        }else{
+                            $formdata4['quiz_id'] = $id;
+                            $formdata4['prize_id'] = 4;  
+                            $formdata4['no_of_prize'] = $this->input->post('cprize');
+                            $formdata4['prize_details'] = $this->input->post('cdetails');
+                            $formdata4['prize_img'] = $cprize_imglocation;
+                            $this->Quiz_model->insertPrize($formdata4);
+                        }
+                        
+                    }    
+    
+                    $this->session->set_flashdata('MSG', ShowAlert("Record Update Successfully", "SS"));
+                    redirect(base_url() . "quiz/quiz_list", 'refresh');
+                } 
+                else
+                {
+                    $this->session->set_flashdata('MSG', ShowAlert("Failed to quiz Updation  ,Please try again", "DD"));
+                    redirect(base_url() . "quiz/editquiz/".$id, 'refresh');
+                }
+            }     
+        
+    }
+    //ajax delete banner 
+    public function deleteBanner(){
+        try {
+            $quiz_id = $this->input->post('id');    
+            $img_name = $this->input->post('img_name');         
+         
+
+            $data = array(
+                'banner_img' => "",               
+                'modify_on' => GetCurrentDateTime('Y-m-d h:i:s'),
+                'modify_by' => encryptids("D", $_SESSION['admin_type']),
+            );
+
+            $id = $this->Quiz_model->updateDataQuiz($quiz_id, $data);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Banner deleted successfully.';
+                if($img_name){
+                    @unlink($img_name);
+                }
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    }
+    public function deletePrizeImg(){
+        try {
+            $quiz_id = $this->input->post('quiz_id');    
+            $img_name = $this->input->post('img_name');
+           
+            $prize_id = $this->input->post('prize_id'); 
+            $data = array(
+                'prize_img' => "",               
+                'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
+                'modified_by' => encryptids("D", $_SESSION['admin_type']),
+            );
+            $id = $this->Quiz_model->updatePrizeImg($quiz_id,$prize_id, $data);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Banner deleted successfully.';
+                if($img_name){
+                    @unlink($img_name);
+                }
+    
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    }
     public function getAllBranches(){
         $level_id = $this->input->post('id');
     

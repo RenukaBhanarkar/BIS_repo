@@ -3,7 +3,7 @@
 position: relative;
 display: flex;
 flex-direction: column;
-min-width: 0;
+min-width: 0; 
 word-wrap: break-word;
 background-color: #fff;
 background-clip: border-box;

@@ -13,7 +13,7 @@ class Shareyourthoughts_model extends CI_Model
         $result = array();
         $query = $this->db->get('tbl_item_proposal'); 
         if($query->num_rows() > 0){
-            $res = $query->result_array();
+            $res = $query->result_array(); 
             foreach ($res as $row){
                 array_push($result,$row);
             }
@@ -183,8 +183,11 @@ public function StandardRevisedData()
     }
     public function ManageDiscussionList()
     {
+
+         $this->db->select('tbl_discussion_forum.*,tbl_mst_status.status_name');   
         $this->db->where_not_in('status', 0);
-        return $data = $this->db->get('tbl_discussion_forum')->result_array(); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_discussion_forum.status'); 
+        return $this->db->get('tbl_discussion_forum')->result_array(); 
     }
     public function insertDiscussionForumData($formdata)
     {
@@ -292,6 +295,26 @@ public function StandardRevisedData()
         $this->db->where('pk_is_id',$id); 
         $query= $this->db->get();
         return $query->num_rows();
+    }
+
+
+    public function getDiscussionComments($id)
+    { 
+        $this->db->select('tbl_discussion_forum_comments.*,tbl_users.user_name, tbl_users.email, tbl_users.user_mobile'); 
+        $this->db->where('forum_id',$id); 
+        $this->db->join('tbl_users','tbl_users.user_id = tbl_discussion_forum_comments.admin_id'); 
+        $this->db->order_by('created_on', 'desc'); 
+        return $this->db->get('tbl_discussion_forum_comments')->result_array(); 
+    }
+    public function updateDiscussionComments($formdata,$id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_discussion_forum_comments', $formdata);
+    }
+    public function deleteDiscussionComments($id)
+    {
+        $this->db->where('id', $id);
+         if ($this->db->delete('tbl_discussion_forum_comments')) { return true; } else { return false; }
     }
     
      

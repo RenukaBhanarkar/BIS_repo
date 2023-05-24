@@ -323,7 +323,7 @@ margin: 0 1rem 0 0;
             {
                 var oldlikes=$("#oldlikes").val();
                 var likes=msg.data.likes;
-                var newlikes=parseInt(oldlikes)+parseInt(likes);
+                var newlikes=parseInt(oldlikes)+1;
                 $("#newlikes").text(newlikes);
                 Checklike(id)
             }

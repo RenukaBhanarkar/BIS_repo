@@ -72,7 +72,7 @@ color: red;
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Mobile Number<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="contact_no" id="contact_no" placeholder="Enter Mobile Number" > 
+                                <input type="text" class="form-control input-font" name="contact_no" id="contact_no" placeholder="Enter Mobile Number"oninput="this.value = this.value.replace(/[^0-9]/, '')" maxlength="10" minlength="10" > 
                                 
                             </div>
                             <div class="mb-2 col-md-4">
@@ -303,6 +303,11 @@ var loadFileThumbnail = function(event)
                     } else {
                         $("#contact_no").next(".validation").remove(); // remove it
                     }
+
+                    
+
+
+
 
                     var image = $("#image").val();
                     if (image == "" || image== null) {
