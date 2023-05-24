@@ -40,7 +40,7 @@ class Standardswritting extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function update_status(){
-        $data['id']=$this->input->post('id');
+        $data['comp_id']=$this->input->post('id');
         $data['status']=$this->input->post('status');
         $result=$this->Miscellaneous_competition->update_status($data);
         if($result){
@@ -50,6 +50,40 @@ class Standardswritting extends CI_Controller
         }
 
     }
+    public function delete_comp(){
+        try {
+            $comp_id = $this->input->post('id');    
+            $img_name = $this->input->post('img_name');
+          // echo $img_name;
+           // $prize_id = $this->input->post('prize_id'); 
+            $data = array(
+                'comp_id' => $comp_id,            
+               
+            );
+            //print_r($data); die;
+            $id = $this->Miscellaneous_competition->delete_comp($data);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Competition deleted successfully.';
+                if($img_name){
+                    @unlink($img_name);
+                }
+    
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    }
+    
     public function create_competition_form()
     {
         $this->load->model('Quiz/Quiz_model');
@@ -537,8 +571,17 @@ if($id){
     }
     public function delete($id){
       //  echo $id; die;
-        $res=$this->Miscellaneous_competition->delete_comp($id);
+      $data['comp_id']=trim($id);
+      $res1=$this->Miscellaneous_competition->viewCompetition2($id);
+      $img1=$res1['thumbnail'];
+      $img2=$res1['fprize_image'];
+     // print_r($res); die;
+    // echo $img1; die;
+        $res=$this->Miscellaneous_competition->delete_comp($data);
+        
         if($res){
+            @unlink($img1);
+            @unlink($img2);
             return true;
         }else{
             return false;

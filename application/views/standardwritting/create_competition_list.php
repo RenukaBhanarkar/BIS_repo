@@ -185,8 +185,8 @@
                                 url:'<?php echo base_url(); ?>Standardswritting/delete/'+id,
                                 success:function(res){
                                     if (res) {
-                                            alert("success");
-//location.reload();
+                                            // alert("success");
+location.reload();
                                         } else {
                                             alert("error");
                                         }
