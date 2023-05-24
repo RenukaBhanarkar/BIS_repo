@@ -40,7 +40,7 @@ class Standardswritting extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function update_status(){
-        $data['id']=$this->input->post('id');
+        $data['comp_id']=$this->input->post('id');
         $data['status']=$this->input->post('status');
         $result=$this->Miscellaneous_competition->update_status($data);
         if($result){

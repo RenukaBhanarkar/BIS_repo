@@ -23,7 +23,7 @@
                             <div>
 
                                 <!-- <p><?= $quizdata['quiz_id']; ?></p> -->
-                                <p>Dedicated id</p>
+                                <p><?= $quizdata['comp_id']; ?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -391,7 +391,7 @@
                                 },
                                 success: function(res) {
                                 if (res) {
-                                    location.reload();
+                                   // location.reload();
                                 } else {
                                     alert("error");
                                 }
