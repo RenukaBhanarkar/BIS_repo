@@ -92,8 +92,9 @@
                                  <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <button data-id="<?php echo $list['comp_id']; ?>" img_name="<?php echo $list['thumbnail']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
                                  <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
-                                 
-                                 <button data-id="<?php echo $list['id']; ?>" class="btn btn-success btn-sm mr-2 publish" >Publish</button>
+                                 <?php if(!($list['status']==4)){  ?>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2 publish" >Publish</button>
+                                 <?php } ?>
                                  <?php   }else if($list['status']==1){ ?>
                                       
                                         <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-info btn-sm mr-2 send_for_approval" >Sent for Approval</button>

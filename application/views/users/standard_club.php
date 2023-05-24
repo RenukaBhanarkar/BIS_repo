@@ -399,7 +399,7 @@ li.tab-link:hover {
                 <div class="row">
                         <?php if (empty($competition)) { ?>
                               <div class="alert alert-danger">
-                                <strong>Sorry!</strong> Quizes are not available.
+                                <strong>Sorry!</strong> Competitions are not available.
                               </div>
                     <?php  } else {  ?>
                       <div class="row">
@@ -788,7 +788,7 @@ li.tab-link:hover {
         foreach ($images as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
             <!-- <a href="<?php echo base_url() . 'uploads/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light"> -->
-              <img class="img-fluid" id="gal_img" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
+              <img class="img-fluid" id="gal_img" title="<?php echo $list['title']; ?>" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
             <!-- </a> -->
           </div>
         <?php } ?>
@@ -807,7 +807,7 @@ li.tab-link:hover {
             <!-- <a href="<?php echo base_url() . 'uploads/' . $list['video']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
               <video class="img-fluid" src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
             </a> -->
-            <video class="img-fluid" controls>
+            <video class="img-fluid" title="<?php echo $list['title']; ?>" controls>
               <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4" >
             </video>
           </div>

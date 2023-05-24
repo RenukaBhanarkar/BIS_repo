@@ -63,7 +63,7 @@
 
                             <!-- <button href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</button> -->
                             <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                                 <button data-id="<?php echo $list['id']; ?>" class="btn btn-info btn-sm mr-2 restore">Restore</button>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-info btn-sm mr-2 restore">Restore</button>
                             </td>
                             </tr>
                             <?php $i++; } } ?>
