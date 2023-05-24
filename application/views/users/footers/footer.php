@@ -31,9 +31,9 @@ i.fa.fa-chevron-down {
                             </div>
                             <ul id="toggle_show">
                                 <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Help & Accessibility</a></li>
                                 <li><a href="#">Sitemap</a></li>
-                                <li><a href="#">Accessibility</a></li>
+                                <!-- <li><a href="#">Accessibility</a></li> -->
                             </ul>
                         </div>
                         <div class="col-sm-6 col-lg-6 footer_text">

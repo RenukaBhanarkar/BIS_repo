@@ -231,8 +231,8 @@ li.tab-link:hover {
             <li class="tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%"><h3 class="tabl_title">Quiz</h3></a></li>
             <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard-writing.png" width="40%" height="77%"><h3 class="tabl_title">Standard Writing</h3></a></li>
             <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay-writing.png" width="40%" height="77%"><h3 class="tabl_title">Essay Writing</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/more_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster.jpg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/view-more.jpg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
  </ul>
  <div class="tab-content">
        <div class="tab-pane fade active show" id="tab1" role="tabpanel">
