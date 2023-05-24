@@ -197,7 +197,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link active" href="https://services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="_blank" aria-current="page" onclick="publish_pop()" style="color: white;">Published Standards</a>
+                                     <a class="nav-link active" href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="_blank" aria-current="page" onclick="publish_pop()" style="color: white;">Published Standards</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" onclick="know_pop()" style="color: white;">Know Your Standards</a>
