@@ -84,22 +84,22 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                             <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                           <?php  if($list['status']==5){ ?>
-                            <button data-id="<?php echo $list['id']; ?>" class="btn btn-warning btn-sm mr-2 unpublish" >Unpublish</button>
+                            <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-warning btn-sm mr-2 unpublish" >Unpublish</button>
                           <?php  }else if(!(($list['status']==5) || ($list['status']==2) || ($list['status']==1))){ ?>
                               
                        
 
                                  <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
-                                 <button data-id="<?php echo $list['id']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
-                                 <button data-id="<?php echo $list['id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" img_name="<?php echo $list['thumbnail']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
                                  
                                  <button data-id="<?php echo $list['id']; ?>" class="btn btn-success btn-sm mr-2 publish" >Publish</button>
                                  <?php   }else if($list['status']==1){ ?>
                                       
-                                        <button data-id="<?php echo $list['id']; ?>" class="btn btn-info btn-sm mr-2 send_for_approval" >Sent for Approval</button>
-                                        <button data-id="<?php echo $list['id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
-                                        <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
-                                 <button data-id="<?php echo $list['id']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
+                                        <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-info btn-sm mr-2 send_for_approval" >Sent for Approval</button>
+                                        <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
+                                        <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" img_name="<?php echo $list['thumbnail']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
                                    
                                 <?php }                            
                             ?>
@@ -321,6 +321,44 @@ $('#example').on('click','.send_for_approval', function(){
                                 data: {
                                 "id": id,
                                 "status": 2
+                                },
+                                success: function(res) {
+                                if (res) {
+                                    location.reload();
+                                } else {
+                                    alert("error");
+                                }
+                                },
+                                error: function(xhr, status, error) {
+                                console.log(error);
+                                }
+                            });
+                                            
+                } else if (result.isDenied) {
+                    // Swal.fire('Changes are not saved', '', 'info')
+                }
+                })
+});
+$('#example').on('click','.delete', function(){
+    id =$(this).attr('data-id');
+    img_name =$(this).attr('img_name');
+    Swal.fire({
+                title: 'Are you sure you want to Delete?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Delete',
+                denyButtonText: `Close`,
+                }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {                       
+                    jQuery.ajax({
+                                type: "POST",
+                                url: '<?php echo base_url(); ?>Standardswritting/delete_comp',
+                                 dataType: 'json',
+                                data: {
+                                "id": id,
+                                "img_name":img_name
+                               
                                 },
                                 success: function(res) {
                                 if (res) {
