@@ -78,7 +78,7 @@ color: red;
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Mobile Number<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="contact_no" id="contact_no" placeholder="Enter Mobile Number" >
+                            <input type="text" class="form-control input-font" name="contact_no" id="contact_no" placeholder="Enter Mobile Number" oninput="this.value = this.value.replace(/[^0-9]/, '')" maxlength="10" minlength="10">
                             <span class="error_text"><?php echo form_error('contact_no');?></span>
                             
                         </div>

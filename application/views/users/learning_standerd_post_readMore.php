@@ -292,7 +292,7 @@ font-size: 14px;
             {
                 var oldlikes=$("#oldlikes").val();
                 var likes=msg.data.likes;
-                var newlikes=parseInt(oldlikes)+parseInt(likes);
+                var newlikes=parseInt(oldlikes)+1;
                 $("#newlikes").text(newlikes);
                 Checkleasrninglike(id)
             }

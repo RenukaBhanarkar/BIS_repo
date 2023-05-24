@@ -42,7 +42,7 @@
                             <td><?= date("d-m-Y", strtotime($value['start_date']));?></td>
                             <td><?= date("d-m-Y", strtotime($value['end_date']));?></td>
                             <td><?= date("d-m-Y", strtotime($value['created_on']));?></td>
-                            <td><?= $value['status']?></td> 
+                            <td><?= $value['status_name']?></td> 
                             <td><?= $value['remark']?></td>
                             <?php $id = encryptids("E", $value['id']);?> 
                             <td class="d-flex">
