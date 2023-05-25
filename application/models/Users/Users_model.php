@@ -237,7 +237,7 @@
                 $res = $query->result_array();
                 foreach($res as $row){
                     if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
-                        if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                        if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
                             array_push($rs,$row);
                         }
                     }
