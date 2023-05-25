@@ -20,9 +20,9 @@ class Miscellaneous_competition extends CI_Model {
         $result=$query->result_array();
         return $result[0];
     }
-    public function delete_comp($id){
-        $this->db->delete('tbl_mst_competition_detail',['comp_id'=>$id]);
-        $this->db->delete('tbl_mst_competition_prize',['competitionn_id'=>$id]);
+    public function delete_comp($data){
+        $this->db->delete('tbl_mst_competition_detail',['comp_id'=>$data['comp_id']]);
+        $this->db->delete('tbl_mst_competition_prize',['competitionn_id'=>$data['comp_id']]);
         return true;
     }
 
@@ -45,7 +45,7 @@ class Miscellaneous_competition extends CI_Model {
     }
     public function update_status($data){
 
-        if($this->db->where('id',$data['id'])){
+        if($this->db->where('comp_id',$data['comp_id'])){
             $this->db->update('tbl_mst_competition_detail',$data);
             return true;
         }else{
@@ -77,6 +77,15 @@ class Miscellaneous_competition extends CI_Model {
         return $this->db->get('tbl_mst_competition_detail')->result_array();
     }
     public function viewCompetition($id){
+        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*,tbl_mst_quiz_level.title'); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status','left'); 
+        $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.comp_id'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id=tbl_mst_competition_detail.comp_level');
+        $this->db->where('tbl_mst_competition_detail.id',$id);
+        $result= $this->db->get('tbl_mst_competition_detail')->result_array();
+        return $result['0'];
+    }
+    public function viewCompetition2($id){
         $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*,tbl_mst_quiz_level.title'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status','left'); 
         $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.comp_id'); 

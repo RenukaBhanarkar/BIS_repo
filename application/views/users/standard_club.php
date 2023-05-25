@@ -231,8 +231,8 @@ li.tab-link:hover {
             <li class="tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%"><h3 class="tabl_title">Quiz</h3></a></li>
             <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard-writing.png" width="40%" height="77%"><h3 class="tabl_title">Standard Writing</h3></a></li>
             <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay-writing.png" width="40%" height="77%"><h3 class="tabl_title">Essay Writing</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
-            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/more_icon.jpeg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster.jpg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
+            <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/view-more.jpg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
  </ul>
  <div class="tab-content">
        <div class="tab-pane fade active show" id="tab1" role="tabpanel">
@@ -399,7 +399,7 @@ li.tab-link:hover {
                 <div class="row">
                         <?php if (empty($competition)) { ?>
                               <div class="alert alert-danger">
-                                <strong>Sorry!</strong> Quizes are not available.
+                                <strong>Sorry!</strong> Competitions are not available.
                               </div>
                     <?php  } else {  ?>
                       <div class="row">
@@ -639,7 +639,7 @@ li.tab-link:hover {
 
             <div class="card image-card" style="width:100%;">
 
-              <img src="<?= base_url(); ?>assets/images/learning_new.jpeg" class="card-img-top" alt="...">
+              <img src="<?= base_url(); ?>assets/images/classroom.jpg" class="card-img-top" alt="...">
               <div class="card-body-new">
                 <p class="card-text">Classroom</p>
               </div>
@@ -771,7 +771,7 @@ li.tab-link:hover {
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 text-center my-2 pt-3">
-        <h4>Images & Gallery</h4>
+        <h4>Images & Video Gallery</h4>
       </div>
     </div>
     <div class="portfolio-menu mt-2 mb-4">
@@ -788,7 +788,7 @@ li.tab-link:hover {
         foreach ($images as $list) { ?>
           <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
             <!-- <a href="<?php echo base_url() . 'uploads/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light"> -->
-              <img class="img-fluid" id="gal_img" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
+              <img class="img-fluid" id="gal_img" title="<?php echo $list['title']; ?>" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
             <!-- </a> -->
           </div>
         <?php } ?>
@@ -807,7 +807,7 @@ li.tab-link:hover {
             <!-- <a href="<?php echo base_url() . 'uploads/' . $list['video']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
               <video class="img-fluid" src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
             </a> -->
-            <video class="img-fluid" controls>
+            <video class="img-fluid" title="<?php echo $list['title']; ?>" controls>
               <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4" >
             </video>
           </div>

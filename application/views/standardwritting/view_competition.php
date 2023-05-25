@@ -23,7 +23,7 @@
                             <div>
 
                                 <!-- <p><?= $quizdata['quiz_id']; ?></p> -->
-                                <p>Dedicated id</p>
+                                <p><?= $quizdata['comp_id']; ?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -300,7 +300,7 @@
                     <a class="btn btn-primary btn-sm ml-2 text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/manage_competition_list/'">Back</a>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -316,32 +316,37 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Modal -->
             </div>
         </div>
         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
-            <div class="col-12 mt-3">
-                <form name="quiz_reg" action="<?= base_url() . 'Admin/updateQuizStatus/' . $quizdata['id'] ?>" method="post" enctype="multipart/form-data">
-                    <div class="row" id="remarkdiv">
-                        <div class="mb-2 col-md-8">
-                            <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control input-font" placeholder="Enter Remark" name="remark" id="remark"><?= set_value('terms_conditions'); ?></textarea>
-                            <span class="error_text"><?= form_error('terms_conditions'); ?></span>
-                            <input type="hidden" name="status_id" value="3" id="status_id">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Reject Reason</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Reject Reason:</label>
+                                <textarea class="form-control" id="reason" required></textarea>
+                                <span class="text-danger" id="err_reason"></span>
+                            </div>
+                            
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary submit">Submit</button>
+                        </div>
                         </div>
                     </div>
-            </div>
-            <?php if( $quizdata['status']==2){?>
-            <div class="col-md-12 submit_btn p-3">
-                <!-- <a id="approve" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval">Approval</a> -->
-                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve">
-                <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
-                <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
-            </div>
-            <?php } ?>
-            </form>
+                    </div>
 
 
 <?php } ?>
@@ -351,11 +356,11 @@
 </div>
 <!-- <?php echo (encryptids("D", $_SESSION['admin_type'])); ?> -->
 <!-- <?php echo $quizdata['status']; ?> -->
-<?php if (encryptids("D", $_SESSION['admin_type']) == 2) { 
+<!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { 
   if($quizdata['status']==2 ){  ?>
 <button class="btn btn-primary btn-sm float-right m-2 text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
 <button class="btn btn-danger btn-sm float-right m-2 text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
-<?php } } ?>
+<?php } } ?> -->
 </div>
 
 
@@ -408,8 +413,21 @@
     });
 
     $('.reject').on('click',function(){
+        $('#exampleModal').modal('show');
         id =$(this).attr('data-id');
-    Swal.fire({
+        
+        $('.submit').on('click',function(){
+            // reason =$(this).id('reason');
+            reason =$('#reason').val();
+           // alert(reason);
+           var isValid=true;
+           if(reason.length < 5 || reason==""){
+            $('#err_reason').text('This value is required');
+            isValid=false;
+           }
+           if(isValid){
+
+            Swal.fire({
                 title: 'Are you sure you want to Reject?',
                 showDenyButton: true,
                 showCancelButton: false,
@@ -418,11 +436,39 @@
                 }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {                       
-                    alert('work remaining');
+                  //  alert('work remaining');
+                //   alert(id);
+                //   alert(reason);
+                  jQuery.ajax({
+                                type: "POST",
+                                url: '<?php echo base_url(); ?>Standardswritting/update_status',
+                                // dataType: 'json',
+                                data: {
+                                "id": id,
+                                "status": 4,
+                                "reject_reason" :reason
+                                },
+                                success: function(res) {
+                                if (res) {
+                                    console.log(res);
+                                    location.reload();
+                                } else {
+                                    alert("error");
+                                }
+                                },
+                                error: function(xhr, status, error) {
+                                console.log(error);
+                                }
+                            });
                                             
                 } else if (result.isDenied) {
                     // Swal.fire('Changes are not saved', '', 'info')
                 }
                 })
+           }
+            
+
+        })
+    
     });
 </script>

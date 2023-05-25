@@ -31,9 +31,9 @@ i.fa.fa-chevron-down {
                             </div>
                             <ul id="toggle_show">
                                 <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="<?php echo base_url(); ?>users/help">Help</a></li>
                                 <li><a href="#">Sitemap</a></li>
-                                <li><a href="#">Accessibility</a></li>
+                                <!-- <li><a href="#">Accessibility</a></li> -->
                             </ul>
                         </div>
                         <div class="col-sm-6 col-lg-6 footer_text">
@@ -349,7 +349,7 @@ $(document).ready(function(){
                 var row = '';
                 
                 for (i in data) { 
-                    row += '<li><a href="https://'+data[i].link+'" target="_blank" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/'+data[i].image +'" height="100%" width="100%"></a></li>';       
+                    row += '<li><a href="https://'+data[i].link+'" target="_blank" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/'+data[i].image +'" height="100%" width="100%"></a></li>';       
                                     
                 }
                 

@@ -1301,6 +1301,12 @@ class Users extends CI_Controller
         $this->load->view('users/sitemap');
         $this->load->view('users/footers/footer');
     }
+    public function help()
+    {
+        $this->load->view('users/headers/header');
+        $this->load->view('users/help');
+        $this->load->view('users/footers/footer');
+    }
     public function terms_condition()
     {
         $data = $this->Users_model->get_legal_data('tc');
@@ -1859,7 +1865,7 @@ class Users extends CI_Controller
     public function about_competition($id)
     {
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
-        $data['competition']=$this->Miscellaneous_competition->viewCompetition($id);
+        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
         // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/about_competition',$data);
@@ -2520,6 +2526,12 @@ class Users extends CI_Controller
         $this->load->model('Users/Users_model');
         $id=$this->Users_model->add_feedback_data($formdata);
         if($id){
+            $this->load->model('Admin/By_the_mentor_model');
+            $msg="Your feedback has been submitted successfully. Thank you for reaching out to us. <br> Thanks<br>BIS.";
+            $subject="Exchange forum notification";
+            $email_id=$this->input->post('email');
+           // echo $msg.'<br>'.$subject.'<br>',$email_id; die;
+            $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
             $this->session->set_flashdata('MSG', ShowAlert("Feedback recorded successfully.", "SS"));
             redirect(base_url() . "users/feedback_form", 'refresh');
         }
