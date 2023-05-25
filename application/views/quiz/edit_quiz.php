@@ -193,7 +193,7 @@
 
                 <div class="active" id="delete_preview">
                   <button class="btn btn-danger btn-sm del_icon" data-id="<?=$quizdata['id'];?>" data-imgname="<?php echo $quizdata['banner_img']; ?>">Delete</button>
-
+                 
                   <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalView">
                     View
                   </button>
@@ -220,6 +220,7 @@
 
                 <div class="row" id="add_file">
                   <div class="col-6">
+                  <input type="hidden" id="ban_img" value ="0"/>
                     <input type="file" id="banner_img" accept="image/jpeg,image/png,image/jpg" name="banner_img" class="form-control-file" id="icon_file" onchange="loadFileBanner(event)">
                     <input type="hidden" name="lastbanner" value="<?php echo $quizdata['banner_img']; ?>">
                     <span class="error_text">
@@ -296,7 +297,7 @@
                   <div class="active" id="delete_preview1">
                  
                   <input type="hidden" id="fp_img0"  name="fp_img" value="0">
-                  <input type="hidden" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
+                  <input type="hidden" id="lastfprize_img0" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$firstprize['quiz_id'];?>"  data-prizeid="<?=$firstprize['prize_id'];?>" data-imgname="<?php echo $firstprize['prize_img']; ?>" data-prize="1">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalFirstView">
                       View
@@ -325,7 +326,7 @@
                     <div class="col-12">
                     <input type="hidden" id="fp_img1"  name="fp_img" value="1">
                       <input type="file" id="fprize_img" accept="image/jpeg,image/png,image/jpg" name="fprize_img" class="form-control-file" id="icon_file1" onchange="loadFileFirst(event)">
-                      <input type="hidden" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
+                      <input type="hidden" id="lastfprize_img1" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
                       <span class="error_text">
                         accept only jpg,jpeg,png.Maximum size is 200 kb
                       </span>
@@ -392,7 +393,7 @@
                 <?php if ($exist_sp == 1) {  ?>
                   <div class="active" id="delete_preview2">
                   <input type="hidden" id="sp_img0"  name="sp_img" value="0">
-                  <input type="hidden" name="lastsprize_img" value="<?php echo $secondprize['prize_img']; ?>">
+                  <input type="hidden" id="lastsprize_img0"name="lastsprize_img" value="<?php echo $secondprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$secondprize['quiz_id'];?>"  data-prizeid="<?=$secondprize['prize_id'];?>" data-imgname="<?php echo $secondprize['prize_img']; ?>" data-prize="2">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecondView">
                       View
@@ -424,7 +425,7 @@
                     <input type="hidden" id="sp_img1"  name="sp_img" value="1">
                       <input type="file" id="sprize_img" accept="image/jpeg,image/png,image/jpg" name="sprize_img" class="form-control-file" id="icon_file2" onchange="loadFileSecond(event)">
 
-                      <input type="hidden" name="lastsprize_img" value="<?php if (!empty($secondprize['prize_img'])) {
+                      <input type="hidden" id="lastsprize_img1" name="lastsprize_img" value="<?php if (!empty($secondprize['prize_img'])) {
                                                                           echo $secondprize['prize_img'];
                                                                         } ?>">
 
@@ -488,7 +489,7 @@
                 <?php if ($exist_tp == 1) {  ?>
                   <div class="active" id="delete_preview3">
                   <input type="hidden" id="tp_img0"  name="tp_img" value="0">
-                  <input type="hidden" name="lasttprize_img" value="<?php echo $thirdprize['prize_img']; ?>">
+                  <input type="hidden" id="lasttprize_img0" name="lasttprize_img" value="<?php echo $thirdprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$thirdprize['quiz_id'];?>"  data-prizeid="<?=$thirdprize['prize_id'];?>" data-imgname="<?php echo $thirdprize['prize_img']; ?>" data-prize="3">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalThirdView">
                       View
@@ -520,7 +521,7 @@
                     <input type="hidden" id="tp_img1"  name="tp_img" value="1">
                       <input type="file" id="tprize_img" accept="image/jpeg,image/png,image/jpg" name="tprize_img" class="form-control-file" id="icon_file3" onchange="loadFileThird(event)">
 
-                      <input type="hidden" name="lasttprize_img" value="<?php if (!empty($thirdprize['prize_img'])) {
+                      <input type="hidden" id="lasttprize_img0" name="lasttprize_img" value="<?php if (!empty($thirdprize['prize_img'])) {
                                                                           echo $thirdprize['prize_img'];
                                                                         } ?>">
                       <span class="error_text">
@@ -589,7 +590,7 @@
                 <?php if ($exist_cp == 1) {  ?>
                   <div class="active" id="delete_preview4">
                   <input type="hidden" id="cp_img0"  name="cp_img" value="0">
-                  <input type="hidden" name="lastcprize_img" value="<?php echo $fourthprize['prize_img']; ?>">
+                  <input type="hidden" id="lastcprize_img0"name="lastcprize_img" value="<?php echo $fourthprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$fourthprize['quiz_id'];?>"  data-prizeid="<?=$fourthprize['prize_id'];?>" data-imgname="<?php echo $fourthprize['prize_img']; ?>" data-prize="4">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFourthView">
                       View
@@ -621,7 +622,7 @@
                     <input type="hidden" id="cp_img1"  name="cp_img" value="1">
                       <input type="file" id="cprize_img" accept="image/jpeg,image/png,image/jpg" name="cprize_img" class="form-control-file" id="icon_file4" onchange="loadFileFourth(event)">
 
-                      <input type="hidden" name="lastcprize_img" value="<?php if (!empty($fouthprize['prize_img'])) {
+                      <input type="hidden" id="lastcprize_img1" name="lastcprize_img" value="<?php if (!empty($fouthprize['prize_img'])) {
                                                                           echo $fourthprize['prize_img'];
                                                                         } ?>">
                       <span class="error_text">
@@ -741,9 +742,6 @@
                 </table>
               </div>
             </div>
-
-
-
             <div class="row">
               <div class="col-md-12 submit_btn p-3">
                  <a class="btn btn-success btn-sm text-white submit">Submit</a>
@@ -754,10 +752,7 @@
               </div>
             </div>
           </div>
-          <!-- 4th PRIZE -->
-
-
-         
+          <!-- 4th PRIZE -->       
          
         </div>
       </div>
@@ -1110,11 +1105,11 @@
     }
   };
 
-  function resetbanner() {
-    $("#banner_img").val('');
-    $("#outputbanner").hide();
-  }
-  //end
+  // function resetbanner() {
+  //   $("#banner_img").val('');
+  //   $("#outputbanner").hide();
+  // }
+  // //end
 
   //First Prize Image Preview
   var loadFileFirst = function(event) {
@@ -1200,14 +1195,10 @@
       $('#add_file4').show();
     }
 
-   
-
     $('#delete_preview').show();
     $('#add_file').hide();
     $('#icon_file').attr('required', false);
     // $('#outputicon').attr('src',)
-
-
 
     $('.del_icon').on('click', function(e) {
       e.preventDefault();
@@ -1241,8 +1232,10 @@
                             Swal.fire(res.message);
                             $('#delete_preview').hide();
                             $('#add_file').show();
+                            $('#ban_img').val(1);
+                            
                             // $('#icon_file').add('attr','required');
-                            $('#banner_img').attr('required', true);
+                           // $('#banner_img').attr('required', true);
                             //window.location.replace("<?php //echo base_url(); ?>subadmin/questionBankList");
                         }
                     },
@@ -1295,18 +1288,26 @@
                             if(prize == 1){
                               $('#delete_preview1').hide();
                               $('#add_file1').show();
+                              $('#lastfprize_img0').val('');
+                              $('#lastfprize_img1').val('');
                             }
                             if(prize == 2){
                               $('#delete_preview2').hide();
                                $('#add_file2').show();
+                               $('#lastsprize_img0').val('');
+                              $('#lastsprize_img1').val('');
                             }
                             if(prize == 3){
                                 $('#delete_preview3').hide();
-                                $('#add_file3').show();    
+                                $('#add_file3').show();
+                                $('#lasttprize_img0').val('');
+                              $('#lasttprize_img1').val('');    
                             }
                             if(prize == 4){
                               $('#delete_preview4').hide();
-                              $('#add_file4').show();    
+                              $('#add_file4').show(); 
+                              $('#lastcprize_img0').val('');
+                              $('#lastcprize_img1').val('');   
                             }
                           
                         }
@@ -1357,7 +1358,7 @@
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        // window.location.replace('<?php echo base_url() . 'Quiz/quiz_list' ?>');
+        // window.location.replace('<?php //echo base_url() . 'Quiz/quiz_list' ?>');
         var focusSet = false;
         var allfields = true;
         var title = $("#title").val();
@@ -1520,8 +1521,11 @@
         } else {
             $("#language_id").next(".validation").remove();
         }
-
-        var banner_img = $("#banner_img").val();
+        var ban_img = $("#ban_img").val(); 
+        alert(ban_img);
+        if(ban_img == 1)  {
+          var banner_img = $("#banner_img").val();
+       
         if (banner_img == "" || banner_img == null) {
             if ($("#banner_img").next(".validation").length == 0) {
                 $("#banner_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
@@ -1534,6 +1538,8 @@
             $("#banner_img").next(".validation").remove();
         }
 
+        }
+       
         var fprizes = $("#fprizes").val();
         if (fprizes == "" || fprizes == null) {
             if ($("#fprizes").next(".validation").length == 0) {
@@ -1678,7 +1684,7 @@
                 $("#branch_id").next(".validation").remove();
             }
         }
-
+        
         if (allfields) {
 
         $('#editquiz').submit();
