@@ -208,11 +208,11 @@
                                 <div class="d-flex">
                                     <div>
                                     <input type="file" class="file-upload-field" name="document" id="document" value="" accept="pdf/*" >
-                                    
+                                    <span id="err_document" class="text-danger"></span>
                                    </div>
                                     
                                 </div>
-                                <span id="err_image" class="text-danger"></span>
+                                <!-- <span id="err_image" class="text-danger"></span> -->
 
                             </div>
                         <!-- <div class="col-sm-6 mt-3">
@@ -484,7 +484,7 @@ $('#image_thumb').on('change', function(){
                        
                     }else{
                         
-                        $("#err_image").text(""); // remove it
+                        $("#err_thumb").text(""); // remove it
                         // $("#err_image").after("");
 
                     }
@@ -1005,7 +1005,8 @@ if(fileSize < 20000){
 
                    if (fileSize > 5242880) {
                     //    var is_valid = false;
-                       $('#greaterSize_pdf').modal('show');
+                       //$('#greaterSize_pdf').modal('show');
+                       Swal.fire('File Size should be less than 5MB');
                        $("#document").val();
                        if ($("#document").next(".validation").length == 0) // only add if not added
                        {
