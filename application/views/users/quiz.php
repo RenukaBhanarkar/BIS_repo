@@ -178,12 +178,12 @@ a.quizplay-btn:hover {
                                 <div class="quiz_time">
                                     <div class="time_duration"><?= $AllQuize['duration']?><span class="sec-text"> Min</span></div><span class="last-date">Duration</span>
                                 </div>
-                              </div><a href="about_quiz/<?= $AllQuize['id']?>" class="quizplay-btn">Play</a>
+                              </div><a href="about_quiz/<?= $AllQuize['id']?>" class="quizplay-btn">Participate</a>
                                                               
                             </div>
                             <div class="item_foo">
-                                <a href="javascript:void(0)" class="get_reward"><i> </i> E-Certificate</a>
-                                <a href="#" class="view_tc">View T&amp;C</a>
+                                <!-- <a href="javascript:void(0)" class="get_reward"><i> </i> E-Certificate</a> -->
+                                <a href="<?= base_url(); ?>users/about_quiz/<?php echo $AllQuize['id']; ?>" class="view_tc">View T&amp;C</a>
                             </div>
                     </div>
                 </div>
