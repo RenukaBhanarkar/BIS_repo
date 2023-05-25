@@ -160,26 +160,34 @@ class Wall_of_wisdom extends CI_Controller
     //      $this->load->view('wall_of_wisdom/users_wall_of_wisdom',$data);
     //      $this->load->view('users/footers/footer');
     //  }
-    public function wallOfWisdom(){
-       // print_r($_SESSION); die;
-        if(isset($_SESSION['admin_id'])){
-            $uid=encryptids("D",$_SESSION['admin_id']);
-        }else{
-            $uid="";
-        }
-        // $uid=encryptids("D",$_SESSION['admin_id']);
-        // $this->load->model('Admin/Wall_of_wisdom_model wow'); 
-        if($uid==""){
-            $uid="";
-        }else{
-            $data['wow']=$this->wow->all_wallofwisdom($uid); 
-        }
-         $data['wow']=$this->wow->all_wallofwisdom($uid);
-        //  print_r($data); die;
-         $this->load->view('users/headers/header');
-         $this->load->view('wall_of_wisdom/wall_of_wisdom_1',$data);
-         $this->load->view('users/footers/footer');
-     }
+    // public function wallOfWisdom(){
+    //    // print_r($_SESSION); die;
+    //     if(isset($_SESSION['admin_id'])){
+    //         $uid=encryptids("D",$_SESSION['admin_id']);
+    //     }else{
+    //         $uid="";
+    //     }
+    //     // $uid=encryptids("D",$_SESSION['admin_id']);
+    //     // $this->load->model('Admin/Wall_of_wisdom_model wow'); 
+    //     if($uid==""){
+    //         $uid="";
+    //     }else{
+    //         $data['wow']=$this->wow->all_wallofwisdom($uid); 
+    //     }
+    //      $data['wow']=$this->wow->all_wallofwisdom($uid);
+    //     //  print_r($data); die;
+    //      $this->load->view('users/headers/header');
+    //      $this->load->view('wall_of_wisdom/wall_of_wisdom_1',$data);
+    //      $this->load->view('users/footers/footer');
+    //  }
+     public function wallOfWisdom(){
+        
+          $data['wow']=$this->wow->all_wallofwisdom1();
+         //  print_r($data); die;
+          $this->load->view('users/headers/header');
+          $this->load->view('wall_of_wisdom/wall_of_wisdom_1',$data);
+          $this->load->view('users/footers/footer');
+      }
      public function approvewall_of_wisdom(){
         try {   
            // $this->load->model('Admin/Wall_of_wisdom_model wow');         

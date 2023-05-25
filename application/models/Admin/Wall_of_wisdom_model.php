@@ -74,6 +74,19 @@ class Wall_of_wisdom_model extends CI_Model {
         $res=$query->result_array();
         return $res;
     }
+    public function all_wallofwisdom1(){       
+        $this->db->select('wow.*');
+        $this->db->from('tbl_wall_of_wisdom wow');
+        //$this->db->join('tbl_wall_of_wisdom_likes like','like.card_id=wow.id','left');
+        // $this->db->where("like.user_id=$uid");
+        // $this->db->where("wow.user_id=$uid");
+        $this->db->where('wow.status','5');  
+        $this->db->limit(6);
+        $this->db->order_by('wow.created_on','desc');
+        $query=$this->db->get();
+        $res=$query->result_array();
+        return $res;
+    }
     public function send_for_approval($id){
         $this->db->where('id', $id);
         if ($this->db->update('tbl_wall_of_wisdom', ['status'=>'2'])) {

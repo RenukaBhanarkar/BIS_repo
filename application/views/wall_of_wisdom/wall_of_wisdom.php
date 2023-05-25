@@ -39,8 +39,8 @@
         ?>
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="wow_table" class="table-bordered">
+                <div class="card border-top card-body">
+                    <table id="wow_table" class="table-bordered table-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td><?php echo $i++ ?></td>
                                         <!-- <td><?php echo $list_wow['title'] ?></td> -->
-                                        <td><?php echo substr_replace($list_wow['title'],"...",100); ?></td>
+                                        <td><?php echo substr_replace($list_wow['title'],"...",80); ?></td>
                                         <!-- <td><?php echo $list_wow['description'] ?></td> -->
                                         <td><?php if ($list_wow['image']) { ?>
                                                 <img src="<?php echo base_url(); ?>uploads/admin/wall_of_wisdom/<?php echo $list_wow['image'] ?>" width="50px" style="text-align:center;">
@@ -608,23 +608,23 @@ var loadFileThumbnail = function(event)
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#document1').val('');
             // $('#lessSize').modal('show');
-            $('#err_icon_file').text('This value is required');
+            $('#imgError1').text('This value is required');
             Swal.fire('File size should be greater than 20KB')
         }else if(fileSize > 204800){
             $('#document1').val('');
             // $('#greaterSize').modal('show');
             Swal.fire('File size should be less than 200KB')
-            $('#err_icon_file').text('This value is required');
+            $('#imgError1').text('This value is required');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#document1').val('');
             // $('#invalidfiletype').modal('show');
             Swal.fire('Only jpg,jpeg,png allowed')
-            $('#err_icon_file').text('This value is required');
+            $('#imgError1').text('This value is required');
         }else{
-            $('#err_icon_file').text('');
+            $('#imgError1').text('');
         }
        //  $("#Previewimg").show();
         var outputThumbnail = document.getElementById('outputThumbnail1');
@@ -675,18 +675,20 @@ var loadFileThumbnail = function(event)
                 $("#description").focus();
                 var is_valid = false;
             } else if ((description.length < 10)) {
-                $("#err_description").text("Please Enter minimum 5 Characters");
+                $("#err_description").text("Description size should be 10 to 5000 characters");
                 $("#description").focus();
                  is_valid = false;
             } else if ((description.length > 5000)) {
                 is_valid = false;
                 // alert('Description length must be less than 2000 characters ');
-                $("#err_description").text("Maximum 5000 characters allowed");
+                //$("#err_description").text("Maximum 5000 characters allowed");
+                $("#err_description").text("You entered "+description.length+" Characters. Description size should be 10 to 5000 characters");
                 $("#description").focus();
                 //  is_valid = false;
                 
             } else {
-                $("#err_description").text("");
+                var remain = 5000-description.length;
+                $("#err_description").text("You can enter "+remain+" more characters");
             }
             
 

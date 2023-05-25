@@ -156,11 +156,11 @@
                             </p>
 
                         </div>
-                        <div class="" style="text-align: end; margin-right: 23px;">
+                        <!-- <div class="" style="text-align: end; margin-right: 23px;">
                             <button class="btn btn-primary mb-4 mr-4">
                                 By <?php echo $published_wall['user_name']; ?>
                             </button>
-                        </div>
+                        </div> -->
                         <div class="row" style="padding:10px;">
                         <?php if(!($published_wall['other_image1'])==""){ ?>
                         <div class="mb-3 col-md-3">
