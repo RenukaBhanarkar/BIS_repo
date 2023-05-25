@@ -217,7 +217,7 @@
             $this->db->from('tbl_quiz_details quiz');
             $this->db->join('tbl_mst_status st', 'st.id = quiz.status');
             //$this->db->where('(date(now()) BETWEEN quiz.start_date AND quiz.end_date)'); 
-            $this->db->where('quiz.start_date <=', date("Y-m-d"));
+           // $this->db->where('quiz.start_date <=', date("Y-m-d"));
             $this->db->where('quiz.end_date >=', date("Y-m-d"));
 
             // $this->db->where('quiz.start_time <=', $current_time);
@@ -237,20 +237,29 @@
                 $res = $query->result_array();
                 foreach($res as $row){
                     if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
-                        if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                        if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
                             array_push($rs,$row);
                         }
-                    }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
-                        if($row['start_time'] <= $current_time){
+                    }
+                    if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                        // if($row['start_time'] <= $current_time){
                             array_push($rs,$row);
-                        }
-                    }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                       // }
+                    }
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                       
+                            array_push($rs,$row);
+                        
+                    }
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
                         if($row['end_time'] >= $current_time){
                             array_push($rs,$row);
                         }
-                    }else{
-                        array_push($rs,$row);
                     }
+                    
+                    // else{
+                    //     array_push($rs,$row);
+                    // }
                 }
             }
             return $rs;  

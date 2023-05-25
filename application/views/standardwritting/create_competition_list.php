@@ -73,9 +73,9 @@
                             <td>
                             <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
-                                 <button data-id="<?php echo $list['id']; ?>" data-status="create" class="btn btn-success btn-sm mr-2 create" >Create</button>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" data-status="create" class="btn btn-success btn-sm mr-2 create" >Create</button>
                                  <button class="btn btn-danger btn-sm mr-2 delete" data-id="<?php echo $list['comp_id']; ?>" >Delete</button>
-                                 <button data-id="<?php echo $list['id']; ?>" data-status="create" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
+                                 <button data-id="<?php echo $list['comp_id']; ?>" data-status="create" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
                             </td>
                             </tr>
                         <?php $i++; } } ?>
@@ -224,7 +224,8 @@ location.reload();
                                         },
                                         success: function(res) {
                                         if (res) {
-                                            alert("success");
+                                            Swal.fire('Archived');
+                                            location.reload();
 
                                         } else {
                                             alert("error");

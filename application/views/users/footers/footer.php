@@ -349,7 +349,7 @@ $(document).ready(function(){
                 var row = '';
                 
                 for (i in data) { 
-                    row += '<li><a href="https://'+data[i].link+'" target="_blank" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/'+data[i].image +'" height="100%" width="100%"></a></li>';       
+                    row += '<li><a href="https://'+data[i].link+'" target="_blank" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/'+data[i].image +'" height="100%" width="100%"></a></li>';       
                                     
                 }
                 

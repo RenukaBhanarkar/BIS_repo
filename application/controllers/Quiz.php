@@ -980,13 +980,13 @@ class Quiz extends CI_Controller
             $img_name = $this->input->post('img_name');         
          
 
-            $data = array(
+            $data1 = array(
                 'banner_img' => "",               
                 'modify_on' => GetCurrentDateTime('Y-m-d h:i:s'),
                 'modify_by' => encryptids("D", $_SESSION['admin_type']),
             );
 
-            $id = $this->Quiz_model->updateDataQuiz($quiz_id, $data);
+            $id = $this->Quiz_model->updateDataQuiz($quiz_id, $data1);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Banner deleted successfully.';
@@ -1013,15 +1013,15 @@ class Quiz extends CI_Controller
             $img_name = $this->input->post('img_name');
            
             $prize_id = $this->input->post('prize_id'); 
-            $data = array(
+            $data1 = array(
                 'prize_img' => "",               
                 'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
                 'modified_by' => encryptids("D", $_SESSION['admin_type']),
             );
-            $id = $this->Quiz_model->updatePrizeImg($quiz_id,$prize_id, $data);
+            $id = $this->Quiz_model->updatePrizeImg($quiz_id,$prize_id, $data1);
             if ($id) {
                 $data['status'] = 1;
-                $data['message'] = 'Banner deleted successfully.';
+                $data['message'] = 'Prize Image deleted successfully.';
                 if($img_name){
                     @unlink($img_name);
                 }

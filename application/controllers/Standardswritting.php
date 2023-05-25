@@ -40,8 +40,12 @@ class Standardswritting extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function update_status(){
+       // print_r($_POST); die;
         $data['comp_id']=$this->input->post('id');
         $data['status']=$this->input->post('status');
+        if(isset($_POST['reject_reason'])){
+            $data['reject_reason']=$this->input->post('reject_reason');
+        }
         $result=$this->Miscellaneous_competition->update_status($data);
         if($result){
             return true;
@@ -575,13 +579,37 @@ if($id){
       $res1=$this->Miscellaneous_competition->viewCompetition2($id);
       $img1=$res1['thumbnail'];
       $img2=$res1['fprize_image'];
-     // print_r($res); die;
+      if($res1['sprize_image']=="" || $res1['sprize_image']=NULL){
+        $img3=$res1['sprize_image'];
+      }else{
+        $img3="";
+      }
+      if($res1['tprize_image']=="" || $res1['tprize_image']=NULL){
+        $img4=$res1['tprize_image'];
+      }else{
+        $img4="";
+      }
+      if($res1['cprize_image']=="" || $res1['cprize_image']=NULL){
+        $img5=$res1['cprize_image'];
+      }else{
+        $img5="";
+      }
+   //  print_r($res1); die;
     // echo $img1; die;
         $res=$this->Miscellaneous_competition->delete_comp($data);
         
         if($res){
             @unlink($img1);
             @unlink($img2);
+            if($img3){
+                @unlink($img3);  
+            }
+            if($img4){
+                @unlink($img4);  
+            }
+            if($img5){
+                @unlink($img5);  
+            }
             return true;
         }else{
             return false;
