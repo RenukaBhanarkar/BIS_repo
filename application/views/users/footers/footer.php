@@ -29,7 +29,7 @@ i.fa.fa-chevron-down {
                             <h4 id="helf_toggle" style="cursor: pointer;">Accessibility & Help</h4>
                             <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </div>
-                            <ul id="toggle_show">
+                            <ul id="toggle_show" style="display:none;">
                                 <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
                                 <li><a href="<?php echo base_url(); ?>users/help">Help</a></li>
                                 <li><a href="#">Sitemap</a></li>
@@ -59,7 +59,7 @@ i.fa.fa-chevron-down {
                              <i class="fa fa-chevron-down" aria-hidden="true"></i>
                              </div>
                             <div class="col-lg-12 footer_text">
-                                <ul id="legal_show">
+                                <ul id="legal_show" style="display:none;">
                                     <li><a  href="<?php echo base_url(); ?>users/terms_condition">Terms & Conditions</a>
                                     </li>
                                     <li><a  href="<?php echo base_url(); ?>users/privacy_policy">Privacy Policy</a></li>

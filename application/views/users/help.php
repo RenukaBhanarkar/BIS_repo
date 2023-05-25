@@ -17,7 +17,7 @@
                             <p>You shall also find links to videos of speeches, interviews given by Chairman of PMRDA at national and international events such as conferences. The videos are drawn from Aadhaar Channel in YouTube.</p>
             <div class="col-md-12 mt-3">
             
-                <table id="example" class="table hover table-bordered">
+                <table  class="table hover table-bordered">
                 <thead>
                             		<tr>
                             			<th>Screen Reader	</th>
@@ -81,7 +81,7 @@
                            <p>We are committed to ensure that the information or this Website is accessible to all users irrespective of device in use, technology or ability. It has been built, with an aim, to provide maximum accessibility and usability to its visitors</p>
                            <div class="col-md-12 mt-3">
             
-                            <table id="example_1" class="table hover table-bordered">
+                            <table class="table hover table-bordered">
                            <thead>
                            	<tr>
                            		<th>Document Type </th>
