@@ -22,8 +22,28 @@
             <div class="col-12 mt-3">
             <form name="competition_edit" id="competition_edit" action="<?php echo base_url() . 'standardswritting/competition_edit' ?>" method="post" enctype="multipart/form-data">
                 <div class="card border-top card-body">
+                <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Type of Competition<sup class="text-danger">*</sup></label>
+                            <select id="comp_type" name="comp_type" class="form-control input-font" required>
+                                <option value="" selected disabled>Select Type of Competition</option>
+                                <!-- <?php foreach ($quizlavel as $lavel) { ?>
+                                    <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
+                                <?php } ?> -->
+                                <option value="1">Essay Writing</option>
+                                <option value="2">Poster Making</option>
+                                <option value="3">Case Study</option>
+                                <option value="3">Artical writing</option>
+                                <option value="3">Paper Writing</option>
+                            </select>
+                            <div class="invalid-feedback">
+                            This value is required
+                            </div>
+                            <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
+                        </div>
+                </div>
                     <div class="row">
-                            <div class="mb-2 col-md-4">
+                            <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Name of Competition</label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo $competition['competiton_name']; ?>" required="">
                                 <span class="error_text" id="err_name"><?php echo form_error('name'); ?></span>
@@ -31,7 +51,7 @@
                             </div>
                     </div>
                     <div class="row">
-                            <div class="mb-2 col-md-4">
+                            <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Name of Competition in Hindi</label>
                                 <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo $competition['competition_hindi_name']; ?>" required="">
                                 <span class="error_text" id="err_name_hindi"><?php echo form_error('name_hindi'); ?></span>
@@ -125,8 +145,8 @@
                                 </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Total Score<sup class="text-danger">*</sup></label>
-                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="<?php echo set_value('end_time', $competition['score']); ?>">
+                        <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Marks" value="<?php echo set_value('end_time', $competition['score']); ?>">
                             <span class="error_text"><?php echo form_error('score'); ?></span>
                         </div>
                         <!-- <div class="mb-2 col-md-4">
@@ -225,6 +245,17 @@
                                 <select id="Available" name="Available" class="form-control input-font" >
                                     <option value="1" <?php if($competition['available_for']=='1'){ echo 'selected'; } ?> >School</option>
                                     <option value="2" <?php if($competition['available_for']=='2'){ echo 'selected'; } ?> >Higher Qualification</option>
+                                </select>
+                        </div>
+                        <div class="mb-2 col-4">
+                                <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
+                                <select id="Available" name="Available" class="form-control input-font" value="">
+                                <option value="" selected disabled>--select--</option>
+                                    <option value="1">8<sup>th</sup>Standard</option>
+                                    <option value="1">9<sup>th</sup>Standard</option>
+                                    <option value="1">10<sup>th</sup>Standard</option>
+                                    <option value="1">11<sup>th</sup>Standard</option>
+                                    <option value="1">12<sup>th</sup>Standard</option>
                                 </select>
                         </div>
                     </div>
