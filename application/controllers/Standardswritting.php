@@ -495,6 +495,12 @@ if($id){
         $this->load->view('standardwritting/standard_writting_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function standard_offline_dashboard()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/standard_offline_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function create_standard_list()
     {
         $this->load->view('admin/headers/admin_header');

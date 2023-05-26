@@ -15,20 +15,30 @@
                 </ol>
             </nav>
         </div>
-
+        <div class="row">
+        <div class="col-12">
+            <div class="card border-top card-body">
+                <div>
+                    
+                    <a href="<?php echo base_url(); ?>standardswritting/create_standard_archive" class="btn btn-primary btn-sm mr-2" title="View">Archived</a>
+                </div>
+            </div>
+        </div>
+  </div>
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered nowrap" style="width:100%">
-                        <thead>
+                <div class="card border-top card-body ">
+                    <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
+                    <thead>
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Competition ID</th>
-                                <th>Name of Competition</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Banner</th>
+                                <th>Standard Club</th>
+                                <th>Date of Activity</th>
+                                <th>Topic</th>
+                                <th>Number of Participate</th>
+                                <th>Date Created</th>
                                 <th>Status</th>
                                 <th>Reason of Rejection</th>
                                 <th>Action</th>
@@ -40,20 +50,21 @@
                               <td>12345</td>
                               <td>Miscellaneous Competition</td>
                               <td>12/03/2023</td>
-                              <td>12/03/2023</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
+                              <td>Topic</td>
+                              <td>12</td>
+                              <td>12/03/2023 12:00:00</td>
                               <td>Pending</td>
-                              <td>Reason</td>
+                              <td>Reason of Rejection</td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="<?php echo base_url(); ?>standardswritting/create_standard_edit" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm mr-2" >Delete</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >Archive</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Sent for Approval</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Publish</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-warning btn-sm mr-2" >Unpublish</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Approve</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm mr-2" >Reject</a>
                               </td>
-
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -22,86 +22,37 @@
             <div class="col-12 mt-3">
                 <div class="card border-top card-body">
                     <div class="row">
-                            <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Competition</label>
-                                <input type="text" class="form-control input-font" name="Competition" id="Competition" placeholder="Enter Name of Competition" value="" required="">
-                            </div>
-                    </div>
-                    <div class="row">
-                            <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Competition in Hindi</label>
-                                <input type="text" class="form-control input-font" name="Competition" id="Competition" placeholder="Enter Name of Competition" value="" required="">
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-2 col-md-12">
-                             <label class="d-block text-font">Description</label>
-                             <textarea name="description" id="description"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-2 col-md-12">
-                             <label class="d-block text-font">Terms & Conditions</label>
-                             <textarea name="terms" id="terms"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Start Date</label>
-                                <input type="date" class="form-control input-font" name="Start" id="Start" value="" required="">
-                        </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Date</label>
-                                <input type="date" class="form-control input-font" name="end" id="end" value="" required="">
-                        </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
-                                <div class="d-flex">
-                                <div>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
-                                    <span class="error_text"></span>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
-                                    Preview 
-                                </button>
-                                </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
-                                <select id="Level" name="Level" class="form-control input-font" value="">
-                                    <option value="1">All India Level</option>
-                                    <option value="2">Regional Level</option>
-                                    <option value="2">Branch Level</option>
-                                </select>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Region<sup class="text-danger">*</sup></label>
-                                <select id="Region" name="Region" class="form-control input-font" value="">
-                                    <option value="1">All India Level</option>
-                                    <option value="2">Regional Level</option>
-                                    <option value="2">Branch Level</option>
-                                </select>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Branch<sup class="text-danger">*</sup></label>
-                                <select id="Branch" name="Branch" class="form-control input-font" value="">
-                                    <option value="1">All India Level</option>
-                                    <option value="2">Regional Level</option>
-                                    <option value="2">Branch Level</option>
-                                </select>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Available For<sup class="text-danger">*</sup></label>
+                    <div class="mb-2 col-4">
+                                <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
                                 <select id="Available" name="Available" class="form-control input-font" value="">
-                                    <option value="1">School</option>
-                                    <option value="2">Higher Qualification</option>
+                                <option value="" selected disabled>--select--</option>
+                                    <option value="1">Standard</option>
+                                    <option value="1">Standard</option>
+                                    <option value="1">Standard</option>
+                                    <option value="1">Standard</option>
+                                    <option value="1">Standard</option>
                                 </select>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                            <div class="mb-2 col-md-12">
+                                <label class="d-block text-font">Topic of Activity</label>
+                                <input type="text" class="form-control input-font" name="Activity" id="Activity" placeholder="Enter Topic of Activity" value="" required="">
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Date of Activity</label>
+                                <input type="date" class="form-control input-font" name="Date" id="Date"  value="" required="">
+                            </div>
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Number of Participants</label>
+                                <input type="date" class="form-control input-font" name="Date" placeholder="Enter Number of Participate" id="Date"  value="" required="">
+                            </div>
+                    </div>
                 </div>
                 <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">
-            	     <h4 class="m-0">Prize Details</h4>
+            	     <h4 class="m-0">Winners Details</h4>
                 </div>
                 <div class="card card-body">
                     <div class="col-md-3 prizes-section" style="margin-left: -21px;">
@@ -109,15 +60,11 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prizes</label>
+                                <label class="d-block text-font">Name of Paticipant</label>
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
-                            </div>
-                            <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -134,15 +81,11 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prizes</label>
+                                <label class="d-block text-font">Name of Paticipant</label>
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
-                            </div>
-                            <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -159,15 +102,11 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prizes</label>
+                                <label class="d-block text-font">Name of Paticipants</label>
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
-                            </div>
-                            <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -184,15 +123,11 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prizes</label>
+                                <label class="d-block text-font">Name of Paticipant</label>
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
-                            </div>
-                            <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">

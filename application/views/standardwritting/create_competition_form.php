@@ -211,7 +211,28 @@
                                     <option value="2">Higher Qualification</option>
                                 </select>
                         </div>
-                        <div class="mb-2 col-4">
+                        <div class="mb-2 col-8">
+                        <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
+                                <div class="d-flex">
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_1"  >
+                                        <label class="custom-control-label" for="Standard_1">9<sup>th</sup>Standard</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_2"  >
+                                        <label class="custom-control-label" for="Standard_2">10<sup>th</sup>Standard</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_3"  >
+                                        <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_4">
+                                        <label class="custom-control-label" for="Standard_4">12s<sup>th</sup>Standard</label>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- <div class="mb-2 col-4">
                                 <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
                                 <select id="Available" name="Available" class="form-control input-font" value="">
                                 <option value="" selected disabled>--select--</option>
@@ -221,7 +242,7 @@
                                     <option value="1">11<sup>th</sup>Standard</option>
                                     <option value="1">12<sup>th</sup>Standard</option>
                                 </select>
-                        </div>
+                        </div> -->
                     </div>
                     
                 </div>
