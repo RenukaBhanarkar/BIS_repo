@@ -1338,17 +1338,17 @@ class Users extends CI_Controller
     }
     public function yourwall()
     {
-        if(isset($_SESSION['admin_id'])){
+        //if(isset($_SESSION['admin_id'])){
         $this->load->model('admin/your_wall_model');
-        $user_id = encryptids("D", $_SESSION['admin_id']);
-        $data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
-        // $data['published_wall'] = $this->your_wall_model->getPublishedWall();
+        //$user_id = encryptids("D", $_SESSION['admin_id']);
+        //$data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
+         $data['published_wall'] = $this->your_wall_model->getPublishedWall();
         $this->load->view('users/headers/header');
         $this->load->view('users/yourwall_new', $data);
         $this->load->view('users/footers/footer');
-        }else{
-            redirect(base_url() . "users/login", 'refresh');
-        }
+        // }else{
+        //     redirect(base_url() . "users/login", 'refresh');
+        // }
     }
     public function yourwallview($id)
     {

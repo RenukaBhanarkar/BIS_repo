@@ -76,8 +76,8 @@
                             <td><?php echo $list['end_date']; ?></td>
                             <td><?php echo $list['end_time']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
-                            <td><?php echo $list['type']; ?></td>
-                            <td><?php echo $list['available_for']; ?></td>
+                            <td><?php echo $list['comp_type_name']; ?></td>
+                            <td><?php echo $list['avai_for']; ?></td>
                             <td><?php echo $list['title']; ?></td>
                             <td><?php echo $list['status']; ?></td>
                             <td>
