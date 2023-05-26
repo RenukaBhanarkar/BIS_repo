@@ -153,6 +153,11 @@
     cursor: pointer;
     width: 100%;
 }
+#the-count {
+  float: right;
+  padding: 0.1rem 0 0 0;
+  font-size: 0.875rem;
+}
 </style>
 <div class="container">
 <div class="row">
@@ -260,6 +265,10 @@
                         <div class="col-sm-12">
                                 <div class="form-group ">
                                     <textarea class="form-control w-100" rows="8" id="answer" placeholder="Share Your Comments......" name="answer"></textarea>
+                                    <div id="the-count">
+                                            <span id="current">0</span>
+                                            <span id="maximum">/ 5000</span>
+                                    </div>
 
                                     <input type="hidden" name="comp_id" value="<?php echo $competition['competitionn_id']; ?>">
                                     
@@ -271,7 +280,7 @@
                                 <input type="file" class="file-upload-field" name="image" id="image" value="">
                             </div>
                         </div>
-                        <div class="button-group  mt-3" style="text-align:end;">
+                        <div class="button-group  mt-5" style="text-align:end;">
                                         <button onclick="return submitCompetition(event)" type="submit" class="btn btn-success">Save</button>
                                     </div>
                         
@@ -327,5 +336,45 @@ var isValid=true;
         return true;
     }
 }
+</script>
+<script>
+    $('textarea').keyup(function() {
+    
+    var characterCount = $(this).val().length,
+        current = $('#current'),
+        maximum = $('#maximum'),
+        theCount = $('#the-count');
+      
+    current.text(characterCount);
+   
+    
+    /*This isn't entirely necessary, just playin around*/
+    if (characterCount < 70) {
+      current.css('color', '#666');
+    }
+    if (characterCount > 70 && characterCount < 90) {
+      current.css('color', '#6d5555');
+    }
+    if (characterCount > 90 && characterCount < 100) {
+      current.css('color', '#793535');
+    }
+    if (characterCount > 100 && characterCount < 120) {
+      current.css('color', '#841c1c');
+    }
+    if (characterCount > 120 && characterCount < 139) {
+      current.css('color', '#8f0001');
+    }
+    
+    if (characterCount >= 140) {
+      maximum.css('color', '#8f0001');
+      current.css('color', '#8f0001');
+      theCount.css('font-weight','bold');
+    } else {
+      maximum.css('color','#666');
+      theCount.css('font-weight','normal');
+    }
+    
+        
+  });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
