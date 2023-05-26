@@ -34,9 +34,12 @@ class Miscellaneous_competition extends CI_Model {
 		}
     }
     public function getCompetition($id){
-        $this->db->select('*');
-        $this->db->from('tbl_mst_competition_detail');
-        $this->db->where('status',$id);
+        //echo $id; die;
+        $this->db->select('tmcd.*,tms.status_name,tmql.title');
+        $this->db->from('tbl_mst_competition_detail tmcd');
+        $this->db->join('tbl_mst_status tms','tms.id=tmcd.status','left');
+        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
+        $this->db->where('tmcd.status',$id);
         $query=$this->db->get();
         return $query->result_array();
 
@@ -187,8 +190,8 @@ class Miscellaneous_competition extends CI_Model {
         $this->db->select('tucar.*,tu.user_mobile,tu.email,tu.user_name,tmcd.competiton_name');
         $this->db->from('tbl_users_competition_attempt_record tucar');
         $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
-        $this->db->join('tbl_mst_competition_detail tmcd','tmcd.id=tucar.competiton_id');
-        $this->db->where('competiton_id',$comp_id);        
+        $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+        $this->db->where('tucar.competiton_id',$comp_id);        
         $query=$this->db->get();
         return $query->result_array(); 
      }

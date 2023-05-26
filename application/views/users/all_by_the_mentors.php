@@ -183,7 +183,7 @@
             <a href="<?php echo base_url().'users/by_the_mentor_detail/'.$list['id']; ?>">
                 <div class="card-winners">
                         
-                            <img src="<?php echo base_url().'uploads/by_the_mentors/img/'.$list['image']; ?>" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?php echo base_url().''.$list['image']; ?>" class="card-img-top" alt="Discussion Forum">
                             <div class="winner-body p-2">
                                 <!-- <div class="node-status"><span>Status : </span>
                                     <div class="status-open">Open</div>
@@ -197,8 +197,8 @@
                                         <span class="last-date"><?php echo $list['description']; ?></span>
                                     </span>
                                  </div>
-                                 <div class="node-status like_review"><span><img src="<?php echo base_url(); ?>/assets/images/thumb-up.jpeg" style="width:18px;"></span>
-                              <div class="status-open" style="margin-left:10px;">50</div>
+                                 <div class="node-status like_review"><span></span>
+                              <!-- <div class="status-open" style="margin-left:10px;">50</div> -->
                           </div>
                             </div>
                          

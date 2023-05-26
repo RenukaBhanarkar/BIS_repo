@@ -36,8 +36,13 @@
                                 <th>Competition ID</th>
                                 <th>Name of Competition</th>
                                 <th>Start Date</th>
+                                <th>Start Time</th>
                                 <th>End Date</th>
+                                <th>End Time</th>
                                 <th>Banner</th>
+                                <th>Type of Competition</th>
+                                <th>Available For</th>
+                                <th>Level of Competition</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -67,9 +72,14 @@
                             <td><?php echo $list['comp_id']; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
+                            <td><?php echo $list['start_time']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
+                            <td><?php echo $list['end_time']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
-                            <td><?php if($list['status']==1){ echo "Created"; } ?></td>
+                            <td><?php echo $list['type']; ?></td>
+                            <td><?php echo $list['available_for']; ?></td>
+                            <td><?php echo $list['title']; ?></td>
+                            <td><?php echo $list['status']; ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>

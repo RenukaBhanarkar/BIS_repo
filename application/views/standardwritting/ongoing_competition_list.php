@@ -48,7 +48,7 @@
                             <td><?php echo $list['status_name'];  ?></td>
                             <td>Submited task</td>
                             <td>
-                            <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                            <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url().''; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                             </td>
                             </tr>

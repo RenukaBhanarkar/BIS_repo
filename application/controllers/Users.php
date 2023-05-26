@@ -1874,7 +1874,7 @@ class Users extends CI_Controller
     public function start_competition($id)
     {
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
-        $data['competition']=$this->Miscellaneous_competition->viewCompetition($id);
+        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
         $this->load->view('users/headers/header');
         $this->load->view('users/start_competition',$data);
         $this->load->view('users/footers/footer');

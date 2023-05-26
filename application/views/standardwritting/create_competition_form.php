@@ -107,7 +107,7 @@
                         </div>
                         <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Total Score<sup class="text-danger">*</sup></label>
-                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="">
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                             <span class="error_text"><?php echo form_error('score'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
