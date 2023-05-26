@@ -27,10 +27,15 @@
                                 <th>Competition ID</th>
                                 <th>Name of Competition</th>
                                 <th>Start Date</th>
+                                <th>Start Time</th>
                                 <th>End Date</th>
+                                <th>End Time</th>
                                 <th>Banner</th>
+                                <th>Type of competition</th>
+                                <th>Availavle for</th>
+                                <th>Level of competition</th>
                                 <th>Status</th>
-                                <th>Submitted Task</th>
+                                <th>Total Submission</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -43,13 +48,18 @@
                             <td><?php echo $list['comp_id'];; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
+                            <td><?php echo $list['start_time']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
+                            <td><?php echo $list['start_time']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
+                            <td><?php echo $list['comp_type_name']; ?></td>
+                            <td><?php echo $list['avai_for']; ?></td>
+                            <td><?php echo $list['title']; ?></td>
                             <td><?php echo $list['status_name'];  ?></td>
-                            <td>Submited task</td>
+                            <td><?php echo $list['total_submission'];  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url().''; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
+                                 <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                             </td>
                             </tr>
                             <?php $i++; } } ?>

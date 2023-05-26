@@ -25,11 +25,14 @@
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Name</th>
-                                <th>ID</th>
+                                <th>Submission ID</th>
                                 <th>Email</th>
                                 <th>Contact</th>
-                                <th>Date & Time</th>
-                                <th>PDF/Image</th>
+                                <!-- <th>Date & Time</th> -->
+                                <th>School/Institute</th>
+                                <th>Class</th>
+                                <th>Submission Date & Time</th>
+                                <th>Uploads</th>
                                 <!-- <th>Image</th> -->
                                 <th>Action</th>
                             </tr>
@@ -53,9 +56,11 @@
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $list['user_name']; ?></td>
-                                <td><?php echo $list['user_id']; ?></td>
+                                <td><?php echo $list['id']; ?></td>
                                 <td><?php echo $list['email']; ?></td>
                                 <td><?php echo $list['user_mobile']; ?></td>
+                                <td><?php echo $list['avai_for']; ?></td>
+                                <td></td>
                                 <td><?php echo $list['created_on']; ?></td>
                                 <!-- <td></td> -->
                                 <!-- <td><?php if($list['image']==""){ echo "-"; }else{?><img src="<?php echo base_url().$list['image']; ?>" alt="#" class="" width="100%"><?php } ?></td> -->

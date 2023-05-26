@@ -419,8 +419,8 @@ if($id){
     }
     public function create_competition_edit($id)
     {
-        $data = $this->Miscellaneous_competition->viewCompetition($id);
-      // print_r($data['branch']); die;
+        $data = $this->Miscellaneous_competition->viewCompetition2($id);
+     // print_r($data); die;
        $level=$data['comp_level'];
        $branch=$data['branch'];
         $this->load->model('Quiz/Quiz_model');
@@ -434,14 +434,20 @@ if($id){
         if($level == 2){
            // $region_id = $quiz['region_id'];
             $data['getAllRegions'] = $this->Quiz_model->getAllRegions(); 
+           // $data['getAllBranches']="";
         }
         if($level == 3){
            // $region_id = $quiz['branch_id'];
+         //  $data['getAllRegions']="";
             $data['getAllBranches'] = $this->Quiz_model->getAllBranches(); 
         }
+        if($level == 1){
+         //   $data['getAllRegions']="";
+          //  $data['getAllBranches']="";
+        }
 
-         $data['competition'] = $this->Miscellaneous_competition->viewCompetition($id);
-       // print_r($data); die;
+         $data['competition'] = $this->Miscellaneous_competition->viewCompetition2($id);
+       // print_r($data['competition']); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/create_competition_edit',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -455,7 +461,7 @@ if($id){
         $this->load->view('admin/footers/admin_footer');
     }
     public function view_competition($id){
-        $data['quizdata'] = $this->Miscellaneous_competition->viewCompetition($id);
+        $data['quizdata'] = $this->Miscellaneous_competition->viewCompetition2($id);
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/view_competition',$data);
