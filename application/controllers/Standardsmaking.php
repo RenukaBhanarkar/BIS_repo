@@ -154,8 +154,24 @@ class Standardsmaking extends CI_Controller
         } 
         else 
         {
-            $videosize=$_FILES['video']['size'];
-            $video_thumbnailsize=$_FILES['video_thumbnail']['size']; 
+             
+            if (isset($_FILES['video']['size'])) 
+            {
+                $videosize=$_FILES['video']['size'];
+            }
+            else
+            {
+                $videosize=0;
+            }
+
+            if (isset($_FILES['video_thumbnail']['size'])) 
+            {
+                $video_thumbnailsize=$_FILES['video_thumbnail']['size'];
+            }
+            else
+            {
+                $video_thumbnailsize=0;
+            } 
             if ($videosize > 0 ) 
             {
                 $videopath = 'uploads/Conversation_with_Experts/video/'; 

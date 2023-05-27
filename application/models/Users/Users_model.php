@@ -354,7 +354,7 @@
                 $this->db->insert('tbl_conversation_video_info', $formdata);
                 $insert_id = $this->db->insert_id();
                 if ($insert_id) {
-                    $query = $this->db->query("SELECT * FROM tbl_conversation_video_info");
+                    $query = $this->db->query("SELECT * FROM tbl_conversation_video_info WHERE conversation_id=$id");
                     $viewcount = $query->num_rows();
                     $formdata2['views'] = $viewcount;
                     $this->db->where('id', $id);

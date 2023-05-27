@@ -322,6 +322,7 @@ margin: 0 1rem 0 0;
             if (msg.data.status==1) 
             {
                 var oldlikes=$("#oldlikes").val();
+                // alert(oldlikes);
                 var likes=msg.data.likes;
                 var newlikes=parseInt(oldlikes)+1;
                 $("#newlikes").text(newlikes);

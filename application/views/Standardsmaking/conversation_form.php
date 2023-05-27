@@ -63,7 +63,7 @@
                             <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="video" name="video" class="form-control-file"accept="video/mp4,video/mkv"/>
+                                    <input type="file" id="video" name="video" class="form-control-file"accept="video/mp4,video/mkv" onchange="loadVideo(event)"/>
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
@@ -83,7 +83,8 @@
                                         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
                                     </div>
                                     <div class="modal-body"> 
-                                        <video width="320" height="240" controls id="outputvideo"width="100%"/>  </video>
+                                        <video width="650" height="300" controls id="outputvideo"width="100%"/>  </video>
+ 
                                     </div>
                                      
                                 </div>
@@ -140,7 +141,7 @@ var loadFileThumbnail = function(event)
     }
 
 
-    var loadFilevideo = function(event) 
+    var loadVideo = function(event) 
     {
         $("#outputvideo").show();
         var outputvideo = document.getElementById('outputvideo');
