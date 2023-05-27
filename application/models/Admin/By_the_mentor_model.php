@@ -232,5 +232,19 @@ class By_the_mentor_model extends CI_Model {
                 $this->email->message($msg);
                 $this->email->send();
     }
+    public function ckeckDailyLimit($user_id){
+        //$from=date('Y-m-d');
+        $query="select * from `tbl_by_the_mentors` where `user_id`=".$user_id." AND `created_on` LIKE "."'%".date('Y-m-d')."%'";
+        $query1=$this->db->query($query);
+         $res=$query1->result_array();
+          return count($res);
+        // die;
+     
+        // if(!empty($res)){
+        //     return count($res);
+        // }else{
+        //     $res='0';
+        // } 
+    }
 
 }

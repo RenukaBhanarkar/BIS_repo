@@ -190,11 +190,11 @@
                                 </div> -->
                                 
                                 <div class="title">
-                                    <p title="Inviting suggestion on Vivad se Vishwas II – Settling Contractual ..."><?php echo $list['title']; ?></p>
+                                    <p title="Inviting suggestion on Vivad se Vishwas II – Settling Contractual ..."><?php echo substr_replace($list['title'],"...",130); ?></p>
                                 </div>
                                 <div class="field-item even">
                                     <span class="time_left">
-                                        <span class="last-date"><?php echo $list['description']; ?></span>
+                                        <span class="last-date"><?php echo substr_replace($list['description'],"...",140); ?></span>
                                     </span>
                                  </div>
                                  <div class="node-status like_review"><span></span>
