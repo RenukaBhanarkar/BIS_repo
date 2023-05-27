@@ -1574,11 +1574,13 @@ class Users extends CI_Controller
         // $formdata1['email']= encryptids("D", $_SESSION['admin_email']);
         // $formdata1['name']= encryptids("D", $_SESSION['admin_name']);
         // $formdata1['admin']= encryptids("D", $_SESSION['admin']);
-        // $formdata1['admin_id']= encryptids("D", $_SESSION['admin_id']);
+        $user_id= encryptids("D", $_SESSION['admin_id']);
         // $formdata1['admin_type']= encryptids("D", $_SESSION['admin_type']);
         //  print_r($formdata1); die;
         $this->load->model('Admin/by_the_mentor_model');
         $data['by_the_mentor'] = $this->by_the_mentor_model->getThreeBTM();
+        $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
+       // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/users_by_the_mentor', $data);
         $this->load->view('users/footers/footer');
