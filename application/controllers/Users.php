@@ -1338,10 +1338,16 @@ class Users extends CI_Controller
     }
     public function yourwall()
     {
-        //if(isset($_SESSION['admin_id'])){
+        
         $this->load->model('admin/your_wall_model');
-        //$user_id = encryptids("D", $_SESSION['admin_id']);
+        if(isset($_SESSION['admin_id'])){
+        $user_id = encryptids("D", $_SESSION['admin_id']);
         //$data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
+        $data['daily_limit']=$this->your_wall_model->ckeckDailyLimit($user_id);
+        }else{
+            $data['daily_limit']="0";  
+        }
+       // print_r($data); die;
          $data['published_wall'] = $this->your_wall_model->getPublishedWall();
         $this->load->view('users/headers/header');
         $this->load->view('users/yourwall_new', $data);
