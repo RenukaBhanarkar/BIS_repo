@@ -1198,6 +1198,11 @@ class Users extends CI_Controller
         $this->load->view('users/discussion_list');
         $this->load->view('users/footers/footer'); 
     }
+    public function your_wall_28may(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/your_wall_28may');
+        $this->load->view('users/footers/footer'); 
+    }
     public function important_draft_view($id)
     {
         $data['getData']=$this->Users_model->getImportantDraft($id);
