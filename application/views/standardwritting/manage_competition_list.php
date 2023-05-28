@@ -30,8 +30,8 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="table-bordered table-responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>

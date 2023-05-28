@@ -456,6 +456,26 @@
     $('#state_id_blk').hide();
     var loadcPrizeImage = function(event) {
         // $("#outputConsol").show();
+        var fileSize = $('#cprize_image')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#cprize_image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#cprize_image').val('');
+           // $('#lessSize').modal('show');
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if(fileSize > 200000){
+            $('#cprize_image').val('');
+           // $('#greaterSize').modal('show');
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#cprize_image').val('');
+           // $('#invalidfiletype').modal('show');
+           Swal.fire("Only jpg,jpeg,png files allowed");
+        }
+
         var outputConsol = document.getElementById('outputConsol');
         outputConsol.src = URL.createObjectURL(event.target.files[0]);
         outputConsol.onload = function() {
@@ -465,6 +485,23 @@
 
     var loadtPrizeImage = function(event) {
         // $("#outputConsol").show();
+        var fileSize = $('#tprize_image')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#tprize_image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#tprize_image').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if(fileSize > 200000){
+            $('#tprize_image').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#tprize_image').val('');           
+           Swal.fire("Only jpg,jpeg,png files allowed");
+        }
+
         var outputConsol = document.getElementById('outputConsol1');
         outputConsol.src = URL.createObjectURL(event.target.files[0]);
         outputConsol.onload = function() {
@@ -474,6 +511,23 @@
 
     var loadsPrizeImage = function(event) {
         // $("#outputConsol").show();
+        var fileSize = $('#sprize_image')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#sprize_image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#sprize_image').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if(fileSize > 200000){
+            $('#sprize_image').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#sprize_image').val('');           
+           Swal.fire("Only jpg,jpeg,png files allowed");
+        }
+
         var outputConsol = document.getElementById('outputConsol2');
         outputConsol.src = URL.createObjectURL(event.target.files[0]);
         outputConsol.onload = function() {
@@ -482,6 +536,23 @@
     };
     var loadfPrizeImage = function(event) {
         // $("#outputConsol").show();
+        var fileSize = $('#fprize_image')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#fprize_image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#fprize_image').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if(fileSize > 200000){
+            $('#fprize_image').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#fprize_image').val('');           
+           Swal.fire("Only jpg,jpeg,png files allowed");
+        }
+
         var outputConsol = document.getElementById('outputConsol3');
         outputConsol.src = URL.createObjectURL(event.target.files[0]);
         outputConsol.onload = function() {
@@ -491,6 +562,23 @@
 
     var loadThumbnail = function(event) {
         // $("#outputConsol").show();
+        var fileSize = $('#thumbnail')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#thumbnail").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#thumbnail').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if(fileSize > 200000){
+            $('#thumbnail').val('');           
+           Swal.fire("Image size should be between 20 to 200KB");
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#thumbnail').val('');           
+           Swal.fire("Only jpg,jpeg,png files allowed");
+        }
+
         var outputConsol = document.getElementById('thumbnail_img');
         outputConsol.src = URL.createObjectURL(event.target.files[0]);
         outputConsol.onload = function() {

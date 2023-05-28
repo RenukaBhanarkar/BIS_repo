@@ -283,7 +283,7 @@ class Standardswritting extends CI_Controller
                 // print_r($formdata1);
                 // die;
                 if($id){
-                    echo "success";
+                   // echo "success";
                     $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
                     redirect(base_url() . "Standardswritting/create_competition_list", 'refresh');
                 }else{
