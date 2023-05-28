@@ -433,7 +433,7 @@
                                 </select>
                                 <span class="error_text"><?php echo form_error('availability_id'); ?></span>
                             </div>
-                            <div class="mb-2 col-8">
+                            <div class="mb-2 col-8" id="standard_check">
                         <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div class="custom-control custom-checkbox mr-3">
@@ -860,6 +860,19 @@
                     });
                 }
             });
+            }
+        });
+        $("#standard_check").hide();
+        $(document).on("change", "#availability_id", function(e) {
+            e.preventDefault();
+            var availability_id = $("#availability_id :selected").val();
+            if (availability_id == 1) {
+                $("#standard_check").show();
+                $("#standard_check").show();
+            } else if (availability_id == 2) {
+                $("#standard_check").hide();
+                $("#standard_check").hide();
+                  
             }
         });
 

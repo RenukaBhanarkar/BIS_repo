@@ -30,11 +30,11 @@
                                 <!-- <?php foreach ($quizlavel as $lavel) { ?>
                                     <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
                                 <?php } ?> -->
-                                <option value="1">Essay Writing</option>
-                                <option value="2">Poster Making</option>
-                                <option value="3">Case Study</option>
-                                <option value="3">Artical writing</option>
-                                <option value="3">Paper Writing</option>
+                                <option value="1" <?php if($competition['type']==1){echo 'selected'; } ?>>Essay Writing</option>
+                                <option value="2" <?php if($competition['type']==2){echo 'selected'; } ?>>Poster Making</option>
+                                <option value="3" <?php if($competition['type']==3){echo 'selected'; } ?>>Case Study</option>
+                                <option value="4" <?php if($competition['type']==4){echo 'selected'; } ?>>Artical writing</option>
+                                <option value="5" <?php if($competition['type']==5){echo 'selected'; } ?>>Paper Writing</option>
                             </select>
                             <div class="invalid-feedback">
                             This value is required
@@ -235,6 +235,29 @@
                                 
                                 </select>
                                 <span class="error_text"><?php echo form_error('branch_id'); ?></span>
+
+                            </div>
+                            <?php } ?>
+
+                            <?php if (!empty($getAllStates)) { ?>
+                            <div class="mb-2 col-md-4" id="state_id_blk">
+                                <label class="d-block text-font" id="state_title">State<sup class="text-danger">*</sup></label>
+                                <select id="state_id" name="state" class="form-control input-font" value="<?php echo $competition['state']; ?>">
+                                <?php
+                                foreach ($getAllStates as $branch) { ?>
+                                <option <?php if ($competition['state'] == $branch['state_id_lgd']) echo "selected"; ?> value="<?php echo $branch['state_id_lgd'] ?>"> <?php echo $branch['state_name']; ?> </option>
+                                <?php } ?>
+                                </select>
+                                <span class="error_text"><?php echo form_error('branch_id'); ?></span>
+
+                            </div>
+                            <?php }else{?>
+                                <div class="mb-2 col-md-4" <?php if($competition['state']=='0' || $competition['state']==null){ echo 'Style="display:none;"'; } ?> id="state_id_blk">
+                                <label class="d-block text-font" id="state_title">Branch<sup class="text-danger">*</sup></label>
+                                <select id="state_id" name="state" class="form-control input-font" value="<?php echo $competition['state']; ?>">
+                                
+                                </select>
+                                <span class="error_text"><?php echo form_error('state_id'); ?></span>
 
                             </div>
                             <?php } ?>
@@ -967,9 +990,11 @@
             if (quiz_level_id == 1) {
                 $("#region_id_blk").hide();
                 $("#branch_id_blk").hide();
+                $("#state_id_blk").hide();
             } else if (quiz_level_id == 2) {
                 $("#region_id_blk").show();
                 $("#branch_id_blk").hide();
+                $("#state_id_blk").hide();
                 $("#region_title").text("Regional Level");
                 var postdata = "id=2";  
 
@@ -995,6 +1020,7 @@
             } else if (quiz_level_id == 3) {
                 $("#region_id_blk").hide();
                 $("#branch_id_blk").show();
+                $("#state_id_blk").hide();
                 $("#branch_title").text("Branch Level");
                 var postdata = "id=3";  
 
@@ -1015,6 +1041,31 @@
                     });
                 }
             });
+            }else if(quiz_level_id == 4){
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").hide();
+                $("#state_id_blk").show();
+                $("#state_title").text("State Level");
+                var postdata = "id=3";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>standardswritting/getAllStates",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#state_id');
+                    selectbox.empty();
+                    $("#state_id").next(".validation").remove();
+                    $('#state_id').append('<option value="" selected disabled>Select State </option>');
+                    $.each(res.states, function(index, value) {
+                        $('#state_id').append('<option value="' + value.state_id_lgd + '">' + value.state_name + '</option>');
+                    });
+                }
+            });
+
             }
         });
 

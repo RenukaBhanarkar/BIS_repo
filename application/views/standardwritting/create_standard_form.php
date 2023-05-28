@@ -47,7 +47,7 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Participants</label>
-                                <input type="date" class="form-control input-font" name="Date" placeholder="Enter Number of Participate" id="Date"  value="" required="">
+                                <input type="text" class="form-control input-font" name="Date" placeholder="Enter Number of Participate" id="Participants"  value="" required="">
                             </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -106,7 +106,7 @@
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -127,7 +127,7 @@
                                 <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -140,8 +140,8 @@
                         </div>
                     </div>
                     <div class="col-md-12 submit_btn p-3">
-                            <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a>
-                            <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                            <a class="btn btn-success btn-sm text-white submit" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a>
+                            <a class="btn btn-danger btn-sm text-white cancel" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -156,83 +156,49 @@
 
     </div>
     <!-- End of Main Content -->
- </body>
-                                  <!-- Modal -->
-                                    <div class="modal fade" id="archivesForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Archive</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Archive?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Archive</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="createForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Create Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Create?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Create</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="editForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Edit?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Edit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="deleteForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">delete</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to delete?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
+
+<script>
+ $(document).ready(function(){
+   $('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Do you want to cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+   }) 
+   
+});
+$(document).ready(function(){
+   $('.submit').on('click',function(){
+    Swal.fire({
+                    title: 'Do you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+   }) 
+   
+});
+</script>                                  
 <script>
         CKEDITOR.replace( 'description' );
         CKEDITOR.replace( 'terms' );

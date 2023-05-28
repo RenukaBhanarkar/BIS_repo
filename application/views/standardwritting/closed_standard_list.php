@@ -9,7 +9,8 @@
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_writting_dashboard';?>" >Standard Writting</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_offline_dashboard';?>" >Standard Writting Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_online_dashboard';?>" >Standard Writting</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Closed Competition</li>
                 
                 </ol>
@@ -19,19 +20,23 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Competition ID</th>
-                                <th>Name of Competition</th>
+                                <th>Title of Competition</th>
                                 <th>Start Date</th>
+                                <th>Start Time</th>
                                 <th>End Date</th>
+                                <th>End Time</th>
                                 <th>Banner</th>
-                                <th>Status</th>
-                                <th>Submitted Task</th>
+                                <th>Available for</th>
+                                <th>Level of Competition</th>
+                                <th>Total Task</th>
                                 <th>Task Under Review</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -39,17 +44,22 @@
                            <tr>
                               <td>1</td>
                               <td>12345</td>
-                              <td>Miscellaneous Competition</td>
+                              <td>Standard Competition</td>
                               <td>12/03/2023</td>
+                              <td>12:00:00</td>
                               <td>12/03/2023</td>
+                              <td>12:00:00</td>
                               <td><img src="#" alt="#" class="" width="10%"></td>
+                              <td>Available</td>
+                              <td>Level of Competition</td>
                               <td>Pending</td>
-                              <td>task</td>
                               <td>Review</td>
+                              <td>Pending</td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Sent For Review</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
                               </td>
 
                         </tbody>

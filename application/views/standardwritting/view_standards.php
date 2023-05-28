@@ -59,13 +59,13 @@
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Name of Participant</label>
                                 <div>
-                                <p>1</p>
+                                <p>Anis Mulani</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Image</label>
+                            <label class="d-block text-font">Document</label>
                             <div>
-                                 <p><img src="#" alt="#" width="10%"></p>
+                                 <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
                             </div>
                         </div>
                     </div>
@@ -78,13 +78,13 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p>2</p>
+                                <p>Anis Mulani</p>
                             </div>
                         </div>
                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Image</label>
+                            <label class="d-block text-font">Document</label>
                             <div>
-                               <p><img src="#" alt="" class="" width="10%"></p>
+                               <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
                             </div>
                         </div>
                     </div>
@@ -97,13 +97,13 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p>3</p>
+                                <p>Anis Mulani</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Image</label>
+                            <label class="d-block text-font">Document</label>
                             <div>
-                                    <p><img src="#" alt="" class="" width="10%"></p>
+                                    <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
                             </div>
                         </div>
                     </div>
@@ -116,13 +116,13 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p>4</p>
+                                <p>Anis Mulani</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Image</label>
+                            <label class="d-block text-font">Document</label>
                             <div>
-                                  <p><img src="#" alt="" width="10%"></p>
+                                  <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
                             </div>
                         </div>
                     </div>

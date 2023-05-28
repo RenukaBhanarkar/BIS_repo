@@ -23,6 +23,12 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/miscellaneous_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function review_competition_dashboard()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/review_competition_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function create_competition_list()
     {
         $data['competition'] = $this->Miscellaneous_competition->getCompetition('0');
@@ -53,6 +59,39 @@ class Standardswritting extends CI_Controller
             return false;
         }
 
+    }
+    public function update_competition_status(){
+        try {
+            $comp_id = $this->input->post('id');    
+            $status = $this->input->post('status');
+          // echo $img_name;
+           // $prize_id = $this->input->post('prize_id'); 
+            $data = array(
+                'comp_id' => $comp_id,            
+                'review_status'=>$status,
+            );
+            //print_r($data); die;
+            $id = $this->Miscellaneous_competition->update_competition_status($data);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Competition Send for reviewed successfully.';
+                // if($img_name){
+                //     @unlink($img_name);
+                // }
+    
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
     }
     public function delete_comp(){
         try {
@@ -106,13 +145,31 @@ class Standardswritting extends CI_Controller
 
         $this->load->view('admin/footers/admin_footer');
     }
+    public function getAllStates(){
+       // $region_id = $this->input->post('id');
+        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+    
+        $details = array();
+        $details = $this->Miscellaneous_competition->getAllStates();
+        if (empty($details)) {
+            $data['status'] = 0;
+            $data['message'] = 'Failed to get details , Please try again.';
+            $data['states'] = $details;
+        } else {
+            $data['status'] = 1;
+            $data['message'] = 'Details Available.';
+            $data['states'] = $details;
+        }
+        echo  json_encode($data);
+        exit();
+       }
     public function competition_reg(){
         $this->load->model('Quiz/Quiz_model');
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $formdataall['quizlavel']=$quizlavel;
-    //    print_r($_POST); 
+    // print_r($_POST); 
         // print_r($_FILES);
-    //    die;
+        // die;
 
         if (!file_exists('uploads/competition/thumbnail')) { mkdir('uploads/competition/thumbnail', 0777, true); }
         if (!file_exists('uploads/competition/prize_img')) { mkdir('uploads/competition/prize_img', 0777, true); }
@@ -189,6 +246,10 @@ class Standardswritting extends CI_Controller
             if($this->input->post('quiz_level_id')== 3){
                 $formdata['region'] = 0;   
                 $formdata['branch'] = $this->input->post('branch_id');
+            }
+            if($this->input->post('quiz_level_id')== 4){
+                $formdata['region'] = 0;   
+                $formdata['state'] = $this->input->post('state_id');
             }
 
        
@@ -426,6 +487,7 @@ if($id){
         $this->load->model('Quiz/Quiz_model');
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $data['quizlavel']=$quizlavel;
+       // print_r($data);die;
         // $getAllRegions = array();
         // $getAllBranches = array();
       //  $data=array();
@@ -445,9 +507,12 @@ if($id){
          //   $data['getAllRegions']="";
           //  $data['getAllBranches']="";
         }
+        if($level == 4){
+            $data['getAllStates'] = $this->Miscellaneous_competition->getAllStates();
+        }
 
          $data['competition'] = $this->Miscellaneous_competition->viewCompetition2($id);
-       // print_r($data['competition']); die;
+       // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/create_competition_edit',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -501,10 +566,46 @@ if($id){
         $this->load->view('standardwritting/standard_writting_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function create_online_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function create_online_form()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_form');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function create_online_edit()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_edit');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function Manage_online_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/Manage_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function ongoing_online_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/ongoing_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function standard_offline_dashboard()
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/standard_offline_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function standard_online_dashboard()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/standard_online_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_standard_list()

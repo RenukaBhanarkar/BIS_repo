@@ -16,6 +16,17 @@
             </nav>
         </div>
 
+        <div class="row">
+                <div class="col-12">
+                    <div class="card border-top card-body">
+                        <div>
+                            <!-- <a href="<?php echo base_url(); ?>standardswritting/create_competition_form" class="btn btn-primary btn-sm mr-2" title="View">Create New Competition</a> -->
+                            <a href="<?php echo base_url(); ?>standardswritting/create_competition_archive" class="btn btn-primary btn-sm mr-2" title="View">Archived</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
@@ -35,6 +46,7 @@
                                 <th>Available For</th>
                                 <th>Level of Competition</th>
                                 <th>Status</th>
+                                <th>Reason of Rejection</th>
                                 <!-- <th>Total Submission</th> -->
                                 <!-- <th>Reason of Rejection</th> -->
                                 <th>Action</th>
@@ -75,7 +87,7 @@
                             <td><?php echo $list['avai_for']; ?></td>
                             <td><?php echo $list['title']; ?></td>
                             <td><?php echo $list['status_name'];  ?></td>
-                            <!-- <td><?php echo $list['reject_reason'];  ?></td> -->
+                            <td><?php echo $list['reject_reason'];  ?></td>
                             <td>
 
                             <!-- <button href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</button> -->

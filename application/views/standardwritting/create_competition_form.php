@@ -33,8 +33,8 @@
                                     <option value="1">Essay Writing</option>
                                     <option value="2">Poster Making</option>
                                     <option value="3">Case Study</option>
-                                    <option value="3">Artical writing</option>
-                                    <option value="3">Paper Writing</option>
+                                    <option value="4">Artical writing</option>
+                                    <option value="5">Paper Writing</option>
                                 </select>
                                 <div class="invalid-feedback">
                                 This value is required
@@ -127,7 +127,7 @@
                         </div>
                         <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
-                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required>
                             <span class="error_text"><?php echo form_error('score'); ?></span>
                         </div>
                         
@@ -183,8 +183,8 @@
                                 <span class="error_text"><?php echo form_error('region_id'); ?></span>
 
                             </div>
-                            <div class="mb-2 col-md-4 d-none" id="state_id_blk">
-                                <label class="d-block text-font" id="region_title">State Level<sup class="text-danger">*</sup></label>
+                            <div class="mb-2 col-md-4" id="state_id_blk">
+                                <label class="d-block text-font" id="state_title">State Level<sup class="text-danger">*</sup></label>
                                 <select id="state_id" name="state_id" class="form-control input-font">
                                     <!-- <option value="" selected disabled>--select--</option>
                                     <option value="#">Maharashtra</option>
@@ -211,24 +211,24 @@
                                     <option value="2">Higher Qualification</option>
                                 </select>
                         </div>
-                        <div class="mb-2 col-8">
+                        <div class="mb-2 col-8" id="standard">
                         <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_1"  >
-                                        <label class="custom-control-label" for="Standard_1">9<sup>th</sup>Standard</label>
+                                        <input type="checkbox" value="9" name="standaed_ix" class="custom-control-input"  id="standaed_ix"  >
+                                        <label class="custom-control-label" for="standaed_ix">9<sup>th</sup>Standard</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_2"  >
-                                        <label class="custom-control-label" for="Standard_2">10<sup>th</sup>Standard</label>
+                                        <input type="checkbox" value="10" name="standard_x" class="custom-control-input"  id="standaed_x"  >
+                                        <label class="custom-control-label" for="standaed_x">10<sup>th</sup>Standard</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_3"  >
-                                        <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
+                                        <input type="checkbox" value="11" name="standard_xi" class="custom-control-input"  id="standaed_xi"  >
+                                        <label class="custom-control-label" for="standaed_xi">11<sup>th</sup>Standard</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_4">
-                                        <label class="custom-control-label" for="Standard_4">12s<sup>th</sup>Standard</label>
+                                        <input type="checkbox" value="12" name="standard_xii" class="custom-control-input"  id="standaed_xii">
+                                        <label class="custom-control-label" for="standaed_xii">12s<sup>th</sup>Standard</label>
                                     </div>
                                 </div>
                         </div>
@@ -453,6 +453,7 @@
 <script>
     $('#region_id_blk').hide();
     $('#branch_id_blk').hide();
+    $('#state_id_blk').hide();
     var loadcPrizeImage = function(event) {
         // $("#outputConsol").show();
         var outputConsol = document.getElementById('outputConsol');
@@ -512,6 +513,7 @@
         var description = CKEDITOR.instances['description'].getData();
         var terms_conditions = CKEDITOR.instances['terms_conditions'].getData();
         var thumbnail =$('#thumbnail').val();
+        var fprizedatail=$('#fdetail').val();
         
 
 
@@ -539,8 +541,14 @@
 
        }
 
-       if(thumbnail==""){
-        $('#terms_conditions_error').text('This value is required');
+    //    if(thumbnail==""){
+    //     $('#terms_conditions_error').text('This value is required');
+    //     isvalid =false;
+    //    }else{
+
+    //    }
+    if(fprizedatail==""){
+       // $('#terms_conditions_error').text('This value is required');
         isvalid =false;
        }else{
 
@@ -583,9 +591,11 @@
             if (quiz_level_id == 1) {
                 $("#region_id_blk").hide();
                 $("#branch_id_blk").hide();
+                $("#state_id_blk").hide();
             } else if (quiz_level_id == 2) {
                 $("#region_id_blk").show();
                 $("#branch_id_blk").hide();
+                $("#state_id_blk").hide();
                 $("#region_title").text("Regional Level");
                 var postdata = "id=2";  
 
@@ -610,6 +620,7 @@
 
             } else if (quiz_level_id == 3) {
                 $("#region_id_blk").hide();
+                $("#state_id_blk").hide();
                 $("#branch_id_blk").show();
                 $("#branch_title").text("Branch Level");
                 var postdata = "id=3";  
@@ -631,8 +642,53 @@
                     });
                 }
             });
+            } else if(quiz_level_id == 4){
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").hide();
+                $("#state_id_blk").show();
+                $("#state_title").text("State Level");
+                var postdata = "id=3";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>standardswritting/getAllStates",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#state_id');
+                    selectbox.empty();
+                    $("#state_id").next(".validation").remove();
+                    $('#state_id').append('<option value="" selected disabled>Select State </option>');
+                    $.each(res.states, function(index, value) {
+                        $('#state_id').append('<option value="' + value.state_id_lgd + '">' + value.state_name + '</option>');
+                    });
+                }
+            });
+
             }
         });
+
+
+    // ------------------
+    $(document).on("change", "#Available", function(e) {
+            e.preventDefault();
+            var available_for = $("#Available :selected").val();
+            if (available_for == 2) {
+                $("#standard").hide();
+               // $("#branch_id_blk").hide();
+            } else if (available_for == 1) {
+                 $("#standard").show();
+                // $("#branch_id_blk").hide();
+                // $("#region_title").text("Regional Level");
+                // var postdata = "id=2";  
+            }
+        })
+
+
+    // ------------------
+    
 $(document).ready(function(){
     $(".timepicker").click(function(){
         $(".bootstrap-timepicker-widget .glyphicon-chevron-up").html("<i class='fa fa-chevron-up' aria-hidden='true'></i>");
