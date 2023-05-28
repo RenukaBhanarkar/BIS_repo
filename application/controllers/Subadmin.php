@@ -63,6 +63,8 @@ class Subadmin extends CI_Controller
 
         $departments = $this->Admin_model->getAllDepartments();
         $data['departments'] = $departments;
+        $branches = $this->Admin_model->getAllBranches();
+        $data['branches'] = $branches;
 
 
         $this->load->view('admin/headers/admin_header');
@@ -167,10 +169,12 @@ class Subadmin extends CI_Controller
     }
 
     public function addSubAdmin()
-    {
+    {   
+        $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
         $this->form_validation->set_rules('name', 'Name', 'required|trim|max_length[50]');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|max_length[30]|valid_email');
         $this->form_validation->set_rules('department', 'Department', 'required|trim|max_length[50]');
+        $this->form_validation->set_rules('branch', 'Branch', 'required|trim|max_length[50]');
          $this->form_validation->set_rules('role', 'Role', 'required|trim|max_length[50]');
         // $this->form_validation->set_rules('branch', 'Branch', 'required|trim|max_length[50]');
         // $this->form_validation->set_rules('post', 'Post', 'required|trim|max_length[50]');
@@ -186,6 +190,7 @@ class Subadmin extends CI_Controller
             $name        = clearText($this->input->post('name'));
             $email_id        = clearText($this->input->post('email'));
             $department        = clearText($this->input->post('department'));
+            $branch        = clearText($this->input->post('branch'));
             $designation        = clearText($this->input->post('role'));
             // $branch        = clearText($this->input->post('branch'));
             // $post        = clearText($this->input->post('post'));
@@ -203,10 +208,12 @@ class Subadmin extends CI_Controller
                 // 'branch' => $branch,
                 // 'post' => $post,
                  'department' => $department,
+                 'branch' => $branch,
                 'is_active' => 1,
                 'username' => $email_id,
                 'password' => $random_pass,
-                'admin_type' => $admin_type
+                'admin_type' => $admin_type,
+                'created_by' => $login_admin_id
                 //'created_on' => GetCurrentDateTime('Y-m-d h:i:s'),
             );
             $admin_id = $this->Admin_model->insertData($data);
@@ -233,7 +240,8 @@ class Subadmin extends CI_Controller
         $departments = $this->Admin_model->getAllDepartments();
         $data['departments'] = $departments;
 
-
+        $branches = $this->Admin_model->getAllBranches();
+        $data['branches'] = $branches;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('subadmin/subadmin_edit',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -248,6 +256,7 @@ class Subadmin extends CI_Controller
         $email = clearText($this->input->post('email'));
 
         $department= clearText($this->input->post('department'));
+        $branch= clearText($this->input->post('branch'));
         $designation = clearText($this->input->post('role'));     
 
         if (!$name && !$email  && !$department && !$designation) {
@@ -260,8 +269,9 @@ class Subadmin extends CI_Controller
                 'name' =>  $name,
                 'email_id' => $email,
                 'username' => $email,
-                'designation'    =>$designation,
+                'designation' =>$designation,
                 'department' => $department,
+                'branch' => $branch,
 
                 'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
                 'modified_by' => $admin_id,

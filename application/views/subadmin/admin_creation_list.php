@@ -41,9 +41,10 @@
                       <th>Name</th>
                       <th>Email id</th>
                       <th>Department</th>
+                      <th>Branch</th>
                       <th>Role/Designation</th>
-                     <!-- <th>Branch</th>
-                      <th>Post</th>
+                    
+                      <!--<th>Post</th>
                       -->
                       <th>Created On</th>
                       <th>Action</th>
@@ -61,6 +62,7 @@
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['email_id']; ?></td>
                         <td><?php echo $row['uvc_department_name']; ?></td>
+                        <td><?php echo $row['branchnew']; ?></td>
                          <td><?php echo $row['role']; ?></td>
                         <!--<td><?php echo $row['branch']; ?></td>
                         <td><?php echo $row['post']; ?></td>
@@ -185,7 +187,7 @@
                                     $('#row' + id).css({
                                         'display': 'none'
                                     });
-                                    Swal.fire('Admin deleted Successfully');
+                                    Swal.fire('Subadmin deleted Successfully');
                                 },
                                 error: function(result) {
                                     Swal.fire("Error,Please try again.");

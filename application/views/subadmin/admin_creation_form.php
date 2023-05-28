@@ -56,8 +56,19 @@
 
                                                 </select>
 
-                                                <!-- <input type="text" class="form-control input-font" name="department" id="department" placeholder="Enter Department"> -->
+                                             
+                                            </div>
+                                            <div class="mb-2 col-md-4">
+                                                <label class="d-block text-font">Branch<sup class="text-danger">*</sup></label>
+                                                <select id="branch" name="branch" class="form-control input-font">
+                                                    <option value="" selected disabled>Select branch</option>
+                                                    <?php foreach ($branches as $branch) { ?>
+                                                        <option value="<?php echo $branch['pki_id'] ?>"><?php echo $branch['uvc_department_name'] ?></option>
+                                                    <?php } ?>
 
+                                                </select>
+
+                                               
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Assign Role<sup class="text-danger">*</sup></label>
@@ -76,10 +87,7 @@
                                             <label class="d-block text-font" text-font>Designation<sup class="text-danger">*</sup></label>
                                             <input type="text" class="form-control input-font" placeholder="Enter Designation" name="designation" id="designation" required=""></input>
                                         </div>
-                                        <div class="mb-2 col-md-4">
-                                            <label class="d-block text-font">Branch<sup class="text-danger">*</sup></label>
-                                            <input type="text" class="form-control input-font" name="branch" id="branch" placeholder="Enter Branch">
-                                        </div>
+                                       
                                         <div class="mb-2 col-md-4">
                                             <label class="d-block text-font">Post<sup class="text-danger">*</sup></label>
                                             <input type="text" class="form-control input-font" name="post" id="post" placeholder="Enter Post">
@@ -240,6 +248,8 @@
                             var email = $("#email").val();
                             var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
                             var department = $("#department").val();
+                            var branch = $("#branch").val();
+
                             var username = $("#name").val();
 
                             if (uid == "") {
@@ -293,6 +303,17 @@
                                 }
                             } else {
                                 $("#department").next(".validation").remove(); // remove it
+                            }
+                            if (branch == "" || branch== null) {
+                                if ($("#branch").next(".validation").length == 0) {
+                                    $("#branch").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
+                                }
+                                allfields = false;
+                                if (!focusSet) {
+                                    $("#branch").focus();
+                                }
+                            } else {
+                                $("#branch").next(".validation").remove(); // remove it
                             }
                             if (!username.length) {
                                 if ($("#name").next(".validation").length == 0) {

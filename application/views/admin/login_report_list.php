@@ -17,8 +17,8 @@
                 
             <div class="col-12 mt-3">
                 <div class="card border-top card-body table-responsive">
-                    <div class="row">
-                    <div class="mb-2 col-md-4">
+                    <!-- <div class="row">
+                        <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Username</label>
                                 <input type="text" class="form-control input-font" name="Username_new" id="Username_new" placeholder="Enter Username">
                             </div>
@@ -27,25 +27,33 @@
                                 <input type="date" class="form-control input-font" name="banner_caption" id="banner_caption" placeholder="Enter discussion Title" value="" required="">
                             </div>
                             
-                    </div>
+                    </div> -->
                             <hr>
                     <table id="example" class="hover table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
-                                <th>Username</th>
+                                <th>User name</th>
                                 <th>Login As</th>
                                 <th>Login On</th>
                                 <th>Logout On</th>
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td>1</td>
-                              <td>Bhagyashree  Avachar</td>
-                              <td>ROLE_MASTER_ADMIN</td>
-                              <td>05-05-2023 12:09:56</td>
-                              <td>05-05-2023 11:58:51</td>
+                        <?php $j=1; 
+                                 foreach ($allRecords as $row) { 
+                               
+                                ?>
+                                 <tr>
+                                <td><?= $j ?></td>
+                                <td><?= $row['newname'];?></td>
+                                <td><?= $row['newrole'];?></td>
+                              
+                                <td><?= $row['login_on'];?></td>
+                                <td><?= $row['logout_on'];?></td>
+                             
+                           </tr>
+                           <?Php $j++;} ?> 
                               
                         </tbody>
                     </table>

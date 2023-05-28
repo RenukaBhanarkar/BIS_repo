@@ -11,7 +11,24 @@
                 return false;
             }
         }
-
+        public function insertUsersLogs($logs){
+            if ($this->db->insert('tbl_users_login_logs', $logs)) {
+                return $this->db->insert_id();
+            } else {
+                return false;
+            }
+        }
+        
+        public function updateUsersLogs($id, $user_log_id,$data)
+        {
+            $this->db->where('user_id', $id);
+            $this->db->where('id', $user_log_id);
+            if ($this->db->update('tbl_users_login_logs', $data)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         //  public function checkUniqueEmail($email)
         //  {
         //      $myQuery = "SELECT a.email_id FROM  tbl_admin a WHERE a.user_email = '{$email}' ";
@@ -31,6 +48,18 @@
                 return false;
             }
         }
+
+        public function updateSessionId($user_id, $data)
+        {
+            $this->db->where('user_id', $user_id);
+            if ($this->db->update('tbl_users', $data)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        
         public function updateUserTimeOfAppearedQuiz($user_id,$quiz_id, $data){
             $this->db->where('user_id', $user_id);
             $this->db->where('quiz_id', $quiz_id);
@@ -49,7 +78,17 @@
                 return false;
             }
         }
-
+        public function checkLoginSession(){
+            $user_session_id = $_SESSION['user_session_id'];
+            $this->db->where('user_session_id', $user_session_id);
+            $query = $this->db->get('tbl_users');
+            $row = array();
+            if ($query->num_rows() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         public function toCheckUserExist($user_id)
         {
             $this->db->where('user_id', $user_id);
@@ -223,6 +262,8 @@
             // $this->db->where('quiz.start_time <=', $current_time);
             // $this->db->where('quiz.end_time >=', $current_time);
             $this->db->where('quiz.status', 5);
+            $this->db->order_by('quiz.created_on', 'DESC');
+           // $this->db->limit(4);
 
             // $rs = array();
             // $query = $this->db->get();
@@ -233,11 +274,18 @@
             $res = array();
             $rs = array();
             $query=$this->db->get();
+            // echo $query->num_rows();
+            // exit();
             if($query->num_rows() > 0){
                 $res = $query->result_array();
+
+                //echo json_encode($res);exit();
                 foreach($res as $row){
                     if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
-                        if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
+                        // if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
+                        //     array_push($rs,$row);
+                        // }
+                        if(($row['end_time'] >= $current_time) ){
                             array_push($rs,$row);
                         }
                     }
@@ -256,7 +304,85 @@
                             array_push($rs,$row);
                         }
                     }
+                    if(($row['start_date'] > date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                      
+                        array_push($rs,$row);
                     
+                }
+                    // else{
+                    //     array_push($rs,$row);
+                    // }
+                }
+            }
+            $res = array();
+            if(count($rs) > 4){
+                array_push($res,$rs[0]);
+                array_push($res,$rs[1]);
+                array_push($res,$rs[2]);
+                array_push($res,$rs[3]);
+                return $res;  
+            }else {
+                return $rs;
+            }
+            
+            
+        }
+        public function getStdClubQuizAllNew()
+        {
+            $t = time();
+
+            $current_time = (date("H:i:s", $t));
+            $this->db->select('quiz.*,st.status_name');
+            $this->db->from('tbl_quiz_details quiz');
+            $this->db->join('tbl_mst_status st', 'st.id = quiz.status');
+            //$this->db->where('(date(now()) BETWEEN quiz.start_date AND quiz.end_date)'); 
+           // $this->db->where('quiz.start_date <=', date("Y-m-d"));
+            $this->db->where('quiz.end_date >=', date("Y-m-d"));
+
+            // $this->db->where('quiz.start_time <=', $current_time);
+            // $this->db->where('quiz.end_time >=', $current_time);
+            $this->db->where('quiz.status', 5);
+            $this->db->order_by('quiz.created_on', 'DESC');
+            // $rs = array();
+            // $query = $this->db->get();
+            // if ($query->num_rows() > 0) {
+            //     $rs = $query->result_array();
+            // }
+            // return $rs;
+            $res = array();
+            $rs = array();
+            $query=$this->db->get();
+            if($query->num_rows() > 0){
+                $res = $query->result_array();
+                foreach($res as $row){
+                    if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                        // if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
+                        //     array_push($rs,$row);
+                        // }
+                        if(($row['end_time'] >= $current_time) ){
+                            array_push($rs,$row);
+                        }
+                    }
+                    if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                        // if($row['start_time'] <= $current_time){
+                            array_push($rs,$row);
+                       // }
+                    }
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                       
+                            array_push($rs,$row);
+                        
+                    }
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                        if($row['end_time'] >= $current_time){
+                            array_push($rs,$row);
+                        }
+                    }
+                    if(($row['start_date'] > date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                      
+                        array_push($rs,$row);
+                    
+                }
                     // else{
                     //     array_push($rs,$row);
                     // }

@@ -19,6 +19,7 @@ class Quiz extends CI_Controller
      public function deleteQuiz()
     {
         try {
+
             $id = $this->input->post('id');
 
             $linked_que_bank_id = $this->Quiz_model->getLinkedQueBankId($id);
@@ -27,6 +28,15 @@ class Quiz extends CI_Controller
                 'status'=> 1
             );
             $updateStatus = $this->Que_bank_model->updateData($linked_que_bank_id,$data);
+
+            $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
+         
+
+            $dbObj = array(
+               'modify_by' => $login_admin_id,
+            );
+            $uid = $this->Quiz_model->updateDataQuiz($id, $dbObj);
+
             
             $res = $this->Quiz_model->deleteData($id);
            
@@ -1698,7 +1708,7 @@ class Quiz extends CI_Controller
                 'modify_by' => encryptids("D", $_SESSION['admin_type']),
             );
 
-            $id = $this->Quiz_model->updateDataQuiz($quiz_id, $data);
+            $id = $this->Quiz_model->updateDataQuiz($quiz_id,$data);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Quiz Status updated successfully.';
@@ -1750,12 +1760,12 @@ class Quiz extends CI_Controller
                     $formdata['created_on']= date('Y-m-d h:i:s'); 
                     $this->Quiz_model->insertResultDesc($formdata);
                     }   
-
+                    $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
                     $dbobj = array(
-                        "result_declared" =>1
+                        "result_declared" =>1,
+                        'modify_by' => $login_admin_id,
                     );
-                    $this->Quiz_model->updateResultDeclaration($quiz_id,$dbobj);
-                          
+                    $this->Quiz_model->updateResultDeclaration($quiz_id,$dbobj);                          
             }
           
 

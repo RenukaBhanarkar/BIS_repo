@@ -1,5 +1,13 @@
 <!doctype html>
 <?php
+// new code start R
+//session_start();
+if(!isset($_SESSION['user_session_id'])){
+   // header('location:<?php echo base_url();users/login');
+   redirect(base_url() . "Users/login", 'refresh');
+}
+
+// new code end R
 date_default_timezone_set("Asia/Calcutta");
 $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 ?>
@@ -697,6 +705,24 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         // }
     </script>
 
+     <script>
+
+        function check_session_id(){
+            var session_id = "<?php echo $_SESSION['user_session_id'];?>";
+            fetch('<?php echo base_url();?>users/checkLoginSession').then(function(response){
+                return response.json();
+            }).then(function(responseData){
+                if(responseData.output == 'logout'){
+                    $('#regForm').submit();
+                    window.location.href="<?php echo base_url();?>users/logout";
+                }
+            });
+        }
+
+        setInterval(function(){
+            check_session_id();
+        },10000);
+     </script>
 </body>
 
 </html>

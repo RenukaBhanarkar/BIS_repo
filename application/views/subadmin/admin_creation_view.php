@@ -35,13 +35,13 @@
                                     <p><?php echo $detail['role']; ?></p>
                                     </div>    
                                 </div>
-                                <!-- <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Branch</label>
                                     <div>
-                                    <p><?php // echo $detail['branch']; ?></p>
+                                    <p><?php  echo $detail['branchnew']; ?></p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                               <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Post</label>
                                     <div>
                                     <p><?php // echo $detail['post']; ?></p>

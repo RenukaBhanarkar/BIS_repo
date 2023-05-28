@@ -1522,7 +1522,7 @@
             $("#language_id").next(".validation").remove();
         }
         var ban_img = $("#ban_img").val(); 
-        alert(ban_img);
+        //alert(ban_img);
         if(ban_img == 1)  {
           var banner_img = $("#banner_img").val();
        
