@@ -158,8 +158,35 @@
            </div>
 <div class="row">
 <div class="col-lg-12">
+<?php if(!empty($published_wall)){ 
+    foreach($published_wall as $list){ ?>
 
+ 
 <article class="blog-details">
+
+  <div class="post-img">
+    <img src="<?= base_url().'uploads/your_wall/'.$list['image']; ?>" alt="" class="img-fluid">
+  </div>
+
+  <h2 class="title"><?php echo $list['title']; ?></h2>
+
+  <div class="meta-top">
+    <ul>
+      <li class="d-flex align-items-center"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $list['user_name']; ?></li>
+      <li class="d-flex align-items-center" style="margin-left:10px;"><i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="2020-01-01"><?= date("d M Y", strtotime($list['created_on']));?></time></li>
+      <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li> -->
+    </ul>
+  </div><!-- End meta top -->
+
+  <div class="content">
+    <?php echo substr_replace($list['description'],"...",550); ?>
+
+    
+</div><!-- End meta bottom -->
+<a href="<?php echo base_url().'users/yourwallview/'.$list['id']; ?>" class="btn-primary btn-sm text-white" tyle="button" style="background: black; padding: 10px;">Read More</a>
+</article><!-- End blog post -->
+<?php  } } ?>
+<!-- <article class="blog-details">
 
   <div class="post-img">
     <img src="<?= base_url(); ?>assets/images/img_1.jpg" alt="" class="img-fluid">
@@ -171,9 +198,9 @@
     <ul>
       <li class="d-flex align-items-center"><i class="fa fa-user" aria-hidden="true"></i> <a href="blog-details.html">John Doe</a></li>
       <li class="d-flex align-items-center" style="margin-left:10px;"><i class="fa fa-calendar" aria-hidden="true"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-      <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li> -->
+      <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
     </ul>
-  </div><!-- End meta top -->
+  </div>
 
   <div class="content">
     <p>
@@ -194,47 +221,9 @@
     </p>
 
     
-</div><!-- End meta bottom -->
+</div>
 <a href="#" class="btn-primary btn-sm text-white" tyle="button" style="background: black; padding: 10px;">Read More</a>
-</article><!-- End blog post -->
-<article class="blog-details">
-
-  <div class="post-img">
-    <img src="<?= base_url(); ?>assets/images/img_1.jpg" alt="" class="img-fluid">
-  </div>
-
-  <h2 class="title">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</h2>
-
-  <div class="meta-top">
-    <ul>
-      <li class="d-flex align-items-center"><i class="fa fa-user" aria-hidden="true"></i> <a href="blog-details.html">John Doe</a></li>
-      <li class="d-flex align-items-center" style="margin-left:10px;"><i class="fa fa-calendar" aria-hidden="true"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-      <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li> -->
-    </ul>
-  </div><!-- End meta top -->
-
-  <div class="content">
-    <p>
-      Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-      Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-    </p>
-
-    <p>
-      Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
-    </p>
-
-    
-
-    <p>
-      Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat.
-      Dolor porro tempora et quibusdam voluptas. Beatae aut at ad qui tempore corrupti velit quisquam rerum. Omnis dolorum exercitationem harum qui qui blanditiis neque.
-      Iusto autem itaque. Repudiandae hic quae aspernatur ea neque qui. Architecto voluptatem magni. Vel magnam quod et tempora deleniti error rerum nihil tempora.
-    </p>
-
-    
-</div><!-- End meta bottom -->
-<a href="#" class="btn-primary btn-sm text-white" tyle="button" style="background: black; padding: 10px;">Read More</a>
-</article><!-- End blog post -->
+</article> -->
 
 
 
