@@ -199,8 +199,10 @@
                         
                         
                         <div class="" style="margin-left: 17px;">
-                                <a class="btn btn-info mb-4 mr-4"  href="<?php echo base_url().$published_wall['document']; ?>" target="_blank"><img  src="<?php echo base_url().'assets/admin/img/pdf.png'; ?>" width="100px"/></a>
-                                </a>
+                                <!-- <a class="btn btn-info mb-4 mr-4"  href="<?php echo base_url().$published_wall['document']; ?>" target="_blank"><img  src="<?php echo base_url().'assets/admin/img/pdf.png'; ?>" width="100px"/></a>
+                                </a> -->
+                                <a class="btn btn-primary mb-4 mr-4"  href="<?php echo base_url().$published_wall['document']; ?>" target="_blank">View Details</a>
+                                
                         </div>
                             
                             
