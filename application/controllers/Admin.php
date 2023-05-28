@@ -2832,11 +2832,19 @@ class Admin extends CI_Controller
     {
         try {
             $this->load->model('admin/Your_wall_model');
+            $this->load->model('admin/By_the_mentor_model');
             $que_id = $this->input->post('que_id');
-            $id = $this->Your_wall_model->yourwallPublish($que_id);
+            // $id = $this->Your_wall_model->yourwallPublish($que_id);
+            $email_id=$this->input->post('email');
+           //$email_id="vol.bhagyashree@gmail.com";
+            $msg="Your content has been approved and published on the forum";
+            $subject="Exchange form noification.";
+            $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
+           // $id = $this->By_the_mentor_model->btmPublish($que_id);
+           $id = $this->Your_wall_model->yourwallPublish($que_id);
             if ($id) {
                 $data['status'] = 1;
-                $data['message'] = 'Deleted successfully.';
+                $data['message'] = 'Yourwall Published successfully.';
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';

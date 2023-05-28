@@ -1875,6 +1875,11 @@ class Users extends CI_Controller
         $this->load->model('admin/your_wall_model');
         $id = $this->your_wall_model->addYourWall($formdata);
         if ($id) {
+            $email_id=encryptids("D", $_SESSION['admin_email']);
+            $subject="Exchange forunm notification";        
+            $msg="Your response has been submitted successfully and is under review.";
+            $this->by_the_mentor_model->send_email($msg,$subject,$email_id);
+
             $this->session->set_flashdata('MSG', ShowAlert("Response Submitted Successfully", "SS"));
             redirect(base_url() . "users/yourwall", 'refresh');
         } else {
