@@ -148,7 +148,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php if (!empty ($quizdata['fprize_image']) ){ ?> 
+                    <?php if (!empty ($quizdata['fprize_no']) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">1<sup>st</sup> Prize</h4>

@@ -347,4 +347,8 @@ class Miscellaneous_competition extends CI_Model {
                 }
                 return $rs;  
         }
+        public function getAllStates()
+    { 
+         return $this->db->get("tbl_mst_states")->result_array();
+    }
 }
