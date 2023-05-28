@@ -19,8 +19,8 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
                     <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -55,10 +55,12 @@
                               <td>10</td>
                               <td>Reviewed</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Assign For Review</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Task Under Review</a>
+                                 <!-- <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Assign For Review</a> -->
+                                 <a href="<?php echo base_url(); ?>Standardswritting/view_submission_competition" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-warning btn-sm mr-2" >Task Review</a>
+                                 <!-- <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Task Under Review</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-warning btn-sm mr-2" >Task Review</a> -->
                               </td>
 
                         </tbody>

@@ -29,6 +29,12 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/review_competition_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function view_submission_competition()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/view_submission_competition');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function create_competition_list()
     {
         $data['competition'] = $this->Miscellaneous_competition->getCompetition('0');
@@ -570,6 +576,18 @@ if($id){
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/create_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function create_online_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function create_online_archive()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_archive');
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_online_form()
