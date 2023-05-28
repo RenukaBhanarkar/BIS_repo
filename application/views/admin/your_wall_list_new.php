@@ -131,7 +131,7 @@
                                     <?php if($list_yw['status']=="5"){ ?>
                                     <button class="btn btn-warning btn-sm mr-2 unpublish" onclick="sendUnPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' title="View">UnPublish</button>
                                     <?php }else if($list_yw['status']=="6" || $list_yw['status']=="3"){ ?>
-                                        <button class="btn btn-success btn-sm mr-2 publish" onclick="sendPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' title="View">Publish</button>
+                                        <button class="btn btn-success btn-sm mr-2 publish" onclick="sendPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' data-email="<?php echo $list_yw['email']; ?>" title="View">Publish</button>
                                         <button class="btn btn-secondary btn-sm archive" onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button>
                                         <?php } ?>
                                         <!-- comment end -->
@@ -624,6 +624,7 @@ $(document).ready(function () {
 
     $('#example_2').on('click','.publish',function(){            
         var id=$(this).attr('data-id'); 
+        var email_id=$(this).attr('data-email');
 
         Swal.fire({
                     title: 'Are you sure you want to Publish ?',
@@ -638,6 +639,7 @@ $(document).ready(function () {
                             url: '<?php echo base_url(); ?>admin/yourwallPublish/',
                             data: {
                                 que_id: id,
+                                email:email_id,
                             },
                             success: function(result) {
                                 Swal.fire("Record Published Successfully.");

@@ -650,7 +650,7 @@ li.tab-link:hover {
           </a> 
         </div>
         <div class="col-md-3 col-lg-3 col-sm-3 m-2">
-          <a href="<?php echo base_url() . 'users/yourwall' ?>">
+          <a href="<?php echo base_url() . 'users/your_wall_posts' ?>">
             <div class="card image-card" style="width:100%;">
               <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg" class="card-img-top" alt="...">
               <div class="card-body-new">

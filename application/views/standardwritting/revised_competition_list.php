@@ -19,8 +19,8 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
                     <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>Standard Online Competition</td>
@@ -56,10 +56,35 @@
                               <td>Reviewed</td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Assign For Review</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/view_submission_competition" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Task Under Review</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-warning btn-sm mr-2" >Task Review</a>
                               </td>
+                           </tr> -->
+                           <?php if(!empty($competition)){ $i=1; foreach($competition as $list){ ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $list['comp_id']; ?></td>
+                                <td><?php echo $list['competiton_name']; ?></td>
+                                <td><?php echo $list['start_date']; ?></td>                                
+                                <td><?php echo $list['start_time']; ?></td>
+                                <td><?php echo $list['end_date']; ?></td>
+                                <td><?php echo $list['end_time']; ?></td>
+                                <td>banner</td>
+                                <td><?php echo $list['avai_for']; ?></td>
+                                <td><?php echo $list['title']; ?></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                
+                                <td>
+                                <a href="<?php echo base_url().'Standardswritting/view_submission_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a>
+                                </td>
+                            </tr>
+                            <?php $i++; } } ?>
 
                         </tbody>
                     </table>

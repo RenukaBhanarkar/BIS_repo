@@ -15,6 +15,7 @@
                 </ol>
             </nav>
         </div>
+        <div class="d-sm-flex align-items-center"><h4>Submission Count:<?php echo count($competition); ?></h4> </div>
 
         <!-- Content Row -->
        <div class="row">

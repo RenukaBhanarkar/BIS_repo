@@ -1071,6 +1071,30 @@ class Users extends CI_Controller
         $this->load->view('users/discussion_list');
         $this->load->view('users/footers/footer'); 
     }
+    public function your_wall_posts(){
+        $this->load->model('admin/your_wall_model');
+        if(isset($_SESSION['admin_id'])){
+        $user_id = encryptids("D", $_SESSION['admin_id']);
+        //$data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
+        $data['daily_limit']=$this->your_wall_model->ckeckDailyLimit($user_id);
+        }else{
+            $data['daily_limit']="0";  
+        }
+       // print_r($data); die;
+         $data['published_wall'] = $this->your_wall_model->getPublishedWall();
+        //   print_r($data); die;
+        // $this->load->view('users/headers/header');
+        // $this->load->view('users/yourwall_new', $data);
+        // $this->load->view('users/footers/footer');
+        // }else{
+        //     redirect(base_url() . "users/login", 'refresh');
+        // }
+
+
+        $this->load->view('users/headers/header');
+        $this->load->view('users/your_wall_28may',$data);
+        $this->load->view('users/footers/footer'); 
+    }
     public function important_draft_view($id)
     {
         $data['getData']=$this->Users_model->getImportantDraft($id);
@@ -1743,6 +1767,11 @@ class Users extends CI_Controller
         $this->load->model('admin/your_wall_model');
         $id = $this->your_wall_model->addYourWall($formdata);
         if ($id) {
+            $email_id=encryptids("D", $_SESSION['admin_email']);
+            $subject="Exchange forunm notification";        
+            $msg="Your response has been submitted successfully and is under review.";
+            $this->by_the_mentor_model->send_email($msg,$subject,$email_id);
+
             $this->session->set_flashdata('MSG', ShowAlert("Response Submitted Successfully", "SS"));
             redirect(base_url() . "users/yourwall", 'refresh');
         } else {
