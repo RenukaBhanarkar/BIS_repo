@@ -783,10 +783,10 @@ class Users extends CI_Controller
 
         $data['Winnerwall'] = $this->Users_model->getWinnerWall();
         $data['allquize'] = $allquize;
-        $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4','1');
-        $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4','2');
-        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4','3');
-        //print_r($data); die;
+        $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
+        $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
+        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5));
+        //print_r($data['competition']); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_club',$data);
         $this->load->view('users/footers/footer');  

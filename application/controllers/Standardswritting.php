@@ -54,6 +54,39 @@ class Standardswritting extends CI_Controller
         }
 
     }
+    public function update_competition_status(){
+        try {
+            $comp_id = $this->input->post('id');    
+            $status = $this->input->post('status');
+          // echo $img_name;
+           // $prize_id = $this->input->post('prize_id'); 
+            $data = array(
+                'comp_id' => $comp_id,            
+                'review_status'=>$status,
+            );
+            //print_r($data); die;
+            $id = $this->Miscellaneous_competition->update_competition_status($data);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Competition Send for reviewed successfully.';
+                // if($img_name){
+                //     @unlink($img_name);
+                // }
+    
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    }
     public function delete_comp(){
         try {
             $comp_id = $this->input->post('id');    

@@ -29,9 +29,11 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Banner</th>
-                                <th>Status</th>
+                               
                                 <th>Submitted Task</th>
                                 <th>Task Under Review</th>
+                                <th>Task Reviewed</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -63,12 +65,18 @@
                             <td><?php echo $list['start_date']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
-                            <td><?php echo $list['status_name'];  ?></td>
+                            
                             <td>Submited task</td>
                             <td></td>
+                            <td></td>
+                            <!-- <td><?php echo $list['status_name'];  ?></td> -->
+                            <td><?php echo $list['review_status'];  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
+                                 <?php if(!$list['review_status']==1){ ?>
+                                 <button comp-id="<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2 send_for_review" >Send for review</button>
+                                 <?php } ?>
                             </td>
                              </tr>
                             <?php $i++; } } ?>
@@ -83,79 +91,46 @@
     </div>
     <!-- End of Main Content -->
  </body>
-                                  <!-- Modal -->
-                                    <div class="modal fade" id="archivesForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Archive</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Archive?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Archive</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="createForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Create Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Create?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Create</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="editForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Edit?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Edit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="deleteForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">delete</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to delete?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
+ <script>
+    $(document).ready(function(){
+        $('#example').on('click','.send_for_review',function(){
+            var id=$(this).attr('comp-id');
+            Swal.fire({
+                title: 'Are you sure you want to Send For Review?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Send For Review',
+                denyButtonText: `Cancel`,
+                }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {                       
+                    jQuery.ajax({
+                                type: "POST",
+                                url: '<?php echo base_url(); ?>Standardswritting/update_competition_status',
+                                // dataType: 'json',
+                                data: {
+                                "id": id,
+                                "status": 1
+                                },
+                                success: function(res) {
+                                if (res) {
+                                   // 
+                                   swal.fire("Competition Send for reviewed successfully");
+                                   location.reload();
+                                } else {
+                                    alert("error");
+                                }
+                                },
+                                error: function(xhr, status, error) {
+                                console.log(error);
+                                }
+                            });
+                                            
+                } else if (result.isDenied) {
+                    // Swal.fire('Changes are not saved', '', 'info')
+                }
+                })
+        })
+    });
+ </script>
+                               

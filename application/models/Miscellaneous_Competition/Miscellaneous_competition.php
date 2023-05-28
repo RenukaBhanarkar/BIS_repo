@@ -111,18 +111,21 @@ class Miscellaneous_competition extends CI_Model {
         $t = time();
 
         $current_time = (date("H:i:s", $t));
-        $this->db->select('COUNT(tbl_users_competition_attempt_record.id) as total_submission,tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); 
-        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
-        $this->db->join('tbl_users_competition_attempt_record','tbl_users_competition_attempt_record.competiton_id=tbl_mst_competition_detail.comp_id','left');
-        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tbl_mst_competition_detail.comp_level');
-        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tbl_mst_competition_detail.available_for');
-        $this->db->join('tbl_mst_competition_type tmct','tmct.id=tbl_mst_competition_detail.type');
+       // $this->db->select('tbl_mst_competition_detail.*'); 
+       $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); 
+        //  $this->db->select('COUNT(tbl_users_competition_attempt_record.id) as total_submission,tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); 
+         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
+       //  $this->db->join('tbl_users_competition_attempt_record','tbl_users_competition_attempt_record.competiton_id=tbl_mst_competition_detail.comp_id','left');
+        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tbl_mst_competition_detail.comp_level','left');
+        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tbl_mst_competition_detail.available_for','left');
+        $this->db->join('tbl_mst_competition_type tmct','tmct.id=tbl_mst_competition_detail.type','left');
         $this->db->where('tbl_mst_competition_detail.status','5');
         $this->db->where('tbl_mst_competition_detail.end_date >=' ,date("Y-m-d")); 
      //  $this->db->where('tbl_mst_competition_detail.end_time >=' ,date("H:i:s")); 
        $this->db->where('tbl_mst_competition_detail.start_date <=' ,date("Y-m-d")); 
     //   $this->db->where('tbl_mst_competition_detail.start_time <=' ,date("H:i:s"));
         $query= $this->db->get('tbl_mst_competition_detail')->result_array();
+         // $res = $query->result_array();
       //  print_r($query); die;
      // $this->db->get('tbl_mst_competition_detail');
       $res = array();
@@ -189,7 +192,7 @@ class Miscellaneous_competition extends CI_Model {
     //   $this->db->where('tbl_mst_competition_detail.end_time >=' ,date("H:i:s")); 
        $this->db->where('tbl_mst_competition_detail.start_date <=' ,date("Y-m-d")); 
      ///  $this->db->where('tbl_mst_competition_detail.start_time <=' ,date("H:i:s")); 
-       $this->db->where('tbl_mst_competition_detail.type',$type);
+       $this->db->where_in('tbl_mst_competition_detail.type',$type);
        $this->db->limit($limit);
      //   return $this->db->get('tbl_mst_competition_detail')->result_array();
 
@@ -350,5 +353,13 @@ class Miscellaneous_competition extends CI_Model {
         public function getAllStates()
     { 
          return $this->db->get("tbl_mst_states")->result_array();
+    }
+    public function update_competition_status($data){
+        $this->db->where('comp_id',$data['comp_id']);
+        if($this->db->update('tbl_mst_competition_detail',$data)){
+			return true;
+		}else{
+			return false;
+		}
     }
 }
