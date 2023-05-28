@@ -128,8 +128,7 @@ if($admin_id==''){?>
 </div>
 <?php } ?>
 <div style="background-image: url(<?php echo base_url(); ?>/assets/images/whats-new-bg.png);">
-    <div class="container">
-        <!-- <?php print_r()?> -->
+    <div class="container"> 
           <?php foreach ($commnets as $key => $value): ?>
         <div class="artical-comment-view">
             <div class="view_content">

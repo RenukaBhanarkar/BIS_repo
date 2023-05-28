@@ -54,6 +54,12 @@
                             <td class="" style="width:559px;">
                                 <?php $id= encryptids("E", $value['id'] )?>
 
+                                <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php if ($user_id!=3) {?>
+                                    <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php  }  else { ?>
+
+
                                 <?php if (in_array(1, $permissions)) { ?>
                                     <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
@@ -92,7 +98,7 @@
 
                                 <button onclick="updateLsvStandards('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
                                 
-                                <?php } ?>
+                                <?php } } ?>
                                 
                                 
                                 

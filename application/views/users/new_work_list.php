@@ -1,8 +1,7 @@
 
     <!-- Begin Page Content -->
     <div class="container">
-        <!-- Content Row -->
-       <!-- <?php print_r($getAll)?> -->
+        <!-- Content Row --> 
         <div class="row">
         <div class="bloginfo">
                 <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">New Work Item Proposals</h3>

@@ -4,7 +4,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create new post/ live session</h1>
-        </div>
+        </div> 
 
         <form name="lsv_standards_form" id="lsv_standards_form" action="<?php echo base_url().'learningscience/lsv_standards_form'?>" method="post"enctype="multipart/form-data">
       <!-- Content Row -->
@@ -302,17 +302,17 @@
 // type_of_post--1
                     if (type_of_post==1) 
                     {
-                        var doc_pdf=$("#doc_pdf").val();
-                        if (doc_pdf == "" || doc_pdf== null) {
-                        if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
-                        {
-                            $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Upload PDF </div>");
-                        }
-                        if (!focusSet) { $("#doc_pdf").focus(); }
-                        allfields = false;
-                    } else {
-                        $("#doc_pdf").next(".validation").remove(); // remove it
-                    }
+                    //     var doc_pdf=$("#doc_pdf").val();
+                    //     if (doc_pdf == "" || doc_pdf== null) {
+                    //     if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
+                    //     {
+                    //         $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Upload PDF </div>");
+                    //     }
+                    //     if (!focusSet) { $("#doc_pdf").focus(); }
+                    //     allfields = false;
+                    // } else {
+                    //     $("#doc_pdf").next(".validation").remove(); // remove it
+                    // }
 
                     var image=$("#image").val();
                         if (image == "" || image== null) {

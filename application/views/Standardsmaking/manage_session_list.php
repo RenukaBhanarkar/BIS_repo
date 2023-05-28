@@ -52,6 +52,13 @@
                             <td><?= $value['updated_on']?></td>
                             <td class="d-flex">
                                 <?php $id= encryptids("E", $value['id'] )?>
+
+                                 <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php if ($user_id!=3) {?>
+                                    <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php  }  else { ?>
+
+
                                 <?php if (in_array(1, $permissions)) { ?>
                                 <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
@@ -87,7 +94,7 @@
                                 <button onclick="updateStatusLiveSession('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
                                 
                                 
-                                
+                                <?php } ?>
                                 
                                 
                                 

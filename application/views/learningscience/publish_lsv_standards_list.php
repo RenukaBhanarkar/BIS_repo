@@ -54,7 +54,15 @@
                               <td><?= $value['status_name']?></td> 
                               <td><?= $value['updated_on']?></td>
                               <td class="" style="width:559px;">
-                                 <?php $id= encryptids("E", $value['id'] )?> 
+                                 <?php $id= encryptids("E", $value['id'] )?>
+ 
+
+                                <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php if ($user_id!=3) {?>
+                                    <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php  }  else { ?>
+
+
 
                                  <?php if (in_array(1, $permissions)) { ?>
                                     <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
@@ -64,7 +72,7 @@
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
                                 <button onclick="updateLsvStandards('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
-                                 <?php }?> 
+                                 <?php } }?> 
 
                               </td>
                               
