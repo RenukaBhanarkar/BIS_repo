@@ -18,10 +18,11 @@ class Admin_model extends CI_Model {
             }
         }
         //$result = array_values($rs);
-       // echo json_encode($rs);exit();
+        //echo json_encode($rs);exit();
        return $rs;
        
     }
+   
     public function subModulePermission($id){
         $admin_id = encryptids("D", $id);
      
@@ -163,8 +164,80 @@ class Admin_model extends CI_Model {
 
 
     ////////////// PERMISSIONS END //////////////////
+    public function updateUsersLogs($id, $user_log_id,$data)
+    {
+        $this->db->where('user_id', $id);
+        $this->db->where('id', $user_log_id);
+        if ($this->db->update('tbl_users_login_logs', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+     public function getUsersLoginReport(){
+        $rs = array();
+        $this->db->select('logs.*,r.role AS newrole ,admin.name as newname'); 
+        $this->db->from('tbl_users_login_logs logs');
+        $this->db->join('tbl_admin admin','admin.id = logs.user_id'); 
+        $this->db->join('tbl_mst_admin_role r','r.admin_type = admin.designation','left'); 
+        $this->db->where('logs.type',1);
+        $this->db->order_by('logs.login_on','DESC');  
+        $admin = array();
+        $query=$this->db->get();
+        if($query->num_rows() > 0){
+            $rs = $query->result_array();
+            foreach ($rs as $row){
+                
+                array_push($admin,$row);
+            }
+        }
+        $rs1 = array();
+        $this->db->select('logs.*,t.type as newrole,users.user_name as newname'); 
+        $this->db->from('tbl_users_login_logs logs');
+        $this->db->join('tbl_users users','users.id = logs.user_id'); 
+        $this->db->join('tbl_mst_user_types t','t.user_type = users.user_type','left'); 
+        $this->db->where('logs.type',2);
+        $this->db->order_by('logs.login_on','DESC');  
+        $users = array();
+        $query=$this->db->get();
+        if($query->num_rows() > 0){
+            $rs1 = $query->result_array();
+            foreach ($rs1 as $row){              
+                array_push($users,$row);
+            }
+        }
+            /////////////////////////////////////////////////////////////
+        $arr = array();
+        $arr1 = array();
+        $result = array();
+        foreach ($admin as $row){
+            $arr['newrole'] = $row['newrole'];
+            $arr['newname'] = $row['newname'];
+            $arr['login_on'] = $row['login_on'];
+            $arr['logout_on'] = $row['logout_on'];
+            array_push($result,$arr);
+        }
+        foreach ($users as $row){
+            $arr1['newrole'] = $row['newrole'];
+            $arr1['newname'] = $row['newname'];
+            $arr1['login_on'] = $row['login_on'];
+            $arr1['logout_on'] = $row['logout_on'];
+            array_push($result,$arr1);
+        }       
+        // Comparison function
+        function date_compare1($element1, $element2) {
+            $datetime1 = strtotime($element1['login_on']);
+            $datetime2 = strtotime($element2['login_on']);
+           // return $datetime1 - $datetime2;
+            return $datetime2 - $datetime1;
+        } 
+        
+        // Sort the array 
+        usort($result, 'date_compare1');
+        //sort($result, 'date_compare');
      
-
+        return $result;
+     }
 
     ////////////////////////////////
     public function getLoginUsers($username,$password)
@@ -232,7 +305,7 @@ class Admin_model extends CI_Model {
         $this->db->from('tbl_admin');
         $this->db->where('is_active',1); 
         $this->db->where('admin_type',2); 
-        $this->db->order_by('id', 'ASC');
+        $this->db->order_by('created_on', 'DESC');
          $query = $this->db->get();
         $rs = array();
         if ($query->num_rows() > 0) {
@@ -242,11 +315,20 @@ class Admin_model extends CI_Model {
         }
         return $rs;
     }
+    public function getAllBranches()
+    { 
+       
+        $this->db->where('i_department_type', 4);
+        $this->db->where('fki_status_id', 1);
+        return $this->db->get("tbl_mst_branch")->result_array();
+    }
+
     public function getAdminDetail($id){
-        $this->db->select('ta.*,tmar.*,b.uvc_department_name');
+        $this->db->select('ta.*,tmar.*,b.uvc_department_name,c.uvc_department_name as branchnew');
         $this->db->from('tbl_admin ta');
         $this->db->join('tbl_mst_admin_role tmar','tmar.admin_type=ta.designation','left');
         $this->db->join('tbl_mst_branch b','ta.department = b.pki_id','left');
+        $this->db->join('tbl_mst_branch c','ta.branch = c.pki_id','left');
         $this->db->where('ta.id',$id);        
          $query = $this->db->get();
          $result=$query->result_array();
@@ -270,15 +352,16 @@ class Admin_model extends CI_Model {
         return $rs;
     }
     public function getAllSubAdminNew(){      
-        $this->db->select('a.*,r.role,r.admin_type,b.uvc_department_name');
+        $this->db->select('a.*,r.role,r.admin_type,b.uvc_department_name,c.uvc_department_name as branchnew');
         $this->db->from('tbl_admin a');
         $this->db->join('tbl_mst_admin_role r','r.admin_type = a.designation');
         $this->db->join('tbl_mst_branch b','a.department = b.pki_id','left');
+        $this->db->join('tbl_mst_branch c','a.branch = c.pki_id','left');
         $this->db->where('a.is_active',1); 
         $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
-        $this->db->order_by('a.id', 'ASC');
+        $this->db->order_by('a.created_on', 'DESC');
          $query = $this->db->get();
-        // echo json_encode($query->result_array());exit();
+         //echo json_encode($query->result_array());exit();
         $rs = array();
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
@@ -313,7 +396,8 @@ class Admin_model extends CI_Model {
     }
     public function getAllDepartments(){
         $this->db->select('pki_id,uvc_department_name');
-        $this->db->from('tbl_mst_branch');               
+        $this->db->from('tbl_mst_branch'); 
+        $this->db->where('fki_status_id',1);              
         $this->db->order_by('uvc_department_name', 'ASC');
          $query = $this->db->get();
         $rs = array();
@@ -673,6 +757,93 @@ class Admin_model extends CI_Model {
         return $this->db->get('tbl_quiz_details')->result_array(); 
 
     }
+    // public function getAdminLogs()
+    // { 
+        
+    //     $this->db->select('tbl_admin_logs.*,tbl_mst_admin_role.role,tbl_admin.designation,tbl_admin.name,tbl_admin.email_id,tbl_admin.user_uid');        
+    //     $this->db->join('tbl_mst_admin_role','tbl_mst_admin_role.admin_type = tbl_admin.designation'); 
+    //     $this->db->join('tbl_admin','tbl_admin.id = tbl_admin_logs.created_by'); 
+    //     return $this->db->get('tbl_admin_logs')->result_array(); 
+
+    
+    // }
+    public function getAllLogs(){
+        $rs = array();
+        $this->db->select('logs.*,r.role,admin.designation,admin.name'); 
+        $this->db->from('tbl_admin_logs logs');
+        $this->db->join('tbl_admin admin','admin.id = logs.created_by'); 
+        $this->db->join('tbl_mst_admin_role r','r.admin_type = admin.designation','left');  
+        $this->db->order_by('logs.created_on','DESC');  
+        $admin = array();
+        $query=$this->db->get();
+        if($query->num_rows() > 0){
+            $rs = $query->result_array();
+            foreach ($rs as $row){
+                if($row['action'] == 1){
+                    $row['action_name'] = "Insert";
+                }else if($row['action'] == 2){
+                    $row['action_name'] = "Update";
+                }else{
+                    $row['action_name'] = "Delete";
+                } 
+                if($row['designation'] == 2){
+                    $row['module_name'] = "Subadmin Module";
+                }else{
+                    $row['module_name'] = "Admin Module";
+                } 
+                array_push($admin,$row);
+            }
+        }
+        ///////////////////////////////////////////
+
+        $rs1 = array();
+        $this->db->select('logs.*,r.role,admin.designation,admin.name'); 
+        $this->db->from('tbl_quiz_logs logs');
+        $this->db->join('tbl_admin admin','admin.id = logs.created_by'); 
+        $this->db->join('tbl_mst_admin_role r','r.admin_type = admin.designation','left');  
+        $this->db->order_by('logs.created_on','DESC');  
+        $quiz = array();
+        $query=$this->db->get();
+        if($query->num_rows() > 0){
+            $rs1 = $query->result_array();
+            foreach ($rs1 as $row){
+                if($row['action'] == 1){
+                    $row['action_name'] = "Insert";
+                }else if($row['action'] == 2){
+                    $row['action_name'] = "Update";
+                }else{
+                    $row['action_name'] = "Delete";
+                } 
+              
+                    $row['module_name'] = "Quiz Module";
+              
+                array_push($quiz,$row);
+            }
+        }
+        $result = array();
+        foreach ($admin as $row){
+            array_push($result,$row);
+        }
+        foreach ($quiz as $row){
+            array_push($result,$row);
+        }
+        // Comparison function
+        function date_compare($element1, $element2) {
+            $datetime1 = strtotime($element1['created_on']);
+            $datetime2 = strtotime($element2['created_on']);
+           // return $datetime1 - $datetime2;
+            return $datetime2 - $datetime1;
+        } 
+        
+        // Sort the array 
+        usort($result, 'date_compare');
+        //sort($result, 'date_compare');
+        
+        // Print the array
+       // print_r($array)
+        return $result;
+    }
+    
     public function getAllManageQuiz()
     { 
         $this->db->select('tbl_quiz_details.*,tbl_mst_status.status_name,tbl_que_bank.no_of_ques'); 

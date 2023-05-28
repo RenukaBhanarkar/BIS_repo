@@ -23,6 +23,12 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/miscellaneous_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function review_competition_dashboard()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/review_competition_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function create_competition_list()
     {
         $data['competition'] = $this->Miscellaneous_competition->getCompetition('0');
@@ -560,10 +566,46 @@ if($id){
         $this->load->view('standardwritting/standard_writting_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function create_online_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function create_online_form()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_form');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function create_online_edit()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/create_online_edit');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function Manage_online_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/Manage_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function ongoing_online_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/ongoing_online_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function standard_offline_dashboard()
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/standard_offline_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function standard_online_dashboard()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/standard_online_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_standard_list()

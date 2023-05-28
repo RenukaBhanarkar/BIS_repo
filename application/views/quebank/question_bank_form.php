@@ -495,6 +495,7 @@
                                         <a class="btn btn-success btn-sm text-white" id="saveQueBank">Submit</a>
                                         <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
                                         <button class="btn btn-danger btn-sm text-white cancel_qb_form">Cancel</button>
+                                        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Back</a>
                                         <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                                         <div id="err_que_bank"></div>
                                     </div>
@@ -761,12 +762,13 @@
                                 success: function(res) {
                                     // console.log(res);
                                     if (res.status == 0) {
-                                        if ($("#err_que_bank").next(".validation").length == 0) {
-                                            $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please add questions equal to total no of questions in bank</div>");
-                                        }
-                                        if (!focusSet) {
-                                            $("#err_que_bank").focus();
-                                        }
+                                        // if ($("#err_que_bank").next(".validation").length == 0) {
+                                        //     $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'>Please add questions equal to total no of questions in bank</div>");
+                                        // }
+                                        // if (!focusSet) {
+                                        //     $("#err_que_bank").focus();
+                                        // }
+                                        swal.fire('Please add questions equal to total no of questions in bank.')
                                     } else {
                                         $("#err_que_bank").next(".validation").remove();
 

@@ -77,10 +77,17 @@ class Quiz_model extends CI_Model {
     { 
          return $this->db->get("tbl_mst_quiz_availability")->result_array();
     }
+    // public function getAllRegions()
+    // { 
+    //      return $this->db->get("tbl_mst_regions")->result_array();
+    // }
     public function getAllRegions()
-    { 
-         return $this->db->get("tbl_mst_regions")->result_array();
+    {        
+        $this->db->where('fki_status_id', 1);
+        $this->db->where_in('pki_region_id', array(1,2,3,4,5));
+        return $this->db->get("tbl_mst_regions")->result_array();
     }
+
     
     
     public function getQuizLevel()
@@ -159,9 +166,9 @@ public function updateQuiz($id,$formdata)
         }
         
     }
-    public function  updateStatusQueBank($linked_que_bank_id){
+    // public function  updateStatusQueBank($linked_que_bank_id){
 
-    }
+    // }
     public function sendToApprove($id,$formdata)
     {
         $this->db->where('id',$id); 
@@ -189,9 +196,7 @@ public function updateQuiz($id,$formdata)
         $this->db->join('tbl_quiz_details','tbl_quiz_details.id = tbl_user_quiz.quiz_id'); 
         $this->db->join('tbl_quiz_submission_details','tbl_quiz_submission_details.user_id = tbl_user_quiz.user_id AND tbl_quiz_submission_details.quiz_id = tbl_user_quiz.quiz_id');      
         $this->db->where('tbl_user_quiz.user_id',$user_id);
-        $this->db->where('tbl_user_quiz.quiz_id',$quiz_id);
-        
-        
+        $this->db->where('tbl_user_quiz.quiz_id',$quiz_id);       
         
 
         $query = $this->db->get();
@@ -485,9 +490,16 @@ public function updateQuiz($id,$formdata)
             return false;
         }
     }
+    // public function getAllBranches()
+    // { 
+    //      return $this->db->get("tbl_mst_branch")->result_array();
+    // }
     public function getAllBranches()
     { 
-         return $this->db->get("tbl_mst_branch")->result_array();
+       
+        $this->db->where('i_department_type', 4);
+        $this->db->where('fki_status_id', 1);
+        return $this->db->get("tbl_mst_branch")->result_array();
     }
 
      public function insertResultDesc($data)
