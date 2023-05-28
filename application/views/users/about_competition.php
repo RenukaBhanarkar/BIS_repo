@@ -135,12 +135,13 @@
     }
 
     .join_container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-wrap: wrap;
-
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 578px;
+    overflow: auto;
+}
 
     .view_join_content {
         width: 310px;
@@ -221,11 +222,15 @@
 
         margin-top: 5px;
     }
+    
 
     /* about quiz end */
 </style>
-<div class="container">
-    <section id="banner-section">
+
+<div class="container-fluid">
+<section id="banner-section" class="d-flex">
+        <div class="col-md 9">
+        
        <!-- <div class="float-end" id="QuizLang">
             <label class="d-block text-font mr-3">Select Language</label>
             <select class="form-control input-font" id="selectedLang" id="selectedLang" placeholder="Language">                
@@ -280,30 +285,13 @@
                     <?php } ?>
                 </div>
             </div>
+        
+        
         </div>
-
-    </section>
-    <section id="quiz-about" class="mb-5">
-        <div class="about-inner ">
-            <h2 class="about-section">About Competition</h2>
-            <div class="About_point">
-            <?php echo $competition['description']; ?>
-            </div>
-            <!-- <div class="col-md-12">
-                <h1>title of Competition
-            </div> -->
+       
         </div>
-    </section>
-    <section id="quiz-about" class="mb-5">
-        <div class="about-inner">
-            <h2 class="about-section">Team's and Conditions</h2>
-            <div class="About_point ">
-            <?php echo $competition['terms_condition']; ?>
-            </div>
-    </section>
-
-</div>
-<section class="-join_section">
+        <div class="col-md-3">
+        <section class="-join_section">
     <div class="join_content">
         <div class="bloginfo">
             <h3 style="margin-bottom: 14px; /* margin-top: 20px; */ color: #0086b2!important; font-weight: 600; margin-left: 24px;">Prize Details</h3>
@@ -314,7 +302,11 @@
                 <h3>First Prize</h3>
 
                 <div class="start_content">
+                    <?php if($competition['fprize_image']==""){ ?>
+                        <img src="<?php echo base_url().''; ?>" alt="" class="join_img">
+                    <?php }else{?> 
                 <img src="<?php echo base_url().$competition['fprize_image']; ?>" alt="" class="join_img">
+                <?php } ?>
                 </div>
 
                 <div class="#">
@@ -377,4 +369,27 @@
         </div>
     </div>
 </section>
+        </div>
+        </section>
+    <section id="quiz-about" class="mb-5">
+        <div class="about-inner ">
+            <h2 class="about-section">About Competition</h2>
+            <div class="About_point">
+            <?php echo $competition['description']; ?>
+            </div>
+            <!-- <div class="col-md-12">
+                <h1>title of Competition
+            </div> -->
+        </div>
+    </section>
+    <section id="quiz-about" class="mb-5">
+        <div class="about-inner">
+            <h2 class="about-section">Team's and Conditions</h2>
+            <div class="About_point ">
+            <?php echo $competition['terms_condition']; ?>
+            </div>
+    </section>
+
+</div>
+
 

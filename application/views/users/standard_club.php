@@ -346,7 +346,7 @@ li.tab-link:hover {
                     <?php } ?>
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/essay_writing_comp">View All</a>
                 </div>
              </div>
             </section>
@@ -384,7 +384,7 @@ li.tab-link:hover {
                     <?php } ?>
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/poster_making_comp">View All</a>
                 </div>
              </div>
             </section>
@@ -423,7 +423,7 @@ li.tab-link:hover {
                     <?php } ?>
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/more_copetition">View All</a>
                 </div>
              </div>
             </section>
