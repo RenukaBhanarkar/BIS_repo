@@ -19,18 +19,17 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered nowrap" style="width:100%">
-                        <thead>
+                <div class="card border-top card-body">
+                    <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
+                    <thead>
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Competition ID</th>
-                                <th>Name of Competition</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Banner</th>
+                                <th>Standard Club</th>
+                                <th>Date of Activity</th>
+                                <th>Topic</th>
+                                <th>Number of Participate</th>
                                 <th>Status</th>
-                                <th>Submitted Task</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,13 +39,13 @@
                               <td>12345</td>
                               <td>Miscellaneous Competition</td>
                               <td>12/03/2023</td>
-                              <td>12/03/2023</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
+                              <td>Topic</td>
+                              <td>12</td>
                               <td>Pending</td>
-                              <td>task</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>Standardswritting/submission_view" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Archive</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm mr-2" >Delete</a>
                               </td>
 
                         </tbody>

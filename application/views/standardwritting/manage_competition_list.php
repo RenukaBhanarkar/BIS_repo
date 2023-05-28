@@ -27,10 +27,16 @@
                                 <th>Competition ID</th>
                                 <th>Name of Competition</th>
                                 <th>Start Date</th>
+                                <th>Start Time</th>
                                 <th>End Date</th>
+                                <th>End Time</th>
                                 <th>Banner</th>
+                                <th>Type of Competition</th>
+                                <th>Available For</th>
+                                <th>Level of Competition</th>
                                 <th>Status</th>
-                                <th>Reason of Rejection</th>
+                                <!-- <th>Total Submission</th> -->
+                                <!-- <th>Reason of Rejection</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,18 +67,23 @@
                             <td><?php echo $list['comp_id'];; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
+                            <td><?php echo $list['start_time']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
+                            <td><?php echo $list['end_time']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
+                            <td><?php echo $list['comp_type_name']; ?></td>
+                            <td><?php echo $list['avai_for']; ?></td>
+                            <td><?php echo $list['title']; ?></td>
                             <td><?php echo $list['status_name'];  ?></td>
-                            <td><?php echo $list['reject_reason'];  ?></td>
+                            <!-- <td><?php echo $list['reject_reason'];  ?></td> -->
                             <td>
 
                             <!-- <button href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</button> -->
                                  <!-- <button data-id="<?php echo $list['id']; ?>" class="btn btn-info btn-sm mr-2 restore">Restore</button> -->
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
-                                    <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                                    <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                         <?php  if ($list['status'] == 2) { ?>
-                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
+                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
                         <?php }
                         } ?>
                         <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
@@ -82,14 +93,14 @@
                         <?php 
                         } ?> -->
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                           <?php  if($list['status']==5){ ?>
                             <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-warning btn-sm mr-2 unpublish" >Unpublish</button>
                           <?php  }else if(!(($list['status']==5) || ($list['status']==2) || ($list['status']==1))){ ?>
                               
                        
 
-                                 <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
+                                 <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <button data-id="<?php echo $list['comp_id']; ?>" img_name="<?php echo $list['thumbnail']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
                                  <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
                                  <?php if(!($list['status']==4)){  ?>

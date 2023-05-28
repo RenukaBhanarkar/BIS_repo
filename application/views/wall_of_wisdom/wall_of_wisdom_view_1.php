@@ -198,7 +198,7 @@
                                     </span>
                                  </div>
                                  <div class="node-status like_review"><span><img src="<?php echo base_url(); ?>/assets/images/thumb-up.jpeg" style="width:18px;"></span>
-                              <div class="status-open" style="margin-left:10px;">50</div>
+                              <div class="status-open" style="margin-left:10px;"><?php echo $list['likes']; ?></div>
                           </div>
                             </div>
                          

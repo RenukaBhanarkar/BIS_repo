@@ -161,7 +161,7 @@ h5{
           
 
           <?php foreach($by_the_mentor as $list){ ?>
-          <div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-xl-4 col-md-6 aos-init aos-animate mb-3" data-aos="zoom-in" data-aos-delay="200">
             <div class="service-item">
               <div class="img">
                 <img src="<?php echo base_url().$list['image'];?>" class="img-fluid" alt="">
@@ -203,7 +203,11 @@ h5{
                         <?php if(!($_SESSION['admin_type']=="ZjJYY3VISndBMytwaStIQjhmSkV5QT09")){ ?>
                             <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="notauthorise">Post Here...</h3>
                     <?php }else{ ?> 
-                        <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="mentorForm_show">Post Here...</h3>
+                        <?php if($limit < 1){?>
+                            <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="mentorForm_show">Post Here...</h3>
+                        <?php }else{ ?>                        
+                            <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="limit_excedded">Post Here...</h3>
+                        <?php } ?>
                         <?php } ?>
             <?php }else{?>
                         <a href="<?php echo base_url().'users/login'; ?>">
@@ -253,7 +257,7 @@ h5{
                           <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                           <textarea class="form-control input-font" name="description" id="description" required minlength="5" maxlength="2000"></textarea>
                               <span style="color:red;"  id="err_description"></span>
-                              <span>Only 5000 characters allowed</span>
+                              <span id="des_meg">Only 5000 characters allowed</span>
                   </div>
                 </div>
                 <div class="row">
@@ -308,6 +312,7 @@ h5{
                        <div class="mentor_submit">
                           <button onclick="return submitButton(event)" type="submit" class="btn btn-success btn-sm mr-2">Submit</button>
                           <button  type="reset" class="btn btn-warning btn-sm mr-2">Reset</button>
+                          <button  class="btn btn-danger btn-sm mr-2 cancel">Cancel</button>
                           <!-- <button  data-bs-toggle="modal" data-bs-target="#sure" type="submit" class="btn btn-primary btn-sm mr-2">Submit</button> -->
                        </div> 
                   </div> 
@@ -440,6 +445,23 @@ h5{
         $('#mentorForm_hide').hide();
    
     }); 
+    $('.cancel').on('click',function(){
+        Swal.fire({
+                            title: 'Do you want to Cancel?',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Cancel',
+                            denyButtonText: `Close`,
+                            }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                               // Swal.fire('Saved!', '', 'success')
+                                window.location.replace('<?php echo base_url().'users/standard'; ?>');
+                            } else if (result.isDenied) {
+                               // Swal.fire('Changes are not saved', '', 'info')
+                            }
+                            })
+    })
 </script>
 <script>
         $("#mentorForm_show").click(function(){
@@ -459,6 +481,9 @@ console.log('clicked');
 //         $("#notauthorise_alert").modal('show');
         Swal.fire("You are not authorised mentor to post here");
      });
+     $('#limit_excedded').click(function(){
+        Swal.fire("You have exahusted daily limit to post more"); 
+     })
   </script>
   <script type="text/javascript"> 
 //   $('#display_img_2').hide();
@@ -668,6 +693,7 @@ console.log('clicked');
              var description = CKEDITOR.instances['description'].getData(); 
              var is_valid = true;
                         // console.log(description.length)
+            
              if (title == "") {
                  $("#err_title").text("This value is required");
                  $("#title").focus();
@@ -681,28 +707,32 @@ console.log('clicked');
                  $("#err_title").text("");
              }
 
+            
              if (description== "") {
                  $("#err_description").text("This value is required");
                  $("#link1").focus();
                  is_valid = false;
              } else if (description.length < 10 ) {
-                 $("#err_description").text("Description should be 10 to 5000 characters");
+                 $("#err_description").text("You entered "+description.length+" Characters. Description should be 10 to 5000 characters");
+                 $('#des_meg').text('');
                  $("#description").focus();
                  is_valid = false;
              } else if (description.length > 5000 ){
                 // return false;
+                $("#err_description").text("You entered "+description.length+" Characters. Description should be 10 to 5000 characters");
                 console.log(description.length)
                 // alert("character length excedded")
                 Swal.fire('Description suould less than 5000 characters')
                 
-                $("#err_description").text("Description should be 5 to 5000 characters");
+                $("#des_meg").text("");
                  $("#description").focus();
                 is_valid = false;
                   return false;
              }else {
                 var remain_length=5000-description.length;
                 // $("#err_description").text("Remaining length is "+remain_length);
-                $("#err_description").text("");
+               // $("#err_description").text("");
+                $("#err_description").text("You can enter "+remain_length+" more characters");
 
              }     
              

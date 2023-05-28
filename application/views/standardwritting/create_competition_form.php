@@ -22,8 +22,28 @@
             <div class="col-12 mt-3">
             <form name="competition_reg" id="competition_reg" action="<?php echo base_url() . 'standardswritting/competition_reg' ?>" method="post" enctype="multipart/form-data">
                 <div class="card border-top card-body">
+                <div class="row">
+                <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Type of Competition<sup class="text-danger">*</sup></label>
+                                <select id="comp_type" name="comp_type" class="form-control input-font" required>
+                                    <option value="" selected disabled>Select Type of Competition</option>
+                                    <!-- <?php foreach ($quizlavel as $lavel) { ?>
+                                        <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
+                                    <?php } ?> -->
+                                    <option value="1">Essay Writing</option>
+                                    <option value="2">Poster Making</option>
+                                    <option value="3">Case Study</option>
+                                    <option value="3">Artical writing</option>
+                                    <option value="3">Paper Writing</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
+                                <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
+                            </div>
+                </div>
                     <div class="row">
-                            <div class="mb-2 col-md-4">
+                            <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Name of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo set_value('name') ?>" required="">
                                 <div class="invalid-feedback">
@@ -34,7 +54,7 @@
                             </div>
                     </div>
                     <div class="row">
-                            <div class="mb-2 col-md-4">
+                            <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Name of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo set_value('name_hindi') ?>" required="">
                                 <div class="invalid-feedback">
@@ -106,28 +126,11 @@
                                 </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Total Score<sup class="text-danger">*</sup></label>
-                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="">
+                        <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                             <span class="error_text"><?php echo form_error('score'); ?></span>
                         </div>
-                        <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Type of Competition<sup class="text-danger">*</sup></label>
-                                <select id="comp_type" name="comp_type" class="form-control input-font" required>
-                                    <option value="" selected disabled>Select Type of Competition</option>
-                                    <!-- <?php foreach ($quizlavel as $lavel) { ?>
-                                        <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
-                                    <?php } ?> -->
-                                    <option value="1">Essay Writing</option>
-                                    <option value="2">Poster Making</option>
-                                    <option value="3">Case Study</option>
-                                    <option value="3">Artical writing</option>
-                                    <option value="3">Paper Writing</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                This value is required
-                                </div>
-                                <span class="error_text"><?php echo form_error('quiz_level_id'); ?></span>
-                            </div>
+                        
                         <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
                                 
@@ -180,6 +183,17 @@
                                 <span class="error_text"><?php echo form_error('region_id'); ?></span>
 
                             </div>
+                            <div class="mb-2 col-md-4 d-none" id="state_id_blk">
+                                <label class="d-block text-font" id="region_title">State Level<sup class="text-danger">*</sup></label>
+                                <select id="state_id" name="state_id" class="form-control input-font">
+                                    <!-- <option value="" selected disabled>--select--</option>
+                                    <option value="#">Maharashtra</option>
+                                    <option value="#">Karnataka</option> -->
+
+                                </select>
+                                <span class="error_state"><?php echo form_error('state_id'); ?></span>
+
+                            </div>
                             <div class="mb-2 col-md-4" id="branch_id_blk">
                                 <label class="d-block text-font" id="branch_title">Branch<sup class="text-danger">*</sup></label>
                                 <select id="branch_id" name="branch_id" class="form-control input-font">
@@ -190,13 +204,45 @@
                             </div>
 
                         </div>
-                        <div class="mb-2 col-6">
+                        <div class="mb-2 col-4">
                                 <label class="d-block text-font">Available For<sup class="text-danger">*</sup></label>
                                 <select id="Available" name="Available" class="form-control input-font" value="">
                                     <option value="1">School</option>
                                     <option value="2">Higher Qualification</option>
                                 </select>
                         </div>
+                        <div class="mb-2 col-8">
+                        <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
+                                <div class="d-flex">
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_1"  >
+                                        <label class="custom-control-label" for="Standard_1">9<sup>th</sup>Standard</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_2"  >
+                                        <label class="custom-control-label" for="Standard_2">10<sup>th</sup>Standard</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_3"  >
+                                        <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_4">
+                                        <label class="custom-control-label" for="Standard_4">12s<sup>th</sup>Standard</label>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- <div class="mb-2 col-4">
+                                <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
+                                <select id="Available" name="Available" class="form-control input-font" value="">
+                                <option value="" selected disabled>--select--</option>
+                                    <option value="1">8<sup>th</sup>Standard</option>
+                                    <option value="1">9<sup>th</sup>Standard</option>
+                                    <option value="1">10<sup>th</sup>Standard</option>
+                                    <option value="1">11<sup>th</sup>Standard</option>
+                                    <option value="1">12<sup>th</sup>Standard</option>
+                                </select>
+                        </div> -->
                     </div>
                     
                 </div>

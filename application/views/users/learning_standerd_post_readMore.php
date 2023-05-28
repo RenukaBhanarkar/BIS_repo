@@ -176,7 +176,15 @@ font-size: 14px;
                             <input type="hidden" value="<?= $ReadMore['likes']?>" id="oldlikes">
 
                             <span id="newlikes"> </span><span> likes </span>
-                            <span class="like_button" type="button" onclick="submitLike('<?= $ReadMore["id"]?>')"><i  id="heart" style="width:18px; font-size: 21px; margin-right: 9px; color:red;"></i>Like</span>
+
+                            <?php  $admin_id = encryptids("D", $this->session->userdata('admin_id')); 
+                        if($admin_id==''){?>
+                            <a class="like_button" type="button" href="../login"><i  id="heart" style="width:18px; font-size: 21px; margin-right: 9px; color:red;"></i>Like</a>
+                        <?php } else { ?>
+                             <span class="like_button" type="button" onclick="submitLike('<?= $ReadMore["id"]?>')"><i  id="heart" style="width:18px; font-size: 21px; margin-right: 9px; color:red;"></i>Like</span>
+                        <?php } ?>
+                        
+                            <!-- <span class="like_button" type="button" onclick="submitLike('<?= $ReadMore["id"]?>')"><i  id="heart" style="width:18px; font-size: 21px; margin-right: 9px; color:red;"></i>Like</span> -->
 
                         <p class="Your_Wall_Description_view"><?= $ReadMore['description']?> </p>
                     </div>

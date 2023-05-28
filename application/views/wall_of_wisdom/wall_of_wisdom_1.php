@@ -129,8 +129,11 @@
                               </span>
                           </div>
                           
-                          <div id="abcd" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" c-id="<?php echo $list['id']; ?>" ct="<?php echo $list['card_status']; ?>" class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['card_status']=='1'){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
+                          <!-- <div id="abcd" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" c-id="<?php echo $list['id']; ?>" ct="<?php echo $list['card_status']; ?>" class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['card_status']=='1'){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
                               <div  class="status-open likes" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div>
+                          </div> -->
+                          <div id="abcd" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php  echo "fa fa-heart fa-heart-o";  ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
+                              <div  class="status-open like_<?=$list['id'];?>" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div>
                           </div>
                           
                       </div>
@@ -159,6 +162,8 @@
     uid=$(this).attr('u-id')
     cid=$(this).attr('c-id')
     cardstatus=$(this).attr('ct');
+    likes=$(this).attr('data-likes');
+    lid=$(this).attr('lid');
     console.log(uid);
     
     if(uid=="0"){
@@ -178,7 +183,7 @@
                     },
                     success: function(result) {
                         console.log(result);
-                       location.reload();
+                     //  location.reload();
                      //$('.id').html('hello');
                     },
                     error: function(result) {
@@ -197,8 +202,10 @@
                     },
                     success: function(result) {
                         console.log(result);
-                       location.reload();
+                     //  location.reload();
                     //  $('.id').html('hello');
+                    like=parseInt(likes)+1;
+                    $('.'+lid).text(like);
                     },
                     error: function(result) {
                         alert("Error,Please try again.");
@@ -209,10 +216,10 @@
 });
         });
 
-//         function myFunction(x) {
+        function myFunction(x) {
         
-//   x.classList.toggle("fa-heart-o");
-// }
+  x.classList.toggle("fa-heart-o");
+}
         // function like(que_id){
         //     id=$(this).attr('wow-id')
         //     uid=$(this).attr('u-id')

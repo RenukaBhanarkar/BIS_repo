@@ -333,7 +333,7 @@ li.tab-link:hover {
                                 <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Participate</span></a>
                               </div>
                               <p class="quiz-text overflow-hidden p-1"><?php echo $list['competiton_name'] ?></p>
                             </div>
@@ -371,7 +371,7 @@ li.tab-link:hover {
                                 <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Participate</span></a>
                               </div>
                               <p class="quiz-text overflow-hidden p-1"><?php echo $list['competiton_name']; ?></p>
                             </div>

@@ -160,6 +160,15 @@ class Standards_Making_model extends CI_Model {
              return false;
          }
     }
+
+    public function getPublishedConversationSearch($search)
+        {
+            $this->db->select('tbl_inconversation_with_expert.*,tbl_mst_status.status_name');
+            $this->db->where('status ', 5);
+            $this->db->like('title', $search);
+            $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_inconversation_with_expert.status');
+            return $this->db->get('tbl_inconversation_with_expert')->result_array();
+        } 
     
      
 }

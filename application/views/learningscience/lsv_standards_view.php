@@ -59,8 +59,8 @@
                                         </div> 
                                     </div>
                                 </div>
-
-                                <div class="row">   
+                                <?php if (!empty($lsvStandardsView['doc_pdf'])) {?>
+                                    <div class="row">   
                                     <div class="mb-2 col-md-12">
                                         <label class="d-block text-font">View PDF</label>
                                         <div> 
@@ -68,6 +68,9 @@
                                         </div> 
                                     </div>
                                 </div>
+                               <?php }?>
+
+                                
                             <?php }?>
                             <?php 
                              if ($lsvStandardsView['type_of_post']==2) {?>

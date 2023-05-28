@@ -20,29 +20,31 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="hover table-bordered" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
                         <thead>
-                            <tr>
+                        <tr>
                                 <th>Sr. No.</th>
                                 <th>Competition ID</th>
-                                <th>Name of Competition</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Banner</th>
+                                <th>Standard Club</th>
+                                <th>Date of Activity</th>
+                                <th>Topic</th>
+                                <th>Number of Participants</th>
                                 <th>Status</th>
+                                <th>Reason of Rejection</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                            <tr>
-                              <td>1</td>
+                           <td>1</td>
                               <td>12345</td>
                               <td>Miscellaneous Competition</td>
                               <td>12/03/2023</td>
-                              <td>12/03/2023</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
+                              <td>Topic</td>
+                              <td>12</td>
                               <td>Pending</td>
+                              <td>Reason of Rejection</td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Restore</a>

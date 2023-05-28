@@ -143,7 +143,11 @@
    <div class="container">
                        <div class="bloginfo">
                         <?php if(isset($_SESSION['admin_id'])){ ?>
+                            <?php if($daily_limit > 0){ ?>
+                                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_exahust_limit">Post Here...</h3> 
+                            <?php }else{?>
                             <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_show">Post Here...</h3>
+                            <?php } ?>
                             <?php }else{?>
                                 <a href="<?php echo base_url().'users/login'; ?>">
                                 <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" >Post Here...</h3>
@@ -185,7 +189,7 @@
                                     </button>
                                     </div>
                                 </div>
-                                <span id="err_image" class="text-danger"></span>
+                                <!-- <span id="err_image" class="text-danger"></span> -->
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModalFirst" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -208,11 +212,11 @@
                                 <div class="d-flex">
                                     <div>
                                     <input type="file" class="file-upload-field" name="document" id="document" value="" accept="pdf/*" >
-                                    
+                                    <span id="err_document" class="text-danger"></span>
                                    </div>
                                     
                                 </div>
-                                <span id="err_image" class="text-danger"></span>
+                                <!-- <span id="err_image" class="text-danger"></span> -->
 
                             </div>
                         <!-- <div class="col-sm-6 mt-3">
@@ -223,6 +227,7 @@
                         </div> -->
                         <div class="col-sm-12 mt-2">
                             <div class="form-group" id="yourWall_des">
+                            <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                                 <textarea class="form-control  w-100" rows="8" placeholder="Share Your Description......" name="description" id="description" required minlength="5" maxlength="2000" ></textarea>
                                 <span class="text-danger" id="des_error"></span>
                                 
@@ -272,13 +277,16 @@
                                </span>
                           </div>
                     </div>
-                    
+                    <div class="row mb-5">
+                        <span class="text-danger" >The image size should be between 20 to 200KB only</span>
+                    </div>
                    
                    
             </div>
             <div class="col-md-12 row">
             <div class="button-group float-end mt-3" style="text-align: end;">
-                                    <button onclick="return submitButton(event)" type="submit"  class="btn btn-danger submit">Submit</button>
+                                    <button onclick="return submitButton(event)" type="submit"  class="btn btn-success submit">Submit</button>
+                                    <button class="btn btn-danger cancel">Cancel</button>
                                     
                                 </div>
             </div>
@@ -414,6 +422,23 @@
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script>
+            $('.cancel').on('click',function(){
+        Swal.fire({
+                            title: 'Do you want to Cancel?',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Cancel',
+                            denyButtonText: `Close`,
+                            }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                               // Swal.fire('Saved!', '', 'success')
+                                window.location.replace('<?php echo base_url().'users/standard'; ?>');
+                            } else if (result.isDenied) {
+                               // Swal.fire('Changes are not saved', '', 'info')
+                            }
+                            })
+    })
         
         $(document).ready(function(){
          $('#your_wall_hide').hide();
@@ -463,7 +488,7 @@ $('#image_thumb').on('change', function(){
                        
                     }else{
                         
-                        $("#err_image").text(""); // remove it
+                        $("#err_thumb").text(""); // remove it
                         // $("#err_image").after("");
 
                     }
@@ -477,10 +502,10 @@ $('#image_thumb').on('change', function(){
                         $('#err_thumb').text('This value is required')
                         // alert("Invalid file type");
                        // $('#invalidfiletype').modal('show');
-                       Sal.fire('only jpg,jpeg,png files allowed')
+                       Swal.fire('only jpg,jpeg,png files allowed')
                    
                         allFields = false;
-                        $("#err_image").text("This value is required");
+                        //$("#err_image").text("This value is required");
                       
                     } else {
                         // is_valid = true;
@@ -526,13 +551,16 @@ var loadFileThumbnail5 = function(event)
        console.log(fileSize);
 if(fileSize < 20000){
     $('#image_src2').val('');
-    $('#lessSize').modal('show');
+    // $('#lessSize').modal('show');
+    Swal.fire("Image size should be between 20 to 200KB");
 }else if(fileSize > 200000){
     $('#image_src2').val('');
-    $('#greaterSize').modal('show');
+    //$('#greaterSize').modal('show');
+    Swal.fire("Image size should be between 20 to 200KB");
 }else if($.inArray(fileNameExt, validExtensions) == -1){
     $('#image_src2').val('');
-    $('#invalidfiletype').modal('show');
+   // $('#invalidfiletype').modal('show');
+    Swal.fire("Only jpg,jpeg,png files allowed");
 }
 
         var outputThumbnail = document.getElementById('outputThumbnail');
@@ -558,13 +586,16 @@ if(fileSize < 20000){
             console.log(fileSize);
         if(fileSize < 20000){
             $('#image_src3').val('');
-            $('#lessSize').modal('show');
-        }else if(fileSize > 200000){
+            // $('#lessSize').modal('show');
+            Swal.fire("Image size should be between 20 to 200KB");
+        }else if(fileSize > 204800){
             $('#image_src3').val('');
-            $('#greaterSize').modal('show');
+            // $('#greaterSize').modal('show');
+            Swal.fire("Image size should be between 20 to 200KB");
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#image_src3').val('');
-            $('#invalidfiletype').modal('show');
+           // $('#invalidfiletype').modal('show');
+           Swal.fire("Only jpg,jpeg,png files allowed");
         }
 
 
@@ -592,13 +623,16 @@ if(fileSize < 20000){
                 console.log(fileSize);
             if(fileSize < 20000){
                 $('#image_src4').val('');
-                $('#lessSize').modal('show');
+                //$('#lessSize').modal('show');
+                Swal.fire("Image size should be between 20 to 200KB");
             }else if(fileSize > 200000){
                 $('#image_src4').val('');
-                $('#greaterSize').modal('show');
+                //$('#greaterSize').modal('show');
+                Swal.fire("Image size should be between 20 to 200KB");
             }else if($.inArray(fileNameExt, validExtensions) == -1){
                 $('#image_src4').val('');
-                $('#invalidfiletype').modal('show');
+                //$('#invalidfiletype').modal('show');
+                Swal.fire("Only jpg,jpeg,png files allowed");
             }
 
 
@@ -626,13 +660,16 @@ if(fileSize < 20000){
             console.log(fileSize);
         if(fileSize < 20000){
             $('#image_src5').val('');
-            $('#lessSize').modal('show');
+           // $('#lessSize').modal('show');
+           Swal.fire("Image size should be between 20 to 200KB");
         }else if(fileSize > 200000){
             $('#image_src5').val('');
-            $('#greaterSize').modal('show');
+           // $('#greaterSize').modal('show');
+           Swal.fire("Image size should be between 20 to 200KB");
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#image_src5').val('');
-            $('#invalidfiletype').modal('show');
+           // $('#invalidfiletype').modal('show');
+           Swal.fire("Only jpg,jpeg,png files allowed");
         }
        //  $("#Previewimg").show();
         var outputThumbnail3 = document.getElementById('outputThumbnail3');
@@ -698,7 +735,7 @@ if(fileSize < 20000){
                         // alert('please select Image');
                         $("#image_thumb").val('');
                       //  $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please upload .jpg / .jpeg/.png image </div>");
-                        $("#err_image").text("This value is required");                
+                        $("#err_thumb").text("This value is required");                
                         is_valid = false;
                         allfields = false;
                         // return false;
@@ -737,10 +774,10 @@ if(fileSize < 20000){
                         // }
                         // if (!focusSet) { $("#description").focus(); }
                         allfields = false;
-                    } else if(description.length < 10 || description.length > 2000) {
+                    } else if(description.length < 10) {
                         allfields = false;
-                       
-                        $("#des_error").text("Only 10 to 2000 characters allowed");      
+                        $("#des_error").text("You entered "+description.length+" Characters. Description should be 10 to 5000 characters");
+                        //$("#des_error").text("Only 10 to 2000 characters allowed");      
                         if ($("#description").next(".validation").length == 0) // only add if not added
                         {
                             $('#description').attr('required',true);
@@ -752,9 +789,14 @@ if(fileSize < 20000){
                         // allfields =true;
                             // $("#description_error").hide();
                         return false;
-                    } else{
+                    } else if(description.length > 5000){
+
+                        allfields = false;
+                        $("#des_error").text("You entered "+description.length+" Characters. Description should be 10 to 5000 characters");
+                    }else{
                         // allfields = true;
-                        $("#des_error").text("");  
+                        var remain_length=5000-description.length;
+                        $("#des_error").text("You can enter "+remain_length+" more characters");  
                         // allfields = true;
                         $("#yourWall_des").after("<div class='validation' style='color:red;margin-bottom:15px;'></div>");
                     }
@@ -967,7 +1009,8 @@ if(fileSize < 20000){
 
                    if (fileSize > 5242880) {
                     //    var is_valid = false;
-                       $('#greaterSize_pdf').modal('show');
+                       //$('#greaterSize_pdf').modal('show');
+                       Swal.fire('File Size should be less than 5MB');
                        $("#document").val();
                        if ($("#document").next(".validation").length == 0) // only add if not added
                        {
@@ -1071,6 +1114,10 @@ if(fileSize < 20000){
                     }
                     })
     });
+
+    $('#your_wall_exahust_limit').on('click',function(){
+        Swal.fire("You have exahusted daily limit to post more");
+    })
 </script>
   
   

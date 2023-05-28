@@ -21,92 +21,33 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Competition ID</label>
+                            <label class="d-block text-font">Standard Club</label>
                             <div>
-                                  <p>Dedicated id</p>
+                                  <p>Standard</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Title of Competition</label>
+                            <label class="d-block text-font">Topic of Activity</label>
                             <div>
-                                <p>Tile</p>
+                                <p>Activity</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Title of Competition in Hindi</label>
-                            <div>
-                                <p>Hindi Title</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Description</label>
-                            <div>
-                                <p>BIS undertakes various activities, events and competitions for their members and standard clubs situated in various states and regions. Wherein BIS arranges various events for their members and standard clubs. BIS now want to have a separate window as an exchange forum which will be publically available or the platform for the users to get connected and share their views across various events and win the exciting prizes. Also various committee members will now be able to participate in various standard writing competitions and other activities and explore various events and information contents with the help of this forum. People will be able to view the details of various standards getting published under Bureau of India Standards and will also be able to join various discussions on the forum and share their views.</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Terms and Conditions</label>
-                            <div>
-                                <p>BIS undertakes various activities, events and competitions for their members and standard clubs situated in various states and regions. Wherein BIS arranges various events for their members and standard clubs. BIS now want to have a separate window as an exchange forum which will be publically available or the platform for the users to get connected and share their views across various events and win the exciting prizes. Also various committee members will now be able to participate in various standard writing competitions and other activities and explore various events and information contents with the help of this forum. People will be able to view the details of various standards getting published under Bureau of India Standards and will also be able to join various discussions on the forum and share their views.</p>
-                            </div>
-                        </div>
-
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Start Date</label>
-                            <div>
-                                
-                                <p>12/03/2023</p>
-                                 
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Start Time</label>
-                            <div>
-                                
-                                <p>12/03/2023</p>
-                                 
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">End Date</label>
+                            <label class="d-block text-font">Date of Activity</label>
                             <div>
                                 <p>12/03/2023</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">End Time</label>
-                            <div>
-                                <p>12/03/2023</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
+                            <label class="d-block text-font">Number of Participate</label>
                             <div>
                                 <p>50</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Upload Thumbnail</label>
-                            <div>
-                                <p><img src="<?php echo base_url(); ?>" style="width:150px;"></p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Level of Competition</label>
-                            <div>
-                                <p>Region Level</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Available For</label>
-                            <div>
-                                <p>Region Level</p>
                             </div>
                         </div>
                     </div>
                  </div>
                  <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">
-            	     <h4 class="m-0">Prize Details</h4>
+            	     <h4 class="m-0">Winners Details</h4>
                 </div>
                  <div class="card-body">
                     <div class="row mt-2">
@@ -116,21 +57,15 @@
                     </div>
                     <div class="row mt-3">
                         <div class="mb-2 col-md-4 ">
-                            <label class="d-block text-font">Number of Prizes</label>
-                            <div>
+                            <label class="d-block text-font">Name of Participant</label>
+                                <div>
                                 <p>1</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Prize Details</label>
-                            <div>
-                                <p>Laptop</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                                 <p><img src="#" alt="" width="10%"></p>
+                                 <p><img src="#" alt="#" width="10%"></p>
                             </div>
                         </div>
                     </div>
@@ -141,18 +76,12 @@
                     </div>
                     <div class="row mt-3">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Number of Prizes</label>
+                            <label class="d-block text-font">Name of Participant</label>
                             <div>
                                 <p>2</p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Prize Details</label>
-                            <div>
-                                <p>Pendrive</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
+                       <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
                                <p><img src="#" alt="" class="" width="10%"></p>
@@ -166,15 +95,9 @@
                     </div>
                     <div class="row mt-3">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Number of Prizes</label>
+                            <label class="d-block text-font">Name of Participant</label>
                             <div>
                                 <p>3</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Prize Details</label>
-                            <div>
-                                <p>Pen</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -191,15 +114,9 @@
                     </div>
                     <div class="row mt-3">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Number of Prizes</label>
+                            <label class="d-block text-font">Name of Participant</label>
                             <div>
                                 <p>4</p>
-                            </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Prize Details</label>
-                            <div>
-                                <p>laptop</p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">

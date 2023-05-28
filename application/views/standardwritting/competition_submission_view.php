@@ -25,40 +25,46 @@
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Name</th>
-                                <th>ID</th>
+                                <th>Submission ID</th>
                                 <th>Email</th>
                                 <th>Contact</th>
-                                <th>Date & Time</th>
-                                <th>PDF</th>
-                                <th>Image</th>
+                                <!-- <th>Date & Time</th> -->
+                                <th>School/Institute</th>
+                                <th>Class</th>
+                                <th>Submission Date & Time</th>
+                                <th>Uploads</th>
+                                <!-- <th>Image</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>Anis</td>
                               <td>12345</td>
                               <td>example123@gmaim.com</td>
                               <td>7057085889</td>
                               <td>12/03/2023 12:00:00</td>
-                              <td><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="50%"></td>
+                              <td><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="20%"></td>
                               <td><img src="<?= base_url();?>" alt="#" class="" width="100%"></td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>
-                           </tr>
+                           </tr> -->
                            <?php if(!empty($competition)){ $i=1; foreach($competition as $list){ ?>
 
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $list['user_name']; ?></td>
-                                <td><?php echo $list['user_id']; ?></td>
+                                <td><?php echo $list['id']; ?></td>
                                 <td><?php echo $list['email']; ?></td>
                                 <td><?php echo $list['user_mobile']; ?></td>
-                                <td><?php echo $list['created_on']; ?></td>
+                                <td><?php echo $list['avai_for']; ?></td>
                                 <td></td>
-                                <td><?php if($list['image']==""){ echo "-"; }else{?><img src="<?php echo base_url().$list['image']; ?>" alt="#" class="" width="100%"><?php } ?></td>
+                                <td><?php echo $list['created_on']; ?></td>
+                                <!-- <td></td> -->
+                                <!-- <td><?php if($list['image']==""){ echo "-"; }else{?><img src="<?php echo base_url().$list['image']; ?>" alt="#" class="" width="100%"><?php } ?></td> -->
+                                <td><?php if($list['image']==""){ echo "-"; }else{?><a href="<?php echo base_url().$list['image']; ?>" alt="#" class="" target="_blank" width="20%"><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="20%"><?php } ?></a></td>
                                 <td class="d-flex">
                                  <a href="<?php echo base_url().'standardswritting/view_standards/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>

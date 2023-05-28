@@ -183,5 +183,19 @@ class Your_wall_model extends CI_Model {
         
 
     }
+    public function ckeckDailyLimit($user_id){
+        $from=date('Y-m-d');
+        $query="select * from `tbl_your_wall` where `user_id`=".$user_id." AND `created_on` LIKE "."'%".date('Y-m-d')."%'";
+        $query1=$this->db->query($query);
+         $res=$query1->result_array();
+        //  return count($result);
+        // die;
+     
+        if(!empty($res)){
+            return count($res);
+        }else{
+            $res='';
+        } 
+    }
 
 }

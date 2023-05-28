@@ -675,6 +675,7 @@ var x = setInterval(function() {
         });
 
 </script>
+           <!-- countdown code -->
 <script>
 //     (function () {
 //   const second = 1000,

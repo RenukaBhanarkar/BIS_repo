@@ -13,6 +13,7 @@ class Users extends CI_Controller
         $this->load->model('Users/Users_model');
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         $this->load->model('Winnerwall/Winnerwall_model');
+        $this->load->model('Standards_Making/Standards_Making_model');
         date_default_timezone_set("Asia/Calcutta");
 
        
@@ -1639,17 +1640,23 @@ class Users extends CI_Controller
     }
     public function yourwall()
     {
-        if(isset($_SESSION['admin_id'])){
+        
         $this->load->model('admin/your_wall_model');
+        if(isset($_SESSION['admin_id'])){
         $user_id = encryptids("D", $_SESSION['admin_id']);
-        $data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
-        // $data['published_wall'] = $this->your_wall_model->getPublishedWall();
+        //$data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
+        $data['daily_limit']=$this->your_wall_model->ckeckDailyLimit($user_id);
+        }else{
+            $data['daily_limit']="0";  
+        }
+       // print_r($data); die;
+         $data['published_wall'] = $this->your_wall_model->getPublishedWall();
         $this->load->view('users/headers/header');
         $this->load->view('users/yourwall_new', $data);
         $this->load->view('users/footers/footer');
-        }else{
-            redirect(base_url() . "users/login", 'refresh');
-        }
+        // }else{
+        //     redirect(base_url() . "users/login", 'refresh');
+        // }
     }
     public function yourwallview($id)
     {
@@ -1868,11 +1875,13 @@ class Users extends CI_Controller
         // $formdata1['email']= encryptids("D", $_SESSION['admin_email']);
         // $formdata1['name']= encryptids("D", $_SESSION['admin_name']);
         // $formdata1['admin']= encryptids("D", $_SESSION['admin']);
-        // $formdata1['admin_id']= encryptids("D", $_SESSION['admin_id']);
+        $user_id= encryptids("D", $_SESSION['admin_id']);
         // $formdata1['admin_type']= encryptids("D", $_SESSION['admin_type']);
         //  print_r($formdata1); die;
         $this->load->model('Admin/by_the_mentor_model');
         $data['by_the_mentor'] = $this->by_the_mentor_model->getThreeBTM();
+        $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
+       // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/users_by_the_mentor', $data);
         $this->load->view('users/footers/footer');
@@ -2175,7 +2184,7 @@ class Users extends CI_Controller
     public function start_competition($id)
     {
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
-        $data['competition']=$this->Miscellaneous_competition->viewCompetition($id);
+        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
         $this->load->view('users/headers/header');
         $this->load->view('users/start_competition',$data);
         $this->load->view('users/footers/footer');
@@ -2438,10 +2447,24 @@ class Users extends CI_Controller
     // In Conversation With Experts function Start for frontend
     public function conversation_with_experts()
     {
-        $Conversation = $this->Users_model->getPublishedConversation();
         $data = array();
-        $data['Conversation'] = $Conversation;
         $this->load->view('users/headers/header');
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $search = $this->input->post('search');
+            $Conversation = $this->Standards_Making_model->getPublishedConversationSearch($search);
+            $data['Conversation'] = $Conversation;
+        }
+        else
+        { 
+            $Conversation = $this->Users_model->getPublishedConversation();
+            $data['Conversation'] = $Conversation;
+
+        }
+
+        
+        
         $this->load->view('users/conversation_with_experts', $data);
         $this->load->view('users/footers/footer');
     }
@@ -2629,17 +2652,17 @@ class Users extends CI_Controller
          $admin_id = encryptids("D", $this->session->userdata('admin_id')); 
         $id = encryptids("D", $id);     
         $this->load->view('users/headers/header');    
-        if ($admin_id)  
-        {   
+        // if ($admin_id)  
+        // {   
             $this->Users_model->checkClassroomView($id,$admin_id);  
             $data = array();    
             $data['WatchNow'] = $this->Users_model->getJoinTheClassroomContaint($id);   
             $this->load->view('users/join_the_classroom_watch_now',$data);  
-        }   
-        else    
-        {   
-           redirect(base_url() . "users/login", 'refresh'); 
-        }   
+        // }   
+        // else    
+        // {   
+        //    redirect(base_url() . "users/login", 'refresh'); 
+        // }   
         $this->load->view('users/footers/footer'); 
     }
     public function letest_post_view()
@@ -2656,18 +2679,18 @@ class Users extends CI_Controller
          $admin_id = encryptids("D", $this->session->userdata('admin_id'));     
         $id = encryptids("D", $id); 
         $this->load->view('users/headers/header');  
-        if ($admin_id)  
-        {       
+        // if ($admin_id)  
+        // {       
             $this->Users_model->checkClassroomView($id,$admin_id);  
             $ReadMore = $this->Users_model->getJoinTheClassroomContaint($id);   
             $data = array();    
             $data['ReadMore'] = $ReadMore;  
             $this->load->view('users/letest_post_readMore',$data);  
-        }   
-        else    
-        {   
-           redirect(base_url() . "users/login", 'refresh'); 
-        }   
+        // }   
+        // else    
+        // {    
+        //    redirect(base_url() . "users/login", 'refresh'); 
+        // }   
         $this->load->view('users/footers/footer');
 
     }
@@ -2684,17 +2707,17 @@ class Users extends CI_Controller
         $admin_id = encryptids("D", $this->session->userdata('admin_id'));  
         $id = encryptids("D", $id); 
         $this->load->view('users/headers/header');  
-        if ($admin_id)  
-        {   
+        // if ($admin_id)  
+        // {   
             $this->Users_model->checkClassroomView($id,$admin_id);  
             $data = array();    
             $data['WatchNow'] = $this->Users_model->getJoinTheClassroomContaint($id);   
             $this->load->view('users/informative_video_watch',$data);   
-        }   
-        else    
-        {   
-           redirect(base_url() . "users/login", 'refresh'); 
-        }   
+        // }   
+        // else    
+        // {   
+        //    redirect(base_url() . "users/login", 'refresh'); 
+        // }   
         $this->load->view('users/footers/footer'); 
     }
     // Join The classroom function End for frontend
@@ -2726,8 +2749,8 @@ class Users extends CI_Controller
         $admin_id = encryptids("D", $this->session->userdata('admin_id'));  
          $id = encryptids("D", $id); 
         $this->load->view('users/headers/header');  
-        if ($admin_id)  
-        {   
+        // if ($admin_id)  
+        // {   
 
             // $this->Users_model->checkClassroomView($id,$admin_id);  
             $this->Users_model->checkleasrningView($id,$admin_id);
@@ -2736,11 +2759,11 @@ class Users extends CI_Controller
             $data['WatchNow'] = $this->Users_model->getContaintlearningStanderd($id);   
              // print_r($data);exit;
             $this->load->view('users/learning_standerd_sessions_watch_now', $data);  
-        }   
-        else    
-        {   
-           redirect(base_url() . "users/login", 'refresh'); 
-        }   
+        // }   
+        // else    
+        // {   
+        //    redirect(base_url() . "users/login", 'refresh'); 
+        // }   
         
         $this->load->view('users/footers/footer');
     }
@@ -2759,17 +2782,17 @@ class Users extends CI_Controller
         $id = encryptids("D", $id);     
                 
         $this->load->view('users/headers/header');  
-         if ($admin_id)     
-        {   
+        //  if ($admin_id)     
+        // {   
             $this->Users_model->checkleasrningView($id,$admin_id);  
             $data = array();    
             $data['ReadMore'] = $this->Users_model->getContaintlearningStanderd($id);   
             $this->load->view('users/learning_standerd_post_readMore',$data);   
-        }   
-        else    
-        {   
-           redirect(base_url() . "users/login", 'refresh'); 
-        } 
+        // }   
+        // else    
+        // {   
+        //    redirect(base_url() . "users/login", 'refresh'); 
+        // } 
         $this->load->view('users/footers/footer');
     }
     public function learning_standerd_informative_video_all()
@@ -2788,17 +2811,17 @@ class Users extends CI_Controller
         $id = encryptids("D", $id);     
                 
         $this->load->view('users/headers/header');  
-         if ($admin_id)     
-        {   
+        //  if ($admin_id)     
+        // {   
             $this->Users_model->checkleasrningView($id,$admin_id);  
             $data = array();    
             $data['ReadMore'] = $this->Users_model->getContaintlearningStanderd($id);   
             $this->load->view('users/learning_standerd_informative_video_watch', $data);  
-        }   
-        else    
-        {   
-           redirect(base_url() . "users/login", 'refresh'); 
-        }  
+        // }   
+        // else    
+        // {   
+        //    redirect(base_url() . "users/login", 'refresh'); 
+        // }  
         
         $this->load->view('users/footers/footer');
     }

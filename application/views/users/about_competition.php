@@ -252,7 +252,7 @@
                     </p> -->
                     <div class="d-flex">
                         <p class="time-start-end d-flex" style="margin-bottom:0px;">
-                            <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?php echo $competition['start_date']; ?><span style="margin-left: 12px;">12:00:00</span></span>
+                            <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?php echo $competition['start_date']; ?><span style="margin-left: 12px;"><?php echo $competition['start_time']; ?></span></span>
                             </span>
                         </p>
                         <!-- <p class="time-start-end d-flex" style="margin-bottom:0px; margin-left: 8px;">
@@ -262,7 +262,7 @@
                     </div>
                     <div class="d-flex">
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px;">
-                            <span class="start-end-time-title">End Date <span class="quiz-text-date m-2"><?php echo $competition['end_date']; ?><span style="margin-left: 12px;">12:00:00</span>
+                            <span class="start-end-time-title">End Date <span class="quiz-text-date m-2"><?php echo $competition['end_date']; ?><span style="margin-left: 12px;"><?php echo $competition['end_time']; ?></span>
                             </span>
                         </p>
                        <!--  <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
@@ -339,7 +339,9 @@
                     </div>
                 </div>
             </div>
-            <?php }else{ echo "Second Prize not available"; } ?>
+            <?php }else{ 
+               // echo "Second Prize not available";
+                 } ?>
             <?php if(!empty($competition['tprize_name'])){ ?>
             <div class="view_join_content">
                 <h3>Third Prize</h3>

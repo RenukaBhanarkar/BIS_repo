@@ -65,11 +65,13 @@
                                 <a href="<?php echo base_url(); ?>admin/your_wall_view/<?php echo encryptids("E", $list_yw['id'] )?>"><button class="btn btn-primary btn-sm mr-2" title="View">View</button></a>
                                 <?php }else{ ?>                                    
                                     <a href="<?php echo base_url(); ?>admin/your_wall_view/<?php echo encryptids("E", $list_yw['id'] )?>"><button class="btn btn-primary btn-sm mr-2" title="View">View</button></a>  
-<!--  commented for set permission
+ <!-- commented for set permission -->
                                                 <button onclick="deleteYourwall(' <?php echo $list_yw['id']; ?> ');" data-id='<?php echo $list_yw['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
                                                 <button onclick="approve('<?php echo $list_yw['id']; ?>')" data-id='<?php echo $list_yw['id']; ?>' class="btn btn-success btn-sm mr-2 approve">Approve</button>
                                                 <button onclick="reject('<?php echo $list_yw['id']; ?>')" class="btn btn-danger btn-sm mr-2 text-white">Reject</button>
-                                                <button class="btn btn-secondary btn-sm archive" onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button> -->
+                                                <button class="btn btn-secondary btn-sm archive" onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button>
+
+                                                <!-- comment end -->
                                                 
                                                 <?php } ?>
                                  <!-- <a href="conversation_view" class="btn btn-primary btn-sm mr-2" title="View">View</a> -->
@@ -125,12 +127,14 @@
                                  <?php }else{ ?>  
                                     <a href="<?php echo base_url(); ?>admin/your_wall_view/<?php echo encryptids("E", $list_yw['id'] )?>"><button class="btn btn-primary btn-sm mr-2" title="View">View</button></a>
                                  
-                                    <!-- commented for set permission<?php if($list_yw['status']=="5"){ ?>
+                                    <!-- commented for set permission -->
+                                    <?php if($list_yw['status']=="5"){ ?>
                                     <button class="btn btn-warning btn-sm mr-2 unpublish" onclick="sendUnPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' title="View">UnPublish</button>
                                     <?php }else if($list_yw['status']=="6" || $list_yw['status']=="3"){ ?>
                                         <button class="btn btn-success btn-sm mr-2 publish" onclick="sendPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' title="View">Publish</button>
                                         <button class="btn btn-secondary btn-sm archive" onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button>
-                                        <?php } ?> -->
+                                        <?php } ?>
+                                        <!-- comment end -->
 
                                         
                                         <?php } ?>
@@ -183,11 +187,12 @@
                               <td style="width:559px;">
                               <a href="<?php echo base_url(); ?>admin/your_wall_view/<?php echo encryptids("E", $list_yw['id'] )?>"><button class="btn btn-primary btn-sm mr-2" title="View">View</button></a>
                               <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {  ?>
-<!--  commented for set permission
+ <!-- commented for set permission -->
                               <button onclick="deleteYourwall(' <?php echo $list_yw['id']; ?> ');" data-id='<?php echo $list_yw['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
                               <button class="btn btn-secondary btn-sm " onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button>
                               <?php } ?>
-                               -->
+                              <!-- comment end -->
+                              
                                  <!-- <a href="conversation_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                   <a href="conversation_edit" class="btn btn-info btn-sm mr-2" title="View">Sent for Approval</a>
                                   <a class="btn btn-success btn-sm mr-2" title="View">Publish</a>
@@ -235,9 +240,10 @@
                               <td class="" style="width:559px;">
                               <a href="<?php echo base_url(); ?>admin/your_wall_view/<?php echo encryptids("E", $list_yw['id'] )?>"><button class="btn btn-primary btn-sm mr-2" title="View">View</button></a>
                               
-                              <!-- commented for set permission<?php if (encryptids("D", $_SESSION['admin_type']) == 3) {  ?>
+                              <!-- commented for set permission -->
+                              <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {  ?>
                               <button class="btn btn-info btn-sm restore" onclick="sendUnArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Restore</button>   
-                              <?php } ?> -->
+                              <?php } ?>
                                  <!-- <a href="conversation_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                   <a href="conversation_edit" class="btn btn-info btn-sm mr-2" title="View">Sent for Approval</a>
                                   <a class="btn btn-success btn-sm mr-2" title="View">Publish</a>

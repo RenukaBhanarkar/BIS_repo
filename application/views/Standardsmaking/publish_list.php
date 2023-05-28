@@ -50,13 +50,18 @@
                                 <?= $data?></td> 
                               <td><?= $value['created_on']?></td>
 
-                              <td>567</td>
-                              <td>45</td>
+                              <td><?= $value['likes']?></td>
+                              <td><?= $value['views']?></td>
                               <td><?= $value['status_name']?></td>
                               <td><?= $value['reason']?></td>
                               <td><?= $value['updated_on']?></td>
                               <td class="" style="width:559px;">
                                  <?php $id= encryptids("E", $value['id'] )?>
+
+                                  <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php if ($user_id!=3) {?>
+                                    <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php  }  else { ?>
 
                                 
 
@@ -66,7 +71,7 @@
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                     <button onclick="updateStatusLiveSession('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
                                 <button onclick="updateStatusLiveSession('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button> 
-                                <?php }?>
+                                <?php  } }?>
 
                               </td>
                               
