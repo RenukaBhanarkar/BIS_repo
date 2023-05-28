@@ -312,7 +312,7 @@ class Quiz extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }*/
 
-    public function oldeditquiz($id)
+   /* public function oldeditquiz($id)
     {
        $this->load->view('admin/headers/admin_header');
       
@@ -589,7 +589,7 @@ class Quiz extends CI_Controller
             }
         }
         $this->load->view('admin/footers/admin_footer');
-    }
+    } */
 
     public function editquiz($id)
     {
@@ -881,6 +881,12 @@ class Quiz extends CI_Controller
                 $formdata['banner_img'] = $banner_imglocation;
                 $formdata['language_id'] = $this->input->post('language_id');
                 $formdata['availability_id'] = $this->input->post('availability_id');
+                if($this->input->post('availability_id')== 1){               
+                    $standard = $this->input->post('standard');  
+                    $formdata['standard'] = implode(',',$standard);    
+                }else{
+                    $formdata['standard'] = 0;
+                }
               
                 $formdata['qbquestion'] = $this->input->post('qbquestion');
                 $formdata['status'] = 10;
@@ -1405,6 +1411,12 @@ class Quiz extends CI_Controller
             $formdata['banner_img'] = $banner_imglocation;
             $formdata['language_id'] = $this->input->post('language_id');
             $formdata['availability_id'] = $this->input->post('availability_id');
+            if($this->input->post('availability_id')== 1){               
+                $standard = $this->input->post('standard');  
+                $formdata['standard'] = implode(',',$standard);    
+            }else{
+                $formdata['standard'] = 0;
+            }
             $que_bank_id = $this->input->post('que_bank_id');
             $formdata['que_bank_id']  = $que_bank_id;
             

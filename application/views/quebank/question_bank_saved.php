@@ -66,10 +66,20 @@
 
                         </tbody>
                     </table>
+                  
                 </div>
+          
             </div>
+            
         </div>
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <div class="col-md-12 submit_btn p-3">
+                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Back</a>
+            </div>
+        <?php } ?>
+      
     </div>
+   
     <!-- /.container-fluid -->
 
     </div>

@@ -26,10 +26,18 @@ class Quiz_model extends CI_Model {
             return false;
         } 
     }
-    public function getQuiz($id)
-    {
+    // public function getQuiz($id)
+    // {
+    //     $this->db->where('id',$id); 
+    //     return $quiz = $this->db->get('tbl_quiz_details')->row_array();
+    // }
+
+    public function getQuiz($id){
+    $this->db->select('tbl_quiz_details.*,tbl_que_bank.title as quebanktitle'); 
+        $this->db->join('tbl_que_bank','tbl_que_bank.que_bank_id = tbl_quiz_details.que_bank_id'); 
         $this->db->where('id',$id); 
-        return $quiz = $this->db->get('tbl_quiz_details')->row_array();
+        return $this->db->get('tbl_quiz_details')->row_array();  
+
     }
 
     public function getPrizeId($prize_id,$quiz_id)
@@ -63,6 +71,7 @@ class Quiz_model extends CI_Model {
         $this->db->join('tbl_que_bank','tbl_que_bank.quiz_linked_id = tbl_quiz_details.id'); 
         //$this->db->where_in('tbl_quiz_details.status',array(1,2,3,4,5,6)); 
         $this->db->where_in('tbl_quiz_details.status',array(10)); 
+        $this->db->order_by('tbl_quiz_details.created_on','DESC'); 
         return $this->db->get('tbl_quiz_details')->result_array();  
     }
    /*  public function getAllQuizeCreated()
@@ -261,7 +270,7 @@ public function updateQuiz($id,$formdata)
         $this->db->join('tbl_que_bank que','que.que_bank_id = quiz.que_bank_id'); 
         $this->db->where('quiz.end_date <=', $current_date);
         $this->db->where('quiz.end_time <', $current_time); 
-      
+        $this->db->order_by('quiz.created_on','desc');
         
         //$this->db->where('quiz.end_time <=' ,$current_time); 
        
@@ -548,7 +557,7 @@ public function updateQuiz($id,$formdata)
 
         $myQuery = "SELECT distinct res.quiz_id ,res.created_on AS declared_on ,quiz.title, quiz.start_date,quiz.total_mark,quiz.result_declared
         FROM  tbl_result_declaration AS res INNER JOIN tbl_quiz_details  As quiz
-        ON res.quiz_id = quiz.id";
+        ON res.quiz_id = quiz.id order by res.created_on desc";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();
         //echo json_encode($result);exit();
@@ -620,7 +629,13 @@ public function updateQuiz($id,$formdata)
             array_push($rs,$row);
            
          }
+         // echo json_encode($rs);exit();
+         
          return $rs;
+
+
+
+
     //    $this->db->select('tbl_mst_result_declaration.*,
     //         tbl_quiz_details.title,
     //         tbl_quiz_details.quiz_id as quizId,
@@ -635,18 +650,43 @@ public function updateQuiz($id,$formdata)
 
     public function resultDeclareUser($id)
     { 
-       $this->db->select('tbl_quiz_submission_details.*,
+        $rs = array();
+        /*$this->db->select('tbl_quiz_submission_details.*,
             tbl_users.user_name,
             tbl_result_declaration.prize as userprize,
             tbl_users.email,
             tbl_users.user_mobile'); 
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
-        //$this->db->where_not_in('tbl_result_declaration.prize',0); 
+        //////////$this->db->where_not_in('tbl_result_declaration.prize',0); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
         $this->db->join('tbl_result_declaration','tbl_result_declaration.user_id = tbl_quiz_submission_details.user_id');
         $this->db->order_by('score', 'Asc'); 
         $this->db->order_by('time_taken', 'Asc');    
-        return $this->db->get('tbl_quiz_submission_details')->result_array(); 
+        $rs = $this->db->get('tbl_quiz_submission_details')->result_array(); 
+
+      
+        return $rs;*/
+
+
+
+
+
+        $this->db->select('tbl_quiz_submission_details.*,
+       
+        tbl_result_declaration.prize as userprize,
+        tbl_users.user_name,tbl_users.email,tbl_users.user_mobile
+        
+        '); 
+    $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
+    
+    $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
+    $this->db->join('tbl_result_declaration','tbl_result_declaration.user_id = tbl_quiz_submission_details.user_id');
+    $this->db->order_by('score', 'Asc'); 
+    $this->db->order_by('time_taken', 'Asc');    
+    $rs = $this->db->get('tbl_quiz_submission_details')->result_array(); 
+
+    //echo json_encode($rs);exit();
+    return $rs;
     }
 
       public function getQuizinfo($id)

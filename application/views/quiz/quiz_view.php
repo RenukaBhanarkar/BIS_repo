@@ -265,6 +265,9 @@
                         <div class="mb-2 col-md-4">                           
                             <div>
                                 <p><?= $quizdata['availability']; ?></p>
+                                <?php if($quizdata['availability_id'] == 1) { ?>
+                                    <p>CLASS - <?php echo $quizdata['standard'];?> </p>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

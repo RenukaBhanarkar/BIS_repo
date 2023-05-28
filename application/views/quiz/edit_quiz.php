@@ -238,9 +238,9 @@
                   <input type="hidden" id="ban_img" value ="0"/>
                     <input type="file" id="banner_img" accept="image/jpeg,image/png,image/jpg" name="banner_img" class="form-control-file" id="icon_file" onchange="loadFileBanner(event)">
                     <input type="hidden" name="lastbanner" value="<?php echo $quizdata['banner_img']; ?>">
-                    <span class="error_text">
+                    <!-- <span class="error_text">
                       accept only jpg,jpeg,png.Maximum size is 200 kb
-                    </span>
+                    </span> -->
 
                     <span class="error_text">
                       <?php //echo form_error('title'); 
@@ -342,9 +342,9 @@
                     <input type="hidden" id="fp_img1"  name="fp_img" value="1">
                       <input type="file" id="fprize_img" accept="image/jpeg,image/png,image/jpg" name="fprize_img" class="form-control-file" id="icon_file1" onchange="loadFileFirst(event)">
                       <input type="hidden" id="lastfprize_img1" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
-                      <span class="error_text">
+                      <!-- <span class="error_text">
                         accept only jpg,jpeg,png.Maximum size is 200 kb
-                      </span>
+                      </span> -->
 
                       <span class="error_text">
                         <?php //echo form_error('title'); 
@@ -444,9 +444,9 @@
                                                                           echo $secondprize['prize_img'];
                                                                         } ?>">
 
-                      <span class="error_text">
+                      <!-- <span class="error_text">
                         accept only jpg,jpeg,png.Maximum size is 200 kb
-                      </span>
+                      </span> -->
 
                       <span class="error_text">
                         <?php //echo form_error('title'); 
@@ -539,9 +539,9 @@
                       <input type="hidden" id="lasttprize_img0" name="lasttprize_img" value="<?php if (!empty($thirdprize['prize_img'])) {
                                                                           echo $thirdprize['prize_img'];
                                                                         } ?>">
-                      <span class="error_text">
+                      <!-- <span class="error_text">
                         accept only jpg,jpeg,png.Maximum size is 200 kb
-                      </span>
+                      </span> -->
 
                       <span class="error_text">
                         <?php //echo form_error('title'); 
@@ -640,9 +640,9 @@
                       <input type="hidden" id="lastcprize_img1" name="lastcprize_img" value="<?php if (!empty($fouthprize['prize_img'])) {
                                                                           echo $fourthprize['prize_img'];
                                                                         } ?>">
-                      <span class="error_text">
+                      <!-- <span class="error_text">
                         accept only jpg,jpeg,png.Maximum size is 200 kb
-                      </span>
+                      </span> -->
 
                       <span class="error_text">
                         <?php //echo form_error('title'); 
@@ -697,24 +697,34 @@
                 </select>
                 <span class="error_text"><?php echo form_error('availability_id'); ?></span>
               </div>
+               <?php if ($quizdata['standard'] != 0) { 
+                  $std = explode(',',$quizdata['standard'] );
+
+
+                }else{
+                  $std = array(0);
+                } ?>
               <div class="mb-2 col-8" id="standard_check">
                         <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_1"  >
+
+                                        <input type="checkbox" value="9"name="standard[]"
+                                        <?php if (in_array(9,$std)) {echo "checked";}?>
+                                          class="custom-control-input"  id="Standard_1"  >
                                         <label class="custom-control-label" for="Standard_1">9<sup>th</sup>Standard</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_2"  >
+                                        <input type="checkbox" value="10"name="standard[]"   <?php if (in_array(10,$std)) {echo "checked";}?> class="custom-control-input"  id="Standard_2"  >
                                         <label class="custom-control-label" for="Standard_2">10<sup>th</sup>Standard</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_3"  >
+                                        <input type="checkbox" value="11"name="standard[]"   <?php if (in_array(11,$std)) {echo "checked";}?> class="custom-control-input"  id="Standard_3"  >
                                         <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="1" name="" class="custom-control-input"  id="Standard_4">
-                                        <label class="custom-control-label" for="Standard_4">12s<sup>th</sup>Standard</label>
+                                        <input type="checkbox" value="12" name="standard[]"   <?php if (in_array(12,$std)) {echo "checked";}?>class="custom-control-input"  id="Standard_4">
+                                        <label class="custom-control-label" for="Standard_4">12<sup>th</sup>Standard</label>
                                     </div>
                                 </div>
                         </div>
@@ -727,9 +737,12 @@
             <div class="row mt-2">
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Select Question Bank<sup class="text-danger">*</sup></label>
+                <div class="d-flex">
                 <select class="form-control input-font" aria-label="Default select example" name="que_bank_id" id="que_bank_id" onchange="getQBDetails(this.value);">
-                  <option value="<?= $quizdata['que_bank_id']; ?>"><?= $quizdata['title']; ?></option>
+                  <option value="<?= $quizdata['que_bank_id']; ?>"><?= $quizdata['quebanktitle']; ?></option>
                 </select>
+                
+                </div>
                 <button type="button" class="btn btn-sm  btn-primary text-white" id="fetch_que_bank">Fetch Question Banks</button>
               </div>
             </div>
@@ -784,7 +797,7 @@
                  <!-- <input type="submit" name="DoEdit" class="btn btn-info btn-sm" value="Submitttt"> -->
                 <!-- <button id="submitForm"  class="btn btn-info btn-sm">Submit</button> -->
                 <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
-                <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
+              
               </div>
             </div>
           </div>
@@ -807,7 +820,13 @@
 </script>
 
 <script>
-  
+   var ava_id = '<?php echo $quizdata['availability_id']  ;?>';
+  // alert(ava_id);
+    if (ava_id == 1){
+      $("#standard_check").show();
+    }else{
+      $("#standard_check").hide();
+    }
   $(document).ready(function() {
     var id = "<?php echo $quizdata['que_bank_id']; ?>"
     getQuestionListByQueBankId(id);
@@ -896,16 +915,17 @@
             });
             }
     });
-    $("#standard_check").hide();
+   
+  
         $(document).on("change", "#availability_id", function(e) {
             e.preventDefault();
             var availability_id = $("#availability_id :selected").val();
             if (availability_id == 1) {
                 $("#standard_check").show();
-                $("#standard_check").show();
+              
             } else if (availability_id == 2) {
                 $("#standard_check").hide();
-                $("#standard_check").hide();
+           
                   
             }
         });

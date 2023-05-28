@@ -349,14 +349,14 @@
                             
                         </p>
                         <?php }?>
-                        <!-- <?php //if($quizdata['class'] !="") { ?> 
+                         <?php if($quizdata['standard'] !="") { ?> 
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
                             <span class="start-end-time-title">Class 
-                                <span class="quiz-text-date m-2"><? //$quizdata['class'];?></span>
+                                <span class="quiz-text-date m-2"><?= $quizdata['standard'];?></span>
                             </span>
                             
                         </p>
-                        <?php //}?> -->
+                        <?php }?> 
                     </div>
 
                             <?php   
@@ -380,7 +380,7 @@
                                         <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                     <?php  }
                                   } else { ?>
-                                    <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz </span></a>
+                                    <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
                                 <?php }                          
                              
                              }
@@ -399,7 +399,7 @@
                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                         <?php  }
                                       } else { ?>
-                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz </span></a>
+                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
                                     <?php }
                                  }
                                  
@@ -418,7 +418,7 @@
                                                 <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                             <?php  }
                                           } else { ?>
-                                            <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz  </span></a>
+                                            <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate  </span></a>
                                         <?php }
                                      } 
                                      
@@ -437,7 +437,7 @@
                                                     <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                                 <?php  }
                                               } else { ?>
-                                                <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz </span></a>
+                                                <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
                                             <?php }
                                          }
                                          
@@ -458,7 +458,7 @@
                                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                                         <?php  }
                                                     } else { ?>
-                                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz </span></a>
+                                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
                                                     <?php } ?>
                                                 </p>
 
@@ -478,7 +478,7 @@
                                         
                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz</span></a>
                                         <?php // } } else { ?>
-                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Start Quiz</span></a>
+                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate</span></a>
                                     <?php // } ?>
                                 </p> -->
 
