@@ -846,20 +846,47 @@ class Admin_model extends CI_Model {
     
     public function getAllManageQuiz()
     { 
+        $t=time();
+        $current_time = (date("H:i:s",$t));
+        $rs = array();
         $this->db->select('tbl_quiz_details.*,tbl_mst_status.status_name,tbl_que_bank.no_of_ques'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_quiz_details.status');
         $this->db->join('tbl_que_bank','tbl_que_bank.que_bank_id = tbl_quiz_details.que_bank_id');  
         $this->db->where_in('tbl_quiz_details.status',array(2,3,4,5,6,1));
-       // $this->db->where('tbl_quiz_details.start_date >=' ,date("Y-m-d")); 
-        $this->db->order_by('tbl_quiz_details.created_on','desc');
+       
         
-        return $this->db->get('tbl_quiz_details')->result_array(); 
+        // new code 
+        
+        $this->db->where('tbl_quiz_details.end_date >=' ,date("Y-m-d"));
+        // new code end
+        $this->db->order_by('tbl_quiz_details.created_on','desc');
 
+        // new code 
+        
+            $res = $this->db->get('tbl_quiz_details')->result_array(); 
+            foreach($res as $row){
+               if($row['end_date'] == date("Y-m-d") ){
+                    if($row['end_time'] >= $current_time){
+                        array_push($rs,$row);
+                    }
+                }else{
+                    array_push($rs,$row);
+                }
+            }
+       
 
+        // end code
+        
+       // return $this->db->get('tbl_quiz_details')->result_array(); 
+
+       return $rs;
     }
    
     public function onGoingQuiz()
-    {
+    {   
+        $t=time();
+        $current_time = (date("H:i:s",$t));
+        $rs = array();
         $this->db->select('tbl_quiz_details.*,tbl_mst_status.status_name');
         $this->db->where('(NOW() BETWEEN start_date AND end_date)'); 
         $this->db->where('tbl_quiz_details.status',5); 
@@ -867,7 +894,22 @@ class Admin_model extends CI_Model {
         $this->db->where('tbl_quiz_details.end_date >=' ,date("Y-m-d"));
         $this->db->order_by('tbl_quiz_details.created_on','desc');
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_quiz_details.status');  
-         return $this->db->get('tbl_quiz_details')->result_array(); 
+        // return $this->db->get('tbl_quiz_details')->result_array(); 
+        // new code 
+        
+         $res = $this->db->get('tbl_quiz_details')->result_array(); 
+         foreach($res as $row){
+            if($row['end_date'] == date("Y-m-d") ){
+                 if($row['end_time'] >= $current_time){
+                     array_push($rs,$row);
+                 }
+             }else{
+                 array_push($rs,$row);
+             }
+         }
+    
+
+     // end code
     }
 
     public function onGoingQuizNew(){
@@ -893,11 +935,12 @@ class Admin_model extends CI_Model {
         if($query->num_rows() > 0){
             $res = $query->result_array();
             foreach($res as $row){
-                if($row['start_date'] == date("Y-m-d") ){
-                    if($row['start_time'] <= $current_time){
-                        array_push($rs,$row);
-                    }
-                }else if($row['end_date'] == date("Y-m-d") ){
+                // if($row['start_date'] == date("Y-m-d") ){
+                //     if($row['start_time'] <= $current_time){
+                //         array_push($rs,$row);
+                //     }
+                // }else 
+                if($row['end_date'] == date("Y-m-d") ){
                     if($row['end_time'] >= $current_time){
                         array_push($rs,$row);
                     }

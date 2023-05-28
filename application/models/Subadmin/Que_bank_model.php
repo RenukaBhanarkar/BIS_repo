@@ -75,6 +75,7 @@ class Que_bank_model extends CI_Model {
             ->join('tbl_mst_status s', 'qb.status = s.id', 'left')
             ->join('tbl_quiz_details quiz', 'quiz.que_bank_id = qb.que_bank_id', 'left')
             ->where_in('qb.status', array(9))
+            ->order_by('created_on','desc')
             ->get();
        
         $rs = array();
@@ -91,6 +92,7 @@ class Que_bank_model extends CI_Model {
             ->from('tbl_que_bank qb')
             ->join('tbl_mst_status s', 'qb.status = s.id', 'left')           
             ->where_in('qb.status', array(0))
+            ->order_by('qb.created_on','desc')
             ->get();
        
         $rs = array();
@@ -107,6 +109,7 @@ class Que_bank_model extends CI_Model {
             ->join('tbl_mst_status s', 'qb.status = s.id', 'left')
             ->join('tbl_quiz_details quiz', 'quiz.que_bank_id = qb.que_bank_id', 'left')
             ->where_in('qb.status', array(1,2,3,4,5,6))
+            ->order_by('qb.created_on','desc')
             ->get();
         // $this->db->select('*');
         // $this->db->from('tbl_que_bank');

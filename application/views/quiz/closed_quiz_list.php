@@ -55,7 +55,12 @@
                                  <td><?= $quiz['total_question']?></td>
                                  <td><?= $quiz['no_of_ques']?></td>
                                  <td><?= $quiz['total_mark']?></td>
-                                 <td>Closed</td>
+                                 <td><?php if ($quiz['result_declared'] == 0) { echo "Closed";} else { echo "Result Declared";} ?>
+                                
+                                
+                                  
+                                
+                                 </td>
                                  <td class="d-flex border-bottom-0" style="width: 315px; word-break: normal;">
                                      <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
 
@@ -77,9 +82,7 @@
 
                                     <?php if ($quiz['result_declared'] == 0) { ?> 
                                     <a href="<?php echo base_url();?>Quiz/close_declaration_list/<?= $quiz['id']?>" class="btn btn-success btn-sm mr-2">Result Declaration</a>
-                                  <?php }else{ ?>
-                                     <p><strong style="color:blue;padding-left:10px">Result declared</strong></p> 
-                                  <?php } 
+                                  <?php }
                                 
                                      }?>
                                   </td>

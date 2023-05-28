@@ -48,6 +48,7 @@
                   <th>Total Questions in QB</th>
                   <th>Total Marks</th>
                   <th>Status</th>
+                  <th>Rejection Reason </th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -66,6 +67,7 @@
                       <td><?= $quiz['no_of_ques'] ?></td>
                       <td><?= $quiz['total_mark'] ?></td>
                       <td><?= $quiz['status_name'] ?></td>
+                      <td><?= $quiz['remark'] ?></td>
                       <td class="d-flex border-bottom-0">
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) {
                           if ($quiz['status'] == 2 ) { ?>

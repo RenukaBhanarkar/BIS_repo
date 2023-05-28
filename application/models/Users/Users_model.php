@@ -829,9 +829,18 @@
             $user_branch_id = encryptids("D", $this->session->userdata('branch_id'));
             $user_state_id = encryptids("D", $this->session->userdata('state_id'));
 
+            
+
             $user_standard_club_category = encryptids("D", $this->session->userdata('standard_club_category'));
             if ($user_standard_club_category == 1) {
                 $ava = 1;
+                $standard = encryptids("D", $this->session->userdata('standard'));
+                    // if($standard != 0){
+                    //     $std = explode(',', $standard);
+                    // }else{
+                    //     $std = array(0);
+                    // }
+
             } else {
                 $ava = 2;
             }
@@ -847,10 +856,14 @@
             //$this->db->where('quiz.end_time >=', $current_time);
             $this->db->where('quiz.status', 5);
 
-            $this->db->where_in('quiz.availability_id', $ava);
+            $this->db->where('quiz.availability_id', $ava);
+            if($ava == 1){
+                $this->db->like('quiz.standard', $standard);
+            }
             $this->db->where_in('quiz.branch_id', array($user_branch_id, 0));
             $this->db->or_where_in('quiz.region_id', array($user_region_id, 0));
             $this->db->or_where_in('quiz.state_id', array($user_state_id, 0));
+          //  $this->db->or_where_in('quiz.standa', array($user_state_id, 0));
             $this->db->where('quiz.id', $quiz_id);
             // $rs = array();
             // $query = $this->db->get();
