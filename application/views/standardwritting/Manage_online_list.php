@@ -61,13 +61,13 @@
                               <td>State level</td>
                               <td>Pending</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/create_online_view" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="<?php echo base_url(); ?>standardswritting/create_online_edit" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Sent for Approve</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm mr-2" >Delete</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >Archive</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Publish</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >Unpublish</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-warning btn-sm mr-2" >Unpublish</a>
                                   
                             </td>
                            </tr> 

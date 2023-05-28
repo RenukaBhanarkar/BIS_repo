@@ -16,16 +16,7 @@
                 </ol>
             </nav>
         </div>
-<div class="row">
-        <div class="col-12">
-            <div class="card border-top card-body">
-                <div>
-                    <a href="<?php echo base_url(); ?>standardswritting/create_online_form" class="btn btn-primary btn-sm mr-2" title="View">Create New Competition</a>
-                    <a href="<?php echo base_url(); ?>standardswritting/create_online_archive" class="btn btn-primary btn-sm mr-2" title="View">Archived</a>
-                </div>
-            </div>
-        </div>
-  </div>
+
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
@@ -61,13 +52,11 @@
                               <td>State level</td>
                               <td>Pending</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>standardswritting/create_online_view" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <a href="<?php echo base_url(); ?>standardswritting/create_online_edit" class="btn btn-info btn-sm mr-2 edit" >Edit</a>
-                                 <a href="#" class="btn btn-success btn-sm mr-2 create" >Create</a>
-                                 <a href="#" class="btn btn-danger btn-sm mr-2 delete" >Delete</a>
-                                 <a href="#" class="btn btn-primary btn-sm mr-2 archive" >Archive</a>
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/create_online_list" class="btn btn-info btn-sm mr-2 edit" >Restore</a>
+                                 
                                   
-                              </td>
+                            </td>
                            </tr> 
                            
                         </tbody>

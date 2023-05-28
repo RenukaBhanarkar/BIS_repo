@@ -485,7 +485,7 @@ class Users extends CI_Controller
      * 
      * correct auth user
      */
-    public function authUser()
+    public function correctauthUser()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -505,7 +505,7 @@ class Users extends CI_Controller
             // commented $parameters = json_encode(array("userid" => $username, "password" => $password));
 
 
-            /*********************************************************************************
+          
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
                 CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
@@ -531,33 +531,11 @@ class Users extends CI_Controller
             //print_r($output); die;
             $userData = array();
 
-
-
-
-            **************************************************************************/
-            /********** part to comment  */
-            $user_id = 2206274956;
-            $output = array(
-                'status_code'=>1
-            );
-
-
-
-
-            /********** part to comment end  */
-
-
             if(!empty($output)){ 
             if ($output['status_code'] == 1) {
-
-
-               // to remove comment  $userData = $output['data'];
+               $userData = $output['data'];
                 //echo json_encode($userData);echo "<br>";
-               // to remove comment $user_id = $userData['UserID'];
-
-
-
-
+                $user_id = $userData['UserID'];
 
                 $exist_user = $this->Users_model->toCheckUserExist($user_id);
                 if (!$exist_user) {
@@ -768,11 +746,11 @@ class Users extends CI_Controller
         }}
     }
     //////////////////////////////////////////////////////////////
-    /****************************************************
+     /****************************************************
      * 
      * renu auth user
      */
-    /*public function  authUser()
+    public function  authUser()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -965,7 +943,7 @@ class Users extends CI_Controller
                             $sess_permissions = array(
                                 "main_mod_per" => $main_mod_per,
                                 "sub_mod_per" => $sub_mod_per,
-                                "activity_per" => $activity_per,
+                               // "activity_per" => $activity_per,
                              );
                              $this->session->set_userdata($sess_permissions);
                           }
@@ -986,7 +964,9 @@ class Users extends CI_Controller
 
 
         }}
-    }*/
+    }
+
+  
     
     public function logout()
     {
