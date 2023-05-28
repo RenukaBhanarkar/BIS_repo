@@ -81,9 +81,9 @@
                             <!-- <button href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</button> -->
                                  <!-- <button data-id="<?php echo $list['id']; ?>" class="btn btn-info btn-sm mr-2 restore">Restore</button> -->
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
-                                    <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                                    <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                         <?php  if ($list['status'] == 2) { ?>
-                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
+                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
                         <?php }
                         } ?>
                         <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
@@ -93,14 +93,14 @@
                         <?php 
                         } ?> -->
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                           <?php  if($list['status']==5){ ?>
                             <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-warning btn-sm mr-2 unpublish" >Unpublish</button>
                           <?php  }else if(!(($list['status']==5) || ($list['status']==2) || ($list['status']==1))){ ?>
                               
                        
 
-                                 <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
+                                 <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <button data-id="<?php echo $list['comp_id']; ?>" img_name="<?php echo $list['thumbnail']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
                                  <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
                                  <?php if(!($list['status']==4)){  ?>

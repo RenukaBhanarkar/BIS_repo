@@ -782,6 +782,17 @@ class Admin extends CI_Controller
     }
     public function logout()
     {
+        $id = encryptids("D", $_SESSION['admin_id']);
+        $user_log_id = encryptids("D", $_SESSION['user_log_id']);
+      
+         //  echo $id ; exit();
+        $logs = array(
+            'logout_on' => GetCurrentDateTime('Y-m-d h:i:s')           
+           
+        );
+        $insert_logs = $this->Admin_model->updateUsersLogs($id,$user_log_id,$logs);
+      
+        
         $this->Admin_model->adminLogout();
         //$this->session->session_unset();
         $this->session->sess_destroy();
@@ -1252,15 +1263,29 @@ class Admin extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function login_report_list()
-    {
+    { 
+        $data =array();
+        $allRecords = array();
+        
+        $allRecords = $this->Admin_model->getUsersLoginReport();
+        $data['allRecords'] = $allRecords;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/login_report_list');
+        $this->load->view('admin/login_report_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function log_report_list()
     {
+        $data =array();
+        $adminallRecords = array();
+        $allRecords = $this->Admin_model->getAllLogs();
+        
+       
+
+
+
+        $data['allRecords'] = $allRecords;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/log_report_list');
+        $this->load->view('admin/log_report_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function feedback_detail($id)
@@ -1419,14 +1444,16 @@ class Admin extends CI_Controller
                 'user_uid' => $uid,
                 'name' => $name,
                 'email_id' => $email_id,
-                // 'designation' => $designation,
+                'designation' => 2,
                 // 'branch' => $branch,
                 // 'post' => $post,
                 // 'department' => $department,
                 'is_active' => 1,
                 'username' => $email_id,
                 'password' => $random_pass,
-                'admin_type' => $admin_type
+                'admin_type' => $admin_type,
+                'created_by' => 1
+                // 'modified_by' => 1
                 //'created_on' => GetCurrentDateTime('Y-m-d h:i:s'),
             );
             $admin_id = $this->Admin_model->insertData($data);
@@ -1515,7 +1542,14 @@ class Admin extends CI_Controller
     public function deleteAdmin()
     {
         try {
+            $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
             $admin_id = $this->input->post('id');
+
+            $dbObj = array(
+               'modified_by' => $login_admin_id,
+            );
+            $uid = $this->Admin_model->updateData($admin_id, $dbObj);
+
             $id = $this->Admin_model->deleteData($admin_id);
 
             if ($id) {

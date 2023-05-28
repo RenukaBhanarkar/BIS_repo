@@ -161,7 +161,7 @@ h5{
           
 
           <?php foreach($by_the_mentor as $list){ ?>
-          <div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-xl-4 col-md-6 aos-init aos-animate mb-3" data-aos="zoom-in" data-aos-delay="200">
             <div class="service-item">
               <div class="img">
                 <img src="<?php echo base_url().$list['image'];?>" class="img-fluid" alt="">
@@ -203,7 +203,11 @@ h5{
                         <?php if(!($_SESSION['admin_type']=="ZjJYY3VISndBMytwaStIQjhmSkV5QT09")){ ?>
                             <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="notauthorise">Post Here...</h3>
                     <?php }else{ ?> 
-                        <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="mentorForm_show">Post Here...</h3>
+                        <?php if($limit < 1){?>
+                            <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="mentorForm_show">Post Here...</h3>
+                        <?php }else{ ?>                        
+                            <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;" id="limit_excedded">Post Here...</h3>
+                        <?php } ?>
                         <?php } ?>
             <?php }else{?>
                         <a href="<?php echo base_url().'users/login'; ?>">
@@ -477,6 +481,9 @@ console.log('clicked');
 //         $("#notauthorise_alert").modal('show');
         Swal.fire("You are not authorised mentor to post here");
      });
+     $('#limit_excedded').click(function(){
+        Swal.fire("You have exahusted daily limit to post more"); 
+     })
   </script>
   <script type="text/javascript"> 
 //   $('#display_img_2').hide();

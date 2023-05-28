@@ -349,16 +349,16 @@ var loadFileThumbnail = function(event)
                     if (type_of_post==1) 
                     {
                         var doc_pdf=$("#doc_pdf").val();
-                        if (doc_pdf == "" || doc_pdf== null) {
-                        if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
-                        {
-                            $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Upload PDF </div>");
-                        }
-                        if (!focusSet) { $("#doc_pdf").focus(); }
-                        allfields = false;
-                    } else {
-                        $("#doc_pdf").next(".validation").remove(); // remove it
-                    }
+                    //     if (doc_pdf == "" || doc_pdf== null) {
+                    //     if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
+                    //     {
+                    //         $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Upload PDF </div>");
+                    //     }
+                    //     if (!focusSet) { $("#doc_pdf").focus(); }
+                    //     allfields = false;
+                    // } else {
+                    //     $("#doc_pdf").next(".validation").remove(); // remove it
+                    // }
 
                     var image=$("#image").val();
                         if (image == "" || image== null) {

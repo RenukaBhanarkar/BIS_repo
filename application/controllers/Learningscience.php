@@ -113,6 +113,8 @@ class Learningscience extends CI_Controller
                 $doc_pdflocation = $doc_pdfpath . time() .'doc_pdf'. $_FILES['doc_pdf']['name']; 
                 move_uploaded_file($_FILES['doc_pdf']['tmp_name'], $doc_pdflocation);
             }
+
+            
             else
             {
                 $doc_pdflocation='';
@@ -294,7 +296,7 @@ class Learningscience extends CI_Controller
             $formdata['video'] = $videolocation;
             $formdata['image'] = $imagelocation;
             $formdata['doc_pdf'] = $doc_pdflocation; 
-            $formdata['status'] = 1; 
+            $formdata['status'] = 0; 
             $formdata['updated_on'] = date('Y-m-d h:i:s');
             $id = $this->Learningscience_model->updateLsvStandards($formdata,$frmid);
             if ($id)

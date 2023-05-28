@@ -221,8 +221,9 @@ h1 {
         />
       </div>
       <div class="header__search">
-        <form action="">
-          <input type="text" placeholder="Search" />
+
+        <form name="" id="" action="<?php echo base_url().'users/conversation_with_experts'?>" method="post"enctype="multipart/form-data"> 
+          <input type="text" placeholder="Search" name="search" />
           <button><i class="material-icons">search</i></button>
         </form>
       </div>

@@ -36,7 +36,18 @@
                                                     <?php } ?>
 
                                                 </select>
-                                    <!-- <input type="text" value="<?php echo $record['department'] ?>" class="form-control input-font" placeholder="Enter Department" name="department" id="department"></input> -->
+                                  
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font" text-font>Branch<sup class="text-danger">*</sup></label>
+                                    <select id="branch" name="branch" class="form-control input-font">
+                                                    <option value="" selected disabled>Select branch</option>
+                                                    <?php foreach ($branches as $branch) { ?>
+                                                        <option value="<?php echo $branch['pki_id'] ?>"<?php if ($branch['pki_id'] == $record['branch']) { echo "selected"; } ?> ><?php echo $branch['uvc_department_name'] ?></option>
+                                                    <?php } ?>
+
+                                                </select>
+                                  
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Assign Role<sup class="text-danger">*</sup></label>
@@ -98,6 +109,7 @@
                 var username = $("#username").val();
                 var email = $("#email").val();
                 var department = $("#department").val();
+                var branch = $("#branch").val();
                 var designation = $("#role").val();
                 var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
                 var old_email_id = $("#old_email_id").val();
@@ -154,6 +166,19 @@
                     allfields = false;
                 } else {
                     $("#department").next(".validation").remove(); // remove it
+                }
+                if (branch == "") {
+                    if ($("#branch").next(".validation").length == 0) // only add if not added
+                    {
+                        $("#branch").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.  </div>");
+                    }
+                    if (!focusSet) {
+                        $("#branch").focus();
+                    }
+
+                    allfields = false;
+                } else {
+                    $("#branch").next(".validation").remove(); // remove it
                 }
                 if (designation == "") {
                     if ($("#role").next(".validation").length == 0) // only add if not added
@@ -257,6 +282,7 @@
                 $('#username').val('');
                 $('#email').val('');
                 $('#department').val('');
+                $('#branch').val('');
                 $('#role').val('');
 
                 // Swal.fire('Saved!', '', 'success')                                

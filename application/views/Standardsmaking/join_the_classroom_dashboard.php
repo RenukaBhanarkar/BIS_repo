@@ -32,8 +32,7 @@
                 </div>
             </a>
         </div>
-        <?php }?>
-        <!-- Earnings (Monthly) Card Example -->
+
         <div class="col-xl-3 col-md-6 mb-4">
             <a href="<?php echo base_url(); ?>Standardsmaking/manage_session_list">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -46,9 +45,27 @@
                 </div>
             </a>
         </div>
+        <?php }?>
+        <!-- Earnings (Monthly) Card Example -->
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="<?php echo base_url(); ?>admin/manage_session_list">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center d-flex">
+                            <h5 class="font-weight-bold text-warning mb-1">Manage session/Post</h5>
+                            
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+         <?php }?>
+
         <div class="col-xl-3 col-md-6 mb-4">
             <a href="<?php echo base_url(); ?>Standardsmaking/publish_list">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-left-pri
+                mary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
                             <h5 class="font-weight-bold text-danger mb-1">Published Posts</h5>

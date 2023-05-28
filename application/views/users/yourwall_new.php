@@ -143,7 +143,11 @@
    <div class="container">
                        <div class="bloginfo">
                         <?php if(isset($_SESSION['admin_id'])){ ?>
+                            <?php if($daily_limit > 0){ ?>
+                                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_exahust_limit">Post Here...</h3> 
+                            <?php }else{?>
                             <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_show">Post Here...</h3>
+                            <?php } ?>
                             <?php }else{?>
                                 <a href="<?php echo base_url().'users/login'; ?>">
                                 <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" >Post Here...</h3>
@@ -1110,6 +1114,10 @@ if(fileSize < 20000){
                     }
                     })
     });
+
+    $('#your_wall_exahust_limit').on('click',function(){
+        Swal.fire("You have exahusted daily limit to post more");
+    })
 </script>
   
   

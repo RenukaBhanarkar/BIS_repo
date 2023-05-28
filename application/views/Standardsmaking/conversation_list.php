@@ -57,7 +57,12 @@
                             <?php $id= encryptids("E", $value['id'] )?>
                             <td><?= $value['status_name'];?></td>
                             <td class="d-flex">
-                                <?php $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
+                                <?php if ($user_id!=3) {?>
+                                    <a href="conversation_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <?php  }  else { ?>
+
+
                                 <?php if (in_array(1, $permissions)) { ?>
                                 <a href="conversation_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php } ?>
@@ -83,7 +88,7 @@
                                 <?php }?>
                                 
                                 <button onclick="updateStatusConversation('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-primary btn-sm mr-2 delete_img">Archives</button>
-                                <?php }?>
+                                <?php } }?>
                             </td>
                         </tr>
                         <?php } ?>
