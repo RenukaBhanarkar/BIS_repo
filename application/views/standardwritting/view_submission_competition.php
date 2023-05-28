@@ -19,14 +19,14 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="table-bordered" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example_1" class="table-bordered nowrap table-responsive" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Competition Id</th>
                                 <th>Submission Id</th>
-                                <th>Writting Task</th>
+                                <!-- <th>Writting Task</th> -->
                                 <th>Score</th>
                                 <th>Total Marks</th>
                                 <th>Status</th>
@@ -36,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>12345</td>
@@ -50,6 +50,25 @@
                                  <a href="#" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="#" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                               </td>
+                            </tr> -->
+                            <?php if(!empty($competition)){ $i=1; foreach($competition as $list){ ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $list['comp_id']; ?></td>
+                                <td><?php echo $list['id']; ?></td>
+                                <!-- <td></td> -->
+                                <td><?php echo $list['score']; ?></td>
+                                <td><?php echo $list['total_marks']; ?></td>
+                                <td><?php if($list['review_status']==1){echo "Send for review";}  ?></td>
+                                <td></td>
+                                <td></td>
+                                
+                                <td class="d-flex">
+                                 <a href="<?php echo base_url().'Standardswritting/view_submitted_comp_response/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="#" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
+                              </td>
+                            </tr>
+                            <?php $i++; } } ?>
 
                         </tbody>
                     </table>

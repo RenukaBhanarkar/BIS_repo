@@ -293,7 +293,7 @@ class Miscellaneous_competition extends CI_Model {
          return $query->result_array();
      }
      public function SubmittedCompetition($comp_id){
-        $this->db->select('tucar.*,tu.user_mobile,tu.email,tu.user_name,tmcd.competiton_name,tmqa.title as avai_for');
+        $this->db->select('tucar.*,tu.user_mobile,tu.email,tu.user_name,tmcd.competiton_name,tmqa.title as avai_for,tmcd.score as total_marks,tmcd.comp_id');
         $this->db->from('tbl_users_competition_attempt_record tucar');
         $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
         $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
@@ -302,6 +302,17 @@ class Miscellaneous_competition extends CI_Model {
         $query=$this->db->get();
         return $query->result_array(); 
      }
+     public function SubmittedCompetition1($comp_id){
+        $this->db->select('tucar.user_id,tucar.competiton_id,tucar.score,tucar.status,tucar.id,tu.user_mobile,tu.email,tu.user_name,tmcd.competiton_name,tmqa.title as avai_for,tmcd.score as total_marks,tmcd.comp_id,tmcd.review_status');
+        $this->db->from('tbl_users_competition_attempt_record tucar');
+        $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
+        $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        $this->db->where('tucar.competiton_id',$comp_id);        
+        $query=$this->db->get();
+        return $query->result_array(); 
+     }
+
      public function getStdClubQuize()
         {
             $t = time();
@@ -361,5 +372,21 @@ class Miscellaneous_competition extends CI_Model {
 		}else{
 			return false;
 		}
+    }
+    public function reviewCompetition(){
+        $this->db->select('tmcd.*,tmcd.competiton_name,tmqa.title as avai_for,tmql.title');
+        $this->db->from('tbl_mst_competition_detail tmcd');
+        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
+        //$this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        $this->db->where('tmcd.review_status','1');        
+        $query=$this->db->get();
+        return $query->result_array(); 
+    }
+    public function attemptResponse($id){
+        $this->db->select('*')->from('tbl_users_competition_attempt_record')->where('id',$id);
+        $res=$this->db->get();
+      $result= $res->result_array();
+      return $result[0];
     }
 }
