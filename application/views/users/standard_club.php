@@ -257,7 +257,7 @@ li.tab-link:hover {
                                 <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                              <a href="<?= base_url(); ?>users/about_quiz/ <?= encryptids("E", $quize['id']); ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
                               </div>
                               <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
                             </div>
@@ -295,7 +295,10 @@ li.tab-link:hover {
                                 <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+                                  <!-- <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a> -->
+                                  <a href="<?= base_url(); ?>users/about_quiz/ <?= encryptids("E", $quize['id']); ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
+
+                                 
                               </div>
                               <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
                             </div>

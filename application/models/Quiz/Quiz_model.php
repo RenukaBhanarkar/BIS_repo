@@ -102,10 +102,8 @@ class Quiz_model extends CI_Model {
     { 
          return $this->db->get("tbl_mst_prizes")->result();
     }
-
     public function insertPrize($data)
-    {
-       
+    {       
         if($this->db->insert('tbl_prizes',$data)){
 			return $this->db->insert_id();
 		}else{
@@ -126,8 +124,6 @@ public function updateQuiz($id,$formdata)
     $this->db->where('id', $id);
     return $this->db->update('tbl_quiz_details', $formdata);
 }
-
-
 
  public function viewQuiz($id)
     { 
@@ -196,8 +192,7 @@ public function updateQuiz($id,$formdata)
         $this->db->join('tbl_quiz_details','tbl_quiz_details.id = tbl_user_quiz.quiz_id'); 
         $this->db->join('tbl_quiz_submission_details','tbl_quiz_submission_details.user_id = tbl_user_quiz.user_id AND tbl_quiz_submission_details.quiz_id = tbl_user_quiz.quiz_id');      
         $this->db->where('tbl_user_quiz.user_id',$user_id);
-        $this->db->where('tbl_user_quiz.quiz_id',$quiz_id);       
-        
+        $this->db->where('tbl_user_quiz.quiz_id',$quiz_id);           
 
         $query = $this->db->get();
         $rs=array();
@@ -501,6 +496,16 @@ public function updateQuiz($id,$formdata)
         $this->db->where('fki_status_id', 1);
         return $this->db->get("tbl_mst_branch")->result_array();
     }
+    
+    public function getAllStates()
+    { 
+        $this->db->select('state_id ,state_name');
+        $this->db->where('status',1);  
+        $this->db->order_by('state_name','ASC');
+        return $this->db->get("tbl_mst_states")->result_array();
+    }
+
+    
 
      public function insertResultDesc($data)
     {

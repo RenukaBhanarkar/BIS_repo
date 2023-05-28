@@ -161,6 +161,21 @@
 
                 </div>
               <?php } ?>
+              <?php if (!empty($getAllStates)) { ?>
+                <div class="mb-2 col-md-4" id="state_id_blk">
+                  <label class="d-block text-font" id="state_title">State Level<sup class="text-danger">*</sup></label>
+                  <select id="state_id" name="state_id" class="form-control input-font">
+                    <?php
+                    foreach ($getAllStates as $state) { ?>
+                      <option <?php if ($quizdata['state_id'] == $state['state_id']) echo "selected"; ?> value="<?php echo $state['state_id'] ?>"> <?php echo $state['state_name']; ?> </option>
+                    <?php
+                    } ?>
+
+                  </select>
+                  <!-- <span class="error_text"><?php //echo form_error('state_id'); ?></span> -->
+
+                </div>
+              <?php } ?>
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Launguage of Quiz<sup class="text-danger">*</sup></label>
                 <select id="language_id" name="language_id" class="form-control input-font" value="<?php echo set_value('language_id'); ?>">
@@ -195,7 +210,7 @@
                   <button class="btn btn-danger btn-sm del_icon" data-id="<?=$quizdata['id'];?>" data-imgname="<?php echo $quizdata['banner_img']; ?>">Delete</button>
                  
                   <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalView">
-                    View
+                    Preview
                   </button>
                   <!-- Modal -->
                   <div class="modal fade" id="exampleModalView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -233,7 +248,7 @@
                     </span>
                   </div>
 
-                  <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal"> Preview
+                  <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal"> View
                   </button>
                 </div>
                  <!-- Modal -->
@@ -300,7 +315,7 @@
                   <input type="hidden" id="lastfprize_img0" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$firstprize['quiz_id'];?>"  data-prizeid="<?=$firstprize['prize_id'];?>" data-imgname="<?php echo $firstprize['prize_img']; ?>" data-prize="1">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalFirstView">
-                      View
+                      Preview
                     </button>
                    
                     <div class="modal fade" id="exampleModalFirstView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -337,7 +352,7 @@
                       </span>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFirst"> Preview
+                    <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFirst"> View
                     </button>
                   
 
@@ -396,7 +411,7 @@
                   <input type="hidden" id="lastsprize_img0"name="lastsprize_img" value="<?php echo $secondprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$secondprize['quiz_id'];?>"  data-prizeid="<?=$secondprize['prize_id'];?>" data-imgname="<?php echo $secondprize['prize_img']; ?>" data-prize="2">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecondView">
-                      View
+                      Preview
                     </button>
 
                     <!-- View Modal -->
@@ -437,7 +452,7 @@
                         <?php //echo form_error('title'); 
                         ?>
                       </span>
-                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalSecond"> Preview
+                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalSecond"> View
                       </button>
 
                     </div>
@@ -492,7 +507,7 @@
                   <input type="hidden" id="lasttprize_img0" name="lasttprize_img" value="<?php echo $thirdprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$thirdprize['quiz_id'];?>"  data-prizeid="<?=$thirdprize['prize_id'];?>" data-imgname="<?php echo $thirdprize['prize_img']; ?>" data-prize="3">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalThirdView">
-                      View
+                      Preview
                     </button>
 
                     <!-- View Modal -->
@@ -532,7 +547,7 @@
                         <?php //echo form_error('title'); 
                         ?>
                       </span>
-                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalThird"> Preview
+                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalThird"> View
                       </button>
 
                     </div>
@@ -593,7 +608,7 @@
                   <input type="hidden" id="lastcprize_img0"name="lastcprize_img" value="<?php echo $fourthprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$fourthprize['quiz_id'];?>"  data-prizeid="<?=$fourthprize['prize_id'];?>" data-imgname="<?php echo $fourthprize['prize_img']; ?>" data-prize="4">Delete</button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFourthView">
-                      View
+                      Preview
                     </button>
 
                     <!-- View Modal -->
@@ -633,7 +648,7 @@
                         <?php //echo form_error('title'); 
                         ?>
                       </span>
-                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFourth"> Preview
+                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFourth"> View
                       </button>
 
                     </div>
@@ -804,9 +819,11 @@
       if (quiz_level_id == 1) {
         $("#region_id_blk").hide();
         $("#branch_id_blk").hide();
+        $("#state_id_blk").hide();
       } else if (quiz_level_id == 2) {
         $("#region_id_blk").show();
         $("#branch_id_blk").hide();
+        $("#state_id_blk").hide();
         $("#region_title").text("Regional Level");
         var postdata = "id=2";
 
@@ -831,6 +848,7 @@
 
       } else if (quiz_level_id == 3) {
         $("#region_id_blk").hide();
+        $("#state_id_blk").hide();
         $("#branch_id_blk").show();
         $("#branch_title").text("Branch Level");
         var postdata = "id=3";
@@ -852,7 +870,31 @@
             });
           }
         });
-      }
+      }else if (quiz_level_id == 4) {
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").hide();
+                $("#state_id_blk").show();
+                $("#state_title").text("State Level");
+                var postdata = "id=4";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>quiz/getAllStates",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+                    var res = JSON.parse(response);
+                    var selectbox = $('#state_id');
+                    selectbox.empty();
+                    $("#state_id").next(".validation").remove();
+                    $('#state_id').append('<option value="" selected disabled>Select State</option>');
+                    $.each(res.state, function(index, value) {
+                        $('#state_id').append('<option value="' + value.state_id + '">' + value.state_name + '</option>');
+                    });
+                }
+            });
+            }
     });
 
     // FETCH QUE BANK
@@ -1703,6 +1745,20 @@
                 allfields = false;
             } else {
                 $("#branch_id").next(".validation").remove();
+            }
+        }
+        if (quiz_level_id == 4) {
+            var state_id = $("#state_id :selected").val();
+            if (state_id == "" || state_id == null) {
+                if ($("#state_id").next(".validation").length == 0) {
+                    $("#state_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
+                }
+                if (!focusSet) {
+                    $("#state_id").focus();
+                }
+                allfields = false;
+            } else {
+                $("#state_id").next(".validation").remove();
             }
         }
         

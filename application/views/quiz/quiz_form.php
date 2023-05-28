@@ -129,13 +129,8 @@
                             <div class="mb-2 col-md-4" id="region_id_blk">
                                 <label class="d-block text-font" id="region_title">Regional Level<sup class="text-danger">*</sup></label>
                                 <select id="region_id" name="region_id" class="form-control input-font">
-                                    <!-- <option value="" selected disabled>--select--</option>
-                                    <option value="#">Maharashtra</option>
-                                    <option value="#">Karnataka</option> -->
-
-                                </select>
+                                 </select>
                                 <span class="error_text"><?php echo form_error('region_id'); ?></span>
-
                             </div>
                             <div class="mb-2 col-md-4" id="branch_id_blk">
                                 <label class="d-block text-font" id="branch_title">Branch<sup class="text-danger">*</sup></label>
@@ -144,6 +139,13 @@
                                 </select>
                                 <span class="error_text"><?php echo form_error('branch_id'); ?></span>
 
+                            </div>
+                            <div class="mb-2 col-md-4" id="state_id_blk">
+                                <label class="d-block text-font" id="state_title">State<sup class="text-danger">*</sup></label>
+                                <select id="state_id" name="state_id" class="form-control input-font">
+                                 
+                                </select>
+                                <!-- <span class="error_text"><?php //echo form_error('branch_id'); ?></span> -->
                             </div>
 
                         </div>
@@ -164,7 +166,7 @@
 
                                   <div class="">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Preview
+                                        View
                                     </button>
                                     </div>
                                 </div>
@@ -174,7 +176,7 @@
                                     <div class="modal-dialog" style="max-width:700px;">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Banner Image Preview</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Banner Image view</h5>
 
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
@@ -240,7 +242,7 @@
                                         <span class="error_text"><?php echo form_error('fprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFirst">
-                                        Preview
+                                        View
                                     </button>
                                 </div>
 
@@ -290,7 +292,7 @@
                                         <span class="error_text"><?php echo form_error('sprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecond">
-                                        Preview
+                                        View
                                     </button>
                                 </div>
 
@@ -339,7 +341,7 @@
                                         <span class="error_text"><?php echo form_error('tprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalThird">
-                                        Preview
+                                        View
                                     </button>
                                 </div>
 
@@ -388,7 +390,7 @@
                                         <span class="error_text"><?php echo form_error('cprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalConsole">
-                                        Preview
+                                        View
                                     </button>
                                 </div>
 
@@ -776,19 +778,20 @@
 
         $("#region_id_blk").hide();
         $("#branch_id_blk").hide();
+        $("#state_id_blk").hide();
         $(document).on("change", "#quiz_level_id", function(e) {
             e.preventDefault();
             var quiz_level_id = $("#quiz_level_id :selected").val();
             if (quiz_level_id == 1) {
                 $("#region_id_blk").hide();
                 $("#branch_id_blk").hide();
+                $("#state_id_blk").hide();
             } else if (quiz_level_id == 2) {
                 $("#region_id_blk").show();
                 $("#branch_id_blk").hide();
+                $("#state_id_blk").hide();
                 $("#region_title").text("Regional Level");
                 var postdata = "id=2";  
-
-
             $.ajax({
                 url: "<?= base_url() ?>quiz/getAllRegions",
                 data: postdata,
@@ -810,6 +813,7 @@
             } else if (quiz_level_id == 3) {
                 $("#region_id_blk").hide();
                 $("#branch_id_blk").show();
+                $("#state_id_blk").hide();
                 $("#branch_title").text("Branch Level");
                 var postdata = "id=3";  
 
@@ -827,6 +831,32 @@
                     $('#branch_id').append('<option value="" selected disabled>Select Branch </option>');
                     $.each(res.region, function(index, value) {
                         $('#branch_id').append('<option value="' + value.pki_id + '">' + value.uvc_department_name + '</option>');
+                    });
+                }
+            });
+            }else if (quiz_level_id == 4) {
+                $("#region_id_blk").hide();
+                $("#branch_id_blk").hide();
+                $("#state_id_blk").show();
+                $("#state_title").text("State Level");
+                var postdata = "id=4";  
+
+
+            $.ajax({
+                url: "<?= base_url() ?>quiz/getAllStates",
+                data: postdata,
+                type: "JSON",
+                method: "post",
+                success: function(response) {
+
+                    var res = JSON.parse(response);
+                    console.log(res);
+                    var selectbox = $('#state_id');
+                    selectbox.empty();
+                    $("#state_id").next(".validation").remove();
+                    $('#state_id').append('<option value="" selected disabled>Select State</option>');
+                    $.each(res.state, function(index, value) {
+                        $('#state_id').append('<option value="' + value.state_id + '">' + value.state_name + '</option>');
                     });
                 }
             });
@@ -1483,6 +1513,20 @@
                 allfields = false;
             } else {
                 $("#branch_id").next(".validation").remove();
+            }
+        }
+        if (quiz_level_id == 4) {
+            var state_id = $("#state_id :selected").val();
+            if (state_id == "" || state_id == null) {
+                if ($("#state_id").next(".validation").length == 0) {
+                    $("#state_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
+                }
+                if (!focusSet) {
+                    $("#state_id").focus();
+                }
+                allfields = false;
+            } else {
+                $("#state_id").next(".validation").remove();
             }
         }
 

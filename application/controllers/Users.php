@@ -502,7 +502,10 @@ class Users extends CI_Controller
             
             //////////////////////START/////////////
             $curl_req = curl_init();
-            // $parameters = json_encode(array("userid" => $username, "password" => $password));
+            // commented $parameters = json_encode(array("userid" => $username, "password" => $password));
+
+
+            /*********************************************************************************
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
                 CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
@@ -527,11 +530,35 @@ class Users extends CI_Controller
             $output = json_decode($response, true);
             //print_r($output); die;
             $userData = array();
+
+
+
+
+            **************************************************************************/
+            /********** part to comment  */
+            $user_id = 2206274956;
+            $output = array(
+                'status_code'=>1
+            );
+
+
+
+
+            /********** part to comment end  */
+
+
             if(!empty($output)){ 
             if ($output['status_code'] == 1) {
-                $userData = $output['data'];
+
+
+               // to remove comment  $userData = $output['data'];
                 //echo json_encode($userData);echo "<br>";
-                $user_id = $userData['UserID'];
+               // to remove comment $user_id = $userData['UserID'];
+
+
+
+
+
                 $exist_user = $this->Users_model->toCheckUserExist($user_id);
                 if (!$exist_user) {
                     $comm_id = "";
@@ -608,6 +635,7 @@ class Users extends CI_Controller
                     'user_session_id' => $user_session_id,
                 );
                 $update_session_id = $this->Users_model->updateSessionId($user_id,$session_data);
+
                 $_SESSION['user_session_id'] = $user_session_id;    
                 
                 // new code end
@@ -620,14 +648,10 @@ class Users extends CI_Controller
                 $admin_post        = encryptids("E", $user_details['emp_desi']);
                 $club_id       = encryptids("E", $user_details['standard_club_id']);
                 $branch_id       = encryptids("E", $user_details['standard_club_branch_id']);
+                $state_id       = encryptids("E", $user_details['StandardClubStateID']);                
                 $dept_id       = encryptids("E", $user_details['standard_club_dept_id']);
                 $region_id       = encryptids("E", $user_details['standard_club_region']);
-
-                $StandardClubStateID       = encryptids("E", $user_details['StandardClubStateID']);
-
-
-
-               
+                $StandardClubStateID       = encryptids("E", $user_details['StandardClubStateID']);               
                 $standard_club_category       = encryptids("E", $user_details['standard_club_category']);
                 $is_admin       = encryptids("E", 0);
                
@@ -642,6 +666,7 @@ class Users extends CI_Controller
                     "is_admin" => $is_admin,
                     "club_id" => $club_id,
                     "branch_id" => $branch_id,
+                    "state_id" => $state_id,
                     "region_id" => $region_id,
                     'StandardClubStateID' => $StandardClubStateID,
                     "dept_id" => $dept_id,
@@ -650,7 +675,7 @@ class Users extends CI_Controller
                 );
 
                 $this->session->set_userdata($sess_arr);
-                // exit();
+                //  exit();
                 redirect(base_url() . "Users/welcome", 'refresh');
                 return true;
             } else {
@@ -658,6 +683,7 @@ class Users extends CI_Controller
                 $user = $this->Admin_model->getLoginUsers($username, $password);
                 if (empty($user)) {
                     $this->session->set_flashdata('MSG', ShowAlert("Invalid username or password.", "DD"));
+                 
                     redirect(base_url() . "Users/login", 'refresh');
                     return true;
                 }
@@ -689,6 +715,7 @@ class Users extends CI_Controller
                     $admin_post        = encryptids("E", $user['post']);
                     $club_id       = encryptids("E", 0);
                     $branch_id       = encryptids("E", 0);
+                    $state_id       = encryptids("E", 0);
                     $dept_id       = encryptids("E", 0);
                     $region_id       = encryptids("E", 0);
                     $is_admin       = encryptids("E", 1);
@@ -703,6 +730,7 @@ class Users extends CI_Controller
                         "is_admin" => $is_admin,
                         "club_id" => $club_id,
                         "branch_id" => $branch_id,
+                        "state_id" => $state_id,
                         "region_id" => $region_id,
                         "dept_id" => $dept_id,
                         "quiz_lang_id" => 0
@@ -970,10 +998,7 @@ class Users extends CI_Controller
             'logout_on' => GetCurrentDateTime('Y-m-d h:i:s')           
            
         );
-        $insert_logs = $this->Users_model->updateUsersLogs($id,$user_log_id,$logs);
-      
-        
-        
+        $insert_logs = $this->Users_model->updateUsersLogs($id,$user_log_id,$logs);  
         
         $this->Admin_model->adminLogout();
         //$this->session->session_unset();
@@ -2961,6 +2986,9 @@ class Users extends CI_Controller
     public function about_quiz($id)
     {
 
+        $id = encryptids("D", $id); 
+        
+        
         $data = array();
         $quiz = $this->Users_model->viewQuiz($id);
         
@@ -3246,6 +3274,9 @@ class Users extends CI_Controller
     // with remaining time implementation
     public function quiz_start($quiz_id)
     {
+        
+        $quiz_id = encryptids("D",$quiz_id);  
+        
         $UserId = $this->session->userdata('admin_id');
         $user_id = encryptids("D", $UserId);
         $data = array();

@@ -328,11 +328,11 @@ class Quiz extends CI_Controller
         $quiz = $this->Quiz_model->getQuiz($id);
         
         if($quiz['quiz_level_id'] == 2){
-           // $region_id = $quiz['region_id'];
+         
             $getAllRegions = $this->Quiz_model->getAllRegions(); 
         }
         if($quiz['quiz_level_id'] == 3){
-           // $region_id = $quiz['branch_id'];
+         
             $getAllBranches = $this->Quiz_model->getAllBranches(); 
         }
        
@@ -603,6 +603,7 @@ class Quiz extends CI_Controller
         //quize Data 
         $getAllRegions = array();
         $getAllBranches = array();
+        $getAllStates = array();
         $data=array();
         $quiz = $this->Quiz_model->getQuiz($id);
         
@@ -614,11 +615,17 @@ class Quiz extends CI_Controller
            
             $getAllBranches = $this->Quiz_model->getAllBranches(); 
         }
+        if($quiz['quiz_level_id'] == 4){
+           
+            $getAllStates = $this->Quiz_model->getAllStates(); 
+        }
         $data['quizlavel']=$quizlavel;
         $data['getAvailability']=$getAvailability;
         $data['getQuizLanguage']=$getQuizLanguage;
         $data['getAllRegions']=$getAllRegions;
         $data['getAllBranches']=$getAllBranches;
+        $data['getAllStates']=$getAllStates;
+
         $data['quizdata']=$quiz; 
         //End Quize Data
 
@@ -685,6 +692,7 @@ class Quiz extends CI_Controller
         //quize Data 
         $getAllRegions = array();
         $getAllBranches = array();
+        $getAllStates = array();
         $data=array();
         $quiz = $this->Quiz_model->getQuiz($id);
         
@@ -696,11 +704,16 @@ class Quiz extends CI_Controller
            
             $getAllBranches = $this->Quiz_model->getAllBranches(); 
         }
+        if($quiz['quiz_level_id'] == 4){
+           
+            $getAllStates = $this->Quiz_model->getAllStates(); 
+        }
         $data['quizlavel']=$quizlavel;
         $data['getAvailability']=$getAvailability;
         $data['getQuizLanguage']=$getQuizLanguage;
         $data['getAllRegions']=$getAllRegions;
         $data['getAllBranches']=$getAllBranches;
+        $data['getAllStates']=$getAllStates;
         $data['quizdata']=$quiz; 
         //End Quize Data
 
@@ -857,6 +870,11 @@ class Quiz extends CI_Controller
                     $formdata['branch_id'] = $this->input->post('branch_id');
                 }  else{
                     $formdata['branch_id'] = 0;
+                }       
+                if($this->input->post('quiz_level_id')== 4){
+                    $formdata['state_id'] = $this->input->post('state_id');
+                }  else{
+                    $formdata['state_id'] = 0;
                 }       
                 $formdata['switching_type'] = $this->input->post('switching_type');
                
@@ -1066,7 +1084,28 @@ class Quiz extends CI_Controller
         }
         echo  json_encode($data);
         exit();
-       }
+    }
+    public function getAllStates(){
+        $level_id = $this->input->post('id');
+    
+        $details = array();
+        $details = $this->Quiz_model->getAllStates();
+        if (empty($details)) {
+            $data['status'] = 0;
+            $data['message'] = 'Failed to get details , Please try again.';
+            $data['state'] = $details;
+        } else {
+            $data['status'] = 1;
+            $data['message'] = 'Details Available.';
+            $data['state'] = $details;
+        }
+        echo  json_encode($data);
+        exit();
+    }
+
+    
+    
+
 
   
    
@@ -1267,6 +1306,7 @@ class Quiz extends CI_Controller
         $formdataall['quizlavel']=$quizlavel;
         $formdataall['getAvailability']=$getAvailability;
         $formdataall['getQuizLanguage']=$getQuizLanguage;
+
        // $formdataall['getAllQb']=$getAllQb;
        
 
@@ -1339,18 +1379,26 @@ class Quiz extends CI_Controller
             $formdata['quiz_level_id'] = $this->input->post('quiz_level_id');
             if($this->input->post('quiz_level_id')== 1){
                 $formdata['region_id'] = 0;   
-                $formdata['branch_id'] = 0;              
+                $formdata['branch_id'] = 0;  
+                $formdata['state_id'] = 0;              
             }
             if($this->input->post('quiz_level_id')== 2){               
                 $formdata['region_id'] = $this->input->post('region_id');
                 $formdata['branch_id'] = 0; 
+                $formdata['state_id'] = 0;      
             }
             if($this->input->post('quiz_level_id')== 3){
-                $formdata['region_id'] = 0;   
+                $formdata['region_id'] = 0;
+                $formdata['state_id'] = 0;         
                // $formdata['branch_id'] = $this->input->post('branch_id');
                $pki_id = $this->input->post('branch_id');
                $branch_details = $this->Quiz_model->getbranchDetailsByPkid($pki_id);
                $formdata['branch_id']  =   $branch_details['i_branch_id'];
+            }
+            if($this->input->post('quiz_level_id')== 4){               
+                $formdata['region_id'] = 0;
+                $formdata['branch_id'] = 0; 
+                $formdata['state_id'] = $this->input->post('state_id');     
             }
          
             $formdata['switching_type'] = $this->input->post('switching_type');
@@ -1699,8 +1747,7 @@ class Quiz extends CI_Controller
     {
         try {
             $quiz_id = $this->input->post('id');
-            $status = $this->input->post('status');
-          
+            $status = $this->input->post('status');        
 
             $data = array(
                 'status' => $status,               
