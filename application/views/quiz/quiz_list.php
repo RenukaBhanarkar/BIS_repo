@@ -5,32 +5,33 @@
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Quiz Creation</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Sub Admin Dashboard</a></li>
-                <?php }else{ ?>
-                    <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
-              <?php  } ?>                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quiz Creation</li>
-                
-                </ol>
-            </nav>
+          <ol class="breadcrumb">
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+              <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/dashboard'; ?>">Sub Admin Dashboard</a></li>
+            <?php } else { ?>
+              <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/dashboard'; ?>">Admin Dashboard</a></li>
+            <?php  } ?> <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competitions</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/quiz_dashboard'; ?>">Quiz Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Quiz Creation</li>
+
+          </ol>
+        </nav>
       </div>
       <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-        <?php if(in_array(2,$permissions)){ ?>
-        <div class="row">
-          <div class="col-12">
-            <div class="card border-top card-body">
-              <div>
-                <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?= base_url(); ?>Quiz/quiz_reg'">Add New Quiz</button>
-                <!-- <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?= base_url(); ?>Quiz/quiz_archive'">Archive</button> -->
+        <?php if (in_array(2, $permissions)) { ?>
+          <div class="row">
+            <div class="col-12">
+              <div class="card border-top card-body">
+                <div>
+                  <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?= base_url(); ?>Quiz/quiz_reg'">Add New Quiz</button>
+                  <!-- <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?= base_url(); ?>Quiz/quiz_archive'">Archive</button> -->
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <?php } } ?>
+      <?php }
+      } ?>
       <?php
       if ($this->session->flashdata('MSG')) {
         echo $this->session->flashdata('MSG');
@@ -50,6 +51,7 @@
                   <th>Total Questions in Quiz</th>
                   <th>Total Questions in QB</th>
                   <th>Total Marks</th>
+                  <th>Created On</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -58,7 +60,7 @@
                 <?php if (!empty($allquize)) {
                   $i = 1;
                   foreach ($allquize as $quiz) { ?>
-                    <tr id="row<?= $quiz['id'];?>">
+                    <tr id="row<?= $quiz['id']; ?>">
                       <td><?= $i++ ?></td>
                       <td><?= $quiz['quiz_id'] ?></td>
                       <td><?= $quiz['title'] ?></td>
@@ -67,55 +69,48 @@
                       <td><?= $quiz['total_question'] ?></td>
                       <td><?= $quiz['no_of_ques'] ?></td>
                       <td><?= $quiz['total_mark'] ?></td>
+                      <td><?= date("d-m-Y H:i:s", strtotime($quiz['created_on'])); ?></td>
                       <td><?= $quiz['status_name'] ?></td>
-                     
+
                       <td>
-                         <!-- for admin -->
-                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
-                         <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
-
-                         <?php } ?>
-
-
-
-
-
-
-
-
-
-                         <!-- for subadmin -->
-                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-
-                         <?php if(in_array(1,$permissions)){ ?>                         
+                        <!-- for admin -->
+                        <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                           <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
 
-                         <?php } ?>
+                        <?php } ?>
 
-                         
-                          <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
+                        <!-- for subadmin -->
+                        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
-                             <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 create">Create</a> 
-                           <?php } ?>
+                          <?php if (in_array(1, $permissions)) { ?>
+                            <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
 
-
-                         <?php if(in_array(3,$permissions)){ ?>
-                          <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
-                             <a href="editquiz/<?=  $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
-                            
                           <?php } ?>
 
-                         <?php } ?>
 
-                         <?php if(in_array(4,$permissions)){ ?>
                           <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
-                             
-                             <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
+
+                            <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 create">Create</a>
                           <?php } ?>
 
-                         <?php } ?>                      
-                         
-                         <?php } ?>    
+
+                          <?php if (in_array(3, $permissions)) { ?>
+                            <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
+                              <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
+
+                            <?php } ?>
+
+                          <?php } ?>
+
+                          <?php if (in_array(4, $permissions)) { ?>
+                            <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
+
+                              <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button>
+                            <?php } ?>
+
+                          <?php } ?>
+
+                        <?php } ?>
 
                       </td>
 
@@ -169,83 +164,83 @@
 
     </body> -->
     <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+      <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
-                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger abcd" data-bs-dismiss="modal">Delete</button>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger abcd" data-bs-dismiss="modal">Delete</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div class="modal fade" id="publish" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal fade" id="publish" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Publish Quiz</h5>
-                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to Publish Quiz?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="" id="publishquiz"><button type="button" class="btn btn-primary abcd" data-bs-dismiss="modal">Publish</button></a>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Publish Quiz</h5>
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to Publish Quiz?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="" id="publishquiz"><button type="button" class="btn btn-primary abcd" data-bs-dismiss="modal">Publish</button></a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div class="modal fade" id="unpublish" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal fade" id="unpublish" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Unublish Quiz</h5>
-                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to Unublish Quiz?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="" id="unpublishquiz"><button type="button" class="btn btn-primary abcd" data-bs-dismiss="modal">Unublish</button></a>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Unublish Quiz</h5>
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to Unublish Quiz?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="" id="unpublishquiz"><button type="button" class="btn btn-primary abcd" data-bs-dismiss="modal">Unublish</button></a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Quiz</h5>
-                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to Create Quiz?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="" id="createquiz"><button type="button" class="btn btn-primary abcd" data-bs-dismiss="modal">Create</button></a>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Quiz</h5>
+            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to Create Quiz?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <a href="" id="createquiz"><button type="button" class="btn btn-primary abcd" data-bs-dismiss="modal">Create</button></a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
     <script>
-     /* function deleteQuiz(que_id) {
+      /* function deleteQuiz(que_id) {
         // var c = confirm("Are you sure to delete this survey details? ");
         $('#delete').modal('show');
         $('.abcd').on('click', function() {
@@ -265,113 +260,113 @@
             });
         });
     }*/
-    // function deleteRecord(quiz_id) {
-    //         var c = confirm("Are you sure to delete this record ?");
-    //         if (c == true) {
-    //             // const $loader = $('.igr-ajax-loader');
-    //             //$loader.show();
-    //             $.ajax({
-    //                 type: 'POST',
-    //                 url: '<?php echo base_url(); ?>quiz/deleteQuiz',
-    //                 data: {
-    //                     id: quiz_id,
-    //                 },
-    //                 success: function(result) {
-    //                     $('#row' + quiz_id).css({
-    //                         'display': 'none'
-    //                     });
-    //                 },
-    //                 error: function(result) {
-    //                     alert("Error,Please try again.");
-    //                 }
-    //             });
+      // function deleteRecord(quiz_id) {
+      //         var c = confirm("Are you sure to delete this record ?");
+      //         if (c == true) {
+      //             // const $loader = $('.igr-ajax-loader');
+      //             //$loader.show();
+      //             $.ajax({
+      //                 type: 'POST',
+      //                 url: '<?php echo base_url(); ?>quiz/deleteQuiz',
+      //                 data: {
+      //                     id: quiz_id,
+      //                 },
+      //                 success: function(result) {
+      //                     $('#row' + quiz_id).css({
+      //                         'display': 'none'
+      //                     });
+      //                 },
+      //                 error: function(result) {
+      //                     alert("Error,Please try again.");
+      //                 }
+      //             });
 
-    //         }
-    //     }
-    function deleteRecord(quiz_id) {
-      Swal.fire({
-                    title: 'Are you sure you want to Delete?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Delete',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {  
-            
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url(); ?>quiz/deleteQuiz',
-                    data: {
-                        id: quiz_id,
-                    },
-                    success: function(result) {
-                        $('#row' + quiz_id).css({
-                            'display': 'none'
-                        });
-                    },
-                    error: function(result) {
-                        alert("Error,Please try again.");
-                    }
+      //         }
+      //     }
+      function deleteRecord(quiz_id) {
+        Swal.fire({
+          title: 'Are you sure you want to Delete?',
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Delete',
+          denyButtonText: `Cancel`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+
+            $.ajax({
+              type: 'POST',
+              url: '<?php echo base_url(); ?>quiz/deleteQuiz',
+              data: {
+                id: quiz_id,
+              },
+              success: function(result) {
+                $('#row' + quiz_id).css({
+                  'display': 'none'
                 });
-              } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
+              },
+              error: function(result) {
+                alert("Error,Please try again.");
+              }
+            });
+          } else if (result.isDenied) {
+            // Swal.fire('Changes are not saved', '', 'info')
+          }
+        })
 
-            
-        }
+
+      }
 
 
 
-    function publishQuiz(que_id){
-      $('#publish').modal('show');  
-      $('#publishquiz').attr('href','publishQuiz/'+que_id);
-    }
+      function publishQuiz(que_id) {
+        $('#publish').modal('show');
+        $('#publishquiz').attr('href', 'publishQuiz/' + que_id);
+      }
 
-    function unpublishQuiz(que_id){
-      $('#unpublish').modal('show');  
-      $('#unpublishquiz').attr('href','unPublishQuiz/'+que_id);
-    }
+      function unpublishQuiz(que_id) {
+        $('#unpublish').modal('show');
+        $('#unpublishquiz').attr('href', 'unPublishQuiz/' + que_id);
+      }
 
-    function create(que_id){
-      $('#create').modal('show');  
-      $('#createquiz').attr('href','sendApprove/'+que_id);
-    }
+      function create(que_id) {
+        $('#create').modal('show');
+        $('#createquiz').attr('href', 'sendApprove/' + que_id);
+      }
 
-    $('#example').on('click','.create',function(){
-      var id = $(this).attr('data-id');
-      Swal.fire({
-                    title: 'Are you sure you want to Create?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Create',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                      $.ajax({
-                            // type: 'POST',
-                            url: '<?php echo base_url(); ?>quiz/sendToCreate/'+id,
-                            // data: {
-                            //     id: quiz_id,
-                            // },
-                            success: function(result) {
-                                // $('#row' + quiz_id).css({
-                                //     'display': 'none'
-                                // });
-                                location.reload();
-                                console.log(result);
-                            },
-                            error: function(result) {
-                                alert("Error,Please try again.");
-                            }
-                        });
+      $('#example').on('click', '.create', function() {
+        var id = $(this).attr('data-id');
+        Swal.fire({
+          title: 'Are you sure you want to Create?',
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Create',
+          denyButtonText: `Cancel`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            $.ajax({
+              // type: 'POST',
+              url: '<?php echo base_url(); ?>quiz/sendToCreate/' + id,
+              // data: {
+              //     id: quiz_id,
+              // },
+              success: function(result) {
+                // $('#row' + quiz_id).css({
+                //     'display': 'none'
+                // });
+                location.reload();
+                console.log(result);
+              },
+              error: function(result) {
+                alert("Error,Please try again.");
+              }
+            });
 
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-    })
+            // Swal.fire('Saved!', '', 'success')                                
+          } else if (result.isDenied) {
+            // Swal.fire('Changes are not saved', '', 'info')
+          }
+        })
+      })
     </script>

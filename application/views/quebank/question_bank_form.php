@@ -1611,6 +1611,8 @@
                                     $('#option4_h_image').val('');
                                     $('#option5_h_image').val('');
 
+                                   
+
 
                                     displayQuestions();
                                 }

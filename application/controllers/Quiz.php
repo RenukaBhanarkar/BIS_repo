@@ -684,40 +684,40 @@ class Quiz extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function editquizsubmit($id){
-        $quizlavel = $this->Quiz_model->getQuizLevel();
-        $getAvailability = $this->Quiz_model->getAvailability();
-        $getQuizLanguage = $this->Quiz_model->getQuizLanguage(); 
+        // $quizlavel = $this->Quiz_model->getQuizLevel();
+        // $getAvailability = $this->Quiz_model->getAvailability();
+        // $getQuizLanguage = $this->Quiz_model->getQuizLanguage(); 
         //$getAllQb = $this->Quiz_model->getAllQb();       
             
         //quize Data 
-        $getAllRegions = array();
-        $getAllBranches = array();
-        $getAllStates = array();
+        // $getAllRegions = array();
+        // $getAllBranches = array();
+        // $getAllStates = array();
+       
+        
+        // if($quiz['quiz_level_id'] == 2){
+          
+        //     $getAllRegions = $this->Quiz_model->getAllRegions(); 
+        // }
+        // if($quiz['quiz_level_id'] == 3){
+           
+        //     $getAllBranches = $this->Quiz_model->getAllBranches(); 
+        // }
+        // if($quiz['quiz_level_id'] == 4){
+           
+        //     $getAllStates = $this->Quiz_model->getAllStates(); 
+        // }
+        // $data['quizlavel']=$quizlavel;
+        // $data['getAvailability']=$getAvailability;
+        // $data['getQuizLanguage']=$getQuizLanguage;
+        // $data['getAllRegions']=$getAllRegions;
+        // $data['getAllBranches']=$getAllBranches;
+        // $data['getAllStates']=$getAllStates;
+        // $data['quizdata']=$quiz; 
+        // //End Quize Data
         $data=array();
         $quiz = $this->Quiz_model->getQuiz($id);
-        
-        if($quiz['quiz_level_id'] == 2){
-          
-            $getAllRegions = $this->Quiz_model->getAllRegions(); 
-        }
-        if($quiz['quiz_level_id'] == 3){
-           
-            $getAllBranches = $this->Quiz_model->getAllBranches(); 
-        }
-        if($quiz['quiz_level_id'] == 4){
-           
-            $getAllStates = $this->Quiz_model->getAllStates(); 
-        }
-        $data['quizlavel']=$quizlavel;
-        $data['getAvailability']=$getAvailability;
-        $data['getQuizLanguage']=$getQuizLanguage;
-        $data['getAllRegions']=$getAllRegions;
-        $data['getAllBranches']=$getAllBranches;
-        $data['getAllStates']=$getAllStates;
-        $data['quizdata']=$quiz; 
-        //End Quize Data
-
-        //Get First Prize data
+       // Get First Prize data
         $prize_id=1;
         $prize1 = $this->Quiz_model->getPrizeId($prize_id,$id);         
         $data['firstprize']=$prize1;
@@ -929,7 +929,7 @@ class Quiz extends CI_Controller
                         $old_no_sec_prize = 0;
                     }
                    
-                    if($sprize != 0){
+                    if($sprize != 0 || $sprize != ""){
                         if($old_no_sec_prize != 0){
                             $formdata2['no_of_prize'] = $this->input->post('sprize');               
                             $formdata2['prize_details'] = $this->input->post('sdetails');
@@ -945,6 +945,9 @@ class Quiz extends CI_Controller
                         }
                         
                     }
+                    if($sprize == 0  || $sprize == ""){
+                        $this->Quiz_model->deletePrize($sprize_id,$id);
+                    }
                    
     
                     $tprize_id = 3;
@@ -955,7 +958,7 @@ class Quiz extends CI_Controller
                         $old_no_third_prize = 0;
                     }
     
-                    if( $tprize != 0){
+                    if( $tprize != 0  || $tprize != ""){
                         if($old_no_third_prize != 0){
                             $formdata3['no_of_prize'] = $this->input->post('tprize');
                             $formdata3['prize_details'] = $this->input->post('tdetails');
@@ -971,7 +974,9 @@ class Quiz extends CI_Controller
                         }
                         
                     }              
-    
+                    if($tprize == 0  || $tprize == ""){
+                        $this->Quiz_model->deletePrize($tprize_id,$id);
+                    }
                     $cprize_id = 4;
                     $cprize = $this->input->post('cprize');
                     if(!empty($prize4)){
@@ -979,7 +984,7 @@ class Quiz extends CI_Controller
                     }else{
                         $old_no_fourth_prize = 0;
                     }
-                    if( $cprize != 0){
+                    if( $cprize != 0  || $cprize != ""){
                         if($old_no_fourth_prize != 0){
                             $formdata4['no_of_prize'] = $this->input->post('cprize');
                             $formdata4['prize_details'] = $this->input->post('cdetails');
@@ -995,7 +1000,9 @@ class Quiz extends CI_Controller
                         }
                         
                     }    
-    
+                    if($cprize == 0  || $cprize == ""){
+                        $this->Quiz_model->deletePrize($cprize_id,$id);
+                    }
                     $this->session->set_flashdata('MSG', ShowAlert("Record Update Successfully", "SS"));
                     redirect(base_url() . "quiz/quiz_list", 'refresh');
                 } 

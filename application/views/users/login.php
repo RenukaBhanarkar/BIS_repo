@@ -46,6 +46,10 @@
                                 <i class="fa fa-eye-slash password"></i>
                                 <span id="err_password" class="text-danger"></span>
                             </div>
+                            <?php if(isset($id) && !empty($id)){ ?>
+                                <input type="hidden" id="quizid" name="quizid" value="<?= $id;?>"/>
+                            <?php } ?> 
+                         
 
                             <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a>
 
@@ -73,6 +77,21 @@
 </div>
 <!-- <script src="<?php echo base_url();?>assets/js/jquery-3.5.1.js"></script> -->
 <script>
+     var message = "Not Allowed Right Click";
+
+function rtclickcheck(keyp) {
+    if (navigator.appName == "Netscape" && keyp.which == 3) {
+        alert(message);
+       
+        return false;
+    }
+    if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) {
+        alert(message);
+      
+        return false;
+    }
+}
+document.onmousedown = rtclickcheck;
     function submitButton() {
 
         var username = $("#username").val();

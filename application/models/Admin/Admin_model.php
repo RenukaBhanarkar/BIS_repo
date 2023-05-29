@@ -942,9 +942,23 @@ class Admin_model extends CI_Model {
                 // }else 
                 if($row['end_date'] == date("Y-m-d") ){
                     if($row['end_time'] >= $current_time){
+
+                        //////////////////
+                        $myQuery = "SELECT count(*) AS cnt FROM  tbl_quiz_submission_details where quiz_id = {$row['id']}";
+                        $query = $this->db->query($myQuery);
+                        $cntDetails=$query->row_array();
+                        $row['total_sub']  = $cntDetails['cnt'];
+                        ////////////////////
+                     
                         array_push($rs,$row);
                     }
                 }else{
+                    //////////////////
+                    $myQuery = "SELECT count(*) AS cnt FROM  tbl_quiz_submission_details where quiz_id = {$row['id']}";
+                    $query = $this->db->query($myQuery);
+                    $cntDetails=$query->row_array();
+                    $row['total_sub']  = $cntDetails['cnt'];
+                    ////////////////////
                     array_push($rs,$row);
                 }
             }
