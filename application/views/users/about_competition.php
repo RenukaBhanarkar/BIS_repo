@@ -135,12 +135,13 @@
     }
 
     .join_container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-wrap: wrap;
-
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 578px;
+    overflow: auto;
+}
 
     .view_join_content {
         width: 310px;
@@ -221,11 +222,15 @@
 
         margin-top: 5px;
     }
+    
 
     /* about quiz end */
 </style>
-<div class="container">
-    <section id="banner-section">
+
+<div class="container-fluid">
+<section id="banner-section" class="d-flex">
+        <div class="col-md 9">
+        
        <!-- <div class="float-end" id="QuizLang">
             <label class="d-block text-font mr-3">Select Language</label>
             <select class="form-control input-font" id="selectedLang" id="selectedLang" placeholder="Language">                
@@ -280,9 +285,104 @@
                     <?php } ?>
                 </div>
             </div>
+        
+        
         </div>
+       
+        </div>
+        <div class="col-md-3">
+        <section class="-join_section">
+    <div class="join_content">
+        <div class="bloginfo">
+            <h3 style="margin-bottom: 14px; /* margin-top: 20px; */ color: #0086b2!important; font-weight: 600; margin-left: 24px;">Prize Details</h3>
+        </div>
+        
+        <div class="join_container">
+            <div class="view_join_content">
+                <h3>First Prize</h3>
 
-    </section>
+                <div class="start_content">
+                    <?php if($competition['fprize_image']==""){ ?>
+                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                    <?php }else{?> 
+                <img src="<?php echo base_url().$competition['fprize_image']; ?>" alt="" class="join_img">
+                <?php } ?>
+                </div>
+
+                <div class="#">
+                    <div class="title_join">
+                        <h3><?php echo $competition['fprize_name']; ?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['fprize_no']; ?></span></span> 
+                    </div>
+                </div>
+            </div>
+            <?php if(!empty($competition['sprize_name'])){ ?>
+            <div class="view_join_content">
+                <h3>Second Prize</h3>
+                <div class="start_content">
+                <?php if($competition['sprize_image']==""){ ?>
+                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                    <?php }else{?> 
+                <div class="start_content">
+                    <img src="<?php echo base_url().$competition['sprize_image']; ?>" alt="" class="join_img">
+                </div>
+                <?php } ?>
+                </div>
+                <div class="#">
+                    <div class="title_join">
+                        <h3><?php echo $competition['sprize_name']; ?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['sprize_no']; ?></span></span> 
+                    </div>
+                </div>
+            </div>
+            <?php }else{ 
+               // echo "Second Prize not available";
+                 } ?>
+            <?php if(!empty($competition['tprize_name'])){ ?>
+            <div class="view_join_content">
+                <h3>Third Prize</h3>
+                <div class="start_content">
+                <?php if($competition['tprize_image']==""){ ?>
+                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                    <?php }else{?> 
+                <div class="start_content">
+                    <img src="<?php echo base_url().$competition['tprize_image']; ?>" alt="" class="join_img">
+                </div>
+                        <?php } ?>
+                </div>
+                <div class="#">
+                    <div class="title_join">
+                        <h3><?php echo $competition['tprize_name']; ?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['tprize_no']; ?></span></span> 
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <?php if(!empty($competition['cprize_name'])){ ?>
+            <div class="view_join_content">
+                <h3>Consolation Prize</h3>
+                <div class="start_content">
+                <?php if($competition['cprize_image']==""){ ?>
+                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                    <?php }else{?> 
+                <div class="start_content">
+                    <img src="<?php echo base_url().$competition['cprize_image']; ?>" alt="" class="join_img">
+                </div>
+                <?php } ?>
+                </div>
+                <div class="#">
+                    <div class="title_join">
+                        <h3><?php echo $competition['cprize_name']; ?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['cprize_no']; ?></span></span> 
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+        </div>
+        </section>
     <section id="quiz-about" class="mb-5">
         <div class="about-inner ">
             <h2 class="about-section">About Competition</h2>
@@ -303,78 +403,5 @@
     </section>
 
 </div>
-<section class="-join_section">
-    <div class="join_content">
-        <div class="bloginfo">
-            <h3 style="margin-bottom: 14px; /* margin-top: 20px; */ color: #0086b2!important; font-weight: 600; margin-left: 24px;">Prize Details</h3>
-        </div>
-        
-        <div class="join_container">
-            <div class="view_join_content">
-                <h3>First Prize</h3>
 
-                <div class="start_content">
-                <img src="<?php echo base_url().$competition['fprize_image']; ?>" alt="" class="join_img">
-                </div>
-
-                <div class="#">
-                    <div class="title_join">
-                        <h3><?php echo $competition['fprize_name']; ?></h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['fprize_no']; ?></span></span> 
-                    </div>
-                </div>
-            </div>
-            <?php if(!empty($competition['sprize_name'])){ ?>
-            <div class="view_join_content">
-                <h3>Second Prize</h3>
-
-                <div class="start_content">
-                    <img src="<?php echo base_url().$competition['sprize_image']; ?>" alt="" class="join_img">
-                </div>
-
-                <div class="#">
-                    <div class="title_join">
-                        <h3><?php echo $competition['sprize_name']; ?></h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['sprize_no']; ?></span></span> 
-                    </div>
-                </div>
-            </div>
-            <?php }else{ 
-               // echo "Second Prize not available";
-                 } ?>
-            <?php if(!empty($competition['tprize_name'])){ ?>
-            <div class="view_join_content">
-                <h3>Third Prize</h3>
-
-                <div class="start_content">
-                    <img src="<?php echo base_url().$competition['tprize_image']; ?>" alt="" class="join_img">
-                </div>
-
-                <div class="#">
-                    <div class="title_join">
-                        <h3><?php echo $competition['tprize_name']; ?></h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['tprize_no']; ?></span></span> 
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-            <?php if(!empty($competition['cprize_name'])){ ?>
-            <div class="view_join_content">
-                <h3>Consolation Prize</h3>
-
-                <div class="start_content">
-                    <img src="<?php echo base_url().$competition['cprize_image']; ?>" alt="" class="join_img">
-                </div>
-
-                <div class="#">
-                    <div class="title_join">
-                        <h3><?php echo $competition['cprize_name']; ?></h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?php echo $competition['cprize_no']; ?></span></span> 
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-        </div>
-    </div>
-</section>
 
