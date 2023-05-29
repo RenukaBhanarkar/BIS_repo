@@ -743,8 +743,11 @@
                 </select>
                 
                 </div>
-                <button type="button" class="btn btn-sm  btn-primary text-white" id="fetch_que_bank">Fetch Question Banks</button>
+                
               </div>
+                  <div style="margin-top:30px;">
+                  <button type="button" class="btn btn-sm  btn-primary text-white" id="fetch_que_bank">Fetch Question Banks</button>
+                  </div>
             </div>
             <div class="row">
               <div class="mb-2 col-md-4">

@@ -14,6 +14,7 @@ class Users extends CI_Controller
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         $this->load->model('Winnerwall/Winnerwall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
+        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         date_default_timezone_set("Asia/Calcutta");
 
        
@@ -3319,6 +3320,15 @@ class Users extends CI_Controller
     public function answerkey_new(){
         $this->load->view('users/headers/header');
         $this->load->view('users/answerkey_new');
+        $this->load->view('users/footers/footer');
+    }
+    public function essay_writing_comp(){
+        $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
+        // $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
+        // $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5));
+       // print_r($data); die;
+        $this->load->view('users/headers/header');
+        $this->load->view('users/essay_writing_comp',$data);
         $this->load->view('users/footers/footer');
     }
     

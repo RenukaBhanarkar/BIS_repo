@@ -105,13 +105,13 @@ section.background_coming {
 }
 </style>
 <section id="photo">
-<div class="container-fluid" id="pic" style="height:300px; width:100%">
+<!-- <div class="container-fluid" id="pic" style="height:300px; width:100%">
 <img src="<?php echo base_url(); ?>assets/images/learning_new.jpeg" style="height: 100%;
    width: 100%;" class="img-fluid" alt="...">
 
-<!-- <div class="centered">Learning and Science of standerd</div> -->
+<div class="centered">Learning and Science of standerd</div> 
 
-</div>
+</div> -->
 
 
 </section>

@@ -51,7 +51,8 @@
                             <?php } ?> 
                          
 
-                            <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a>
+                            <!-- <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a> -->
+                            <a href="https://www.services.bis.gov.in/php/BIS_2.0/forget-password" class="forgetPassword">Forgot Password ?</a>
 
                             <div class="button_section text-center mt-3">
                                 <button class="btn btn_green" onclick="return submitButton()" type="submit">

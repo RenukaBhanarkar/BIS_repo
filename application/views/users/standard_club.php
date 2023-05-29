@@ -143,7 +143,7 @@ li.tab-link:hover {
   <div class="container-fluid">
     <div class="row">
       <div class="inner_content d-flex p-0">
-        <div class="col-sm-3">
+        <div class="col-md-3">
           <div class="card" style="background: #014e9c; color:white;">
             <div class="card-body new-card text-center mt-2">
               <h5 class="card-title">Winners Wall</h5>
@@ -175,7 +175,7 @@ li.tab-link:hover {
             </div>
           </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-md-9">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <?php foreach ($banner_data as $list => $key) { ?>
@@ -346,7 +346,7 @@ li.tab-link:hover {
                     <?php } ?>
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/essay_writing_comp">View All</a>
                 </div>
              </div>
             </section>
@@ -384,7 +384,7 @@ li.tab-link:hover {
                     <?php } ?>
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/poster_making_comp">View All</a>
                 </div>
              </div>
             </section>
@@ -413,7 +413,7 @@ li.tab-link:hover {
                                 <img src="<?php echo base_url().$list['thumbnail']; ?>" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition</span></a>
+                                  <a href="<?php echo base_url().'users/about_competition/'.$list['competitionn_id']; ?>" class="btn startQuiz"> <span>Participate</span></a>
                               </div>
                               <p class="quiz-text overflow-hidden p-1"><?php echo $list['competiton_name']; ?></p>
                             </div>
@@ -423,7 +423,7 @@ li.tab-link:hover {
                     <?php } ?>
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/more_copetition">View All</a>
                 </div>
              </div>
             </section>

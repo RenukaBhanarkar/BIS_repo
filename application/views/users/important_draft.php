@@ -74,26 +74,26 @@
         </div>
     </section>    
     <section style="margin-bottom: 38px;">
-        <div class="container">
+        <div class="container-fluid" style="padding: 0px 36px 0px 36px;">
             <div class="row">
-               <div class="col-lg-12 text-center my-2">
+               <div class="col-lg-12 text-center my-2 pt-5">
                    <h4>Images & Gallery</h4>
                </div>
             </div>
             <div class="portfolio-menu mt-2 mb-4">
-               <ul>
-               <li style="padding: 0px;"><button onclick="gal_images()" class="btn btn-outline-dark active img" id="img">Images</button></li>
-                  <!-- <li class="btn btn-outline-dark" data-filter=".gts">Girls T-shirt</li>
-                  <li class="btn btn-outline-dark" data-filter=".lap">Laptops</li> -->
+               <ul>                 
+                  <li style="padding: 0px;"><button onclick="gal_images()" class="btn btn-outline-dark active img" id="img">Images</button></li>
                   <li style="padding: 0px;"><button onclick="abcd()" class="btn btn-outline-dark vdo" id="vdo">Video</button></li>
                </ul>
             </div>
-            <div class="portfolio-item row" id="photo_gallary">
+            
+                <div class="portfolio-item row" id="photo_gallary">
                   <?php if(!empty($images)){ foreach($images as $list){ ?>
                       <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                          <a href="<?php echo base_url().'uploads/'.$list['image'];?>" class="fancylight popup-btn" data-fancybox-group="light"> 
-                          <img class="img-fluid" src="<?php echo base_url().'uploads/'.$list['image'];?>" style="height:180px; width:280px;"; alt="">
-                          </a>
+                          <!-- <a href="<?php echo base_url().'uploads/'.$list['image'];?>" class="fancylight popup-btn" data-fancybox-group="light">  -->
+                          <!-- <img class="img-fluid" src="<?php echo base_url().'uploads/'.$list['image'];?>" style="height:180px; width:100%"; alt=""> -->
+                          <img class="img-fluid" id="gal_img" title="<?php echo $list['title']; ?>" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
+                          <!-- </a> -->
                       </div>
                   <?php } ?>
                   <?php if(count($images) > 7){ ?>
@@ -101,27 +101,56 @@
                     <a href="<?php echo base_url().'users/photo_gallary' ?>">View All</a>
                   </div>
                   <?php } } ?>
-               <!-- <a class="content-right" href="">view More...</a> -->
+               
              </div>
              <div class="portfolio-item row" id="video_gallary" style="display:none;">
              <?php if(!empty($videos)){ foreach($videos as $list){ ?>
-                      <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                          <a href="<?php echo base_url().'uploads/'.$list['video'];?>" class="fancylight popup-btn" data-fancybox-group="light"> 
-                          <video class="img-fluid" src="<?php echo base_url().'uploads/'.$list['video'];?>" style="height:180px; width:280px; padding:20px;"; alt="">
-                          </a>
-                      </div>
-                      <?php if(count($videos) > 7){ ?>
-                      <div class="view-button">
-                      <a href="<?php echo base_url().'users/video_gallary' ?>">View All</a>
-                    </div>
-                    <?php } ?>
+                <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+            <!-- <a href="<?php echo base_url() . 'uploads/' . $list['video']; ?>" class="fancylight popup-btn" data-fancybox-group="light">
+              <video class="img-fluid" src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" style="height:180px; width:280px; padding:20px;" ; alt="">
+            </a> -->
+            <video class="img-fluid" title="<?php echo $list['title']; ?>" controls>
+              <source src="<?php echo base_url() . 'uploads/cms/gallary/video/' . $list['video']; ?>" type="video/mp4" >
+            </video>
+          </div>
+          <?php if (count($videos) > 7) { ?>
+            <div class="view-button">
+              <a href="<?php echo base_url() . 'users/video_gallary' ?>">View All</a>
+            </div>
+          <?php } ?>
                   <?php } }?>
              </div>
+              
          </div>
     </section>
+    <div class="modal fade" id="thumbnailexampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="max-width:700px;">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
+
+          <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+          </button>
+          </div>
+          <div class="modal-body">
+          <img src="" id="outputicon" width="100%"/>
+          </div>
+      </div>
+      </div>
+  </div> 
     <script>
-    
-       $('#photo_gallary').show();
+    $(document).ready(function(){
+    $('#photo_gallary').on('click','#gal_img',function(){
+   console.log("jhgjh");
+   var id= $(this).attr('src');
+   //alert(id);
+   console.log(id);
+  $('#outputicon').attr('src',id);
+
+ })
+})
+     $('#photo_gallary').show();
       function abcd(){         
               $('.vdo').addClass('active');
               $('.img').removeClass('active');
@@ -136,7 +165,7 @@
               $('#video_gallary').hide();                                
       }
     </script>
-    <script src="<?=base_url();?>assets/js/bootstrap.bundle.js"></scrip>
+    <script src="<?=base_url();?>assets/js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
     <script src="<?=base_url();?>assets/js/font_resize.js"></script>
