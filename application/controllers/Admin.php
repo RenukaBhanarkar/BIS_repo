@@ -833,6 +833,13 @@ class Admin extends CI_Controller
         $this->load->view('admin/archive_feedback', $data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function profile_list()
+    {
+        
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/profile_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function archive_feedback($id)
     {
         $this->load->model('Users/Users_model');
