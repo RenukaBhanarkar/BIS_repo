@@ -6,7 +6,12 @@
             <h1 class="h3 mb-0 text-gray-800">Wall Of Wisdom</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Wall Of Wisdom</li>
                 
@@ -197,10 +202,11 @@
                                 </div>
 
                 </div>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary save" onclick="return submitButton()">Submit</button>
-                    </form>
+                    <button type="submit" class="btn btn-primary save" onclick="return submitButton(event)">Submit</button>
+                    
                 </div>
             </div>
         </div>
@@ -312,10 +318,11 @@
                                                             </div>
 
                 </div>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     <button onclick="return updateButton(event)" type="submit"  class="btn btn-primary" >Update</button>
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -345,7 +352,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger" >Reject</button>
                     </form>
                 </div>
@@ -645,7 +652,8 @@ var loadFileThumbnail = function(event)
     <!-- Page level plugins -->
     <script>
         //check size of doc and type  if newly uploaded
-        function submitButton() {
+        function submitButton(event) {
+            event.preventDefault();
            
             var title = $("#title").val();
             // var description = $("#description").val();
@@ -763,7 +771,24 @@ var loadFileThumbnail = function(event)
 
 
                 if (is_valid) {
-                return true;
+                    Swal.fire({
+                            title: 'Do you want to Submit?',
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Submit',
+                            denyButtonText: `Cancel`,
+                            }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                             //  Swal.fire('Saved!', '', 'success') 
+                                // return true;
+                                $('#addpostform').submit();
+                                // return true;
+                            } else if (result.isDenied) {
+                                Swal.fire('Changes are not saved', '', 'info')
+                            }
+                            })
+               // return true;
             } else {
                 return false;
             }
@@ -817,6 +842,16 @@ var loadFileThumbnail = function(event)
                var is_valid = false;
            } else {
                $("#err_description1").text("");
+           }
+
+           var abcd=$('#document2').attr('required');
+           console.log(abcd);
+           if(abcd=="required"){
+            var image = $('#document2').val();
+            if(image=="" || image==NULL){
+                is_valid = false;
+                $('#document2').focus();
+            }
            }
            
 

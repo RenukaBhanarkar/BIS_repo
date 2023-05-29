@@ -108,7 +108,7 @@
     /* max-width: 100%; */
     /* height: auto; */
     width: 100%;
-    height: 392px;
+    height: 510px;
 }
 .blog-details .meta-top ul {
     display: flex;
@@ -140,6 +140,9 @@
                 <div class="bloginfo">
                     <h3 style="margin-bottom: 5px; color: #0086b2!important;font-weight: 600;">Your Wall</h3>
                 </div>
+                <?php if($this->session->flashdata()){
+                echo $this->session->flashdata('MSG');
+            } ?>
                 <div class="heading-underline" style="width: 113px;">
                     <div class="left_1"></div><div class="right"></div>
                  </div>

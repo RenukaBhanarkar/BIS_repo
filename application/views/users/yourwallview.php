@@ -13,7 +13,7 @@
     position: relative;
 }
 .yourWall_image {
-    height: 331px;
+    height: 510px;
     margin-bottom: 17px;
     position: relative;
 }
@@ -250,9 +250,11 @@
                     </div>
 
                 </div> -->
-
+                <div class="col-md-12 " style="text-align: right;">
+                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url().'users/your_wall_posts'; ?>'">Back</a>
+                </div>
             </div>
         </div>
-
+        
     </div>
 </div>

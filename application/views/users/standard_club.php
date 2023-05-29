@@ -345,9 +345,11 @@ li.tab-link:hover {
                       </div>
                     <?php } ?>
                 </div>
-                <div class="view-button">
-                          <a href="<?= base_url(); ?>users/essay_writing_comp">View All</a>
-                </div>
+                <?php if(count($essy_writing) > 4){ ?>
+                    <div class="view-button">
+                          <a href="<?= base_url(); ?>users/more_copetition">View All</a>
+                    </div>
+                  <?php } ?>
              </div>
             </section>
           </div>
@@ -383,9 +385,11 @@ li.tab-link:hover {
                       </div>
                     <?php } ?>
                 </div>
-                <div class="view-button">
-                          <a href="<?= base_url(); ?>users/poster_making_comp">View All</a>
-                </div>
+                <?php if(count($poster) > 4){ ?>
+                    <div class="view-button">
+                          <a href="<?= base_url(); ?>users/more_copetition">View All</a>
+                    </div>
+                  <?php } ?>
              </div>
             </section>
           </div>
@@ -421,10 +425,13 @@ li.tab-link:hover {
                         <?php  } ?>
                       </div>
                     <?php } ?>
-                </div>
-                <div class="view-button">
+                </div>                
+                  <?php if(count($competition) > 4){ ?>
+                    <div class="view-button">
                           <a href="<?= base_url(); ?>users/more_copetition">View All</a>
-                </div>
+                    </div>
+                  <?php } ?>
+                
              </div>
             </section>
           </div>

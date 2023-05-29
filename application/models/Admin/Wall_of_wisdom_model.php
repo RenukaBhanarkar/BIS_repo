@@ -14,7 +14,7 @@ class Wall_of_wisdom_model extends CI_Model {
         $this->db->select('wow.*,tms.status_name');
         $this->db->from('tbl_wall_of_wisdom wow');
         $this->db->join('tbl_mst_status tms','tms.id=wow.status');
-        //$this->db->where('is_active',1); 
+        $this->db->where('status!=',9); 
        // $this->db->where('admin_type',2); 
        // $this->db->order_by('id', 'ASC');
        $this->db->order_by('wow.created_on','desc');

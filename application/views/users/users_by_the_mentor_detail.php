@@ -7,7 +7,7 @@
 
 }
 .yourWall_image {
-    height: 331px;
+    height: 510px;
     margin-bottom: 17px;
     position: relative;
 }
@@ -253,8 +253,8 @@
                         
                         
                     <div class="" style="margin-left: 17px;">
-                            <a class="btn btn-info mb-4 mr-4"  href="<?php echo base_url().'uploads/by_the_mentors/doc/'.$by_the_mentor['document']; ?>" target="_blank"><img  src="<?php echo base_url().'assets/admin/img/pdf.png'; ?>" width="100px"/></a>
-                            </a>
+                            <!-- <a class="btn btn-info mb-4 mr-4"  href="<?php echo base_url().'uploads/by_the_mentors/doc/'.$by_the_mentor['document']; ?>" target="_blank"><img  src="<?php echo base_url().'assets/admin/img/pdf.png'; ?>" width="100px"/></a> -->
+                            <a class="btn btn-primary mb-4 mr-4" href="<?php echo base_url().'uploads/by_the_mentors/doc/'.$by_the_mentor['document']; ?>" target="_blank">View Details</a>
                     </div>
                    <?php } ?>
                    <div class="row mentor_person">
@@ -265,7 +265,7 @@
                             <?php echo $by_the_mentor['standard_club_name']; ?>
                         </span>
                          <p>
-                            <?php echo $by_the_mentor['standard_club_district']; ?>, <?php echo $by_the_mentor['standard_club_state']; ?>
+                            <?php echo $by_the_mentor['StandardClubDistrict']; ?>, <?php echo $by_the_mentor['StandardClubState']; ?>
                         </p>
                     <span></span>
                     </div>
@@ -273,7 +273,9 @@
                         
                     </div>
                     
-
+                    <div class="col-md-12 mb-3" style="text-align: right;">
+                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url().'users/byTheMentor'; ?>'">Back</a>
+                </div>
 
 
                 </div>
