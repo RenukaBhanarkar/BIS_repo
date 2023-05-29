@@ -135,7 +135,7 @@
     display: none;
 }
 </style>
-<div class="container">
+<div class="container-fluid" style="padding:49px;">
     <div class="your_wall_Outer_Box">
         <div class="inner_wall">
             <div class="row mt-5">
