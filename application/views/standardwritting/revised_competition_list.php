@@ -72,7 +72,7 @@
                                 <td><?php echo $list['start_time']; ?></td>
                                 <td><?php echo $list['end_date']; ?></td>
                                 <td><?php echo $list['end_time']; ?></td>
-                                <td>banner</td>
+                                <td><img src="<?php echo base_url().$list['thumbnail']; ?>" width="60px"></td>
                                 <td><?php echo $list['avai_for']; ?></td>
                                 <td><?php echo $list['title']; ?></td>
                                 <td></td>

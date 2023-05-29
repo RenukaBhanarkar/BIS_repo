@@ -319,6 +319,7 @@
             <?php if(!empty($competition['sprize_name'])){ ?>
             <div class="view_join_content">
                 <h3>Second Prize</h3>
+                <div class="start_content">
                 <?php if($competition['sprize_image']==""){ ?>
                         <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
                     <?php }else{?> 
@@ -326,6 +327,7 @@
                     <img src="<?php echo base_url().$competition['sprize_image']; ?>" alt="" class="join_img">
                 </div>
                 <?php } ?>
+                </div>
                 <div class="#">
                     <div class="title_join">
                         <h3><?php echo $competition['sprize_name']; ?></h3>
@@ -339,6 +341,7 @@
             <?php if(!empty($competition['tprize_name'])){ ?>
             <div class="view_join_content">
                 <h3>Third Prize</h3>
+                <div class="start_content">
                 <?php if($competition['tprize_image']==""){ ?>
                         <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
                     <?php }else{?> 
@@ -346,6 +349,7 @@
                     <img src="<?php echo base_url().$competition['tprize_image']; ?>" alt="" class="join_img">
                 </div>
                         <?php } ?>
+                </div>
                 <div class="#">
                     <div class="title_join">
                         <h3><?php echo $competition['tprize_name']; ?></h3>
@@ -357,6 +361,7 @@
             <?php if(!empty($competition['cprize_name'])){ ?>
             <div class="view_join_content">
                 <h3>Consolation Prize</h3>
+                <div class="start_content">
                 <?php if($competition['cprize_image']==""){ ?>
                         <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
                     <?php }else{?> 
@@ -364,7 +369,7 @@
                     <img src="<?php echo base_url().$competition['cprize_image']; ?>" alt="" class="join_img">
                 </div>
                 <?php } ?>
-
+                </div>
                 <div class="#">
                     <div class="title_join">
                         <h3><?php echo $competition['cprize_name']; ?></h3>
