@@ -64,6 +64,17 @@ class Quiz_model extends CI_Model {
         }
     }
 
+    public function deletePrize($prize_id,$quiz_id)
+    {
+        $this->db->where('prize_id', $prize_id);
+        $this->db->where('quiz_id',$quiz_id);
+        if ($this->db->delete('tbl_prizes')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getAllQuize()
     {   
         $this->db->select('tbl_quiz_details.*,tbl_mst_status.status_name,tbl_que_bank.no_of_ques'); 
@@ -269,17 +280,29 @@ public function updateQuiz($id,$formdata)
         $this->db->join('tbl_mst_status st','st.id = quiz.status'); 
         $this->db->join('tbl_que_bank que','que.que_bank_id = quiz.que_bank_id'); 
         $this->db->where('quiz.end_date <=', $current_date);
-        $this->db->where('quiz.end_time <', $current_time); 
+       // $this->db->where('quiz.end_time <', $current_time); 
         $this->db->order_by('quiz.created_on','desc');
         
         //$this->db->where('quiz.end_time <=' ,$current_time); 
        
         $rs = array();
+        $res = array();
         $query=$this->db->get();
         if($query->num_rows() > 0){
-            $rs = $query->result_array();
+
+            $rs= $query->result_array();
+            foreach ($rs as $row){
+                 //////////////////
+                 $myQuery = "SELECT count(*) AS cnt FROM  tbl_quiz_submission_details where quiz_id = {$row['id']}";
+                 $query = $this->db->query($myQuery);
+                 $cntDetails=$query->row_array();
+                 $row['total_sub']  = $cntDetails['cnt'];
+                 ////////////////////
+
+                 array_push($res,$row);
+            }
         }
-        return $rs; 
+        return $res ; 
 
        
     }

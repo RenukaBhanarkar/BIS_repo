@@ -50,7 +50,7 @@
                                  <td><?= $users['user_name']?></td>
                                  <td><?= $users['email']?></td>
                                  <td><?= $users['user_mobile']?></td> 
-                                 <td><?= date("d-m-Y", strtotime($users['created_on']));?></td> 
+                                 <td><?= date("d-m-Y H:i:s", strtotime($users['created_on']));?></td> 
                                 
                                  <td><?= $users['score']?></td>
                                  <?php 

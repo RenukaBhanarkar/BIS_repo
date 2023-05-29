@@ -49,6 +49,7 @@
                   <th>Total Marks</th>
                   <th>Status</th>
                   <th>Rejection Reason </th>
+                  <th>Created On </th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -68,6 +69,7 @@
                       <td><?= $quiz['total_mark'] ?></td>
                       <td><?= $quiz['status_name'] ?></td>
                       <td><?= $quiz['remark'] ?></td>
+                      <td><?= date("d-m-Y H:i:s", strtotime($quiz['created_on'])); ?></td>
                       <td class="d-flex border-bottom-0">
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) {
                           if ($quiz['status'] == 2 ) { ?>

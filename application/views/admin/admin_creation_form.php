@@ -112,8 +112,16 @@
                 $("#getDetails").click(function() {
                     var focusSet = false;
                     var allFields = true;
-                   
+
                     var uid = $('#uid').val();
+
+                    var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+                    if (!uid.match(email_verify)) {
+                        uidtype = 2;
+                    }else{
+                        uidtype = 1;
+                    }
+                   
                     if (uid == "") {
                         if ($("#err_uid").next(".validation").length == 0) // only add if not added
                         {
@@ -140,7 +148,8 @@
                     }
                     if( allFields){
                         $.post("getDetailsByuserId/", {
-                        uid: uid
+                        uid: uid,
+                        uidtype:uidtype
                     }, function(res) {
                         if (res.status == 0) {
                            // $('.errorbox').show().text("Error,Please try again.");

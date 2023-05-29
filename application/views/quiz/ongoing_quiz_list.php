@@ -39,6 +39,8 @@
                                 <th>Total Questions in Quiz</th>
                                 <th>Total Questions in QB</th>
                                 <th>Total Marks</th>
+                                <th>Total Submissions</th>
+                                <th>Created On </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -55,7 +57,8 @@
                                         <td><?= $quiz['total_question'] ?></td>
                                         <td><?= $quiz['no_of_ques'] ?></td>
                                         <td><?= $quiz['total_mark'] ?></td>
-
+                                        <td><?= $quiz['total_sub'] ?></td>
+                                        <td><?= date("d-m-Y H:i:s", strtotime($quiz['created_on'])); ?></td>
                                         <td class="d-flex border-bottom-0">
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>                                               

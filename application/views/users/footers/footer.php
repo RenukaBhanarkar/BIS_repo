@@ -142,6 +142,20 @@ i.fa.fa-chevron-down {
 <script src="<?php echo base_url(); ?>assets/js/font_resize.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/dark_mode.js"></script>
 <script>
+
+var message = "Not Allowed Right Click";
+
+function rtclickcheck(keyp) {
+    if (navigator.appName == "Netscape" && keyp.which == 3) {
+        alert(message);
+        return false;
+    }
+    if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) {
+        alert(message);
+        return false;
+    }
+}
+document.onmousedown = rtclickcheck;
 $(document).ready(function(){
   $("#helf_toggle").click(function(){
     $("#toggle_show").toggle();

@@ -29,6 +29,7 @@
                                                 <label class="d-block text-font">User UID<sup class="text-danger">*</sup></label>
                                                 <div class="d-flex">
                                                     <input type="text" class="form-control input-font" name="uid" id="uid" placeholder="Enter User">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="mt-4 ml-3">
@@ -165,6 +166,14 @@
                             var allFields = true;
 
                             var uid = $('#uid').val();
+                            var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+                            if (!uid.match(email_verify)) {
+                                uidtype = 2;
+                              
+                            }else{
+                                uidtype = 1;
+                             
+                            }
                             if (uid == "") {
                                 if ($("#err_uid").next(".validation").length == 0) // only add if not added
                                 {
@@ -191,7 +200,8 @@
                             }
                             if (allFields) {
                                 $.post("getDetailsByuserId/", {
-                                    uid: uid
+                                    uid: uid,
+                                    uidtype:uidtype
                                 }, function(res) {
                                     if (res.status == 0) {
                                         // $('.errorbox').show().text("Error,Please try again.");
@@ -244,9 +254,11 @@
                             var allfields = true;
                             var allfields = true;
                             var uid = $("#uid").val();
+                            var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+                           
                             var role = $("#role").val();
                             var email = $("#email").val();
-                            var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+                          
                             var department = $("#department").val();
                             var branch = $("#branch").val();
 

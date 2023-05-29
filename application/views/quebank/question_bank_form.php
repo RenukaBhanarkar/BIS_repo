@@ -435,8 +435,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 mt-3">
-                                    <div class="card border-top card-body table-responsive">
-                                        <table id="example" class="table-bordered display nowrap" style="width:100%">
+                                    <div class="card border-top card-body">
+                                        <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
                                             <thead>
                                                 <tr id="headerid">
                                                     <th>Sr. No.</th>
@@ -1610,6 +1610,8 @@
                                     $('#option3_h_image').val('');
                                     $('#option4_h_image').val('');
                                     $('#option5_h_image').val('');
+
+                                   
 
 
                                     displayQuestions();

@@ -143,7 +143,7 @@ li.tab-link:hover {
   <div class="container-fluid">
     <div class="row">
       <div class="inner_content d-flex p-0">
-        <div class="col-sm-3">
+        <div class="col-md-3">
           <div class="card" style="background: #014e9c; color:white;">
             <div class="card-body new-card text-center mt-2">
               <h5 class="card-title">Winners Wall</h5>
@@ -175,7 +175,7 @@ li.tab-link:hover {
             </div>
           </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-md-9">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <?php foreach ($banner_data as $list => $key) { ?>
