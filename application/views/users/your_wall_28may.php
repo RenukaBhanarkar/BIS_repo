@@ -133,7 +133,7 @@
   </style>
 
    <section>
-        <div class="container">
+        <div class="container-fluid" style="padding:49px;">
         <div class="row my-4">
             <div class="col-md-8">
             <div class="static-content">
@@ -146,14 +146,33 @@
              </div> 
              </div>
              <div class="col-md-4">
-                <div class="input-group search_icon">
+                <!-- <div class="input-group search_icon">
                     <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
                     <span class="input-group-append">
                         <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
                             <i class="fa fa-search"></i>
                         </button>
                     </span>
-                </div>
+                </div> -->
+                <div class="bloginfo">
+                        <?php if(isset($_SESSION['admin_id'])){ ?>
+                            <?php if($daily_limit > 0){ ?>
+                                <button class="btn btn-primary flex-end YourWallForm" id="your_wall_exahust_limit">Post Here...</button>
+                                <!-- <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_exahust_limit">Post Here...</h3>  -->
+                            <?php }else{?>
+                            <!-- <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_show">Post Here...</h3> -->
+                            <button class="btn btn-primary YourWallForm" id="your_wall_show">Post Here...</button>
+                            <?php } ?>
+                            <?php }else{?>
+                                <a href="<?php echo base_url().'users/login'; ?>">
+                                <button class="btn btn-primary YourWallForm" >Post Here...</button>
+                                <!-- <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" >Post Here...</h3> -->
+                                </a>
+                            <?php } ?>
+                        </div>
+                        <!-- <div class="heading-underline" style="width: 113px;">
+                            <div class="left"></div><div class="right"></div>
+                        </div> -->
              </div>    
            </div>
 <div class="row">
@@ -234,30 +253,27 @@
         
       </div>          
    </section>
-   <div class="container">
-                       <div class="bloginfo">
-                        <?php if(isset($_SESSION['admin_id'])){ ?>
-                            <?php if($daily_limit > 0){ ?>
-                                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_exahust_limit">Post Here...</h3> 
-                            <?php }else{?>
-                            <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" id="your_wall_show">Post Here...</h3>
-                            <?php } ?>
-                            <?php }else{?>
-                                <a href="<?php echo base_url().'users/login'; ?>">
-                                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600; cursor:pointer; width:200px;" class="YourWallForm" >Post Here...</h3>
-                                </a>
-                            <?php } ?>
-                        </div>
-                        <div class="heading-underline" style="width: 113px;">
-                            <div class="left"></div><div class="right"></div>
-                        </div>
-   <?php if($this->session->flashdata()){
-                echo $this->session->flashdata('MSG');
-            } ?>
+
+  
+
+
+   <div class="modal fade" id="your_wall_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+      </div>
+      <div class="modal-body">
+      <div >                      
+                       
+       
                         <form action="<?php echo base_url(); ?>users/add_your_wall" method="post" name="addwall" id="addwall" class="was-validated" enctype="multipart/form-data">
                         
                 <!-- <h2 class="YourWallForm" id="your_wall_show">Your Wall</h2> -->
-                <div class="bg-light p-3" id="your_wall_hide">
+                <div class="bg-light p-3">
                     <!-- <div class="Comment_image">
                         <img src="../assets/images/user_image.png">
                     </div> -->
@@ -393,127 +409,21 @@
 
             <ul class="posts">
             </ul>
-        </div>
+</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+   
 
-       
-    <div class="modal fade" id="submit_alert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:red;">Warning!</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to submit ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" name="submit" onclick="submit1()" class="btn btn-primary ok" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="lessSize" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:red;">Warning!</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>File size should be 20KB or more</p>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button> -->
-                    <button type="button" class="btn btn-primary ok" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="greaterSize" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:red;">Warning!</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>File size should be less than 200KB </p>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button> -->
-                    <button type="button" class="btn btn-primary ok" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 
 
-        <div class="modal fade" id="invalidfiletype" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:red;">Warning!</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Only jpg,png,jpeg files accepted.</p>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary ok" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="greaterSize_pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:red;">Warning!</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>File size should be less than 5MB </p>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary ok" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="invalidfiletype_pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color:red;">Warning!</h5>
-                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Only pdf files accepted.</p>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary ok" data-bs-dismiss="modal">Ok</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        
+    
+    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script>
             $('.cancel').on('click',function(){
@@ -527,7 +437,7 @@
                             /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
                                // Swal.fire('Saved!', '', 'success')
-                                window.location.replace('<?php echo base_url().'users/standard'; ?>');
+                                window.location.replace('<?php echo base_url().'users/your_wall_posts'; ?>');
                             } else if (result.isDenied) {
                                // Swal.fire('Changes are not saved', '', 'info')
                             }
@@ -541,7 +451,8 @@
  </script>
  <script>
          $("#your_wall_show").click(function(){
-         $("#your_wall_hide").show();
+//          $("#your_wall_hide").show();
+$("#your_wall_form").modal('show');
       });
      
  </script>      

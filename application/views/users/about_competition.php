@@ -303,7 +303,7 @@
 
                 <div class="start_content">
                     <?php if($competition['fprize_image']==""){ ?>
-                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                        <img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" alt="" class="join_img">
                     <?php }else{?> 
                 <img src="<?php echo base_url().$competition['fprize_image']; ?>" alt="" class="join_img">
                 <?php } ?>
@@ -321,7 +321,7 @@
                 <h3>Second Prize</h3>
                 <div class="start_content">
                 <?php if($competition['sprize_image']==""){ ?>
-                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                        <img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" alt="" class="join_img">
                     <?php }else{?> 
                 <div class="start_content">
                     <img src="<?php echo base_url().$competition['sprize_image']; ?>" alt="" class="join_img">
@@ -343,7 +343,7 @@
                 <h3>Third Prize</h3>
                 <div class="start_content">
                 <?php if($competition['tprize_image']==""){ ?>
-                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                        <img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" alt="" class="join_img">
                     <?php }else{?> 
                 <div class="start_content">
                     <img src="<?php echo base_url().$competition['tprize_image']; ?>" alt="" class="join_img">
@@ -363,7 +363,7 @@
                 <h3>Consolation Prize</h3>
                 <div class="start_content">
                 <?php if($competition['cprize_image']==""){ ?>
-                        <img src="<?php echo base_url().'assets/images/winners.jpg'; ?>" alt="" class="join_img">
+                        <img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" alt="" class="join_img">
                     <?php }else{?> 
                 <div class="start_content">
                     <img src="<?php echo base_url().$competition['cprize_image']; ?>" alt="" class="join_img">
