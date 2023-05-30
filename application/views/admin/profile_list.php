@@ -1,7 +1,7 @@
 <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Profile List</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Profile</h1>
                         
                     </div>
 <!-- Content Row -->
@@ -9,43 +9,47 @@
                         <div class="col-12 mt-3">
                         <div class="card border-top">
                            <div class="card-body"> 
-                            <div class="row">   
+                            <div class="row">  
+                                
+                                <?php if($admin_type  == 1 || $admin_type  == 2 || $admin_type  == 3) { ?> 
                                 <div class="mb-2 col-md-4">
+                                   
                                     <label class="d-block text-font">Name</label>
                                     <div>
-                                        <p>Anis Mulani</p>
-                                    </div>    
+                                        <p><?= $details['name'];?></p>
+                                    </div> 
+                                  
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Email Id</label>
                                     <div>
-                                        <p>abc@gmail.com</p>
+                                    <p><?= $details['email_id'];?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                        <label class="d-block text-font">Date of Birth</label>
+                                        <label class="d-block text-font">Designation</label>
                                         <div>
-                                            <p>12/03/2023</p>
+                                        <p><?= $details['role'];?></p>
+                                        </div> 
+                                </div>
+                                
+                                <?php } ?>   
+                                <?php if( $admin_type  == 3) { ?> 
+                                <div class="mb-2 col-md-4">
+                                        <label class="d-block text-font">Department</label>
+                                        <div>
+                                        <p><?= $details['uvc_department_name'];?></p>
                                         </div> 
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                        <label class="d-block text-font">Gender</label>
+                                        <label class="d-block text-font">Branch</label>
                                         <div>
-                                            <p>Male</p>
+                                        <p><?= $details['branchnew'];?></p>
                                         </div> 
                                 </div>
-                                <div class="mb-2 col-md-4">
-                                        <label class="d-block text-font">Username</label>
-                                        <div>
-                                            <p>Username</p>
-                                        </div> 
-                                </div>
-                                <div class="mb-2 col-md-4">
-                                        <label class="d-block text-font">Contact Number</label>
-                                        <div>
-                                            <p>7057085889</p>
-                                        </div> 
-                                </div>
+                               
+                              
+                                <?php } ?>  
                          </div>
                     </div>
             </div>
