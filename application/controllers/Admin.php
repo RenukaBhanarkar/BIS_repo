@@ -842,9 +842,14 @@ class Admin extends CI_Controller
     }
     public function profile_list()
     {
-        
+        $data = array();
+        $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $data['admin_id'] = $admin_id;
+        $data['admin_type'] =  encryptids("D", $_SESSION['admin_type']);
+        $data['details'] = $this->Admin_model->getAdminDetail($admin_id);
+    
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/profile_list');
+        $this->load->view('admin/profile_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function archive_feedback($id)
@@ -1377,6 +1382,11 @@ class Admin extends CI_Controller
             "search_by" => $uidtype,
             "user_id" => "EXF090323"
         ));
+
+        // $parametersNew = json_encode(array ("token"=>"b1b0b8a24aa299054529c0c24f3583f8b16b866a473d34cb1f771c5da723f7361364b31bec2854192547f01a9c5511cf1bb2ad25d2de7f370f870c4482565e85",
+        // "input"=>"agrawal@bis.org.in",
+        //  "search_by"=>"1",
+        //    "user_id"=> "EXF090323"));
         curl_setopt_array($curl_req1, array(
             CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/sso_api/Sso_exchange_api/GetData',
             CURLOPT_RETURNTRANSFER => true,
@@ -1396,7 +1406,7 @@ class Admin extends CI_Controller
         $responseNew = curl_exec($curl_req1);
         $responseNew = json_decode($responseNew, true);
         // echo json_encode($output);
-        // exit();
+        //exit();
 
         // $response = array(
         //     'user_id' => 1800003549,

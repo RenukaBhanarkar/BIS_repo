@@ -178,7 +178,8 @@ a.quizplay-btn:hover {
                                 <div class="quiz_time">
                                     <div class="time_duration"><?= $AllQuize['duration']?><span class="sec-text"> Min</span></div><span class="last-date">Duration</span>
                                 </div>
-                              </div><a href="about_quiz/<?= $AllQuize['id']?>" class="quizplay-btn">Participate</a>
+                              </div>
+                              <a href="about_quiz/<?= encryptids("E", $AllQuize['id']); ?>" class="quizplay-btn">Participate</a>
                                                               
                             </div>
                             <div class="item_foo">
