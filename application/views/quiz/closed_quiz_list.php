@@ -36,7 +36,10 @@
                             <th>Total Questions in Quiz</th>
                             <th>Total Questions in QB</th>
                             <th>Total Marks</th>
+                            <th>Total Submission</th>
+                            <th>Created On</th>
                             <th>Status</th>
+                          
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -46,7 +49,7 @@
                             $i=1;
                             foreach($ClosedQuiz as $quiz)
                             {?>
-                                <tr>
+                                <tr id="row<?= $quiz['id']; ?>">
                                  <td><?= $i++?></td>
                                  <td><?= $quiz['quiz_id']?></td>
                                  <td><?= $quiz['title']?></td> 
@@ -55,6 +58,8 @@
                                  <td><?= $quiz['total_question']?></td>
                                  <td><?= $quiz['no_of_ques']?></td>
                                  <td><?= $quiz['total_mark']?></td>
+                                 <td><?= $quiz['total_sub']?></td>
+                                 <td><?= date("d-m-Y H:i:s", strtotime($quiz['created_on'])); ?></td>
                                  <td><?php if ($quiz['result_declared'] == 0) { echo "Closed";} else { echo "Result Declared";} ?>
                                 
                                 
@@ -74,6 +79,13 @@
                                     <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
 
                                     <?php }} ?>
+                                    <?php if(in_array(4,$permissions)){ ?>                          
+                             
+                                        <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
+                         
+
+                                    <?php } ?>                      
+                         
 
 
                                     <a href="<?php echo base_url();?>Quiz/closed_quiz_submission/<?= $quiz['id']?>" class="btn btn-warning btn-sm mr-2">View submission</a>   
@@ -111,3 +123,39 @@
     </div>
 </div>
 <!-- End of Main Content -->
+<script>
+
+function deleteRecord(quiz_id) {
+        Swal.fire({
+          title: 'Are you sure you want to Delete?',
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Delete',
+          denyButtonText: `Cancel`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+
+            $.ajax({
+              type: 'POST',
+              url: '<?php echo base_url(); ?>quiz/deleteQuiz',
+              data: {
+                id: quiz_id,
+              },
+              success: function(result) {
+                $('#row' + quiz_id).css({
+                  'display': 'none'
+                });
+              },
+              error: function(result) {
+                alert("Error,Please try again.");
+              }
+            });
+          } else if (result.isDenied) {
+            // Swal.fire('Changes are not saved', '', 'info')
+          }
+        })
+
+
+      }
+</script>

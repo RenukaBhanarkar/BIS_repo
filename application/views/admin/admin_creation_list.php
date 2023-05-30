@@ -72,6 +72,10 @@
                           
                           <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>admin/editAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>
+
+                          <button class="btn btn-primary btn-sm mr-2" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
+                          
+
                           <!-- <a class="btn btn-danger btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#delete">delete</a>                     -->
 
                         </td>
@@ -156,6 +160,28 @@
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
                     })
-        }    
+        }   
+        
+        
+        function resetPassword(id,email) {
+                        
+                        $.ajax({
+                                type: 'POST',
+                                url: '<?php echo base_url(); ?>admin/resetPassword',
+                                data: {
+                                    id: id,
+                                    email:email,
+                                },
+                                success: function(result) {
+                                  
+                                    Swal.fire('Reset password Successfully.Mail sent.');
+                                },
+                                error: function(result) {
+                                    Swal.fire("Error,Please try again.");
+                                }
+                            });
+                                                  
+                   
+        }   
         
   </script>

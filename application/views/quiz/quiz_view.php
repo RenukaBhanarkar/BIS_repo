@@ -335,53 +335,66 @@
                  <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Quiz/quiz_list'">Back</a>
                 </div>
-                <!-- Modal -->
-                <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to cancel?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal -->
+               
             </div>
         </div>
         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
             <div class="col-12 mt-3">
                 <form name="quiz_reg" id="quiz_reg" action="<?= base_url() . 'Admin/updateQuizStatus/' . $quizdata['id'] ?>" method="post" enctype="multipart/form-data">
-                    <div class="row" id="remarkdiv">
+                <input type="hidden" name="status_id" value="3" id="status_id">
+                    <!-- <div class="row" id="remarkdiv">
                         <div class="mb-2 col-md-8">
                             <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control input-font" placeholder="Enter Remark" name="remark" id="remark"><?= set_value('terms_conditions'); ?></textarea>
-                            <span class="error_text"><?= form_error('terms_conditions'); ?></span>
-                            <input type="hidden" name="status_id" value="3" id="status_id">
+                            <textarea class="form-control input-font" placeholder="Enter Remark" name="remark" id="remark"></textarea>
+                            <span class="error_text"></span>
+                            
                         </div>
-                    </div>
+                    </div> -->
+
+
             </div>
             <?php if( $quizdata['status']==2){?>
             <div class="col-md-12 submit_btn p-3">
-                <!-- <a id="approve" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval">Approval</a> -->
-                <!-- <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve"> -->
-                <!-- <input type="button" name="Approval" value="Approve" class="btn btn-success btn-sm text-white approve" id="approve"> -->
-                <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
-                <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+              
+
+                <!-- new code start -->
+                  <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#rejectForm" id="reject">Reject</a>
+              
+                <!-- new code eend -->
+
+
                 <a class="btn btn-danger btn-sm text-white cancel" id="cancel" >Cancel</a>
                 <button data-id="<?php echo $quizdata['id']; ?>" class="btn btn-success btn-sm text-white approve">Approve</button>
                 
             </div>
             <?php } ?>
             </form>
+               <!-- Modal -->
+               <div class="modal fade" id="rejectForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Reject Quiz</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <form name="rejectQuiz" id="rejectQuiz" action="<?= base_url() . 'Admin/rejectQuiz/' . $quizdata['id'] ?>" method="post" >
+                            <textarea class="form-control input-font" placeholder="Enter Reason" name="remark" id="remark"></textarea>
+                                                        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="validateForm()" id="rejectBtn">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+
+
+            
+
+
 
 
 <?php } ?>
@@ -408,18 +421,38 @@
         var id="<?= $quizdata['que_bank_id'];?>"
         getQuestionListByQueBankId(id);
         getQBDetails(id);
-        $("#submit").hide();
-        $("#remarkdiv").hide();
+       // $("#submit").hide();
+       // $("#remarkdiv").hide();
     });
-    function rejectFun()
-     {
-        $("#submit").show();
-        $("#remarkdiv").show();
-        $("#approve").hide();
-        $("#reject").hide();
-        $("#status_id").val(4);
+    function validateForm(){
+         var reason = $('#remark').val();
+        allfields = true;
+       
+        if (reason == "" || reason == null || reason.length == 0) {
+            if ($("#remark").next(".validation").length == 0) {
+                $("#remark").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
+            }
+            if (!focusSet) {
+                $("#remark").focus();
+            }
+            allfields = false;
+        } else {
+            $("#remark").next(".validation").remove();
+        }
+        if(allfields){
+            $('#rejectQuiz').submit();
+        }
 
     }
+    // function rejectFun()
+    //  {
+    //     $("#submit").show();
+    //     $("#remarkdiv").show();
+    //     $("#approve").hide();
+    //     $("#reject").hide();
+    //     $("#status_id").val(4);
+
+    // }
 </script>
 
 <script type="text/javascript">

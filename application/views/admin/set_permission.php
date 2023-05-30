@@ -180,7 +180,21 @@
                                 </td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
+                                
+
+                                <td>
+                                    <div class="custom-control custom-checkbox mr-3">
+                                        <input type="checkbox" name="closedQuiz[]" value="4" class="custom-control-input 163_mainModuleChk 177_subModuleChk accessSelected" data-moduleid="163_mainModuleChk" data-submoduleid="177_subModuleChk" id="177_deleteChk" onclick="checkAccess(this);" <?php if (in_array(4,$sub_mod_4)) {echo "checked";}?>>
+                                        <label class="custom-control-label" for="177_deleteChk"></label>
+                                    </div>
+                                </td>
+
+
+
+
+
+
+
                             </tr>
                             <!-- ************* CLOSED QUIZ END ***************** -->
                             <!-- ************* QUE BANK START ***************** -->

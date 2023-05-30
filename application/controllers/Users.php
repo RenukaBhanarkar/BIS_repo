@@ -15,6 +15,8 @@ class Users extends CI_Controller
         $this->load->model('Winnerwall/Winnerwall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+        $this->load->model('Admin/your_wall_model');
+        $this->load->model('Admin/by_the_mentor_model');
         date_default_timezone_set("Asia/Calcutta");
 
        
@@ -78,13 +80,20 @@ class Users extends CI_Controller
         $this->load->view('users/login');
         $this->load->view('users/footers/login_footer');
     }
+    public function loginQuiz($id){
+        $data = array();
+        $data['id'] = $id;
+        $this->load->view('users/headers/login_header');
+        $this->load->view('users/login',$data);
+        $this->load->view('users/footers/login_footer');
+    }
   
 
     /****************************************************
      * 
      * correct auth user with  api call
      */
-    public function correctauthUser()
+    public function earliercorrectauthUser()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -344,9 +353,9 @@ class Users extends CI_Controller
     //////////////////////////////////////////////////////////////
     /****************************************************
      * 
-     * correct auth user without api call
+     * correct auth user with api call
      */
-    public function authUser()
+    /*public function correctauthUser()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -618,13 +627,15 @@ class Users extends CI_Controller
 
 
         }}
-    }
-    //////////////////////////////////////////////////////////////
+    }*/
+   
+
+     //////////////////////////////////////////////////////////////
     /****************************************************
      * 
-     * renu auth user
+     * correct auth user without api call
      */
-    /*public function  authUser()
+    public function authUser()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -637,46 +648,51 @@ class Users extends CI_Controller
 
             $username        = clearText($this->input->post('username'));
             $password        = clearText($this->input->post('password'));        
-            
+            $quiz_id = $this->input->post('quizid');
+            //$quizid = encryptids("D", $quiz_id);
             
             //////////////////////START/////////////
             $curl_req = curl_init();
-            // $parameters = json_encode(array("userid" => $username, "password" => $password));
+            // commented $parameters = json_encode(array("userid" => $username, "password" => $password));
+
+
+          
             $parameters  = "userid=" . $username . "&password=" . $password;
-        //     curl_setopt_array($curl_req, array(
-        //         CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
-        //    //CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
+            curl_setopt_array($curl_req, array(
+                CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
+           // CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
               
-        //         CURLOPT_RETURNTRANSFER => true,
-        //         CURLOPT_ENCODING => '',
-        //         CURLOPT_MAXREDIRS => 10,
-        //         CURLOPT_TIMEOUT => 0,
-        //         CURLOPT_FOLLOWLOCATION => true,
-        //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //         CURLOPT_CUSTOMREQUEST => 'POST',
-        //         CURLOPT_SSL_VERIFYPEER => false,
-        //         CURLOPT_POSTFIELDS => $parameters,
-        //         CURLOPT_HTTPHEADER => array(
-        //             'Content-Type: application/x-www-form-urlencoded',
-        //             'Accept: application/json'
-        //         ),
-        //     ));
-        //     $response = curl_exec($curl_req);
-        //     curl_close($curl_req);
-        //     $output = json_decode($response, true);
-        //     //print_r($output); die;
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_POSTFIELDS => $parameters,
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/x-www-form-urlencoded',
+                    'Accept: application/json'
+                ),
+            ));
+            $response = curl_exec($curl_req);
+            curl_close($curl_req);
+            $output = json_decode($response, true);
+            //print_r($output); die;
             $userData = array();
-            $output = array(
-                'status_code'=>0
-            );
+
+
+
             if(!empty($output)){ 
             if ($output['status_code'] == 1) {
-               // $userData = $output['data'];
-                //echo json_encode($userData);echo "<br>";
-                $user_id ='2206274956';
-                //$exist_user = $this->Users_model->toCheckUserExist($user_id);
-               // $user_id = 
-                $exist_user = 1;
+
+
+                 $userData = $output['data'];
+               
+                 $user_id = $userData['UserID'];
+
+                $exist_user = $this->Users_model->toCheckUserExist($user_id);
                 if (!$exist_user) {
                     $comm_id = "";
                     $comm_name = "";
@@ -701,12 +717,14 @@ class Users extends CI_Controller
                         'email' =>  $userData['Email'],
                         'role' =>  $userData['role'],
 
+                       
+
                         'emp_desi_id' =>  $userData['EmployeeDesignationID'],
                         'emp_desi' =>  $userData['EmployeeDesignation'],
 
-
                         'created_on' =>  $userData['created_on'],
                         'user_type' =>  $userData['user_type'],
+
                         'member_id' =>  $userData['MemberID'],
 
                         'standard_club_id' =>  $userData['StandardClubID'],
@@ -716,15 +734,46 @@ class Users extends CI_Controller
                         'standard_club_region' =>  $userData['StandardClubRegion'],
                         'standard_club_category' =>  $userData['StandardClubCategory'],
 
+
+
+
+                        'StandardClubState' =>  $userData['StandardClubState'],
+                        'StandardClubStateID' =>  $userData['StandardClubStateID'],
+                        'StandardClubDistrict' =>  $userData['StandardClubDistrict'],
+                        'StdClubMemberClass' =>  $userData['StdClubMemberClass'],
+                        'change_password' =>  $userData['change_password'],
+                        'assignedCommitte' =>  $userData['assignedCommitte'],
+
+
                         'comm_id' =>  $comm_id,
                         'comm_name' =>  $comm_name,
-
 
                     );
                     // echo json_encode($data); exit();
                     $userId = $this->Users_model->insertData($data);
                 }
                 $user_details = $this->Users_model->getUsersDetailsByUserId($user_id);
+                $logs = array(
+                    'user_id' => $user_details['id'],
+                    'type' => 2,
+                );
+                $user_log_id = $this->Users_model->insertUsersLogs($logs);
+              
+
+                // new code start 
+                //session_start();
+                session_regenerate_id();
+                $user_session_id = session_id();
+                $session_data = array(
+                    'user_session_id' => $user_session_id,
+                );
+                $update_session_id = $this->Users_model->updateSessionId($user_id,$session_data);
+
+                $_SESSION['user_session_id'] = $user_session_id;    
+                
+                // new code end
+                $user_log_id        = encryptids("E",$user_log_id);
+                $admin_id_1        = encryptids("E", $user_details['id']);
                 $admin_id        = encryptids("E", $user_details['user_id']);
                 $admin_email        = encryptids("E", $user_details['email']);
                 $admin_name      = encryptids("E", $user_details['user_name']);
@@ -732,13 +781,19 @@ class Users extends CI_Controller
                 $admin_post        = encryptids("E", $user_details['emp_desi']);
                 $club_id       = encryptids("E", $user_details['standard_club_id']);
                 $branch_id       = encryptids("E", $user_details['standard_club_branch_id']);
+                $state_id       = encryptids("E", $user_details['StandardClubStateID']);                
                 $dept_id       = encryptids("E", $user_details['standard_club_dept_id']);
                 $region_id       = encryptids("E", $user_details['standard_club_region']);
-               
+                $StandardClubStateID       = encryptids("E", $user_details['StandardClubStateID']);               
                 $standard_club_category       = encryptids("E", $user_details['standard_club_category']);
                 $is_admin       = encryptids("E", 0);
-               
+
+                // for class 
+                $standard      = encryptids("E", $user_details['StdClubMemberClass']);
+
                 $sess_arr         = array(
+                    "user_log_id" => $user_log_id,
+                    "admin_id_1"=> $admin_id_1,
                     "admin_id" => $admin_id,
                     "admin_email" => $admin_email,
                     "admin_type" => $admin_type,
@@ -747,28 +802,35 @@ class Users extends CI_Controller
                     "is_admin" => $is_admin,
                     "club_id" => $club_id,
                     "branch_id" => $branch_id,
+                    "state_id" => $state_id,
                     "region_id" => $region_id,
+                    'StandardClubStateID' => $StandardClubStateID,
                     "dept_id" => $dept_id,
                     "standard_club_category"=>$standard_club_category ,  
-                    "quiz_lang_id" => 0
+                    "quiz_lang_id" => 0,
+
+                    "standard" => $standard,
+
+
                 );
 
-
                 $this->session->set_userdata($sess_arr);
+               //  exit();
 
-                redirect(base_url() . "Users/welcome", 'refresh');
+                if(isset($quiz_id) && !empty($quiz_id)){
+                    redirect(base_url() . "users/quiz_start/".$quiz_id, 'refresh');
+                   
+                }else{
+                    redirect(base_url() . "Users/welcome", 'refresh');
+                }
+              
                 return true;
             } else {
-
-
-
-
-
-
                 
                 $user = $this->Admin_model->getLoginUsers($username, $password);
                 if (empty($user)) {
                     $this->session->set_flashdata('MSG', ShowAlert("Invalid username or password.", "DD"));
+                 
                     redirect(base_url() . "Users/login", 'refresh');
                     return true;
                 }
@@ -781,8 +843,18 @@ class Users extends CI_Controller
                 // 		redirect(base_url()."Administrator", 'refresh');
                 // 	return true;
                 // }
+
+
                 else {
 
+                    $logs = array(
+                        'user_id' => $user['id'],
+                        'type' => 1,
+                    );
+                    $user_log_id = $this->Users_model->insertUsersLogs($logs);
+                  
+    
+                    $user_log_id        = encryptids("E",$user_log_id);
                     $admin_id        = encryptids("E", $user['id']);
                     $admin_email        = encryptids("E", $user['email_id']);
                     $admin_name      = encryptids("E", $user['name']);
@@ -790,11 +862,13 @@ class Users extends CI_Controller
                     $admin_post        = encryptids("E", $user['post']);
                     $club_id       = encryptids("E", 0);
                     $branch_id       = encryptids("E", 0);
+                    $state_id       = encryptids("E", 0);
                     $dept_id       = encryptids("E", 0);
                     $region_id       = encryptids("E", 0);
                     $is_admin       = encryptids("E", 1);
 
                     $sess_arr         = array(
+                        "user_log_id" => $user_log_id,
                         "admin_id" => $admin_id,
                         "admin_email" => $admin_email,
                         "admin_type" => $admin_type,
@@ -803,6 +877,7 @@ class Users extends CI_Controller
                         "is_admin" => $is_admin,
                         "club_id" => $club_id,
                         "branch_id" => $branch_id,
+                        "state_id" => $state_id,
                         "region_id" => $region_id,
                         "dept_id" => $dept_id,
                         "quiz_lang_id" => 0
@@ -817,7 +892,7 @@ class Users extends CI_Controller
                             $sess_permissions = array(
                                 "main_mod_per" => $main_mod_per,
                                 "sub_mod_per" => $sub_mod_per,
-                                "activity_per" => $activity_per,
+                                //"activity_per" => $activity_per,
                              );
                              $this->session->set_userdata($sess_permissions);
                           }
@@ -838,7 +913,10 @@ class Users extends CI_Controller
 
 
         }}
-    }*/
+    }
+    //////////////////////////////////////////////////////////////
+
+
 
   
     
@@ -1774,21 +1852,29 @@ class Users extends CI_Controller
             $this->by_the_mentor_model->send_email($msg,$subject,$email_id);
 
             $this->session->set_flashdata('MSG', ShowAlert("Response Submitted Successfully", "SS"));
-            redirect(base_url() . "users/yourwall", 'refresh');
+            // redirect(base_url() . "users/yourwall", 'refresh');
+            redirect(base_url() . "users/your_wall_posts", 'refresh');
         } else {
         }
     }
     public function byTheMentor(){
+        $this->load->model('Admin/by_the_mentor_model');
+        if (isset($_SESSION['admin_id'])) {
+            $user_id= encryptids("D", $_SESSION['admin_id']);
+            $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
+        }else{
+            $data['limit']="0";
+        }
       //  print_r($_SESSION); die;
         // $formdata1['email']= encryptids("D", $_SESSION['admin_email']);
         // $formdata1['name']= encryptids("D", $_SESSION['admin_name']);
         // $formdata1['admin']= encryptids("D", $_SESSION['admin']);
-        $user_id= encryptids("D", $_SESSION['admin_id']);
+       // $user_id= encryptids("D", $_SESSION['admin_id']);
         // $formdata1['admin_type']= encryptids("D", $_SESSION['admin_type']);
         //  print_r($formdata1); die;
-        $this->load->model('Admin/by_the_mentor_model');
+        
         $data['by_the_mentor'] = $this->by_the_mentor_model->getThreeBTM();
-        $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
+       
        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/users_by_the_mentor', $data);
@@ -3223,12 +3309,14 @@ class Users extends CI_Controller
     //    print_r($_SESSION); die;
     $UserId = $this->session->userdata('admin_id');
     $user_id = encryptids("D", $UserId);
+    $data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
+    $data['by_the_mentor'] = $this->by_the_mentor_model->getAllBtmPulishedByUser($user_id);
       $this->load->model('Quiz_model');
     //  $data['quiz']=$this->Quiz_model->getQuizByUserid('2105239181');    
     $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
     $data['competition']= $this->Miscellaneous_competition->ckeckCompAttemptByUser($user_id);
     $data['quiz']=$this->Quiz_model->getQuizByUserid($user_id);   
-   // print_r($data); die;
+    //  print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/my_activity_list',$data);
         $this->load->view('users/footers/footer');
@@ -3253,6 +3341,20 @@ class Users extends CI_Controller
        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/essay_writing_comp',$data);
+        $this->load->view('users/footers/footer');
+    }
+    public function poster_making_comp(){
+        $data['poster_making']=$this->Miscellaneous_competition->getPublishedComp('100',array(2));        
+       //print_r($data); die;
+        $this->load->view('users/headers/header');
+        $this->load->view('users/poster_making_comp',$data);
+        $this->load->view('users/footers/footer');
+    }
+    public function more_copetition(){
+        $data['more_copetition']=$this->Miscellaneous_competition->getPublishedComp('100',array(3,4,5));        
+       //print_r($data); die;
+        $this->load->view('users/headers/header');
+        $this->load->view('users/more_copetition',$data);
         $this->load->view('users/footers/footer');
     }
     

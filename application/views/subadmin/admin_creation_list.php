@@ -73,7 +73,7 @@
                           <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url().'subadmin/admin_creation_view/'.$row['id']; ?>" >View</a>
                           <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editsubAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>
-
+                          <button class="btn btn-primary btn-sm mr-2" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
                          
                           <a class="btn btn-primary btn-sm mr-2 " href="<?php echo base_url(); ?>admin/set_permission?id=<?php echo encryptids('E', $row['id']) ?>"> Set Permission  </a>
                           
@@ -199,5 +199,25 @@
                     }
                     })
         }    
-        
+          
+        function resetPassword(id,email) {
+                        
+                        $.ajax({
+                                type: 'POST',
+                                url: '<?php echo base_url(); ?>admin/resetPassword',
+                                data: {
+                                    id: id,
+                                    email:email,
+                                },
+                                success: function(result) {
+                                  
+                                    Swal.fire('Reset password Successfully.Mail sent.');
+                                },
+                                error: function(result) {
+                                    Swal.fire("Error,Please try again.");
+                                }
+                            });
+                                                  
+                   
+        } 
   </script>

@@ -15,6 +15,18 @@ class Admin extends CI_Controller
         $this->load->model('Learningscience/Learningscience_model');
         date_default_timezone_set("Asia/Calcutta");
     }
+
+    public function randomPassword()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
     public function index()
     {
         if ($this->Admin_model->checkAdminLogin()) {
@@ -88,68 +100,66 @@ class Admin extends CI_Controller
 
         // to check user permissions 
         $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
-        $id= encryptids("E", $user_id);
-        if($set_permission){
+        $id = encryptids("E", $user_id);
+        if ($set_permission) {
             $main_mod_per = $this->Admin_model->mainModulePermission($id);
             $sub_mod_per = $this->Admin_model->subModulePermission($id);
 
 
-            $sub_mod_1 = $this->Admin_model->getUsersPermissionsByUserid($user_id,1);
-            $sub_mod_2 = $this->Admin_model->getUsersPermissionsByUserid($user_id,2);
-            $sub_mod_3 = $this->Admin_model->getUsersPermissionsByUserid($user_id,3);
-            $sub_mod_4 = $this->Admin_model->getUsersPermissionsByUserid($user_id,4);
-            $sub_mod_5 = $this->Admin_model->getUsersPermissionsByUserid($user_id,5);
-            $sub_mod_6 = $this->Admin_model->getUsersPermissionsByUserid($user_id,6);
-            $sub_mod_7 = $this->Admin_model->getUsersPermissionsByUserid($user_id,7);
-            $sub_mod_8 = $this->Admin_model->getUsersPermissionsByUserid($user_id,8);
-            $sub_mod_9 = $this->Admin_model->getUsersPermissionsByUserid($user_id,9);
-            $sub_mod_10 = $this->Admin_model->getUsersPermissionsByUserid($user_id,10);
+            $sub_mod_1 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 1);
+            $sub_mod_2 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 2);
+            $sub_mod_3 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 3);
+            $sub_mod_4 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 4);
+            $sub_mod_5 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 5);
+            $sub_mod_6 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 6);
+            $sub_mod_7 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 7);
+            $sub_mod_8 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 8);
+            $sub_mod_9 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 9);
+            $sub_mod_10 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 10);
 
-            $sub_mod_11 = $this->Admin_model->getUsersPermissionsByUserid($user_id,11);
-            $sub_mod_12 = $this->Admin_model->getUsersPermissionsByUserid($user_id,12);
-            $sub_mod_13 = $this->Admin_model->getUsersPermissionsByUserid($user_id,13);
-            $sub_mod_14 = $this->Admin_model->getUsersPermissionsByUserid($user_id,14);
-            $sub_mod_15= $this->Admin_model->getUsersPermissionsByUserid($user_id,15);
-            $sub_mod_16 = $this->Admin_model->getUsersPermissionsByUserid($user_id,16);
-            $sub_mod_17= $this->Admin_model->getUsersPermissionsByUserid($user_id,17);
-            $sub_mod_18 = $this->Admin_model->getUsersPermissionsByUserid($user_id,18);
-            $sub_mod_19 = $this->Admin_model->getUsersPermissionsByUserid($user_id,19);
-            $sub_mod_20 = $this->Admin_model->getUsersPermissionsByUserid($user_id,20);
+            $sub_mod_11 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 11);
+            $sub_mod_12 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 12);
+            $sub_mod_13 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 13);
+            $sub_mod_14 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 14);
+            $sub_mod_15 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 15);
+            $sub_mod_16 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 16);
+            $sub_mod_17 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 17);
+            $sub_mod_18 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 18);
+            $sub_mod_19 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 19);
+            $sub_mod_20 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 20);
 
-            $sub_mod_21 = $this->Admin_model->getUsersPermissionsByUserid($user_id,21);
-            $sub_mod_22 = $this->Admin_model->getUsersPermissionsByUserid($user_id,22);
-            $sub_mod_23 = $this->Admin_model->getUsersPermissionsByUserid($user_id,23);
-            $sub_mod_24 = $this->Admin_model->getUsersPermissionsByUserid($user_id,24);
-            $sub_mod_25= $this->Admin_model->getUsersPermissionsByUserid($user_id,25);
-            $sub_mod_26 = $this->Admin_model->getUsersPermissionsByUserid($user_id,26);
-            $sub_mod_27= $this->Admin_model->getUsersPermissionsByUserid($user_id,27);
-            $sub_mod_28 = $this->Admin_model->getUsersPermissionsByUserid($user_id,28);
-            $sub_mod_29 = $this->Admin_model->getUsersPermissionsByUserid($user_id,29);
-            $sub_mod_30 = $this->Admin_model->getUsersPermissionsByUserid($user_id,30);
-
-
-            $sub_mod_31 = $this->Admin_model->getUsersPermissionsByUserid($user_id,31);
-            $sub_mod_32 = $this->Admin_model->getUsersPermissionsByUserid($user_id,32);
-            $sub_mod_33 = $this->Admin_model->getUsersPermissionsByUserid($user_id,33);
-            $sub_mod_34 = $this->Admin_model->getUsersPermissionsByUserid($user_id,34);
-            $sub_mod_35= $this->Admin_model->getUsersPermissionsByUserid($user_id,35);
-            $sub_mod_36 = $this->Admin_model->getUsersPermissionsByUserid($user_id,36);
-            $sub_mod_37= $this->Admin_model->getUsersPermissionsByUserid($user_id,37);
-            $sub_mod_38 = $this->Admin_model->getUsersPermissionsByUserid($user_id,38);
-            $sub_mod_39 = $this->Admin_model->getUsersPermissionsByUserid($user_id,39);
-            $sub_mod_40 = $this->Admin_model->getUsersPermissionsByUserid($user_id,40);  
-            
-         
-
-            $main_mod_4  =  $this->Admin_model->permissionsByUseridMainModule($user_id,4);
-            $main_mod_5  =  $this->Admin_model->permissionsByUseridMainModule($user_id,5);
-
-            $main_mod_7  =  $this->Admin_model->permissionsByUseridMainModule($user_id,7);
-
-            $main_mod_9  =  $this->Admin_model->permissionsByUseridMainModule($user_id,9);
-            $main_mod_13  =  $this->Admin_model->permissionsByUseridMainModule($user_id,13);
+            $sub_mod_21 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 21);
+            $sub_mod_22 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 22);
+            $sub_mod_23 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 23);
+            $sub_mod_24 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 24);
+            $sub_mod_25 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 25);
+            $sub_mod_26 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 26);
+            $sub_mod_27 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 27);
+            $sub_mod_28 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 28);
+            $sub_mod_29 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 29);
+            $sub_mod_30 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 30);
 
 
+            $sub_mod_31 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 31);
+            $sub_mod_32 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 32);
+            $sub_mod_33 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 33);
+            $sub_mod_34 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 34);
+            $sub_mod_35 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 35);
+            $sub_mod_36 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 36);
+            $sub_mod_37 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 37);
+            $sub_mod_38 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 38);
+            $sub_mod_39 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 39);
+            $sub_mod_40 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 40);
+
+
+
+            $main_mod_4  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 4);
+            $main_mod_5  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 5);
+
+            $main_mod_7  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 7);
+
+            $main_mod_9  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 9);
+            $main_mod_13  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 13);
         }
         $data['main_mod_per'] = $main_mod_per;
         $data['sub_mod_per'] = $sub_mod_per;
@@ -204,10 +214,10 @@ class Admin extends CI_Controller
         $data['main_mod_7'] = $main_mod_7;
         $data['main_mod_9'] = $main_mod_9;
         $data['main_mod_13'] = $main_mod_13;
-       
 
 
-        
+
+
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/set_permission', $data);
@@ -224,7 +234,7 @@ class Admin extends CI_Controller
 
         $user_id = $this->input->post('user_id');
         $set_permission = $this->Admin_model->toCheckSetPermissions($user_id);
-        if($set_permission){
+        if ($set_permission) {
             $this->Admin_model->deleteSetPermissions($user_id);
         }
 
@@ -305,8 +315,7 @@ class Admin extends CI_Controller
         if (empty($data)) {
             /******************  
              * 1. QUIZ START 
-             * ****************/
-            {
+             * ****************/ {
                 if (in_array(1, $mainModule)) {
                     if (in_array(1, $subModule)) {
                         $createQuiz_per = implode(',', $createQuiz);
@@ -358,8 +367,7 @@ class Admin extends CI_Controller
             }
             /******************  
              * 2 .STANDARD WRITING
-             * ****************/ 
-            {
+             * ****************/ {
                 if (in_array(2, $mainModule)) {
                     if (in_array(7, $subModule)) {
                         $createComp = implode(',', $createComp);
@@ -403,8 +411,7 @@ class Admin extends CI_Controller
             }
             /******************  
              * 3 .Miscellaneous Competition
-             * ****************/
-            {
+             * ****************/ {
                 if (in_array(3, $mainModule)) {
                     if (in_array(12, $subModule)) {
                         $misCreateComp = implode(',', $misCreateComp);
@@ -471,8 +478,7 @@ class Admin extends CI_Controller
 
             /******************  
              * 6 - Classroom 17-20
-             * ****************/
-            {
+             * ****************/ {
                 if (in_array(6, $mainModule)) {
                     if (in_array(17, $subModule)) {
                         $createClassroomPost = implode(',', $createClassroomPost);
@@ -518,8 +524,7 @@ class Admin extends CI_Controller
             }
             /******************  
              * 8 - CMS 21- 28
-             * ****************/
-            {
+             * ****************/ {
                 if (in_array(8, $mainModule)) {
                     if (in_array(21, $subModule)) {
                         $bannerImage = implode(',', $bannerImage);
@@ -597,8 +602,7 @@ class Admin extends CI_Controller
             }
             /******************  
              * 10 - Share your thoughts 29-34
-             * ****************/
-            {
+             * ****************/ {
                 if (in_array(10, $mainModule)) {
                     if (in_array(29, $subModule)) {
                         $newWork = implode(',', $newWork);
@@ -650,56 +654,59 @@ class Admin extends CI_Controller
             }
             /******************  
              * 11 - Join the Class Room 35-38
-             * ****************/
-            {
-                if(in_array(11,$mainModule)){
-                    if(in_array(35,$subModule)){
-                        $liveSession = implode(',',$liveSession);
-                        $mainM = 11; $subM = 35;
-                        $id = $this->insertPerData($user_id,$mainM,$subM,$liveSession);                   
-                    }               
+             * ****************/ {
+                if (in_array(11, $mainModule)) {
+                    if (in_array(35, $subModule)) {
+                        $liveSession = implode(',', $liveSession);
+                        $mainM = 11;
+                        $subM = 35;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $liveSession);
+                    }
                 }
-                if(in_array(11,$mainModule)){
-                    if(in_array(36,$subModule)){
-                        $manageSession = implode(',',$manageSession);
-                        $mainM = 11; $subM = 36;
-                        $id = $this->insertPerData($user_id,$mainM,$subM,$manageSession);                   
-                    }               
+                if (in_array(11, $mainModule)) {
+                    if (in_array(36, $subModule)) {
+                        $manageSession = implode(',', $manageSession);
+                        $mainM = 11;
+                        $subM = 36;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $manageSession);
+                    }
                 }
-                if(in_array(11,$mainModule)){
-                    if(in_array(37,$subModule)){
-                        $publishedPost = implode(',',$publishedPost);
-                        $mainM = 11; $subM = 37;
-                        $id = $this->insertPerData($user_id,$mainM,$subM,$publishedPost);                   
-                    }               
+                if (in_array(11, $mainModule)) {
+                    if (in_array(37, $subModule)) {
+                        $publishedPost = implode(',', $publishedPost);
+                        $mainM = 11;
+                        $subM = 37;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $publishedPost);
+                    }
                 }
-                if(in_array(11,$mainModule)){
-                    if(in_array(38,$subModule)){
-                        $archivedPost = implode(',',$archivedPost);
-                        $mainM = 11; $subM = 38;
-                        $id = $this->insertPerData($user_id,$mainM,$subM,$archivedPost);                   
-                    }               
+                if (in_array(11, $mainModule)) {
+                    if (in_array(38, $subModule)) {
+                        $archivedPost = implode(',', $archivedPost);
+                        $mainM = 11;
+                        $subM = 38;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $archivedPost);
+                    }
                 }
             }
             /******************  
              * 12 - In Conversation with Expert 39-40
-             * ****************/
-            {
-                if(in_array(12,$mainModule)){
-                    if(in_array(39,$subModule)){
-                        $conExpert = implode(',',$conExpert);
-                        $mainM = 12; $subM = 39;
-                        $id = $this->insertPerData($user_id,$mainM,$subM,$conExpert);                   
-                    }               
+             * ****************/ {
+                if (in_array(12, $mainModule)) {
+                    if (in_array(39, $subModule)) {
+                        $conExpert = implode(',', $conExpert);
+                        $mainM = 12;
+                        $subM = 39;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $conExpert);
+                    }
                 }
-                if(in_array(12,$mainModule)){
-                    if(in_array(40,$subModule)){
-                        $conArchive = implode(',',$conArchive);
-                        $mainM = 12; $subM = 40;
-                        $id = $this->insertPerData($user_id,$mainM,$subM,$conArchive);                   
-                    }               
+                if (in_array(12, $mainModule)) {
+                    if (in_array(40, $subModule)) {
+                        $conArchive = implode(',', $conArchive);
+                        $mainM = 12;
+                        $subM = 40;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $conArchive);
+                    }
                 }
-                
             }
             /******************  
              * 13 - Banner Image world of standard
@@ -784,15 +791,15 @@ class Admin extends CI_Controller
     {
         $id = encryptids("D", $_SESSION['admin_id']);
         $user_log_id = encryptids("D", $_SESSION['user_log_id']);
-      
-         //  echo $id ; exit();
+
+        //  echo $id ; exit();
         $logs = array(
-            'logout_on' => GetCurrentDateTime('Y-m-d h:i:s')           
-           
+            'logout_on' => GetCurrentDateTime('Y-m-d H:i:s')
+
         );
-        $insert_logs = $this->Admin_model->updateUsersLogs($id,$user_log_id,$logs);
-      
-        
+        $insert_logs = $this->Admin_model->updateUsersLogs($id, $user_log_id, $logs);
+
+
         $this->Admin_model->adminLogout();
         //$this->session->session_unset();
         $this->session->sess_destroy();
@@ -807,17 +814,17 @@ class Admin extends CI_Controller
     }
     public function feedback()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(26, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 26;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(26, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 26;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         //  print_r($data); die;
         $this->load->model('Users/Users_model');
         $data['feedback'] = $this->Users_model->get_feedback_data();
@@ -835,9 +842,14 @@ class Admin extends CI_Controller
     }
     public function profile_list()
     {
-        
+        $data = array();
+        $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $data['admin_id'] = $admin_id;
+        $data['admin_type'] =  encryptids("D", $_SESSION['admin_type']);
+        $data['details'] = $this->Admin_model->getAdminDetail($admin_id);
+    
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/profile_list');
+        $this->load->view('admin/profile_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function archive_feedback($id)
@@ -868,19 +880,19 @@ class Admin extends CI_Controller
     }
     public function letest_news()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(27, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 27;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }else{
-            $data['permissions']=""; 
-          }
+            if (in_array(27, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 27;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        } else {
+            $data['permissions'] = "";
+        }
         // echo "hiiii"; die;
         $data['news'] = $this->Admin_model->getLetestNews();
         // print_r($data); die;
@@ -1057,19 +1069,19 @@ class Admin extends CI_Controller
 
     public function upcoming_events()
     {
-       // print_r($_SESSION); die;
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        // print_r($_SESSION); die;
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(28, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 28;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
-//print_r($data); die;
+            if (in_array(28, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 28;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
+        //print_r($data); die;
         $data['events'] = $this->Admin_model->getEvent();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/upcoming_events', $data);
@@ -1244,7 +1256,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/events_view', $data);
         $this->load->view('admin/footers/admin_footer');
     }
-   
+
 
 
     public function insertPerData($user_id, $mainM, $subM, $permissions)
@@ -1257,7 +1269,7 @@ class Admin extends CI_Controller
             'permissions' => $permissions,
             'status' => 1,
             'created_by' => $admin_id,
-            'created_on' => GetCurrentDateTime('Y-m-d h:i:s')
+            'created_on' => GetCurrentDateTime('Y-m-d H:i:s')
 
         );
         $id = $this->Admin_model->insertPermissionData($dataObj);
@@ -1270,29 +1282,29 @@ class Admin extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function login_report_list()
-    { 
-        $data =array();
+    {
+        $data = array();
         $allRecords = array();
-        
+
         $allRecords = $this->Admin_model->getUsersLoginReport();
         $data['allRecords'] = $allRecords;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/login_report_list',$data);
+        $this->load->view('admin/login_report_list', $data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function log_report_list()
     {
-        $data =array();
+        $data = array();
         $adminallRecords = array();
         $allRecords = $this->Admin_model->getAllLogs();
-        
-       
+
+
 
 
 
         $data['allRecords'] = $allRecords;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/log_report_list',$data);
+        $this->load->view('admin/log_report_list', $data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function feedback_detail($id)
@@ -1361,13 +1373,20 @@ class Admin extends CI_Controller
         //echo $token;
         // echo json_encode($output);
         $input = $this->input->post('uid');
+        $uidtype = $this->input->post('uidtype');
+        
         $curl_req1 = curl_init();
         $parametersNew = json_encode(array(
             "token" => $token,
             "input" => $input,
-            "search_by" => 2,
+            "search_by" => $uidtype,
             "user_id" => "EXF090323"
         ));
+
+        // $parametersNew = json_encode(array ("token"=>"b1b0b8a24aa299054529c0c24f3583f8b16b866a473d34cb1f771c5da723f7361364b31bec2854192547f01a9c5511cf1bb2ad25d2de7f370f870c4482565e85",
+        // "input"=>"agrawal@bis.org.in",
+        //  "search_by"=>"1",
+        //    "user_id"=> "EXF090323"));
         curl_setopt_array($curl_req1, array(
             CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/sso_api/Sso_exchange_api/GetData',
             CURLOPT_RETURNTRANSFER => true,
@@ -1387,7 +1406,7 @@ class Admin extends CI_Controller
         $responseNew = curl_exec($curl_req1);
         $responseNew = json_decode($responseNew, true);
         // echo json_encode($output);
-        // exit();
+        //exit();
 
         // $response = array(
         //     'user_id' => 1800003549,
@@ -1461,7 +1480,7 @@ class Admin extends CI_Controller
                 'admin_type' => $admin_type,
                 'created_by' => 1
                 // 'modified_by' => 1
-                //'created_on' => GetCurrentDateTime('Y-m-d h:i:s'),
+                //'created_on' => GetCurrentDateTime('Y-m-d H:i:s'),
             );
             $admin_id = $this->Admin_model->insertData($data);
 
@@ -1533,7 +1552,7 @@ class Admin extends CI_Controller
                 'name' =>  $name,
                 'email_id' => $email,
                 'username' => $email,
-                'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
+                'modified_on' => GetCurrentDateTime('Y-m-d H:i:s'),
                 'modified_by' => $admin_id,
             );
             $id = $this->Admin_model->updateData($id, $dbObj);
@@ -1553,7 +1572,8 @@ class Admin extends CI_Controller
             $admin_id = $this->input->post('id');
 
             $dbObj = array(
-               'modified_by' => $login_admin_id,
+                'modified_by' => $login_admin_id,
+                'modified_on' => GetCurrentDateTime('Y-m-d H:i:s'),
             );
             $uid = $this->Admin_model->updateData($admin_id, $dbObj);
 
@@ -1565,6 +1585,77 @@ class Admin extends CI_Controller
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    }
+    public function resetPassword()
+    {
+        try {
+            $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
+            $admin_id = $this->input->post('id');
+            $email_id = $this->input->post('email');
+            //$random_pass	 = $this->randomPassword();
+            $random_pass     = 12345678;
+            //$newPw = password_hash($random_pass, PASSWORD_BCRYPT);
+
+
+            $dbObj = array(
+                'password' =>  $random_pass,
+                'modified_on' => GetCurrentDateTime('Y-m-d H:i:s'),
+                'modified_by' => $login_admin_id,
+            );
+
+            $id = $this->Admin_model->updateData($admin_id, $dbObj);
+            $adminDetails = $this->Admin_model->getAdminDetail($id);
+            $name = $adminDetails['name'];
+
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Reset password successfully.';
+
+                // email to Admin to notify  start
+                $msg = "Dear " . $name .
+                    " <p>Your password has changed. Your login credentials for the portal are:
+                    </p>
+                    <p>Username: " . $email_id . "</p>
+                    <p>Password: " . $random_pass . "</p>";
+                $subject = "Login Credentials for the BIS Portal.";
+
+                $config = array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'exchangeforum1@gmail.com',
+                    'smtp_pass' => 'niycbrjxnzfazrud',
+                    'mailtype' => 'html',
+                    'charset' => 'iso-8859-1',
+                );
+
+                $this->load->library('email', $config);
+                $this->email->initialize($config); // add this line
+                $this->email->set_newline("\r\n");
+                $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                $this->email->to($email_id);
+                $this->email->subject($subject);
+                $this->email->message($msg);
+                $this->email->send();
+                // email code end
+
+
+
+
+
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed , Please try again.';
             }
             echo  json_encode($data);
             return true;
@@ -1595,17 +1686,7 @@ class Admin extends CI_Controller
         }
         echo  json_encode($data);
     }
-    public function randomPassword()
-    {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass); //turn the array into a string
-    }
+
 
     public function addbannerimg()
     {
@@ -1685,23 +1766,23 @@ class Admin extends CI_Controller
     }
     public function cmsManagenent_dashboard()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
-             // print_r($_SESSION);
-              if (in_array(8, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 8;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
+            // print_r($_SESSION);
+            if (in_array(8, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 8;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
 
-              $data['permissions'] =  $_SESSION['sub_mod_per'];
-          }else{
-            $data[]="";
-          }
-         // print_r($data); die;
+            $data['permissions'] =  $_SESSION['sub_mod_per'];
+        } else {
+            $data[] = "";
+        }
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/cmsManagenent_dashboard',$data);
+        $this->load->view('admin/cmsManagenent_dashboard', $data);
         $this->load->view('admin/footers/admin_footer');
     }
 
@@ -1719,17 +1800,17 @@ class Admin extends CI_Controller
         //       }
         //       $data['permissions'] =  $permissions;
         //   }
-          if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(21, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 21;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(21, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 21;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         // print_r($data); die;
         $data['banner_data'] = $this->Admin_model->bannerAllData();
         $this->load->view('admin/headers/admin_header');
@@ -1814,17 +1895,17 @@ class Admin extends CI_Controller
 
     public function about_exchange_forum()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(22, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 22;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(22, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 22;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->model('admin_model');
         $data['about_exchange_forum'] = $this->admin_model->aboutExchangeForumData();
         $this->load->view('admin/headers/admin_header');
@@ -1936,17 +2017,17 @@ class Admin extends CI_Controller
 
     public function contact_us()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(23, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 23;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(23, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 23;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         //  print_r($permissions); die;
         $this->load->model('admin_model');
         $data['contact_us'] = $this->admin_model->contactUsData();
@@ -2047,17 +2128,17 @@ class Admin extends CI_Controller
 
     public function useful_links()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(24, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 24;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(24, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 24;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->model('admin_model');
         $data['useful_link'] = $this->admin_model->useful_links();
         $this->load->view('admin/headers/admin_header');
@@ -2180,17 +2261,17 @@ class Admin extends CI_Controller
 
     public function follow_us()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(24, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 24;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(24, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 24;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->model('admin_model');
         $data['follow_us'] = $this->admin_model->follow_us();
         $this->load->view('admin/headers/admin_header');
@@ -2320,17 +2401,17 @@ class Admin extends CI_Controller
 
     public function photos()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(25, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 25;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(25, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 25;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->model('admin_model');
         $data['photos'] = $this->admin_model->allPhotos();
         $this->load->view('admin/headers/admin_header');
@@ -2446,18 +2527,18 @@ class Admin extends CI_Controller
     public function videos()
     {
         if ($this->Admin_model->checkAdminLogin()) {
-            if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+            if (encryptids("D", $_SESSION['admin_type']) == 3) {
                 //  print_r($_SESSION); die;
-                  if (in_array(25, $_SESSION['sub_mod_per'])) { 
-                      $sub_model_id = 25;
-                      $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-                  }else{
-                      $sub_model_id = 0;
-                      $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-                  }
-                  $data['permissions'] =  $permissions;
-              }
-            $this->load->model('Admin/Admin_model');
+                if (in_array(25, $_SESSION['sub_mod_per'])) {
+                    $sub_model_id = 25;
+                    $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+                } else {
+                    $sub_model_id = 0;
+                    $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+                }
+                $data['permissions'] =  $permissions;
+            }
+            // $this->load->model('Admin/Admin_model');
             $data['video'] = $this->Admin_model->allVideos();
             $this->load->view('admin/headers/admin_header');
             $this->load->view('admin/videos', $data);
@@ -2677,15 +2758,15 @@ class Admin extends CI_Controller
 
     public function updateQuizStatus($id)
     {
-        $this->load->model('Admin/Admin_model');
+        //$this->load->model('Admin/Admin_model');
         $formdata['status'] = $this->input->post('status_id');
-        $formdata['remark'] = $this->input->post('remark');
+        //$formdata['remark'] = $this->input->post('remark');
 
         $encAdminId = $this->session->userdata('admin_id');
         $modify_by = encryptids("D", $encAdminId);
 
         $formdata['modify_by'] = $modify_by;
-        $formdata['modify_on'] = date('Y-m-d : h:i:s');
+        $formdata['modify_on'] = date('Y-m-d H:i:s');
         $quiz_id = $this->Admin_model->updateQuizStatus($id, $formdata);
         if ($quiz_id == 1) {
             $this->session->set_flashdata('MSG', ShowAlert("Quiz approved successfully.", "SS"));
@@ -2695,7 +2776,24 @@ class Admin extends CI_Controller
             redirect(base_url() . "Quiz/manage_quiz_list", 'refresh');
         }
     }
+    public function rejectQuiz($id)
+    {
+        $encAdminId = $this->session->userdata('admin_id');
+        $modify_by = encryptids("D", $encAdminId);
+        $formdata['status'] = 4;
+        $formdata['remark'] = $this->input->post('remark');
+        $formdata['modify_by'] = $modify_by;
+        $formdata['modify_on'] = date('Y-m-d H:i:s');
 
+        $quiz_id = $this->Admin_model->updateQuizStatus($id, $formdata);
+        if ($quiz_id == 1) {
+            $this->session->set_flashdata('MSG', ShowAlert("Quiz rejected successfully.", "SS"));
+            redirect(base_url() . "Quiz/manage_quiz_list", 'refresh');
+        } else {
+            $this->session->set_flashdata('MSG', ShowAlert("Failed to reject by admin,Please try again", "DD"));
+            redirect(base_url() . "Quiz/manage_quiz_list", 'refresh');
+        }
+    }
 
     public function your_wall_list()
     {
@@ -2842,13 +2940,13 @@ class Admin extends CI_Controller
             $this->load->model('admin/By_the_mentor_model');
             $que_id = $this->input->post('que_id');
             // $id = $this->Your_wall_model->yourwallPublish($que_id);
-            $email_id=$this->input->post('email');
-           //$email_id="vol.bhagyashree@gmail.com";
-            $msg="Your content has been approved and published on the forum";
-            $subject="Exchange form noification.";
-            $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
-           // $id = $this->By_the_mentor_model->btmPublish($que_id);
-           $id = $this->Your_wall_model->yourwallPublish($que_id);
+            $email_id = $this->input->post('email');
+            //$email_id="vol.bhagyashree@gmail.com";
+            $msg = "Your content has been approved and published on the forum";
+            $subject = "Exchange form noification.";
+            $this->By_the_mentor_model->send_email($msg, $subject, $email_id);
+            // $id = $this->By_the_mentor_model->btmPublish($que_id);
+            $id = $this->Your_wall_model->yourwallPublish($que_id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Yourwall Published successfully.';
@@ -2914,17 +3012,17 @@ class Admin extends CI_Controller
     }
     public function byTheMentors()
     {
-        if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
             //  print_r($_SESSION); die;
-              if (in_array(4, $_SESSION['sub_mod_per'])) { 
-                  $sub_model_id = 1;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }else{
-                  $sub_model_id = 0;
-                  $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
-              }
-              $data['permissions'] =  $permissions;
-          }
+            if (in_array(4, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 1;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        }
         $this->load->model('admin/By_the_mentor_model');
         // $this->load->model('admin/By_the_mentor_model');        
         $data['archive'] = $this->By_the_mentor_model->all_archievd_btm();
@@ -2977,21 +3075,20 @@ class Admin extends CI_Controller
     }
     public function btm_publish()
     {
-        
+
         try {
             $this->load->model('admin/By_the_mentor_model');
-            $que_id = $this->input->post('que_id');            
-            $email_id=$this->input->post('email');
-           //$email_id="vol.bhagyashree@gmail.com";
-            $msg="Your content has been approved and published on the forum";
-            $subject="Exchange forum noification";
-            $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
+            $que_id = $this->input->post('que_id');
+            $email_id = $this->input->post('email');
+            //$email_id="vol.bhagyashree@gmail.com";
+            $msg = "Your content has been approved and published on the forum";
+            $subject = "Exchange forum noification";
+            $this->By_the_mentor_model->send_email($msg, $subject, $email_id);
             $id = $this->By_the_mentor_model->btmPublish($que_id);
-        
+
             if ($id) {
                 $data['status'] = 1;
-                $data['message'] = 'Publish successfully.';                
-                
+                $data['message'] = 'Publish successfully.';
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to publish, Please try again.';
@@ -3283,7 +3380,7 @@ class Admin extends CI_Controller
 
     public function updateLiveSessiionStatus($id)
     {
-        $this->load->model('Admin/Admin_model');
+        //$this->load->model('Admin/Admin_model');
         $formdata['status'] = $this->input->post('status_id');
         $formdata['reason'] = $this->input->post('remark');
 
@@ -3291,7 +3388,7 @@ class Admin extends CI_Controller
         $modify_by = encryptids("D", $encAdminId);
 
         $formdata['modify_by'] = $modify_by;
-        $formdata['updated_on'] = date('Y-m-d : h:i:s');
+        $formdata['updated_on'] = date('Y-m-d  H:i:s');
         $quiz_id = $this->Admin_model->updateLiveSessiionStatus($id, $formdata);
         if ($quiz_id == 1) {
             $this->session->set_flashdata('MSG', ShowAlert("Status Updated", "SS"));
@@ -3304,7 +3401,7 @@ class Admin extends CI_Controller
 
     public function updateLvsStandarStatus($id)
     {
-        $this->load->model('Admin/Admin_model');
+        //$this->load->model('Admin/Admin_model');
         $formdata['status'] = $this->input->post('status_id');
         $formdata['reason'] = $this->input->post('remark');
 
@@ -3312,7 +3409,7 @@ class Admin extends CI_Controller
         $modify_by = encryptids("D", $encAdminId);
 
         $formdata['modify_by'] = $modify_by;
-        $formdata['updated_on'] = date('Y-m-d : h:i:s');
+        $formdata['updated_on'] = date('Y-m-d H:i:s');
         $quiz_id = $this->Learningscience_model->updateLvsStandarStatus($id, $formdata);
         if ($quiz_id == 1) {
             $this->session->set_flashdata('MSG', ShowAlert("Status Updated", "SS"));

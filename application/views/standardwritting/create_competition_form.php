@@ -211,26 +211,26 @@
                                     <option value="2">Higher Qualification</option>
                                 </select>
                         </div>
-                        <div class="mb-2 col-8" id="standard">
-                        <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
-                                <div class="d-flex">
-                                    <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="9" name="standaed_ix" class="custom-control-input"  id="standaed_ix"  >
-                                        <label class="custom-control-label" for="standaed_ix">9<sup>th</sup>Standard</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="10" name="standard_x" class="custom-control-input"  id="standaed_x"  >
-                                        <label class="custom-control-label" for="standaed_x">10<sup>th</sup>Standard</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="11" name="standard_xi" class="custom-control-input"  id="standaed_xi"  >
-                                        <label class="custom-control-label" for="standaed_xi">11<sup>th</sup>Standard</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="12" name="standard_xii" class="custom-control-input"  id="standaed_xii">
-                                        <label class="custom-control-label" for="standaed_xii">12s<sup>th</sup>Standard</label>
-                                    </div>
-                                </div>
+                        <div class="mb-2 col-8" id="standard_check">
+                                <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
+                                        <div class="d-flex">
+                                            <div class="custom-control custom-checkbox mr-3">
+                                                <input type="checkbox" value="9" name="standard[]" class="custom-control-input"  id="Standard_1"  >
+                                                <label class="custom-control-label" for="Standard_1">9<sup>th</sup>Standard</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mr-3">
+                                                <input type="checkbox" value="10" name="standard[]" class="custom-control-input"  id="Standard_2"  >
+                                                <label class="custom-control-label" for="Standard_2">10<sup>th</sup>Standard</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mr-3">
+                                                <input type="checkbox" value="11" name="standard[]" class="custom-control-input"  id="Standard_3"  >
+                                                <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox mr-3">
+                                                <input type="checkbox" value="12" name="standard[]" class="custom-control-input"  id="Standard_4">
+                                                <label class="custom-control-label" for="Standard_4">12<sup>th</sup>Standard</label>
+                                            </div>
+                                        </div>
                         </div>
                         <!-- <div class="mb-2 col-4">
                                 <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>

@@ -295,7 +295,7 @@
                 <label class="d-block text-font">Number of Prizes<sup class="text-danger">*</sup></label>
 
                 <input type="text" class="form-control input-font" name="fprize" id="fprizes" placeholder="Enter Prizes" value="<?php if (!empty($firstprize['no_of_prize'])) {
-               echo  $firstprize['no_of_prize'];                                                                                                        } else {                                                                                                                    echo 0;                                                                                                                                } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
+               echo  $firstprize['no_of_prize'];                                                                                                        } else {                                                                                                                    echo "";                                                                                                                                } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                 <span class="error_text"><?php echo form_error('fprizes'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
@@ -389,7 +389,7 @@
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes</label>
 
-                <input type="text" class="form-control input-font" name="sprize" id="sprizes" placeholder="Enter Prizes" value="<?php if (!empty($secondprize['no_of_prize'])) {      echo  $secondprize['no_of_prize'];  } else {   echo 0; } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
+                <input type="text" class="form-control input-font" name="sprize" id="sprizes" placeholder="Enter Prizes" value="<?php if (!empty($secondprize['no_of_prize'])) {      echo  $secondprize['no_of_prize'];  } else {   echo ""; } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
 
                 <span class="error_text"><?php echo form_error('sprizes'); ?></span>
               </div>
@@ -487,7 +487,7 @@
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes</label>
 
-                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php if (!empty($thirdprize['no_of_prize'])) {       echo  $thirdprize['no_of_prize']; } else { echo 0;  } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
+                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php if (!empty($thirdprize['no_of_prize'])) {       echo  $thirdprize['no_of_prize']; } else { echo "";  } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                 <span class="error_text"><?php echo form_error('tprize'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
@@ -586,7 +586,7 @@
               <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Number of Prizes</label>
 
-                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php if (!empty($fourthprize['no_of_prize'])) { echo  $fourthprize['no_of_prize'];                                                                                                      } else {                                                                                                                      echo 0;                                                                                                                                } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
+                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php if (!empty($fourthprize['no_of_prize'])) { echo  $fourthprize['no_of_prize'];                                                                                                      } else {                                                                                                                      echo "";                                                                                                                                } ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
                 <span class="error_text"><?php echo form_error('cprize'); ?></span>
               </div>
               <div class="mb-2 col-md-4">
@@ -835,6 +835,65 @@ document.getElementsByName("start_date")[0].setAttribute('min', today);
       $("#standard_check").hide();
     }
   $(document).ready(function() {
+    
+
+$("#fprizes").keydown(function(e) {
+
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+        (e.keyCode >= 35 && e.keyCode <= 40)) {
+        return;
+    }
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+});
+
+$("#sprizes").keydown(function(e) {
+
+if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+    (e.keyCode >= 35 && e.keyCode <= 40)) {
+    return;
+}
+if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+    e.preventDefault();
+}
+});
+
+$("#tprize").keydown(function(e) {
+
+if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+    (e.keyCode >= 35 && e.keyCode <= 40)) {
+    return;
+}
+if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+    e.preventDefault();
+}
+});
+
+$("#cprize").keydown(function(e) {
+
+if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+    (e.keyCode >= 35 && e.keyCode <= 40)) {
+    return;
+}
+if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+    e.preventDefault();
+}
+});
+
+
+
+
+
+
+
+
+
+
     var id = "<?php echo $quizdata['que_bank_id']; ?>"
     getQuestionListByQueBankId(id);
     getQBDetails(id);
@@ -1197,6 +1256,7 @@ document.getElementsByName("start_date")[0].setAttribute('min', today);
 
 
 <script>
+
   //Banner Image Preview
   var loadFileBanner = function(event) {
     $("#outputbanner").show();
@@ -1235,10 +1295,7 @@ document.getElementsByName("start_date")[0].setAttribute('min', today);
     }
   };
 
-  function resetSecond() {
-    $("#sprize_img").val('');
-    $("#outputSecond").hide();
-  }
+  
   //end
 
   //Second Prize Image Preview
@@ -1251,10 +1308,7 @@ document.getElementsByName("start_date")[0].setAttribute('min', today);
     }
   };
 
-  function resetThird() {
-    $("#tprize_img").val('');
-    $("#outputThird").hide();
-  }
+  
   //end
   // 4 Prize Image Preview
   var loadFileFourth = function(event) {
@@ -1266,10 +1320,7 @@ document.getElementsByName("start_date")[0].setAttribute('min', today);
     }
   };
 
-  function resetFourth() {
-    $("#cprize_img").val('');
-    $("#outputFourth").hide();
-  }
+  
   //end
   $(document).ready(function() {
     $('#add_file1').hide();
@@ -1670,7 +1721,7 @@ document.getElementsByName("start_date")[0].setAttribute('min', today);
 
         
         var sprizes = $("#sprizes").val();
-        if (sprizes > 0) {
+        if (sprizes > 0 ) {
             var sdetails = $("#sdetails").val();
             if (sdetails == "" || sdetails == null) {
                 if ($("#sdetails").next(".validation").length == 0) {

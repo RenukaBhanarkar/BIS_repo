@@ -380,7 +380,7 @@
                                         <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                     <?php  }
                                   } else { ?>
-                                    <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                    <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                 <?php }                          
                              
                              }
@@ -399,7 +399,7 @@
                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                         <?php  }
                                       } else { ?>
-                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                        <a href="<?= base_url(); ?>users/loginQuiz<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                     <?php }
                                  }
                                  
@@ -418,7 +418,7 @@
                                                 <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                             <?php  }
                                           } else { ?>
-                                            <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate  </span></a>
+                                            <a href="<?= base_url(); ?>users/loginQuiz<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate  </span></a>
                                         <?php }
                                      } 
                                      
@@ -437,7 +437,7 @@
                                                     <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                                 <?php  }
                                               } else { ?>
-                                                <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                                <a href="<?= base_url(); ?>users/loginQuiz<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                             <?php }
                                          }
                                          
@@ -458,7 +458,7 @@
                                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                                         <?php  }
                                                     } else { ?>
-                                                        <a href="<?= base_url(); ?>users/login" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                                        <a href="<?= base_url(); ?>users/loginQuiz<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                                     <?php } ?>
                                                 </p>
 

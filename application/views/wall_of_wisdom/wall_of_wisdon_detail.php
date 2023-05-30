@@ -4,7 +4,12 @@
                         <h1 class="h3 mb-0 text-gray-800">Wall of Wisdom Detail</h1>
                         <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'wall_of_wisdom';?>" >Wall Of Wisdom</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Wall of Wisdom Detail</li>

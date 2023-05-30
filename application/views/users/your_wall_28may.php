@@ -108,7 +108,7 @@
     /* max-width: 100%; */
     /* height: auto; */
     width: 100%;
-    height: 392px;
+    height: 510px;
 }
 .blog-details .meta-top ul {
     display: flex;
@@ -140,6 +140,9 @@
                 <div class="bloginfo">
                     <h3 style="margin-bottom: 5px; color: #0086b2!important;font-weight: 600;">Your Wall</h3>
                 </div>
+                <?php if($this->session->flashdata()){
+                echo $this->session->flashdata('MSG');
+            } ?>
                 <div class="heading-underline" style="width: 113px;">
                     <div class="left_1"></div><div class="right"></div>
                  </div>
@@ -294,7 +297,7 @@
                                     
                                    </div>
                                    <div class="col-2">
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFirst">
+                                    <button type="button" class="btn btn-primary btn-sm previre_img">
                                         Preview
                                     </button>
                                     </div>
@@ -319,9 +322,10 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Upload Document</label>
-                                <div class="d-flex">
-                                    <div>
+                                <div class="">
+                                    <div class="col-12">
                                     <input type="file" class="file-upload-field" name="document" id="document" value="" accept="pdf/*" >
+                                    </div><div class="col-12">
                                     <span id="err_document" class="text-danger"></span>
                                    </div>
                                     
@@ -460,6 +464,19 @@ $("#your_wall_form").modal('show');
 $(document).ready(function(){
 $('#addwall').removeClass('was-validated');
 
+$('.previre_img').click(function(){
+    $('#exampleModalFirst').modal('show');
+    var abc=$(this).attr('data-id');
+    //     Swal.fire({
+    // title: 'Sweet!',
+    // text: 'Modal with a custom image.',
+    // imageUrl: abc,
+    // imageWidth: 400,
+    // imageHeight: 200,
+    // imageAlt: 'Custom image',
+    // })
+});
+
 // $('#image_thumb').on('change',function(){
 //     alert('jkgjh');
 // })
@@ -469,6 +486,9 @@ $('#image_thumb').on('change', function(){
                     var is_valid = true;
                     if ($("#image_thumb").val() != '') {
                     var fileSize = $('#image_thumb')[0].files[0].size;
+                    var validExtensions = ['jpg', 'jpeg', 'png','JPG','JPEG']; //array of valid extensions
+                    var fileName = $("#image_thumb").val();;
+                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                     if (fileSize > 204800) {
                          is_valid = false;
                         allfields = false;
@@ -491,18 +511,7 @@ $('#image_thumb').on('change', function(){
                         allfields = false;
                                                
                        
-                    }else{
-                        
-                        $("#err_thumb").text(""); // remove it
-                        // $("#err_image").after("");
-
-                    }
-                    // check type  start
-                    
-                    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
-                    var fileName = $("#image_thumb").val();;
-                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-                    if ($.inArray(fileNameExt, validExtensions) == -1) {
+                    }else if ($.inArray(fileNameExt, validExtensions) == -1) {
                         $('#image_thumb').val('');
                         $('#err_thumb').text('This value is required')
                         // alert("Invalid file type");
