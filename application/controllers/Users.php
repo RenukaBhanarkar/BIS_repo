@@ -1850,21 +1850,29 @@ class Users extends CI_Controller
             $this->by_the_mentor_model->send_email($msg,$subject,$email_id);
 
             $this->session->set_flashdata('MSG', ShowAlert("Response Submitted Successfully", "SS"));
-            redirect(base_url() . "users/yourwall", 'refresh');
+            // redirect(base_url() . "users/yourwall", 'refresh');
+            redirect(base_url() . "users/your_wall_posts", 'refresh');
         } else {
         }
     }
     public function byTheMentor(){
+        $this->load->model('Admin/by_the_mentor_model');
+        if (isset($_SESSION['admin_id'])) {
+            $user_id= encryptids("D", $_SESSION['admin_id']);
+            $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
+        }else{
+            $data['linit']="0";
+        }
       //  print_r($_SESSION); die;
         // $formdata1['email']= encryptids("D", $_SESSION['admin_email']);
         // $formdata1['name']= encryptids("D", $_SESSION['admin_name']);
         // $formdata1['admin']= encryptids("D", $_SESSION['admin']);
-        $user_id= encryptids("D", $_SESSION['admin_id']);
+       // $user_id= encryptids("D", $_SESSION['admin_id']);
         // $formdata1['admin_type']= encryptids("D", $_SESSION['admin_type']);
         //  print_r($formdata1); die;
-        $this->load->model('Admin/by_the_mentor_model');
+        
         $data['by_the_mentor'] = $this->by_the_mentor_model->getThreeBTM();
-        $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
+       
        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/users_by_the_mentor', $data);
@@ -3329,6 +3337,20 @@ class Users extends CI_Controller
        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/essay_writing_comp',$data);
+        $this->load->view('users/footers/footer');
+    }
+    public function poster_making_comp(){
+        $data['poster_making']=$this->Miscellaneous_competition->getPublishedComp('100',array(2));        
+       //print_r($data); die;
+        $this->load->view('users/headers/header');
+        $this->load->view('users/poster_making_comp',$data);
+        $this->load->view('users/footers/footer');
+    }
+    public function more_copetition(){
+        $data['more_copetition']=$this->Miscellaneous_competition->getPublishedComp('100',array(3,4,5));        
+       //print_r($data); die;
+        $this->load->view('users/headers/header');
+        $this->load->view('users/more_copetition',$data);
         $this->load->view('users/footers/footer');
     }
     
