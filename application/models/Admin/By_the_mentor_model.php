@@ -246,5 +246,13 @@ class By_the_mentor_model extends CI_Model {
         //     $res='0';
         // } 
     }
+    public function getAllBtmPulishedByUser($user_id){
+        $this->db->select('*');
+        $this->db->from('tbl_by_the_mentors');
+        $this->db->where('user_id',$user_id);
+        $query=$this->db->get();
+        $res=$query->result_array();
+        return $res;
+    }
 
 }

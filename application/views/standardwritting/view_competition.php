@@ -121,6 +121,34 @@
                                 <p><?= $quizdata['title']; ?></p>
                             </div>
                         </div>
+                        <?php if($quizdata['comp_level']==2){ ?>
+                        <?php if(!$quizdata['region']==0){ ?>
+                            <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Region Name<sup class="text-danger">*</sup></label>
+                            <div>
+                                <p><?= $quizdata['uvc_region_title']; ?></p>
+                            </div>
+                        </div> 
+                        <?php } ?>
+                        <?php }else if($quizdata['comp_level']==3){ ?>
+                            <?php if(!$quizdata['branch']==0){ ?>
+                            <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Branch Name<sup class="text-danger">*</sup></label>
+                            <div>
+                                <p><?= $quizdata['uvc_department_name']; ?></p>
+                            </div>
+                        </div> 
+                        <?php } ?>
+                        <?php }else if($quizdata['comp_level']==4){ ?> 
+                            <?php if(!$quizdata['state']==0){ ?>
+                            <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">State Name<sup class="text-danger">*</sup></label>
+                            <div>
+                                <p><?= $quizdata['state_name']; ?></p>
+                            </div>
+                        </div> 
+                        <?php } ?>
+                        <?php } ?>
                         <!-- <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Language of Quiz<sup class="text-danger">*</sup></label>
                             <div>
@@ -170,9 +198,10 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($quizdata['fprize_image']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if($quizdata['fprize_image']== '') { ?>
+                                <!-- // echo "NA"; -->
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                            <?php } else { ?>
                                   <p><img src="<?php echo base_url().$quizdata['fprize_image']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
@@ -202,16 +231,19 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($quizdata['sprize_image']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if($quizdata['sprize_image']== '') { ?>
+                                <!-- echo "NA"; -->
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                            <?php } else { ?>
                                   <p><img src="<?php echo base_url().$quizdata['sprize_image']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
                         </div>
                     </div>
-                    <?php }  else { echo "Second Prizes not available"; } ?>
+                    <?php }  else { 
+                        // echo "Second Prizes not available";
+                         } ?>
                     <?php if (!empty ($quizdata['tprize_no']) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
@@ -234,16 +266,19 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($quizdata['tprize_image']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if($quizdata['tprize_image']== '') { ?>
+                                <!-- echo "NA"; -->
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                           <?php  } else { ?>
                                   <p><img src="<?php echo base_url().$quizdata['tprize_image']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
                         </div>
                     </div>
-                    <?php }  else { echo "Third Prizes not available"; } ?>
+                    <?php }  else { 
+                        // echo "Third Prizes not available";
+                         } ?>
                     <?php if (!empty ($quizdata['cprize_no']) ){ ?> 
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
@@ -266,16 +301,18 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Image</label>
                             <div>
-                            <?php if($quizdata['cprize_image']== '') { 
-                                echo "NA";
-                             } else { ?>
+                            <?php if($quizdata['cprize_image']== '') { ?>
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                            <?php } else { ?>
                                   <p><img src="<?php echo base_url().$quizdata['cprize_image']; ?>" style="width:200px;"></p>
                             <?php  } ?>
                               
                             </div>
                         </div>
                     </div>
-                    <?php } else { echo "Consolation Prizes not available"; } ?>
+                    <?php } else { 
+                        // echo "Consolation Prizes not available";
+                         } ?>
                     <!-- <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Available for</h4>
@@ -396,7 +433,8 @@
                                 },
                                 success: function(res) {
                                 if (res) {
-                                    location.reload();
+                                   // location.reload();
+                                   window.location.replace('<?php echo base_url().'Standardswritting/manage_competition_list' ?>');
                                 } else {
                                     alert("error");
                                 }
