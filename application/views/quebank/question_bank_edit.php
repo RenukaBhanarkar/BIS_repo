@@ -1,6 +1,8 @@
     <style>
         .new {margin-bottom:20px};
-
+.op_eng{
+    margin-top: 21px;
+}
         
     </style>
     <!-- Begin Page Content -->
@@ -239,7 +241,7 @@
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_eng">
                                           
-                                            <div class="row mt-3" id="opt1_blk">
+                                            <div class="row" id="opt1_blk">
                                             <label class="d-block text-font mr-3">English Option</label>
                                                 <div class="mb-2  d-flex">
                                                     <div class="col-12">
@@ -253,7 +255,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-3" id="opt2_blk">
+                                            <div class="row" id="opt2_blk" style="margin-top:21px;">
                                                 <div class="mb-2  d-flex">
 
                                                     <div class="col-12">
@@ -266,7 +268,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-3" id="opt3_blk">
+                                            <div class="row" id="opt3_blk" style="margin-top:21px;">
                                                 <div class="mb-2  d-flex">
 
                                                     <div class="col-12">
@@ -279,7 +281,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-3" id="opt4_blk">
+                                            <div class="row" id="opt4_blk" style="margin-top:21px;">
                                                 <div class="mb-2  d-flex">
 
                                                     <div class="col-12">
@@ -292,7 +294,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-3" id="opt5_blk">
+                                            <div class="row" id="opt5_blk" style="margin-top:21px;">
                                                 <div class="mb-2  d-flex">
 
                                                     <div class="col-12">
@@ -386,25 +388,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
-                                                    <div class="mb-2 col-md-4 d-flex">
+                                                    <div class="mb-2 col-md-4">
                                                         <input class="form-control-radio input-font ml-3 mt-3" type="radio" name="correct_answer" id="r2" value="2">
 
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
-                                                    <div class="mb-2 col-md-4 d-flex">
+                                                    <div class="mb-2 col-md-4">
                                                         <input class="form-control-radio input-font ml-3 mt-4" type="radio" name="correct_answer" id="r3" value="3">
 
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
-                                                    <div class="mb-2 col-md-4 d-flex">
+                                                    <div class="mb-2 col-md-4">
                                                         <input class="form-control-radio input-font ml-3 mt-4" type="radio" name="correct_answer" id="r4" value="4">
 
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
-                                                    <div class="mb-2 col-md-4 d-flex">
+                                                    <div class="mb-2 col-md-4">
                                                         <input class="form-control-radio input-font ml-3 mt-4" type="radio" name="correct_answer" id="r5" value="5">
 
                                                     </div>
@@ -1391,7 +1393,10 @@
                                 if (option1 == "") {
                                     if ($("#option1").next(".validation").length == 0) {
                                         $("#option1").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
-                                        // $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        if ($("#opt_type_1").next(".validation").length == 0) {
+                                        $("#opt_type_1").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        }
+                                        $("#r1").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
                                         // $("#opt_type_1").css('margin-bottom',"20px");
                                     }
                                     if (!focusSet) {
@@ -1400,6 +1405,7 @@
                                     allfields = false;
                                 } else {
                                     $("#option1").next(".validation").remove();
+                                    $("#opt_type_1").next(".validation").remove();
                                 }
                             } else {
                                 var option1_image = $("#option1_image").val();
@@ -1418,6 +1424,8 @@
                                 if (option2 == "") {
                                     if ($("#option2").next(".validation").length == 0) {
                                         $("#option2").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
+                                        $("#opt_type_2").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        $("#r2").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2").focus();
@@ -1444,6 +1452,8 @@
                                 if (option3 == "") {
                                     if ($("#option3").next(".validation").length == 0) {
                                         $("#option3").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
+                                        $("#opt_type_3").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        $("#r3").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3").focus();
@@ -1471,6 +1481,8 @@
                                 if (option4 == "") {
                                     if ($("#option4").next(".validation").length == 0) {
                                         $("#option4").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
+                                        $("#opt_type_4").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        $("#r4").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4").focus();
@@ -1497,6 +1509,8 @@
                                 if (option5 == "") {
                                     if ($("#option5").next(".validation").length == 0) {
                                         $("#option5").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
+                                        $("#opt_type_5").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        $("#r5").after("<div class='validation' style='color:white; margin-left:16px;margin-bottom:15px; '> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5").focus();
@@ -1539,7 +1553,9 @@
                                 if (option1_h == "") {
                                     if ($("#option1_h").next(".validation").length == 0) {
                                         $("#option1_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
-                                        // $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;margin-bottom:15px;'> .</div>");
+                                        if ($("#opt_type_1").next(".validation").length == 0) {
+                                        $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;margin-bottom:15px;'> tr.</div>");
+                                        }
                                         // $("#opt_type_1").css('margin-bottom',"20px");
                                         // $("#opt_type_1").addClass("new");
                                     }
@@ -1549,6 +1565,7 @@
                                     allfields = false;
                                 } else {
                                     $("#option1_h").next(".validation").remove();
+                                    $("#opt_type_1").next(".validation").remove();
                                 }
                             } else {
                                 var option1_h_image = $("#option1_h_image").val();

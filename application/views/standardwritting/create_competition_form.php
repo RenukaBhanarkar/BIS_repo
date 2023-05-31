@@ -590,6 +590,13 @@
         CKEDITOR.replace( 'description' );
         CKEDITOR.replace( 'terms_conditions' );
 </script>
+<script type="text/javascript">
+    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("start_date")[0].setAttribute('min', today);
+        document.getElementsByName("end_date")[0].setAttribute('min', today);
+    }
+</script>
 <script>   
     function submitForm(event){
         $('#competition_reg').addClass('was-validated');
