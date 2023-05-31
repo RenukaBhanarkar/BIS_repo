@@ -28,7 +28,7 @@
                 
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item " aria-current="page"><a href="<?php echo base_url().'admin/byTheMentors/'; ?>">By The Mentors</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Bt the mentors view</li>
+                <li class="breadcrumb-item active" aria-current="page">By The Mentors View</li>
                 
                 </ol>
             </nav>

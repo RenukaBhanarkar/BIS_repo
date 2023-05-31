@@ -878,6 +878,24 @@ class Admin extends CI_Controller
         $this->load->view('admin/feedback_view');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function task_recevied_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/task_recevied_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_reviewed()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/task_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/task_recevied_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function letest_news()
     {
         if (encryptids("D", $_SESSION['admin_type']) == 3) {

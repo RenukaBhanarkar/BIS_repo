@@ -71,9 +71,18 @@ span.incorrect_answer:after {
 </style>
 <div class="container-fluid">
     <!-- Page Heading -->
-  
-    <!-- Content Row -->
+    
     <div class="row">
+        <div class="col-md-12" style="text-align: end;">
+            <!-- <a class="btn btn-primary btn-sm mr-2">Export as PDF</a> -->
+            <button class="btn btn-info btn-sm mr-2" id="sudo" onclick="print_current_page()" style="margin-top: 25px; margin-right: 70px;">Print</button >
+        </div>
+    </div>
+    <!-- Content Row -->
+    <div class="row" id="result">
+    <div class="bloginfo">
+                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Answer Key</h3>
+            </div>
         <div class="col-12 mt-3">
             <div class="card border-top">
             <?php if (!empty($answerKey)) { ?>
@@ -428,3 +437,26 @@ span.incorrect_answer:after {
 
 </div>
 <!-- End of Main Content -->
+<!-- <script>
+    $('#sudo).click(function(){
+    window.print();
+    return false;
+});
+</script> -->
+<script>
+    $('#sudo').on('click',function(){
+    //     window.print();
+    // return false;
+    function printDiv() 
+{
+  var divToPrint=document.getElementById('result');
+ var newWin=window.open('','Print-Window');
+  newWin.document.open();
+  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+  newWin.document.close();
+  setTimeout(function(){newWin.close();},10);
+}
+printDiv();
+    })
+    
+</script>

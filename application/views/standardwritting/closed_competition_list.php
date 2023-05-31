@@ -6,11 +6,16 @@
             <h1 class="h3 mb-0 text-gray-800">Closed Competition</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Competition</a></li>
-                <!-- <li class="breadcrumb-item active" aria-current="page">Manage New Competition</li> -->
+                <li class="breadcrumb-item active" aria-current="page">Closed Competition</li>
                 
                 </ol>
             </nav>
@@ -73,7 +78,8 @@
                             <td><?php echo $list['review_status'];  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
+                                 <!-- <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a> -->
+                                 <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <?php if(!$list['review_status']==1){ ?>
                                  <button comp-id="<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2 send_for_review" >Send for review</button>
                                  <?php } ?>

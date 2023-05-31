@@ -128,9 +128,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		      <li>
 			      <a class="capital" title="My Activity" href="<?php echo base_url(); ?>users/my_activity_list">My Activity</a>
 		      </li>
-		      <li>
+		      <!-- <li>
 		    	<a class="capital" title="Notifications" href="/notification/list">Notifications</a>
-		      </li>
+		      </li> -->
               <!-- <li>
 		    	<a href="<?php echo base_url(); ?>admin/logout" class="capital" title="Notifications" href="/notification/list">Logout</a>
 		      </li> -->

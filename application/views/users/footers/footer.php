@@ -141,6 +141,21 @@ i.fa.fa-chevron-down {
 <script src="<?php echo base_url(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/font_resize.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/dark_mode.js"></script>
+<!-- <script type="text/javascript">
+   function preventBack(){
+    window.history.forward();
+   }
+   setTimeout("preventBack()",0);
+   window.onunload =function(){null};
+</script> -->
+<!-- <script type="text/javascript">
+      history.pushState({ page: 0 }, "Title 1", "#no-back");
+window.onhashchange = function (event) {
+  window.location.hash = "no-back";
+};
+ </script> -->
+
+
 
 
 <!-- <script type = "text/javascript">  
