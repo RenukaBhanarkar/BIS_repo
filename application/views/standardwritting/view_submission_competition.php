@@ -60,12 +60,13 @@
                                 <td><?php echo $list['score']; ?></td>
                                 <td><?php echo $list['total_marks']; ?></td>
                                 <td><?php if($list['review_status']==1){echo "Send for review";}  ?></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo $list['evaluator'];  ?></td>
+                                <!-- <td><?php if($list['evaluator_name']=="IT Services Department"){echo "not assigned";}else{ echo $list['evaluator_name']; } ?></td> -->
+                                <td><?php echo $list['ev_assigned_on']; ?></td>
                                 
                                 <td class="d-flex">
                                  <a href="<?php echo base_url().'Standardswritting/view_submitted_comp_response/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <a href="#" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
+                                 <a href="#" class="btn btn-primary btn-sm mr-2 abcd" sub-id="<?php echo $list['id']; ?>" comp-id="<?php echo $list['competiton_id']; ?>" user_id="<?php echo $list['user_id']; ?>" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                               </td>
                             </tr>
                             <?php $i++; } } ?>
@@ -91,7 +92,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="col-md-12">
-                                                <table id="example_1" class="table-bordered" style="width:100%">
+                                                <table id="example" class="table-bordered" style="width:100%">
                                                             <thead>
                                                                 <tr>
                                                                     <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th>
@@ -101,16 +102,19 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                <?php if(!empty($evaluators)){ $i=1; foreach($evaluators as $list){ ?>
                                                                 <tr>
-                                                                    <td><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                                                                    <td>1</td>
-                                                                    <td>Name</td>
+                                                                    <td><input class="form-control-input" type="radio" name="evaluator" value="<?php echo $list['user_uid']; ?>" id="flexCheckDefault"></td>
+                                                                    <td><?php echo $i; ?></td>
+                                                                    <td><?php echo $list['name']; ?></td>
+                                                                </tr>
+                                                                <?php $i++; } } ?>
                                                             </tbody>
                                                         </table>
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Assign</button>
+                                                    <button type="button" class="btn btn-primary assign" data-bs-dismiss="modal">Assign</button>
                                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                                 </div>
                                             </div>
@@ -118,9 +122,53 @@
                                     </div>
                                     <!-- Modal -->
 <script>
-    $(document).ready(function () {
-    $('#example_1').DataTable({
-        // scrollX: true,
-    });
+    $(document).ready(function() {
+        $('.abcd').on('click',function(){
+            user_id = $(this).attr('user_id');
+            comp_id = $(this).attr('comp-id');
+            submission_id =$(this).attr('sub-id');
+
+            // console.log(user_id);
+            // console.log(comp_id);
+       
+        $('.assign').click(function(){
+           var id = $('input[name="evaluator"]:checked').val();
+        //    if(id=="undefined"){
+        //     alert("please select");
+        //    }
+        postdata={
+            'user_id':user_id,
+            'comp_id':comp_id,
+            'evaluator':id,
+            // 'submission_id':submission_id
+        };
+        $.ajax({
+                url: "<?= base_url() ?>standardswritting/assign_eveluator",
+                data: postdata,
+                // type: "JSON",
+                method: "post",
+                success: function(response) {
+                    console.log(response);
+                    // var res = JSON.parse(response);
+                    // var selectbox = $('#state_id');
+                    // alert("kjgh");
+                    // location.reload();
+                    if(response){
+                        Swal.fire('Evaluator Assigned');
+                    location.reload();
+                    }
+                   
+                    // selectbox.empty();
+                    // $("#state_id").next(".validation").remove();
+                    // $('#state_id').append('<option value="" selected disabled>Select State </option>');
+                    // $.each(res.states, function(index, value) {
+                    //     $('#state_id').append('<option value="' + value.state_id_lgd + '">' + value.state_name + '</option>');
+                    // });
+                }
+            });
+        });
+
+    })
+    $('#example_1').DataTable();
 });
 </script>

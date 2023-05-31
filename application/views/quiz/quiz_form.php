@@ -99,7 +99,7 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font timepicker" name="start_time" id="start_time" placeholder="Select Date" value="<?php echo set_value('start_time'); ?>">
+                                <input type="text"  class="form-control input-font timepicker" name="start_time" id="start_time" placeholder="Select Date" value="<?php echo set_value('start_time'); ?>">
                                 <span class="error_text"><?php echo form_error('start_time'); ?></span>
                             </div>
                         </div>
@@ -166,7 +166,7 @@
 
                                   <div class="">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        View
+                                    Preview
                                     </button>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Banner Image view</h5>
 
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <img id="outputbanner" width="100%" />
@@ -242,7 +242,7 @@
                                         <span class="error_text"><?php echo form_error('fprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalFirst">
-                                        View
+                                    Preview
                                     </button>
                                 </div>
 
@@ -252,7 +252,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">First Prize Icon</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <img id="outputFirst" width="100%" />
@@ -292,7 +292,7 @@
                                         <span class="error_text"><?php echo form_error('sprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecond">
-                                        View
+                                    Preview
                                     </button>
                                 </div>
 
@@ -302,7 +302,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <img id="outputSecond" width="100%" />
@@ -341,7 +341,7 @@
                                         <span class="error_text"><?php echo form_error('tprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalThird">
-                                        View
+                                    Preview
                                     </button>
                                 </div>
 
@@ -351,7 +351,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <img id="outputThird" width="100%" />
@@ -390,7 +390,7 @@
                                         <span class="error_text"><?php echo form_error('cprize_img'); ?></span>
                                     </div>
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalConsole">
-                                        View
+                                        Preview
                                     </button>
                                 </div>
 
@@ -400,7 +400,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <img id="outputConsol" width="100%" />
@@ -577,7 +577,13 @@
 
 </div>
 <!-- End of Main Content -->
+<script type="text/javascript">
+    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("start_date")[0].setAttribute('min', today);
+    }
 
+      </script>
 
 <script>
     CKEDITOR.replace('description');

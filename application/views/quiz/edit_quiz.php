@@ -209,7 +209,7 @@
                 <div class="active" id="delete_preview">
                   <button class="btn btn-danger btn-sm del_icon" data-id="<?=$quizdata['id'];?>" data-imgname="<?php echo $quizdata['banner_img']; ?>">Delete</button>
                  
-                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalView">
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalView">
                     Preview
                   </button>
                   <!-- Modal -->
@@ -314,7 +314,7 @@
                   <input type="hidden" id="fp_img0"  name="fp_img" value="0">
                   <input type="hidden" id="lastfprize_img0" name="lastfprize_img" value="<?php echo $firstprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$firstprize['quiz_id'];?>"  data-prizeid="<?=$firstprize['prize_id'];?>" data-imgname="<?php echo $firstprize['prize_img']; ?>" data-prize="1">Delete</button>
-                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModalFirstView">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalFirstView">
                       Preview
                     </button>
                    
@@ -323,7 +323,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Last Uploaded First Prize Icon Image</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-dismiss="modal"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
                             <img src="../../<?php echo $firstprize['prize_img']; ?>" style="width: 450px;" />
@@ -410,7 +410,7 @@
                   <input type="hidden" id="sp_img0"  name="sp_img" value="0">
                   <input type="hidden" id="lastsprize_img0"name="lastsprize_img" value="<?php echo $secondprize['prize_img']; ?>">
                     <button class="btn btn-danger btn-sm del_icon_prize_img" data-id="<?=$secondprize['quiz_id'];?>"  data-prizeid="<?=$secondprize['prize_id'];?>" data-imgname="<?php echo $secondprize['prize_img']; ?>" data-prize="2">Delete</button>
-                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecondView">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalSecondView">
                       Preview
                     </button>
 
@@ -422,9 +422,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Last Uploaded Second Prize Image Preview</h5>
 
 
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                            </button>
+                            <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
                             <img src="../../<?php echo $secondprize['prize_img']; ?>" style="width:450px;" />
@@ -532,7 +530,7 @@
                   </div>
                 <?php } ?>
                   <div class="row" id="add_file3" >
-                    <div class="col-12">
+                    <div class="col-12 d-flex">
                     <input type="hidden" id="tp_img1"  name="tp_img" value="1">
                       <input type="file" id="tprize_img" accept="image/jpeg,image/png,image/jpg" name="tprize_img" class="form-control-file" id="icon_file3" onchange="loadFileThird(event)">
 
@@ -547,7 +545,7 @@
                         <?php //echo form_error('title'); 
                         ?>
                       </span>
-                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalThird"> View
+                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalThird"> Preview
                       </button>
 
                     </div>
@@ -559,7 +557,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Third Prize Icon Image</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
                             <img id="outputThird" style="width: 450px;" />
@@ -633,7 +631,7 @@
                   </div>
                 <?php } ?>
                   <div class="row" id="add_file4" >
-                    <div class="col-12">
+                    <div class="col-12 d-flex">
                     <input type="hidden" id="cp_img1"  name="cp_img" value="1">
                       <input type="file" id="cprize_img" accept="image/jpeg,image/png,image/jpg" name="cprize_img" class="form-control-file" id="icon_file4" onchange="loadFileFourth(event)">
 
@@ -648,7 +646,7 @@
                         <?php //echo form_error('title'); 
                         ?>
                       </span>
-                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFourth"> View
+                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalFourth"> Preview
                       </button>
 
                     </div>
@@ -660,7 +658,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Consolation Prize Icon Image</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button class="close" type="button" aria-label="Close" fdprocessedid="p6wtdb" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
                             <img id="outputFourth" style="width: 450px;" />
@@ -815,7 +813,13 @@
 
 </div>
 <!-- End of Main Content -->
+<script type="text/javascript">
+    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("start_date")[0].setAttribute('min', today);
+    }
 
+      </script>
 
 <script>
   CKEDITOR.replace('description');

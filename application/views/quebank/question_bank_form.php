@@ -247,7 +247,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt2_blk">
+                                    <div class="row" id="opt2_blk" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -260,7 +260,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt3_blk">
+                                    <div class="row" id="opt3_blk" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -273,7 +273,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt4_blk">
+                                    <div class="row" id="opt4_blk" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -286,7 +286,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt5_blk">
+                                    <div class="row" id="opt5_blk" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -302,7 +302,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_hin">
                                     <label class="d-block text-font mr-3">Hindi Option</label>
-                                    <div class="row mt-3" id="opt1_blk_h">
+                                    <div class="row" id="opt1_blk_h">
                                         <div class="mb-2  d-flex">
                                             <div class="col-12">
                                                 <div class="form-check" style="padding-left:0px;" id="option1_h_text_blk">
@@ -314,7 +314,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt2_blk_h">
+                                    <div class="row" id="opt2_blk_h" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -327,7 +327,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt3_blk_h">
+                                    <div class="row" id="opt3_blk_h" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -340,7 +340,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt4_blk_h">
+                                    <div class="row" id="opt4_blk_h" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -353,7 +353,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3" id="opt5_blk_h">
+                                    <div class="row" id="opt5_blk_h" style="margin-top: 21px;">
                                         <div class="mb-2  d-flex">
 
                                             <div class="col-12">
@@ -1296,6 +1296,7 @@
                                 if (option1 == "") {
                                     if ($("#option1").next(".validation").length == 0) {
                                         $("#option1").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option1").focus();
@@ -1321,6 +1322,7 @@
                                 if (option2 == "") {
                                     if ($("#option2").next(".validation").length == 0) {
                                         $("#option2").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_2").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2").focus();
@@ -1347,6 +1349,7 @@
                                 if (option3 == "") {
                                     if ($("#option3").next(".validation").length == 0) {
                                         $("#option3").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_3").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3").focus();
@@ -1374,6 +1377,7 @@
                                 if (option4 == "") {
                                     if ($("#option4").next(".validation").length == 0) {
                                         $("#option4").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_4").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4").focus();
@@ -1400,6 +1404,7 @@
                                 if (option5 == "") {
                                     if ($("#option5").next(".validation").length == 0) {
                                         $("#option5").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_5").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5").focus();
@@ -1443,6 +1448,7 @@
                                 if (option1_h == "") {
                                     if ($("#option1_h").next(".validation").length == 0) {
                                         $("#option1_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option1_h").focus();
@@ -1467,6 +1473,7 @@
                                 if (option2_h == "") {
                                     if ($("#option2_h").next(".validation").length == 0) {
                                         $("#option2_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_2").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option2_h").focus();
@@ -1492,6 +1499,7 @@
                                 if (option3_h == "") {
                                     if ($("#option3_h").next(".validation").length == 0) {
                                         $("#option3_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_3").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option3_h").focus();
@@ -1517,6 +1525,7 @@
                                 if (option4_h == "") {
                                     if ($("#option4_h").next(".validation").length == 0) {
                                         $("#option4_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_4").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option4_h").focus();
@@ -1542,6 +1551,7 @@
                                 if (option5_h == "") {
                                     if ($("#option5_h").next(".validation").length == 0) {
                                         $("#option5_h").after("<div class='validation' style='color:red; margin-left:16px;'>This value is required.</div>");
+                                        $("#opt_type_5").after("<div class='validation' style='color:red; margin-left:16px;'> .</div>");
                                     }
                                     if (!focusSet) {
                                         $("#option5_h").focus();

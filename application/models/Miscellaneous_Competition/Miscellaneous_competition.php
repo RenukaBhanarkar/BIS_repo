@@ -164,10 +164,13 @@ class Miscellaneous_competition extends CI_Model {
         return $result['0'];
     }
     public function viewCompetition2($id){
-        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*,tbl_mst_quiz_level.title'); 
+        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*,tbl_mst_quiz_level.title,tbl_mst_branch.uvc_department_name,tbl_mst_regions.uvc_region_title,tbl_mst_states.state_name'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status','left'); 
         $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id = tbl_mst_competition_detail.comp_id'); 
         $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id=tbl_mst_competition_detail.comp_level');
+        $this->db->join('tbl_mst_branch','tbl_mst_branch.pki_id = tbl_mst_competition_detail.branch','left');
+        $this->db->join('tbl_mst_regions','tbl_mst_regions.pki_region_id = tbl_mst_competition_detail.region','left');
+        $this->db->join('tbl_mst_states','tbl_mst_states.state_id_lgd = tbl_mst_competition_detail.state','left');
         $this->db->where('tbl_mst_competition_detail.comp_id',$id);
         $result= $this->db->get('tbl_mst_competition_detail')->result_array();
         return $result['0'];
@@ -312,6 +315,18 @@ class Miscellaneous_competition extends CI_Model {
         $query=$this->db->get();
         return $query->result_array(); 
      }
+     public function SubmittedCompetition2($comp_id){
+        // $this->db->select('tucar.user_id,tucar.competiton_id,tucar.score,tucar.status,tucar.id,tu.user_mobile,tu.email,tu.user_name,tmcd.competiton_name,tmqa.title as avai_for,tmcd.score as total_marks,tmcd.comp_id,tmcd.review_status,ta.name as evaluator_name,tucar.ev_assigned_on');
+        $this->db->select('tucar.user_id,tucar.competiton_id,tucar.score,tucar.status,tucar.id,tmcd.competiton_name,tmcd.score as total_marks,tmcd.comp_id,tmcd.review_status,tucar.ev_assigned_on,tucar.evaluator');
+        $this->db->from('tbl_users_competition_attempt_record tucar');
+        // $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
+        $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+        // $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        //  $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator');
+        $this->db->where('tucar.competiton_id',$comp_id);        
+        $query=$this->db->get();
+        return $query->result_array(); 
+     }
 
      public function getStdClubQuize()
         {
@@ -388,5 +403,21 @@ class Miscellaneous_competition extends CI_Model {
         $res=$this->db->get();
       $result= $res->result_array();
       return $result[0];
+    }
+    public function evaluators(){
+        $this->db->select('*')->from('tbl_admin')->where('designation','4');
+        $res=$this->db->get();
+      $result= $res->result_array();
+      return $result;
+    }
+    public function update_evaluator($data){
+        $this->db->where('user_id',$data['user_id']);
+        $this->db->where('competiton_id',$data['competiton_id']);
+        $res=$this->db->update('tbl_users_competition_attempt_record',$data);
+        if($res){
+			return true;
+		}else{
+			return false;
+		}
     }
 }

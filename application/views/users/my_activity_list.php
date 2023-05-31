@@ -51,6 +51,41 @@
                                  </td>
                         </tr>
                         <?php    $i++;  } } ?>
+
+                        <?php if(!empty($published_wall)) { if(!($i==0)){ }else{ $i++; } foreach($published_wall as $list){
+                            ?>
+                   
+                      <tr>
+                                 <td><?php echo $i; ?></td>
+                                 <td><?php echo $list['created_on']; ?></td>
+                                 <td>Your Wall</td>
+                                 <td><?php echo $list['title']; ?></td>
+                                 <td></td>
+                                 <td class="border-bottom-0">
+                                    <?php if($list['status']==5){ ?>
+                                     <!-- <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a> -->
+                                     <a href="<?php echo base_url().'users/yourwallview/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                                     <?php } ?>
+                                 </td>
+                        </tr>
+                        <?php    $i++;  } } ?>
+                        <?php if(!empty($by_the_mentor)) { if(!($i==0)){ }else{ $i++; } foreach($by_the_mentor as $list){
+                            ?>
+                   
+                      <tr>
+                                 <td><?php echo $i; ?></td>
+                                 <td><?php echo $list['created_on']; ?></td>
+                                 <td>By The Mentors</td>
+                                 <td><?php echo $list['title']; ?></td>
+                                 <td></td>
+                                 <td class="border-bottom-0">
+                                    <?php if($list['status']==5){ ?>
+                                     <!-- <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a> -->
+                                     <a href="<?php echo base_url().'users/by_the_mentor_detail/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                                     <?php } ?>
+                                 </td>
+                        </tr>
+                        <?php    $i++;  } } ?>
                     </tbody>
                 </table>
             </div>    

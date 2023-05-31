@@ -15,6 +15,8 @@ class Users extends CI_Controller
         $this->load->model('Winnerwall/Winnerwall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+        $this->load->model('Admin/your_wall_model');
+        $this->load->model('Admin/by_the_mentor_model');
         date_default_timezone_set("Asia/Calcutta");
 
        
@@ -1861,7 +1863,7 @@ class Users extends CI_Controller
             $user_id= encryptids("D", $_SESSION['admin_id']);
             $data['limit']=$this->by_the_mentor_model->ckeckDailyLimit($user_id);
         }else{
-            $data['linit']="0";
+            $data['limit']="0";
         }
       //  print_r($_SESSION); die;
         // $formdata1['email']= encryptids("D", $_SESSION['admin_email']);
@@ -3319,12 +3321,14 @@ class Users extends CI_Controller
     //    print_r($_SESSION); die;
     $UserId = $this->session->userdata('admin_id');
     $user_id = encryptids("D", $UserId);
+    $data['published_wall'] = $this->your_wall_model->getSelfPublishedWall($user_id);
+    $data['by_the_mentor'] = $this->by_the_mentor_model->getAllBtmPulishedByUser($user_id);
       $this->load->model('Quiz_model');
     //  $data['quiz']=$this->Quiz_model->getQuizByUserid('2105239181');    
     $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
     $data['competition']= $this->Miscellaneous_competition->ckeckCompAttemptByUser($user_id);
     $data['quiz']=$this->Quiz_model->getQuizByUserid($user_id);   
-   // print_r($data); die;
+    //  print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/my_activity_list',$data);
         $this->load->view('users/footers/footer');

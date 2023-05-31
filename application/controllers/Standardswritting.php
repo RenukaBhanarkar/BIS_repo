@@ -31,11 +31,31 @@ class Standardswritting extends CI_Controller
     }
     public function view_submission_competition($id)
     {
-        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition1($id);
-        // print_r($data);die;
+        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition2($id);
+        $data['evaluators']=$this->Miscellaneous_competition->evaluators($id);
+        //  print_r($data);die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/view_submission_competition',$data);
         $this->load->view('admin/footers/admin_footer');
+    }
+    public function assign_eveluator(){
+      //  $t = date();
+        $current_time = date("Y-m-d H:i:s");
+        // $formdata['id']=$this->input->post('submission_id');
+        $formdata['user_id']=$this->input->post('user_id');
+        $formdata['competiton_id']=$this->input->post('comp_id');
+        $formdata['evaluator']=$this->input->post('evaluator');
+        $formdata['ev_assigned_on']=$current_time;
+
+        $res=$this->Miscellaneous_competition->update_evaluator($formdata);
+        if($res){
+            echo "1";
+           // return true;
+        }else{
+            echo "0";
+          //  return false;
+        }
+
     }
     public function view_submitted_comp_response($id){
         $data['response']=$this->Miscellaneous_competition->attemptResponse($id);
@@ -200,9 +220,11 @@ class Standardswritting extends CI_Controller
         $this->load->model('Quiz/Quiz_model');
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $formdataall['quizlavel']=$quizlavel;
-    // print_r($_POST); 
-        // print_r($_FILES);
+        
+     //print_r($_POST); 
+        // print_r($formdata);
         // die;
+        
 
         if (!file_exists('uploads/competition/thumbnail')) { mkdir('uploads/competition/thumbnail', 0777, true); }
         if (!file_exists('uploads/competition/prize_img')) { mkdir('uploads/competition/prize_img', 0777, true); }
@@ -262,6 +284,13 @@ class Standardswritting extends CI_Controller
             $formdata['available_for'] = $this->input->post('Available');
             $formdata['thumbnail'] = $thumbnail_imglocation;
             $formdata['status'] = "0";
+
+            if($this->input->post('Available')== 1){               
+                $standard = $this->input->post('standard');  
+                $formdata['standard'] = implode(',',$standard);    
+            }else{
+                $formdata['standard'] = 0;
+            }
 
             $start = $this->input->post('start_time');
             $formdata['start_time'] = date("H:i:s", strtotime($start));
@@ -332,6 +361,12 @@ class Standardswritting extends CI_Controller
     //    echo "<br>";
     //     print_r($_FILES); 
      //  die;
+            if($this->input->post('Available')== 1){               
+                $standard = $this->input->post('standard');  
+                $formdata['standard'] = implode(',',$standard);    
+            }else{
+                $formdata['standard'] = 0;
+            }
             $formdata['comp_id'] = $this->input->post('comp_id');
             $formdata['competiton_name'] = $this->input->post('name');
             $formdata['competition_hindi_name'] = $this->input->post('name_hindi');
@@ -488,7 +523,7 @@ class Standardswritting extends CI_Controller
            $id = $this->Miscellaneous_competition->updateCompetition($formdata);
 //echo $comp_id; die;
 if($id){
-    echo "success";
+   // echo "success";
     $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
     redirect(base_url() . "Standardswritting/create_competition_list", 'refresh');
 }else{
@@ -560,7 +595,7 @@ if($id){
     }
     public function view_competition($id){
         $data['quizdata'] = $this->Miscellaneous_competition->viewCompetition2($id);
-        // print_r($data); die;
+        //  print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/view_competition',$data);
         $this->load->view('admin/footers/admin_footer');
