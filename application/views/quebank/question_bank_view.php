@@ -265,14 +265,16 @@
                         </div>
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                             <?php if ($row['status'] == 2) { ?>
-                                <div class="mb-2 col-md-12">
+                                <!-- <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Rejection Reason</label>
                                     <textarea class="form-control" id="reason" name="reason" rows="5"></textarea>
                                     <span class="err_reason"> </span>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12 submit_btn p-3">
                                     <button type="button" class="btn btn-success btn-sm mr-2 changeStatus" data-id="<?php echo $row['que_bank_id']; ?>" data-status="3">Approve</button>
-                                    <button type="button" class="btn btn-danger btn-sm mr-2 changeStatus" data-id="<?php echo $row['que_bank_id']; ?>" data-status="4">Reject</button>
+                                    <!-- <button type="button" class="btn btn-danger btn-sm mr-2 changeStatus" data-id="<?php echo $row['que_bank_id']; ?>" data-status="4">Reject</button> -->
+                             <button type="button" class="btn btn-danger btn-sm mr-2 " data-toggle="modal" data-target="#rejectForm" id="reject">Reject</button> 
+
                                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>subadmin/questionBankList/'">Back</a>
                                 </div>
 
@@ -288,6 +290,30 @@
                                 </div>
                             <?php  } ?> -->
                         <?php  } ?>
+
+
+
+                         <!-- Modal -->
+               <div class="modal fade" id="rejectForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Reject Question Bank</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <form name="rejectQueBank" id="rejectQueBank" action="<?= base_url() . 'subadmin/rejectQueBank/' . $row['que_bank_id'] ?>" method="post" >
+                            <textarea class="form-control input-font" placeholder="Enter Reason" name="reason" id="reason"></textarea>
+                                                        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="validateForm()" id="rejectBtn">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
                        
                     <?php }
                 } else { ?>
@@ -314,93 +340,28 @@
         <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Back</a>
     </div> -->
 </div>
-<!-- Modal -->
-<!--<div class="modal fade" id="view_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">View Question</h5>
 
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Question ID</label>
-                        <div>
-                            <p>1234</p>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Question Type</label>
-                        <div>
-                            <p>Text</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="mb-2 col-md-12">
-                        <label class="d-block text-font">Question Title</label>
-                        <div>
-                            <p>Text</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Options 1</label>
-                        <div>
-                            <p>5</p>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Options 2</label>
-                        <div>
-                            <p>5</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Options 3</label>
-                        <div>
-                            <p>5</p>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Options 4</label>
-                        <div>
-                            <p>5</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Options 5</label>
-                        <div>
-                            <p>5</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb-2 col-md-4">
-                        <label class="d-block text-font">Correct Option No.</label>
-                        <div>
-                            <p>Text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" onclick="resetbanner()" class="btn btn-primary" data-dismiss="modal">Close</button>
-
-            </div>
-        </div>
-    </div>
-</div>-->
-<!-- Modal -->
 <script>
+     function validateForm(){
+         var reason = $('#reason').val();
+        allfields = true;
+       
+        if (reason == "" || reason == null || reason.length == 0) {
+            if ($("#reason").next(".validation").length == 0) {
+                $("#reason").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
+            }
+            if (!focusSet) {
+                $("#reason").focus();
+            }
+            allfields = false;
+        } else {
+            $("#reason").next(".validation").remove();
+        }
+        if(allfields){
+            $('#rejectQueBank').submit();
+        }
+
+    }
     $(document).ready(function() {
 
         $('#que_bank_view').on('click', '.changeStatus', function(e) {

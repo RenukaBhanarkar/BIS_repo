@@ -784,6 +784,39 @@ class Subadmin extends CI_Controller
             return true;
         }
     }
+    public function  rejectQueBank($id)
+    {
+        try {
+            $qui_bank_id = $id;
+            $status =4;         
+            $reason = $this->input->post('reason');           
+
+            $data = array(
+                'status' => $status,
+                'rejection_reason' => $reason,
+                'modified_on' => GetCurrentDateTime('Y-m-d h:i:s'),
+                'modified_by' => encryptids("D", $_SESSION['admin_type']),
+            );
+
+            $id = $this->Que_bank_model->updateData($qui_bank_id, $data);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Status updated successfully.';
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            echo  json_encode($data);
+            return true;
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    }
+ 
 
     public function viewQuestionBank()
     {

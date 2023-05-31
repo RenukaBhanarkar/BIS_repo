@@ -93,10 +93,11 @@
                                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
                                     <?php if ($quiz['result_declared'] == 0) { ?> 
+                                      <?php if ($quiz['total_sub'] > 0 ){ ?> 
                                     <a href="<?php echo base_url();?>Quiz/close_declaration_list/<?= $quiz['id']?>" class="btn btn-success btn-sm mr-2">Result Declaration</a>
                                   <?php }
                                 
-                                     }?>
+                                     }}?>
                                   </td>
                                  </tr>
 

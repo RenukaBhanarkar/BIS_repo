@@ -42,8 +42,12 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         font-weight: 600;
         color: crimson;
     }
-    .ans-yellow ,.yellow {
-        background-color:  #ffc107 !important;
+    .yellow {
+        background-color:  #ffc107 !important ;
+    color: white;
+    }
+    .ans-yellow {
+        background-color:  #ffc107 ;
     color: white;
     }
    
@@ -344,6 +348,14 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <script>
     </script>
     <script>
+        // slight update to account for browsers not supporting e.which
+    function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+    // To disable f5
+        /* jQuery < 1.7 */
+    $(document).bind("keydown", disableF5);
+    /* OR jQuery >= 1.7 */
+    $(document).on("keydown", disableF5);
+
         var total_ques = $("#total_que_count").val();
         var app_que_count = 1;
         $('#submit_button').hide();
@@ -594,22 +606,19 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
 
         $(function() {
-            $(".markForReview").click(function(e) {
-                   
+            $(".markForReview").click(function(e) {                   
                     e.preventDefault();
                     const $root = $(this);
-                    var id = $root.data('id');
-                   
-                    $("#counter"+id).removeClass('ans-red').addClass('ans-yellow');
+                    var id = $root.data('id');   
+                                  
+                    $("#counter"+id).removeClass('ans-red').removeClass('ans-green').addClass('ans-yellow');
                 });
-
-
             <?php
 
             foreach ($que_details as $key => $details) { ?>
                
                 $("input[class$='op<?= $details['que_id'] ?>']").change(function() {
-                    $("#counter<?= $details['que_id'] ?>").removeClass('ans-red').addClass('ans-green');
+                    $("#counter<?= $details['que_id'] ?>").removeClass('ans-red').removeClass('ans-yellow').addClass('ans-green');
                 });
             <?php } ?>
 
