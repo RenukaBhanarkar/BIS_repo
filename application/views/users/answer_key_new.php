@@ -80,6 +80,9 @@ span.incorrect_answer:after {
     </div>
     <!-- Content Row -->
     <div class="row" id="result">
+    <div class="bloginfo">
+                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Answer Key</h3>
+            </div>
         <div class="col-12 mt-3">
             <div class="card border-top">
             <?php if (!empty($answerKey)) { ?>
