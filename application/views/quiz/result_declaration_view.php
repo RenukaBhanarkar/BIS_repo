@@ -90,7 +90,17 @@
                                         <td><?= $value['email']?></td>
                                         <td><?= $value['user_mobile']?></td>
                                         <td><?= $value['created_on']?></td>
-                                        <td><?= $value['time_taken']?></td>
+                                        <?php 
+                                            $t =  $value['time_taken'];
+                                            $h = (int)$t/3600;
+                                            $m= (int)$t/60%60;
+                                            $s= (int)$t%60;
+
+                                            $timeTaken = sprintf('%02d:%02d:%02d', ($h),($m),($s) );
+                                            ?>
+
+                                <td><?= $timeTaken ?> </td> 
+                                        <!-- <td><?= $value['time_taken']?></td> -->
                                         <td><?= $value['score']?></td>
                                         <td><?= $value['userprize']?></td>
                                         <!-- <td>

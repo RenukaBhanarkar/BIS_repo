@@ -122,22 +122,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if ($row['language'] == 1 || $row['language'] == 3) { ?> 
+                                    <!-- <?php if ($row['language'] == 1 || $row['language'] == 3) { ?>  -->
                                         <div class="row" id="question-eng">
-                                            <div class="mb-2 col-md-4">
+                                            <div class="mb-2 col-md-12">
                                                 <label class="d-block text-font">Question in English<sup class="text-danger">*</sup></label>
                                                 <input type="text" class="form-control input-font" minlength="10" maxlength="5000" name="que" id="que" placeholder="Enter Question">
                                             </div>
                                         </div>
-                                 <?php } ?> 
-                                    <?php if ($row['language'] == 2 || $row['language'] == 3) { ?>
+                                 <!-- <?php } ?>  -->
+                                    <!-- <?php if ($row['language'] == 2 || $row['language'] == 3) { ?> -->
                                         <div class="row" id="question-hindi">
-                                            <div class="mb-2 col-md-4">
+                                            <div class="mb-2 col-md-12">
                                                 <label class="d-block text-font">Question in Hindi<sup class="text-danger">*</sup></label>
                                                 <input type="text" minlength="10" maxlength="5000" class="form-control input-font" name="que_h" id="que_h" placeholder="Question in Hindi">
                                             </div>
                                         </div>
-                                   <?php } ?>
+                                   <!-- <?php } ?> -->
                                     <div class="row" id="image-block" style="display:none;">
                                         <div class="mb-2 col-md-4">
                                             <label class="d-block text-font">Image<sup class="text-danger">*</sup></label>
@@ -705,21 +705,21 @@
 
         <!-- End of Content Wrapper -->
         <script>
-            /// CKEDITOR.replace('que');
-            // CKEDITOR.replace('que_h')
+            //  CKEDITOR.replace('que');
+            //  CKEDITOR.replace('que_h')
 
-            // var lan= '<?php echo  $row['language'];?>';
+            var lan= '<?php echo  $row['language'];?>';
          
-            //  if(lan == 1 || lan == 3){
-            //     $('#question-eng').show();
-            //     $('#question-hindi').hide();
-            //   //  CKEDITOR.replace('que');
-            //  }
-            //  if(lan == 2 || lan == 3){
-            //     $('#question-eng').hide();
-            //     $('#question-hindi').show();
-            //   //  CKEDITOR.replace('que_h');
-            //  }
+             if(lan == 1 || lan == 3){
+                $('#question-eng').show();
+                $('#question-hindi').hide();
+                CKEDITOR.replace('que');
+             }
+             if(lan == 2 || lan == 3){
+                $('#question-eng').hide();
+                $('#question-hindi').show();
+               CKEDITOR.replace('que_h');
+             }
            
         </script>
         <script>
@@ -1370,7 +1370,9 @@
 
                     if (language == 1 || language == 3) {
                         if (que_type == 1 || que_type == 3) {
-                            var que = $("#que").val();
+                          //  var que = $("#que").val();
+
+                            var que = CKEDITOR.instances['que'].getData();
                             if (que == "") {
                                 if ($("#que").next(".validation").length == 0) {
                                     $("#que").after("<div class='validation' style='color:red;margin-bottom:15px;'> This value is required.</div>");
@@ -1518,7 +1520,8 @@
                     }
                     if (language == 2 || language == 3) {
                         if (que_type == 1 || que_type == 3) {
-                            var que_h = $("#que_h").val();
+                            //var que_h = $("#que_h").val();
+                            var que = CKEDITOR.instances['que'].getData();
                             if (que_h == "") {
                                 if ($("#que_h").next(".validation").length == 0) {
                                     $("#que_h").after("<div class='validation' style='color:red;margin-bottom:15px;'> This value is required.</div>");
@@ -1687,7 +1690,7 @@
                         swal.fire("Hindi Option Image size should be less than 200kb");
                     }
                     if (allfields) {
-                        /*********************************************
+                        /*********************************************/
                         var url = $('#questions_form').attr('action');
                         var userForm = document.getElementById("questions_form");
                         var fd = new FormData(userForm);
@@ -1717,35 +1720,6 @@
                                     Swal.fire(res.message);
                                 } else {
                                     // alert(res.message);
-                                    Swal.fire(res.message);
-                                  
-                                    displayQuestions();
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
-                                console.log(error);
-                            }
-                        });
-
-
-                         *********************************************/
-                        var url = $('#questions_form').attr('action');
-                        var userForm = document.getElementById("questions_form");
-                        var fd = new FormData(userForm);
-                        jQuery.ajax({
-                            type: "POST",
-                            url: url,
-                            dataType: 'json',
-                            data: fd,
-                            cache: false,
-                            processData: false,
-                            contentType: false,
-                            // enctype :'multipart/form-data',
-                            success: function(res) {
-                                if (res.status == 0) {
-                                    Swal.fire(res.message);
-                                } else {
                                     Swal.fire(res.message);
                                     $('#que').val('');
                                     $('#que_h').val('');
@@ -1807,8 +1781,6 @@
                                     $("#option5_image_blk").hide();
                                     $("#option5_h_text_blk").show();
                                     $("#option5_h_image_blk").hide();
-                                     
-                                     
                                     displayQuestions();
                                 }
                             },
@@ -1817,6 +1789,37 @@
                                 console.log(error);
                             }
                         });
+
+
+                        /*********************************************/
+                        // var url = $('#questions_form').attr('action');
+                        // var userForm = document.getElementById("questions_form");
+                        // var fd = new FormData(userForm);
+                        // jQuery.ajax({
+                        //     type: "POST",
+                        //     url: url,
+                        //     dataType: 'json',
+                        //     data: fd,
+                        //     cache: false,
+                        //     processData: false,
+                        //     contentType: false,
+                        //     // enctype :'multipart/form-data',
+                        //     success: function(res) {
+                        //         if (res.status == 0) {
+                        //             Swal.fire(res.message);
+                        //         } else {
+                        //             Swal.fire(res.message);
+                                 
+                                     
+                                     
+                        //             displayQuestions();
+                        //         }
+                        //     },
+                        //     error: function(xhr, status, error) {
+                        //         //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                        //         console.log(error);
+                        //     }
+                        // });
                     } else {
                         return false;
                     }

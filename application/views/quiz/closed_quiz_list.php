@@ -70,8 +70,10 @@
                                      <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
 
                                     <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
+                                    <?php if ($quiz['result_declared'] == 1) { ?>
+                                    <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
 
-                                    <?php } ?>
+                                    <?php }} ?>
 
 
                                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
@@ -79,12 +81,7 @@
                                     <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
 
                                     <?php }} ?>
-                                    <?php if(in_array(4,$permissions)){ ?>                          
-                             
-                                        <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
-                         
-
-                                    <?php } ?>                      
+                                                    
                          
 
 

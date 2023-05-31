@@ -71,27 +71,7 @@ span.incorrect_answer:after {
 </style>
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Answer Key List</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>">Sub Admin Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competitions</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/quiz_dashboard'; ?>">Quiz Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/result_declaration_list'; ?>">Quiz Result Declaration</a></li>
-                <!-- <li class="breadcrumb-item active" aria-current="page">Quiz Result Declaration View</li> -->
-
-            </ol>
-        </nav>
-
-    </div>
-    <!-- <div class="row">
-        <div class="col-md-12" style="text-align: end;">
-            <a class="btn btn-primary btn-sm mr-2">Export as PDF</a>
-            <a class="btn btn-info btn-sm mr-2">Print</a>
-        </div>
-    </div> -->
+  
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">

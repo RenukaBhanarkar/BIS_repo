@@ -3164,10 +3164,13 @@ class Users extends CI_Controller
                     // }else{
                     //     $setForReview = 0;
                     // }
-                    
-                    if ($_POST['option' . $ques_id . $j] != "") {
-                        $selected_op = $_POST['option' . $ques_id . $j];
-                    } else {
+                    if(isset($_POST['option' . $ques_id . $j])){
+                        if ($_POST['option' . $ques_id . $j] != "") {
+                            $selected_op = $_POST['option' . $ques_id . $j];
+                        } else {
+                            $selected_op = 0;
+                        }
+                    }else{
                         $selected_op = 0;
                     }
 
@@ -3224,6 +3227,7 @@ class Users extends CI_Controller
                         
                         if ($this->Users_model->insertQuziSubmission($formdata2)) {
                             $this->session->set_flashdata('MSG', ShowAlert("Submission Successfully", "SS"));
+                           // exit();
                            redirect(base_url() . "users/quiz_submission", 'refresh');
                         } else {
                             $this->session->set_flashdata('MSG', ShowAlert("Quiz not submitted please contact admin OR try again.", "SS"));
