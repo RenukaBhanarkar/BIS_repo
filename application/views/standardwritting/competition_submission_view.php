@@ -6,7 +6,12 @@
             <h1 class="h3 mb-0 text-gray-800">View Submission</h1>
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Competition</a></li>
@@ -67,7 +72,7 @@
                                 <!-- <td><?php if($list['image']==""){ echo "-"; }else{?><img src="<?php echo base_url().$list['image']; ?>" alt="#" class="" width="100%"><?php } ?></td> -->
                                 <td><?php if($list['image']==""){ echo "-"; }else{?><a href="<?php echo base_url().$list['image']; ?>" alt="#" class="" target="_blank" width="20%"><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="20%"><?php } ?></a></td>
                                 <td class="d-flex">
-                                 <a href="<?php echo base_url().'standardswritting/view_standards/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url().'Standardswritting/view_submitted_comp_response/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>
                             </tr>
                           <?php $i++; } } ?>

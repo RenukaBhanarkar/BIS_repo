@@ -39,6 +39,8 @@ class Winnerwall extends CI_Controller
                 $permissions = $this->Admin_model->getUsersPermissionsMain($main_model_id);
             }
             $data['permissions'] =  $permissions;
+        }else{
+            $data['permissions']=array();
         }
         $this->load->view('admin/headers/admin_header');
         $this->load->view('winnerwall/winner_wall_list',$data);
