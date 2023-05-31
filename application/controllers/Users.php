@@ -816,7 +816,7 @@ class Users extends CI_Controller
                //  exit();
 
                 if(isset($quiz_id) && !empty($quiz_id)){
-                    redirect(base_url() . "users/quiz_start/".$quiz_id, 'refresh');
+                    redirect(base_url() . "users/about_quiz/".$quiz_id, 'refresh');
                    
                 }else{
                     redirect(base_url() . "Users/welcome", 'refresh');
@@ -3269,6 +3269,16 @@ class Users extends CI_Controller
         $quiz_id = clearText($this->input->post('quiz_id'));
         $ques_id = clearText($this->input->post('ques_id'));
         $selected_op = clearText($this->input->post('selected_op'));
+
+        $toCheckExisted = $this->Users_model->toCheckExistedQuestion($user_id,$quiz_id,$ques_id);
+        if($toCheckExisted){
+            $dbObj = array(                        
+                'selected_op' => $selected_op,
+                'created_on' => GetCurrentDateTime('Y-m-d h:i:s')
+            );
+            $id = $this->Users_model->updateAttemptedQuesDetailsOfUser($user_id,$quiz_id,$ques_id,$dbObj);
+        }else{
+            
             $dbObj = array(
                 'user_id' => $user_id,
                 'quiz_id' => $quiz_id,
@@ -3277,6 +3287,8 @@ class Users extends CI_Controller
                 'created_on' => GetCurrentDateTime('Y-m-d h:i:s')
             );
             $id = $this->Users_model->insertAttemptedQuesDetailsOfUser($dbObj);
+
+        }
         
         if ($id) {
             $data['status'] = 1;
@@ -3320,9 +3332,10 @@ class Users extends CI_Controller
     public function answerkey($user_id,$quiz_id){
         $this->load->model('Quiz_model');
         $data['answerKey'] = $this->Quiz_model->getAnswerKeyForUser($user_id,$quiz_id); 
-       // print_r($data); die;
+     
         $this->load->view('users/headers/header');
-        $this->load->view('users/answer_key_list',$data);
+       // $this->load->view('users/answer_key_list',$data);
+        $this->load->view('users/answer_key_new',$data);
         $this->load->view('users/footers/footer');
     }
     public function answerkey_new(){

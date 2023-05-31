@@ -834,7 +834,9 @@
             $user_standard_club_category = encryptids("D", $this->session->userdata('standard_club_category'));
             if ($user_standard_club_category == 1) {
                 $ava = 1;
-                $standard = encryptids("D", $this->session->userdata('standard'));
+            //    $standard = encryptids("D", $this->session->userdata('standard'));  
+               
+            //    echo "renu". $standard ;
                     // if($standard != 0){
                     //     $std = explode(',', $standard);
                     // }else{
@@ -847,37 +849,54 @@
             $this->db->select('quiz.*,st.status_name');
             $this->db->from('tbl_quiz_details quiz');
             $this->db->join('tbl_mst_status st', 'st.id = quiz.status');
-            //$this->db->where('(date(now()) BETWEEN quiz.start_date AND quiz.end_date)'); 
+           
             $this->db->where('quiz.start_date <=', date("Y-m-d"));
             $this->db->where('quiz.end_date >=', date("Y-m-d"));
-            // $this->db->where('('.$current_time.' BETWEEN quiz.start_time AND quiz.end_time)'); 
-
-            //$this->db->where('quiz.start_time <=', $current_time);
-            //$this->db->where('quiz.end_time >=', $current_time);
+          
             $this->db->where('quiz.status', 5);
 
             $this->db->where('quiz.availability_id', $ava);
-            if($ava == 1){
-                $this->db->like('quiz.standard', $standard);
-            }
+            // if($ava == 1){
+            //     //$this->db->like('quiz.standard,', $standard);
+            //     $this->db->where("FIND_IN_SET('$standard',quiz.standard) !=", 0);
+            // }
             $this->db->where_in('quiz.branch_id', array($user_branch_id, 0));
             $this->db->or_where_in('quiz.region_id', array($user_region_id, 0));
             $this->db->or_where_in('quiz.state_id', array($user_state_id, 0));
-          //  $this->db->or_where_in('quiz.standa', array($user_state_id, 0));
-            $this->db->where('quiz.id', $quiz_id);
-            // $rs = array();
-            // $query = $this->db->get();
-            // if ($query->num_rows() > 0) {
-            //     $rs = $query->result_array();
-            // }
-            // return $rs;
+         
+            $this->db->where('quiz.id', $quiz_id);     
+          
 
+            $newRes = array();
+            $newResPush = array();
             $res = array();
             $rs = array();
             $query=$this->db->get();
+            /////////////////////////////////////////////////////
             if($query->num_rows() > 0){
-                $res = $query->result_array();
-                foreach($res as $row){
+            $newRes= $query->result_array();
+            foreach($newRes as $row){
+               
+                 if ($user_standard_club_category == 1) { 
+                    $std = explode(',', $row['standard']);                  
+                    $standard = encryptids("D", $this->session->userdata('standard'));   
+                  
+                    if(in_array($standard,$std))  {
+                        array_push($newResPush,$row);
+                    }        
+                  
+    
+                } else {
+                    array_push($newResPush,$row);
+                }
+
+            }
+            // echo json_encode($newResPush);exit();
+           /////////////////////////////////////////////////////////
+
+          
+              
+                foreach($newResPush as $row){
                     // if($row['start_date'] == date("Y-m-d") ){
                     //     if($row['start_time'] <= $current_time){
                     //         array_push($rs,$row);
@@ -906,6 +925,7 @@
                     }
                 }
             }
+          //  echo json_encode($rs);exit();
             return $rs;  
         }
         public function checkUserAvailable($quiz_id, $user_id)
@@ -1110,6 +1130,22 @@
              $this->db->join('tbl_mst_states', 'tbl_mst_states.state_id= tbl_quiz_details.state_id', 'left');
              return $this->db->get('tbl_quiz_details')->row_array();
          }
+
+         public function  toCheckExistedQuestion($user_id,$quiz_id,$ques_id){
+            $this->db->select('*');
+            $this->db->from('tbl_user_quiz_temp');
+            $this->db->where('user_id',$user_id);
+            $this->db->where('quiz_id',$quiz_id);
+            $this->db->where('ques_id',$ques_id);
+            $query = $this->db->get();
+           
+            $rs = array();
+            if($query->num_rows() >0 ) {
+                return true;                        
+            }else{
+                return false;
+            }
+         }
          public function insertAttemptedQuesDetailsOfUser($data){
             if ($this->db->insert('tbl_user_quiz_temp', $data)) {
                 return $this->db->insert_id();
@@ -1117,6 +1153,20 @@
                 return false;
             }
          }
+
+         public function updateAttemptedQuesDetailsOfUser($user_id,$quiz_id,$ques_id,$data){
+
+            $this->db->where('user_id', $user_id);
+            $this->db->where('quiz_id', $quiz_id);
+            $this->db->where('ques_id', $ques_id);
+                if ($this->db->update('tbl_user_quiz_temp', $data)) {
+                    return true;
+                } else {
+                    return false;
+                }
+         }
+
+         
          /////////////////// quiz start functions  END ////////////////////////
 
     // }

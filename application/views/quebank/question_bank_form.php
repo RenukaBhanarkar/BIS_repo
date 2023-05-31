@@ -154,15 +154,12 @@
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Image</h5>
 
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button class="close" type="button" aria-label="Close"  data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <img id="outputbanner" style="width:450px;" />
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -495,7 +492,7 @@
                                         <a class="btn btn-success btn-sm text-white" id="saveQueBank">Submit</a>
                                         <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
                                         <button class="btn btn-danger btn-sm text-white cancel_qb_form">Cancel</button>
-                                        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Back</a>
+                                        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>subadmin/questionBankList'">Save</a>
                                         <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                                         <div id="err_que_bank"></div>
                                     </div>
@@ -843,6 +840,7 @@
                     var focusSet = false;
                    // $('#que_bank_form').addClass('was-validated');
                     var allfields = true;
+
                     var title = $("#title").val();
                     var no_of_ques = $("#no_of_ques").val();
                     // var total_marks = $("#total_marks").val();
@@ -869,7 +867,7 @@
                         allfields = false;
                     } else
                     if (  title.length > 500 ) {
-                        alert ('third');
+                       // alert ('third');
                         $("#title").next(".validation").remove();
                         if ($("#title").next(".validation").length == 0) {
                             $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please enter valid title with maximum length 500 characters.</div>");
@@ -1010,7 +1008,7 @@
                     $('#opt4_blk_h').hide();
                     $('#opt5_blk_h').hide();
 
-
+                    $('#c_o_title').show();
                     $('#r1').hide();
                     $('#r2').hide();
                     $('#r3').hide();
@@ -1195,6 +1193,10 @@
 
                     var focusSet = false;
                     var allfields = true;
+                    var imgVal = true;
+                   
+                    var engImg = true;
+                    var hindiImg = true;
                     var language = $("#que_language").val();
 
                     //////////////////////
@@ -1209,6 +1211,7 @@
                                 $("#imgError").focus();
                             }
                             allfields = false;
+                            imgVal = false;
                         } else {
                             $("#imgError").next(".validation").remove();
                         }
@@ -1217,17 +1220,21 @@
                         if ($("#que_image").val() != '') {
                             var fileSize = $('#que_image')[0].files[0].size;
 
-                            if ( fileSize > 204800) {
+                            if ( fileSize > 200000) {
+                                // alert(fileSize);
+                                // alert('img size is greater than 204800 ');
                                 if ($("#imgError").next(".validation").length == 0) {
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file size less than 200 KB </div>");
                                 }
                                 allFields = false;
+                                imgVal = false;
                                 if (!focusSet) {
                                     $("#que_image").focus();
                                 }
                             } else {
                                 $("#imgError").next(".validation").remove();
                             }
+                        }
                             // check type  start 
                             var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
                             var fileName = $("#que_image").val();;
@@ -1238,14 +1245,17 @@
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please upload .jpg / .jpeg/.png image </div>");
                                 }
                                 allFields = false;
+                                imgVal = false;
                                 if (!focusSet) {
                                     $("#que_image").focus();
                                 }
                             } else {
                                 $("#imgError").next(".validation").remove();
                             }
-                        }
+                        
                     }
+
+                   
                     ///////////////////////////
                     var no_of_options = $("#no_of_options").val();
                     if (no_of_options == 0) {
@@ -1299,6 +1309,7 @@
                                 var msg = ImageValidation(option1_image, 1);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
                             }
 
@@ -1323,6 +1334,7 @@
                                 var msg = ImageValidation(option2_image, 2);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
                             }
                             ////////////////////
@@ -1348,6 +1360,7 @@
                                 var msg = ImageValidation(option3_image, 3);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
 
                             }
@@ -1374,6 +1387,7 @@
                                 var msg = ImageValidation(option4_image, 4);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
 
                             }
@@ -1399,6 +1413,7 @@
                                 var msg = ImageValidation(option5_image, 5);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
 
                             }
@@ -1438,9 +1453,10 @@
                                 }
                             } else {
                                 var option1_h_image = $("#option1_h_image").val();
-                                var msg = ImageValidationHindi(option1_h_image, 1);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option1_h_image, 1);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
                             ////////////////////
@@ -1461,9 +1477,10 @@
                                 }
                             } else {
                                 var option2_h_image = $("#option2_h_image").val();
-                                var msg = ImageValidationHindi(option2_h_image, 2);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option2_h_image, 2);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
                         }
@@ -1485,9 +1502,10 @@
                                 }
                             } else {
                                 var option3_h_image = $("#option3_h_image").val();
-                                var msg = ImageValidationHindi(option3_h_image, 3);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option3_h_image, 3);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
 
@@ -1509,9 +1527,10 @@
                                 }
                             } else {
                                 var option4_h_image = $("#option4_h_image").val();
-                                var msg = ImageValidationHindi(option4_h_image, 4);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option4_h_image, 4);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
 
@@ -1533,9 +1552,10 @@
                                 }
                             } else {
                                 var option5_h_image = $("#option5_h_image").val();
-                                var msg = ImageValidationHindi(option5_h_image, 5);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option5_h_image, 5);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
                         }
@@ -1553,6 +1573,18 @@
                         allfields = false;
                     } else {
                         $("#cor_opt").next(".validation").remove();
+                    }
+                    if(imgVal == false){
+                        allfields = false;
+                        swal.fire("Image size should be less than 200kb");
+                    }
+                    if(engImg == false){
+                        allfields = false;
+                        swal.fire("English Option Image size should be less than 200kb");
+                    }
+                    if(hindiImg == false){
+                        allfields = false;
+                        swal.fire("Hindi Option Image size should be less than 200kb");
                     }
                     if (allfields) {
                         /*********************************************/
@@ -1610,10 +1642,44 @@
                                     $('#option3_h_image').val('');
                                     $('#option4_h_image').val('');
                                     $('#option5_h_image').val('');
+                                    $("#r1").prop('checked', false);
+                                     $("#r2").prop('checked', false); 
+                                     $("#r3").prop('checked', false); 
+                                     $("#r4").prop('checked', false); 
+                                     $("#r5").prop('checked', false); 
+                                      $('input:radio[name="correct_answer"]').prop('checked', false);
+                                     $('#no_of_options').val(0);
+                                     $('#c_o_title').hide();
+                                     $('#opt_type_1').val(1);
+                                     $('#opt_type_2').val(1);
+                                     $('#opt_type_3').val(1);
+                                     $('#opt_type_4').val(1);
+                                     $('#opt_type_5').val(1);
 
-                                   
+                                     $('#options_blk').hide();
 
 
+                                     $("#option1_text_blk").show();
+                                    $("#option1_image_blk").hide();
+                                    $("#option1_h_text_blk").show();
+                                    $("#option1_h_image_blk").hide();
+                                    $("#option2_text_blk").show();
+                                    $("#option2_image_blk").hide();
+                                    $("#option2_h_text_blk").show();
+                                    $("#option2_h_image_blk").hide();
+                                    $("#option3_text_blk").show();
+                                    $("#option3_image_blk").hide();
+                                    $("#option3_h_text_blk").show();
+                                    $("#option3_h_image_blk").hide();
+                                    $("#option4_text_blk").show();
+                                    $("#option4_image_blk").hide();
+                                    $("#option4_h_text_blk").show();
+                                    $("#option4_h_image_blk").hide();
+                                    $("#option5_text_blk").show();
+                                    $("#option5_image_blk").hide();
+                                    $("#option5_h_text_blk").show();
+                                    $("#option5_h_image_blk").hide();
+                                     
                                     displayQuestions();
                                 }
                             },
