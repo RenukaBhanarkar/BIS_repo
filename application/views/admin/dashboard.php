@@ -28,6 +28,30 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo base_url(); ?>admin/task_recevied_list">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center d-flex">
+                                    <h5 class="font-weight-bold text-warning mb-1">Task Recevied for Review</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo base_url(); ?>admin/task_reviewed">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center d-flex">
+                                    <h5 class="font-weight-bold text-danger mb-1">Task Reviewed</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <!-- <div class="col-xl-3 col-md-6 mb-4">
                     <a href="<?php echo base_url(); ?>admin/log_dashboard">
                         <div class="card border-left-primary shadow h-100 py-2">
