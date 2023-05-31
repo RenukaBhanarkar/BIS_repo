@@ -1001,9 +1001,7 @@
                                 if(in_array($standard,$std))  {
                                     array_push($newResPush,$row);
                                 } 
-                            }       
-                          
-            
+                            }               
                         } else {
                             array_push($newResPush,$row);
                         }

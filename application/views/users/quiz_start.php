@@ -98,7 +98,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                                 <img width="200" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $details['que_bank_id']; ?>/<?php echo $details['image']; ?>"></div>
                                             <?php }  ?>
 
-                                        <div class="quiz-option">
+                                        <div class="quiz-option" style="padding-top:20px;">
                                             <input type="hidden" value="<?= $details['que_id'] ?>" name="que_id[]">
                                             <input type="hidden" value="<?= $details['corr_opt_e'] ?>" name="corr_opt[]">
                                             <?php
