@@ -30,6 +30,9 @@
                             <th>Name</th>
                             <th>Email ID</th>
                             <th>Contact No.</th>
+                            <th>Member Id</th>
+                            <th>Class</th>
+                            
                             <th>Date</th>
                            
                             <th>Score</th>
@@ -50,6 +53,10 @@
                                  <td><?= $users['user_name']?></td>
                                  <td><?= $users['email']?></td>
                                  <td><?= $users['user_mobile']?></td> 
+                                 <td><?= $users['member_id']?></td> 
+
+                                 <td><?= $users['stdClubMemberClass']?></td> 
+
                                  <td><?= date("d-m-Y H:i:s", strtotime($users['created_on']));?></td> 
                                 
                                  <td><?= $users['score']?></td>

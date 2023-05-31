@@ -1,3 +1,8 @@
+    <style>
+        .new {margin-bottom:20px};
+
+        
+    </style>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -117,14 +122,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if ($row['language'] == 1 || $row['language'] == 3) { ?>
+                                    <?php if ($row['language'] == 1 || $row['language'] == 3) { ?> 
                                         <div class="row" id="question-eng">
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Question in English<sup class="text-danger">*</sup></label>
                                                 <input type="text" class="form-control input-font" minlength="10" maxlength="5000" name="que" id="que" placeholder="Enter Question">
                                             </div>
                                         </div>
-                                    <?php } ?>
+                                 <?php } ?> 
                                     <?php if ($row['language'] == 2 || $row['language'] == 3) { ?>
                                         <div class="row" id="question-hindi">
                                             <div class="mb-2 col-md-4">
@@ -132,7 +137,7 @@
                                                 <input type="text" minlength="10" maxlength="5000" class="form-control input-font" name="que_h" id="que_h" placeholder="Question in Hindi">
                                             </div>
                                         </div>
-                                    <?php } ?>
+                                   <?php } ?>
                                     <div class="row" id="image-block" style="display:none;">
                                         <div class="mb-2 col-md-4">
                                             <label class="d-block text-font">Image<sup class="text-danger">*</sup></label>
@@ -191,6 +196,7 @@
                                                         <option value="1">Text</option>
                                                         <option value="2">Image</option>
                                                     </select>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="row" id="opt2_div">
@@ -232,8 +238,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_eng">
-                                            <label class="d-block text-font mr-3">English Option</label>
+                                          
                                             <div class="row mt-3" id="opt1_blk">
+                                            <label class="d-block text-font mr-3">English Option</label>
                                                 <div class="mb-2  d-flex">
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option1_text_blk">
@@ -300,8 +307,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-sm-3 col-lg-3 " id="opt_blk_hin">
-                                            <label class="d-block text-font mr-3">Hindi Option</label>
+                                            
                                             <div class="row mt-3" id="opt1_blk_h">
+                                            <label class="d-block text-font mr-3">Hindi Option</label>
                                                 <div class="mb-2  d-flex">
                                                     <div class="col-12">
                                                         <div class="form-check" style="padding-left:0px;" id="option1_h_text_blk">
@@ -368,8 +376,9 @@
                                         </div>
 
                                         <div class="col-md-2 col-sm-2 col-lg-2 " id="corr_opt_blk">
-                                            <label class="d-block text-font mr-3">Correct Option</label>
+                                        <label class="d-block text-font mr-3">Correct Option</label>
                                             <div id="cor_opt">
+                                         
                                                 <div class="row mt-3">
                                                     <div class="mb-2 col-4 ">
                                                         <input class="form-control-radio input-font ml-3" type="radio" name="correct_answer" id="r1" value="1" style="margin-top: -7px;">
@@ -696,6 +705,24 @@
 
         <!-- End of Content Wrapper -->
         <script>
+            /// CKEDITOR.replace('que');
+            // CKEDITOR.replace('que_h')
+
+            // var lan= '<?php echo  $row['language'];?>';
+         
+            //  if(lan == 1 || lan == 3){
+            //     $('#question-eng').show();
+            //     $('#question-hindi').hide();
+            //   //  CKEDITOR.replace('que');
+            //  }
+            //  if(lan == 2 || lan == 3){
+            //     $('#question-eng').hide();
+            //     $('#question-hindi').show();
+            //   //  CKEDITOR.replace('que_h');
+            //  }
+           
+        </script>
+        <script>
             // (function() {
             //     'use strict'
 
@@ -871,9 +898,9 @@
                                     // console.log(res);
                                     if (res.status == 0) {
                                         Swal.fire(res.message);
-                                        if ($("#err_que_bank").next(".validation").length == 0) {
-                                            $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please add questions equal to total no of questions in bank</div>");
-                                        }
+                                        // if ($("#err_que_bank").next(".validation").length == 0) {
+                                        //     $("#err_que_bank").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please add questions equal to total no of questions in bank</div>");
+                                        // }
                                         if (!focusSet) {
                                             $("#err_que_bank").focus();
                                         }
@@ -1083,7 +1110,7 @@
                     $('#opt4_blk_h').hide();
                     $('#opt5_blk_h').hide();
 
-
+                    $('#c_o_title').show();
                     $('#r1').hide();
                     $('#r2').hide();
                     $('#r3').hide();
@@ -1268,6 +1295,9 @@
 
                     var focusSet = false;
                     var allfields = true;
+                    var imgVal = true;
+                    var engImg = true;
+                    var hindiImg = true;
                     var language = $("#que_language").val();
 
                     //////////////////////
@@ -1282,6 +1312,7 @@
                                 $("#imgError").focus();
                             }
                             allfields = false;
+                            imgVal = false;
                         } else {
                             $("#imgError").next(".validation").remove();
                         }
@@ -1295,12 +1326,14 @@
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file size less than 200 KB </div>");
                                 }
                                 allFields = false;
+                                imgVal = false;
                                 if (!focusSet) {
                                     $("#que_image").focus();
                                 }
                             } else {
                                 $("#imgError").next(".validation").remove();
                             }
+                        }
                             // check type  start 
                             var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
                             var fileName = $("#que_image").val();;
@@ -1311,13 +1344,14 @@
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please upload .jpg / .jpeg/.png image </div>");
                                 }
                                 allFields = false;
+                                imgVal = false;
                                 if (!focusSet) {
                                     $("#que_image").focus();
                                 }
                             } else {
                                 $("#imgError").next(".validation").remove();
                             }
-                        }
+                        
                     }
                     ///////////////////////////
                     var no_of_options = $("#no_of_options").val();
@@ -1357,6 +1391,8 @@
                                 if (option1 == "") {
                                     if ($("#option1").next(".validation").length == 0) {
                                         $("#option1").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
+                                        // $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;margin-bottom:15px; '> .</div>");
+                                        // $("#opt_type_1").css('margin-bottom',"20px");
                                     }
                                     if (!focusSet) {
                                         $("#option1").focus();
@@ -1370,6 +1406,7 @@
                                 var msg = ImageValidation(option1_image, 1);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
                             }
 
@@ -1394,6 +1431,7 @@
                                 var msg = ImageValidation(option2_image, 2);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
                             }
                             ////////////////////
@@ -1419,6 +1457,7 @@
                                 var msg = ImageValidation(option3_image, 3);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
 
                             }
@@ -1445,6 +1484,7 @@
                                 var msg = ImageValidation(option4_image, 4);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
 
                             }
@@ -1470,6 +1510,7 @@
                                 var msg = ImageValidation(option5_image, 5);
                                 if (msg > 0) {
                                     allfields = false;
+                                    engImg = false;
                                 }
 
                             }
@@ -1498,6 +1539,9 @@
                                 if (option1_h == "") {
                                     if ($("#option1_h").next(".validation").length == 0) {
                                         $("#option1_h").after("<div class='validation' style='color:red;margin-bottom:15px; margin-left:16px;'> This value is required.</div>");
+                                        // $("#opt_type_1").after("<div class='validation' style='color:red; margin-left:16px;margin-bottom:15px;'> .</div>");
+                                        // $("#opt_type_1").css('margin-bottom',"20px");
+                                        // $("#opt_type_1").addClass("new");
                                     }
                                     if (!focusSet) {
                                         $("#option1_h").focus();
@@ -1508,9 +1552,10 @@
                                 }
                             } else {
                                 var option1_h_image = $("#option1_h_image").val();
-                                var msg = ImageValidationHindi(option1_h_image, 1);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option1_h_image, 1);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
                             ////////////////////
@@ -1531,9 +1576,10 @@
                                 }
                             } else {
                                 var option2_h_image = $("#option2_h_image").val();
-                                var msg = ImageValidationHindi(option2_h_image, 2);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option2_h_image, 2);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
                         }
@@ -1555,9 +1601,10 @@
                                 }
                             } else {
                                 var option3_h_image = $("#option3_h_image").val();
-                                var msg = ImageValidationHindi(option3_h_image, 3);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option3_h_image, 3);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
 
@@ -1579,9 +1626,10 @@
                                 }
                             } else {
                                 var option4_h_image = $("#option4_h_image").val();
-                                var msg = ImageValidationHindi(option4_h_image, 4);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option4_h_image, 4);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
 
@@ -1603,9 +1651,10 @@
                                 }
                             } else {
                                 var option5_h_image = $("#option5_h_image").val();
-                                var msg = ImageValidationHindi(option5_h_image, 5);
-                                if (msg > 0) {
+                                var msg1 = ImageValidationHindi(option5_h_image, 5);
+                                if (msg1 > 0) {
                                     allfields = false;
+                                    hindiImg = false;
                                 }
                             }
                         }
@@ -1624,9 +1673,63 @@
                     } else {
                         $("#cor_opt").next(".validation").remove();
                     }
-                    if (allfields) {
-                        /*********************************************/
+                    if(imgVal == false){
+                        allfields = false;
 
+                        swal.fire("Image size should be less than 200kb");
+                    }
+                    if(engImg == false){
+                        allfields = false;
+                        swal.fire("English Option Image size should be less than 200kb");
+                    }
+                    if(hindiImg == false){
+                        allfields = false;
+                        swal.fire("Hindi Option Image size should be less than 200kb");
+                    }
+                    if (allfields) {
+                        /*********************************************
+                        var url = $('#questions_form').attr('action');
+                        var userForm = document.getElementById("questions_form");
+                        var fd = new FormData(userForm);
+                        if (language == 1 || language == 3) {
+                            if (que_type == 1 || que_type == 3) {
+                                fd.append('que', que);
+                            }
+                        }
+                        if (language == 2 || language == 3) {
+                            if (que_type == 1 || que_type == 3) {
+                                fd.append('que_h', que_h);
+                            }
+                        }
+                       
+                        jQuery.ajax({
+                            type: "POST",
+                            url: url,
+                            dataType: 'json',
+                            data: fd,
+                            cache: false,
+                            processData: false,
+                            contentType: false,
+                            // enctype :'multipart/form-data',
+                            success: function(res) {
+                                if (res.status == 0) {
+                                    // alert(res.message);
+                                    Swal.fire(res.message);
+                                } else {
+                                    // alert(res.message);
+                                    Swal.fire(res.message);
+                                  
+                                    displayQuestions();
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                                console.log(error);
+                            }
+                        });
+
+
+                         *********************************************/
                         var url = $('#questions_form').attr('action');
                         var userForm = document.getElementById("questions_form");
                         var fd = new FormData(userForm);
@@ -1667,8 +1770,45 @@
                                     $('#option3_h_image').val('');
                                     $('#option4_h_image').val('');
                                     $('#option5_h_image').val('');
+                                    $("#r1").prop('checked', false);
+                                     $("#r2").prop('checked', false); 
+                                     $("#r3").prop('checked', false); 
+                                     $("#r4").prop('checked', false); 
+                                     $("#r5").prop('checked', false); 
+                                      $('input:radio[name="correct_answer"]').prop('checked', false);
+                                     $('#no_of_options').val(0);
+                                     $('#c_o_title').hide();
+                                     $('#opt_type_1').val(1);
+                                     $('#opt_type_2').val(1);
+                                     $('#opt_type_3').val(1);
+                                     $('#opt_type_4').val(1);
+                                     $('#opt_type_5').val(1);
+
+                                     $('#options_blk').hide();
 
 
+                                     $("#option1_text_blk").show();
+                                    $("#option1_image_blk").hide();
+                                    $("#option1_h_text_blk").show();
+                                    $("#option1_h_image_blk").hide();
+                                    $("#option2_text_blk").show();
+                                    $("#option2_image_blk").hide();
+                                    $("#option2_h_text_blk").show();
+                                    $("#option2_h_image_blk").hide();
+                                    $("#option3_text_blk").show();
+                                    $("#option3_image_blk").hide();
+                                    $("#option3_h_text_blk").show();
+                                    $("#option3_h_image_blk").hide();
+                                    $("#option4_text_blk").show();
+                                    $("#option4_image_blk").hide();
+                                    $("#option4_h_text_blk").show();
+                                    $("#option4_h_image_blk").hide();
+                                    $("#option5_text_blk").show();
+                                    $("#option5_image_blk").hide();
+                                    $("#option5_h_text_blk").show();
+                                    $("#option5_h_image_blk").hide();
+                                     
+                                     
                                     displayQuestions();
                                 }
                             },

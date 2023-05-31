@@ -13,6 +13,7 @@
               <?php  } ?>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
   <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Banner Image</a></li>
             </ol>
         </nav>
 

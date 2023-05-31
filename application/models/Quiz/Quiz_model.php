@@ -292,14 +292,36 @@ public function updateQuiz($id,$formdata)
 
             $rs= $query->result_array();
             foreach ($rs as $row){
+                /*
                  //////////////////
                  $myQuery = "SELECT count(*) AS cnt FROM  tbl_quiz_submission_details where quiz_id = {$row['id']}";
                  $query = $this->db->query($myQuery);
                  $cntDetails=$query->row_array();
                  $row['total_sub']  = $cntDetails['cnt'];
                  ////////////////////
+                 array_push($res,$row);*/
 
-                 array_push($res,$row);
+                 if($row['end_date'] == date("Y-m-d") ){
+                    if($row['end_time'] < $current_time){
+
+                        //////////////////
+                        $myQuery = "SELECT count(*) AS cnt FROM  tbl_quiz_submission_details where quiz_id = {$row['id']}";
+                        $query = $this->db->query($myQuery);
+                        $cntDetails=$query->row_array();
+                        $row['total_sub']  = $cntDetails['cnt'];
+                        ////////////////////
+                     
+                        array_push($res,$row);
+                    }
+                }else{
+                    //////////////////
+                    $myQuery = "SELECT count(*) AS cnt FROM  tbl_quiz_submission_details where quiz_id = {$row['id']}";
+                    $query = $this->db->query($myQuery);
+                    $cntDetails=$query->row_array();
+                    $row['total_sub']  = $cntDetails['cnt'];
+                    ////////////////////
+                    array_push($res,$row);
+                }
             }
         }
         return $res ; 
@@ -327,7 +349,7 @@ public function updateQuiz($id,$formdata)
        $this->db->select('tbl_quiz_submission_details.*,
             tbl_users.user_name,
             tbl_users.email,
-            tbl_users.user_mobile'); 
+            tbl_users.user_mobile,tbl_users.member_id,tbl_users.stdClubMemberClass'); 
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
         $this->db->order_by('score', 'desc');   
@@ -358,8 +380,9 @@ public function updateQuiz($id,$formdata)
             tbl_users.email,
             tbl_users.user_mobile'); 
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
+        $this->db->where('tbl_quiz_submission_details.score !=',0); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
-        $this->db->order_by('score', 'Asc'); 
+        $this->db->order_by('score', 'DESC'); 
         $this->db->order_by('time_taken', 'Asc');    
         $this->db->limit($count);   
         //return  $this->db->get('tbl_quiz_submission_details')->result_array();
@@ -722,7 +745,7 @@ public function updateQuiz($id,$formdata)
         $this->db->select('tqsd.*,tqd.title');
         $this->db->from('tbl_quiz_submission_details tqsd');
         $this->db->join('tbl_quiz_details tqd','tqd.id=tqsd.quiz_id');
-        $this->db->where('tqd.end_date <',$current_date);
+        $this->db->where('tqd.end_date <=',$current_date);
         $this->db->where('user_id',$id);
         return $this->db->get()->result_array(); 
     }

@@ -132,6 +132,8 @@ class Shareyourthoughts extends CI_Controller
                 $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
             }
             $data['permissions'] =  $permissions;
+        }else{
+            $data['permissions']=array();
         }
         $this->load->view('admin/headers/admin_header');
         $this->load->view('Shareyourthoughts/important_draft_list',$data);

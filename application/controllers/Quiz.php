@@ -1739,12 +1739,19 @@ class Quiz extends CI_Controller
         $this->load->view('Quiz/result_declaration_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    // public function answer_key_list($user_id,$quiz_id){
+    //     $answerKey = $this->Quiz_model->getAnswerKeyForUser($user_id,$quiz_id); 
+    //     $data['answerKey']=$answerKey; 
+    //    // echo json_encode($answerKey);exit();
+    //     $this->load->view('admin/headers/admin_header');;
+    //     $this->load->view('Quiz/answer_key_list',$data);
+    //     $this->load->view('admin/footers/admin_footer');
+    // }
     public function answer_key_list($user_id,$quiz_id){
         $answerKey = $this->Quiz_model->getAnswerKeyForUser($user_id,$quiz_id); 
         $data['answerKey']=$answerKey; 
-       // echo json_encode($answerKey);exit();
         $this->load->view('admin/headers/admin_header');;
-        $this->load->view('Quiz/answer_key_list',$data);
+        $this->load->view('Quiz/answer_key_new',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
