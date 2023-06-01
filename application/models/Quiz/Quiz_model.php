@@ -739,14 +739,45 @@ public function updateQuiz($id,$formdata)
         return $quiz = $this->db->get('tbl_quiz_details')->row_array();
     }
     public function getQuizByUserid($id){
+        $t=time();
+
+        $current_time = (date("H:i:s",$t));
         $current_date= date('Y-m-d');
-        $this->db->select('tqsd.*,tqd.title');
+        $this->db->select('tqsd.*,tqd.end_date,tqd.end_time,tqd.title');
         $this->db->from('tbl_quiz_submission_details tqsd');
         $this->db->join('tbl_quiz_details tqd','tqd.id=tqsd.quiz_id');
-        $this->db->where('tqd.end_date <=',$current_date);
+        //$this->db->where('tqd.end_date <=',$current_date);
         
         $this->db->where('user_id',$id);
-        return $this->db->get()->result_array(); 
+       $query= $this->db->get();
+       // return $this->db->get()->result_array(); 
+        //return $query->result_array();
+
+
+        if($query->num_rows() > 0){
+
+            $rs= $query->result_array();
+            $abcd=array();
+            foreach ($rs as $row){
+                
+
+                 if($row['end_date'] == date("Y-m-d") ){
+                    if($row['end_time'] < $current_time){
+
+                        $row['visible']="1";                     
+                        array_push($abcd,$row);
+                    }else{
+                        $row['visible']="0";
+                        array_push($abcd,$row);
+                    }
+                }else{                   
+                     $row['visible']="1";
+                    array_push($abcd,$row);
+                }
+
+            }
+        }
+        return $abcd ; 
     }
      
 }
