@@ -11,6 +11,7 @@ class Standardswritting extends CI_Controller
         $this->load->model('Admin/Admin_model');
         $this->load->helper('comman_fun_helper');
         $this->load->model('Quiz/quiz_model');
+        $this->load->model('Standardswritting/Standardswritting_model');
         // $this->load->model('Users/Users_model');
         // $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         // $this->load->model('Winnerwall/Winnerwall_model');
@@ -699,31 +700,216 @@ if($id){
     public function create_standard_list()
     {
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_standard_list');
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->create_standard_list(); 
+
+        $this->load->view('standardwritting/create_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_standard_archive()
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->create_standard_archive(); 
+
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_standard_archive');
+        $this->load->view('standardwritting/create_standard_archive',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_standard_form()
     {
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_standard_form');
+        if ($this->form_validation->run('create_standard_form') == FALSE) 
+        {
+           $this->load->view('standardwritting/create_standard_form');
+        } 
+        else 
+        {
+            if (!file_exists('uploads/standardswritting/file')) { mkdir('uploads/standardswritting/file', 0777, true); }
+            $first_filesize=$_FILES['first_file']['size'];  
+            if ($first_filesize > 0 ) 
+            {
+                $first_filepath = 'uploads/standardswritting/file/'; 
+                $first_filelocation = $first_filepath . time() .'first_file'. $_FILES['first_file']['name']; 
+                move_uploaded_file($_FILES['first_file']['tmp_name'], $first_filelocation);
+            }
+            else
+            {
+                $first_filelocation=''; 
+            }
+
+            $second_filesize=$_FILES['second_file']['size']; 
+            if ($second_filesize > 0 ) 
+            {
+                $second_filepath = 'uploads/standardswritting/file/'; 
+                $second_filelocation = $second_filepath . time() .'second_file'. $_FILES['second_file']['name']; 
+                move_uploaded_file($_FILES['second_file']['tmp_name'], $second_filelocation);
+            }
+            else
+            {
+                $second_filelocation=''; 
+            }
+
+
+             $third_filesize=$_FILES['third_file']['size']; 
+            if ($third_filesize > 0 ) 
+            {
+                $third_filepath = 'uploads/standardswritting/file/'; 
+                $third_filelocation = $third_filepath . time() .'third_file'. $_FILES['third_file']['name']; 
+                move_uploaded_file($_FILES['third_file']['tmp_name'], $third_filelocation);
+            }
+            else
+            {
+                $third_filelocation=''; 
+            }
+
+            $consolation_filesize=$_FILES['consolation_file']['size']; 
+            if ($consolation_filesize > 0 ) 
+            {
+                $consolation_filepath = 'uploads/standardswritting/file/'; 
+                $consolation_filelocation = $consolation_filepath . time() .'consolation_file'. $_FILES['consolation_file']['name']; 
+                move_uploaded_file($_FILES['consolation_file']['tmp_name'], $consolation_filelocation);
+            }
+            else
+            {
+                $consolation_filelocation=''; 
+            } 
+
+            $formdata = array(); 
+            $formdata['standard_club'] = $this->input->post('standard_club');
+            $formdata['topic_of_activity'] = $this->input->post('topic_of_activity');
+            $formdata['date_of_activity'] = $this->input->post('date_of_activity'); 
+            $formdata['number_of_participants'] = $this->input->post('number_of_participants'); 
+            $formdata['first_paticipant'] = $this->input->post('first_paticipant');
+            $formdata['first_file'] =$first_filelocation; 
+            $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
+            $formdata['second_file'] = $second_filelocation;
+            $formdata['third_paticipant'] = $this->input->post('third_paticipant'); 
+            $formdata['third_file'] = $third_filelocation;
+            $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant'); 
+            $formdata['consolation_file'] = $consolation_filelocation; 
+             $formdata['created_on'] = date('Y-m-d h:i:s'); 
+             $formdata['updated_on'] = date('Y-m-d h:i:s'); 
+            $id = $this->Standardswritting_model->StandardswrittingSave($formdata);
+            if ($id)
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "Standardswritting/create_standard_list", 'refresh');
+            }
+            else
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Failed to create Create New Competition, Please try again", "DD"));
+                redirect(base_url() . "standardswritting/create_standard_form", 'refresh');
+            }
+        } 
+
         $this->load->view('admin/footers/admin_footer');
-    }
-    public function create_standard_edit()
+    } 
+    public function create_standard_edit($id)
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->view_standards($id);  
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_standard_edit');
+        if ($this->form_validation->run('create_standard_form') == FALSE) 
+        {
+            $this->load->view('standardwritting/create_standard_edit',$data);
+        } 
+        else 
+        {
+            if (!file_exists('uploads/standardswritting/file')) { mkdir('uploads/standardswritting/file', 0777, true); }
+            
+            
+            if (isset($_FILES['first_file']['size']) ) 
+            {
+                $first_filepath = 'uploads/standardswritting/file/'; 
+                $first_filelocation = $first_filepath . time() .'first_file'. $_FILES['first_file']['name']; 
+                move_uploaded_file($_FILES['first_file']['tmp_name'], $first_filelocation);
+            }
+            else
+            {
+                $first_filelocation=$this->input->post('first_fileold');; 
+            }
+
+             
+            if (isset($_FILES['second_file']['size'])) 
+            {
+                $second_filepath = 'uploads/standardswritting/file/'; 
+                $second_filelocation = $second_filepath . time() .'second_file'. $_FILES['second_file']['name']; 
+                move_uploaded_file($_FILES['second_file']['tmp_name'], $second_filelocation);
+            }
+            else
+            {
+                $second_filelocation=$this->input->post('second_fileold');; 
+            }
+
+
+            
+            if (isset($_FILES['third_file']['size'])) 
+            {
+                $third_filepath = 'uploads/standardswritting/file/'; 
+                $third_filelocation = $third_filepath . time() .'third_file'. $_FILES['third_file']['name']; 
+                move_uploaded_file($_FILES['third_file']['tmp_name'], $third_filelocation);
+            }
+            else
+            {
+                $third_filelocation=$this->input->post('third_fileold');; 
+            }
+ 
+            if (isset($_FILES['consolation_file']['size']) ) 
+            {
+                $consolation_filepath = 'uploads/standardswritting/file/'; 
+                $consolation_filelocation = $consolation_filepath . time() .'consolation_file'. $_FILES['consolation_file']['name']; 
+                move_uploaded_file($_FILES['consolation_file']['tmp_name'], $consolation_filelocation);
+            }
+            else
+            {
+                $consolation_filelocation=$this->input->post('consolation_fileold');; 
+            } 
+
+            $formdata = array(); 
+            $formid = $this->input->post('id');
+            $formdata['standard_club'] = $this->input->post('standard_club');
+            $formdata['topic_of_activity'] = $this->input->post('topic_of_activity');
+            $formdata['date_of_activity'] = $this->input->post('date_of_activity'); 
+            $formdata['number_of_participants'] = $this->input->post('number_of_participants'); 
+            $formdata['first_paticipant'] = $this->input->post('first_paticipant');
+            $formdata['first_file'] =$first_filelocation; 
+            $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
+            $formdata['second_file'] = $second_filelocation;
+            $formdata['third_paticipant'] = $this->input->post('third_paticipant'); 
+            $formdata['third_file'] = $third_filelocation;
+            $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant'); 
+            $formdata['consolation_file'] = $consolation_filelocation;  
+            $formdata['updated_on'] = date('Y-m-d h:i:s'); 
+            $formdata['status'] = 1; 
+            $id = $this->Standardswritting_model->StandardswrittingUpdate($formdata,$formid);
+            if ($id)
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "Standardswritting/manage_standard_list", 'refresh');
+            }
+            else
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Failed to create Create New Competition, Please try again", "DD"));
+                redirect(base_url() . "standardswritting/create_standard_form", 'refresh');
+            }
+        } 
+
         $this->load->view('admin/footers/admin_footer');
     }
     public function manage_standard_list()
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->manage_standard_list(); 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/manage_standard_list');
+        $this->load->view('standardwritting/manage_standard_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+     public function approved_standard_list()
+    {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->approved_standard_list(); 
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/approved_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function ongoing_standard_list()
@@ -744,10 +930,14 @@ if($id){
         $this->load->view('standardwritting/revised_standard_list');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function view_standards()
+    public function view_standards($id)
     {
-        $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/view_standards');
+
+         $this->load->view('admin/headers/admin_header');
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->view_standards($id);  
+
+        $this->load->view('standardwritting/view_standards',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function submission_view()
@@ -818,4 +1008,100 @@ if($id){
     }
  
 
+public function updateStatus(){
+        try {  
+
+                 
+            $id = $this->input->post('id');
+            $formdata['status'] = $this->input->post('status'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s');
+
+            $id = $this->Standardswritting_model->updateStatus($formdata,$id);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+    public function deleteData(){
+        try {   
+                 
+            $id = $this->input->post('id');
+            $id = $this->Standardswritting_model->deleteData($id);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Deleted successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+    public function deleteFile(){
+        try {   
+                 
+            $id = $this->input->post('id');
+            $val = $this->input->post('delete_id');
+            if ($val==1) 
+            {
+                $formdata['first_file']='';
+            }
+            if ($val==2) 
+            {
+                $formdata['second_file']='';
+            }
+            if ($val==3) 
+            {
+                $formdata['third_file']='';
+            }
+            if ($val==4) 
+            {
+                $formdata['consolation_file']='';
+            }
+
+            $id = $this->Standardswritting_model->deleteFile($id,$formdata);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Deleted successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardswritting/create_standard_edit", 'refresh');
+    }
 }

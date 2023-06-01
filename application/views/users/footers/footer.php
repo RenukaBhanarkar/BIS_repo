@@ -158,36 +158,38 @@ window.onhashchange = function (event) {
 
 
 
-<script type = "text/javascript">  
+<!-- <script type = "text/javascript">  
     window.onload = function () {  
         document.onkeydown = function (e) {  
             return (e.which || e.keyCode) != 116;  
         };  
     }  
-</script> 
+</script>  -->
 
 <script>
-var message = "Not Allowed Right Click";
+var message = "This function is not allowed here";
 
 function rtclickcheck(keyp) {
     if (navigator.appName == "Netscape" && keyp.which == 3) {
-      ///  alert(message);
+       alert(message);
         return false;
     }
     if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) {
-       /// alert(message);
+        alert(message);
         return false;
     }
 }
-document.onmousedown = rtclickcheck;
-$(document).ready(function(){
-  $("#helf_toggle").click(function(){
-    $("#toggle_show").toggle();
-  });
-  $("#legal_toggle").click(function(){
-    $("#legal_show").toggle();
-  });
-});
+</script>
+<script>
+        document.onmousedown = rtclickcheck;
+        $(document).ready(function(){
+        $("#helf_toggle").click(function(){
+            $("#toggle_show").toggle();
+        });
+        $("#legal_toggle").click(function(){
+            $("#legal_show").toggle();
+        });
+        });
 </script>
 <script>
     $(document).ready(function () {

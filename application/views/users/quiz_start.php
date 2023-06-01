@@ -282,7 +282,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                 <div class="d-flex">
                                     <button type="button" id="prevBtn" class="btn btn-success startQuiz me-2" onclick="nextPrev(-1)">Previous</button>
 
-                                    <button type="button" id="nextBtn" class="btn btn-success startQuiz me-2" onclick="nextPrev(1)"><span>Next</span></button>
+                                    <button type="button" id="nextBtn" class="btn btn-success startQuiz me-2" onclick="nextPrev(1)"><span>Save & Next</span></button>
                                 </div>                             
 
                             </div>
@@ -384,7 +384,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
             } else {
                 document.getElementById("nextBtn").style.display = "block";
-                document.getElementById("nextBtn").innerHTML = "Next";
+                document.getElementById("nextBtn").innerHTML = "Save & Next";
             }
             //... and run a function that will display the correct step indicator:
             fixStepIndicator(n)
