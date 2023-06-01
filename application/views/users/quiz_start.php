@@ -33,7 +33,11 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/bis_logo.png" type="image/x-icon">
     <link href="<?= base_url(); ?>assets/css/quiz_start.css" rel="stylesheet" />
-
+    <!-- <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script> -->
 </head>
 <style>
     h3.quiz_title_heading {
@@ -98,7 +102,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                                 <img width="200" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $details['que_bank_id']; ?>/<?php echo $details['image']; ?>"></div>
                                             <?php }  ?>
 
-                                        <div class="quiz-option">
+                                        <div class="quiz-option" style="padding-top:20px;">
                                             <input type="hidden" value="<?= $details['que_id'] ?>" name="que_id[]">
                                             <input type="hidden" value="<?= $details['corr_opt_e'] ?>" name="corr_opt[]">
                                             <?php
@@ -336,7 +340,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         </div>
         </form>
     </section>
-
+    
 
     <script src="<?= base_url(); ?>assets/js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -344,17 +348,42 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <script src="<?= base_url(); ?>assets/js/font_resize.js"></script>
     <script src="<?= base_url(); ?>assets/js/tab.js"></script>
     <script src="<?= base_url(); ?>assets/js/dark_mode.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
-    </script>
+      
+
+$('body').bind('copy paste cut drag drop', function (e) {
+  e.preventDefault();
+});
+
+$(document).bind("contextmenu", function(e) {
+    return false;
+});
+
+document.onkeydown = function(){
+  switch (event.keyCode){
+        case 116 : //F5 button
+            event.returnValue = false;
+            event.keyCode = 0;
+            return false;
+        case 82 : //R button
+            if (event.ctrlKey){ 
+                event.returnValue = false;
+                event.keyCode = 0;
+                return false;
+            }
+    }
+}
+
+</script>
+
+
+
+    
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
-        // slight update to account for browsers not supporting e.which
-    function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
-    // To disable f5
-        /* jQuery < 1.7 */
-    $(document).bind("keydown", disableF5);
-    /* OR jQuery >= 1.7 */
-    $(document).on("keydown", disableF5);
+      
 
         var total_ques = $("#total_que_count").val();
         var app_que_count = 1;

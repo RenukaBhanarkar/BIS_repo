@@ -378,7 +378,7 @@ public function updateQuiz($id,$formdata)
         $this->db->select('tbl_quiz_submission_details.*,
             tbl_users.user_name,
             tbl_users.email,
-            tbl_users.user_mobile'); 
+            tbl_users.user_mobile,tbl_users.member_id,tbl_users.stdClubMemberClass'); 
         $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
         $this->db->where('tbl_quiz_submission_details.score !=',0); 
         $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
@@ -718,7 +718,7 @@ public function updateQuiz($id,$formdata)
         $this->db->select('tbl_quiz_submission_details.*,
        
         tbl_result_declaration.prize as userprize,
-        tbl_users.user_name,tbl_users.email,tbl_users.user_mobile
+        tbl_users.user_name,tbl_users.email,tbl_users.user_mobile,tbl_users.member_id,tbl_users.stdClubMemberClass
         
         '); 
     $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 

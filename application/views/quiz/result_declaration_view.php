@@ -75,6 +75,8 @@
                                         <th>Name</th>
                                         <th>Email ID</th>
                                         <th>Contact No.</th>
+                                        <th>Member Id</th>
+                                        <th>Class</th>
                                         <th>Date</th>
                                         <th>Time Taken</th>
                                         <th>Score</th>
@@ -89,6 +91,9 @@
                                         <td><?= $value['user_name']?></td>
                                         <td><?= $value['email']?></td>
                                         <td><?= $value['user_mobile']?></td>
+                                        <td><?= $value['member_id']?></td> 
+
+                                        <td><?= $value['stdClubMemberClass']?></td> 
                                         <td><?= $value['created_on']?></td>
                                         <?php 
                                             $t =  $value['time_taken'];
