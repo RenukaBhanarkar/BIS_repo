@@ -34,6 +34,8 @@
                                 <th>Name</th>
                                 <th>Email ID</th>
                                 <th>Contact No.</th>
+                                <th>Member Id</th>
+                                <th>Class</th>
                                 <th>Date</th>                                
                                 <th>Score</th>
                                 <th>Time Taken</th>
@@ -53,17 +55,25 @@
                                 <td><?= $user['user_name']?></td>
                                 <td><?= $user['email']?></td>
                                 <td><?= $user['user_mobile']?></td>
+                                <td><?= $user['member_id']?></td> 
+
+                                <td><?= $user['stdClubMemberClass']?></td> 
                                 <td><?= $user['created_on']?></td>
                                
                                 
                                 <td><?= $user['score']?></td>
                                 <?php 
-                                //  $t =  $user['time_taken'];
-                                //  $timeTaken = sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+                                 $t =  $user['time_taken'];
+                                 $h = (int)$t/3600;
+                                 $m= (int)$t/60%60;
+                                 $s= (int)$t%60;
+
+                                 $timeTaken = sprintf('%02d:%02d:%02d', ($h),($m),($s) );
                                  ?>
-                                 <td><?= $user['time_taken']; ?> Seconds</td> 
+
+                                <td><?= $timeTaken ?> </td> 
                                  <td><?= $user['prize']?></td>
-                                <!-- <td><?= $user['time_taken']?> Seconds</td> -->
+                              
                                 <!-- <td>
                                     <select id="prize" name="prize[]" class="form-control input-font" value="prize">
                                         <option value="0">Select Option</option>

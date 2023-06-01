@@ -613,6 +613,7 @@
 </section>
 </div>
 </div>
+
 <script>
 // Set the date we're counting down to
 <?php date_default_timezone_set("Asia/Calcutta"); ?>

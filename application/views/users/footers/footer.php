@@ -183,6 +183,22 @@ function rtclickcheck(keyp) {
         return false;
     }
 }
+
+// code for preventing from back
+
+history.pushState(null, null, window.location.href);
+
+history.back();
+
+window.onpopstate = () => history.forward();
+
+// code for preventing from refresh
+function disableF5(e) { if ((e.which || e.keyCode) == 116 ) e.preventDefault(); };
+$(document).ready(function(){
+
+$(document).on("keydown", disableF5);
+
+});
 </script>
 <script>
         document.onmousedown = rtclickcheck;
