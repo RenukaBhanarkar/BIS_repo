@@ -21,35 +21,39 @@
        <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top card-body ">
-                    <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
-                        <thead>
-                        <tr>
-                                <th>Sr. No.</th>
-                                <th>Competition ID</th>
+                     <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
+                    <thead>
+                            <tr>
+                                <th>Sr. No.</th> 
                                 <th>Standard Club</th>
-                                <th>Date of Activity</th>
-                                <th>Topic</th>
-                                <th>Number of Participants</th>
+                                <th>Topic</th> 
+                                <th>Date of Activity</th> 
+                                <th>Number of Participate</th>
+                                <th>Date Created</th>
                                 <th>Status</th>
                                 <th>Reason of Rejection</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                           <?php foreach ($getData as $key => $data) {?>
                            <tr>
-                           <td>1</td>
-                              <td>12345</td>
-                              <td>Miscellaneous Competition</td>
-                              <td>12/03/2023</td>
-                              <td>Topic</td>
-                              <td>12</td>
-                              <td>Pending</td>
-                              <td>Reason of Rejection</td>
+                              <td><?=  $key+1; ?></td>
+                              <td><?= $data['standard_club']?></td>
+                              <td><?= $data['topic_of_activity']?></td>
+                              <td><?= $data['date_of_activity']?></td>
+                              <td><?= $data['number_of_participants']?></td>
+                              <td><?= $data['created_on']?></td>
+                              <td><?= $data['status_name']?></td>
+                              <td><?= $data['reject_reasone']?></td>
+                              
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Restore</a>
-                              </td>
-
+                                <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a>
+                                 <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',1)">Restore</a>
+                             </td>
+                          </tr>
+                          <?php } ?>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -61,79 +65,61 @@
     </div>
     <!-- End of Main Content -->
  </body>
-                                  <!-- Modal -->
-                                    <div class="modal fade" id="archivesForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Archive</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Archive?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Archive</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="createForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Create Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Create?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Create</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="editForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Edit?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Edit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="deleteForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">delete</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to delete?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
+
+<script>
+  function updateStatus(id,status) {
+    if (status==1) { statusdata='Restore'; }
+    if (status==9) { statusdata='Archive'; }
+    if (status==2) { statusdata='Send For Approval'; }
+    if (status==5) { statusdata='Publish'; }
+    if (status==6) { statusdata='Unpublish'; }
+    Swal.fire({
+      title: 'Do you want to '+ statusdata+ ' ?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: statusdata,
+      denyButtonText: `Cancel`,
+    }).then((result) => 
+    { 
+      if (result.isConfirmed) 
+      { 
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateStatus',
+        data: {
+          id: id,
+          status: status, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          location.reload();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+      } 
+    })
+  }
+ 
+ 
+ function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "view_standards/"+id; 
+    }  
+  })
+}
+</script>
+                                  
+                                     

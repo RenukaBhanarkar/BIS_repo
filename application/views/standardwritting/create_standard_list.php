@@ -25,6 +25,7 @@
             </div>
         </div>
   </div>
+
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
@@ -32,35 +33,38 @@
                     <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Sr. No.</th>
-                                <th>Competition ID</th>
+                                <th>Sr. No.</th> 
                                 <th>Standard Club</th>
-                                <th>Date of Activity</th>
                                 <th>Topic</th>
+                                <th>Date of Activity</th> 
                                 <th>Number of Participants</th>
-                                <th>Status</th>
-                                
+                                <th>Status</th> 
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                          <?php foreach ($getData as $key => $data) {?>
                            <tr>
-                              <td>1</td>
-                              <td>12345</td>
-                              <td>Miscellaneous Competition</td>
-                              <td>12/03/2023</td>
-                              <td>Topic</td>
-                              <td>12</td>
-                              <td>Pending</td>
+                              <td><?=  $key+1; ?></td>
+                              <td><?= $data['standard_club']?></td>
+                              <td><?= $data['topic_of_activity']?></td>
+                              <td><?= $data['date_of_activity']?></td>
+                              <td><?= $data['number_of_participants']?></td>
+                              <td>New Created</td> 
                               
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2">View</a>
-                                 <a href="<?php echo base_url(); ?>standardswritting/create_standard_edit" class="btn btn-info btn-sm mr-2 edit" >Edit</a>
-                                 <a href="#" class="btn btn-success btn-sm mr-2 create" >Create</a>
-                                 <a href="#" class="btn btn-danger btn-sm mr-2 delete" >Delete</a>
-                                 <a href="#" class="btn btn-primary btn-sm mr-2 archive" >Archive</a>
+                                 
+                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a>
+
+                                 <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $data['id']?>')" >Edit</a>
+                                 <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',1)" >Create</a>
+                                 <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteData('<?= $data['id']?>')" >Delete</a>
+                                 <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
                                   
                             </td>
+                          </tr>
+                          <?php } ?>
+                           
 
                         </tbody>
                     </table>
@@ -73,84 +77,102 @@
     </div>
     <!-- End of Main Content -->
  <script>
-    $(document).ready(function(){
-   $('.edit').on('click',function(){
+  function updateStatus(id,status) {
+    if (status==1) { statusdata='Create'; }
+    if (status==9) { statusdata='Archive'; }
     Swal.fire({
-                    title: 'Do you want to Edit?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Edit',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-   }) 
-   
-})
-$(document).ready(function(){
-   $('.create').on('click',function(){
-    Swal.fire({
+      title: 'Do you want to Create?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: statusdata,
+      denyButtonText: `Cancel`,
+    }).then((result) => 
+    { 
+      if (result.isConfirmed) 
+      { 
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateStatus',
+        data: {
+          id: id,
+          status: status, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          location.reload();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+      } 
+    })
+  }
+ 
+ 
+
+ function deleteData(id) 
+ { 
+  Swal.fire({
                     title: 'Do you want to Create?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Create',
+                    confirmButtonText:'Delete',
                     denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-   }) 
-   
-})
-$(document).ready(function(){
-   $('.archive').on('click',function(){
-    Swal.fire({
-                    title: 'Do you want to Archive?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Archive',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-   }) 
-   
-})
-$(document).ready(function(){
-   $('.delete').on('click',function(){
-    Swal.fire({
-                    title: 'Do you want to Delete?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Delete',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-   }) 
-   
-})
- </script>
+                    }).then((result) => { 
+                    if (result.isConfirmed) 
+                    { 
+                      $.ajax({
+                      type: 'POST',
+                      url: '<?php echo base_url(); ?>standardswritting/deleteData',
+                      data: {
+                        id: id, 
+                      },
+                      success: function(result)
+                      {
+                        Swal.fire('Saved!', '', 'success')
+                        location.reload();
+                      },
+                      error: function(result) {
+                        alert("Error,Please try again.");
+                      }
+                    });
+                  }  
+                })
+  }
+
+
+function editData(id) 
+{
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "create_standard_edit/"+id; 
+    }  
+  })
+}
+ function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "view_standards/"+id; 
+    }  
+  })
+}
+</script>
+ 
