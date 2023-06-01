@@ -13,7 +13,7 @@ i.fa.fa-chevron-down {
         <div class="triangle"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-9 p-3">
                     <div class="row">
                         <div class="col-sm-6 col-lg-6 footer_text">
                             <!-- <div class="dropdown">
@@ -91,7 +91,7 @@ i.fa.fa-chevron-down {
                         </div> -->
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 p-3">
                     <div class="row">
                         <div class="col-sm-12 col-lg-12 footer_text">
                             <div class="block-menu">
@@ -103,6 +103,7 @@ i.fa.fa-chevron-down {
                         </div>
                     </div>
                 </div>
+</div>
                 <!-- <div class="col-md-12">
                     <div class="social-content">
                         <h4>Follow us</h4>

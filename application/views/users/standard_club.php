@@ -111,7 +111,10 @@ li.tab-link:hover {
     z-index: 1;
 }
 
-
+.row>* {
+  padding-right: 0;
+  padding-left: 0;
+}
 </style>
 <!-- <section id="exchange_forum">
   <div class="container-fluid">
@@ -141,8 +144,8 @@ li.tab-link:hover {
 </section> -->
 <section id="winners_content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="inner_content d-flex p-0">
+    <div class="row d-flex p-0">
+      <!-- <div class="inner_content d-flex p-0"> -->
         <div class="col-md-3">
           <div class="card" style="background: #014e9c; color:white;">
             <div class="card-body new-card text-center mt-2">
@@ -207,7 +210,7 @@ li.tab-link:hover {
             </button>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </section>
@@ -631,9 +634,9 @@ li.tab-link:hover {
 
 <section style="background-color: #80808087;">
   <div class="container-fluid" style="padding: 0% 6% 0% 6%;">
-    <div class="row">
-      <div class="new-content d-flex" style="margin-left: -37px;">
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+    <div class="row new-content d-flex">
+      <!-- <div class="new-content d-flex" style="margin-left: -37px;"> -->
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>">
             <div class="card image-card" style="width:100%;">
               <img src="<?= base_url(); ?>assets/images/wisdom.jpeg" class="card-img-top" alt="...">
@@ -643,7 +646,7 @@ li.tab-link:hover {
             </div>
           </a>
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . 'users/learning_standerd' ?>">
 
 
@@ -656,7 +659,7 @@ li.tab-link:hover {
             </div>
           </a> 
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . 'users/your_wall_posts' ?>">
             <div class="card image-card" style="width:100%;">
               <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg" class="card-img-top" alt="...">
@@ -666,7 +669,7 @@ li.tab-link:hover {
             </div>
           </a>
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . "users/byTheMentor" ?>">
             <div class="card image-card" style="width:100%;">
 
@@ -679,7 +682,7 @@ li.tab-link:hover {
           </a>
         </div>
 
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 

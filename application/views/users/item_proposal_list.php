@@ -12,7 +12,7 @@
              </div>
             <div class="col-12 mt-3">
             <div class="card card-body">
-                <table id="example" class="hover table-bordered table-responsive" style="width:100%; height:91px;">
+                <table id="example" class="table-bordered table-responsive nowrap" style="width:100%; height:91px;">
                     <thead>
                         <tr style="text-align: center;">
                             <th style="text-align: center;">Sr. No.</th>
@@ -60,6 +60,10 @@
     <script src="<?php echo base_url();?>assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script>
     $(document).ready(function () {
-    $('#example').DataTable();
+    // $('#example').DataTable();
+    $('#example').DataTable( {
+    responsive: true,
+    scrollX: 300
+} );
     });
    </script>
