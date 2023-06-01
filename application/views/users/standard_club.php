@@ -52,7 +52,7 @@
 } */
 .tab-link {
     margin-bottom: 30px;
-    width: 19%;
+    min-width: 19%;
     background: #FFFFFF;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.12);
     border-radius: 2px;
