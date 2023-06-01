@@ -224,4 +224,58 @@ $config = array(
 			'rules' => 'required'
 		),
 	),
+
+
+
+
+	'create_standard_form' => array(
+		array(
+			'field' => 'standard_club',
+			'label' => 'standard club',
+			'rules' => 'required'
+		),
+		array(
+			'field' => 'topic_of_activity',
+			'label' => 'topic of activity',
+			'rules' => 'required'
+		),
+		array(
+			'field' => 'date_of_activity',
+			'label' => 'date of activity',
+			'rules' => 'required'
+		),
+		array(
+			'field' => 'number_of_participants',
+			'label' => 'number of participants',
+			'rules' => 'required'
+		),
+
+
+
+		array(
+			'field' => 'first_paticipant',
+			'label' => 'first paticipant',
+			'rules' => 'required'
+		),
+
+
+		array(
+			'field' => 'second_paticipant',
+			'label' => 'second paticipant',
+			'rules' => 'required'
+		),
+
+
+		array(
+			'field' => 'third_paticipant',
+			'label' => 'third paticipant',
+			'rules' => 'required'
+		),
+
+		array(
+			'field' => 'consolation_paticipant',
+			'label' => 'consolation paticipant',
+			'rules' => 'required'
+		),
+	),
 );

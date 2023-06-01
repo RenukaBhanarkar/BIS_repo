@@ -23,25 +23,25 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Standard Club</label>
                             <div>
-                                  <p>Standard</p>
+                                  <p><?=$getData['standard_club']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Topic of Activity</label>
                             <div>
-                                <p>Activity</p>
+                                <p><?=$getData['topic_of_activity']?></p> 
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Date of Activity</label>
                             <div>
-                                <p>12/03/2023</p>
+                                <p><?=$getData['date_of_activity']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Number of Participate</label>
                             <div>
-                                <p>50</p>
+                                <p><?=$getData['number_of_participants']?></p>
                             </div>
                         </div>
                     </div>
@@ -59,13 +59,13 @@
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Name of Participant</label>
                                 <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['first_paticipant']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
-                                 <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                                 <a href="<?php echo base_url(); ?><?= $getData['first_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
                     </div>
@@ -78,13 +78,13 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['second_paticipant']?></p>
                             </div>
                         </div>
                        <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
-                               <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                              <a href="<?php echo base_url(); ?><?= $getData['second_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
                     </div>
@@ -97,13 +97,13 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['third_paticipant']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
-                                    <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                                    <a href="<?php echo base_url(); ?><?= $getData['third_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
                     </div>
@@ -116,18 +116,20 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['consolation_paticipant']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
-                                  <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                                  <a href="<?php echo base_url(); ?><?= $getData['consolation_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
                     </div>
                   
                 </div>
+
+                 
                 <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_standard_list/'">Back</a>
                 </div>

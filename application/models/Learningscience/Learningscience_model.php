@@ -27,7 +27,7 @@ class Learningscience_model extends CI_Model {
          $this->db->where('status ',5); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_learning_science_via_standards.status'); 
         return $this->db->get('tbl_learning_science_via_standards')->result_array();  
-    }
+    } 
 
     public function getArchivedLsvStandardsList()
     {   

@@ -21,10 +21,13 @@
        <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top card-body">
+
+                    <form name="create_standard_form" id="create_standard_form" action="<?php echo base_url().'standardswritting/create_standard_form'?>" method="post"enctype="multipart/form-data">
+
                     <div class="row">
                     <div class="mb-2 col-4">
                                 <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
-                                <select id="Available" name="Available" class="form-control input-font" value="">
+                                <select id="standard_club" name="standard_club" class="form-control input-font" value="">
                                 <option value="" selected disabled>--select--</option>
                                     <option value="1">Standard</option>
                                     <option value="1">Standard</option>
@@ -37,17 +40,17 @@
                     <div class="row">
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Topic of Activity</label>
-                                <input type="text" class="form-control input-font" name="Activity" id="Activity" placeholder="Enter Topic of Activity" value="" required="">
+                                <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="" required="">
                             </div>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Date of Activity</label>
-                                <input type="date" class="form-control input-font" name="Date" id="Date"  value="" required="">
+                                <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Participants</label>
-                                <input type="text" class="form-control input-font" name="Date" placeholder="Enter Number of Participate" id="Participants"  value="" required="">
+                                <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="" required="">
                             </div>
                     </div>
                 </div>
@@ -61,13 +64,13 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
@@ -82,13 +85,13 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Uploads</label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
@@ -103,13 +106,13 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipants</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Uploads</label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
@@ -124,13 +127,13 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="Prizes" id="Prizes" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="" required="">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Uploads</label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
@@ -140,7 +143,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 submit_btn p-3">
-                            <a class="btn btn-success btn-sm text-white submit" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a>
+                            <a class="btn btn-success btn-sm text-white" id="btnsubmitdata" >Submit</a>
                             <a class="btn btn-danger btn-sm text-white cancel" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
@@ -152,6 +155,7 @@
         </div>
         
     </div>
+</form>
     <!-- /.container-fluid -->
 
     </div>
@@ -186,8 +190,7 @@ $(document).ready(function(){
                     showCancelButton: false,
                     confirmButtonText: 'Submit',
                     denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
+                    }).then((result) => { 
                     if (result.isConfirmed) {                       
                         
                        // Swal.fire('Saved!', '', 'success')                                
@@ -198,8 +201,361 @@ $(document).ready(function(){
    }) 
    
 });
-</script>                                  
-<script>
-        CKEDITOR.replace( 'description' );
-        CKEDITOR.replace( 'terms' );
-</script>
+</script>   
+
+<script type="text/javascript">
+    $('#btnsubmitdata').click(function(e) { 
+                    e.preventDefault();
+                    var focusSet = false;
+                    var allfields = true;
+
+                    var standard_club = $("#standard_club").val(); 
+                    if (standard_club == "" || standard_club== null) {
+                        if ($("#standard_club").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#standard_club").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#standard_club").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#standard_club").next(".validation").remove(); // remove it
+                    }
+
+                    var topic_of_activity = $("#topic_of_activity").val(); 
+                    if (topic_of_activity == "" || topic_of_activity== null) {
+                        if ($("#topic_of_activity").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#topic_of_activity").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#topic_of_activity").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#topic_of_activity").next(".validation").remove(); // remove it
+                    }  
+
+                    var date_of_activity = $("#date_of_activity").val(); 
+                    if (date_of_activity == "" || date_of_activity== null) {
+                        if ($("#date_of_activity").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#date_of_activity").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#date_of_activity").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#date_of_activity").next(".validation").remove(); // remove it
+                    }
+
+
+                    var number_of_participants = $("#number_of_participants").val(); 
+                    if (number_of_participants == "" || number_of_participants== null) {
+                        if ($("#number_of_participants").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#number_of_participants").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#number_of_participants").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#number_of_participants").next(".validation").remove(); // remove it
+                    }
+
+                    var first_paticipant = $("#first_paticipant").val(); 
+                    if (first_paticipant == "" || first_paticipant== null) {
+                        if ($("#first_paticipant").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#first_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#first_paticipant").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#first_paticipant").next(".validation").remove(); // remove it
+                    }
+
+                    var second_paticipant = $("#second_paticipant").val(); 
+                    if (second_paticipant == "" || second_paticipant== null) {
+                        if ($("#second_paticipant").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#second_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#second_paticipant").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#second_paticipant").next(".validation").remove(); // remove it
+                    }
+
+                    var third_paticipant = $("#third_paticipant").val(); 
+                    if (third_paticipant == "" || third_paticipant== null) {
+                        if ($("#third_paticipant").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#third_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#third_paticipant").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#third_paticipant").next(".validation").remove(); // remove it
+                    }
+
+                    var consolation_paticipant = $("#consolation_paticipant").val(); 
+                    if (consolation_paticipant == "" || consolation_paticipant== null) {
+                        if ($("#consolation_paticipant").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#consolation_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+                        }
+                        if (!focusSet) { $("#consolation_paticipant").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#consolation_paticipant").next(".validation").remove(); // remove it
+                    }
+
+
+                    var first_file=$("#first_file").val();
+                        if (first_file == "" || first_file== null) {
+                        if ($("#first_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+                        }
+                        if (!focusSet) { $("#first_file").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#first_file").next(".validation").remove(); // remove it
+                    }
+ 
+
+
+                if ($("#first_file").val() != '') 
+                {
+                    var fileSize = $('#first_file')[0].files[0].size;
+                    $("#first_file").next(".validation").remove();
+                    if (fileSize > 41943040) 
+                    {
+                        if ($("#first_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) {
+                            $("#first_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#first_file").next(".validation").remove(); // remove it
+                    }
+                    var validExtensions = ['pdf']; //array of valid extensions
+                    var fileName = $("#first_file").val();;
+                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                    $("#first_file").next(".validation").remove();
+                    if ($.inArray(fileNameExt, validExtensions) == -1) 
+                    {
+                        if ($("#first_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) 
+                        {
+                            $("#first_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#first_file").next(".validation").remove(); // remove it
+                    }
+                }
+
+
+                //second 
+
+                var second_file=$("#second_file").val();
+                        if (second_file == "" || second_file== null) {
+                        if ($("#second_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+                        }
+                        if (!focusSet) { $("#second_file").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#second_file").next(".validation").remove(); // remove it
+                    }
+ 
+
+
+                if ($("#second_file").val() != '') 
+                {
+                    var fileSize = $('#second_file')[0].files[0].size;
+                    $("#second_file").next(".validation").remove();
+                    if (fileSize > 41943040) 
+                    {
+                        if ($("#second_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) {
+                            $("#second_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#second_file").next(".validation").remove(); // remove it
+                    }
+                    var validExtensions = ['pdf']; //array of valid extensions
+                    var fileName = $("#second_file").val();;
+                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                    $("#second_file").next(".validation").remove();
+                    if ($.inArray(fileNameExt, validExtensions) == -1) 
+                    {
+                        if ($("#second_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) 
+                        {
+                            $("#second_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#second_file").next(".validation").remove(); // remove it
+                    }
+                }
+
+
+                //third
+
+
+                var third_file=$("#third_file").val();
+                        if (third_file == "" || third_file== null) {
+                        if ($("#third_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+                        }
+                        if (!focusSet) { $("#third_file").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#third_file").next(".validation").remove(); // remove it
+                    }
+ 
+
+
+                if ($("#third_file").val() != '') 
+                {
+                    var fileSize = $('#third_file')[0].files[0].size;
+                    $("#third_file").next(".validation").remove();
+                    if (fileSize > 41943040) 
+                    {
+                        if ($("#third_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) {
+                            $("#third_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#third_file").next(".validation").remove(); // remove it
+                    }
+                    var validExtensions = ['pdf']; //array of valid extensions
+                    var fileName = $("#third_file").val();;
+                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                    $("#third_file").next(".validation").remove();
+                    if ($.inArray(fileNameExt, validExtensions) == -1) 
+                    {
+                        if ($("#third_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) 
+                        {
+                            $("#third_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#third_file").next(".validation").remove(); // remove it
+                    }
+                }
+
+                //consolation
+
+
+                
+                var consolation_file=$("#consolation_file").val();
+                        if (consolation_file == "" || consolation_file== null) {
+                        if ($("#consolation_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+                        }
+                        if (!focusSet) { $("#consolation_file").focus(); }
+                        allfields = false;
+                    } else {
+                        $("#consolation_file").next(".validation").remove(); // remove it
+                    }
+ 
+
+
+                if ($("#consolation_file").val() != '') 
+                {
+                    var fileSize = $('#consolation_file')[0].files[0].size;
+                    $("#consolation_file").next(".validation").remove();
+                    if (fileSize > 41943040) 
+                    {
+                        if ($("#consolation_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) {
+                            $("#consolation_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#consolation_file").next(".validation").remove(); // remove it
+                    }
+                    var validExtensions = ['pdf']; //array of valid extensions
+                    var fileName = $("#consolation_file").val();;
+                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                    $("#consolation_file").next(".validation").remove();
+                    if ($.inArray(fileNameExt, validExtensions) == -1) 
+                    {
+                        if ($("#consolation_file").next(".validation").length == 0) // only add if not added
+                        {
+                            $("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
+                        }
+                        allfields = false;
+                        if (!focusSet) 
+                        {
+                            $("#consolation_file").focus();
+                        }
+                    } 
+                    else 
+                    {
+                        $("#consolation_file").next(".validation").remove(); // remove it
+                    }
+                } 
+                if (allfields) { 
+                        Swal.fire({
+                                    title: 'Do you want to Submit?',
+                                    showDenyButton: true,
+                                    showCancelButton: false,
+                                    confirmButtonText: 'Submit',
+                                    denyButtonText: `Cancel`,
+                        }).then((result) => { 
+                        if (result.isConfirmed) {  
+                                    $('#create_standard_form').submit();        
+                                } else if (result.isDenied) {
+                    
+                                }
+                        })
+                    } else {
+                            $('#closeform').trigger('click');
+                            return false; 
+                        }
+
+
+                });</script>                               
+ 

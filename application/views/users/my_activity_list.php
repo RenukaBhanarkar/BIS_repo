@@ -33,7 +33,9 @@
                                  <td><?php echo $list['title']; ?></td>
                                  <td><?php echo $list['score']; ?></td>
                                  <td class="border-bottom-0">
+                                    <?php if($list['visible']=="1"){ ?>
                                      <a href="<?php echo base_url().'users/answerkey/'.$list['user_id'].'/'.$list['quiz_id']; ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a>
+                                     <?php } ?>
                                  </td>
                         </tr>
                         <?php    $i++;  } } ?>
