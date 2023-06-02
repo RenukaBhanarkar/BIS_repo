@@ -721,10 +721,25 @@ if($id){
     }
     public function create_standard_form()
     {
+        $ch = curl_init();
+        $curlConfig = array(
+            CURLOPT_URL            => "http://203.153.41.213:8071/php/BIS_2.0/consumerlive/Standard-Club/List",
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS     => array('branch_id' => 11,'dept_id' => 105)
+        );
+        curl_setopt_array($ch, $curlConfig);
+        $result = curl_exec($ch); 
+        $data1 = json_decode($result, TRUE);
+        curl_close($ch); 
+
+         $data=array();
+         $data['StdClb']=$data1['data'];
+
         $this->load->view('admin/headers/admin_header');
         if ($this->form_validation->run('create_standard_form') == FALSE) 
         {
-           $this->load->view('standardwritting/create_standard_form');
+           $this->load->view('standardwritting/create_standard_form',$data);
         } 
         else 
         {
@@ -810,7 +825,22 @@ if($id){
     } 
     public function create_standard_edit($id)
     {
-        $data = array();
+
+         $ch = curl_init();
+        $curlConfig = array(
+            CURLOPT_URL            => "http://203.153.41.213:8071/php/BIS_2.0/consumerlive/Standard-Club/List",
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS     => array('branch_id' => 11,'dept_id' => 105)
+        );
+        curl_setopt_array($ch, $curlConfig);
+        $result = curl_exec($ch); 
+        $data1 = json_decode($result, TRUE);
+        curl_close($ch); 
+
+         $data=array();
+         $data['StdClb']=$data1['data'];
+       
         $data['getData'] = $this->Standardswritting_model->view_standards($id);  
         $this->load->view('admin/headers/admin_header');
         if ($this->form_validation->run('create_standard_form') == FALSE) 
