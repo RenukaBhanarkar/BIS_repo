@@ -300,18 +300,22 @@ class Standardswritting extends CI_Controller
 
             if($this->input->post('quiz_level_id')== 1){
                 $formdata['region'] = 0;   
-                $formdata['branch'] = 0;              
+                $formdata['branch'] = 0;    
+                $formdata['state'] = 0;          
             }
             if($this->input->post('quiz_level_id')== 2){               
                 $formdata['region'] = $this->input->post('region_id');
                 $formdata['branch'] = 0; 
+                $formdata['state'] = 0;
             }
             if($this->input->post('quiz_level_id')== 3){
                 $formdata['region'] = 0;   
+                $formdata['state'] = 0;
                 $formdata['branch'] = $this->input->post('branch_id');
             }
             if($this->input->post('quiz_level_id')== 4){
                 $formdata['region'] = 0;   
+                $formdata['branch']= 0;
                 $formdata['state'] = $this->input->post('state_id');
             }
 
@@ -717,10 +721,25 @@ if($id){
     }
     public function create_standard_form()
     {
+        $ch = curl_init();
+        $curlConfig = array(
+            CURLOPT_URL            => "http://203.153.41.213:8071/php/BIS_2.0/consumerlive/Standard-Club/List",
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS     => array('branch_id' => 11,'dept_id' => 105)
+        );
+        curl_setopt_array($ch, $curlConfig);
+        $result = curl_exec($ch); 
+        $data1 = json_decode($result, TRUE);
+        curl_close($ch); 
+
+         $data=array();
+         $data['StdClb']=$data1['data'];
+
         $this->load->view('admin/headers/admin_header');
         if ($this->form_validation->run('create_standard_form') == FALSE) 
         {
-           $this->load->view('standardwritting/create_standard_form');
+           $this->load->view('standardwritting/create_standard_form',$data);
         } 
         else 
         {
@@ -806,7 +825,22 @@ if($id){
     } 
     public function create_standard_edit($id)
     {
-        $data = array();
+
+         $ch = curl_init();
+        $curlConfig = array(
+            CURLOPT_URL            => "http://203.153.41.213:8071/php/BIS_2.0/consumerlive/Standard-Club/List",
+            CURLOPT_POST           => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POSTFIELDS     => array('branch_id' => 11,'dept_id' => 105)
+        );
+        curl_setopt_array($ch, $curlConfig);
+        $result = curl_exec($ch); 
+        $data1 = json_decode($result, TRUE);
+        curl_close($ch); 
+
+         $data=array();
+         $data['StdClb']=$data1['data'];
+       
         $data['getData'] = $this->Standardswritting_model->view_standards($id);  
         $this->load->view('admin/headers/admin_header');
         if ($this->form_validation->run('create_standard_form') == FALSE) 
@@ -904,6 +938,16 @@ if($id){
         $this->load->view('standardwritting/manage_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+
+    public function admin_manage_standard_list()
+    {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->admin_manage_standard_list(); 
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/admin_manage_standard_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+
      public function approved_standard_list()
     {
         $data = array();
@@ -1018,6 +1062,37 @@ public function updateStatus(){
 
             $id = $this->Standardswritting_model->updateStatus($formdata,$id);
             if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+    public function updateStatusAdmin(){
+        try {  
+
+                 
+            $id = $this->input->post('id');
+            $formdata['status'] = $this->input->post('status'); 
+            $formdata['reject_reasone'] = $this->input->post('remark'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            
+
+            $id2 = $this->Standardswritting_model->updateStatus($formdata,$id);
+            if ($id2) {
                 $data['status'] = 1;
                 $data['message'] = 'Updated successfully.';
                 

@@ -1,22 +1,21 @@
-
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Approved Competition</h1>
+            <h1 class="h3 mb-0 text-gray-800">Manage Competition</h1>
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_writting_dashboard';?>" >Standard Writting</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Approved Competition</li>
+                <li class="breadcrumb-item active" aria-current="page">Manage Competition</li>
                 
                 </ol>
             </nav>
         </div>
-
+         
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
@@ -28,7 +27,7 @@
                                 <th>Standard Club</th>
                                 <th>Topic</th> 
                                 <th>Date of Activity</th> 
-                                <th>No of Participate</th>
+                                <th>Number of Participate</th>
                                 <th>Date Created</th>
                                 <th>Status</th> 
                                 <th>Action</th>
@@ -43,23 +42,9 @@
                               <td><?= $data['date_of_activity']?></td>
                               <td><?= $data['number_of_participants']?></td>
                               <td><?= $data['created_on']?></td>
-                              <td><?= $data['status_name']?></td>
-                               
+                              <td><?= $data['status_name']?></td> 
                               
-                              <td class="d-flex">
-                                 
-                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a>
- 
-
-                                 
-                                  <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteData('<?= $data['id']?>')" >Delete</a>
-                                 <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
-                          
- 
- 
-                             
-                                  
-                            </td>
+                              <td class="d-flex"> <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a> </td>
                           </tr>
                           <?php } ?>
                             
