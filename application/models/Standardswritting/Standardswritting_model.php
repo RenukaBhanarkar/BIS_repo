@@ -21,6 +21,13 @@ class Standardswritting_model extends CI_Model {
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_offline.status'); 
         return $this->db->get('tbl_standards_writting_offline')->result_array(); 
     }
+    public function admin_manage_standard_list()
+    { 
+        $this->db->select('tbl_standards_writting_offline.*,tbl_mst_status.status_name'); 
+        $this->db->where('status ',2);  
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_offline.status'); 
+        return $this->db->get('tbl_standards_writting_offline')->result_array(); 
+    }
     public function view_standards($id)
     { 
         $this->db->where('id ',$id);  

@@ -934,6 +934,16 @@ if($id){
         $this->load->view('standardwritting/manage_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+
+    public function admin_manage_standard_list()
+    {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->admin_manage_standard_list(); 
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/admin_manage_standard_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+
      public function approved_standard_list()
     {
         $data = array();
@@ -1048,6 +1058,37 @@ public function updateStatus(){
 
             $id = $this->Standardswritting_model->updateStatus($formdata,$id);
             if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+    public function updateStatusAdmin(){
+        try {  
+
+                 
+            $id = $this->input->post('id');
+            $formdata['status'] = $this->input->post('status'); 
+            $formdata['reject_reasone'] = $this->input->post('remark'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            
+
+            $id2 = $this->Standardswritting_model->updateStatus($formdata,$id);
+            if ($id2) {
                 $data['status'] = 1;
                 $data['message'] = 'Updated successfully.';
                 
