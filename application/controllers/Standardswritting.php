@@ -300,18 +300,22 @@ class Standardswritting extends CI_Controller
 
             if($this->input->post('quiz_level_id')== 1){
                 $formdata['region'] = 0;   
-                $formdata['branch'] = 0;              
+                $formdata['branch'] = 0;    
+                $formdata['state'] = 0;          
             }
             if($this->input->post('quiz_level_id')== 2){               
                 $formdata['region'] = $this->input->post('region_id');
                 $formdata['branch'] = 0; 
+                $formdata['state'] = 0;
             }
             if($this->input->post('quiz_level_id')== 3){
                 $formdata['region'] = 0;   
+                $formdata['state'] = 0;
                 $formdata['branch'] = $this->input->post('branch_id');
             }
             if($this->input->post('quiz_level_id')== 4){
                 $formdata['region'] = 0;   
+                $formdata['branch']= 0;
                 $formdata['state'] = $this->input->post('state_id');
             }
 

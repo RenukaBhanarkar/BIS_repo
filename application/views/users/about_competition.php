@@ -246,7 +246,7 @@
                     <img src="<?php echo base_url().$competition['thumbnail']; ?>" class="image-section" alt="Bis Quiz Images" />
                 </div>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-12">
                 <div class="Quiz_text">
                     <h3 class="main-title"><?php echo $competition['competiton_name']; ?></h3>
                     <!-- <p class="time-and-qus" style="color:white;">
@@ -255,25 +255,54 @@
                         <span class="number-quiz"><span class="question_no">50</span><span class="quiz-text">Minutes</span>
                         </span>
                     </p> -->
-                    <div class="d-flex">
+                    <div class="d-flex mb-2">
                         <p class="time-start-end d-flex" style="margin-bottom:0px;">
                             <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?php echo $competition['start_date']; ?><span style="margin-left: 12px;"><?php echo $competition['start_time']; ?></span></span>
                             </span>
                         </p>
-                        <!-- <p class="time-start-end d-flex" style="margin-bottom:0px; margin-left: 8px;">
-                            <span class="start-end-time-title">Marks<span class="quiz-text-date m-2">50</span>
-                            </span>
-                        </p> -->
-                    </div>
-                    <div class="d-flex">
-                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px;">
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-left:10px;">
                             <span class="start-end-time-title">End Date <span class="quiz-text-date m-2"><?php echo $competition['end_date']; ?><span style="margin-left: 12px;"><?php echo $competition['end_time']; ?></span>
                             </span>
                         </p>
-                       <!--  <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
-                            <span class="start-end-time-title">Branch<span class="quiz-text-date m-2">12</span>
+                        
+                    </div>
+                    <div class="d-flex">
+                    <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 0px;">
+                            <span class="start-end-time-title">Marks<span class="quiz-text-date m-2"><?php echo $competition['score']; ?></span>
                             </span>
-                        </p> -->
+                        </p>
+                        <?php if($competition['region'] !="0") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Regional Level 
+                                <span class="quiz-text-date m-2"><?= $competition['uvc_region_title'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php }?>
+                        <?php if($competition['branch'] !="0") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Branch Level
+                                <span class="quiz-text-date m-2"><?= $competition['uvc_department_name'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php } ?>
+                        <?php if($competition['state'] !="0") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">State 
+                                <span class="quiz-text-date m-2"><?= $competition['state_name'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php }?>
+                        <?php if($competition['standard'] !="") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Class 
+                                <span class="quiz-text-date m-2"><?= $competition['standard'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php }?> 
                     </div>
                       <!-- <a href="<?= base_url(); ?>users/start_competition" class="btn startQuiz"> <span>Login to Participate</span></a> -->
                       <?php if(isset($_SESSION['admin_type'])){ if (!encryptids("D", $_SESSION['is_admin']) == 0){ ?>

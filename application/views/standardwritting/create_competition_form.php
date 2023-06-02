@@ -609,7 +609,8 @@
         var terms_conditions = CKEDITOR.instances['terms_conditions'].getData();
         var thumbnail =$('#thumbnail').val();
         var fprizedatail=$('#fdetail').val();
-        
+        var quiz_level_id=$('#quiz_level_id').val();
+        var available_for = $('#Available').val();
 
 
        var isvalid =true;
@@ -656,6 +657,25 @@
        }
        if(end_date==""){
         isvalid =false;
+       }else{
+
+       }
+
+       if(quiz_level_id==""){
+        isvalid =false;
+       }else{
+        
+       }
+// console.log(available_for); alert(available_for);
+       if(available_for=="1"){
+        checked = $("input[type=checkbox]:checked").length;
+
+        if(!checked) {
+            Swal.fire("You must check at least one checkbox of standard.");
+            isvalid =false;
+        }else{
+
+        }
        }else{
 
        }
@@ -790,6 +810,27 @@ $(document).ready(function(){
     $(".bootstrap-timepicker-widget .glyphicon-chevron-down").html("<i class='fa fa-chevron-down' aria-hidden='true'></i>");
     });
     $(".timepicker").timepicker();
-})
+});
+$('#Available').on('change',function(){
+var id = $(this).val();
+//alert(id);
+if(id==2){
+    $('#standard_check').hide();
+}
+if(id==1){
+    $('#standard_check').show();
+    
+    checked = $("input[type=checkbox]:checked").length;
+
+        if(!checked) {
+            Swal.fire("You must check at least one checkbox of standard.");
+            return false;
+        }
+}
+});
+var available =$('#Available').val();
+if(available==2){
+    $('#standard_check').hide();
+}
         
 </script>
