@@ -128,7 +128,7 @@
                         <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
                         <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Score" value="" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required>
-                            <span class="error_text"><?php echo form_error('score'); ?></span>
+                            <span class="text-danger" id="err_score"><?php echo form_error('score'); ?></span>
                         </div>
                         
                         <!-- <div class="mb-2 col-md-4">
@@ -256,8 +256,8 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
-                                <div class="invalid-feedback">
+                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="" minlength="1">
+                                <div class="invalid-feedback" id="fprize_no">
                                 This value is required
                                 </div>
                             </div>
@@ -609,7 +609,10 @@
         var terms_conditions = CKEDITOR.instances['terms_conditions'].getData();
         var thumbnail =$('#thumbnail').val();
         var fprizedatail=$('#fdetail').val();
-        
+        var quiz_level_id=$('#quiz_level_id').val();
+        var available_for = $('#Available').val();
+        var score =$('#score').val();
+        var fprize =$('#fprize').val();
 
 
        var isvalid =true;
@@ -627,21 +630,36 @@
         $('#description_error').text('This value is required');
         isvalid =false;
        }else{
-
+        $('#description_error').text('');
        }
        if(terms_conditions==""){
         $('#terms_conditions_error').text('This value is required');
         isvalid =false;
        }else{
-
+        $('#terms_conditions_error').text('');
        }
 
-    //    if(thumbnail==""){
-    //     $('#terms_conditions_error').text('This value is required');
-    //     isvalid =false;
-    //    }else{
+       if(score=="" || score <= 9){
+       $('#err_score').text('Score should be greater than 9');
+       
+        isvalid =false;
+       }else{
+        $('#err_score').text('');
+       }
+       if(thumbnail==""){
+        isvalid =false;
+       }else{
 
-    //    }
+       }
+    //    alert(fprize);
+       if(fprize=="" || fprize < 1){
+       // $('#terms_conditions_error').text('This value is required');
+       $('#fprize_no').text('Enter value should be equal or more than 1');
+       Swal.fire('First prize number should be greater than or equal to 1');
+        isvalid =false;
+       }else{
+
+       }
     if(fprizedatail==""){
        // $('#terms_conditions_error').text('This value is required');
         isvalid =false;
@@ -656,6 +674,26 @@
        }
        if(end_date==""){
         isvalid =false;
+       }else{
+
+       }
+// alert(quiz_level_id);
+       if(quiz_level_id=="" || quiz_level_id==null){
+        isvalid =false;
+       }else{
+        
+       }
+    //    alert(isvalid);
+// console.log(available_for); alert(available_for);
+       if(available_for=="1"){
+        checked = $("input[type=checkbox]:checked").length;
+
+        if(!checked) {
+            Swal.fire("You must check at least one checkbox of standard.");
+            isvalid =false;
+        }else{
+
+        }
        }else{
 
        }
@@ -790,6 +828,27 @@ $(document).ready(function(){
     $(".bootstrap-timepicker-widget .glyphicon-chevron-down").html("<i class='fa fa-chevron-down' aria-hidden='true'></i>");
     });
     $(".timepicker").timepicker();
-})
+});
+$('#Available').on('change',function(){
+var id = $(this).val();
+//alert(id);
+if(id==2){
+    $('#standard_check').hide();
+}
+if(id==1){
+    $('#standard_check').show();
+    
+    checked = $("input[type=checkbox]:checked").length;
+
+        if(!checked) {
+            Swal.fire("You must check at least one checkbox of standard.");
+            return false;
+        }
+}
+});
+var available =$('#Available').val();
+if(available==2){
+    $('#standard_check').hide();
+}
         
 </script>
