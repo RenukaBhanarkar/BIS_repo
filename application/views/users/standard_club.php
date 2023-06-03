@@ -115,6 +115,11 @@ li.tab-link:hover {
   padding-right: 0;
   padding-left: 0;
 }
+#banner-align{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 </style>
 <!-- <section id="exchange_forum">
   <div class="container-fluid">
@@ -144,7 +149,7 @@ li.tab-link:hover {
 </section> -->
 <section id="winners_content">
   <div class="container-fluid">
-    <div class="row d-flex p-0">
+    <div class="row d-flex p-0" >
       <!-- <div class="inner_content d-flex p-0"> -->
         <div class="col-md-3">
           <div class="card" style="background: #014e9c; color:white;">
@@ -246,7 +251,7 @@ li.tab-link:hover {
                     <h3 style="font-weight: 700; color: black;">Quiz</h3>
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
-                <div class="row">
+                <div class="row" id="banner-align">
                         <?php if (empty($allquize)) { ?>
                               <div class="alert alert-danger">
                                 <strong>Sorry!</strong> Quizes are not available.
@@ -285,33 +290,61 @@ li.tab-link:hover {
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                 <div class="row">
-                        <?php if (empty($allquize)) { ?>
-                              <div class="alert alert-danger">
-                                <strong>Sorry!</strong> Quizes are not available.
-                              </div>
-                    <?php  } else {  ?>
+                        
+                              
+                   
                       <div class="row">
-                        <?php foreach ($allquize as $key => $quize) {  ?>
-                          <div class="col-md-3">
+                        
+                          <div class="col-md-3 ml-1">
                             <div class="quiz-section">
                               <div class="quiz-box">
-                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <!-- <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a> -->
-                                  <a href="<?= base_url(); ?>users/about_quiz/ <?= encryptids("E", $quize['id']); ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
-
-                                 
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
                               </div>
-                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
                             </div>
                           </div>
-                        <?php  } ?>
+                          <div class="col-md-3 ml-1">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
+                            </div>
+                          </div>
+                          <div class="col-md-3 ml-1">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
+                            </div>
+                          </div>
+                          <div class="col-md-3 ml-1">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
+                            </div>
+                          </div>
+                        
                       </div>
-                    <?php } ?>
+                    
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/">View All</a>
                 </div>
              </div>
             </section>

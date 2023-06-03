@@ -123,7 +123,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
 		    <ul>
 		      <li>
-			<a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/my_profile_view">My Profile</a>
+			       <a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/my_profile_view">My Profile</a>
+		      </li>
+              <li>
+			       <a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/edit_profile">Edit Profile</a>
 		      </li>
 		      <li>
 			      <a class="capital" title="My Activity" href="<?php echo base_url(); ?>users/my_activity_list">My Activity</a>

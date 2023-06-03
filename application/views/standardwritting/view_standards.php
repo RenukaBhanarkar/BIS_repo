@@ -129,8 +129,33 @@
                   
                 </div>
 
-                 
-                <div class="col-md-12 submit_btn p-3">
+
+
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+            <div class="col-12 mt-3">
+                
+                    <div class="row" id="remarkdiv">
+                        <div class="mb-2 col-md-8">
+                            <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
+                            <textarea class="form-control input-font" placeholder="Enter Remark" name="remark" id="remark"> </textarea>
+                            <span class="error_text"><?= form_error('terms_conditions'); ?></span>
+                            <input type="hidden" name="status_id" value="3" id="status_id">
+                        </div>
+                    </div>
+            </div>
+            <?php if( $getData['status']==2){?>
+            <div class="col-md-12 submit_btn p-3"> 
+                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
+                <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> 
+                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+            </div>
+            <?php } ?>
+           
+        <?php } ?>
+
+
+
+        <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_standard_list/'">Back</a>
                 </div>
                 <!-- Modal -->
@@ -141,3 +166,61 @@
 
 
 
+ <script type="text/javascript">
+     $(document).ready(function () 
+    {  
+        $("#submit").hide();
+        $("#remarkdiv").hide();
+        $("#remark").val("NA");
+    });
+    function rejectFun()
+     {
+        $("#submit").show();
+        $("#remarkdiv").show();
+        $("#approve").hide();
+        $("#reject").hide();
+        $("#status_id").val(4);
+        $("#remark").val('');
+
+    }
+
+    function updateStatus() {
+
+        status=$("#status_id").val();
+        remark=$("#remark").val();
+        id="<?=$getData['id']?>"; 
+
+    if (status==1) { statusdata='Create'; }
+    if (status==9) { statusdata='Archive'; }
+    Swal.fire({
+      title: 'Do you want to Create?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Update',
+      denyButtonText: `Cancel`,
+    }).then((result) => 
+    { 
+      if (result.isConfirmed) 
+      { 
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateStatusAdmin',
+        data: {
+          id: id,
+          status: status, 
+          remark: remark, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          location.reload();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+      } 
+    })
+  }
+</script>
