@@ -3,7 +3,7 @@
 <style>
   
 .World_of_standers_inner_Box {
-    width: 23%;
+    /* width: 23%; */
     background: white;
     margin: 0px 0px 30px;
     padding: 8px 8px 8px;
@@ -80,6 +80,7 @@
     <div class="quality_section">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="item_proposal_list">
                     <div class="World_of_standers_image_box">
@@ -91,6 +92,8 @@
                   
                        
                 </div>
+                </div>
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="important_draft">
                     <div class="World_of_standers_image_box">
@@ -102,6 +105,8 @@
                   
                        
                 </div>
+                </div>
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" onclick="publish_pop()" target="blank">
                     <div class="World_of_standers_image_box">
@@ -113,6 +118,8 @@
                   
                        
                 </div>
+                </div>
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/review/"  onclick="review_pop()" target="blank">
                     <div class="World_of_standers_image_box">
@@ -124,6 +131,10 @@
                   
                        
                 </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/standard_review/Standard_review/" onclick="standard_pop()" target="blank">
                     <div class="World_of_standers_image_box">
@@ -135,6 +146,8 @@
                   
                        
                 </div>
+                </div>
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="<?php echo base_url().'users/share_your_thoughts'?>">
                     <div class="World_of_standers_image_box">
@@ -146,6 +159,8 @@
                   
                        
                 </div>
+                </div>
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                 <a href="<?php echo base_url().'users/join_the_classroom'?>">
                     <div class="World_of_standers_image_box">
@@ -157,6 +172,8 @@
                   
                        
                 </div>
+                </div>
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="<?php echo base_url().'users/conversation_with_experts'?>">
                     <div class="World_of_standers_image_box">
@@ -167,6 +184,7 @@
                     </a>
                   
                        
+                </div>
                 </div>
             </div>
           

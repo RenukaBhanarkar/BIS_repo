@@ -28,10 +28,9 @@
                                 <th>Standard Club</th>
                                 <th>Topic</th> 
                                 <th>Date of Activity</th> 
-                                <th>Number of Participate</th>
+                                <th>No of Participate</th>
                                 <th>Date Created</th>
-                                <th>Status</th>
-                                <th>Reason of Rejection</th>
+                                <th>Status</th> 
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,7 +44,7 @@
                               <td><?= $data['number_of_participants']?></td>
                               <td><?= $data['created_on']?></td>
                               <td><?= $data['status_name']?></td>
-                              <td><?= $data['reject_reasone']?></td>
+                               
                               
                               <td class="d-flex">
                                  

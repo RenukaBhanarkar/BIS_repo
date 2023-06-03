@@ -66,6 +66,7 @@ class Miscellaneous_competition extends CI_Model {
         $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tbl_mst_competition_detail.comp_level');
         $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tbl_mst_competition_detail.available_for');
         $this->db->join('tbl_mst_competition_type tmct','tmct.id=tbl_mst_competition_detail.type');
+        $this->db->order_by('created_on','desc');
 
        // $this->db->where('tbl_mst_competition_detail.start_date >=' ,date("Y-m-d")); 
         return $this->db->get('tbl_mst_competition_detail')->result_array();
@@ -413,6 +414,46 @@ class Miscellaneous_competition extends CI_Model {
     public function update_evaluator($data){
         $this->db->where('user_id',$data['user_id']);
         $this->db->where('competiton_id',$data['competiton_id']);
+        $res=$this->db->update('tbl_users_competition_attempt_record',$data);
+        if($res){
+			return true;
+		}else{
+			return false;
+		}
+    }
+    public function SubmissionForReview($data){
+       // print_r($data);
+    //     $this->db->select('tbl_mst_competition_detail.competiton_name,tbl_users_competition_attempt_record.*')->from('tbl_users_competition_attempt_record')->where('evaluator',$data);
+    //     $this->db->join('tbl_mst_competition_detail','tbl_mst_competition_detail.comp_id =tbl_users_competition_attempt_record.competiton_id');
+    //     $res=$this->db->get();
+    //   $result= $res->result_array();
+    //   return $result;
+
+      $this->db->select('tucar.*,tmcd.competiton_name,tu.StdClubMemberClass,ta.name,tmcd.score,tucar.score as marks');
+      $this->db->from('tbl_users_competition_attempt_record tucar');
+      $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+      $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
+      $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
+      $this->db->where('tucar.evaluator',$data);
+      $res=$this->db->get();
+      $result= $res->result_array();
+      return $result;
+
+    }
+    public function CompSubmittedRecordDetail($id){
+        $this->db->select('tucar.*,tmcd.competiton_name,tu.StdClubMemberClass,ta.name,tmcd.score,tucar.score as marks,tmcd.start_date,tmcd.end_date');
+      $this->db->from('tbl_users_competition_attempt_record tucar');
+      $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+      $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
+      $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
+      $this->db->where('tucar.id',$id);
+      $res=$this->db->get();
+      $result= $res->result_array();
+      return $result[0];
+    }
+    public function updateCompetitionScore($data){
+        $this->db->where('id',$data['id']);
+        //$this->db->where('competiton_id',$data['competiton_id']);
         $res=$this->db->update('tbl_users_competition_attempt_record',$data);
         if($res){
 			return true;

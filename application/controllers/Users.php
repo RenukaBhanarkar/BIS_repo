@@ -3374,6 +3374,26 @@ class Users extends CI_Controller
         $this->load->view('users/more_copetition',$data);
         $this->load->view('users/footers/footer');
     }
+    public function standard_writting_details(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_details');
+        $this->load->view('users/footers/footer');
+    }
+    public function standard_writting_login(){
+      //  $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_login');
+       // $this->load->view('users/footers/footer');
+    }
+    public function standard_writting_thanks(){
+         $this->load->view('users/headers/header');
+          $this->load->view('users/standard_writting_thanks');
+        $this->load->view('users/footers/footer');
+      }
+      public function edit_profile(){
+        $this->load->view('users/headers/header');
+         $this->load->view('users/edit_profile');
+       $this->load->view('users/footers/footer');
+     }
     
  
 }

@@ -52,7 +52,7 @@
 } */
 .tab-link {
     margin-bottom: 30px;
-    width: 19%;
+    min-width: 19%;
     background: #FFFFFF;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.12);
     border-radius: 2px;
@@ -111,6 +111,14 @@ li.tab-link:hover {
     z-index: 1;
 }
 
+.row>* {
+  padding-right: 0;
+  padding-left: 0;
+}
+#banner-align{
+  padding-right: 5px;
+  padding-left: 5px;
+}
 
 </style>
 <!-- <section id="exchange_forum">
@@ -141,8 +149,8 @@ li.tab-link:hover {
 </section> -->
 <section id="winners_content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="inner_content d-flex p-0">
+    <div class="row d-flex p-0" >
+      <!-- <div class="inner_content d-flex p-0"> -->
         <div class="col-md-3">
           <div class="card" style="background: #014e9c; color:white;">
             <div class="card-body new-card text-center mt-2">
@@ -207,7 +215,7 @@ li.tab-link:hover {
             </button>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </section>
@@ -243,7 +251,7 @@ li.tab-link:hover {
                     <h3 style="font-weight: 700; color: black;">Quiz</h3>
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
-                <div class="row">
+                <div class="row" id="banner-align">
                         <?php if (empty($allquize)) { ?>
                               <div class="alert alert-danger">
                                 <strong>Sorry!</strong> Quizes are not available.
@@ -282,33 +290,61 @@ li.tab-link:hover {
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                 <div class="row">
-                        <?php if (empty($allquize)) { ?>
-                              <div class="alert alert-danger">
-                                <strong>Sorry!</strong> Quizes are not available.
-                              </div>
-                    <?php  } else {  ?>
+                        
+                              
+                   
                       <div class="row">
-                        <?php foreach ($allquize as $key => $quize) {  ?>
-                          <div class="col-md-3">
+                        
+                          <div class="col-md-3 ml-1">
                             <div class="quiz-section">
                               <div class="quiz-box">
-                                <img src="<?= base_url(); ?><?php echo $quize['banner_img'] ?>" class="w-100 border-2">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
                               </div>
                               <div class="Quiz-button"><a href="aboutquiz.html">
-                                  <!-- <a href="<?= base_url(); ?>users/about_quiz/<?php echo $quize['id']; ?>" class="btn startQuiz"> <span>Start Quiz</span></a> -->
-                                  <a href="<?= base_url(); ?>users/about_quiz/ <?= encryptids("E", $quize['id']); ?>" class="btn startQuiz"> <span>Start Quiz</span></a>
-
-                                 
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
                               </div>
-                              <p class="quiz-text overflow-hidden p-1"><?php echo $quize['title'] ?></p>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
                             </div>
                           </div>
-                        <?php  } ?>
+                          <div class="col-md-3 ml-1">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
+                            </div>
+                          </div>
+                          <div class="col-md-3 ml-1">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
+                            </div>
+                          </div>
+                          <div class="col-md-3 ml-1">
+                            <div class="quiz-section">
+                              <div class="quiz-box">
+                                <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg"" class="w-100 border-2">
+                              </div>
+                              <div class="Quiz-button"><a href="aboutquiz.html">
+                                  <a href="<?php echo base_url() . "users/standard_writting_details" ?>" class="btn startQuiz"> <span>Participate</span></a>
+                              </div>
+                              <p class="quiz-text overflow-hidden p-1">Standard Writting Competition Name</p>
+                            </div>
+                          </div>
+                        
                       </div>
-                    <?php } ?>
+                    
                 </div>
                 <div class="view-button">
-                          <a href="<?= base_url(); ?>users/quiz">View All</a>
+                          <a href="<?= base_url(); ?>users/">View All</a>
                 </div>
              </div>
             </section>
@@ -631,9 +667,9 @@ li.tab-link:hover {
 
 <section style="background-color: #80808087;">
   <div class="container-fluid" style="padding: 0% 6% 0% 6%;">
-    <div class="row">
-      <div class="new-content d-flex" style="margin-left: -37px;">
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+    <div class="row new-content d-flex">
+      <!-- <div class="new-content d-flex" style="margin-left: -37px;"> -->
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>">
             <div class="card image-card" style="width:100%;">
               <img src="<?= base_url(); ?>assets/images/wisdom.jpeg" class="card-img-top" alt="...">
@@ -643,7 +679,7 @@ li.tab-link:hover {
             </div>
           </a>
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . 'users/learning_standerd' ?>">
 
 
@@ -656,7 +692,7 @@ li.tab-link:hover {
             </div>
           </a> 
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . 'users/your_wall_posts' ?>">
             <div class="card image-card" style="width:100%;">
               <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg" class="card-img-top" alt="...">
@@ -666,7 +702,7 @@ li.tab-link:hover {
             </div>
           </a>
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-3 m-2">
+        <div class="col-md-3 col-lg-3 p-2 ">
           <a href="<?php echo base_url() . "users/byTheMentor" ?>">
             <div class="card image-card" style="width:100%;">
 
@@ -679,7 +715,7 @@ li.tab-link:hover {
           </a>
         </div>
 
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 

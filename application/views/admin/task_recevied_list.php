@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>Name of Competition</td>
@@ -49,7 +49,26 @@
                                  <a href="<?php echo base_url(); ?>admin/task_recevied_view" class="btn btn-primary btn-sm mr-2" title="View">Review</a>
                                  <a href="<?php echo base_url(); ?>admin/standard_under_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                               </td>
-
+                           </tr> -->
+                           <?php if(!empty($records)){ $i=1;
+                            foreach($records as $list){ ?>
+                                 <tr>
+                              <td><?php echo $i; ?></td>
+                              <td><?php echo $list['competiton_id']; ?></td>
+                              <td><?php echo $list['competiton_name']; ?></td>
+                              <td><?php echo $list['id']; ?></td>
+                              <td><?php echo $list['StdClubMemberClass']; ?></td>
+                              <td><?php echo $list['created_on']; ?></td>
+                              <td><?php echo $list['name']; ?></td>
+                              <td><?php echo $list['score']; ?></td>
+                              <td><?php echo $list['marks']; ?></td>
+                              <td><?php echo $list['status']; ?></td>
+                              <td class="d-flex">
+                                 <a href="<?php echo base_url(); ?>Miscellaneouscompetition/task_recevied_view/<?php echo encryptids('E', $list['id']) ?>" class="btn btn-primary btn-sm mr-2" title="View">Review</a>
+                                 <a href="<?php echo base_url(); ?>admin/standard_under_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                              </td>
+                           </tr>
+                                <?php }  } ?>
                         </tbody>
                     </table>
                 </div>

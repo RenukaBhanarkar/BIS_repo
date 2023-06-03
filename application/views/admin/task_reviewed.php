@@ -48,7 +48,7 @@
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>admin/standard_under_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                               </td>
-
+                           </tr>
                         </tbody>
                     </table>
                 </div>
