@@ -223,12 +223,8 @@ $config = array(
 			'label' => 'description',
 			'rules' => 'required'
 		),
-	),
-
-
-
-
-	'create_standard_form' => array(
+		),
+		'create_standard_form' => array(
 		array(
 			'field' => 'standard_club',
 			'label' => 'standard club',
@@ -275,6 +271,63 @@ $config = array(
 		array(
 			'field' => 'consolation_paticipant',
 			'label' => 'consolation paticipant',
+			'rules' => 'required'
+		),
+	),
+
+
+
+
+
+
+
+
+
+
+
+
+
+	'create_online_form' => array(
+		array(
+			'field' => 'title',
+			'label' => 'title',
+			'rules' => 'required'
+		),
+		array(
+			'field' => 'title_hindi',
+			'label' => 'title_hindi',
+			'rules' => 'required'
+		),
+		array(
+			'field' => 'description',
+			'label' => 'description',
+			'rules' => 'required'
+		),
+		array(
+			'field' => 'terms_conditions',
+			'label' => 'terms_conditions',
+			'rules' => 'required'
+		),
+
+		array(
+			'field' => 'start_date',
+			'label' => 'start_date',
+			'rules' => 'required'
+			),
+			array(
+			'field' => 'start_time',
+			'label' => 'start_time',
+			'rules' => 'required'
+			),
+			array(
+			'field' => 'end_date',
+			'label' => 'end_date',
+			'rules' => 'required'
+		),
+
+		array(
+			'field' => 'end_time',
+			'label' => 'end_time',
 			'rules' => 'required'
 		),
 	),

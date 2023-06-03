@@ -19,70 +19,61 @@
         </div>
 
         <!-- Content Row -->
+         <form name="create_online_form" id="create_online_form" action="<?php echo base_url() . 'standardswritting/create_online_form' ?>" method="post" enctype="multipart/form-data">
        <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top card-body">
-                    <!-- <div class="row">
-                    <div class="mb-2 col-4">
-                                <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
-                                <select id="Available" name="Available" class="form-control input-font" value="">
-                                <option value="" selected disabled>--select--</option>
-                                    <option value="1">Standard</option>
-                                    <option value="1">Standard</option>
-                                    <option value="1">Standard</option>
-                                    <option value="1">Standard</option>
-                                    <option value="1">Standard</option>
-                                </select>
-                        </div>
-                    </div> -->
+                    
                     <div class="row">
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Title of Competition</label>
-                                <input type="text" class="form-control input-font" name="title" id="title" placeholder="Enter Title of Competition" value="" required="">
+                                <input type="text" class="form-control input-font" name="title" id="title" placeholder="Enter Title of Competition" value="" >
                             </div>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Title of Competition in Hindi</label>
-                                <input type="text" class="form-control input-font" name="title_hindi" id="title_hindi" placeholder="Enter Topic of Activity" value="" required="">
+                                <input type="text" class="form-control input-font" name="title_hindi" id="title_hindi" placeholder="Enter Topic of Activity" value="" >
                             </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
                              <label class="d-block text-font">Description/About Competition<sup class="text-danger">*</sup></label>
-                             <textarea name="description" id="description" required></textarea>
+                             <textarea class="form-control input-font" placeholder="Enter Description of Quiz" name="description" id="description"></textarea>
+                                <div class='validation' id="description_error" style='color:red;margin-bottom:15px;'>This value is required. </div>
                             
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
                              <label class="d-block text-font">Terms & Conditions<sup class="text-danger">*</sup></label>
-                             <textarea name="terms_conditions" id="terms_conditions" ></textarea>
+                             <textarea class="form-control input-font" placeholder="Enter Tearms and Conditions of Quiz" name="terms_conditions" id="terms_conditions"><?php echo set_value('terms_conditions'); ?></textarea>
+                                <div class='validation' id="terms_conditions_error" style='color:red;margin-bottom:15px;'>This value is required. </div>
                              
                         </div>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Start Date</label>
-                                <input type="date" class="form-control input-font" name="start_date" id="start_date"  value="" required="">
+                                <input type="date" class="form-control input-font" name="start_date" id="start_date"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Start Time</label>
-                                <input type="time" class="form-control input-font" name="start_time"  id="start_time"  value="" required="">
+                                <input type="time" class="form-control input-font" name="start_time"  id="start_time"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">End Date</label>
-                                <input type="date" class="form-control input-font" name="end_date"  id="end_date"  value="" required="">
+                                <input type="date" class="form-control input-font" name="end_date"  id="end_date"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">End Time</label>
-                                <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="" required="">
+                                <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
-                                    <input type="file" id="banner_img" name="banner_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" required="" onchange="loadThumbnail(event)">
+                                    <input type="file" id="banner_img" name="banner_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg"  onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                     <div class="invalid-feedback">
                                     This value is required
@@ -97,20 +88,20 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Total Marks</label>
-                                <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" required="">
+                                <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Qualifying Marks</label>
-                                <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="" required="">
+                                <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="" >
                             </div>
                             <div class="mb-2 col-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
-                                <select id="quiz_level_id" name="quiz_level_id" class="form-control input-font" value="">
-                                <option value="" selected disabled>--select--</option>
-                                    <option value="1">Region Level</option>
-                                    <option value="2">Branch Level</option>
-                                    <option value="3">State Level</option>
-                                    <option value="">All India Level</option>
+                                
+                                <select id="quiz_level_id" name="quiz_level_id" class="form-control input-font">
+                                    <option value="" selected disabled>Select Level of Quiz</option>
+                                    <?php foreach ($quizlavel as $lavel) { ?>
+                                        <option value="<?php echo $lavel['id'] ?>"><?php echo $lavel['title'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="mb-2 col-md-4" id="region_id_blk">
@@ -139,11 +130,12 @@
                     <div class="row">
                             <div class="mb-2 col-4">
                                 <label class="d-block text-font">Availabile for<sup class="text-danger">*</sup></label>
-                                <select id="availability_id" name="availability_id" class="form-control input-font" value="">
-                                <option value="" selected disabled>--select--</option>
-                                    <option value="1">School</option>
-                                    <option value="1">Higher Institution</option>
-                                    <option value="1">Branch</option>
+                                <select id="availability_id" name="availability_id" class="form-control input-font">
+                                    <option value="" selected disabled>Select Option</option>
+                                    <?php foreach ($getAvailability as $Availability) { ?>
+                                        <option value="<?php echo $Availability['id'] ?>"><?php echo $Availability['title'] ?></option>
+                                    <?php } ?>
+
                                 </select>
                             </div>
                              <div class="mb-2 col-8" id="standard_check">
@@ -179,11 +171,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
-                                <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
@@ -204,11 +196,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
-                                <input type="text" class="form-control input-font" name="sdetails" id="sdetails" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="sdetails" id="sdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
@@ -229,11 +221,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
-                                <input type="text" class="form-control input-font" name="tdetails" id="tdetails" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="tdetails" id="tdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
@@ -254,11 +246,11 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
-                                <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Prizes" value="" required="">
+                                <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
@@ -274,8 +266,10 @@
                         </div>
                     </div>
                     <div class="col-md-12 submit_btn p-3">
-                            <a class="btn btn-success btn-sm text-white submit" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a>
-                            <a class="btn btn-danger btn-sm text-white cancel" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                            <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a> -->
+
+                            <input type="submit" name="Submit" class="btn btn-success btn-sm text-white btnsubmit" id="btnsubmit">
+                            <a class="btn btn-danger btn-sm text-white cancel" href="create_online_list">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -286,52 +280,12 @@
         </div>
         
     </div>
+</form>
     <!-- /.container-fluid -->
 
     </div>
     <!-- End of Main Content -->
- <script>
-        $(document).ready(function(){
-   $('.submit').on('click',function(){
-    Swal.fire({
-                    title: 'Do you want to Submit?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Submit',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-   }) 
-   
-})
-$(document).ready(function(){
-   $('.cancel').on('click',function(){
-    Swal.fire({
-                    title: 'Do you want to Cancel?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'cancel',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-   }) 
-   
-})
- </script>
+  
  <script type="text/javascript">
     window.onload=function(){//from ww  w . j  a  va2s. c  o  m
 var today = new Date().toISOString().split('T')[0];
@@ -379,12 +333,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             URL.revokeObjectURL(outputbanner.src);
         }
     };
-//     $(".btnsubmit").click(function(){
-//         $('#quiz_reg').addClass('was-validated');
-//     $('input').css('border','1px solid red');
-//     $('textarea').css('border','1px solid red');
-//     $('select').css('border','1px solid red');
-// });
+ 
     function resetbanner() {
         $("#banner_img").val('');
         $("#outputbanner").hide();
@@ -636,266 +585,14 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
               
             }
         });
-
-        // FETCH QUE BANK
-        $(document).on("click", "#fetch_que_bank", function(e) {
-            e.preventDefault();
-            var total_question = $("#total_question").val();
-            var language_id = $("#language_id :selected").val();
-            if (total_question> 0 && language_id != "") {     
-                $.ajax({
-                    url: "<?= base_url() ?>quiz/fetchQueBankForQuiz",
-                    data: {'total_question':total_question,'language_id':language_id},
-                    type: "JSON",
-                    method: "post",
-                    success: function(response) {
-                        var res = JSON.parse(response);
-                        var selectbox = $('#que_bank_id');
-                        selectbox.empty();
-                        $("#que_bank_id").next(".validation").remove();
-                        $('#que_bank_id').append('<option value="" selected disabled>Select Question Bank</option>');
-                        $.each(res.queBanks, function(index, value) {
-                            $('#que_bank_id').append('<option value="' + value.que_bank_id + '">' + value.title + '</option>');
-                        });
-
-                    }
-                });
-
-            } else  {
-                alert("Please select language and enter value  of questions.  ")
-            }
-        });
-
-
+ 
         
     });
     //end
-    function getQBDetails(id) {
-        $.ajax({
+     
+ 
 
-            url: "<?php echo base_url(); ?>Quiz/getQbdata/" + id,
-            type: "JSON",
-            method: "get",
-            success: function(result) {
-                var res = JSON.parse(result);
-                console.log(res)
-                $("#qbid").val(res.result.que_bank_id);
-                $("#qbtitle").val(res.result.title);
-                $("#qbquestion").val(res.result.no_of_ques);
-                if(res.result.language == 1){
-                    var lang ="English";
-                }else if(res.result.language == 2){
-                    var lang ="Hindi";
-                }else if(res.result.language == 3){
-                    var lang ="English & Hindi";
-                }
-                $("#bank_language").val(lang);
-                getQuestionListByQueBankId(id)
-            }
-        });
-        // body...
-    }
-
-    function getQuestionListByQueBankId(id) {
-        $.post("<?php echo base_url(); ?>subadmin/getQuestionListByQueBankId/", {
-            que_bank_id: id
-        }, function(result) {
-            if (result.status == 0) {
-                $('.errorbox').show().text("Error,Please try again.");
-            } else {
-
-                res = JSON.parse(result);
-                //console.log(res.data)
-                data = res.data;
-
-                var row = '';
-                j = 0
-                for (i in data) {
-                    j++;
-                    var op1 = "NA";
-                            var op2 = "NA";
-                            var op3 = "NA";
-                            var op4 = "NA";
-                            var op5 = "NA";
-                            var op1_h = "NA";
-                            var op2_h = "NA";
-                            var op3_h = "NA";
-                            var op4_h = "NA";
-                            var op5_h = "NA";
-                            if (data[i].que_type == 1) {
-                                var type = "Text";
-                            } else if (data[i].que_type == 2) {
-                                var type = "Image";
-                            } else {
-                                var type = "Text and Image";
-                            }
-                            if (data[i].que_type == 2) {
-                                if (data[i].que == 0 || data[i].que == '') {
-                                    var engQue = "";
-                                } else {
-                                    var engQue = data[i].que;
-                                }
-                            } else {
-                                if (data[i].que == 0 || data[i].que == '') {
-                                    var engQue = "NA";
-                                } else {
-                                    var engQue = data[i].que;
-                                }
-                            }
-                            if (data[i].que_type == 2) {
-                                if (data[i].que_h == 0 || data[i].que_h == '') {
-                                    var hindiQue = "";
-                                } else {
-                                    var hindiQue = data[i].que_h;
-                                }
-                            } else {
-                                if (data[i].que_h == 0 || data[i].que_h == '') {
-                                    var hindiQue = "NA";
-                                } else {
-                                    var hindiQue = data[i].que_h;
-                                }
-                            }
-                            if (data[i].language == 1 || data[i].language == 3) {
-                                if (data[i].image != '') {
-                                    var img = data[i].image;
-                                    var dynamicImg = '<td>' + engQue + '<br>' +
-                                        '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id +
-                                        '/' + img + '"></td>';
-                                } else {
-                                    var dynamicImg = '<td>' + engQue + '</td>';
-                                }
-                            } else {
-                                var dynamicImg = '<td>--</td>';
-                            }
-                            if (data[i].language == 2 || data[i].language == 3) {
-                                if (data[i].image != '') {
-                                    var img = data[i].image;
-                                    var dynamicImgHindi = '<td>' + hindiQue + '<br>' +
-                                        '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id +
-                                        '/' + img + '"></td>';
-                                } else {
-                                    var dynamicImgHindi = '<td>' + hindiQue + '</td>';
-                                }
-                            } else {
-                                var dynamicImgHindi = '<td>--</td>';
-                            }
-                            /////////////////////////////////////////////// 
-                            if (data[i].language == 1 || data[i].language == 3) {
-                                if (data[i].no_of_options == 2 || data[i].no_of_options == 3 || data[i].no_of_options == 4 || data[i].no_of_options == 5) {
-
-                                    if (data[i].opt1_e == 0 || data[i].opt1_e == "") {
-
-                                        var op1_img = data[i].option1_image;
-                                        var op1 = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op1_img + '">';
-                                    } else {
-                                        var op1 = data[i].opt1_e;
-                                    }
-                                    if (data[i].opt2_e == 0 || data[i].opt2_e == "") {
-                                        var op2_img = data[i].option2_image;
-                                        var op2 = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op2_img + '">';
-                                    } else {
-                                        var op2 = data[i].opt2_e;
-                                    }
-
-                                }
-                                if (data[i].no_of_options == 3 || data[i].no_of_options == 4 || data[i].no_of_options == 5) {
-                                    if (data[i].opt3_e == 0 || data[i].opt3_e == "") {
-                                        var op3_img = data[i].option3_image;
-                                        var op3 = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op3_img + '">';
-                                    } else {
-                                        var op3 = data[i].opt3_e;
-                                    }
-                                }
-                                if (data[i].no_of_options == 4 || data[i].no_of_options == 5) {
-                                    if (data[i].opt4_e == 0 || data[i].opt4_e == '') {
-                                        var op4_img = data[i].option4_image;
-                                        var op4 = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op4_img + '">';
-                                    } else {
-                                        var op4 = data[i].opt4_e;
-                                    }
-                                }
-                                if ( data[i].no_of_options == 5) {
-                                    if (data[i].opt5_e == 0 || data[i].opt5_e == '') {
-                                        var op5_img = data[i].option5_image;
-                                        var op5 = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op5_img + '">';
-                                    } else {
-                                        var op5 = data[i].opt5_e;
-                                    }
-
-                                }
-
-
-                            }
-                            if (data[i].language == 2 || data[i].language == 3) {
-                                if (data[i].no_of_options == 2 || data[i].no_of_options == 3 || data[i].no_of_options == 4 || data[i].no_of_options == 5) {
-                                    if (data[i].opt1_h == '' || data[i].opt1_h == 0) {
-                                        var op1_h_img = data[i].option1_h_image;
-                                        var op1_h = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op1_h_img + '">';
-                                    } else {
-                                        var op1_h = data[i].opt1_h;
-                                    }
-                                    if (data[i].opt2_h == '' || data[i].opt2_h == 0) {
-                                        var op2_h_img = data[i].option2_h_image;
-                                        var op2_h = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op2_h_img + '">';
-                                    } else {
-                                        var op2_h = data[i].opt2_h;
-                                    }
-                                }
-                                if (data[i].no_of_options == 3 || data[i].no_of_options == 4 || data[i].no_of_options == 5) {
-                                    if (data[i].opt3_h == '' || data[i].opt3_h == 0) {
-                                        var op3_h_img = data[i].option3_h_image;
-                                        var op3_h = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op3_h_img + '">';
-                                    } else {
-                                        var op3_h = data[i].opt3_h;
-                                    }
-                                }
-                                if (data[i].no_of_options == 4 || data[i].no_of_options == 5) {
-                                    if (data[i].opt4_h == '' || data[i].opt4_h == 0) {
-                                        var op4_h_img = data[i].option4_h_image;
-                                        var op4_h = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op4_h_img + '">';
-                                    } else {
-                                        var op4_h = data[i].opt4_h;
-                                    }
-                                }
-                                if (data[i].no_of_options == 5) {
-                                    if (data[i].opt5_h == '' || data[i].opt5_h == 0) {
-                                        var op5_h_img = data[i].option5_h_image;
-                                        var op5_h = '<img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid' + data[i].que_bank_id + '/' + op5_h_img + '">';
-                                    } else {
-                                        var op5_h = data[i].opt5_h;
-                                    }
-                                }
-
-                            }
-
-                    row += '<tr id="row' + data[i].que_id + '">' +
-                        '<td>' + j + '</td>' +
-                        '<td>' + type+ '</td>' +
-                          dynamicImg +
-                          dynamicImgHindi + 
-                       
-                        '<td>' + op1 + '</td>' +
-                        '<td>' + op1_h + '</td>' +
-                        '<td>' + op2 + '</td>' +
-                        '<td>' + op2_h + '</td>' +
-                        '<td>' + op3 + '</td>' +
-                        '<td>' + op3_h + '</td>' +
-                        '<td>' + op4+ '</td>' +
-                        '<td>' + op4_h + '</td>' +
-                        '<td>' + op5 + '</td>' +
-                        '<td>' + op5_h + '</td>' +
-                        '<td>' + data[i].corr_opt_e + '</td></tr>';
-                }
-               
-
-
-                $("#que_body").html(row);
-            }
-        });
-
-    }
-
-    $('#quiz_reg').submit(function(e) {
+    $('#create_online_form').submit(function(e) {
         e.preventDefault();
         var focusSet = false;
         var allfields = true;
@@ -956,17 +653,17 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             $("#terms_conditions_error").hide();
         }
 
-        var duration = $("#duration").val();
-        if (duration == "" || duration == null) {
-            if ($("#duration").next(".validation").length == 0) {
-                $("#duration").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
+        var qualifying_mark = $("#qualifying_mark").val();
+        if (qualifying_mark == "" || qualifying_mark == null) {
+            if ($("#qualifying_mark").next(".validation").length == 0) {
+                $("#qualifying_mark").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
             }
             if (!focusSet) {
-                $("#duration").focus();
+                $("#qualifying_mark").focus();
             }
             allfields = false;
         } else {
-            $("#duration").next(".validation").remove();
+            $("#qualifying_mark").next(".validation").remove();
         }
 
         var total_mark = $("#total_mark").val();
@@ -982,18 +679,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             $("#total_mark").next(".validation").remove();
         }
 
-        var total_question = $("#total_question").val();
-        if (total_question == "" || total_question == null) {
-            if ($("#total_question").next(".validation").length == 0) {
-                $("#total_question").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
-            }
-            if (!focusSet) {
-                $("#total_question").focus();
-            }
-            allfields = false;
-        } else {
-            $("#total_question").next(".validation").remove();
-        }
+        
 
         var start_date = $("#start_date").val();
         if (start_date == "" || start_date == null) {
@@ -1047,18 +733,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             $("#end_time").next(".validation").remove();
         }
 
-        var language_id = $("#language_id").val();
-        if (language_id == "" || language_id == null) {
-            if ($("#language_id").next(".validation").length == 0) {
-                $("#language_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
-            }
-            if (!focusSet) {
-                $("#language_id").focus();
-            }
-            allfields = false;
-        } else {
-            $("#language_id").next(".validation").remove();
-        }
+        
 
         var banner_img = $("#banner_img").val();
         if (banner_img == "" || banner_img == null) {
@@ -1073,17 +748,17 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             $("#banner_img").next(".validation").remove();
         }
 
-        var fprizes = $("#fprizes").val();
-        if (fprizes == "" || fprizes == null) {
-            if ($("#fprizes").next(".validation").length == 0) {
-                $("#fprizes").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
+        var fprize = $("#fprize").val();
+        if (fprize == "" || fprize == null) {
+            if ($("#fprize").next(".validation").length == 0) {
+                $("#fprize").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
             }
             if (!focusSet) {
-                $("#fprizes").focus();
+                $("#fprize").focus();
             }
             allfields = false;
         } else {
-            $("#fprizes").next(".validation").remove();
+            $("#fprize").next(".validation").remove();
         }
 
         var fdetails = $("#fdetails").val();
@@ -1099,31 +774,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             $("#fdetails").next(".validation").remove();
         }
 
-        // var fprize_img = $("#fprize_img").val();
-        // if (fprize_img == "" || fprize_img== null) {
-        //     if ($("#fprize_img").next(".validation").length == 0) 
-        //     {
-        //         $("#fprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select First Prize Image Icon </div>");
-        //     }
-        //     if (!focusSet) { $("#fprize_img").focus(); }
-        //     allfields = false;
-        // } else {
-        //     $("#fprize_img").next(".validation").remove(); 
-        // }
-
-        // var sprizes = $("#sprizes").val();
-        // if (sprizes == "" || sprizes == null) {
-        //     if ($("#sprizes").next(".validation").length == 0) 
-        //     {
-        //         $("#sprizes").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Second Prize</div>");
-        //     }
-        //     if (!focusSet) {
-        //         $("#sprizes").focus();
-        //     }
-        //     allfields = false;
-        // } else {
-        //     $("#sprizes").next(".validation").remove(); 
-        // }
+         
         var sprizes = $("#sprizes").val();
         if (sprizes > 0) {
             var sdetails = $("#sdetails").val();
@@ -1141,31 +792,6 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
         }
 
 
-        // var sprize_img = $("#sprize_img").val();
-        // if (sprize_img == "" || sprize_img== null) {
-        //     if ($("#sprize_img").next(".validation").length == 0) 
-        //     {
-        //         $("#sprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Second Prize Image Icon</div>");
-        //     }
-        //     if (!focusSet) { $("#sprize_img").focus(); }
-        //     allfields = false;
-        // } else {
-        //     $("#sprize_img").next(".validation").remove(); 
-        // }
-
-        // if (tprize == "" || tprize == null) {
-        //     if ($("#tprize").next(".validation").length == 0) 
-        //     {
-        //         $("#tprize").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Third Prize</div>");
-        //     }
-        //     if (!focusSet) {
-        //         $("#tprize").focus();
-        //     }
-        //     allfields = false;
-        // } else {
-        //     $("#tprize").next(".validation").remove(); 
-        // }
-
         var tprize = $("#tprize").val();
         if (tprize > 0) {
             var tdetails = $("#tdetails").val();
@@ -1181,33 +807,8 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                 $("#tdetails").next(".validation").remove();
             }
         }
-        // var tprize_img = $("#tprize_img").val();
-        // if (tprize_img == "" || tprize_img== null) {
-        //     if ($("#tprize_img").next(".validation").length == 0) 
-        //     {
-        //         $("#tprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Third Prize Image Icon</div>");
-        //     }
-        //     if (!focusSet) { $("#tprize_img").focus(); }
-        //     allfields = false;
-        // } else {
-        //     $("#tprize_img").next(".validation").remove(); 
-        // }           
-
-
-
-
-        // if (cprize == "" || cprize == null) {
-        //     if ($("#cprize").next(".validation").length == 0) 
-        //     {
-        //         $("#cprize").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter Consolation Prizes </div>");
-        //     }
-        //     if (!focusSet) {
-        //         $("#cprize").focus();
-        //     }
-        //     allfields = false;
-        // } else {
-        //     $("#cprize").next(".validation").remove(); 
-        // }
+        
+ 
         var cprize = $("#cprize").val();
         if (cprize > 0) {
             var cdetails = $("#cdetails").val();
@@ -1250,20 +851,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             }
             }
         }
-
-        var que_bank_id = $("#que_bank_id").val();
-        if (que_bank_id == "" || que_bank_id == null) {
-            if ($("#que_bank_id").next(".validation").length == 0) {
-                $("#que_bank_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
-            }
-            if (!focusSet) {
-                $("#que_bank_id").focus();
-            }
-            allfields = false;
-        } else {
-            $("#que_bank_id").next(".validation").remove();
-        }
-
+ 
         var quiz_level_id = $("#quiz_level_id :selected").val();
         if (quiz_level_id == "" || quiz_level_id == null) {
             if ($("#quiz_level_id").next(".validation").length == 0) {
@@ -1318,9 +906,20 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                 $("#state_id").next(".validation").remove();
             }
         }
+        var fprize_img = $("#fprize_img").val();
+        if (fprize_img == "" || fprize_img== null) {
+            if ($("#fprize_img").next(".validation").length == 0) 
+            {
+                $("#fprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select First Prize Image Icon </div>");
+            }
+            if (!focusSet) { $("#fprize_img").focus(); }
+            allfields = false;
+        } else {
+            $("#fprize_img").next(".validation").remove(); 
+        }
 
         if (allfields) {
-            // $('#quiz_reg').submit();
+            // $('#create_online_form').submit();
             Swal.fire({
                     title: 'Are you sure you want to Create Quiz?',
                     showDenyButton: true,
@@ -1328,12 +927,10 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                     confirmButtonText: 'Submit',
                     denyButtonText: `Cancel`,
                     }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {                       
-                        $('#quiz_reg').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
+                        $('#create_online_form').submit();                              
                     } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
+
                     }
                     })
         } else {
@@ -1348,14 +945,10 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                     showCancelButton: false,
                     confirmButtonText: 'Cancel',
                     denyButtonText: `Close`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                    //    window.location('<?php echo base_url().'quiz/quiz_list' ?>');
-                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
+                    }).then((result) => { 
+                    if (result.isConfirmed) {               
+                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    } else if (result.isDenied) { 
                     }
                     })
     })
