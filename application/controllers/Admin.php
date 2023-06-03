@@ -2768,6 +2768,8 @@ class Admin extends CI_Controller
     }
     public function admin_creation_view($id)
     {
+        $id = encryptids("D", $id);
+        
         $data['detail'] = $this->Admin_model->getAdminDetail($id);
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/admin_creation_view', $data);

@@ -302,7 +302,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            <form name="rejectQueBank" id="rejectQueBank" action="<?= base_url() . 'subadmin/rejectQueBank/' . $row['que_bank_id'] ?>" method="post" >
+                            <form name="rejectQueBank" id="rejectQueBank" action="<?= base_url() . 'subadmin/rejectQueBank/' . encryptids('E', $row['que_bank_id']); ?>" method="post" >
                             <textarea class="form-control input-font" placeholder="Enter Reason" name="reason" id="reason"></textarea>
                                                         
                             </div>

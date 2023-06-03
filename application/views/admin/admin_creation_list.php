@@ -67,8 +67,11 @@
 
                         <td><?php echo date('d-m-Y h:i:s', strtotime($row['created_on'])) ?></td>
                         <td class="d-flex border-bottom-0">
-                          <!-- <a class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>admin/admin_creation_view'">View</a> -->
-                          <a href="<?php echo base_url().'admin/admin_creation_view/'.$row['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                         
+                         
+                          <!-- <a href="<?php echo base_url().'admin/admin_creation_view/'.$row['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a> -->
+
+                          <a href="<?php echo base_url().'admin/admin_creation_view/'.encryptids('E', $row['id']); ?>" class="btn btn-primary btn-sm mr-2">View</a>
                           
                           <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>admin/editAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>

@@ -594,7 +594,7 @@ class Quiz extends CI_Controller
     public function editquiz($id)
     {
         
-      
+        $id = encryptids("D", $id);
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $getAvailability = $this->Quiz_model->getAvailability();
         $getQuizLanguage = $this->Quiz_model->getQuizLanguage(); 
@@ -1541,6 +1541,7 @@ class Quiz extends CI_Controller
     }
     public function quiz_view($id)
     {
+        $id = encryptids("D", $id);
         $this->load->view('admin/headers/admin_header');
       
          
@@ -1712,7 +1713,7 @@ class Quiz extends CI_Controller
     public function closed_quiz_submission($id)
     {
         $data=array();
-
+        $id= encryptids('D', $id);
         $users = $this->Quiz_model->getQuizSubmissionUsers($id); 
         $data['UsersDetails']=$users; 
 
@@ -1748,6 +1749,8 @@ class Quiz extends CI_Controller
     //     $this->load->view('admin/footers/admin_footer');
     // }
     public function answer_key_list($user_id,$quiz_id){
+        $user_id= encryptids('D', $user_id);
+        $quiz_id= encryptids('D', $quiz_id);
         $answerKey = $this->Quiz_model->getAnswerKeyForUser($user_id,$quiz_id); 
         $data['answerKey']=$answerKey; 
         $this->load->view('admin/headers/admin_header');;
@@ -1815,6 +1818,7 @@ class Quiz extends CI_Controller
 
     public function  close_declaration_list($quiz_id)
     {
+        $quiz_id = encryptids("D", $quiz_id);
         $users = $this->Quiz_model->resultDeclarationList($quiz_id); 
        
         $data['UsersDetails']=$users; 
