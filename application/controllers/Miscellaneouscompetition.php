@@ -21,12 +21,14 @@ class Miscellaneouscompetition extends CI_Controller
 
     public function task_recevied_list()
     {
+        //print_r($_SESSION); die;
         $data = array();
         $admin_id= encryptids("D", $_SESSION['admin_id']);
         //$data['admin_id'] = $admin_id;
         $data['records']=$this->Miscellaneous_competition->SubmissionForReview($admin_id);
+       // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/task_recevied_list');
+        $this->load->view('admin/task_recevied_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_reviewed()
@@ -34,5 +36,22 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/task_reviewed');
         $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_view($id)
+    {
+       $revirw_id = encryptids("D", $id);
+       $data['records_details']=$this->Miscellaneous_competition->CompSubmittedRecordDetail($revirw_id);
+        // print_r($data); die;
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/task_recevied_view',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function submitScore(){
+        $data1['id']=$this->input->post('id');
+        $data1['comment']=$this->input->post('comment');
+        $data1['score']=$this->input->post('score');
+        $data1['status']="3";
+        $res=$this->Miscellaneous_competition->updateCompetitionScore($data1);
+        echo $res;
     }
 }

@@ -15,28 +15,28 @@
              </div>
     <div class="row">
             <div class="mb-2 col-md-4">
-                <label class="d-block text-font">Name</label>
+                <label class="d-block text-font">Name<sup class="text-danger">*</sup></label>
                 <input type="text" class="form-control input-font" name="name" id="name" value="" placeholder="Enter Title" minlength="2" maxlength="200" aria-describedby="inputGroupPrepend" required>
                 <span class="text-danger" id="err_name"></span>
                 
             </div>
             <div class="mb-2 col-md-4">
-                <label class="d-block text-font">Mobile Number</label>
+                <label class="d-block text-font">Mobile Number<sup class="text-danger">*</sup></label>
                 <input type="tel" class="form-control input-font" name="mobile_no" id="mobile_no" pattern="[1-9]{1}[0-9]{9}" minlength="10" maxlength="10" placeholder="Enter Mobile Number" required="">
                 <span class="text-danger" id="err_mobile"></span>
             </div>
             <div class="mb-2 col-md-4">
-                <label class="d-block text-font">Email</label>
+                <label class="d-block text-font">Email<sup class="text-danger">*</sup></label>
                 <input type="email" class="form-control input-font" name="email" id="email" placeholder="Enter Email" required>
                 <span class="text-danger" id="err_email"></span>
             </div>
             <div class="mb-2 col-md-4">
-                <label class="d-block text-font">Subject</label>
+                <label class="d-block text-font">Subject<sup class="text-danger">*</sup></label>
                 <input type="text" class="form-control input-font" name="subject" id="subject" placeholder="Enter Subject" minlength="2" maxlength="200" required>
                 <span class="text-danger" id="err_subject"></span>
             </div>
             <div class="mb-2 col-md-8">
-                <label class="d-block text-font">Description</label>
+                <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                 <textarea type="text" class="form-control input-font" name="description" id="description" placeholder="Enter Description" required></textarea>
                 <span class="text-danger" id="err_description"></span>
             </div>
