@@ -75,7 +75,7 @@
                       <td>
                         <!-- for admin -->
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
-                          <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                          <a href="quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">View</a>
 
                         <?php } ?>
 
@@ -96,7 +96,7 @@
 
                           <?php if (in_array(3, $permissions)) { ?>
                             <?php if ($quiz['status'] == 10 || $quiz['status'] == 4) { ?>
-                              <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
+                              <a href="editquiz/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>
 
                             <?php } ?>
 

@@ -72,7 +72,7 @@
                                 <td><?= $timeTaken ?> </td> 
                                  <!-- <td><?= $users['time_taken'] ?> Seconds</td>  -->
                                  <!-- <td><?php //echo $users['prize']?></td> -->
-                                <td><a href="<?php echo base_url();?>Quiz/answer_key_list/<?= $users['user_id'] ;?>/<?= $users['quiz_id'] ;?>" class="btn btn-primary btn-sm mr-2">Answer Key</a></td>
+                                <td><a href="<?php echo base_url();?>Quiz/answer_key_list/<?= encryptids('E', $users['user_id']); ?>/<?= encryptids('E', $users['quiz_id']); ?>" class="btn btn-primary btn-sm mr-2">Answer Key</a></td>
                                   
                                  </tr>
 

@@ -489,7 +489,7 @@ span.incorrect_answer:after {
 
                     </div>
                     <div class="col-md-12 submit_btn p-3">
-                        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>Quiz/closed_quiz_submission/<?php echo  $row['quiz_id']; ?>'">Back</a>
+                        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>Quiz/closed_quiz_submission/<?= encryptids('E', $row['quiz_id']); ?>'">Back</a>
                     </div>
 
                 <?php } else {  ?>

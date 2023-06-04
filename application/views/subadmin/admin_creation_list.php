@@ -70,7 +70,7 @@
                         <td><?php echo date('d-m-Y h:i:s', strtotime($row['created_on'])) ?></td>
                         <td class="d-flex border-bottom-0">
                          
-                          <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url().'subadmin/admin_creation_view/'.$row['id']; ?>" >View</a>
+                          <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url().'subadmin/admin_creation_view/'.encryptids('E', $row['id']) ; ?>" >View</a>
                           <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editsubAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>
                           <button class="btn btn-primary btn-sm mr-2" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
