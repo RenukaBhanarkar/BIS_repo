@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Standardswritting extends CI_Controller
-{
+{ 
 
     public function __construct()
     { 
@@ -612,7 +612,7 @@ if($id){
         $this->load->view('standardwritting/manage_competition_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-    public function ongoing_competition_list()
+    public function ongoing_competition_list() 
     {
         $data['competition']=$this->Miscellaneous_competition->ongoingCompetition();
         $this->load->view('admin/headers/admin_header');
@@ -1032,8 +1032,25 @@ if($id){
     }
     public function ongoing_online_list()
     {
+
+        $getDetails= $this->Standardswritting_model->Manage_online_list();
+        $data = array();
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $count= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['count'] = $count;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data;
+
+
+
+        // $data=array();
+        // $data['getData']=$this->Standardswritting_model->ongoing_online_list();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/ongoing_online_list');
+        $this->load->view('standardwritting/ongoing_online_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function standard_offline_dashboard()
@@ -1331,10 +1348,13 @@ if($id){
         $this->load->view('standardwritting/view_standards',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-    public function submission_view()
+    public function submission_view($id)
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->submission_view($id); 
+
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/submission_view');
+        $this->load->view('standardwritting/submission_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function assign_review()

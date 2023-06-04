@@ -279,10 +279,10 @@
         remark=$("#remark").val();
         id="<?=$getData['id']?>"; 
 
-    if (status==1) { statusdata='Create'; }
+    if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Archive'; }
     Swal.fire({
-      title: 'Do you want to Create?',
+      title: 'Do you want to Update?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: 'Update',
