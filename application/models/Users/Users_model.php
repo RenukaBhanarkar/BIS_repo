@@ -1722,6 +1722,157 @@
     {
         return $this->db->get('tbl_winner_wall_details')->result_array(); 
     }
+    public function isCompetitionForThisUser($user_id, $quiz_id)
+        {
+            $t = time();
+            $current_time = (date("H:i:s", $t));
+
+            $user_region_id = encryptids("D", $this->session->userdata('region_id'));
+            $user_branch_id = encryptids("D", $this->session->userdata('branch_id'));
+            $user_state_id = encryptids("D", $this->session->userdata('state_id'));  
+                   
+
+            $user_standard_club_category = encryptids("D", $this->session->userdata('standard_club_category'));
+            //  echo $user_standard_club_category; die;
+            if ($user_standard_club_category == 1) {
+                $ava = 1;       
+
+            } else {
+                $ava = 2;
+            }
+
+
+            $this->db->select('quiz.*,st.status_name');
+            $this->db->from('tbl_mst_competition_detail quiz');
+            $this->db->join('tbl_mst_status st', 'st.id = quiz.status');
+           
+            $this->db->where('quiz.start_date <=', date("Y-m-d"));
+            $this->db->where('quiz.end_date >=', date("Y-m-d"));
+          
+            $this->db->where('quiz.status', 5);
+
+            $this->db->where('quiz.available_for', $ava);
+                    
+            $this->db->where('quiz.comp_id', $quiz_id);     
+          
+
+            $newRes = array();
+            $newResPush = array();
+            $res = array();
+            $rs = array();
+            $query=$this->db->get();
+
+
+            $newRes= $query->result_array();
+            // echo $quiz_id;
+            // print_r($newRes);
+            // echo json_encode($newRes);exit();
+            /////////////////////////////////////////////////////
+            if($query->num_rows() > 0){
+            $newRes= $query->result_array();
+
+           
+            foreach($newRes as $row){
+                if($row['comp_level'] == 1){                   
+                  
+                        if ($user_standard_club_category == 1) { 
+                            $std = explode(',', $row['standard']);                  
+                            $standard = encryptids("D", $this->session->userdata('standard'));
+                           
+                            if($standard != 0){
+                                if(in_array($standard,$std))  {
+                                    array_push($newResPush,$row);
+                                } 
+                            }               
+                        } else {
+                            array_push($newResPush,$row);
+                        }
+                    
+                 }
+               
+
+                 if($row['comp_level'] == 2){                   
+                    if($row['region'] ==  $user_region_id){
+                        if ($user_standard_club_category == 1) { 
+                            $std = explode(',', $row['standard']);                  
+                            $standard = encryptids("D", $this->session->userdata('standard'));
+                           
+                            if($standard != 0){
+                                if(in_array($standard,$std))  {
+                                    array_push($newResPush,$row);
+                                } 
+                            }       
+                          
+            
+                        } else {
+                            array_push($newResPush,$row);
+                        }
+                    }
+                 }
+
+                 if($row['comp_level'] == 3){                   
+                    if($row['branch'] ==  $user_branch_id){
+                        if ($user_standard_club_category == 1) { 
+                            $std = explode(',', $row['standard']);                  
+                            $standard = encryptids("D", $this->session->userdata('standard'));
+                           
+                            if($standard != 0){
+                                if(in_array($standard,$std))  {
+                                    array_push($newResPush,$row);
+                                } 
+                            }       
+                          
+            
+                        } else {
+                            array_push($newResPush,$row);
+                        }
+                    }
+                 }
+                 if($row['comp_level'] == 4){                   
+                    if($row['state'] ==  $user_state_id){
+                        if ($user_standard_club_category == 1) { 
+                            $std = explode(',', $row['standard']);                  
+                            $standard = encryptids("D", $this->session->userdata('standard'));
+                           
+                            if($standard != 0){
+                                if(in_array($standard,$std))  {
+                                    array_push($newResPush,$row);
+                                } 
+                            }       
+                          
+            
+                        } else {
+                            array_push($newResPush,$row);
+                        }
+                    }
+                 }
+               
+                 
+
+            }
+                        
+                foreach($newResPush as $row){
+                   
+                    if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                        if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                            array_push($rs,$row);
+                        }
+                    }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                        if($row['start_time'] <= $current_time){
+                            array_push($rs,$row);
+                        }
+                    }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                        if($row['end_time'] >= $current_time){
+                            array_push($rs,$row);
+                        }
+                    }else{
+                        array_push($rs,$row);
+                    }
+                }
+            }
+          //  echo json_encode($rs);exit();
+            return $rs;  
+        }
 }
 // =======
 // >>>>>>> 068af7e12f46c89299a5665cd129d7be617b43b1

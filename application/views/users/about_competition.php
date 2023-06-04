@@ -308,10 +308,15 @@
                       <?php if(isset($_SESSION['admin_type'])){ if (!encryptids("D", $_SESSION['is_admin']) == 0){ ?>
                         <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate</span></a>
                     <?php  }else{ ?>                      
-                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition</span></a>
+                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz mb-2"> <span>Start Competition</span></a>
                    <?php } }else{ ?>
                     <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate</span></a>
                     <?php } ?>
+                    <?php
+                    if ($this->session->flashdata('MSG')) {
+                        echo $this->session->flashdata('MSG');
+                    }
+                    ?>
                 </div>
             </div>
         
