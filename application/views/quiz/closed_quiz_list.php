@@ -69,7 +69,7 @@
                                  <td class="d-flex border-bottom-0" style="width: 315px; word-break: normal;">
                                      <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
 
-                                    <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
+                                    <a href="<?php echo base_url();?>Quiz/quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">View</button></a>
                                     <?php if ($quiz['result_declared'] == 1) { ?>
                                     <button onclick="deleteRecord(<?= $quiz['id'] ?>)" class="btn btn-danger btn-sm mr-2">Delete</button> 
 
@@ -78,20 +78,17 @@
 
                                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                         <?php if(in_array(1,$permissions)){ ?>
-                                    <a href="<?php echo base_url();?>Quiz/quiz_view/<?= $quiz['id']?>" class="btn btn-primary btn-sm mr-2">View</button></a>
+                                    <a href="<?php echo base_url();?>Quiz/quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">View</button></a>
 
-                                    <?php }} ?>
-                                                    
-                         
+                                    <?php }} ?>       
 
-
-                                    <a href="<?php echo base_url();?>Quiz/closed_quiz_submission/<?= $quiz['id']?>" class="btn btn-warning btn-sm mr-2">View submission</a>   
+                                    <a href="<?php echo base_url();?>Quiz/closed_quiz_submission/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-warning btn-sm mr-2">View submission</a>   
 
                                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
                                     <?php if ($quiz['result_declared'] == 0) { ?> 
                                       <?php if ($quiz['total_sub'] > 0 ){ ?> 
-                                    <a href="<?php echo base_url();?>Quiz/close_declaration_list/<?= $quiz['id']?>" class="btn btn-success btn-sm mr-2">Result Declaration</a>
+                                    <a href="<?php echo base_url();?>Quiz/close_declaration_list/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-success btn-sm mr-2">Result Declaration</a>
                                   <?php }
                                 
                                      }}?>

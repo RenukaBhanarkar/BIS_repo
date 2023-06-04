@@ -62,20 +62,20 @@
                                         <td class="d-flex border-bottom-0">
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>                                               
-                                                    <button onClick="location.href='<?php echo base_url(); ?>Quiz/quiz_view/<?= $quiz['id'] ?>'" class="btn btn-primary btn-sm mr-2">View</button>
+                                                    <button onClick="location.href='<?php echo base_url(); ?>Quiz/quiz_view/<?= encryptids('E', $quiz['id']); ?>'" class="btn btn-primary btn-sm mr-2">View</button>
                                             <?php } ?>
 
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
                                                 <?php if (in_array(1, $permissions)) { ?>
-                                                    <button onClick="location.href='<?php echo base_url(); ?>Quiz/quiz_view/<?= $quiz['id'] ?>'" class="btn btn-primary btn-sm mr-2">View</button>
+                                                    <button onClick="location.href='<?php echo base_url(); ?>/<?= encryptids('E', $quiz['id']); ?>'" class="btn btn-primary btn-sm mr-2">View</button>
                                             <?php }
                                             } ?>
 
 
 
-                                            <button onClick="location.href='closed_quiz_submission/<?= $quiz['id'] ?>'" class="btn btn-warning btn-sm mr-2">View submission</i></button>
+                                            <button onClick="location.href='closed_quiz_submission/<?= encryptids('E', $quiz['id']); ?>'" class="btn btn-warning btn-sm mr-2">View submission</i></button>
                                         </td>
 
 

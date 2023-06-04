@@ -45,6 +45,7 @@ class Standardswritting extends CI_Controller
         $formdata['user_id']=$this->input->post('user_id');
         $formdata['competiton_id']=$this->input->post('comp_id');
         $formdata['evaluator']=$this->input->post('evaluator');
+        $formdata['status']="2";
         $formdata['ev_assigned_on']=$current_time;
 
         $res=$this->Miscellaneous_competition->update_evaluator($formdata);
@@ -1676,4 +1677,35 @@ public function updateStatus(){
         }
         redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
+    public function evaluator_dashboard(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/evaluator_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_reviewed()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    
+    
 }
