@@ -921,7 +921,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
         if (allfields) {
             // $('#create_online_form').submit();
             Swal.fire({
-                    title: 'Are you sure you want to Create Quiz?',
+                    title: 'Are you sure you want to Create ?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Submit',
