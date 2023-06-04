@@ -55,10 +55,104 @@
                          </div>
                          <div class="card-body"> 
                             <div class="row">
-                               <div class="mb-2 col-md-12">
-                                    <p>BIS undertakes various activities, events and competitions for their members and standard clubs situated in various states and regions. Wherein BIS arranges various events for their members and standard clubs. BIS now want to have a separate window as an exchange forum which will be publically available or the platform for the users to get connected and share their views across various events and win the exciting prizes. Also various committee members will now be able to participate in various standard writing competitions and other activities and explore various events and information contents with the help of this forum. People will be able to view the details of various standards getting published under Bureau of India Standards and will also be able to join various discussions on the forum and share their views.</p> 
-                                
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Indian Standard</label>
+                                    <div>
+                                        <p>Standard</p>
+                                    </div>    
                                 </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">IS No.nnnnn</label>
+                                    <div>
+                                        <p>No.</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Product</label>
+                                    <div>
+                                        <p>Product</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Name & Address</label>
+                                    <div>
+                                        <p>Name</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Mar 2022 Price</label>
+                                    <div>
+                                        <p>Price</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Foreword</label>
+                                    <div>
+                                        <p>Foreword</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">IS No. nnnnn :yyyy Title of the Standard (Product - Specification)</label>
+                                    <div>
+                                        <p>Specification</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Scope</label>
+                                    <div>
+                                        <p>Scope</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">References</label>
+                                    <div>
+                                        <p>References</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">DEFINITIONS</label>
+                                    <div>
+                                        <p>DEFINITIONS</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">GRADES, TYPES AND CLASSES</label>
+                                    <div>
+                                        <p>GRADES, TYPES AND CLASSES</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">MANUFACTURE</label>
+                                    <div>
+                                        <p>MANUFACTURE</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">REQUIREMENTS</label>
+                                    <div>
+                                        <p>REQUIREMENTS</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">SAMPLING</label>
+                                    <div>
+                                        <p>SAMPLING</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">METHODS OF TESTS for various Requirements</label>
+                                    <div>
+                                        <p>METHODS OF TESTS for various Requirements</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">PACKING AND PACKAGING</label>
+                                    <div>
+                                        <p>PACKING AND PACKAGING</p>
+                                    </div>    
+                                </div>
+                            </div>
+                                <div class="row">
                                 <div class="mb-2 col-md-2">
                                     <label class="d-block text-font">Score<sup class="text-danger">*</sup></label>
                                     <div class="d-flex">
