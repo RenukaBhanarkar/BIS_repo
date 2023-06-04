@@ -1432,8 +1432,27 @@ public function updateStatus(){
     public function task_recevied_list()
     {
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/task_recevied_list');
+        $this->load->view('standardwritting/task_recevied_list');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function task_recevied_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_reviewed()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    
     
 }
