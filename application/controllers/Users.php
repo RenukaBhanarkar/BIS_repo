@@ -2180,11 +2180,79 @@ class Users extends CI_Controller
     }
     public function start_competition($id)
     {
-        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
-        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
-        $this->load->view('users/headers/header');
-        $this->load->view('users/start_competition',$data);
-        $this->load->view('users/footers/footer');
+        // $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+        // $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
+    //   print_r($data); die;
+   
+       $sess_admin_type = encryptids("D", $this->session->userdata('admin_type'));
+    //    echo $sess_admin_type;
+        {
+        
+            $quiz_id = $id;  
+           
+            $UserId = $this->session->userdata('admin_id');
+            $user_id = encryptids("D", $UserId);
+            $data = array();
+            $userQuiz = array();
+            ///////////////////// check available quiz ////////////////
+           
+               
+                if (isset($_SESSION['admin_type']) && !empty($_SESSION['admin_type'])) {
+        
+                    $sess_admin_type = encryptids("D", $this->session->userdata('admin_type'));
+                    $sess_is_admin = encryptids("D", $this->session->userdata('is_admin'));
+                     //if Already login
+                    //  echo $sess_admin_type; die;
+                    if ($sess_is_admin == 0) {                  
+                       
+                        if ($this->Users_model->checkAdminLogin()) {
+                           
+                            if ($sess_admin_type == 2) {                    
+                                 
+                                $userQuiz = $this->Users_model->isCompetitionForThisUser($user_id,$quiz_id);
+                                if(!empty($userQuiz)){
+                                    $checkUserAvailable = $this->Miscellaneous_competition->checkUserAvailable($quiz_id, $user_id);
+                                    if ($checkUserAvailable > 0) {
+                                        $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this Competition.", "SS"));
+                                        redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh');
+                                    } else {
+                                        // print_r($data); die;
+                                        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+                                        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
+                                        $data['is_allow']="1";
+                                        $this->load->view('users/headers/header');
+                                        $this->load->view('users/start_competition',$data);
+                                        $this->load->view('users/footers/footer');
+                                    }
+    
+                                }else{
+                                    $this->session->set_flashdata('MSG', ShowAlert("You can not appear for this Competition as you are not authenticated.", "DD"));
+                                    redirect(base_url() . "users/about_competition/".$quiz_id, 'refresh');
+    
+                                }
+                            }   else{
+                                $this->session->set_flashdata('MSG', ShowAlert("You can not appear for this Competition as you are not authenticated.", "DD"));
+                                redirect(base_url() . "users/about_competition/".$quiz_id, 'refresh');
+    
+                            }                  
+                            
+                        } else {
+                            redirect(base_url() . "Users/login", 'refresh');
+                        }
+                    }else{
+                        $this->session->set_flashdata('MSG', ShowAlert("You can not appear for Competition as you are not authenticated.", "DD"));
+                        redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh');
+                    }
+            }else{
+                $this->session->set_flashdata('MSG', ShowAlert("Please Login.", "SS"));
+                redirect(base_url() . "users/about_competition/".$quiz_id, 'refresh');
+            }
+          
+           
+        }
+        // $this->load->view('users/headers/header');
+        // $this->load->view('users/start_competition',$data);
+        // $this->load->view('users/footers/footer');
     }
     public function competition_response_record(){
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
@@ -2229,7 +2297,9 @@ class Users extends CI_Controller
         
         $response=$this->Miscellaneous_competition->submitCompResponse($data);
         if($response){
-            echo "success";
+            // echo "success";
+            $this->session->set_flashdata('MSG', ShowAlert("Your response has benn recorded.", "SS"));
+                redirect(base_url() . "Miscellaneouscompetition/thanks/", 'refresh');
         }else{
             echo "Failed";
         }

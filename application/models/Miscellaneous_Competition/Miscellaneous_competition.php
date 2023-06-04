@@ -470,4 +470,9 @@ class Miscellaneous_competition extends CI_Model {
        $result =$res->result_array();
         return $result['0'];
     }
+    public function checkUserAvailable($quiz_id, $user_id)
+        {
+            $query = $this->db->query("SELECT * FROM tbl_users_competition_attempt_record WHERE user_id='$user_id' AND competiton_id='$quiz_id'");
+            return $query->num_rows();
+        }
 }

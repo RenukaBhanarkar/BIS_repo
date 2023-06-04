@@ -158,7 +158,7 @@
   padding: 0.1rem 0 0 0;
   font-size: 0.875rem;
 }
-</style>
+</style><?php if(!($is_allow==1)){ redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh'); } ?>
 <div class="container">
 <div class="row">
               <div class="col-md-3">

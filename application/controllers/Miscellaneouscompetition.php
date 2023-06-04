@@ -71,4 +71,19 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('EvaluatorForCompetition/viewReviewedRecord',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function CompetitionUnderReview(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/competition_under_review');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function CompetitionReviewed(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/competition_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function thanks(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_thanks');
+        $this->load->view('users/footers/footer');
+    }
 }
