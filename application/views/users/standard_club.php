@@ -111,7 +111,7 @@ li.tab-link:hover {
     z-index: 1;
 }
 
-.row>* {
+.row1 >* {
   padding-right: 0;
   padding-left: 0;
 }
@@ -149,7 +149,7 @@ li.tab-link:hover {
 </section> -->
 <section id="winners_content">
   <div class="container-fluid">
-    <div class="row d-flex p-0" >
+    <div class="row d-flex row1 p-0" >
       <!-- <div class="inner_content d-flex p-0"> -->
         <div class="col-md-3">
           <div class="card" style="background: #014e9c; color:white;">

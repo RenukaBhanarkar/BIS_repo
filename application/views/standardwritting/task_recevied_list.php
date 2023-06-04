@@ -3,7 +3,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Task Reviewed</h1>
+            <h1 class="h3 mb-0 text-gray-800">Task Recevied for Review</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
@@ -16,8 +16,8 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                <table id="example" class="table-bordered table-responsive nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="table-bordered table-responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -46,19 +46,19 @@
                               <td>90</td>
                               <td>Pending</td>
                               <td class="d-flex">
-                                 <!-- <a href="<?php echo base_url(); ?>admin/task_recevied_view" class="btn btn-primary btn-sm mr-2" title="View">Review</a> -->
-                                 <a href="<?php echo base_url(); ?>standardswritting/task_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/task_recevied_reviewed" class="btn btn-primary btn-sm mr-2" title="View">Review</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/task_recevied_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                               </td>
-                           </tr>
-                           
+                           </tr> 
+                         
                         </tbody>
                     </table>
                 </div>
             </div>
-                <!-- <div class="col-md-12 submit_btn p-3">
-                    <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm text-white" >Assign</a>
-                    <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm text-white" >Cancel</a>
-                </div> -->
         </div>
     </div>
     <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+ 

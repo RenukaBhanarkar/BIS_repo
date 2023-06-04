@@ -5,7 +5,7 @@ class Standardswritting extends CI_Controller
 {
 
     public function __construct()
-    {
+    { 
 
         parent::__construct();
         $this->load->model('Admin/Admin_model');
@@ -656,16 +656,21 @@ if($id){
         $this->load->view('standardwritting/review_management_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function create_online_view()
+    public function create_online_view($id)
     {
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->create_online_view($id);
+
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_online_view');
+        $this->load->view('standardwritting/create_online_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_online_archive()
     {
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->create_online_archive();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_online_archive');
+        $this->load->view('standardwritting/create_online_archive',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_online_form()
@@ -814,12 +819,208 @@ if($id){
         } 
         $this->load->view('admin/footers/admin_footer');
     }
-    public function create_online_edit()
+    public function create_online_edit($id)
     {
+
+
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/create_online_edit');
+
+        $quizlavel = $this->Quiz_model->getQuizLevel();
+        $getAvailability = $this->Quiz_model->getAvailability(); 
+
+
+        $getAllRegions = array();
+        $getAllBranches = array();
+        $getAllStates = array();
+        $data=array(); 
+
+         $comp=$this->Standardswritting_model->create_online_view($id);
+        
+        if($comp['quiz_level_id'] == 2){
+          
+            $getAllRegions = $this->Quiz_model->getAllRegions(); 
+        }
+        if($comp['quiz_level_id'] == 3){
+           
+            $getAllBranches = $this->Quiz_model->getAllBranches(); 
+        }
+        if($comp['quiz_level_id'] == 4){
+           
+            $getAllStates = $this->Quiz_model->getAllStates(); 
+        }
+        $data['quizlavel']=$quizlavel;
+        $data['getAvailability']=$getAvailability; 
+        $data['getAllRegions']=$getAllRegions;
+        $data['getAllBranches']=$getAllBranches;
+        $data['getAllStates']=$getAllStates;
+
+        $data['getData']=$comp;
+
+
+
+        if ($this->form_validation->run('create_online_form') == FALSE) 
+        {
+            $this->load->view('standardwritting/create_online_edit',$data);
+        }
+        else
+        { 
+            if (!file_exists('uploads/standardswrittingonline')) { mkdir('uploads/standardswrittingonline', 0777, true); }
+            $bannerpath = 'uploads/standardswrittingonline/'; 
+            // $banner_imglocation = $bannerpath . time() .'quiz_banner_img'. $_FILES['banner_img']['name']; 
+            // move_uploaded_file($_FILES['banner_img']['tmp_name'], $banner_imglocation); 
+
+
+             $banner_imglocation =$comp['banner_img'];
+            if (!empty($_FILES['banner_img']['tmp_name'])) {
+            $banner_imglocation = $bannerpath . time() .'banner_img'. $_FILES['banner_img']['name']; 
+            move_uploaded_file($_FILES['banner_img']['tmp_name'], $banner_imglocation); }
+
+
+
+
+            $fprize_imglocation =$comp['fprize_img'];;
+            if (!empty($_FILES['fprize_img']['tmp_name'])) {
+            $fprize_imglocation = $bannerpath . time() .'prize_img'. $_FILES['fprize_img']['name']; 
+            move_uploaded_file($_FILES['fprize_img']['tmp_name'], $fprize_imglocation); }
+
+            $sprize_imglocation =$comp['sprize_img'];
+            if (!empty($_FILES['sprize_img']['tmp_name'])) {
+            $sprize_imglocation = $bannerpath . time()  .'prize_img'.$_FILES['sprize_img']['name']; 
+            move_uploaded_file($_FILES['sprize_img']['tmp_name'], $sprize_imglocation);}
+
+
+            $tprize_imglocation =$comp['tprize_img'];
+            if (!empty($_FILES['tprize_img']['tmp_name'])) {
+            $tprize_imglocation = $bannerpath . time() .'prize_img'. $_FILES['tprize_img']['name']; 
+            move_uploaded_file($_FILES['tprize_img']['tmp_name'], $tprize_imglocation);}
+
+
+             $cprize_imglocation =$comp['cprize_img'];
+
+            if (!empty($_FILES['cprize_img']['tmp_name'])) {
+                $cprize_imglocation = $bannerpath . time() .'prize_img'. $_FILES['cprize_img']['name']; 
+                move_uploaded_file($_FILES['cprize_img']['tmp_name'], $cprize_imglocation);}
+
+
+
+
+            $encAdminId = $this->session->userdata('admin_id');
+            $created_by = encryptids("D", $encAdminId);            
+           
+            $formdata = array();
+            $formdata['comp_id'] = date('dmy').$this->random_strings(4);
+            $formdata['title'] = $this->input->post('title');
+            $formdata['title_hindi'] = $this->input->post('title_hindi');
+            $formdata['description'] = $this->input->post('description');
+            $formdata['terms_conditions'] = $this->input->post('terms_conditions');
+            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['total_mark'] = $this->input->post('total_mark');
+            $formdata['created_on'] = date("Y-m-d h:i:s");
+            $formdata['updated_on'] = date("Y-m-d h:i:s");
+
+            $start_d= $this->input->post('start_date');
+            $start_date = date("Y-m-d", strtotime($start_d));
+            $formdata['start_date'] = $start_date ;
+
+            $end_d= $this->input->post('end_date');
+            $end_date = date("Y-m-d", strtotime($end_d));
+            $formdata['end_date'] =  $end_date;
+
+             $start= $this->input->post('start_time');
+             $start_time = date("H:i:s", strtotime($start));
+             $end= $this->input->post('end_time');
+             $end_time = date("H:i:s", strtotime($end));
+
+
+           
+            $formdata['start_time'] = $start_time ;
+            $formdata['end_time'] =  $end_time;
+                            
+           
+            $formdata['quiz_level_id'] = $this->input->post('quiz_level_id');
+            if($this->input->post('quiz_level_id')== 1){
+                $formdata['region_id'] = 0;   
+                $formdata['branch_id'] = 0;  
+                $formdata['state_id'] = 0;              
+            }
+            if($this->input->post('quiz_level_id')== 2){               
+                $formdata['region_id'] = $this->input->post('region_id');
+                $formdata['branch_id'] = 0; 
+                $formdata['state_id'] = 0;      
+            }
+            if($this->input->post('quiz_level_id')== 3){
+                $formdata['region_id'] = 0;
+                $formdata['state_id'] = 0;         
+               // $formdata['branch_id'] = $this->input->post('branch_id');
+               $pki_id = $this->input->post('branch_id');
+               $branch_details = $this->Quiz_model->getbranchDetailsByPkid($pki_id);
+               $formdata['branch_id']  =   $branch_details['i_branch_id'];
+            }
+            if($this->input->post('quiz_level_id')== 4){               
+                $formdata['region_id'] = 0;
+                $formdata['branch_id'] = 0; 
+                $formdata['state_id'] = $this->input->post('state_id');     
+            } 
+            $formdata['banner_img'] = $banner_imglocation; 
+            $formdata['availability_id'] = $this->input->post('availability_id');
+            if($this->input->post('availability_id')== 1){               
+                $standard = $this->input->post('standard');  
+                $formdata['standard'] = implode(',',$standard);    
+            }else{
+                $formdata['standard'] = 0;
+            } 
+
+            if($this->input->post('fprize')!= ""){ 
+                $formdata['fprize'] = $this->input->post('fprize');
+                $formdata['fdetails'] = $this->input->post('fdetails');
+                $formdata['fprize_img'] = $fprize_imglocation; 
+                }
+                if($this->input->post('sprize')!= ""){ 
+                    $formdata['sprize'] = $this->input->post('sprize');
+                    $formdata['sdetails'] = $this->input->post('sdetails');
+                    $formdata['sprize_img'] = $sprize_imglocation;  
+                }
+              
+                if($this->input->post('tprize')!= ""){ 
+                $formdata['tprize'] = $this->input->post('tprize');
+                $formdata['tdetails'] = $this->input->post('tdetails');
+                $formdata['tprize_img'] =$tprize_imglocation; 
+                }
+
+                if($this->input->post('cprize')!= ""){ 
+                $formdata['cprize'] = $this->input->post('cprize');
+                $formdata['cdetails'] = $this->input->post('cdetails');
+                $formdata['cprize_img'] = $cprize_imglocation; 
+                }   
+            
+
+            $formdata['created_by'] = $created_by;
+            $formdata['modify_by'] = $created_by;
+            $formdata['status'] = 10;
+
+            $update_id = $this->input->post('update_id');
+
+
+            $quiz_id = $this->Standardswritting_model->updateStandardsWrittingOnline($update_id,$formdata);
+             
+            if ($quiz_id) { 
+                   
+                $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "Standardswritting/create_online_list", 'refresh');
+            }
+            else
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Failed to create new admin,Please try again", "DD"));
+                redirect(base_url() . "Standardswritting/create_online_form", 'refresh');
+            }
+        } 
         $this->load->view('admin/footers/admin_footer');
     }
+
+
+ 
+
+     
     public function Manage_online_list()
     {
         $data=array();
@@ -1258,6 +1459,8 @@ public function updateStatus(){
         redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
 
+    
+
     public function deleteData(){
         try {   
                  
@@ -1325,6 +1528,56 @@ public function updateStatus(){
         }
         redirect(base_url() . "Standardswritting/create_standard_edit", 'refresh');
     }
+
+
+    public function deleteOnlineFile(){
+        try {   
+                 
+            $id = $this->input->post('id');
+            $val = $this->input->post('status');
+            if ($val==1) 
+            {
+                $formdata['banner_img']='';
+            }
+            if ($val==2) 
+            {
+                $formdata['fprize_img']='';
+            }
+            if ($val==3) 
+            {
+                $formdata['sprize_img']='';
+            }
+            if ($val==4) 
+            {
+                $formdata['tprize_img']='';
+            }
+
+            if ($val==5) 
+            {
+                $formdata['cprize_img']='';
+            }
+
+            $id = $this->Standardswritting_model->deleteOnlineFile($id,$formdata);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Deleted successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardswritting/create_standard_edit", 'refresh');
+    }
+
 
     public function random_strings($length_of_string)
     {
@@ -1432,8 +1685,27 @@ public function updateStatus(){
     public function task_recevied_list()
     {
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/task_recevied_list');
+        $this->load->view('standardwritting/task_recevied_list');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function task_recevied_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_recevied_reviewed()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_recevied_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function task_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    
     
 }
