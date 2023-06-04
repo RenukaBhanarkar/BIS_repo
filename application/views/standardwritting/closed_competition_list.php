@@ -75,7 +75,7 @@
                             <td></td>
                             <td></td>
                             <!-- <td><?php echo $list['status_name'];  ?></td> -->
-                            <td><?php echo $list['review_status'];  ?></td>
+                            <td><?php if($list['review_status']==1){ echo "Send for Review"; } ;  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <!-- <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a> -->

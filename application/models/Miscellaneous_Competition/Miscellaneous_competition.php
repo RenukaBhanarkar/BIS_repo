@@ -422,7 +422,8 @@ class Miscellaneous_competition extends CI_Model {
 		}
     }
     public function SubmissionForReview($data){
-       // print_r($data);
+    //    print_r($data);
+    //    die;
     //     $this->db->select('tbl_mst_competition_detail.competiton_name,tbl_users_competition_attempt_record.*')->from('tbl_users_competition_attempt_record')->where('evaluator',$data);
     //     $this->db->join('tbl_mst_competition_detail','tbl_mst_competition_detail.comp_id =tbl_users_competition_attempt_record.competiton_id');
     //     $res=$this->db->get();
@@ -433,7 +434,7 @@ class Miscellaneous_competition extends CI_Model {
       $this->db->from('tbl_users_competition_attempt_record tucar');
       $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
       $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
-      $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
+      $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator');
       $this->db->where('tucar.evaluator',$data);
       $res=$this->db->get();
       $result= $res->result_array();
@@ -445,7 +446,7 @@ class Miscellaneous_competition extends CI_Model {
       $this->db->from('tbl_users_competition_attempt_record tucar');
       $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
       $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
-      $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
+      $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator');
       $this->db->where('tucar.id',$id);
       $res=$this->db->get();
       $result= $res->result_array();
@@ -460,5 +461,13 @@ class Miscellaneous_competition extends CI_Model {
 		}else{
 			return false;
 		}
+    }
+    public function getAdminUserid($id){
+        $this->db->select('user_uid');
+        $this->db->from('tbl_admin');
+        $this->db->where('id',$id);
+        $res=$this->db->get();
+       $result =$res->result_array();
+        return $result['0'];
     }
 }
