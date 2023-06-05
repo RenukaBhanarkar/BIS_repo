@@ -21,7 +21,7 @@
             <div class="card border-top card-body">
                 <div>
                     <a href="<?php echo base_url(); ?>standardswritting/create_online_form" class="btn btn-primary btn-sm mr-2" title="View">Create New Competition</a>
-                    <a href="<?php echo base_url(); ?>standardswritting/create_online_archive" class="btn btn-primary btn-sm mr-2" title="View">Archived</a>
+                    <a href="<?php echo base_url(); ?>standardswritting/create_online_archive" class="btn btn-primary btn-sm mr-2" title="View">Archive</a>
                 </div>
             </div>
         </div>
@@ -87,10 +87,10 @@
     </div>
  <script>
   function updateOnlineStatus(id,status) {
-    if (status==1) { statusdata='Create'; }
-    if (status==9) { statusdata='Archive'; }
+    if (status==1) { statusdata='Create'; title='Do you want to Create ?';}
+    if (status==9) { statusdata='Archive'; title='Do you want to Archive ?';}
     Swal.fire({
-      title: 'Do you want to Create?',
+      title: title,
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: statusdata,

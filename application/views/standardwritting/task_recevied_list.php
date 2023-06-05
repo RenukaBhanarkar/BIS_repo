@@ -22,7 +22,7 @@
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Competition Id</th>
-                                <th>Name of Competition</th>
+                                <th>Title of Competition</th>
                                 <th>Submission Id</th>
                                 <th>Class</th>
                                 <th>Submission Date & Time</th>
@@ -46,7 +46,7 @@
                               <td>90</td>
                               <td>Pending</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>standardswritting/task_recevied_reviewed" class="btn btn-primary btn-sm mr-2" title="View">Review</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/task_recevied_reviewed" class="btn btn-success btn-sm mr-2" title="View">Review</a>
                                  <a href="<?php echo base_url(); ?>standardswritting/task_recevied_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                               </td>
                            </tr> 

@@ -16,11 +16,17 @@
                         <div class="col-12 mt-3">
                         <div class="card border-top">
                            <div class="card-body"> 
-                            <div class="row">
+                           <div class="row">
                                <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Competition Id</label>
                                     <div>
                                         <p>1234</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Title of Competition</label>
+                                    <div>
+                                        <p>Title</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
@@ -30,21 +36,21 @@
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Title</label>
+                                    <label class="d-block text-font">Class</label>
                                     <div>
-                                        <p>Competition Title</p>
+                                        <p>9 th</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Start Date</label>
+                                    <label class="d-block text-font">Submission Date & Time</label>
                                     <div>
-                                        <p>12/03/2023</p>
+                                        <p>13/03/2023 12:00:00</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">End Date</label>
+                                    <label class="d-block text-font">Name of Evaluator</label>
                                     <div>
-                                        <p>13/03/2023</p>
+                                        <p>Name of Evaluator</p>
                                     </div>    
                                 </div>
                             </div>

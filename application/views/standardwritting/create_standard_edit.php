@@ -22,6 +22,17 @@
                 <form name="create_standard_edit" id="create_standard_edit" action="<?php echo base_url().'standardswritting/create_standard_edit'?>/<?= $getData['id']?>" method="post"enctype="multipart/form-data">
                     <input type="hidden" id="id" name="id" value="<?= $getData['id']?>" >
                     <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Branch Id<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="Branch" id="Branch" placeholder="Enter Branch Id" value="" required="">
+                        </div>
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Department Id<sup class="text-danger">*</sup>  </label>
+                            <input type="text" class="form-control input-font" name="Department" id="Department" placeholder="Enter Department Id" value="" required="">
+                        </div>
+                        <div class="mb-2 col-md-4">
+                           <a class="btn btn-primary btn-sm text-white" style="margin-top: 30px;">Fetch Details</a>
+                         </div>
                         <div class="mb-2 col-4">
                             <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
                             <select id="standard_club" name="standard_club" class="form-control input-font">
@@ -34,17 +45,17 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Topic of Activity</label>
+                            <label class="d-block text-font">Name of Activity<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="<?= $getData['topic_of_activity']?>" required="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Date of Activity</label>
+                            <label class="d-block text-font">Date of Activity<sup class="text-danger">*</sup></label>
                             <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="<?= $getData['date_of_activity']?>" required="">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Number of Participants</label>
+                            <label class="d-block text-font">Number of Participants<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="<?= $getData['number_of_participants']?>" required="">
                         </div>
                     </div>
@@ -58,7 +69,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Paticipant</label>
+                            <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" required="">
                         </div>
                         <div class="mb-2 col-md-4">
@@ -581,10 +592,10 @@ $("#consolation_file").next(".validation").remove(); // remove it
 }
 if (allfields) {
 Swal.fire({
-title: 'Do you want to Submit?',
+title: 'Do you want to Update?',
 showDenyButton: true,
 showCancelButton: false,
-confirmButtonText: 'Submit',
+confirmButtonText: 'Update',
 denyButtonText: `Cancel`,
 }).then((result) => {
 if (result.isConfirmed) {

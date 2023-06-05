@@ -1776,6 +1776,18 @@ public function updateStatus(){
         $this->load->view('standardwritting/task_view');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function ongoin_submission_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/ongoin_submission_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function standard_submission_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/standard_submission_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
     
     
 }

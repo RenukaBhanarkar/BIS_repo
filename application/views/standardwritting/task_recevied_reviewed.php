@@ -24,27 +24,33 @@
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Title of Competition</label>
+                                    <div>
+                                        <p>Title</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Submission Id</label>
                                     <div>
                                         <p>12345</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Title</label>
+                                    <label class="d-block text-font">Class</label>
                                     <div>
-                                        <p>Competition Title</p>
+                                        <p>9 th</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Start Date</label>
+                                    <label class="d-block text-font">Submission Date & Time</label>
                                     <div>
-                                        <p>12/03/2023</p>
+                                        <p>13/03/2023 12:00:00</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">End Date</label>
+                                    <label class="d-block text-font">Name of Evaluator</label>
                                     <div>
-                                        <p>13/03/2023</p>
+                                        <p>Name of Evaluator</p>
                                     </div>    
                                 </div>
                             </div>
@@ -97,55 +103,55 @@
                                         <p>Specification</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Scope</label>
                                     <div>
                                         <p>Scope</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">References</label>
                                     <div>
                                         <p>References</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">DEFINITIONS</label>
                                     <div>
                                         <p>DEFINITIONS</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">GRADES, TYPES AND CLASSES</label>
                                     <div>
                                         <p>GRADES, TYPES AND CLASSES</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">MANUFACTURE</label>
                                     <div>
                                         <p>MANUFACTURE</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">REQUIREMENTS</label>
                                     <div>
                                         <p>REQUIREMENTS</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">SAMPLING</label>
                                     <div>
                                         <p>SAMPLING</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">METHODS OF TESTS for various Requirements</label>
                                     <div>
                                         <p>METHODS OF TESTS for various Requirements</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">PACKING AND PACKAGING</label>
                                     <div>
                                         <p>PACKING AND PACKAGING</p>
@@ -165,7 +171,7 @@
                             </div>
                                 <div class="row">
                                 <div class="mb-2 col-md-12">
-                                    <label class="d-block text-font">Comment<sup class="text-danger">*</sup></label>
+                                    <label class="d-block text-font">Comment</label>
                                     <div class="d-flex">
                                      <textarea type="text" class="form-control input-font" name="comment" id="comment" placeholder="Comments"></textarea>
                                      </div>
@@ -176,7 +182,7 @@
                           </div>
                           <div class="col-md-12 submit_btn p-3">
                           <a class="btn btn-success btn-sm text-white submit">Submit</a>
-                          <a class="btn btn-danger btn-sm text-white">Cancel</a>
+                          <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
                        
                           </div>  
                            
@@ -184,5 +190,34 @@
                       </div>
                     </div>
                     </div>
-                
+    <script>
+        $('.cancel').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {               
+                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    } else if (result.isDenied) { 
+                    }
+                    })
+    })
+    $('.submit').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {               
+                      // window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    } else if (result.isDenied) { 
+                    }
+                    })
+    })
+    </script>            
 

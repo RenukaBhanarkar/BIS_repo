@@ -75,7 +75,7 @@
                             
 
                             <?php if ($value['status']==1) {?>
-                                <a class="btn btn-success btn-sm mr-2"onclick="updateOnlineStatus('<?= $value['id']?>',2)"  >Sent for Approve</a>
+                                <a class="btn btn-success btn-sm mr-2"onclick="updateOnlineStatus('<?= $value['id']?>',2)"  >Send for approval</a>
                            <?php }?>
 
                            <?php if ($value['status']==6 || $value['status']==3 ) {?>
@@ -120,12 +120,12 @@
 
  <script>
   function updateOnlineStatus(id,status) {
-    if (status==2) { statusdata='Sent to admin for approval'; }
-    if (status==5) { statusdata='Published'; }
-    if (status==6) { statusdata='UnPublished'; }
-    if (status==9) { statusdata='Archive'; }
+    if (status==2) { statusdata='Sent to admin for approval';title="Do you want to Send it for approval ?"; }
+    if (status==5) { statusdata='Published'; title="Do you want to Publish ?";}
+    if (status==6) { statusdata='UnPublished'; title="Do you want to Unpublish ?";}
+    if (status==9) { statusdata='Archive'; title="Do you want to Archive ?";}
     Swal.fire({
-      title: 'Do you want to Create?',
+      title: title,
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: statusdata,

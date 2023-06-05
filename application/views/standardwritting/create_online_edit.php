@@ -26,13 +26,13 @@
                 <div class="card border-top card-body"> 
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Title of Competition</label>
+                                <label class="d-block text-font">Title of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="title" id="title" placeholder="Enter Title of Competition" value="<?=$getData['title']?>" >
                             </div>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Title of Competition in Hindi</label>
+                                <label class="d-block text-font">Title of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="title_hindi" id="title_hindi" placeholder="Enter Topic of Activity" value="<?=$getData['title_hindi']?>" >
                             </div>
                     </div>
@@ -52,26 +52,26 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Start Date</label>
+                                <label class="d-block text-font">Start Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="start_date" id="start_date"  value="<?=$getData['start_date']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Start Time</label>
+                                <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
                                 <input type="time" class="form-control input-font" name="start_time"  id="start_time"  value="<?=$getData['start_time']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Date</label>
+                                <label class="d-block text-font">End Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="end_date"  id="end_date"  value="<?=$getData['end_date']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Time</label>
+                                <label class="d-block text-font">End Time<sup class="text-danger">*</sup></label>
                                 <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="<?=$getData['end_time']?>" >
                             </div>
 
 
                             <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['banner_img'])) {?>
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
                                         <input type="file" id="banner_img" name="banner_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
@@ -86,7 +86,7 @@
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Thumbnail<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Image<sup class="text-danger">*</sup></label>
                                 <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLast"> View
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',1);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
@@ -127,11 +127,11 @@
                                 </div>
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Total Marks</label>
+                                <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="<?=$getData['total_mark']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Qualifying Marks</label>
+                                <label class="d-block text-font">Qualifying Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="<?=$getData['qualifying_mark']?>" >
                             </div>
                             <div class="mb-2 col-4">
@@ -247,11 +247,11 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prize</label>
+                                <label class="d-block text-font">Number of Prize<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?=$getData['fprize']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prize</label>
+                                <label class="d-block text-font">Name of Prize<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Prizes" value="<?=$getData['fdetails']?>" >
                             </div>
 
@@ -272,7 +272,7 @@
 
                                 <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['fprize_img'])) {?>
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
                                         <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
@@ -287,8 +287,8 @@
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Thumbnail<sup class="text-danger">*</sup></label>
-                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastfimage"> View
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastfimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',2);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                 <?php } ?>
@@ -386,7 +386,7 @@
 
                                 <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['sprize_img'])) {?>
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
                                         <input type="file" id="sprize_img" name="sprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
@@ -401,8 +401,8 @@
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Thumbnail<sup class="text-danger">*</sup></label>
-                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastsimage"> View
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastsimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',3);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                 <?php } ?>
@@ -483,7 +483,7 @@
 
                             <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['tprize_img'])) {?>
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
                                         <input type="file" id="tprize_img" name="tprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
@@ -498,8 +498,8 @@
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Thumbnail<sup class="text-danger">*</sup></label>
-                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLasttimage"> View
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLasttimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',4);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                 <?php } ?>
@@ -604,7 +604,7 @@
 
                              <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['cprize_img'])) {?>
-                                <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
                                         <input type="file" id="cprize_img" name="cprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
@@ -619,8 +619,8 @@
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Thumbnail<sup class="text-danger">*</sup></label>
-                                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastcimage"> View
+                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastcimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',5);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                 <?php } ?>
@@ -688,7 +688,7 @@
                     <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" id="">Update</a> -->
                             <a class="btn btn-success btn-sm text-white submit">Submit</a>
-                            <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                            <a class="btn btn-danger btn-sm text-white cancel" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -1600,5 +1600,18 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
             return false;
         }
     });
-
+    $('.cancel').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {               
+                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    } else if (result.isDenied) { 
+                    }
+                    })
+    })
  </script>

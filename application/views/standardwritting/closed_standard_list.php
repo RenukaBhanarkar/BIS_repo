@@ -36,6 +36,7 @@
                                 <th>Level of Competition</th>
                                 <th>Total Task</th>
                                 <th>Task Under Review</th>
+                                <th>Task Reviewed</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -66,21 +67,12 @@
 
                                 ?>
                                 <td><?=$task?></td>
+                              <td>Reviewed</td>
                               <td><?=$value['status_name']?></td>  
                               <td class="d-flex">
-
-                            <!-- <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
-                            <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $value['id']?>')" >Edit</a>
-                            <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',1)" >Create</a>
-                            <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteOnlineData('<?= $value['id']?>')" >Delete</a>
-                            <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',9)" >Archive</a> -->
-
-                                <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View Details</a> 
-                                 <a href="<?php echo base_url();?>Standardswritting/submission_view/<?= $value['id']?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-
-                                 <?php if($value['review_status']==0){?>
-                                <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateOnlineStatusReview('<?= $value['id']?>')" >Sent For Review</a>
-                             <?php } ?> 
+                                 <a href="<?php echo base_url(); ?>Standardswritting/submission_view/" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/create_online_view/" class="btn btn-info btn-sm mr-2" >View Details</a>
+                                 <a  class="btn btn-primary btn-sm mr-2 sent_approve" >Sent for Review</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
                              
  

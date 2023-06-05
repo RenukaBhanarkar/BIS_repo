@@ -3,14 +3,14 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Create New Competition</h1>
+            <h1 class="h3 mb-0 text-gray-800">Archive Details</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_writting_dashboard';?>" >Standard Writting</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/create_standard_list';?>" >Create New Competition</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/create_standard_list';?>" >Archive Details</a></li>
                 <!-- <li class="breadcrumb-item active" aria-current="page">Create New Competition</li> -->
                 
                 </ol>
@@ -26,7 +26,7 @@
                             <tr>
                                 <th>Sr. No.</th> 
                                 <th>Standard Club</th>
-                                <th>Topic</th> 
+                                <th>Name of Activity</th> 
                                 <th>Date of Activity</th> 
                                 <th>Number of Participate</th>
                                 <th>Date Created</th>

@@ -20,7 +20,7 @@
             <div class="card border-top card-body">
                 <div>
                     <a href="<?php echo base_url(); ?>standardswritting/create_standard_form" class="btn btn-primary btn-sm mr-2" title="View">Create New Competition</a>
-                    <a href="<?php echo base_url(); ?>standardswritting/create_standard_archive" class="btn btn-primary btn-sm mr-2" title="View">Archived</a>
+                    <a href="<?php echo base_url(); ?>standardswritting/create_standard_archive" class="btn btn-primary btn-sm mr-2" title="View">Archive</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                             <tr>
                                 <th>Sr. No.</th> 
                                 <th>Standard Club</th>
-                                <th>Topic</th>
+                                <th>Name of Topic</th>
                                 <th>Date of Activity</th> 
                                 <th>Number of Participants</th>
                                 <th>Status</th> 

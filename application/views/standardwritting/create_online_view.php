@@ -23,25 +23,25 @@
                 <div class="card-body">
                     <div class="row">
                        
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-12">
                             <label class="d-block text-font">Title of Competition</label>
                             <div>
                                   <p><?=$getData['title']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-12">
                             <label class="d-block text-font">Title of Competition in Hindi</label>
                             <div>
                                 <p><?=$getData['title_hindi']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-12">
                             <label class="d-block text-font">Description/About Competition</label>
                             <div>
                                 <p><?=$getData['description']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-12">
                             <label class="d-block text-font">Terms & Conditions</label>
                             <div>
                                 <p><?=$getData['terms_conditions']?></p>
@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Uploaded Iamge</label>
+                            <label class="d-block text-font">Prize Image</label>
                             <div>
                                  <p><img src="<?php echo base_url(); ?><?=$getData['fprize_img']?>" alt="#" width="60%"></p>
                             </div>
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Uploaded Iamge</label>
+                            <label class="d-block text-font">Prize Image</label>
                             <div>
                                <p><img src="<?php echo base_url(); ?><?=$getData['sprize_img']?>" alt="#" width="60%"></p>
                             </div>
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Uploaded Iamge</label>
+                            <label class="d-block text-font">Prize Image</label>
                             <div>
                                     <p><img src="<?php echo base_url(); ?><?=$getData['tprize_img']?>" alt="#" width="60%"></p>
                             </div>
@@ -211,7 +211,7 @@
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Uploaded Iamge</label>
+                            <label class="d-block text-font">Prize Image</label>
                             <div>
                                   <p><img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="#" width="60%"></p>
                             </div>
@@ -245,7 +245,7 @@
                   
                 </div>
                 <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_standard_list/'">Back</a>
+                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_online_list/'">Back</a>
                 </div>
                 <!-- Modal -->
           </div>
