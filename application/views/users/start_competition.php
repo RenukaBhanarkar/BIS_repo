@@ -255,7 +255,7 @@
                 echo $this->session->flashdata('MSG');
             }
         ?>
-        <div id="abcd">kjdhkjdhkjhdskjhsd</div>
+        <div id="abcd"><a class="btn btn-primary btn-sm mr-2" style="margin-bottom: 10px;">Post Here</a></div>
                 <div class="bg-light-comment p-3">
                     <!-- <div class="Comment_image">
                         <img src="../assets/images/user_image.png">
