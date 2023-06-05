@@ -636,6 +636,8 @@ class Users extends CI_Controller
      * 
      * correct auth user without api call
      */
+
+    
     public function authUser()
     {
 
