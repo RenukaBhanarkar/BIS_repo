@@ -1328,8 +1328,24 @@ if($id){
     }
     public function closed_standard_list()
     {
+
+         $getDetails= $this->Standardswritting_model->closed_standard_list();
+        $data = array();
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $count= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['count'] = $count;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data;
+
+
+        // $data = array();
+        // $data['getData'] = $this->Standardswritting_model->closed_standard_list(); 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/closed_standard_list');
+        $this->load->view('standardwritting/closed_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function revised_standard_list()
@@ -1614,11 +1630,38 @@ public function updateStatus(){
 
 
     public function updateOnlineStatus(){
-        try {  
-
-                 
+        try {
             $id = $this->input->post('id');
             $formdata['status'] = $this->input->post('status'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s');
+
+            $id = $this->Standardswritting_model->updateOnlineStatus($formdata,$id);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+
+
+    public function updateOnlineStatusReview(){
+        try {
+            $id = $this->input->post('id');
+            $formdata['review_status'] = 1; 
             $formdata['updated_on'] = date('Y-m-d h:i:s');
 
             $id = $this->Standardswritting_model->updateOnlineStatus($formdata,$id);

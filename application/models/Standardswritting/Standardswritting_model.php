@@ -241,4 +241,44 @@ class Standardswritting_model extends CI_Model {
         $query=$this->db->get();
         return $query->result_array(); 
      }
+
+     public function closed_standard_list(){
+
+ 
+
+
+        $t = time();
+
+        $current_time = (date("H:i:s", $t));
+        $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        $this->db->where('tbl_standards_writting_online.status',5); 
+       $this->db->where('tbl_standards_writting_online.end_date <=' ,date("Y-m-d"));  
+        $res = array();
+        $rs = array();
+        $query=$this->db->get('tbl_standards_writting_online');
+        if($query->num_rows() > 0){
+            $res = $query->result_array();
+            foreach($res as $row){
+                if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                    if(($row['start_time'] <= $current_time) && ($row['end_time'] <= $current_time) ){
+                        array_push($rs,$row);
+                    }
+                }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                    if($row['start_time'] <= $current_time){
+                        array_push($rs,$row);
+                    }
+                }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                    if($row['end_time'] <= $current_time){
+                        array_push($rs,$row);
+                    }
+                }else{
+                    array_push($rs,$row);
+                }
+            }
+        }
+        return $rs;  
+    }
 }
