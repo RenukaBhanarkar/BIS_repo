@@ -393,12 +393,19 @@ class Standardswritting extends CI_Controller
             if($formdata['comp_level']=='2'){
                 $formdata['region'] = $this->input->post('Region');
                 $formdata['branch']='0';
+                $formdata['state']='0';
             }else if($formdata['comp_level']=='3'){
                 $formdata['branch'] = $this->input->post('Branch');
                 $formdata['region']='0';
+                $formdata['state']='0';
+            }else if($formdata['comp_level']=='4'){
+                $formdata['state'] = $this->input->post('state');
+                $formdata['region']='0';
+                $formdata['branch']='0';
             }else{
                 $formdata['branch']='0';
                 $formdata['region']='0';
+                $formdata['state']='0';
             }
 
 
@@ -630,7 +637,7 @@ if($id){
     public function revised_competition_list()
     {
         $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
-    //    print_r($data); die;
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/revised_competition_list',$data);
         $this->load->view('admin/footers/admin_footer');

@@ -1724,13 +1724,14 @@
     }
     public function isCompetitionForThisUser($user_id, $quiz_id)
         {
+            // print_r($_SESSION); die;
             $t = time();
             $current_time = (date("H:i:s", $t));
 
             $user_region_id = encryptids("D", $this->session->userdata('region_id'));
             $user_branch_id = encryptids("D", $this->session->userdata('branch_id'));
             $user_state_id = encryptids("D", $this->session->userdata('state_id'));  
-                   
+            $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));       
 
             $user_standard_club_category = encryptids("D", $this->session->userdata('standard_club_category'));
             //  echo $user_standard_club_category; die;
@@ -1766,7 +1767,8 @@
             $newRes= $query->result_array();
             // echo $quiz_id;
             // print_r($newRes);
-            // echo json_encode($newRes);exit();
+            // echo json_encode($newRes);
+            // exit();
             /////////////////////////////////////////////////////
             if($query->num_rows() > 0){
             $newRes= $query->result_array();
@@ -1810,8 +1812,24 @@
                     }
                  }
 
-                 if($row['comp_level'] == 3){                   
-                    if($row['branch'] ==  $user_branch_id){
+                 if($row['comp_level'] == 3){    
+                    // echo $user_branch_id;     cod eadded for match pki_id to i_branch_id
+                    $this->db->select('pki_id');
+                    $this->db->from('tbl_mst_branch');
+                    $this->db->where('i_branch_id',$user_branch_id);
+                    $this->db->where('i_department_id',$user_dept_id); 
+                    $brnch=$this->db->get();
+                    $r=$brnch->result_array();
+                    if(!empty($r)){
+                    $abcd=$r[0]['pki_id'];
+                    }else{
+                        $r="";
+                    }
+                    // echo $abcd;
+                    // echo $row['branch'];
+                    // echo $user_branch_id;
+                    //  die;          
+                    if($row['branch'] ==  $abcd){
                         if ($user_standard_club_category == 1) { 
                             $std = explode(',', $row['standard']);                  
                             $standard = encryptids("D", $this->session->userdata('standard'));

@@ -95,7 +95,7 @@
                            
                         </div>
                         <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Date</label>
+                                <label class="d-block text-font">End Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="end_date" id="end_date" value="" required="">
                                 <span class="error_text"><?php echo form_error('end_date'); ?></span>
                         </div>
@@ -207,6 +207,7 @@
                         <div class="mb-2 col-4">
                                 <label class="d-block text-font">Available For<sup class="text-danger">*</sup></label>
                                 <select id="Available" name="Available" class="form-control input-font" value="">
+                                    <option>--select-- </option>
                                     <option value="1">School</option>
                                     <option value="2">Higher Qualification</option>
                                 </select>
@@ -255,21 +256,21 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prizes</label>
+                                <label class="d-block text-font">Number of Prizes<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="" minlength="1">
                                 <div class="invalid-feedback" id="fprize_no">
                                 This value is required
                                 </div>
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prizes</label>
+                                <label class="d-block text-font">Name of Prizes<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fdetail" id="fdetail" placeholder="Enter Prizes" value="<?php echo set_value('fdetail') ?>" required="">
                                 <div class="invalid-feedback">
                                 This value is required
                                 </div>
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="fprize_image" name="fprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadfPrizeImage(event)" value="<?php echo set_value('fprize_image') ?>">
@@ -829,6 +830,7 @@ $(document).ready(function(){
     });
     $(".timepicker").timepicker();
 });
+$('#standard_check').hide();
 $('#Available').on('change',function(){
 var id = $(this).val();
 //alert(id);

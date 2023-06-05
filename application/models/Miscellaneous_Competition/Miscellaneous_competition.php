@@ -341,7 +341,11 @@ class Miscellaneous_competition extends CI_Model {
                         $que=$this->db->get();
                         $query=$que->result_array();
                         // print_r($query[0]['ev_name']); die;
+                        if(!empty($query)){
                         $row['ev_name']=$query[0]['ev_name'];
+                        }else{
+                            $row['ev_name']="Not Assigned";
+                        }
                             array_push($rs,$row);
                         
                     }

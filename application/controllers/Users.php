@@ -2175,7 +2175,6 @@ class Users extends CI_Controller
     {
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
-        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/about_competition',$data);
         $this->load->view('users/footers/footer');

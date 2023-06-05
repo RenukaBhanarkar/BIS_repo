@@ -45,15 +45,15 @@
                                 </a>
                                 </div>
                             </div>
-                            <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
+                            <div class="innerBox" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
                             <div style="background:#00000099;">
-                                <a href="<?=base_url();?>users/quality_index">
+                                <!-- <a href="<?=base_url();?>users/quality_index"> -->
                                   <div class="LiveDataBox" style="height: 182px; overflow: hidden;">
                                       <!-- <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons"> -->
                                        <h3 class="text_standard">World of Standards</h3>
                                        <p class="mb-0">(An initiative to broad-base the stakeholder engagement for development of Standards)</p>
                                  </div>
-                                 </a>
+                                 <!-- </a> -->
                             </div>
                             </div>
                           </div>
@@ -61,3 +61,13 @@
                 </div>
            </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function(){
+            $('#wos').click(function(){
+                // alert("kjhkl");
+                Swal.fire("This section is under development. The World of Standards will open up for you soon.");
+                return false;
+            })
+        })
+    </script>
