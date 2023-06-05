@@ -15,99 +15,97 @@
                 
                 </ol>
             </nav>
-    </div>
+    </div> 
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">
             <div class="card border-top">
                 <div class="card-body">
                     <div class="row">
+                       
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Title of Competition</label>
                             <div>
-                                  <p>Competition</p>
+                                  <p><?=$getData['title']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Title of Competition in Hindi</label>
                             <div>
-                                <p>Title Hindi</p>
+                                <p><?=$getData['title_hindi']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Description/About Competition</label>
                             <div>
-                                <p>Description</p>
+                                <p><?=$getData['description']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Terms & Conditions</label>
                             <div>
-                                <p>Conditions</p>
+                                <p><?=$getData['terms_conditions']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Date</label>
                             <div>
-                                <p>12/03/2023</p>
+                                <p><?=$getData['start_date']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Time</label>
                             <div>
-                                <p>12:00:00</p>
+                                <p><?=$getData['start_time']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Terms & Conditions</label>
-                            <div>
-                                <p>Conditions</p>
-                            </div>
-                        </div>
+                       
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">End Date</label>
                             <div>
-                                <p>12/03/2023</p>
+                                <p><?=$getData['end_date']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">End Time</label>
                             <div>
-                                <p>12:00:00</p>
+                                <p><?=$getData['end_time']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Upload Banner</label>
                             <div>
-                                <p><img src="#" alt="" width="10%"></p>
+                                <p><img src="<?=base_url()?><?=$getData['banner_img']?>" alt="" width="60%"></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Marks</label>
                             <div>
-                                <p>100</p>
+                                <p><?=$getData['total_mark']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Qualifying Marks</label>
                             <div>
-                                <p>100</p>
+                                <p><?=$getData['qualifying_mark']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Level of Competition</label>
                             <div>
-                                <p>State Level</p>
+                                <p><?=$getData['level']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Availabile for</label>
                             <div>
-                                <p>Standard</p>
+                                <p><?=$getData['availability']?></p>
                             </div>
                         </div>
                     </div>
                  </div>
+
+
                  <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">
             	     <h4 class="m-0">Prize Details</h4>
                 </div>
@@ -121,22 +119,23 @@
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Number of Prize</label>
                                 <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['fprize']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Name of Prize</label>
                                 <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['fdetails']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Upload Iamge</label>
+                            <label class="d-block text-font">Uploaded Iamge</label>
                             <div>
-                                 <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                                 <p><img src="<?php echo base_url(); ?><?=$getData['fprize_img']?>" alt="#" width="60%"></p>
                             </div>
                         </div>
                     </div>
+                    <?php if (!empty($getData['sprize'])): ?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">2<sup>nd</sup>Prizes</h4>
@@ -146,22 +145,26 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Number of Prize</label>
                             <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['sdetails']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Name of Prize</label>
                                 <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['sprize']?></p>
                             </div>
                         </div>
                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Upload Iamge</label>
+                            <label class="d-block text-font">Uploaded Iamge</label>
                             <div>
-                               <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                               <p><img src="<?php echo base_url(); ?><?=$getData['sprize_img']?>" alt="#" width="60%"></p>
                             </div>
                         </div>
                     </div>
+                        
+                    <?php endif ?>
+                    <?php if (!empty($getData['tprize'])): ?>
+                    
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">3<sup>nd</sup>Prizes</h4>
@@ -171,22 +174,24 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Number of Prize</label>
                             <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['tprize']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Name of Prize</label>
                                 <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['tdetails']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Upload Iamge</label>
+                            <label class="d-block text-font">Uploaded Iamge</label>
                             <div>
-                                    <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                                    <p><img src="<?php echo base_url(); ?><?=$getData['tprize_img']?>" alt="#" width="60%"></p>
                             </div>
                         </div>
                     </div>
+                    <?php endif ?>
+                    <?php if (!empty($getData['cprize'])): ?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Consolation Prizes</h4>
@@ -196,22 +201,47 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Number of Prize</label>
                             <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['cprize']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4 ">
                             <label class="d-block text-font">Name of Prize</label>
                                 <div>
-                                <p>Anis Mulani</p>
+                                <p><?=$getData['tdetails']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Upload Iamge</label>
+                            <label class="d-block text-font">Uploaded Iamge</label>
                             <div>
-                                  <p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p>
+                                  <p><img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="#" width="60%"></p>
                             </div>
+                        </div> 
+                    </div>
+                    <?php endif ?>
+
+                     <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+            <div class="col-12 mt-3">
+                
+                    <div class="row" id="remarkdiv">
+                        <div class="mb-2 col-md-8">
+                            <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
+                            <textarea class="form-control input-font" placeholder="Enter Remark" name="remark" id="remark"> </textarea>
+                            <span class="error_text"><?= form_error('terms_conditions'); ?></span>
+                            <input type="hidden" name="status_id" value="3" id="status_id">
                         </div>
                     </div>
+            </div>
+            <?php if( $getData['status']==2){?>
+            <div class="col-md-12 submit_btn p-3"> 
+                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
+                <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> 
+                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+            </div>
+            <?php } ?>
+           
+        <?php } ?>
+
+
                   
                 </div>
                 <div class="col-md-12 submit_btn p-3">
@@ -225,3 +255,61 @@
 
 
 
+ <script type="text/javascript">
+     $(document).ready(function () 
+    {  
+        $("#submit").hide();
+        $("#remarkdiv").hide();
+        $("#remark").val("NA");
+    });
+    function rejectFun()
+     {
+        $("#submit").show();
+        $("#remarkdiv").show();
+        $("#approve").hide();
+        $("#reject").hide();
+        $("#status_id").val(4);
+        $("#remark").val('');
+
+    }
+
+    function updateStatus() {
+
+        status=$("#status_id").val();
+        remark=$("#remark").val();
+        id="<?=$getData['id']?>"; 
+
+    if (status==1) { statusdata='Update'; }
+    if (status==9) { statusdata='Archive'; }
+    Swal.fire({
+      title: 'Do you want to Update?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Update',
+      denyButtonText: `Cancel`,
+    }).then((result) => 
+    { 
+      if (result.isConfirmed) 
+      { 
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateOnlineStatus',
+        data: {
+          id: id,
+          status: status, 
+          remark: remark, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          location.reload();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+      } 
+    })
+  }
+</script>

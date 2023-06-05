@@ -15,7 +15,7 @@
                 </ol>
             </nav>
         </div>
-
+ 
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
@@ -35,18 +35,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td>1</td>
-                              <td>Anis</td>
-                              <td>12345</td>
-                              <td>example123@gmaim.com</td>
-                              <td>7057085889</td>
-                              <td>12/03/2023 12:00:00</td>
+
+                             <?php foreach ($getData as $key => $value): ?>
+                            <tr>
+                              <td><?=$key+1?></td>
+                              <td><?=$value['user_name']?></td>
+                              <td><?=$value['id']?></td>
+                              <td><?=$value['email']?></td>
+                              <td><?=$value['user_mobile']?></td>
+                              <td><?=$value['created_on']?></td>
                               <td><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="10%"></td>
                               <td><img src="<?= base_url();?>" alt="#" class="" width="10%"></td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>
+                          </tr>
+                                
+                            <?php endforeach ?>
+
 
                         </tbody>
                     </table>

@@ -115,4 +115,130 @@ class Standardswritting_model extends CI_Model {
         $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
         return $this->db->get('tbl_standards_writting_online')->result_array(); 
     } 
+
+    public function create_online_view($id)
+    { 
+        $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->where('tbl_standards_writting_online.id ',$id); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        return $this->db->get('tbl_standards_writting_online')->row_array(); 
+    } 
+    public function create_online_archive()
+    { 
+        $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->where('status ',9); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        return $this->db->get('tbl_standards_writting_online')->result_array(); 
+    } 
+
+
+    public function deleteOnlineFile($id,$formdata)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_standards_writting_online', $formdata);
+    }
+
+    public function updateStandardsWrittingOnline($id,$formdata)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_standards_writting_online', $formdata);
+    }
+
+    public function getPublishedOnlineCompitation()
+    { 
+         $t = time();
+        $current_time = (date("H:i:s", $t));          
+       $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->where('status ',5); 
+        $this->db->where('end_date >=', date("Y-m-d"));
+        $this->db->where('start_date <=', date("Y-m-d"));
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        $query= $this->db->get('tbl_standards_writting_online')->result_array(); 
+        $rs = array();  
+        if(!(empty($query))){ 
+          foreach($query as $row){ 
+              if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                  if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                      array_push($rs,$row);
+                  }
+              }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                  if($row['start_time'] <= $current_time){
+                      array_push($rs,$row);
+                  }
+              }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                  if($row['end_time'] >= $current_time){
+                      array_push($rs,$row);
+                  }
+              }else{
+                  array_push($rs,$row);
+              }
+          }
+      }
+      return $rs;
+    } 
+
+    public function StandardswrittingCompSave($formdata)
+    {
+        $this->db->insert('tbl_standard_writing_competition_online',$formdata); 
+        return $insert_id = $this->db->insert_id();
+    }
+
+    public function ongoing_online_list(){
+        $t = time();
+        $current_time = (date("H:i:s", $t));          
+       $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->where('status ',5); 
+        $this->db->where('end_date >=', date("Y-m-d"));
+        $this->db->where('start_date <=', date("Y-m-d"));
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        $query= $this->db->get('tbl_standards_writting_online')->result_array(); 
+        $rs = array();  
+        if(!(empty($query))){ 
+          foreach($query as $row){ 
+              if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                  if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+                      array_push($rs,$row);
+                  }
+              }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                  if($row['start_time'] <= $current_time){
+                      array_push($rs,$row);
+                  }
+              }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                  if($row['end_time'] >= $current_time){
+                      array_push($rs,$row);
+                  }
+              }else{
+                  array_push($rs,$row);
+              }
+          }
+      }
+      return $rs;  
+    }
+
+    public function getSubmissionOnline($id)
+    { 
+        $this->db->select('*');
+        $this->db->from('tbl_standard_writing_competition_online');
+        $this->db->where('comp_id',$id); 
+        $query= $this->db->get();
+        return $query->num_rows();
+    }
+
+
+    public function submission_view($comp_id){
+        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name');
+        $this->db->from('tbl_standard_writing_competition_online');
+        $this->db->join('tbl_users tbl_users','tbl_users.user_id=tbl_standard_writing_competition_online.user_id'); 
+        $this->db->where('tbl_standard_writing_competition_online.comp_id',$comp_id);        
+        $query=$this->db->get();
+        return $query->result_array(); 
+     }
 }

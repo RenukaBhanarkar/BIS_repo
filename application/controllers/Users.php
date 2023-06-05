@@ -17,6 +17,7 @@ class Users extends CI_Controller
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $this->load->model('Admin/your_wall_model');
         $this->load->model('Admin/by_the_mentor_model');
+        $this->load->model('Standardswritting/Standardswritting_model');
         date_default_timezone_set("Asia/Calcutta");
 
        
@@ -1026,7 +1027,7 @@ class Users extends CI_Controller
     //         }
     //     } else {
     //         redirect(base_url() . "Users/login", 'refresh');
-    //     }
+    //     } 
     // }
     public function standard(){
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
@@ -1042,7 +1043,9 @@ class Users extends CI_Controller
         $data['allquize'] = $allquize;
         $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
         $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
-        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5));
+        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5)); 
+
+        $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         //print_r($data['competition']); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_club',$data);
@@ -2177,11 +2180,79 @@ class Users extends CI_Controller
     }
     public function start_competition($id)
     {
-        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
-        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
-        $this->load->view('users/headers/header');
-        $this->load->view('users/start_competition',$data);
-        $this->load->view('users/footers/footer');
+        // $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+        // $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
+    //   print_r($data); die;
+   
+       $sess_admin_type = encryptids("D", $this->session->userdata('admin_type'));
+    //    echo $sess_admin_type;
+        {
+        
+            $quiz_id = $id;  
+           
+            $UserId = $this->session->userdata('admin_id');
+            $user_id = encryptids("D", $UserId);
+            $data = array();
+            $userQuiz = array();
+            ///////////////////// check available quiz ////////////////
+           
+               
+                if (isset($_SESSION['admin_type']) && !empty($_SESSION['admin_type'])) {
+        
+                    $sess_admin_type = encryptids("D", $this->session->userdata('admin_type'));
+                    $sess_is_admin = encryptids("D", $this->session->userdata('is_admin'));
+                     //if Already login
+                    //  echo $sess_admin_type; die;
+                    if ($sess_is_admin == 0) {                  
+                       
+                        if ($this->Users_model->checkAdminLogin()) {
+                           
+                            if ($sess_admin_type == 2) {                    
+                                 
+                                $userQuiz = $this->Users_model->isCompetitionForThisUser($user_id,$quiz_id);
+                                if(!empty($userQuiz)){
+                                    $checkUserAvailable = $this->Miscellaneous_competition->checkUserAvailable($quiz_id, $user_id);
+                                    if ($checkUserAvailable > 0) {
+                                        $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this Competition.", "SS"));
+                                        redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh');
+                                    } else {
+                                        // print_r($data); die;
+                                        $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
+                                        $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
+                                        $data['is_allow']="1";
+                                        $this->load->view('users/headers/header');
+                                        $this->load->view('users/start_competition',$data);
+                                        $this->load->view('users/footers/footer');
+                                    }
+    
+                                }else{
+                                    $this->session->set_flashdata('MSG', ShowAlert("You can not appear for this Competition as you are not authenticated.", "DD"));
+                                    redirect(base_url() . "users/about_competition/".$quiz_id, 'refresh');
+    
+                                }
+                            }   else{
+                                $this->session->set_flashdata('MSG', ShowAlert("You can not appear for this Competition as you are not authenticated.", "DD"));
+                                redirect(base_url() . "users/about_competition/".$quiz_id, 'refresh');
+    
+                            }                  
+                            
+                        } else {
+                            redirect(base_url() . "Users/login", 'refresh');
+                        }
+                    }else{
+                        $this->session->set_flashdata('MSG', ShowAlert("You can not appear for Competition as you are not authenticated.", "DD"));
+                        redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh');
+                    }
+            }else{
+                $this->session->set_flashdata('MSG', ShowAlert("Please Login.", "SS"));
+                redirect(base_url() . "users/about_competition/".$quiz_id, 'refresh');
+            }
+          
+           
+        }
+        // $this->load->view('users/headers/header');
+        // $this->load->view('users/start_competition',$data);
+        // $this->load->view('users/footers/footer');
     }
     public function competition_response_record(){
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
@@ -2226,7 +2297,9 @@ class Users extends CI_Controller
         
         $response=$this->Miscellaneous_competition->submitCompResponse($data);
         if($response){
-            echo "success";
+            // echo "success";
+            $this->session->set_flashdata('MSG', ShowAlert("Your response has benn recorded.", "SS"));
+                redirect(base_url() . "Miscellaneouscompetition/thanks/", 'refresh');
         }else{
             echo "Failed";
         }
@@ -3374,19 +3447,64 @@ class Users extends CI_Controller
         $this->load->view('users/more_copetition',$data);
         $this->load->view('users/footers/footer');
     }
-    public function standard_writting_details(){
+    public function standard_writting_details($id){
+
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->create_online_view($id);
+
         $this->load->view('users/headers/header');
-        $this->load->view('users/standard_writting_details');
+        $this->load->view('users/standard_writting_details',$data);
         $this->load->view('users/footers/footer');
     }
-    public function standard_writting_login(){
-      //  $this->load->view('users/headers/header');
-        $this->load->view('users/standard_writting_login');
-       // $this->load->view('users/footers/footer');
+    public function standard_writting_login($id){ 
+
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->create_online_view($id); 
+        if ($this->form_validation->run('standard_writting_login') == FALSE) 
+        {
+            $this->load->view('users/standard_writting_login',$data);
+        }
+        else
+        {  
+
+            $formdata['user_id'] = encryptids("D", $_SESSION['admin_type']);
+
+            $formdata['comp_id'] = $this->input->post('comp_id');
+            $formdata['indian_standard'] = $this->input->post('indian_standard');
+            $formdata['is_no'] = $this->input->post('is_no');
+            $formdata['product'] = $this->input->post('product'); 
+            $formdata['name_address'] = $this->input->post('name_address');
+            $formdata['price'] = $this->input->post('price');
+            $formdata['foreword'] = $this->input->post('foreword');
+            $formdata['product_specification'] = $this->input->post('product_specification');
+            $formdata['scope'] = $this->input->post('scope');
+            $formdata['reference'] = $this->input->post('reference');
+            $formdata['defination'] = $this->input->post('defination');
+            $formdata['classes'] = $this->input->post('classes');
+            $formdata['manufacture'] = $this->input->post('manufacture');
+            $formdata['requirements'] = $this->input->post('requirements');
+            $formdata['sampling'] = $this->input->post('sampling');
+            $formdata['methods'] = $this->input->post('methods');
+            $formdata['packing'] = $this->input->post('packing');
+            $formdata['created_on'] = date('Y-m-d h:i:s'); 
+
+            $id = $this->Standardswritting_model->StandardswrittingCompSave($formdata);
+            if ($id)
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "users/standard_writting_thanks", 'refresh');
+            }
+            else
+            {
+                $this->session->set_flashdata('MSG', ShowAlert("Failed to create Create New Competition, Please try again", "DD"));
+                redirect(base_url() . "users/standard_writting_login/".$data, 'refresh');
+            }
+
+        }
     }
     public function standard_writting_thanks(){
-         $this->load->view('users/headers/header');
-          $this->load->view('users/standard_writting_thanks');
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_thanks');
         $this->load->view('users/footers/footer');
       }
       public function edit_profile(){

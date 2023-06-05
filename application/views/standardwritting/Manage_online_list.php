@@ -65,25 +65,32 @@
                               <td><?=$value['status_name']?></td>  
                               <td class="d-flex">
 
-                            <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
-                            <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $value['id']?>')" >Edit</a>
-                             
-                            <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteOnlineData('<?= $value['id']?>')" >Delete</a>
-                            <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',9)" >Archive</a>
+                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
+
+                                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                  <a class="btn btn-info btn-sm mr-2"onclick="editData('<?= $value['id']?>')" >Edit</a>
+                                  <a class="btn btn-danger btn-sm mr-2"onclick="deleteOnlineData('<?= $value['id']?>')" >Delete</a>
+                                  <a class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',9)" >Archive</a>
 
                             
 
                             <?php if ($value['status']==1) {?>
-                                <a href="#" class="btn btn-success btn-sm mr-2"onclick="updateOnlineStatus('<?= $value['id']?>',2)"  >Sent for Approve</a>
+                                <a class="btn btn-success btn-sm mr-2"onclick="updateOnlineStatus('<?= $value['id']?>',2)"  >Sent for Approve</a>
                            <?php }?>
 
                            <?php if ($value['status']==6 || $value['status']==3 ) {?>
-                                <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',5)" >Publish</a>
+                                <a class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',5)" >Publish</a>
                            <?php }?>
 
                            <?php if ($value['status']==5) {?>
-                                <a href="#" class="btn btn-warning btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',6)" >Unpublish</a>
+                                <a class="btn btn-warning btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',6)" >Unpublish</a>
                            <?php }?>
+
+                                <?php } ?>
+
+
+
+                           
 
 
                             

@@ -62,10 +62,13 @@
                               <td><?php echo $list['name']; ?></td>
                               <td><?php echo $list['score']; ?></td>
                               <td><?php echo $list['marks']; ?></td>
-                              <td><?php echo $list['status']; ?></td>
+                              <td><?php if($list['status']==3){ echo "Reviewed"; } if($list['status']==0){ echo "Assigned"; }  ?></td>
                               <td class="d-flex">
+                                <?php if($list['status']==2 || $list['status']==1 || $list['status']==0){ ?>
                                  <a href="<?php echo base_url(); ?>Miscellaneouscompetition/task_recevied_view/<?php echo encryptids('E', $list['id']) ?>" class="btn btn-primary btn-sm mr-2" title="View">Review</a>
-                                 <a href="<?php echo base_url(); ?>admin/standard_under_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                 <?php }else{ ?>
+                                 <a href="<?php echo base_url(); ?>Miscellaneouscompetition/viewRecord/<?php echo encryptids('E', $list['id']) ?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                 <?php } ?>
                               </td>
                            </tr>
                                 <?php }  } ?>

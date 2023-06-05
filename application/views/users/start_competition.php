@@ -158,7 +158,7 @@
   padding: 0.1rem 0 0 0;
   font-size: 0.875rem;
 }
-</style>
+</style><?php if(!($is_allow==1)){ redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh'); } ?>
 <div class="container">
 <div class="row">
               <div class="col-md-3">
@@ -255,7 +255,7 @@
                 echo $this->session->flashdata('MSG');
             }
         ?>
-                <div class="bg-light-comment p-3" style="background: #b6b2b2;">
+                <div class="bg-light-comment p-3" style="background: navy;">
                     <!-- <div class="Comment_image">
                         <img src="../assets/images/user_image.png">
                     </div> -->
@@ -264,7 +264,7 @@
                         <form action="<?php echo base_url().'users/competition_response_record/'; ?>" id="comp_form" name="competition_response" method="post" enctype="multipart/form-data">
                         <div class="col-sm-12">
                                 <div class="form-group ">
-                                    <textarea class="form-control w-100" rows="8" id="answer" placeholder="Share Your Comments......" name="answer"></textarea>
+                                    <textarea class="form-control w-100" rows="1" id="answer" placeholder="Share Your Comments......" name="answer"></textarea>
                                     <div id="the-count">
                                             <span id="current">0</span>
                                             <span id="maximum">/ 5000</span>

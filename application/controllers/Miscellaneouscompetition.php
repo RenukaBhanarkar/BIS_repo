@@ -24,9 +24,12 @@ class Miscellaneouscompetition extends CI_Controller
         //print_r($_SESSION); die;
         $data = array();
         $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $abc=$this->Miscellaneous_competition->getAdminUserid($admin_id);
+        //echo $abc;
+        // print_r($abc); die;
         //$data['admin_id'] = $admin_id;
-        $data['records']=$this->Miscellaneous_competition->SubmissionForReview($admin_id);
-       // print_r($data); die;
+        $data['records']=$this->Miscellaneous_competition->SubmissionForReview($abc['user_uid']);
+    //    print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/task_recevied_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -40,6 +43,7 @@ class Miscellaneouscompetition extends CI_Controller
     public function task_recevied_view($id)
     {
        $revirw_id = encryptids("D", $id);
+    //    echo $revirw_id ; die;
        $data['records_details']=$this->Miscellaneous_competition->CompSubmittedRecordDetail($revirw_id);
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
@@ -53,5 +57,33 @@ class Miscellaneouscompetition extends CI_Controller
         $data1['status']="3";
         $res=$this->Miscellaneous_competition->updateCompetitionScore($data1);
         echo $res;
+    }
+    public function evaluator_dashboard(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('EvaluatorForCompetition/evaluator_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function viewRecord($id){
+        $revirw_id = encryptids("D", $id);    
+       $data['records_details']=$this->Miscellaneous_competition->CompSubmittedRecordDetail($revirw_id);  
+    //    print_r($data); die;      
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('EvaluatorForCompetition/viewReviewedRecord',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function CompetitionUnderReview(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/competition_under_review');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function CompetitionReviewed(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/competition_reviewed');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function thanks(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_thanks');
+        $this->load->view('users/footers/footer');
     }
 }

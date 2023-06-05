@@ -278,67 +278,65 @@
 <div class="container-fluid d-flex">
     <div class="col-md-9">
     <section id="banner-section">
-       
-            <!-- <div class="float-end" id="QuizLang">
-            <label class="d-block text-font mr-3">Select Language</label>
-            <select class="form-control input-font" id="selectedLang" id="selectedLang" placeholder="Language">                
-                <option value="1">English</option>
-                <option value="2">Hindi</option>
-            </select>
-        </div> -->
         
-        <!-- <div id="countdown">
-            <ul>
-                <li><span id="days"></span>days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-            </ul>
-        </div> -->
         <div class="row">
             <div class="col-sm-5">
                 <div class="quiz-image shadow">
-                    <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg" class="image-section" alt="Bis Quiz Images"/>
+                    <img src="<?= base_url(); ?><?=$getData['banner_img']?>" class="image-section" alt="Bis Quiz Images"/>
                 </div>
             </div>
             <div class="col-sm-7">
-                <div class="Quiz_text">
-                    <h3 class="main-title">Standard Writing Competition</h3>
-                    <!-- <p class="time-and-qus" style="color:white;">
-                        <span class="number-quiz"><span class="question_no">10</span><span class="quiz-text">Questions</span>
-                        </span>
-                        <span class="number-quiz"><span class="question_no">12:00:00<span class="quiz-text">Minutes</span>
-                        </span>
-                    </p> -->
+                <div class="Quiz_text"> 
+                    <h3 class="main-title"><?=$getData['title']?></h3>
+                     
                     <div class="d-flex">
                         <p class="time-start-end d-flex" style="margin-bottom:0px;">
-                            <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2">12/03/2023</span></span>
+                            <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?= date("d-m-Y", strtotime($getData['start_date']));?> </span></span>
                         </p>
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-left: 8px;">
-                            <span class="start-end-time-title">Marks<span class="quiz-text-date m-2">100</span>
+                            <span class="start-end-time-title">Marks<span class="quiz-text-date m-2"><?=$getData['total_mark']?></span>
                             </span>
                         </p>
                     </div>
                     <div class="d-flex">
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px;">
-                            <span class="start-end-time-title">End Date <span class="quiz-text-date m-2">13/03/2023 12:00:00</span></span>
+                            <span class="start-end-time-title">End Date <span class="quiz-text-date m-2"><?= date("d-m-Y", strtotime($getData['end_date']));?>        <?=$getData['end_time']?></span></span>
                         </p>
                         
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
                             <span class="start-end-time-title">Region 
-                                <span class="quiz-text-date m-2">branch Level</span>
+                                <span class="quiz-text-date m-2">  <?=$getData['level']?> </span>
                             </span>
                             
                         </p>
-                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
-                            <span class="start-end-time-title">Class 
-                                <span class="quiz-text-date m-2">9<sup>th</sup></span>
+
+                        <?php if ($getData['standard']!=0) {?>
+                             <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Class  
+                                <span class="quiz-text-date m-2">
+                                    <?php  $class = explode(",",$getData['standard']); 
+                                    foreach ($class as $classdata) 
+                                    {?>
+                                         <?=$classdata?><sup>th</sup>
+                                    <?php } ?>
+                                </span>
                             </span>
                             
                         </p>
+                        <?php }?>
+                       
                         
                     </div>
-                    <a href="<?php echo base_url() . "users/standard_writting_login" ?>" class="btn startQuiz" id="startQuizLang"> <span>Login to Participate</span></a>
+
+ 
+                    <?php  if (!isset($_SESSION['user_session_id'])) {?>
+                        <a href="<?php echo base_url() . "users/login"?>" class="btn startQuiz" id="startQuizLang"> <span>Login to Participate</span></a>
+                    <?php } else {?>
+
+                    <a href="<?php echo base_url() . "users/standard_writting_login/"?><?=$getData['id']?>" class="btn startQuiz" id="startQuizLang"> <span>Start</span></a>
+                    <?php }?>
+
+                    
                             
                            
                 </div>
@@ -351,7 +349,7 @@
         <div class="about-inner ">
             <h2 class="about-section">About Competition</h2>
             <div class="About_point">
-            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           <?=$getData['description']?>
             </div>
         </div>
     </section>
@@ -359,7 +357,7 @@
         <div class="about-inner">
             <h2 class="about-section">Terms and Conditions</h2>
             <div class="About_point ">
-            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+             <?=$getData['terms_conditions']?>
 
             </div>
     </section>
@@ -375,56 +373,65 @@
            
             <div class="view_join_content">
                 <h3>First Prize</h3>
-
                 <div class="start_content">
-                    <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" alt="" class="join_img">
+                    <img src="<?php echo base_url(); ?><?=$getData['fprize_img']?>" alt="" class="join_img">
                 </div>
                 <div class="#">
                     <div class="title_join">
-                        <h3>Laptop</h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;">2</span></span> 
+                        <h3><?=$getData['fdetails']?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?=$getData['fprize']?></span></span> 
                     </div>
                 </div>
             </div>
-            <div class="view_join_content">
+            <?php if ($getData['sprize']!='') {?>
+                <div class="view_join_content">
                 <h3>Second Prize</h3>
-
                 <div class="start_content">
-                    <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" alt="" class="join_img">
+                    <img src="<?php echo base_url(); ?><?=$getData['sprize_img']?>" alt="" class="join_img">
                 </div>
                 <div class="#">
                     <div class="title_join">
-                        <h3>Laptop</h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;">2</span></span> 
+                        <h3><?=$getData['sdetails']?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?=$getData['sprize']?></span></span> 
                     </div>
                 </div>
             </div>
-            <div class="view_join_content">
+            <?php }?>
+
+            <?php if ($getData['tprize']!='') {?>
+                <div class="view_join_content">
                 <h3>Third Prize</h3>
 
                 <div class="start_content">
-                    <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" alt="" class="join_img">
+                    <img src="<?php echo base_url(); ?><?=$getData['tprize_img']?>" alt="" class="join_img">
                 </div>
                 <div class="#">
                     <div class="title_join">
-                        <h3>Laptop</h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;">2</span></span> 
+                        <h3><?=$getData['tdetails']?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?=$getData['tprize']?></span></span> 
                     </div>
                 </div>
             </div>
-            <div class="view_join_content">
+            <?php }?>
+
+            <?php if ($getData['cprize']!='') {?>
+                <div class="view_join_content">
                 <h3>Consolation Prize</h3>
 
                 <div class="start_content">
-                    <img src="<?php echo base_url(); ?>assets/images/prize_2.avif" alt="" class="join_img">
+                    <img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="" class="join_img">
                 </div>
                 <div class="#">
                     <div class="title_join">
-                        <h3>Laptop</h3>
-                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;">2</span></span> 
+                        <h3><?=$getData['cdetails']?></h3>
+                        <span class="last-date">Number of Prizes :<span class="date-time" style="margin-left:5px;"><?=$getData['cprize']?></span></span> 
                     </div>
                 </div>
             </div>
+            <?php }?>
+            
+            
+            
             
             
             
