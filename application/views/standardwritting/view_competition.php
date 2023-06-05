@@ -340,7 +340,7 @@
 <button class="btn btn-primary btn-sm float-right ml-2 text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
 <button class="btn btn-danger btn-sm float-right ml-2 text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
 <?php } } ?>
-                    <a class="btn btn-primary btn-sm ml-2 text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/manage_competition_list/'">Back</a>
+                    <button class="btn btn-primary btn-sm ml-2 text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/manage_competition_list/'">Back</button>
                 </div>
                 <!-- Modal -->
                 <!-- <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
