@@ -2331,6 +2331,10 @@ textarea {
 .bg-light-comment{
 	--bs-bg-opacity: 1;
     background: black;
+    background: #0000804f;
+    padding-bottom: 20px;
+    margin-bottom: 17px;
+    border-radius: 8px;
 }
 .common_content{
 	width: 100%;

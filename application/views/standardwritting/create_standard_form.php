@@ -21,6 +21,17 @@
             <div class="card border-top card-body">
                 <form name="create_standard_form" id="create_standard_form" action="<?php echo base_url().'standardswritting/create_standard_form'?>" method="post"enctype="multipart/form-data">
                     <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Branch Id<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="Branch" id="Branch" placeholder="Enter Branch Id" value="" required="">
+                        </div>
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Department Id<sup class="text-danger">*</sup>  </label>
+                            <input type="text" class="form-control input-font" name="Department" id="Department" placeholder="Enter Department Id" value="" required="">
+                        </div>
+                        <div class="mb-2 col-md-4">
+                           <a class="btn btn-primary btn-sm text-white" style="margin-top: 30px;">Fetch Details</a>
+                         </div>
                         <div class="mb-2 col-4">
                             <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
                             <select id="standard_club" name="standard_club" class="form-control input-font" value="">
@@ -35,17 +46,17 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Topic of Activity</label>
-                            <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="" required="">
+                            <label class="d-block text-font">Name of Activity<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Name of Activity" value="" required="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Date of Activity</label>
+                            <label class="d-block text-font">Date of Activity<sup class="text-danger">*</sup></label>
                             <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="" required="">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Number of Participants</label>
+                            <label class="d-block text-font">Number of Participants<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="" required="">
                         </div>
                     </div>
@@ -59,19 +70,21 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Paticipant</label>
+                            <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="" required="">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                            <label class="d-block">Upload Prize Details<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
                                 <div>
                                     <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
+                                <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                                 Preview
                                 </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,15 +97,17 @@
                             <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="" required="">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block">Uploads</label>
+                            <label class="d-block">Upload Prize Details</label>
                             <div class="d-flex">
                                 <div>
                                     <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
+                                <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                                 Preview
                                 </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,15 +120,17 @@
                             <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="" required="">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block">Uploads</label>
+                            <label class="d-block">Upload Prize Details</label>
                             <div class="d-flex">
                                 <div>
                                     <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
+                               <div>
+                               <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                                 Preview
                                 </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,15 +143,19 @@
                             <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="" required="">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block">Uploads</label>
+                            <label class="d-block">Upload Prize Details</label>
                             <div class="d-flex">
                                 <div>
                                     <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
+                                   
                                 </div>
+                                <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
                                 Preview
                                 </button>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -162,7 +183,7 @@ Swal.fire({
 title: 'Do you want to cancel?',
 showDenyButton: true,
 showCancelButton: false,
-confirmButtonText: 'cancel',
+confirmButtonText: 'Cancel',
 denyButtonText: `Close`,
 }).then((result) => {
 /* Read more about isConfirmed, isDenied below */
@@ -205,7 +226,7 @@ var standard_club = $("#standard_club").val();
 if (standard_club == "" || standard_club== null) {
 if ($("#standard_club").next(".validation").length == 0) // only add if not added
 {
-$("#standard_club").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#standard_club").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#standard_club").focus(); }
 allfields = false;
@@ -216,7 +237,7 @@ var topic_of_activity = $("#topic_of_activity").val();
 if (topic_of_activity == "" || topic_of_activity== null) {
 if ($("#topic_of_activity").next(".validation").length == 0) // only add if not added
 {
-$("#topic_of_activity").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#topic_of_activity").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#topic_of_activity").focus(); }
 allfields = false;
@@ -227,7 +248,7 @@ var date_of_activity = $("#date_of_activity").val();
 if (date_of_activity == "" || date_of_activity== null) {
 if ($("#date_of_activity").next(".validation").length == 0) // only add if not added
 {
-$("#date_of_activity").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#date_of_activity").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#date_of_activity").focus(); }
 allfields = false;
@@ -238,7 +259,7 @@ var number_of_participants = $("#number_of_participants").val();
 if (number_of_participants == "" || number_of_participants== null) {
 if ($("#number_of_participants").next(".validation").length == 0) // only add if not added
 {
-$("#number_of_participants").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#number_of_participants").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#number_of_participants").focus(); }
 allfields = false;
@@ -249,7 +270,7 @@ var first_paticipant = $("#first_paticipant").val();
 if (first_paticipant == "" || first_paticipant== null) {
 if ($("#first_paticipant").next(".validation").length == 0) // only add if not added
 {
-$("#first_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#first_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#first_paticipant").focus(); }
 allfields = false;
@@ -260,7 +281,7 @@ var second_paticipant = $("#second_paticipant").val();
 if (second_paticipant == "" || second_paticipant== null) {
 if ($("#second_paticipant").next(".validation").length == 0) // only add if not added
 {
-$("#second_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#second_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#second_paticipant").focus(); }
 allfields = false;
@@ -271,7 +292,7 @@ var third_paticipant = $("#third_paticipant").val();
 if (third_paticipant == "" || third_paticipant== null) {
 if ($("#third_paticipant").next(".validation").length == 0) // only add if not added
 {
-$("#third_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#third_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#third_paticipant").focus(); }
 allfields = false;
@@ -282,7 +303,7 @@ var consolation_paticipant = $("#consolation_paticipant").val();
 if (consolation_paticipant == "" || consolation_paticipant== null) {
 if ($("#consolation_paticipant").next(".validation").length == 0) // only add if not added
 {
-$("#consolation_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
+$("#consolation_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#consolation_paticipant").focus(); }
 allfields = false;
@@ -293,7 +314,7 @@ var first_file=$("#first_file").val();
 if (first_file == "" || first_file== null) {
 if ($("#first_file").next(".validation").length == 0) // only add if not added
 {
-$("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+$("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#first_file").focus(); }
 allfields = false;
@@ -346,7 +367,7 @@ var second_file=$("#second_file").val();
 if (second_file == "" || second_file== null) {
 if ($("#second_file").next(".validation").length == 0) // only add if not added
 {
-$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#second_file").focus(); }
 allfields = false;
@@ -399,7 +420,7 @@ var third_file=$("#third_file").val();
 if (third_file == "" || third_file== null) {
 if ($("#third_file").next(".validation").length == 0) // only add if not added
 {
-$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#third_file").focus(); }
 allfields = false;
@@ -453,7 +474,7 @@ var consolation_file=$("#consolation_file").val();
 if (consolation_file == "" || consolation_file== null) {
 if ($("#consolation_file").next(".validation").length == 0) // only add if not added
 {
-$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
+$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
 if (!focusSet) { $("#consolation_file").focus(); }
 allfields = false;

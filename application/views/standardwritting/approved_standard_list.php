@@ -26,7 +26,7 @@
                             <tr>
                                 <th>Sr. No.</th> 
                                 <th>Standard Club</th>
-                                <th>Topic</th> 
+                                <th>Name of Topic</th> 
                                 <th>Date of Activity</th> 
                                 <th>No of Participate</th>
                                 <th>Date Created</th>
@@ -53,7 +53,7 @@
 
                                  
                                   <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteData('<?= $data['id']?>')" >Delete</a>
-                                 <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
+                                 <a href="#" class="btn btn-secondary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
                           
  
  

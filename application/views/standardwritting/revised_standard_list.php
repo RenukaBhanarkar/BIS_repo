@@ -59,8 +59,8 @@
                               <td>task Reviewed</td>
                               <td>Pending</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>Standardswritting/standard_submission_competition" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url(); ?>Standardswritting/assign_review/" class="btn btn-primary btn-sm mr-2" >View Details</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/standard_submission_competition" class="btn btn-info btn-sm mr-2" >View & Assign</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/create_online_view/" class="btn btn-primary btn-sm mr-2" >View Details</a>
                                  
                               </td>
 

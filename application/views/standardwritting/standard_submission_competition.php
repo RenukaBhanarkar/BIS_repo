@@ -28,12 +28,13 @@
                                 <th>Sr. No.</th>
                                 <th>Competition Id</th>
                                 <th>Submission Id</th>
-                                <th>Writting Task</th>
-                                <th>Score</th>
+                                <th>Member Id</th>
+                                <th>Class</th>
                                 <th>Total Marks</th>
-                                <th>Status</th>
+                                <th>Score</th>
                                 <th>Name of Evaluator</th>
                                 <th>Date Assign</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -42,15 +43,16 @@
                               <td>1</td>
                               <td>12345</td>
                               <td>12345</td>
-                              <td>View Task</td>
+                              <td>12345</td>
+                              <td>9 th</td>
                               <td>100</td>
                               <td>100</td>
-                              <td>xyx</td>
                               <td>Anis Mulani</td>
                               <td>12/03/2023</td>
+                              <td>xyx</td>
                               <td class="d-flex">
-                                 <a href="#" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <a href="#" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/standard_submission_view   /" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="#" class="btn btn-secondary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                               </td>
 
                         </tbody>
@@ -93,8 +95,8 @@
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Assign</button>
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="button" class="btn btn-primary assign">Assign</button>
+                                                    <button type="button" class="btn btn-danger cancel" data-bs-dismiss="modal">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,4 +108,32 @@
         // scrollX: true,
     });
 });
+$('.assign').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Assign ?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Assign',
+                    denyButtonText: `Close`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {               
+                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    } else if (result.isDenied) { 
+                    }
+                    })
+    })
+    $('.cancel').on('click',function(){
+        Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {               
+                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    } else if (result.isDenied) { 
+                    }
+                    })
+    })
 </script>

@@ -81,11 +81,11 @@ flex-direction: column;
 <div class=content>
   <div class="wrapper-1">
     <div class="wrapper-2">
-      <h1>Thank you Participation!</h1>
+      <h1>Thank you for your Participation.</h1>
       <p>for contacting us, we will get in touch with you soon...</p>
       
       <button class="go-home" onclick="location.href = '<?php echo base_url(); ?>Users/welcome';">
-      go home
+      Back to Home
       </button>
     </div>
     <!-- <div class="footer-like">

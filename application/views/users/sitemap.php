@@ -10,7 +10,7 @@
          </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="sitenav">
                 <ul>
                     <li><a href="#">Home</li>
@@ -23,10 +23,25 @@
                     <li><a href="#">NEC</li>
                     <li><a href="#">Contact Us</li>
                     <li><a href="#">User Manual</li>
-                   
-                        
                 </ul>
-                   
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="sitenav">
+                <ul>
+                    <li><a href="#">Standard Club
+                        <ul>
+                            <li>Home</li>
+                            <li>Home</li>
+                            <li>Home</li>
+                            <li>Home</li>
+
+                            <li>Home</li>
+                        </ul>
+                    </li>
+                    
+                </ul>
             </div>
 
         </div>

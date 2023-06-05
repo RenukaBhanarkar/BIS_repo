@@ -81,7 +81,7 @@
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
-                            <h5 class="font-weight-bold text-info mb-1">Review Competition</h5>
+                            <h5 class="font-weight-bold text-info mb-1">Review Management</h5>
                             
 
                         </div>
@@ -94,7 +94,7 @@
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
-                            <h5 class="font-weight-bold text-success mb-1">Result Competition</h5>
+                            <h5 class="font-weight-bold text-success mb-1">Declared Results</h5>
                             
 
                         </div>

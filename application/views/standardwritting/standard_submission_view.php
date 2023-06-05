@@ -1,7 +1,7 @@
 <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Task Recevied for Review</h1>
+            <h1 class="h3 mb-0 text-gray-800">View Submission</h1>
             <!-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
@@ -16,17 +16,11 @@
                         <div class="col-12 mt-3">
                         <div class="card border-top">
                            <div class="card-body"> 
-                           <div class="row">
+                            <div class="row">
                                <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Competition Id</label>
+                                    <label class="d-block text-font">Name</label>
                                     <div>
-                                        <p>1234</p>
-                                    </div>    
-                                </div>
-                                <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Title of Competition</label>
-                                    <div>
-                                        <p>Title</p>
+                                        <p>Anis Mulani</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
@@ -36,21 +30,33 @@
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Email</label>
+                                    <div>
+                                        <p>abc@gmail.com</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Contact</label>
+                                    <div>
+                                        <p>7057085889</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Timestamp</label>
+                                    <div>
+                                        <p>13/03/2023 12:00:00</p>
+                                    </div>    
+                                </div>
+                                <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Class</label>
                                     <div>
                                         <p>9 th</p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Submission Date & Time</label>
+                                    <label class="d-block text-font">Member Id</label>
                                     <div>
-                                        <p>13/03/2023 12:00:00</p>
-                                    </div>    
-                                </div>
-                                <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Name of Evaluator</label>
-                                    <div>
-                                        <p>Name of Evaluator</p>
+                                        <p>12345</p>
                                     </div>    
                                 </div>
                             </div>
@@ -103,77 +109,67 @@
                                         <p>Specification</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Scope</label>
                                     <div>
                                         <p>Scope</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">References</label>
                                     <div>
                                         <p>References</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">DEFINITIONS</label>
                                     <div>
                                         <p>DEFINITIONS</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">GRADES, TYPES AND CLASSES</label>
                                     <div>
                                         <p>GRADES, TYPES AND CLASSES</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">MANUFACTURE</label>
                                     <div>
                                         <p>MANUFACTURE</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">REQUIREMENTS</label>
                                     <div>
                                         <p>REQUIREMENTS</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">SAMPLING</label>
                                     <div>
                                         <p>SAMPLING</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">METHODS OF TESTS for various Requirements</label>
                                     <div>
                                         <p>METHODS OF TESTS for various Requirements</p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">PACKING AND PACKAGING</label>
                                     <div>
                                         <p>PACKING AND PACKAGING</p>
                                     </div>    
                                 </div>
                             
-                                <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Score<sup class="text-danger">*</sup></label>
-                                    <p>100</p>
-                                     
-                                </div>
+                                
                             </div>
-                                <div class="row">
-                                <div class="mb-2 col-md-12">
-                                    <label class="d-block text-font">Comment</label>
-                                    <p>Comments</p>
-                                </div>  
-                            </div>
-                            
+
                           </div>
                           <div class="col-md-12 submit_btn p-3">
-                          <a class="btn btn-primary btn-sm text-white submit" onclick="location.href='task_recevied_list'">Back</a>
+                          <a href="<?php echo base_url(); ?>Standardswritting/standard_submission_competition" class="btn btn-primary btn-sm text-white submit">Back</a>
                          
                        
                           </div>  

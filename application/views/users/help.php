@@ -92,7 +92,7 @@
                            		<tr>
                            			<td>Portable Document Format (PDF) files</td>
                            			<td>
-                           				<img src="staticResources/images/icon/MS logo/pdf.png" alt=" " width="24px"><br>
+                           				<img src="<?php echo base_url(); ?>/assets/images/pdf_new.png" alt=" " width="24px"><br>
                            				<a href="https://get.adobe.com/reader/">Adobe Acrobat Reader (External website that opens in a new window)</a><br>
                            				<a href="https://acrobat.adobe.com/us/en/acrobat/features.html">Convert a PDF file online into HTML or text format (External website that opens in a new window)</a>
                            			</td>
@@ -100,7 +100,7 @@
                            		<tr>
                            			<td>Word files	</td>
                            			<td>
-                           				<img src="staticResources/images/icon/MS logo/word.png" alt=" " width="24px"><br>
+                           				<img src="<?php echo base_url(); ?>/assets/images/word_new.png" alt=" " width="24px"><br>
                            				<a href="https://www.microsoft.com/en-us/download/">Word Viewer (in any version till 2003) - External website that opens in a new window</a><br>
                            				<a href="https://www.microsoft.com/en-us/download/">Microsoft Office Compatibility Pack for Word (for 2007 version) - External website that opens in a new window</a>
                            			</td>
@@ -108,7 +108,7 @@
                            		<tr>
                            			<td>Excel files	</td>
                            			<td>
-                           				<img src="staticResources/images/icon/MS logo/excel.png" alt=" " width="24px"><br>
+                           				<img src="<?php echo base_url(); ?>/assets/images/excel.png" alt=" " width="24px"><br>
                            				<a href="https://www.microsoft.com/en-us/download/">Excel Viewer 2003 (in any version till 2003) - External website that opens in a new window</a><br>
                            				<a href="https://www.microsoft.com/en-us/download/">Microsoft Office Compatibility Pack for Excel (for 2007 version) - External website that opens in a new window</a>
                            			</td>
@@ -116,7 +116,7 @@
                            		<tr>
                            			<td>PowerPoint presentations		</td>
                            			<td>
-                           				<img src="staticResources/images/icon/MS logo/powerpoint.png" alt=" " width="24px"><br>
+                           				<img src="<?php echo base_url(); ?>/assets/images/powerpoint_new.png" alt=" " width="24px"><br>
                            				<a href="https://www.microsoft.com/en-us/download/">PowerPoint Viewer 2003 (in any version till 2003) - External website that opens in a new window</a><br>
                            				<a href="https://www.microsoft.com/en-us/download/">Microsoft Office Compatibility Pack for PowerPoint (for 2007 version) - External website that opens in a new window</a>
                            			</td>

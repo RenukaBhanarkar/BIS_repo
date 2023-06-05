@@ -34,7 +34,7 @@
                             <tr>
                                 <th>Sr. No.</th> 
                                 <th>Standard Club</th>
-                                <th>Topic</th> 
+                                <th>Name of Topic</th> 
                                 <th>Date of Activity</th> 
                                 <th>Number of Participate</th>
                                 <th>Date Created</th>
@@ -65,7 +65,7 @@
                                  <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
                                 <?php }?>
                                 <?php if($data['status'] == 1) { ?>
-                                  <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',2)">Sent for Approval</a>
+                                  <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',2)">Send for approval</a>
                                 <?php }?>
                               </td>
                           </tr>

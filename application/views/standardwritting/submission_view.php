@@ -25,18 +25,34 @@
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Name</th>
-                                <th>ID</th>
+                                <th>Submission Id</th>
                                 <th>Email</th>
                                 <th>Contact</th>
-                                <th>Date & Time</th>
-                                <th>PDF</th>
-                                <th>Image</th>
+                                <th>Timestamp</th>
+                                <th>Class</th>
+                                <th>Member Id</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                        
+                            <tr>
+                              <td>1</td>
+                              <td>Anis Mulani</td>
+                              <td>1234</td>
+                              <td>abc@gmail.com</td>
+                              <td>7057085889</td>
+                              <td>12/03/2023 12:00:00</td>
+                              <td>9 th</td>
+                              <td>12345</td>
+                              <td class="d-flex">
+                                 <a href="<?php echo base_url(); ?>standardswritting/ongoin_submission_view" class="btn btn-primary btn-sm mr-2" >View</a>
+                              </td>
+                          </tr>
+                                
+                           
 
-                             <?php foreach ($getData as $key => $value): ?>
+                             <!-- <?php foreach ($getData as $key => $value): ?>
                             <tr>
                               <td><?=$key+1?></td>
                               <td><?=$value['user_name']?></td>
@@ -44,14 +60,14 @@
                               <td><?=$value['email']?></td>
                               <td><?=$value['user_mobile']?></td>
                               <td><?=$value['created_on']?></td>
-                              <td><img src="<?php echo base_url(); ?>/assets/admin/img/pdf.png" alt="#" class="" width="10%"></td>
-                              <td><img src="<?= base_url();?>" alt="#" class="" width="10%"></td>
+                              <td>9 th</td>
+                              <td>12345</td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>standardswritting/view_standards" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>
                           </tr>
                                 
-                            <?php endforeach ?>
+                            <?php endforeach ?> -->
 
 
                         </tbody>

@@ -26,13 +26,13 @@
                     
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Title of Competition</label>
+                                <label class="d-block text-font">Title of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="title" id="title" placeholder="Enter Title of Competition" value="" >
                             </div>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Title of Competition in Hindi</label>
+                                <label class="d-block text-font">Title of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="title_hindi" id="title_hindi" placeholder="Enter Topic of Activity" value="" >
                             </div>
                     </div>
@@ -54,23 +54,23 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Start Date</label>
+                                <label class="d-block text-font">Start Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="start_date" id="start_date"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Start Time</label>
+                                <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
                                 <input type="time" class="form-control input-font" name="start_time"  id="start_time"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Date</label>
+                                <label class="d-block text-font">End Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="end_date"  id="end_date"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Time</label>
+                                <label class="d-block text-font">End Time<sup class="text-danger">*</sup></label>
                                 <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
                                     <input type="file" id="banner_img" name="banner_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg"  onchange="loadThumbnail(event)">
@@ -87,11 +87,11 @@
                                 </div>
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Total Marks</label>
+                                <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Qualifying Marks</label>
+                                <label class="d-block text-font">Qualifying Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="" >
                             </div>
                             <div class="mb-2 col-4">
@@ -170,15 +170,15 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prize</label>
+                                <label class="d-block text-font">Number of Prize<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prize</label>
+                                <label class="d-block text-font">Name of Prize<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
@@ -269,7 +269,7 @@
                             <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a> -->
 
                             <input type="submit" name="Submit" class="btn btn-success btn-sm text-white btnsubmit" id="btnsubmit">
-                            <a class="btn btn-danger btn-sm text-white cancel" href="create_online_list">Cancel</a>
+                            <a class="btn btn-danger btn-sm text-white cancelQuiz">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -952,4 +952,5 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                     }
                     })
     })
+    
 </script>
