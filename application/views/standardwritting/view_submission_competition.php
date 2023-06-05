@@ -65,7 +65,7 @@
                                 <td><?php echo $list['score']; ?></td>
                                 <td><?php echo $list['total_marks']; ?></td>
                                 <td><?php if($list['review_status']==1){echo "Send for review";}  ?></td>
-                                <td><?php echo $list['evaluator'];  ?></td>
+                                <td><?php echo $list['ev_name'];  ?></td>
                                 <!-- <td><?php if($list['evaluator_name']=="IT Services Department"){echo "not assigned";}else{ echo $list['evaluator_name']; } ?></td> -->
                                 <td><?php echo $list['ev_assigned_on']; ?></td>
                                 

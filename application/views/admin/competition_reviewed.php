@@ -45,7 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>Standard Online Competition</td>
@@ -67,8 +67,8 @@
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-warning btn-sm mr-2" >Task Review</a>
                               </td>
-                           </tr>
-                           <!-- <?php if(!empty($competition)){ $i=1; foreach($competition as $list){ ?>
+                           </tr> -->
+                           <?php if(!empty($competition)){ $i=1; foreach($competition as $list){ ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $list['comp_id']; ?></td>
@@ -90,7 +90,7 @@
                                  <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                                 </td>
                             </tr>
-                            <?php $i++; } } ?> -->
+                            <?php $i++; } } ?>
 
                         </tbody>
                     </table>
