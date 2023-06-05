@@ -51,7 +51,7 @@
                               <td>12/03/2023</td>
                               <td>xyx</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>Standardswritting/standard_submission_view   /" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/standard_submission_view/" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="#" class="btn btn-secondary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                               </td>
 
@@ -117,7 +117,7 @@ $('.assign').on('click',function(){
                     denyButtonText: `Close`,
                     }).then((result) => { 
                     if (result.isConfirmed) {               
-                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    //   window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
                     } else if (result.isDenied) { 
                     }
                     })
@@ -131,7 +131,7 @@ $('.assign').on('click',function(){
                     denyButtonText: `Close`,
                     }).then((result) => { 
                     if (result.isConfirmed) {               
-                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                    //   window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
                     } else if (result.isDenied) { 
                     }
                     })
