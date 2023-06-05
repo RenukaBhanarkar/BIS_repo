@@ -23,7 +23,7 @@
                 <div class="card border-top card-body ">
                     <table id="example" class="table-bordered nowrap table-responsive" style="width:100%">
                         <thead>
-                            <tr>
+                            <tr> 
                                 <th>Sr. No.</th>
                                 <th>Competition ID</th>
                                 <th>Title of Competition</th>
@@ -41,27 +41,54 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td>1</td>
-                              <td>12345</td>
-                              <td>Standard Competition</td>
-                              <td>12/03/2023</td>
-                              <td>12:00:00</td>
-                              <td>12/03/2023</td>
-                              <td>12:00:00</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
-                              <td>Available</td>
-                              <td>Level of Competition</td>
-                              <td>Pending</td>
-                              <td>Review</td>
-                              <td>Pending</td>
-                              <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Sent For Review</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
-                              </td>
 
+
+                            <?php foreach ($getData as $key => $value) {?>
+                            <tr>
+                              <td><?=$key+1?></td>
+                              <td><?=$value['comp_id']?></td>
+                              <td><?=$value['title']?></td>
+                              <td><?=$value['start_date']?></td>
+                              <td><?=$value['start_time']?></td>
+
+                              <td><?=$value['end_date']?></td>
+                              <td><?=$value['end_time']?></td> 
+                              <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
+                              <td><?=$value['availability']?></td>
+                              <td><?=$value['level']?></td> 
+                              <td><?=$value['count']?></td>
+
+                              <?php 
+                              if($value['review_status']==0)
+                                { $task="Task Under Review";}
+                            else
+                                {$task="Sent For Review";}
+
+                                ?>
+                                <td><?=$task?></td>
+                              <td><?=$value['status_name']?></td>  
+                              <td class="d-flex">
+
+                            <!-- <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
+                            <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $value['id']?>')" >Edit</a>
+                            <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',1)" >Create</a>
+                            <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteOnlineData('<?= $value['id']?>')" >Delete</a>
+                            <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',9)" >Archive</a> -->
+
+                                <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View Details</a> 
+                                 <a href="<?php echo base_url();?>Standardswritting/submission_view/<?= $value['id']?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+
+                                 <?php if($value['review_status']==0){?>
+                                <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateOnlineStatusReview('<?= $value['id']?>')" >Sent For Review</a>
+                             <?php } ?> 
+                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
+                             
+ 
+                                  
+                              </td>
+                           </tr>
+                         <?php } ?>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -73,79 +100,105 @@
     </div>
     <!-- End of Main Content -->
  </body>
-                                  <!-- Modal -->
-                                    <div class="modal fade" id="archivesForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Archive</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Archive?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Archive</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="createForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Create Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Create?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Create</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="editForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Form</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to Edit?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">Edit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="deleteForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">delete</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to delete?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveQueBank">delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal -->
+                                  <script>
+     function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "create_online_view/"+id; 
+    }  
+  })
+}
+</script>
+
+<script>
+  function updateOnlineStatusReview(id) {
+    if (status==1) { statusdata='Update'; }
+    if (status==9) { statusdata='Update'; }
+    Swal.fire({
+      title: 'Do you want to Create?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Update',
+      denyButtonText: `Cancel`,
+    }).then((result) => 
+    { 
+      if (result.isConfirmed) 
+      { 
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateOnlineStatusReview',
+        data: {
+          id: id,
+          status: status, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          location.reload();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+      } 
+    })
+  }
+ 
+ 
+
+ function deleteOnlineData(id) 
+ { 
+  Swal.fire({
+                    title: 'Do you want to Create?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText:'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) 
+                    { 
+                      $.ajax({
+                      type: 'POST',
+                      url: '<?php echo base_url(); ?>standardswritting/deleteOnlineData',
+                      data: {
+                        id: id, 
+                      },
+                      success: function(result)
+                      {
+                        Swal.fire('Saved!', '', 'success')
+                        location.reload();
+                      },
+                      error: function(result) {
+                        alert("Error,Please try again.");
+                      }
+                    });
+                  }  
+                })
+  }
+
+
+function editData(id) 
+{
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "create_online_edit/"+id; 
+    }  
+  })
+} 
+</script>
