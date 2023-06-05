@@ -27,6 +27,28 @@
                                     <label class="d-block text-font" text-font>Email<sup class="text-danger">*</sup></label>
                                     <input type="email" value="<?php echo $record['email_id'] ?>" class="form-control input-font" placeholder="Enter email" name="email" id="email" readonly></input>
                                 </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font" text-font>Department<sup class="text-danger">*</sup></label>
+                                    <select id="department" name="department" class="form-control input-font">
+                                                    <option value="" selected disabled>Select department</option>
+                                                    <?php foreach ($departments as $department) { ?>
+                                                        <option value="<?php echo $department['pki_id'] ?>"<?php if ($department['pki_id'] == $record['department']) { echo "selected"; } ?> ><?php echo $department['uvc_department_name'] ?></option>
+                                                    <?php } ?>
+
+                                                </select>
+                                  
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font" text-font>Branch<sup class="text-danger">*</sup></label>
+                                    <select id="branch" name="branch" class="form-control input-font">
+                                                    <option value="" selected disabled>Select branch</option>
+                                                    <?php foreach ($branches as $branch) { ?>
+                                                        <option value="<?php echo $branch['pki_id'] ?>"<?php if ($branch['pki_id'] == $record['branch']) { echo "selected"; } ?> ><?php echo $branch['uvc_department_name'] ?></option>
+                                                    <?php } ?>
+
+                                                </select>
+                                  
+                                </div>
                         </div>
                     <?php } ?>
                     <div class="col-md-12 submit_btn p-3">
@@ -69,6 +91,8 @@
                 var email = $("#email").val();
                 var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
                 var old_email_id = $("#old_email_id").val();
+                var department = $("#department").val();
+                var branch = $("#branch").val();
                 if (username == "") {
                     if ($("#username").next(".validation").length == 0) // only add if not added
                     {
@@ -109,6 +133,32 @@
                     }
                 } else {
                     $("#email").next(".validation").remove(); // remove it
+                }
+                if (department == "") {
+                    if ($("#department").next(".validation").length == 0) // only add if not added
+                    {
+                        $("#department").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.  </div>");
+                    }
+                    if (!focusSet) {
+                        $("#department").focus();
+                    }
+
+                    allfields = false;
+                } else {
+                    $("#department").next(".validation").remove(); // remove it
+                }
+                if (branch == "") {
+                    if ($("#branch").next(".validation").length == 0) // only add if not added
+                    {
+                        $("#branch").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.  </div>");
+                    }
+                    if (!focusSet) {
+                        $("#branch").focus();
+                    }
+
+                    allfields = false;
+                } else {
+                    $("#branch").next(".validation").remove(); // remove it
                 }
                 if (allfields) {
                     if (email != old_email_id) {
@@ -196,6 +246,8 @@
             if (result.isConfirmed) {
                 $('#username').val('');
                 $('#email').val('');
+                $('#department').val('');
+                $('#branch').val('');
                 // window.location.replace('<?php echo base_url() . 'admin/admin_creation_list' ?>');
                 // Swal.fire('Saved!', '', 'success')                                
             } else if (result.isDenied) {

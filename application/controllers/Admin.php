@@ -19,12 +19,21 @@ class Admin extends CI_Controller
     public function randomPassword()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $special = '!@#$%^&*';
         $pass = array(); //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
         for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
+            if($i < 7){
+                $n = rand(0, $alphaLength);
+                $pass[] = $alphabet[$n];
+            }
+            if($i == 7){
+                $n1 = rand(0, $special);
+                $pass[] = $alphabet[$n1];
+            }
+           
         }
+      
         return implode($pass); //turn the array into a string
     }
     public function index()
@@ -1451,9 +1460,13 @@ class Admin extends CI_Controller
     }
     public function admin_creation_form()
     {
-
+        $data = array();
+        $departments = $this->Admin_model->getAllDepartments();
+        $data['departments'] = $departments;
+        $branches = $this->Admin_model->getAllBranches();
+        $data['branches'] = $branches;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/admin_creation_form');
+        $this->load->view('admin/admin_creation_form',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
@@ -1461,8 +1474,8 @@ class Admin extends CI_Controller
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim|max_length[50]');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|max_length[30]|valid_email');
-        // $this->form_validation->set_rules('designation', 'Designation', 'required|trim|max_length[50]');
-        // $this->form_validation->set_rules('branch', 'Branch', 'required|trim|max_length[50]');
+        $this->form_validation->set_rules('department', 'Department', 'required|trim|max_length[50]');
+        $this->form_validation->set_rules('branch', 'Branch', 'required|trim|max_length[50]');
         // $this->form_validation->set_rules('post', 'Post', 'required|trim|max_length[50]');
         // $this->form_validation->set_rules('department', 'Department', 'required|trim|max_length[50]');
         // $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
@@ -1475,8 +1488,8 @@ class Admin extends CI_Controller
             $uid        = clearText($this->input->post('uid'));
             $name        = clearText($this->input->post('name'));
             $email_id        = clearText($this->input->post('email'));
-            // $designation        = clearText($this->input->post('designation'));
-            // $branch        = clearText($this->input->post('branch'));
+            $department        = clearText($this->input->post('department'));
+            $branch        = clearText($this->input->post('branch'));
             // $post        = clearText($this->input->post('post'));
             // $department        = clearText($this->input->post('department'));
             // $username        = clearText($this->input->post('username'));
@@ -1489,9 +1502,8 @@ class Admin extends CI_Controller
                 'name' => $name,
                 'email_id' => $email_id,
                 'designation' => 2,
-                // 'branch' => $branch,
-                // 'post' => $post,
-                // 'department' => $department,
+                'department' => $department,
+                'branch' => $branch,
                 'is_active' => 1,
                 'username' => $email_id,
                 'password' => $random_pass,
@@ -1546,6 +1558,11 @@ class Admin extends CI_Controller
         $data = array();
         $id =   encryptids("D", $this->input->get('id'));
         $data['record'] = $this->Admin_model->getDetailsById($id);
+        $departments = $this->Admin_model->getAllDepartments();
+        $data['departments'] = $departments;
+
+        $branches = $this->Admin_model->getAllBranches();
+        $data['branches'] = $branches;
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/admin_creation_edit', $data);
@@ -1559,9 +1576,10 @@ class Admin extends CI_Controller
         $id = clearText($this->input->post('admin_id'));
         $name = clearText($this->input->post('username'));
         $email = clearText($this->input->post('email'));
+        $department= clearText($this->input->post('department'));
+        $branch= clearText($this->input->post('branch'));
 
-
-        if (!$name && !$email) {
+        if (!$name && !$email  && !$department && !$branch) {
             $data['status'] = 0;
             $data['message'] = 'Please enter all details';
         }
@@ -1570,6 +1588,8 @@ class Admin extends CI_Controller
                 'name' =>  $name,
                 'email_id' => $email,
                 'username' => $email,
+                'department' => $department,
+                'branch' => $branch,
                 'modified_on' => GetCurrentDateTime('Y-m-d H:i:s'),
                 'modified_by' => $admin_id,
             );

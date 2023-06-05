@@ -206,8 +206,7 @@ class Subadmin extends CI_Controller
                 'name' => $name,
                 'email_id' => $email_id,
                 'designation' => $designation,
-                // 'branch' => $branch,
-                // 'post' => $post,
+               
                  'department' => $department,
                  'branch' => $branch,
                 'is_active' => 1,
@@ -260,7 +259,7 @@ class Subadmin extends CI_Controller
         $branch= clearText($this->input->post('branch'));
         $designation = clearText($this->input->post('role'));     
 
-        if (!$name && !$email  && !$department && !$designation) {
+        if (!$name && !$email  && !$department && !$designation && !$branch) {
             $data['status'] = 0;
             $data['message'] = 'Please enter all details';
         }
@@ -307,7 +306,7 @@ class Subadmin extends CI_Controller
         }
         echo  json_encode($data);
     }
-    public function randomPassword()
+    /*public function randomPassword()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = array(); //remember to declare $pass as an array
@@ -316,6 +315,26 @@ class Subadmin extends CI_Controller
             $n = rand(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
+        return implode($pass); //turn the array into a string
+    }*/
+    public function randomPassword()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $special = '!@#$%^&*';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            if($i < 7){
+                $n = rand(0, $alphaLength);
+                $pass[] = $alphabet[$n];
+            }
+            if($i == 7){
+                $n1 = rand(0, $special);
+                $pass[] = $alphabet[$n1];
+            }
+           
+        }
+      
         return implode($pass); //turn the array into a string
     }
     // public function question_bank_list()

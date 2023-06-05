@@ -56,7 +56,7 @@
                                 <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Username<sup class="text-danger">*</sup></label>
                                     <div>
-                                    <p><?php// echo $detail['username']; ?></p>
+                                    <p><?php // echo $detail['username']; ?></p>
                                     </div>    
                                 </div> -->
                               </div>

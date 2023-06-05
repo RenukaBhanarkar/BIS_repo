@@ -32,39 +32,39 @@
                                     <div>
                                         <p><?php echo $detail['email_id']; ?></p>
                                     </div>    
-                                </div>
-                                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                                <div class="mb-2 col-md-4">
+                                </div>                              
+                                <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Designation</label>
                                     <div>
-                                        <p><?php echo $detail['role']; ?></p>
+                                        <p><?php ////echo $detail['role']; ?></p>
+                                    </div>    
+                                </div> -->
+                                <div class="mb-2 col-md-4">
+                                    <label class="d-block text-font">Department<sup class="text-danger">*</sup></label>
+                                    <div>
+                                        <p><?php echo $detail['uvc_department_name']; ?></p>
                                     </div>    
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Branch</label>
                                     <div>
-                                        <p><?php echo $detail['branch']; ?></p>
+                                        <p><?php echo $detail['branchnew']; ?></p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Post</label>
                                     <div>
-                                        <p><?php echo $detail['post']; ?></p>
+                                        <p><?php //echo $detail['post']; ?></p>
                                     </div>    
-                                </div>
-                                <div class="mb-2 col-md-4">
-                                    <label class="d-block text-font">Department<sup class="text-danger">*</sup></label>
-                                    <div>
-                                        <p><?php echo $detail['department']; ?></p>
-                                    </div>    
-                                </div>
-                                <div class="mb-2 col-md-4">
+                                </div> -->
+                              
+                                <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Username<sup class="text-danger">*</sup></label>
                                     <div>
-                                        <p><?php echo $detail['username']; ?></p>
+                                        <p><?php //echo $detail['username']; ?></p>
                                     </div>    
-                                </div>
-                                <?php } ?>
+                                </div> -->
+                             
                               </div>
                           </div>
                           <div class="col-md-12 submit_btn p-3">
