@@ -297,8 +297,8 @@
                         <?php }?>
                         <?php if($competition['comp_level'] =="1") { ?> 
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
-                            <span class="start-end-time-title">Lavel 
-                                <span class="quiz-text-date m-2">All India Lavel</span>
+                            <span class="start-end-time-title">Level 
+                                <span class="quiz-text-date m-2">All India Level</span>
                             </span>
                             
                         </p>
