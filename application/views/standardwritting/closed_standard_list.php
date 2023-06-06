@@ -70,9 +70,9 @@
                               <td>Reviewed</td>
                               <td><?=$value['status_name']?></td>  
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>Standardswritting/submission_view/" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a href="<?php echo base_url(); ?>Standardswritting/create_online_view/" class="btn btn-info btn-sm mr-2" >View Details</a>
-                                 <a  class="btn btn-primary btn-sm mr-2 sent_approve" >Sent for Review</a>
+                                 <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
+                                 <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
                              
  
@@ -93,7 +93,7 @@
     <!-- End of Main Content -->
  </body>
                                   <script>
-     function viewData(id) 
+function viewData(id) 
 { 
   Swal.fire({
     title: 'Do you want to View ?',
@@ -105,6 +105,22 @@
     if (result.isConfirmed) 
     { 
       window.location.href = "create_online_view/"+id; 
+    }  
+  })
+}
+
+function viewSubmissionData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View Submission ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "submission_view/"+id; 
     }  
   })
 }

@@ -65,10 +65,12 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/view_submitted_comp_response',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-    public function standard_submission_competition()
+    public function standard_submission_competition($id)
     {
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->standard_submission_competition($id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/standard_submission_competition');
+        $this->load->view('standardwritting/standard_submission_competition',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function Competition_Reviewed_list()
@@ -1357,14 +1359,16 @@ if($id){
     }
     public function revised_standard_list()
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->revised_standard_list();  
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/revised_standard_list');
+        $this->load->view('standardwritting/revised_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function view_standards($id)
     {
 
-         $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/headers/admin_header');
         $data = array();
         $data['getData'] = $this->Standardswritting_model->view_standards($id);  
 
@@ -1754,8 +1758,14 @@ public function updateStatus(){
     }
     public function task_recevied_list()
     {
+        $encAdminId = $this->session->userdata('admin_id');
+        $evaluator_id = encryptids("D", $encAdminId);
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->task_recevied_list($evaluator_id);
+
+
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/task_recevied_list');
+        $this->load->view('standardwritting/task_recevied_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_recevied_view()
@@ -1764,10 +1774,12 @@ public function updateStatus(){
         $this->load->view('standardwritting/task_recevied_view');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function task_recevied_reviewed()
+    public function task_recevied_reviewed($id)
     {
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->task_recevied_reviewed($id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/task_recevied_reviewed');
+        $this->load->view('standardwritting/task_recevied_reviewed',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_view()
@@ -1782,10 +1794,12 @@ public function updateStatus(){
         $this->load->view('standardwritting/ongoin_submission_view');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function standard_submission_view()
+    public function standard_submission_view($id)
     {
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->standard_submission_view($id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/standard_submission_view');
+        $this->load->view('standardwritting/standard_submission_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     
