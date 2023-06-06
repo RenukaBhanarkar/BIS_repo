@@ -36,7 +36,7 @@
                         </thead>
                         <tbody>
                         
-                            <tr>
+                            <!-- <tr>
                               <td>1</td>
                               <td>Anis Mulani</td>
                               <td>1234</td>
@@ -48,11 +48,11 @@
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>standardswritting/ongoin_submission_view" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>
-                          </tr>
+                          </tr> -->
                                 
                            
 
-                             <!-- <?php foreach ($getData as $key => $value): ?>
+                              <?php foreach ($getData as $key => $value): ?>
                             <tr>
                               <td><?=$key+1?></td>
                               <td><?=$value['user_name']?></td>
@@ -67,7 +67,7 @@
                               </td>
                           </tr>
                                 
-                            <?php endforeach ?> -->
+                            <?php endforeach ?> 
 
 
                         </tbody>

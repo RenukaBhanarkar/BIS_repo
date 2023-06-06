@@ -753,11 +753,11 @@ public function updateQuiz($id,$formdata)
        // return $this->db->get()->result_array(); 
         //return $query->result_array();
 
-
+        $abcd=array();
         if($query->num_rows() > 0){
 
             $rs= $query->result_array();
-            $abcd=array();
+            
             foreach ($rs as $row){
                 
 

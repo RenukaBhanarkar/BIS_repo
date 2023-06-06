@@ -303,7 +303,7 @@
 </script> -->
 <script type="text/javascript">CKEDITOR.replace('myTextArea',{
    height: '300',
-   maxlength: '400'
+   maxlength: '5000'
 });
 </script>
 <script>
@@ -333,7 +333,7 @@ function KeyUp(editorID,maxLimit,infoID) {
    $("#"+infoID).text(text.length);
 
    if(text.length>maxLimit) {   
-      alert("You cannot have more than "+maxLimit+" characters");         
+      Swal.fire("You cannot have more than "+maxLimit+" characters");         
       editorID.setData(text.substr(0,maxLimit));
       editor.cancel();
    } else if (text.length==maxLimit-1) {
@@ -360,16 +360,22 @@ function KeyUp(editorID,maxLimit,infoID) {
 function submitCompetition(event){
     event.preventDefault();
 var isValid=true;
-   var answer =$('#answer').val();
+//    var answer =$('#myTextArea').val();
+   var answer = CKEDITOR.instances['myTextArea'].getData();
     if(answer==""){
         Swal.fire("Please enter answer");
         // alert('enter response');
         isValid=false;
+    }else if(answer.length > 5000){
+        isValid=false;
+        Swal.fire("Only 5000 characters allowed");
+    }else{
+        
     }
 
     if(isValid){
         Swal.fire({
-                    title: 'Are you sure you want to Delete?',
+                    title: 'Are you sure you want to Submit?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Submit',

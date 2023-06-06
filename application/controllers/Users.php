@@ -2280,7 +2280,7 @@ class Users extends CI_Controller
         }
           
         $data['user_id']=encryptids('D',$user_id);
-        $data['answer_text']=$this->input->post('answer');
+        $data['answer_text']=$this->input->post('myTextArea');
         $data['competiton_id']=$this->input->post('comp_id');
 
 
