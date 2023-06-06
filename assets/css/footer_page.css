@@ -19,10 +19,10 @@
 .sitenav{
     border-left: solid 3px #0086b2;
 }
-.sitenav ul li:hover {
+ .sitenav ul li a:hover {
     color: red;
     text-decoration: underline;
-}
+} 
 .page-heading-inner-box{
     background: url(https://www.bis.gov.in/wp-content/uploads/2021/10/Gate1.jpeg);
 height: 190px;

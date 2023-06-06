@@ -32,7 +32,7 @@ i.fa.fa-chevron-down {
                             <ul id="toggle_show" style="display:none;">
                                 <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
                                 <li><a href="<?php echo base_url(); ?>users/help">Help</a></li>
-                                <li><a href="<?php echo base_url(); ?>users/sitemap">">Sitemap</a></li>
+                                <li><a href="<?php echo base_url(); ?>users/sitemap">Sitemap</a></li>
                                 <!-- <li><a href="#">Accessibility</a></li> -->
                             </ul>
                         </div>

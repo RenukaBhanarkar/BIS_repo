@@ -52,7 +52,7 @@
         <div class="col-md-4">
             <div class="sitenav">
                 <ul>
-                    <li><a href="<?php echo base_url() . 'users/quality_index' ?>">World of Standard</a>
+                    <!-- <li><a href="<?php echo base_url() . 'users/quality_index' ?>">World of Standard</a>
                         <ul>
                             <li><a href="#">Quiz</a></li>
                             <li><a href="#">Standard Writting</a></li>
@@ -65,7 +65,7 @@
                             <li><a href="<?php echo base_url() . 'users/byTheMentor' ?>">By the Mentor</a></li>
                             <li><a href="<?php echo base_url() . 'users/standard' ?>">By the Mentor</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     
                 </ul>
             </div>
