@@ -32,16 +32,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 mb-5">
+                        <!-- <div class="col-sm-12 col-md-6 col-lg-6 mb-5">
                             <div class="card border-1 contact_box">
                                 <div class="card-body text-center">
                                     <i class="fa fa-fax  icons_contact" aria-hidden="true"></i>
                                     <h4 class="text-uppercase sub_title">Tele Fax</h4>
-                                    <!-- <address>011-2323 0131/3375</address> -->
+                                    <address>011-2323 0131/3375</address>
                                     <address><?php echo $contact['tele_fax']; ?></address>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-sm-12 col-md-6 col-lg-6 mb-5">
                             <div class="card border-1 contact_box">
                                 <div class="card-body text-center">

@@ -73,7 +73,7 @@
                                 <span class="text-danger" id="err_score"></span>
                                 </div>
                             </div>
-                                <div class="row">
+                            <!-- <div class="row">
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Comment<sup class="text-danger">*</sup></label>
                                     <div class="d-flex">
@@ -81,7 +81,7 @@
                                      </div>
                                      <span class="text-danger" id="err_comment"></span>
                                 </div>  
-                            </div>
+                            </div> -->
                             
                           </div>
                           <div class="col-md-12 submit_btn p-3">
@@ -99,7 +99,8 @@
                             $('.submit').click(function(){
                                // alert("dfghj");
                                 var score = parseInt($('#score').val());
-                                var comment = $('#comment').val();
+                                // var comment = $('#comment').val();
+                                var comment = "";
                                 var id =$(this).attr('data-id');
                                 var out_of= parseInt($(this).attr('out-of'));
                                 var isvalid =true;
@@ -159,6 +160,7 @@
                                                 success: function(response) {
                                                     Swal.fire('Score updated successuflly');
                                                     $('.submit').hide();
+                                                    window.location.replace('<?php echo base_url().'Miscellaneouscompetition/task_recevied_list'; ?>');
                                                     // var res = JSON.parse(response);
                                                     // var selectbox = $('#region_id');
                                                     // selectbox.empty();
