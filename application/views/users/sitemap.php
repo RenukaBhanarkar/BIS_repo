@@ -9,8 +9,8 @@
              </div>
          </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="sitemap_new d-flex">
+        <div class="col-md-4">
             <div class="sitenav">
                 <ul>
                     <li><a href="#">Home</li>
@@ -27,17 +27,21 @@
             </div>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="sitenav">
                 <ul>
-                    <li><a href="#">Standard Club
+                    <li><a href="<?php echo base_url() . 'users/standard' ?>">Standard Club</a>
                         <ul>
-                            <li>Home</li>
-                            <li>Home</li>
-                            <li>Home</li>
-                            <li>Home</li>
-
-                            <li>Home</li>
+                            <li><a href="#">Quiz</a></li>
+                            <li><a href="#">Standard Writting</a></li>
+                            <li><a href="#">Essay Writting</a></li>
+                            <li><a href="#">Poster Making</a></li>
+                            <li><a href="#">More</a></li>
+                            <li><a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>">Wall of Wisdom</a></li>
+                            <li><a href="<?php echo base_url() . 'users/learning_standerd' ?>">Classroom</a></li>
+                            <li><a href="<?php echo base_url() . 'users/your_wall_posts' ?>">Your Wall</a></li>
+                            <li><a href="<?php echo base_url() . 'users/byTheMentor' ?>">By the Mentor</a></li>
+                            <li><a href="<?php echo base_url() . 'users/standard' ?>">By the Mentor</a></li>
                         </ul>
                     </li>
                     
@@ -45,6 +49,28 @@
             </div>
 
         </div>
-          
-    </div>          
+        <div class="col-md-4">
+            <div class="sitenav">
+                <ul>
+                    <!-- <li><a href="<?php echo base_url() . 'users/quality_index' ?>">World of Standard</a>
+                        <ul>
+                            <li><a href="#">Quiz</a></li>
+                            <li><a href="#">Standard Writting</a></li>
+                            <li><a href="#">Essay Writting</a></li>
+                            <li><a href="#">Poster Making</a></li>
+                            <li><a href="#">More</a></li>
+                            <li><a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>">Wall of Wisdom</a></li>
+                            <li><a href="<?php echo base_url() . 'users/learning_standerd' ?>">Classroom</a></li>
+                            <li><a href="<?php echo base_url() . 'users/your_wall_posts' ?>">Your Wall</a></li>
+                            <li><a href="<?php echo base_url() . 'users/byTheMentor' ?>">By the Mentor</a></li>
+                            <li><a href="<?php echo base_url() . 'users/standard' ?>">By the Mentor</a></li>
+                        </ul>
+                    </li> -->
+                    
+                </ul>
+            </div>
+
+        </div>
+</div>   
+              
   </div>
