@@ -1595,6 +1595,12 @@ class Users extends CI_Controller
         $this->load->view('users/help');
         $this->load->view('users/footers/footer');
     }
+    public function change_password()
+    {
+       // $this->load->view('users/headers/header');
+        $this->load->view('users/change_password');
+      //  $this->load->view('users/footers/footer');
+    }
     public function terms_condition()
     {
         $data = $this->Users_model->get_legal_data('tc');
