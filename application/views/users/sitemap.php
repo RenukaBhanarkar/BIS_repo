@@ -13,16 +13,16 @@
         <div class="col-md-4">
             <div class="sitenav">
                 <ul>
-                    <li><a href="#">Home</li>
-                    <li><a href="#">BIS</li>
-                    <li><a href="#">About Exchange Forum</li>
-                    <li><a href="#">Published Standards</li>
-                    <li><a href="#">Know Your Standards</li>
-                    <li><a href="#">SNAP 2022-27</li>
-                    <li><a href="#">NBC</li>
-                    <li><a href="#">NEC</li>
-                    <li><a href="#">Contact Us</li>
-                    <li><a href="#">User Manual</li>
+                    <li><a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>">Home</li>
+                    <li><a href="https://www.bis.gov.in/">BIS</li>
+                    <li><a href="<?php echo base_url() . 'users/about_exchange_forum' ?>">About Exchange Forum</li>
+                    <li><a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards">Published Standards</li>
+                    <li><a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails">Know Your Standards</li>
+                    <li><a href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/">SNAP 2022-27</li>
+                    <li><a href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf">NBC</li>
+                    <li><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf">NEC</li>
+                    <li><a href="<?php echo base_url() . 'users/contact_us' ?>">Contact Us</li>
+                    <li><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf">User Manual</li>
                 </ul>
             </div>
 
