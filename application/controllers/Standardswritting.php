@@ -43,7 +43,7 @@ class Standardswritting extends CI_Controller
         $current_time = date("Y-m-d H:i:s");
         // $formdata['id']=$this->input->post('submission_id');
         $formdata['user_id']=$this->input->post('user_id');
-        $formdata['submission_id']=$this->input->post('comp_id');
+        $formdata['competiton_id']=$this->input->post('comp_id');
         $formdata['evaluator']=$this->input->post('evaluator');
         $formdata['status']="2";
         $formdata['ev_assigned_on']=$current_time;
