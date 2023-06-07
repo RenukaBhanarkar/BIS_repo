@@ -3230,7 +3230,7 @@ class Users extends CI_Controller
        // echo json_encode($mark_for_review);exit();
         
         $user_id = $this->input->post("user_id");
-      // echo  $user_id ;
+      // echo  $user_id ; 
         $quiz_id = $this->input->post("quiz_id");
         $start_time = $this->input->post("start_time");
        // $review = $this->input->post("review");
@@ -3476,10 +3476,25 @@ class Users extends CI_Controller
             $this->load->view('users/standard_writting_login',$data);
         }
         else
-        {  
+        {
+
+            $start_time= $this->input->post('start_time');
+            $end_t=date('h:i:s');
+
+            $st_time = strtotime($start_time);
+            $en_time = strtotime($end_t);
+            $diff = $en_time - $st_time; 
+            $time_taken =abs($diff);  
+             
+
+
             $formdata['user_id'] = encryptids("D", $_SESSION['admin_id']);
             $formdata['comp_id'] = $this->input->post('comp_id');
-            $formdata['details'] = $this->input->post('details'); 
+            $formdata['details'] = $this->input->post('details');
+            $formdata['start_time'] = $start_time;
+            $formdata['end_time'] = $end_t;
+            $formdata['time_taken'] = $time_taken;
+
             $formdata['created_on'] = date('Y-m-d h:i:s'); 
 
             $id = $this->Standardswritting_model->StandardswrittingCompSave($formdata);

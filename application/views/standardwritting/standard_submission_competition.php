@@ -65,11 +65,9 @@
                             <td class="d-flex">
                                
                                 <a onclick="viewSubmitData('<?= $value['submission_id']?>')" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <?php 
-                            if($value['assignStatus']==0)
-                            {?>
+                                
                                 <a onclick="viewAssingData('<?= $value['submission_id']?>')"class="btn btn-secondary btn-sm mr-2" >Assign</a>
-                            <?php }?>
+                            
                             </td>
                         </tr>
                         
