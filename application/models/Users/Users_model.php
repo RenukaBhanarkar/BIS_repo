@@ -1891,6 +1891,17 @@
           //  echo json_encode($rs);exit();
             return $rs;  
         }
+
+        public function updateProfile($data){
+            $this->db->where('user_id',$data['user_id']);
+            $res=$this->db->update('tbl_users',$data);
+            if($res){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
 }
 // =======
 // >>>>>>> 068af7e12f46c89299a5665cd129d7be617b43b1
