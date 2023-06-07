@@ -64,15 +64,17 @@
                                 <!-- <td></td> -->
                                 <td><?php echo $list['score']; ?></td>
                                 <td><?php echo $list['total_marks']; ?></td>
-                                <td><?php if($list['review_status']==1){echo "Send for review";}  ?></td>
+                                <td><?php if($list['submission_status']==1){echo "Send for review";}else if($list['submission_status']==3){ echo "Evaluated"; }  ?></td>
                                 <td><?php echo $list['ev_name'];  ?></td>
                                 <!-- <td><?php if($list['evaluator_name']=="IT Services Department"){echo "not assigned";}else{ echo $list['evaluator_name']; } ?></td> -->
                                 <td><?php echo $list['ev_assigned_on']; ?></td>
                                 
                                 <td class="d-flex">
                                  <a href="<?php echo base_url().'Standardswritting/view_submitted_comp_response/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <?php if($list['submission_status']!="3"){ ?>
                                  <a href="#" class="btn btn-primary btn-sm mr-2 abcd" sub-id="<?php echo $list['id']; ?>" comp-id="<?php echo $list['competiton_id']; ?>" user_id="<?php echo $list['user_id']; ?>" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
-                              </td>
+                                 <?php } ?>
+                                </td>
                             </tr>
                             <?php $i++; } } ?>
 

@@ -43,7 +43,8 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                       <tbody>
+ 
+                       <tbody> 
 
                             <?php foreach ($getData as $key => $value) {?>
                             <tr>

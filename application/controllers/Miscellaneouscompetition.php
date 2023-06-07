@@ -36,8 +36,13 @@ class Miscellaneouscompetition extends CI_Controller
     }
     public function task_reviewed()
     {
+        $data = array();
+        $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $abc=$this->Miscellaneous_competition->getAdminUserid($admin_id);
+        $data['records']=$this->Miscellaneous_competition->evaluatedSubmissionsByEvaluator($abc['user_uid']);
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/task_reviewed');
+        $this->load->view('admin/task_reviewed',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_recevied_view($id)

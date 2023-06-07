@@ -15,7 +15,7 @@
         <!-- Content Row -->
         <div class="row mt-3 ">
 
-            <?php if (encryptids("D", $_SESSION['admin_type']) == 1 || encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+            <?php //if (encryptids("D", $_SESSION['admin_type']) == 1 || encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                 
                 
                 <div class="col-xl-3 col-md-6 mb-4">
@@ -54,7 +54,7 @@
                         </div>
                     </a>
                 </div> -->
-            <?php } ?>
+            <?php // } ?>
             
             
             
