@@ -83,7 +83,7 @@
                 </div>
             </div>
                 <div class="col-md-12 submit_btn p-3">
-                    <button class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#assignForm">Assign for Review</button>
+                    <button class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#bulkassignForm">Assign for Review</button>
                     <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm text-white" >Cancel</a>
                 </div>
         </div>
@@ -128,6 +128,46 @@
                                         </div>
                                     </div>
                                     <!-- Modal -->
+                                    <div class="modal fade" id="bulkassignForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Assign For Review</h5>
+                                                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col-md-12">
+                                                        <form  action="<?php echo base_url().'Miscellaneouscompetition/bulkassign/'; ?>" name="bulksubmit" method="post">
+                                                <table id="example_2" class="table-bordered" style="width:100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                                                    <th>Sr. No.</th>
+                                                                    <th>Name of Evaluator</th>
+                                                                    
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php if(!empty($evaluators)){ $i=1; foreach($evaluators as $list){ ?>
+                                                                <tr>
+                                                                    <td><input class="form-control-input" type="checkbox" name="evaluator[]" value="<?php echo $list['user_uid']; ?>" id="flexCheckDefault"></td>
+                                                                    <td><?php echo $i; ?></td>
+                                                                    <td><?php echo $list['name']; ?></td>
+                                                                </tr>
+                                                                <?php $i++; } } ?>
+                                                            </tbody>
+                                                            <input type="submit" name="submit" value="submit">
+                                                        </table>
+                                                        </form>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary bulkassign" data-bs-dismiss="modal">Assign</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 <script>
     $(document).ready(function() {
         $('.abcd').on('click',function(){
@@ -175,7 +215,35 @@
             });
         });
 
+        $('.bulkassign').click(function(){
+           var id = $('input[name="evaluator"]:checked').val();
+        //    if(id=="undefined"){
+        //     alert("please select");
+        //    }
+        postdata={
+            'user_id':user_id,
+            'comp_id':comp_id,
+            'evaluator':id,
+            // 'submission_id':submission_id
+        };
+        $.ajax({
+                url: "<?= base_url() ?>standardswritting/assign_eveluator",
+                data: postdata,
+                // type: "JSON",
+                method: "post",
+                success: function(response) {
+                    console.log(response);
+                  
+                    if(response){
+                        Swal.fire('Evaluator Assigned');
+                    location.reload();
+                    }
+                }
+            });
+        });
+
     })
     $('#example_1').DataTable();
+    $('#example_2').DataTable();
 });
 </script>

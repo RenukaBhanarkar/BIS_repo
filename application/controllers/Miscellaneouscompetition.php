@@ -95,4 +95,34 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('users/standard_writting_thanks');
         $this->load->view('users/footers/footer');
     }
+    public function addDummyCompRecord($id){
+        $i=1;
+        $uid=2212274963;
+        while($i < $id){
+            
+
+            $data['user_id']=$uid;
+            $data['competiton_id']="C060623vzde";
+            $data['answer_text']="answer text";
+            $data['image']="uploads/competition/response_images/1685366899comp_response_img1234.jpg";
+            $data['score']="0";
+            $data['status']="0";
+            $data['evaluator']="";
+
+            $res=$this->Miscellaneous_competition->addDummyCompRecord($data);
+            if($res){
+
+            }else{
+                die;
+            }
+
+            $uid=$uid+1;
+            $i++;
+        }
+    }
+    public function bulkassign($id){
+        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition2($id);
+        print_r($_POST); 
+        echo count($_POST['evaluator']); die;
+    }
 }

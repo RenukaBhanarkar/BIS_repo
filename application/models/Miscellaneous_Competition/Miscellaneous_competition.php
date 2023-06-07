@@ -562,4 +562,12 @@ class Miscellaneous_competition extends CI_Model {
        $result =$res->result_array();
         return $result;
     }
+    public function addDummyCompRecord($data){
+        if($this->db->insert('tbl_users_competition_attempt_record',$data)){
+			// return $this->db->insert_id();
+            return true;
+		}else{
+			return false;
+		}
+    }
 }
