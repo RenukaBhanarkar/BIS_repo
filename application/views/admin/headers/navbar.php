@@ -212,26 +212,26 @@ aria-hidden="true">
                                                                 </div>
                                                         </div>
                                                 </div>
-                                                    <div class="mb-2 col-md-4">
+                                                    <div class="mb-2 col-md-6">
                                                         <label class="d-block text-font" style="text-align:left;">Name</label>
                                                         <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Name">
                                                     </div>
-                                                    <div class="mb-2 col-md-4">
+                                                    <div class="mb-2 col-md-6">
                                                         <label class="d-block text-font" style="text-align:left;">Email Id</label>
-                                                        <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Email Id">
+                                                        <input type="text" class="form-control input-font" name="Email" id="Email" placeholder="Enter Email Id">
                                                     </div>
-                                                    <div class="mb-2 col-md-4">
+                                                    <div class="mb-2 col-md-6">
                                                         <label class="d-block text-font" style="text-align:left;">Date of birth</label>
                                                         <input type="date" class="form-control input-font" name="Name" id="Name">
                                                     </div>
-                                                    <div class="mb-2 col-md-4">
+                                                    <div class="mb-2 col-md-6">
                                                         <label class="d-block text-font" style="text-align:left;">Gender</label>
                                                         <select id="Gender" name="Gender" class="form-control input-font" value="" fdprocessedid="uat7f">
                                                             <option value="1">Male</option>
                                                             <option value="2">Female</option>
                                                         </select>
                                                     </div>
-                                                    <div class="mb-2 col-md-4">
+                                                    <div class="mb-2 col-md-6">
                                                         <label class="d-block text-font" style="text-align:left;">Contact Number</label>
                                                         <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Contact Number" fdprocessedid="sof5sf">
                                                     </div>
