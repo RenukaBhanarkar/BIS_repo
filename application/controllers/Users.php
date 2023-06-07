@@ -3509,9 +3509,39 @@ class Users extends CI_Controller
         $this->load->view('users/footers/footer');
       }
       public function edit_profile(){
+
+        $UserId = $this->session->userdata('admin_id');
+        $user_id = encryptids("D", $UserId);
+      //  echo $UserId; die;
+        // $data['user_profile']=$this->Users_model->getUsersDetailsByUserId('1800003696');
+        $data['user_profile']=$this->Users_model->getUsersDetailsByUserId( $user_id);
+       
+        // print_r($data['user_profile']); die;
+
         $this->load->view('users/headers/header');
-         $this->load->view('users/edit_profile');
+         $this->load->view('users/edit_profile',$data);
        $this->load->view('users/footers/footer');
+     }
+     public function update_profile(){
+        // print_r($_POST); die;
+        $UserId = $this->session->userdata('admin_id');
+        $user_id = encryptids("D", $UserId);
+        $data['user_name']=$this->input->post('user_name');
+        $data['email']=$this->input->post('email');
+        $data['date_of_birth']=$this->input->post('date_of_birth');
+        $data['gender']=$this->input->post('gender');
+        $data['user_mobile']=$this->input->post('user_mobile');
+        $data['user_id']=$user_id;
+
+        $response=$this->Users_model->updateProfile($data);
+        if($response){
+            $this->session->set_flashdata('MSG', ShowAlert("Profile updated successfully", "DD"));
+            redirect(base_url() . "users/edit_profile/",'refresh');
+        }else{
+            $this->session->set_flashdata('MSG', ShowAlert("Failed to create Create New Competition, Please try again", "DD"));
+            redirect(base_url() . "users/edit_profile/",'refresh');
+        }
+
      }
     
  
