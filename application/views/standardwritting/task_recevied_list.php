@@ -39,15 +39,26 @@
                             <td><?=$value['competetion_id']?></td>
                             <td><?=$value['title']?></td>
                             <td><?=$value['id']?></td>
-                            <td>Class Standard</td>
+                            <td><?=$value['avail']?></td>
                             <td><?=$value['created_on']?></td>
                             <td>Name of Evaluator</td>
                             <td><?=$value['total_mark']?></td>
                             <td><?=$value['score']?></td>
-                            <td>Send For Review</td>
+
+                            <?php 
+                            if($value['status']==1)
+                            {
+                                $status="Send For Review";
+                            }
+                            if($value['status']==2)
+                            {
+                                $status="Reviewed";
+                            }
+                            ?>
+                            <td><?=$status?></td>
                             <td class="d-flex">
-                                <a onclick="viewSubmitData('<?= $value['id']?>')" class="btn btn-success btn-sm mr-2" title="View">Review</a>
-                                <a href="<?php echo base_url(); ?>standardswritting/task_recevied_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewSubmitData('<?= $value['id']?>',1)" class="btn btn-success btn-sm mr-2" title="View">Review</a>
+                                <a onclick="viewSubmitData('<?= $value['id']?>',2)" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                             </td>
                         </tr>
                         
@@ -66,13 +77,23 @@
 
 <script type="text/javascript">
      
-    function viewSubmitData(id)
+    function viewSubmitData(id,data)
     {
+        if (data==1) 
+        {
+            title="Do you want to  Task Recevied for Review ?";
+            name="Review";
+        }
+        if (data==2) 
+        {
+            title="Do you want to  Task Recevied for view ?";
+            name="view";
+        }
     Swal.fire({
-    title: 'Do you want to  Task Recevied for Review ?',
+    title: title,
     showDenyButton: true,
     showCancelButton: false,
-    confirmButtonText:'View',
+    confirmButtonText:name,
     denyButtonText: `Cancel`,
     }).then((result) => {
     if (result.isConfirmed)

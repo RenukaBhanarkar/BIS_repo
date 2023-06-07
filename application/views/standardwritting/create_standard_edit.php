@@ -24,15 +24,15 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Branch Id<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="Branch" id="Branch" placeholder="Enter Branch Id" value="" required="">
+                            <input type="text" class="form-control input-font" name="branch_id" id="branch_id" placeholder="Enter Branch Id" value="<?= $getData['branch_id']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Department Id<sup class="text-danger">*</sup>  </label>
-                            <input type="text" class="form-control input-font" name="Department" id="Department" placeholder="Enter Department Id" value="" required="">
+                            <input type="text" class="form-control input-font" name="dept_id" id="dept_id" placeholder="Enter Department Id" value="<?= $getData['dept_id']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
-                           <a class="btn btn-primary btn-sm text-white" style="margin-top: 30px;">Fetch Details</a>
-                         </div>
+                            <a class="btn btn-primary btn-sm text-white" style="margin-top: 30px;" onclick="getStandardClub()">Fetch Details</a>
+                        </div>
                         <div class="mb-2 col-4">
                             <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
                             <select id="standard_club" name="standard_club" class="form-control input-font">
@@ -46,17 +46,17 @@
                     <div class="row">
                         <div class="mb-2 col-md-12">
                             <label class="d-block text-font">Name of Activity<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="<?= $getData['topic_of_activity']?>" required="">
+                            <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="<?= $getData['topic_of_activity']?>" >
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Date of Activity<sup class="text-danger">*</sup></label>
-                            <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="<?= $getData['date_of_activity']?>" required="">
+                            <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="<?= $getData['date_of_activity']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Number of Participants<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="<?= $getData['number_of_participants']?>" required="">
+                            <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="<?= $getData['number_of_participants']?>" >
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" required="">
+                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="first_fileold" name="first_fileold" value="<?= $getData['first_file']?>" >
@@ -100,7 +100,7 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" required="">
+                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="second_fileold" name="second_fileold" value="<?= $getData['second_file']?>" >
@@ -129,7 +129,7 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipants</label>
-                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>" required="">
+                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="third_fileold" name="third_fileold" value="<?= $getData['third_file']?>" >
@@ -155,7 +155,7 @@
                         <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>" required="">
+                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <input type="hidden" id="consolation_fileold" name="consolation_fileold" value="<?= $getData['consolation_file']?>" >
@@ -609,3 +609,34 @@ $('#closeform').trigger('click');
 return false;
 }
 });</script>
+
+<script type="text/javascript">
+
+function getStandardClub () {
+    var branch_id = $("#branch_id").val();
+    var dept_id = $("#dept_id").val();
+     $.ajax({
+        url: "<?= base_url() ?>standardswritting/getStandardClub",
+        data: {'branch_id':branch_id,'dept_id':dept_id},
+        type: "JSON",
+        method: "post",
+        success: function(StdClb) 
+        {
+            var res = JSON.parse(StdClb);
+            console.log(res.result)
+            if (res.result=='success') {
+            var stringToAppend = "<option disabled selected value=''> Select Standard Club</option> ";
+            $.each(res.data, function (key, val) {
+                stringToAppend += "<option value='" + val.StdClubName + "'>" + val.StdClubName + "</option>";
+            });
+            $("#standard_club").html(stringToAppend);
+        }
+        else
+        {
+            alert("Data not found .... Please Try agen");
+        }
+        }
+    });
+ }
+
+  </script>

@@ -16,7 +16,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Competition Reviewed</li>
                 
                 </ol>
-            </nav>
+            </nav> 
         </div>
 
         <!-- Content Row -->
@@ -43,28 +43,37 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                           <tr>
-                              <td>1</td>
-                              <td>12345</td>
-                              <td>Standard Competition</td>
-                              <td>12/03/2023</td>
-                              <td>12:00:00</td>
-                              <td>12/03/2023</td>
-                              <td>12:00:00</td>
-                              <td><img src="#" alt="#" class="" width="10%"></td>
-                              <td>Available</td>
-                              <td>Level of Competition</td>
-                              <td>Pending</td>
-                              <td>Review</td>
-                              <td>task Reviewed</td>
-                              <td>Pending</td>
-                              <td class="d-flex">
-                                 <a  class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a  class="btn btn-primary btn-sm mr-2" >View Details</a>
-                                 
-                              </td>
+ 
+                       <tbody> 
 
+                            <?php foreach ($getData as $key => $value) {?>
+                            <tr>
+                              <td><?=$key+1?></td>
+                              <td><?=$value['comp_id']?></td>
+                              <td><?=$value['title']?></td>
+                              <td><?=$value['start_date']?></td>
+                              <td><?=$value['start_time']?></td>
+
+                              <td><?=$value['end_date']?></td>
+                              <td><?=$value['end_time']?></td> 
+                              <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
+                              <td><?=$value['availability']?></td>
+                              <td><?=$value['level']?></td> 
+                              <!-- <td><?=$value['status_name']?></td> -->
+                              <td>0</td>
+                              <td>0</td>  
+                              <td>0</td>  
+                              <td>Status</td>  
+                              <td class="d-flex">
+
+                           <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
+ 
+                                  
+                              </td>
+                           </tr>
+                         <?php } ?>
+ 
                         </tbody>
                     </table>
                 </div>
@@ -74,3 +83,38 @@
     <!-- /.container-fluid -->
 
     
+    <script type="text/javascript">
+
+    function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "create_online_view/"+id; 
+    }  
+  })
+} standard_submission_competition
+
+function viewSubmissionData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View Submission ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "task_reviewed_list/"+id; 
+    }  
+  })
+}
+
+</script>
