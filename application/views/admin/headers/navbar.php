@@ -1,4 +1,15 @@
 <style>
+    i.fa.password.fa-eye {
+        float: right;
+        margin-top: -25px;
+        margin-right: 16px;
+    }
+
+    i.fa.password.fa-eye-slash {
+        float: right;
+        margin-top: -25px;
+        margin-right: 16px;
+    }
 .avatar-upload {
   position: relative;
   max-width: 205px;
@@ -131,11 +142,11 @@
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
-                    <a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#edit_profile">
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_profile">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Profile
                     </a>
-                    <a class="dropdown-item" href="<?php echo base_url(); ?>admin/profile_list">
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#change_password">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Change Password
                     </a>
@@ -221,10 +232,6 @@ aria-hidden="true">
                                                         </select>
                                                     </div>
                                                     <div class="mb-2 col-md-4">
-                                                        <label class="d-block text-font" style="text-align:left;">Username</label>
-                                                        <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Username" fdprocessedid="87w216">
-                                                    </div>
-                                                    <div class="mb-2 col-md-4">
                                                         <label class="d-block text-font" style="text-align:left;">Contact Number</label>
                                                         <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Contact Number" fdprocessedid="sof5sf">
                                                     </div>
@@ -241,12 +248,12 @@ aria-hidden="true">
                                     </div>
                                     <!-- modal -->
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="change_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width: 442px;">
                                         <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Do you want to change your Password</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
                                         <div class="modal-body">
                                             
@@ -270,7 +277,7 @@ aria-hidden="true">
                                             
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 281px;">Skip</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 269px;">Skip</button>
                                             <button type="button" class="btn btn-success">Submit</button>
                                         </div>
                                         </div>
