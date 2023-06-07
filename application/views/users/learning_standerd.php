@@ -117,7 +117,7 @@ section.background_coming {
 </section>
 
 
-<section class="">
+ <!-- <section class="">
         <div class="container" style="padding:54px 0px 33px 0px;">
             <h2 class="" style="font-weight: 600;">Live Posts/Sessions</h2>
             <div class="coming_content" style="margin-top:32px;">
@@ -134,14 +134,7 @@ section.background_coming {
                         </div>
                     <?php } ?>
                  
-               <!--  <div class="item">
-                    <div class="quiz-section">
-                            <div class="quiz-box">
-                                <img src="<?php echo base_url(); ?>assets/images/img_1.jpg" class="w-100 border-2">
-                            </div> 
-                            <p class="quiz-text overflow-hidden p-1">Title of the Post Date</p>
-                        </div>
-                </div> -->
+              
 
                 
             </div>  
@@ -151,16 +144,16 @@ section.background_coming {
             </div>
         </div>
     </div>    
-</section>
+</section> -->
 <section class="">
     <div class="container-fluid">
         <div class="live_session d-flex row">
-            <div class="col-lg-6 col-md-6 " style="background: linear-gradient(180.83deg, rgb(0 182 242 / 76%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%);">
+            <div class="col-lg-4 col-md-4 " style="background: linear-gradient(180.83deg, rgb(0 182 242 / 76%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%);">
                 <div class="live_content" style="padding: 47px;">
                     <div class="live_section_title">
-                        <h2 style="font-weight: 600;">Text Posts</h2>
+                        <h2 style="font-weight: 600;">Lesson Plans</h2>
                     </div>
-                    <div class="owl-carousel owl-theme" id="owl-caraousal_2" style="padding: 25px 60px 0px 60px;">
+                    <div class="owl-carousel owl-theme" id="owl-caraousal_2" style="padding: 25px 0px 0px 0px;">
                         <?php foreach ($LatestPosts as $key => $value) {?>
                         <div class="item">
                             <div class="quiz-section">
@@ -179,12 +172,12 @@ section.background_coming {
                     
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 " style="background: linear-gradient(180.83deg, rgb(229 186 0 / 73%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%);">
+            <div class="col-lg-4 col-md-4 " style="background: linear-gradient(180.83deg, rgb(229 186 0 / 73%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%);">
                 <div class="live_content" style="padding: 47px;">
                     <div class="live_section_title">
-                        <h2 style="font-weight: 600;">Informative Videos</h2>
+                        <h2 style="font-weight: 600;">Audio Visual Material</h2>
                     </div>
-                    <div class="owl-carousel owl-theme" id="owl-caraousal_3" style="padding: 25px 60px 0px 60px;">
+                    <div class="owl-carousel owl-theme" id="owl-caraousal_3" style="padding: 25px 0px 0px 0px;">
                         <?php foreach ($InformativeVideo as $key => $value) {?>
                         <div class="item">
                             <div class="quiz-section">
@@ -202,6 +195,32 @@ section.background_coming {
                         <?php }?>
                     </div>
                     <a href="learning_standerd_informative_video_all" class="view-btn" title="View All">View All</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 " style="background: linear-gradient(180.83deg, rgb(143 0 229 / 73%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%);">
+                <div class="live_content" style="padding: 47px;">
+                    <div class="live_section_title">
+                        <h2 style="font-weight: 600;">Join Live Classroom</h2>
+                    </div>
+                    <div class="owl-carousel owl-theme" id="owl-caraousal_10" style="padding: 25px 0px 0px 0px;">
+                    <?php foreach ($LiveSessions as $key => $value) {?>
+                        <div class="item">
+                            <div class="quiz-section">
+                                <div class="quiz-box_live">
+                                    <a href="<?php echo base_url().'users/learning_standerd_sessions_watch_now/'?><?php echo encryptids("E", $value['id'] )?>">
+                                        <img src="<?php echo base_url(); ?><?= $value['thumbnail']?>" class="live_img border-2">
+                                    </a>
+                                </div> 
+                                <p class="quiz-text overflow-hidden p-1" >
+                                    <a href="<?php echo base_url().'users/learning_standerd_sessions_watch_now/'?><?php echo encryptids("E", $value['id'] )?>">
+                                    <?= $value['title']?></a>
+                                    </p>
+                            </div>
+                        </div>
+                        <?php } ?>
+                       
+                    </div>
+                    <a href="learning_standerd_sessions_view_all" class="view-btn" title="View All">View All</a>
                 </div>
             </div>
         </div>    

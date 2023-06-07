@@ -79,6 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="contact">
                             <ul>
                                 <li><a href="#">हिन्दी</a></li>
+                                <li><a href="#">English</a></li>
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
                                     <a href="#" id="blue_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
