@@ -33,32 +33,73 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>12345</td>
-                              <td>Name of Competition</td>
-                              <td>3660</td>
-                              <td>Class Standard</td>
-                              <td>12/03/2023 12:00:00</td>
-                              <td>Name of Evaluator</td>
-                              <td>100</td>
-                              <td>90</td>
-                              <td>Pending</td>
-                              <td class="d-flex">
-                                 <!-- <a href="<?php echo base_url(); ?>admin/task_recevied_view" class="btn btn-primary btn-sm mr-2" title="View">Review</a> -->
-                                 <a href="<?php echo base_url(); ?>standardswritting/task_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
-                              </td>
-                           </tr>
-                           
-                        </tbody>
-                    </table>
-                </div>
+                       <tbody>
+                        <?php foreach ($getData as $key => $value): ?>
+                        <tr>
+                            <td><?=$key+1?></td>
+                            <td><?=$value['competetion_id']?></td>
+                            <td><?=$value['title']?></td>
+                            <td><?=$value['id']?></td>
+                            <td><?=$value['avail']?></td>
+                            <td><?=$value['created_on']?></td>
+                            <td>Name of Evaluator</td>
+                            <td><?=$value['total_mark']?></td>
+                            <td><?=$value['score']?></td>
+
+                            <?php 
+                            if($value['status']==1)
+                            {
+                                $status="Send For Review";
+                            }
+                            if($value['status']==2)
+                            {
+                                $status="Reviewed";
+                            }
+                            ?>
+                            <td><?=$status?></td>
+                            <td class="d-flex"> 
+                                <a onclick="viewSubmitData('<?= $value['id']?>',2)" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                            </td>
+                        </tr>
+                        
+                        <?php endforeach ?>
+                        
+                        
+                    </tbody>
+                </table>
             </div>
-                <!-- <div class="col-md-12 submit_btn p-3">
-                    <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm text-white" >Assign</a>
-                    <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm text-white" >Cancel</a>
-                </div> -->
         </div>
     </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+
+<script type="text/javascript">
+     
+    function viewSubmitData(id,data)
+    {
+        if (data==1) 
+        {
+            title="Do you want to  Task Recevied for Review ?";
+            name="Review";
+        }
+        if (data==2) 
+        {
+            title="Do you want to  Task Recevied for view ?";
+            name="view";
+        }
+    Swal.fire({
+    title: title,
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:name,
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    if (result.isConfirmed)
+    {
+    window.location.href = "task_recevied_reviewed/"+id;
+    }
+    })
+    }
+    </script>

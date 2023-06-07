@@ -234,7 +234,7 @@ if(!isset($_SESSION['user_session_id'])){
                 <h4 style="color: darkblue;"><?=$getData['title']?></h4>
             </div>
             <div class="col-md-3">
-                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span>
+                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_id'])?></span>
                 
             </div>
             <!-- </div> -->
@@ -246,152 +246,25 @@ if(!isset($_SESSION['user_session_id'])){
                  <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 <input type="hidden" name="comp_id" id="comp_id" value="<?=$getData['id']?>">
                 <div class="row">
-                    <div class="mb-2 col-sm-4">
-                        <label class="d-block text-font">Indian Standard</label>
-                        <input type="text" class="form-control title-height" name="indian_standard" id="indian_standard" placeholder="Enter Indian Standard" required>
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-4">
-                        
-                    </div>
-                    <div class="mb-2 col-sm-4">
-                        <label class="d-block text-font">IS No.nnnnn</label>
-                        <input type="text" class="form-control title-height" name="is_no" id="is_no" placeholder="Enter" required>
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+                     
                     <div class="mb-2 col-sm-12">
-                        <label class="d-block text-font">Product</label>
-                        <textarea type="text" class="form-control title-height" name="product" id="product" placeholder="Enter Specification BIS..." required></textarea >
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <label class="d-block text-font">Name & Address</label>
-                        <textarea type="text" class="form-control title-height" name="name_address" id="name_address" placeholder="Enter Name & Address" required></textarea >
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-4">
-                        <label class="d-block text-font">Mar 2022 Price</label>
-                        <input type="text" class="form-control title-height" name="price" id="price" placeholder="Enter Price" required>
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">Foreword<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="a) Name of the Committee responsible for preparation of the standard, date of publication of the standard etc. b) Information about the brief history of standard, product, practices, uses as relevant.
-                            c) Acknowledging other international/national standard which were taken into consideration. d) Information about other related standards.
-                            e) Reference to IS 2 on Rounding Off. Details as at a), c), d) & e) are generally incorporated at the time of final (printing) stage by Sectt.
-                            " name="foreword" id="foreword"></textarea required>
+                        <div class="form-group" id="yourWall_des"><br>
+                            <label class="d-block text-font">Enter Details<sup class="text-danger">*</sup></label><br>
+                            <textarea class="form-control  w-100"  placeholder="" name="details" id="details"></textarea required>
                             <div class="invalid-feedback">
                                 This value is Required.
                             </div>
                         </div>
                     </div>
-                    <div class="mb-2 col-sm-12">
-                        <label class="d-block text-font">IS No. nnnnn :yyyy Title of the Standard (Product - Specification)</label>
-                        <input type="text" class="form-control title-height" name="product_specification" id="product_specification" placeholder="Enter Specification" required>
-                        <div class="invalid-feedback">
-                            This value is Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">Scope<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="scope" id="scope"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">References<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="reference" id="reference"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">DEFINITIONS<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="defination" id="defination"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">GRADES, TYPES AND CLASSES<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="classes" id="classes"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">MANUFACTURE<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="manufacture" id="manufacture"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">REQUIREMENTS<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="requirements" id="requirements"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">SAMPLING<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="sampling" id="sampling"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">METHODS OF TESTS for various Requirements<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="methods" id="methods"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">PACKING AND PACKAGING<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="packing" id="packing"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-md-12 row">
                     <div class="button-group float-end mt-3" style="text-align: end;">
                         <button  type="submit" class="btn btn-success submit">Submit</button>
                         
-                        <button class="btn btn-danger cancel" >Cancel</button>
+                        <button class="btn btn-danger cancel" >Cancel</button> 
+                    <a href="<?= base_url()?>"  class="btn btn-danger">Back</a>
+                 
                     </div>
                 </div>
             </form>
@@ -407,15 +280,7 @@ if(!isset($_SESSION['user_session_id'])){
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
     <script>
-    CKEDITOR.replace('scope');
-    CKEDITOR.replace('reference');
-    CKEDITOR.replace('defination');
-    CKEDITOR.replace('classes');
-    CKEDITOR.replace('manufacture');
-    CKEDITOR.replace('requirements');
-    CKEDITOR.replace('sampling');
-    CKEDITOR.replace('methods');
-    CKEDITOR.replace('packing');
+    CKEDITOR.replace('details'); 
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
     'use strict'
