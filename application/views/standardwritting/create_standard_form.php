@@ -77,14 +77,27 @@
                             <label class="d-block">Upload Prize Details<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
+                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf">
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary btn-sm" id="previewFfile" >
-                                    Preview
-                                    </button>
+                                    <input type="button"  value="Preview" onclick="PreviewImage1();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg"/ >
+                                    
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade"id="exampleModalImg"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+                        <div class="modal-dialog" style="max-width:1000px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe id="viewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -104,9 +117,7 @@
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
-                                    Preview
-                                    </button>
+                                    <input type="button"  value="Preview" onclick="PreviewImage2();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg2"/ >
                                 </div>
                             </div>
                         </div>
@@ -127,9 +138,7 @@
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
-                                    Preview
-                                    </button>
+                                    <input type="button"  value="Preview" onclick="PreviewImage3();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg3"/ >
                                 </div>
                             </div>
                         </div>
@@ -151,9 +160,7 @@
                                     
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
-                                    Preview
-                                    </button>
+                                    <input type="button"  value="Preview" onclick="PreviewImage4();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg4"/ >
                                 </div>
                                 
                             </div>
@@ -173,6 +180,48 @@
         
     </div>
 </form>
+<div class="modal fade"id="exampleModalImg2"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="sviewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade"id="exampleModalImg3"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="tviewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade"id="exampleModalImg4"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="cviewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
@@ -273,39 +322,9 @@ allfields = false;
 } else {
 $("#first_paticipant").next(".validation").remove(); // remove it
 }
-var second_paticipant = $("#second_paticipant").val();
-if (second_paticipant == "" || second_paticipant== null) {
-if ($("#second_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#second_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
-}
-if (!focusSet) { $("#second_paticipant").focus(); }
-allfields = false;
-} else {
-$("#second_paticipant").next(".validation").remove(); // remove it
-}
-var third_paticipant = $("#third_paticipant").val();
-if (third_paticipant == "" || third_paticipant== null) {
-if ($("#third_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#third_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
-}
-if (!focusSet) { $("#third_paticipant").focus(); }
-allfields = false;
-} else {
-$("#third_paticipant").next(".validation").remove(); // remove it
-}
-var consolation_paticipant = $("#consolation_paticipant").val();
-if (consolation_paticipant == "" || consolation_paticipant== null) {
-if ($("#consolation_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
-}
-if (!focusSet) { $("#consolation_paticipant").focus(); }
-allfields = false;
-} else {
-$("#consolation_paticipant").next(".validation").remove(); // remove it
-}
+ 
+ 
+ 
 var first_file=$("#first_file").val();
 if (first_file == "" || first_file== null) {
 if ($("#first_file").next(".validation").length == 0) // only add if not added
@@ -358,22 +377,12 @@ $("#first_file").next(".validation").remove(); // remove it
 }
 }
 //second
-var second_file=$("#second_file").val();
-if (second_file == "" || second_file== null) {
-if ($("#second_file").next(".validation").length == 0) // only add if not added
-{
-$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
-}
-if (!focusSet) { $("#second_file").focus(); }
-allfields = false;
-} else {
-$("#second_file").next(".validation").remove(); // remove it
-}
+ 
 if ($("#second_file").val() != '')
 {
-var fileSize = $('#second_file')[0].files[0].size;
+var second = $('#second_file')[0].files[0].size;
 $("#second_file").next(".validation").remove();
-if (fileSize > 41943040)
+if (second > 41943040)
 {
 if ($("#second_file").next(".validation").length == 0) // only add if not added
 {
@@ -410,22 +419,12 @@ $("#second_file").next(".validation").remove(); // remove it
 }
 }
 //third
-var third_file=$("#third_file").val();
-if (third_file == "" || third_file== null) {
-if ($("#third_file").next(".validation").length == 0) // only add if not added
-{
-$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
-}
-if (!focusSet) { $("#third_file").focus(); }
-allfields = false;
-} else {
-$("#third_file").next(".validation").remove(); // remove it
-}
+ 
 if ($("#third_file").val() != '')
 {
-var fileSize = $('#third_file')[0].files[0].size;
+var third = $('#third_file')[0].files[0].size;
 $("#third_file").next(".validation").remove();
-if (fileSize > 41943040)
+if (third > 41943040)
 {
 if ($("#third_file").next(".validation").length == 0) // only add if not added
 {
@@ -456,28 +455,18 @@ if (!focusSet)
 $("#third_file").focus();
 }
 }
-else 
+else
 {
 $("#third_file").next(".validation").remove(); // remove it
 }
 }
 //consolation
-var consolation_file=$("#consolation_file").val();
-if (consolation_file == "" || consolation_file== null) {
-if ($("#consolation_file").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
-}
-if (!focusSet) { $("#consolation_file").focus(); }
-allfields = false;
-} else {
-$("#consolation_file").next(".validation").remove(); // remove it
-}
+ 
 if ($("#consolation_file").val() != '')
 {
-var fileSize = $('#consolation_file')[0].files[0].size;
+var consolation = $('#consolation_file')[0].files[0].size;
 $("#consolation_file").next(".validation").remove();
-if (fileSize > 41943040)
+if (consolation > 41943040)
 {
 if ($("#consolation_file").next(".validation").length == 0) // only add if not added
 {
@@ -532,33 +521,54 @@ return false;
 }
 });</script>
 <script type="text/javascript">
-
 function getStandardClub () {
-    var branch_id = $("#branch_id").val();
-    var dept_id = $("#dept_id").val();
-     $.ajax({
-        url: "<?= base_url() ?>standardswritting/getStandardClub",
-        data: {'branch_id':branch_id,'dept_id':dept_id},
-        type: "JSON",
-        method: "post",
-        success: function(StdClb) 
-        {
-            var res = JSON.parse(StdClb);
-            console.log(res.result)
-            if (res.result=='success') {
-            var stringToAppend = "<option disabled selected value=''> Select Standard Club</option> ";
-            $.each(res.data, function (key, val) {
-                stringToAppend += "<option value='" + val.StdClubName + "'>" + val.StdClubName + "</option>";
-            });
-            $("#standard_club").html(stringToAppend);
-        }
-        else
-        {
-            alert("Data not found .... Please Try agen");
-        }
-        }
-    });
- }
+var branch_id = $("#branch_id").val();
+var dept_id = $("#dept_id").val();
+$.ajax({
+url: "<?= base_url() ?>standardswritting/getStandardClub",
+data: {'branch_id':branch_id,'dept_id':dept_id},
+type: "JSON",
+method: "post",
+success: function(StdClb)
+{
+var res = JSON.parse(StdClb);
+console.log(res.result)
+if (res.result=='success') {
+var stringToAppend = "<option disabled selected value=''> Select Standard Club</option> ";
+$.each(res.data, function (key, val) {
+stringToAppend += "<option value='" + val.StdClubName + "'>" + val.StdClubName + "</option>";
+});
+$("#standard_club").html(stringToAppend);
+}
+else
+{
+alert("Data not found .... Please Try agen");
+}
+}
+});
+}
 
- 
-  </script>
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+function PreviewImage1() {
+pdffile=document.getElementById("first_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#viewer').attr('src',pdffile_url);
+}
+function PreviewImage2() {
+pdffile=document.getElementById("second_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#sviewer').attr('src',pdffile_url);
+}
+function PreviewImage3() {
+pdffile=document.getElementById("third_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#tviewer').attr('src',pdffile_url);
+}
+function PreviewImage4() {
+pdffile=document.getElementById("consolation_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#cviewer').attr('src',pdffile_url);
+}
+</script>

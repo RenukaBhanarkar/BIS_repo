@@ -238,7 +238,7 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                 <h4 style="color: darkblue;"><?=$getData['title']?></h4>
             </div>
             <div class="col-md-3">
-                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_id'])?></span>
+                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span>
                 
             </div>
             <!-- </div> -->
@@ -303,4 +303,141 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
     }, false)
     })
     })()
-    </script>
+    </script> 
+
+
+    <script type="text/javascript">CKEDITOR.replace('details',{
+   height: '300',
+   maxlength: '5000'
+});
+</script>
+<script> 
+    $(document).ready(function(){
+$('#abcd').show();
+$('.pqr').hide();
+$('#abcd').click(function(){
+    $('#abcd').hide();
+    $('.pqr').show();
+})
+var editAbstract=CKEDITOR.instances.details;
+
+editAbstract.on("key",function(e) {      
+                        
+   var maxLength=e.editor.config.maxlength;
+      
+   e.editor.document.on("keyup",function() {KeyUp(e.editor,maxLength,"letterCount");});
+   e.editor.document.on("paste",function() {KeyUp(e.editor,maxLength,"letterCount");});
+   e.editor.document.on("blur",function() {KeyUp(e.editor,maxLength,"letterCount");});
+},editAbstract.element.$);
+
+//function to handle the count check
+function KeyUp(editorID,maxLimit,infoID) {
+
+   //If you want it to count all html code then just remove everything from and after '.replace...'
+   var text=editorID.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/^\s+|\s+$/g, '');
+   $("#"+infoID).text(text.length);
+
+   if(text.length>maxLimit) {   
+      Swal.fire("You cannot have more than "+maxLimit+" characters");         
+      editorID.setData(text.substr(0,maxLimit));
+      editor.cancel();
+   } else if (text.length==maxLimit-1) {
+      alert("WARNING:\nYou are one character away from your limit.\nIf you continue you could lose any formatting");
+      editor.cancel();
+   }
+}   
+
+});
+    // $(".file-upload-wrapper").hide();  
+    $(document).ready(function () 
+    { 
+       
+        $("#text_hide").click(function(){
+         $(".file-upload-wrapper").show();
+      });
+
+
+    });
+   // $(".file-upload-wrapper").hide();
+  //  $("#file_show").click(function(){
+ // $(".file-upload-wrapper").show();
+//});
+function submitCompetition(event){
+    event.preventDefault();
+var isValid=true;
+//    var answer =$('#details').val();
+   var answer = CKEDITOR.instances['details'].getData();
+    if(answer==""){
+        Swal.fire("Please enter answer");
+        // alert('enter response');
+        isValid=false;
+    }else if(answer.length > 5000){
+        isValid=false;
+        Swal.fire("Only 5000 characters allowed");
+    }else{
+        
+    }
+
+    if(isValid){
+        Swal.fire({
+                    title: 'Are you sure you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $('#comp_form').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        // alert('kjh');
+       
+        return true;
+    }
+}
+</script>
+<script>
+    $('textarea').keyup(function() {
+    
+    var characterCount = $(this).val().length,
+        current = $('#current'),
+        maximum = $('#maximum'),
+        theCount = $('#the-count');
+      
+    current.text(characterCount);
+   
+    
+    /*This isn't entirely necessary, just playin around*/
+    if (characterCount < 70) {
+      current.css('color', '#666');
+    }
+    if (characterCount > 70 && characterCount < 90) {
+      current.css('color', '#6d5555');
+    }
+    if (characterCount > 90 && characterCount < 100) {
+      current.css('color', '#793535');
+    }
+    if (characterCount > 100 && characterCount < 120) {
+      current.css('color', '#841c1c');
+    }
+    if (characterCount > 120 && characterCount < 139) {
+      current.css('color', '#8f0001');
+    }
+    
+    if (characterCount >= 140) {
+      maximum.css('color', '#8f0001');
+      current.css('color', '#8f0001');
+      theCount.css('font-weight','bold');
+    } else {
+      maximum.css('color','#666');
+      theCount.css('font-weight','normal');
+    }
+    
+        
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

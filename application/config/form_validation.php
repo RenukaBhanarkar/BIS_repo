@@ -255,24 +255,7 @@ $config = array(
 		),
 
 
-		array(
-			'field' => 'second_paticipant',
-			'label' => 'second paticipant',
-			'rules' => 'required'
-		),
-
-
-		array(
-			'field' => 'third_paticipant',
-			'label' => 'third paticipant',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'consolation_paticipant',
-			'label' => 'consolation paticipant',
-			'rules' => 'required'
-		),
+		 
 	),
 
 

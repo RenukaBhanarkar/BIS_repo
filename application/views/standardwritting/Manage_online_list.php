@@ -67,10 +67,16 @@
 
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
 
+
+
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+
+                                  <?php if ($value['status']!=2 && $value['status']!=5 ) {?>
                                   <a class="btn btn-info btn-sm mr-2"onclick="editData('<?= $value['id']?>')" >Edit</a>
                                   <a class="btn btn-danger btn-sm mr-2"onclick="deleteOnlineData('<?= $value['id']?>')" >Delete</a>
                                   <a class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',9)" >Archive</a>
+                                  <?php }?>
+
 
                             
 

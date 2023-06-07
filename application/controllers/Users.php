@@ -3460,20 +3460,185 @@ class Users extends CI_Controller
     }
     public function standard_writting_details($id){
 
+     $id= encryptids("D", $id);
+
+        $region_id = encryptids("D", $this->session->userdata('region_id'));
+        $branch_id = encryptids("D", $this->session->userdata('branch_id'));
+        $state_id = encryptids("D", $this->session->userdata('state_id')); 
+        $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
+        $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
+        $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $data['getData']=$this->Standardswritting_model->create_online_view($id);
+        $getdata=$this->Standardswritting_model->create_online_view($id);
+
+ $allFilds1=0;
+ $allFilds2=0;
+ $level=$getdata['quiz_level_id'];
+if ($level==1) 
+{
+    $allFilds1=1;
+}
+
+if ($level==2) 
+{
+    if ($getdata['region_id']==$region_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+if ($level==3) 
+{
+    if ($getdata['branch_id']==$branch_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+if ($level==4) 
+{
+    if ($getdata['state_id']==$state_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+ $availability=$getdata['availability_id'];
+
+if ($availability==2) 
+{ 
+    $allFilds2=1;
+}
+
+// if ($availability==1) 
+// {
+//     $std = explode(',', $getdata['standard']);
+//     $standard = 1;
+//     if($standard != 0){
+//         if(in_array($standard,$std))  
+//         {
+//             $allFilds2=1;
+//         }
+//         else
+//         {
+//             $allFilds2=2;
+//         }
+//     }
+// }
+
+ 
+
+    
+
+        $data['getData']=$getdata;
+        $data['allFilds1']=$allFilds1;
+        $data['allFilds2']=$allFilds2;
 
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_writting_details',$data);
         $this->load->view('users/footers/footer');
     }
-    public function standard_writting_login($id){ 
+    public function standard_writting_login($ids){ 
+         $id= encryptids("D", $ids);
 
+
+        $region_id = encryptids("D", $this->session->userdata('region_id'));
+        $branch_id = encryptids("D", $this->session->userdata('branch_id'));
+        $state_id = encryptids("D", $this->session->userdata('state_id')); 
+        $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
+        $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
+        $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $data['getData']=$this->Standardswritting_model->create_online_view($id); 
+        $getdata=$this->Standardswritting_model->create_online_view($id);
+
+        $data['getData']=$getdata;
+        // $data['allFilds1']=$allFilds1;
+        // $data['allFilds2']=$allFilds2;
+
+          
         if ($this->form_validation->run('standard_writting_login') == FALSE) 
         {
-            $this->load->view('users/standard_writting_login',$data);
+            
+
+ $allFilds1=0;
+ $allFilds2=0;
+ $level=$getdata['quiz_level_id'];
+if ($level==1) 
+{
+    $allFilds1=1;
+}
+
+if ($level==2) 
+{
+    if ($getdata['region_id']==$region_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+if ($level==3) 
+{
+    if ($getdata['branch_id']==$branch_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+if ($level==4) 
+{
+    if ($getdata['state_id']==$state_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+ $availability=$getdata['availability_id'];
+
+if ($availability==2) 
+{ 
+    $allFilds2=1;
+}
+
+// if ($availability==1) 
+// {
+//     $std = explode(',', $getdata['standard']);
+//     $standard = 1;
+//     if($standard != 0){
+//         if(in_array($standard,$std))  
+//         {
+//             $allFilds2=1;
+//         }
+//         else
+//         {
+//             $allFilds2=2;
+//         }
+//     }
+// }
+            if ($allFilds1==1 && $allFilds2==1) {
+                $this->load->view('users/standard_writting_login',$data);
+            }
+            else
+            {
+                redirect(base_url() . "users/standard_writting_details/".$ids, 'refresh'); 
+                
+            }
+           
         }
         else
         {
@@ -3485,9 +3650,6 @@ class Users extends CI_Controller
             $en_time = strtotime($end_t);
             $diff = $en_time - $st_time; 
             $time_taken =abs($diff);  
-             
-
-
             $formdata['user_id'] = encryptids("D", $_SESSION['admin_id']);
             $formdata['comp_id'] = $this->input->post('comp_id');
             $formdata['details'] = $this->input->post('details');

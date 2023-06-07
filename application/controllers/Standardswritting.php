@@ -1936,6 +1936,25 @@ public function updateStatus(){
         $this->load->view('admin/footers/admin_footer');
     }
 
+    public function result_declared_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/result_declared_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function result_declared_submisson()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/result_declared_submisson');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function result_declared_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/result_declared_view');
+        $this->load->view('admin/footers/admin_footer');
+    }
+
     
     
     

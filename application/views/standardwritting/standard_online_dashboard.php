@@ -22,6 +22,7 @@
         <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>Standardswritting/create_online_list">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -35,6 +36,7 @@
                 </div>
                 </a>
             </div>
+        <?php } ?>
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -76,6 +78,7 @@
                 </div>
                 </a>
             </div>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>Standardswritting/review_management_dashboard">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -101,7 +104,8 @@
                     </div>
                 </div>
                 </a>
-            </div>
+            </div> 
+            <?php } ?>
             
             
             

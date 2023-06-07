@@ -329,12 +329,36 @@
                     </div>
 
  
-                    <?php  if (!isset($_SESSION['user_session_id'])) {?>
-                        <a href="<?php echo base_url() . "users/login"?>" class="btn startQuiz" id="startQuizLang"> <span>Login to Participate</span></a>
-                    <?php } else {?>
+                  
 
-                    <a href="<?php echo base_url() . "users/standard_writting_login/"?><?=$getData['id']?>" class="btn startQuiz" id="startQuizLang"> <span>Start</span></a>
+
+                    <?php  if (!isset($_SESSION['user_session_id'])) {?>
+                    <?php if ($allFilds1==1 && $allFilds2==1) {?>
+                    <a href="<?php echo base_url() . "users/login"?>" class="btn startQuiz" id="startQuizLang"> <span>Login to Participate</span></a>
+                    <?php } else
+                    {?><br>
+                    <div class="alert alert-danger background-danger">
+                        
+                        Access denied
+                        </div>
+                    <?php }
+                    ?>
+                    
+                    <?php } else {?>
+                    <?php if ($allFilds1==1 && $allFilds2==1) {?>
+                    <a href="<?php echo base_url() . "users/standard_writting_login/"?><?php echo  $id= encryptids("E", $getData['id'] )?>" class="btn startQuiz" id="startQuizLang"> <span>Start</span></a>
+                    <?php } else
+                    {?>
+                        <br>
+                    <div class="alert alert-danger background-danger">
+                        
+                        Access denied
+                        </div>
+                    <?php }
+                    ?>
+
                     <?php }?>
+                    
 
                     
                             

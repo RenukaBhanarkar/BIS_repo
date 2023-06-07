@@ -328,39 +328,7 @@ allfields = false;
 } else {
 $("#first_paticipant").next(".validation").remove(); // remove it
 }
-var second_paticipant = $("#second_paticipant").val();
-if (second_paticipant == "" || second_paticipant== null) {
-if ($("#second_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#second_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
-}
-if (!focusSet) { $("#second_paticipant").focus(); }
-allfields = false;
-} else {
-$("#second_paticipant").next(".validation").remove(); // remove it
-}
-var third_paticipant = $("#third_paticipant").val();
-if (third_paticipant == "" || third_paticipant== null) {
-if ($("#third_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#third_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
-}
-if (!focusSet) { $("#third_paticipant").focus(); }
-allfields = false;
-} else {
-$("#third_paticipant").next(".validation").remove(); // remove it
-}
-var consolation_paticipant = $("#consolation_paticipant").val();
-if (consolation_paticipant == "" || consolation_paticipant== null) {
-if ($("#consolation_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
-}
-if (!focusSet) { $("#consolation_paticipant").focus(); }
-allfields = false;
-} else {
-$("#consolation_paticipant").next(".validation").remove(); // remove it
-}
+ 
 var first_file=$("#first_file").val();
 var firstfile= '<?= $getData["first_file"]?>';
 if (firstfile=='' || firstfile=='NA') {
@@ -419,19 +387,7 @@ $("#first_file").next(".validation").remove(); // remove it
 }
 }
 //second
-var secondfile= '<?= $getData["second_file"]?>';
-var second_file=$("#second_file").val();
-if (secondfile=='' || secondfile=='NA') {
-if (second_file == "" || second_file== null) {
-if ($("#second_file").next(".validation").length == 0) // only add if not added
-{
-$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
-}
-if (!focusSet) { $("#second_file").focus(); }
-allfields = false;
-} else {
-$("#second_file").next(".validation").remove(); // remove it
-}
+ 
 
 
 if ($("#second_file").val() != '')
@@ -474,23 +430,9 @@ else
 $("#second_file").next(".validation").remove(); // remove it
 }
 }
-}
+ 
 //third
-var thirdfile= '<?= $getData["third_file"]?>';
-var third_file=$("#third_file").val();
-if (thirdfile=='' || thirdfile=='NA') {
-if (third_file == "" || third_file== null) {
-if ($("#third_file").next(".validation").length == 0) // only add if not added
-{
-$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
-}
-if (!focusSet) { $("#third_file").focus(); }
-allfields = false;
-} else {
-$("#third_file").next(".validation").remove(); // remove it
-}
-
-
+ 
 if ($("#third_file").val() != '')
 {
 var fileSize = $('#third_file')[0].files[0].size;
@@ -531,22 +473,9 @@ else
 $("#third_file").next(".validation").remove(); // remove it
 }
 }
-}
-//consolation
-var consolationfile= '<?= $getData["consolation_file"]?>';
 
-var consolation_file=$("#consolation_file").val();
-if (consolationfile=='' || consolationfile=='NA') {
-if (consolation_file == "" || consolation_file== null) {
-if ($("#consolation_file").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
-}
-if (!focusSet) { $("#consolation_file").focus(); }
-allfields = false;
-} else {
-$("#consolation_file").next(".validation").remove(); // remove it
-}
+//consolation
+ 
 
 
 if ($("#consolation_file").val() != '')
@@ -589,7 +518,7 @@ else
 $("#consolation_file").next(".validation").remove(); // remove it
 }
 }
-}
+
 if (allfields) {
 Swal.fire({
 title: 'Do you want to Update?',
