@@ -4,8 +4,12 @@
 //session_start();
 if(!isset($_SESSION['user_session_id'])){ 
     
+    
    redirect(base_url() . "Users/login", 'refresh');
-} ?> 
+}
+$start_time = $_SESSION['start_time'] = date('h:i:s'); 
+
+?> 
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -246,6 +250,7 @@ if(!isset($_SESSION['user_session_id'])){
                  <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 <input type="hidden" name="comp_id" id="comp_id" value="<?=$getData['id']?>">
                 <div class="row">
+                    <input type="hidden" value="<?= $start_time; ?>" name="start_time">
                      
                     <div class="mb-2 col-sm-12">
                         <div class="form-group" id="yourWall_des"><br>
