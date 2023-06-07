@@ -123,7 +123,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     
                     <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb-82ae-4151-82ae-4df1d6639867" width="86px;" style="border-radius: 50%; height: 86px;"></div>
               <?php }else{ ?>
-                <?php echo "photo".$_SESSION['profile_image']; ?>
+                
                 <div class="profile-pic"><img src="<?php echo base_url().'uploads/user/profile/'.encryptids("D", $_SESSION['profile_image']) ?>" width="86px;" style="border-radius: 50%; height: 86px;"></div>
               
               <?php } }else{ ?>

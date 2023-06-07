@@ -27,7 +27,7 @@
             <div class="card border-top card-body">
                 <div>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add New Banner</button>
-                    <form id="add_admin" class="was-validated" action="<?php echo base_url(); ?>admin/addbannerimg" method="post" enctype="multipart/form-data">
+                    <form id="add_admin" class="" action="<?php echo base_url(); ?>admin/addbannerimg" method="post" enctype="multipart/form-data">
                         <div class="modal fade " id="newform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
@@ -43,12 +43,42 @@
                                         <div class="row">
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
-                                                <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="bannerimg" value="" required>
+                                                <div class="row d-flex">
+                                                <div class="col-9">
+                                                <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="bannerimg" value="" onchange="addbannervalidation(event)" required>
                                                 <span class="text-danger" id="err_image">
                                                     only jpg jpeg and png formats allowed
                                                     <?php //echo form_error('title'); 
                                                     ?>
                                                 </span>
+                                                </div>
+                                                <div class="col-3">
+                                                <button type="button" id="preview" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+                                                                    Preview
+                                                                </button>
+                                                                                                                <!-- Modal -->
+                                                                                <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                                    <div class="modal-dialog" style="max-width:700px;">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                        <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
+
+                                                                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">×</span>
+                                                                                        </button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                        <img src="" id="outputicon5" width="100%"/>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                        <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button> -->
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                    </div>
+                                                                                </div>  
+                                                </div>
+                                            </div>
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Caption</label>
@@ -227,7 +257,7 @@
                                                             
                                                             </div>
 
-                                                            <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#Previewimg"> Preview 
+                                                            <button type="button" class="btn btn-primary btn-sm mb-4 col-3" data-bs-toggle="modal" data-bs-target="#Previewimg"> Preview 
                                                                 </button>
                                                             </div>
 
@@ -362,12 +392,12 @@ var loadFileThumbnail = function(event)
         if(fileSize < 20480){
             $('#icon_file').val('');
             // $('#lessSize').modal('show');
-            Swal.fire("File size should be more than 20KB")
+            Swal.fire("File size should be between 20KB to 400KB")
             $('#err_update_banner').text('This value is required');
-        }else if(fileSize > 204800){
+        }else if(fileSize > 409600){
             $('#icon_file').val('');
             // $('#greaterSize').modal('show');
-            Swal.fire("File size should be less than 200KB")
+            Swal.fire("File size should be between 20KB to 400KB")
             $('#err_update_banner').text('This value is required');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#icon_file').val('');
@@ -387,6 +417,44 @@ var loadFileThumbnail = function(event)
             URL.revokeObjectURL(outputThumbnail.src);
         }
     };
+    var addbannervalidation = function(event) 
+    {
+    //     var fileSize = $('#icon_file')[0].files[0].size;
+    //    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+    //     var fileName = $("#icon_file").val();;
+    //     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+    //         console.log(fileSize);
+    //     if(fileSize < 20480){
+    //         $('#icon_file').val('');
+    //         // $('#lessSize').modal('show');
+    //         Swal.fire("File size should be between 20KB to 400KB")
+    //         $('#err_update_banner').text('This value is required');
+    //     }else if(fileSize > 409600){
+    //         $('#icon_file').val('');
+    //         // $('#greaterSize').modal('show');
+    //         Swal.fire("File size should be between 20KB to 400KB")
+    //         $('#err_update_banner').text('This value is required');
+    //     }else if($.inArray(fileNameExt, validExtensions) == -1){
+    //         $('#icon_file').val('');
+    //         // $('#invalidfiletype').modal('show');
+    //         Swal.fire("Only jpg,jpeg,png files allowed")
+    //         $('#err_update_banner').text('This value is required');
+    //     }else{
+    //         $('#err_update_banner').text('');
+    //     }
+       //  $("#Previewimg").show();
+        var outputThumbnail = document.getElementById('outputicon5');
+        
+        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        console.log(outputThumbnail.src);
+        outputThumbnail.onload = function()
+        {
+            URL.revokeObjectURL(outputThumbnail.src);
+        }
+    };
+
+
     function resetimg()
     {
          
@@ -472,6 +540,7 @@ var loadFileThumbnail = function(event)
 </script>
 <script type="text/javascript">
 function addbanner(e){
+    $('#add_admin').addClass('was-validated');
     e.preventDefault();
     allFields=true;
     
@@ -536,12 +605,17 @@ function addbanner(e){
                     var is_valid = true;
                     if ($("#bannerimg").val() != '') {
                     var fileSize = $('#bannerimg')[0].files[0].size;
-                    if (fileSize > 204800) {
+                    
+                    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+                    var fileName = $("#bannerimg").val();;
+                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+
+                    if (fileSize > 409600) {
                          is_valid = false;
                         allfields = false;
                         $("#bannerimg").val('');
                         // $('#greaterSize').modal('show');
-                       Swal.fire('File size should be less than 200KB')
+                       Swal.fire('File size should be between 20 to 400KB')
                         if (!focusSet) {
                             $("#image").focus();
                         }
@@ -549,17 +623,10 @@ function addbanner(e){
                     } else if(fileSize < 20480){
                         $("#bannerimg").val('');
                         // $('#lessSize').modal('show');
-                        Swal.fire('File size should be greater than 200KB')
+                        Swal.fire('File size should be between 20 to 400KB')
                         is_valid = false;
                         allfields = false;   
-                    }else{                        
-                        $("#err_image").text(""); // remove it
-                        // $("#err_image").after("");
-                    }
-                    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
-                    var fileName = $("#bannerimg").val();;
-                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-                    if ($.inArray(fileNameExt, validExtensions) == -1) {
+                    }else if ($.inArray(fileNameExt, validExtensions) == -1) {
                         $('#bannerimg').val('');                     
                         // $('#invalidfiletype').modal('show');     
                         Swal.fire('Only jpg,jpeg,png files allowed')              
