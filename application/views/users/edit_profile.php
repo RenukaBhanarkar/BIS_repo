@@ -132,7 +132,7 @@
              </div>
              <div class="col-md-12 submit_btn p-3" style="text-align: end;">
                                <a class="btn btn-success btn-sm text-white update">Update</a>
-                               <a class="btn btn-danger btn-sm text-white">Cancel</a>
+                               <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
              </div>  
              </div>
              
@@ -149,7 +149,24 @@
     $(document).ready(function () {
     $('#example').DataTable();
     $('.update').click(function(){
-        $('#update_user_profile').submit();
+        
+        Swal.fire({
+                    title: 'Are you sure you want to Update?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Update',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                       // window.location.replace('<?php echo base_url(); ?>Users/welcome');     
+                        $('#update_user_profile').submit();              
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
     })
     });
         $('.cancel').on('click',function(){
