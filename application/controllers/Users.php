@@ -1595,6 +1595,12 @@ class Users extends CI_Controller
         $this->load->view('users/help');
         $this->load->view('users/footers/footer');
     }
+    public function change_password()
+    {
+       // $this->load->view('users/headers/header');
+        $this->load->view('users/change_password');
+      //  $this->load->view('users/footers/footer');
+    }
     public function terms_condition()
     {
         $data = $this->Users_model->get_legal_data('tc');
@@ -3467,26 +3473,9 @@ class Users extends CI_Controller
         }
         else
         {  
-
-            $formdata['user_id'] = encryptids("D", $_SESSION['admin_type']);
-
+            $formdata['user_id'] = encryptids("D", $_SESSION['admin_id']);
             $formdata['comp_id'] = $this->input->post('comp_id');
-            $formdata['indian_standard'] = $this->input->post('indian_standard');
-            $formdata['is_no'] = $this->input->post('is_no');
-            $formdata['product'] = $this->input->post('product'); 
-            $formdata['name_address'] = $this->input->post('name_address');
-            $formdata['price'] = $this->input->post('price');
-            $formdata['foreword'] = $this->input->post('foreword');
-            $formdata['product_specification'] = $this->input->post('product_specification');
-            $formdata['scope'] = $this->input->post('scope');
-            $formdata['reference'] = $this->input->post('reference');
-            $formdata['defination'] = $this->input->post('defination');
-            $formdata['classes'] = $this->input->post('classes');
-            $formdata['manufacture'] = $this->input->post('manufacture');
-            $formdata['requirements'] = $this->input->post('requirements');
-            $formdata['sampling'] = $this->input->post('sampling');
-            $formdata['methods'] = $this->input->post('methods');
-            $formdata['packing'] = $this->input->post('packing');
+            $formdata['details'] = $this->input->post('details'); 
             $formdata['created_on'] = date('Y-m-d h:i:s'); 
 
             $id = $this->Standardswritting_model->StandardswrittingCompSave($formdata);

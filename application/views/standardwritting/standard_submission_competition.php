@@ -1,4 +1,5 @@
 <!-- Begin Page Content -->
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -47,11 +48,28 @@
                             <td><?=$value['total_mark']?></td>
                             <td><?=$value['score']?></td>
                             <td>Anis Mulani</td>
-                            <td><?=$value['sssign_date']?></td>
-                            <td>xyx</td>
+                            <td><?=$value['sssign_date']?></td> 
+                            <?php 
+                            if($value['assignStatus']==1)
+                            {
+                                $assignStatus="Send For Review";
+                            }
+                            if($value['assignStatus']==2)
+                            {
+                                $assignStatus="Reviewed";
+                            }
+                            
+
+                            ?>
+                            <td><?=$assignStatus?></td>
                             <td class="d-flex">
+                               
                                 <a onclick="viewSubmitData('<?= $value['submission_id']?>')" class="btn btn-primary btn-sm mr-2" >View</a>
-                                <a href="#" class="btn btn-secondary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
+                                 <?php 
+                            if($value['assignStatus']==0)
+                            {?>
+                                <a onclick="viewAssingData('<?= $value['submission_id']?>')"class="btn btn-secondary btn-sm mr-2" >Assign</a>
+                            <?php }?>
                             </td>
                         </tr>
                         
@@ -68,40 +86,52 @@
 </div>
 <!-- /.container-fluid -->
 <!-- Modal -->
+<form name="standard_submission_competition"id="standard_submission_competition"action="<?php echo base_url() . 'standardswritting/standard_submission_competition'?>/<?=$ids;?>" method="post" enctype="multipart/form-data">
 <div class="modal fade" id="assignForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Assign For Review</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+
             </div>
             <div class="modal-body">
                 <div class="col-md-12">
                     <table id="example_1" class="table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                <th> 
                                 <th>Sr. No.</th>
                                 <th>Name of Evaluator</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                                <td>1</td>
-                                <td>Name</td>
+                            
+                            <?php foreach ($getEvaluator as $key => $Evaluator) {?>
+                                <tr>
+                                <td>
+                                    <input  class="form-control-input allEvaluator" type="hidden" name="submission_id" id="submission_id"> 
+                                    <input class="form-control-input allEvaluator" type="radio"  name="evaluator"value="<?=$Evaluator['id']?>" id="select-all">
+                                </td>
+                                <td><?=$key+1?></td>
+                                <td><?=$Evaluator['name']?></td>
+                            </tr>
+                            <?php }?>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary assign">Assign</button>
+                     <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatus()" >Assign</a>
+                    <!-- <a class="btn btn-primary assign" id="updateOnlineStatus" onclick="updateOnlineStatus()">Assign</a> -->
                     <button type="button" class="btn btn-danger cancel" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
+</form>
     <!-- Modal -->
     <script>
     $(document).ready(function () {
@@ -139,7 +169,7 @@
     })
     </script>
     <script type="text/javascript">
-     
+    
     function viewSubmitData(id)
     {
     Swal.fire({
@@ -155,4 +185,63 @@
     }
     })
     }
+
+
+    function viewAssingData(id)
+    {
+    Swal.fire({
+    title: 'Do you want to  Assign View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    if (result.isConfirmed)
+    {
+        $("#submission_id").val(id)
+     $('#assignForm').modal('show');
+    }
+    })
+    }
+
+
+ 
+
+  function updateOnlineStatus() {
+
+    submission_id=$('input[name=submission_id]').val();
+    evaluator=$('input[name="evaluator"]:checked').val();
+   
+
+     
+    Swal.fire({
+      title: 'Do you want to Assign',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Assign',
+      denyButtonText: `Cancel`,
+    }).then((result) => 
+    { 
+      if (result.isConfirmed) 
+      { 
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateEvaluatorStatus',
+        data: {
+          submission_id: submission_id,
+          evaluator: evaluator, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          location.reload();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+      } 
+    })
+  }
     </script>

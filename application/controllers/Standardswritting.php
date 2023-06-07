@@ -43,7 +43,7 @@ class Standardswritting extends CI_Controller
         $current_time = date("Y-m-d H:i:s");
         // $formdata['id']=$this->input->post('submission_id');
         $formdata['user_id']=$this->input->post('user_id');
-        $formdata['competiton_id']=$this->input->post('comp_id');
+        $formdata['submission_id']=$this->input->post('comp_id');
         $formdata['evaluator']=$this->input->post('evaluator');
         $formdata['status']="2";
         $formdata['ev_assigned_on']=$current_time;
@@ -67,22 +67,51 @@ class Standardswritting extends CI_Controller
     }
     public function standard_submission_competition($id)
     {
-        $data=array();
-        $data['getData']=$this->Standardswritting_model->standard_submission_competition($id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/standard_submission_competition',$data);
+        $data=array();
+        $data['getEvaluator']=$this->Standardswritting_model->getEvaluator();
+        $data['getData']=$this->Standardswritting_model->standard_submission_competition($id);
+        $data['ids']=$id;
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        { 
+            $id=$this->input->post('submission_id');
+
+            $evaluator=$this->input->post('evaluator');
+            $formdata['evaluator_id'] = $evaluator;
+            $formdata['status']="1";
+            $formdata['sssign_date']=date("Y-m-d H:i:s");  
+
+            $res=$this->Standardswritting_model->updateCompetition($id,$formdata);
+            if ($res) {
+               $this->load->view('standardwritting/standard_submission_competition/'.$id,$data);
+            }
+
+        }
+        else
+        {
+            $this->load->view('standardwritting/standard_submission_competition',$data);
+        }
+
+
+        
+        
         $this->load->view('admin/footers/admin_footer');
     }
     public function Competition_Reviewed_list()
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->revised_standard_list();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/Competition_Reviewed_list');
+        $this->load->view('standardwritting/Competition_Reviewed_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function Competition_Under_Review_list()
     {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->revised_standard_list(); 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/Competition_Under_Review_list');
+        $this->load->view('standardwritting/Competition_Under_Review_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function create_competition_list()
@@ -1092,22 +1121,33 @@ if($id){
         $this->load->view('standardwritting/create_standard_archive',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-    public function create_standard_form()
+    public function getStandardClub()
     {
+
+         $branch_id = $this->input->post('branch_id');
+         $dept_id = $this->input->post('dept_id');
+
         $ch = curl_init();
         $curlConfig = array(
             CURLOPT_URL            => "http://203.153.41.213:8071/php/BIS_2.0/consumerlive/Standard-Club/List",
             CURLOPT_POST           => true,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POSTFIELDS     => array('branch_id' => 11,'dept_id' => 105)
+            CURLOPT_POSTFIELDS     => array('branch_id' => $branch_id,'dept_id' => $dept_id )
         );
         curl_setopt_array($ch, $curlConfig);
         $result = curl_exec($ch); 
         $data1 = json_decode($result, TRUE);
         curl_close($ch); 
+        echo json_encode($data1);
 
-         $data=array();
-         $data['StdClb']=$data1['data'];
+         // $data=array();
+         // $data['StdClb']=$data1['data'];
+
+    }
+    public function create_standard_form()
+    {  
+
+         $data=array(); 
 
         $this->load->view('admin/headers/admin_header');
         if ($this->form_validation->run('create_standard_form') == FALSE) 
@@ -1167,6 +1207,9 @@ if($id){
             } 
 
             $formdata = array(); 
+
+            $formdata['branch_id'] = $this->input->post('branch_id');
+            $formdata['dept_id'] = $this->input->post('dept_id');
             $formdata['standard_club'] = $this->input->post('standard_club');
             $formdata['topic_of_activity'] = $this->input->post('topic_of_activity');
             $formdata['date_of_activity'] = $this->input->post('date_of_activity'); 
@@ -1199,22 +1242,34 @@ if($id){
     public function create_standard_edit($id)
     {
 
+       $editData = $this->Standardswritting_model->view_standards($id);
+
+
+         $branch_ids=$editData['branch_id'];
+         $dept_ids=$editData['dept_id'];
+
+
+
          $ch = curl_init();
         $curlConfig = array(
             CURLOPT_URL            => "http://203.153.41.213:8071/php/BIS_2.0/consumerlive/Standard-Club/List",
             CURLOPT_POST           => true,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POSTFIELDS     => array('branch_id' => 11,'dept_id' => 105)
+            CURLOPT_POSTFIELDS     => array('branch_id' => $branch_ids,'dept_id' => $dept_ids)
         );
         curl_setopt_array($ch, $curlConfig);
         $result = curl_exec($ch); 
         $data1 = json_decode($result, TRUE);
+         
         curl_close($ch); 
 
          $data=array();
-         $data['StdClb']=$data1['data'];
-       
-        $data['getData'] = $this->Standardswritting_model->view_standards($id);  
+         if ($data1['result']=='success') 
+         {
+             $data['StdClb']=$data1['data'];
+         }
+         
+         $data['getData'] = $editData;  
         $this->load->view('admin/headers/admin_header');
         if ($this->form_validation->run('create_standard_form') == FALSE) 
         {
@@ -1274,6 +1329,8 @@ if($id){
 
             $formdata = array(); 
             $formid = $this->input->post('id');
+            $formdata['branch_id'] = $this->input->post('branch_id');
+            $formdata['dept_id'] = $this->input->post('dept_id');
             $formdata['standard_club'] = $this->input->post('standard_club');
             $formdata['topic_of_activity'] = $this->input->post('topic_of_activity');
             $formdata['date_of_activity'] = $this->input->post('date_of_activity'); 
@@ -1398,8 +1455,14 @@ if($id){
     }
     public function task_reviewed()
     {
+
+         $encAdminId = $this->session->userdata('admin_id');
+         $evaluator_id = encryptids("D", $encAdminId);
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->task_reviewed($evaluator_id);
+
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/task_reviewed');
+        $this->load->view('standardwritting/task_reviewed',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function delete($id){
@@ -1474,6 +1537,36 @@ public function updateStatus(){
         }
         redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
+
+    public function updateScore(){
+        try {
+            $id = $this->input->post('id');
+            $comp_id = $this->input->post('comp_id');
+            $formdata['score'] = $this->input->post('score'); 
+            $formdata['comment'] = $this->input->post('comment'); 
+            $formdata['status'] = 2;
+
+            $id = $this->Standardswritting_model->updateCompetition($id,$formdata);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
 
     public function updateStatusAdmin(){
         try {  
@@ -1667,6 +1760,37 @@ public function updateStatus(){
         redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
 
+     public function updateEvaluatorStatus(){
+        try {
+            
+            $id=$this->input->post('submission_id');
+
+            $evaluator=$this->input->post('evaluator');
+            $formdata['evaluator_id'] = $evaluator;
+            $formdata['status']="1";
+            $formdata['sssign_date']=date("Y-m-d H:i:s"); 
+
+            $id = $this->Standardswritting_model->updateCompetition($id,$formdata);
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
 
 
     public function updateOnlineStatusReview(){
@@ -1747,7 +1871,7 @@ public function updateStatus(){
                 'status' => 'error',
                 'message' => $e->getMessage(),
             ]);
-            return true;
+            return true; 
         }
         redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
@@ -1756,10 +1880,10 @@ public function updateStatus(){
         $this->load->view('standardwritting/evaluator_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function task_recevied_list()
+    public function task_recevied_list() 
     {
-        $encAdminId = $this->session->userdata('admin_id');
-        $evaluator_id = encryptids("D", $encAdminId);
+         $encAdminId = $this->session->userdata('admin_id');
+         $evaluator_id = encryptids("D", $encAdminId);
         $data=array();
         $data['getData']=$this->Standardswritting_model->task_recevied_list($evaluator_id);
 
@@ -1802,6 +1926,17 @@ public function updateStatus(){
         $this->load->view('standardwritting/standard_submission_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+
+    public function task_reviewed_list($id)
+    {
+        $data = array();
+        $data['getData'] = $this->Standardswritting_model->task_reviewed_list($id);
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/task_reviewed_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+
+    
     
     
 }

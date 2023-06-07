@@ -1,3 +1,16 @@
+<style>
+    i.fa.password.fa-eye {
+        float: right;
+        margin-top: -25px;
+        margin-right: 16px;
+    }
+
+    i.fa.password.fa-eye-slash {
+        float: right;
+        margin-top: -25px;
+        margin-right: 16px;
+    }
+    </style>
 <section>
      <div class="container-fluid">
         <div class="row">
@@ -61,9 +74,133 @@
                 </div>
            </div>
     </section>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                            <div class="row">
+                                                <div class="mb-2 col-md-12">
+                                                    <!-- <img src="<?php echo base_url(); ?>/assets/images/login.png" class="border-2" width="22%"> -->
+                                                        <div class="avatar-upload">
+                                                                <div class="avatar-edit">
+                                                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                                    <label for="imageUpload"></label>
+                                                                </div>
+                                                                <div class="avatar-preview">
+                                                                    <div id="imagePreview" style="background-image: url('<?php echo base_url(); ?>/assets/images/login.png');">
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                    <div class="mb-2 col-md-4">
+                                                        <label class="d-block text-font" style="text-align:left;">Name</label>
+                                                        <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Name">
+                                                    </div>
+                                                    <div class="mb-2 col-md-4">
+                                                        <label class="d-block text-font" style="text-align:left;">Email Id</label>
+                                                        <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Email Id">
+                                                    </div>
+                                                    <div class="mb-2 col-md-4">
+                                                        <label class="d-block text-font" style="text-align:left;">Date of birth</label>
+                                                        <input type="date" class="form-control input-font" name="Name" id="Name">
+                                                    </div>
+                                                    <div class="mb-2 col-md-4">
+                                                        <label class="d-block text-font" style="text-align:left;">Gender</label>
+                                                        <select id="Gender" name="Gender" class="form-control input-font" value="" fdprocessedid="uat7f">
+                                                            <option value="1">Male</option>
+                                                            <option value="2">Female</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-2 col-md-4">
+                                                        <label class="d-block text-font" style="text-align:left;">Username</label>
+                                                        <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Username" fdprocessedid="87w216">
+                                                    </div>
+                                                    <div class="mb-2 col-md-4">
+                                                        <label class="d-block text-font" style="text-align:left;">Contact Number</label>
+                                                        <input type="text" class="form-control input-font" name="Name" id="Name" placeholder="Enter Contact Number" fdprocessedid="sof5sf">
+                                                    </div>
+                            
+                                                </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal_1" data-bs-dismiss="modal" id="change_password_skip">Skip</button>
+                                            <button type="button" class="btn btn-primary">Update</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <!-- modal -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" style="max-width: 442px;">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Do you want to change your Password</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                            <div class="row">
+                                                    <div class="mb-2 col-md-12">
+                                                    <label class="d-block text-font"style="text-align:left;">Current Password</label>
+                                                    <input type="password" class="form-control form-control-md show-hide-password" placeholder="Enter Old/Current Password">
+                                                         <i class="fa password fa-eye-slash"></i>
+                                                    </div>
+                                                    <div class="mb-2 col-md-12">
+                                                    <label class="d-block text-font"style="text-align:left;">New Password</label>
+                                                    <input type="password" class="form-control form-control-md show-hide-password" placeholder="Enter New Password">
+                                                         <i class="fa password fa-eye-slash"></i>
+                                                    </div>
+                                                    <div class="mb-2 col-md-12">
+                                                    <label class="d-block text-font"style="text-align:left;">Confirm Password</label>
+                                                    <input type="password" class="form-control form-control-md show-hide-password" placeholder="Enter Confirm Password">
+                                                         <i class="fa password fa-eye-slash"></i>
+                                                    </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 281px;">Skip</button>
+                                            <button type="button" class="btn btn-success">Submit</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <!-- modal -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        const inputs = document.querySelectorAll('.show-hide-password');
+    const icon = document.querySelectorAll('i.password');
+
+    // Experiment 1
+    icon.forEach(function(ele) {
+        ele.addEventListener('click', function(e) {
+            const targetInput = e.target.previousElementSibling.getAttribute('type');
+            if (targetInput == 'password') {
+                e.target.previousElementSibling.setAttribute('type', 'text');
+                ele.classList.remove('fa-eye-slash');
+                ele.classList.add('fa-eye');
+            } else if (targetInput == 'text') {
+                e.target.previousElementSibling.setAttribute('type', 'password');
+                ele.classList.add('fa-eye-slash');
+                ele.classList.remove('fa-eye');
+            }
+        });
+    });
+        </script>
+    <script>
         $(document).ready(function(){
+            $('#exampleModal').modal('show');
+            $('#change_password_skip').click(function(){
+                $('#exampleModal_1').modal('show'); 
+            });
             $('#wos').click(function(){
                 // alert("kjhkl");
                 Swal.fire("This section is under development. The World of Standards will open up for you soon.");

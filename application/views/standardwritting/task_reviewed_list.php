@@ -36,19 +36,7 @@
                         </thead>
                         <tbody>
                         
-                            <!-- <tr>
-                              <td>1</td>
-                              <td>Anis Mulani</td>
-                              <td>1234</td>
-                              <td>abc@gmail.com</td>
-                              <td>7057085889</td>
-                              <td>12/03/2023 12:00:00</td>
-                              <td>9 th</td>
-                              <td>12345</td>
-                              <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>standardswritting/ongoin_submission_view" class="btn btn-primary btn-sm mr-2" >View</a>
-                              </td>
-                          </tr> -->
+                         
                                 
                            
 
@@ -63,7 +51,7 @@
                               <td>9 th</td>
                               <td>12345</td>
                               <td class="d-flex">
-                                 <a href="<?php echo base_url(); ?>standardswritting/standard_submission_view/<?=$value['id']?>" class="btn btn-primary btn-sm mr-2" >View</a>
+                                 <a href="<?php echo base_url(); ?>standardswritting/task_recevied_reviewed/<?=$value['id']?>" class="btn btn-primary btn-sm mr-2" >View</a>
                               </td>
                           </tr>
                                 
