@@ -237,6 +237,7 @@ class Users extends CI_Controller
                 $region_id       = encryptids("E", $user_details['standard_club_region']);
                 $StandardClubStateID       = encryptids("E", $user_details['StandardClubStateID']);               
                 $standard_club_category       = encryptids("E", $user_details['standard_club_category']);
+                $user_profile       = encryptids("E", $user_details['profile_image']);
                 $is_admin       = encryptids("E", 0);
                
                 $sess_arr         = array(
@@ -255,7 +256,8 @@ class Users extends CI_Controller
                     'StandardClubStateID' => $StandardClubStateID,
                     "dept_id" => $dept_id,
                     "standard_club_category"=>$standard_club_category ,  
-                    "quiz_lang_id" => 0
+                    "quiz_lang_id" => 0,
+                    "profile_image"=>$user_profile
                 );
 
                 $this->session->set_userdata($sess_arr);
@@ -793,6 +795,7 @@ class Users extends CI_Controller
 
                 // for class 
                 $standard      = encryptids("E", $user_details['StdClubMemberClass']);
+                $user_profile  = encryptids("E", $user_details['profile_image']);
 
                 $sess_arr         = array(
                     "user_log_id" => $user_log_id,
@@ -813,6 +816,7 @@ class Users extends CI_Controller
                     "quiz_lang_id" => 0,
 
                     "standard" => $standard,
+                    "profile_image" =>$user_profile
 
 
                 );
@@ -3513,6 +3517,41 @@ class Users extends CI_Controller
      }
      public function update_profile(){
         // print_r($_POST); die;
+        $oldDocument = "";
+        $oldDocument = $this->input->post('old_img');
+        $document = "";
+
+        if (!file_exists('uploads/user/profile')) {
+            mkdir('uploads/user/profile', 0777, true);
+        }
+
+        if (!empty($_FILES['bannerimg']['tmp_name'])) {
+            $document = "user_profile" . time() . '.jpg';
+            $config['upload_path'] = './uploads/user/profile/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']    = '100000';
+            $config['max_width']  = '3024';
+            $config['max_height']  = '2024';
+            $config['file_name'] = $document;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('bannerimg')) {
+                //$err[]=$this->upload->display_errors();
+                $data['status'] = 0;
+                $data['message'] = $this->upload->display_errors();
+            }
+        } else {
+            if (!empty($oldDocument)) {
+                $document =  $oldDocument;
+            }
+        }
+
+        if ($document) {
+            $data['profile_image'] = $document;
+        }
+
+
         $UserId = $this->session->userdata('admin_id');
         $user_id = encryptids("D", $UserId);
         $data['user_name']=$this->input->post('user_name');

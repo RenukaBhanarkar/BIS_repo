@@ -118,7 +118,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <div class="after_login_details">
             <div class="profile-top nodtranslate">
-                <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb3fcb-8a0e-4151-82ae-4df1d6639867" width="86px;"></div>
+                <?php if(isset($_SESSION['profile_image'])){ if($_SESSION['profile_image']==""){ ?>
+                    <div class="profile-pic"><img src="<?php echo base_url().'uploads/user/profile/'.encryptids("D", $_SESSION['profile_image']) ?>" width="86px;" style="border-radius: 50%; height: 86px;"></div>
+              <?php } else{?>
+              <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb-82ae-4151-82ae-4df1d6639867" width="86px;" style="border-radius: 50%; height: 86px;"></div>
+              <?php } }else{ ?>
+                <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb-82ae-4151-82ae-4df1d6639867" width="86px;" style="border-radius: 50%; height: 86px;"></div>
+                <?php } ?>
                 <span class="mt-2"><?php echo encryptids("D", $_SESSION['admin_name']); ?></span>
             </div>
 		    <ul>

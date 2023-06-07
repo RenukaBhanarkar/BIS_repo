@@ -137,7 +137,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="col-md-12">
-                                                        <form  action="<?php echo base_url().'Miscellaneouscompetition/bulkassign/'; ?>" name="bulksubmit" method="post">
+                                                        <form  action="<?php echo base_url().'Miscellaneouscompetition/bulkassign/'.$competition[0]['comp_id']; ?>" name="bulksubmit" method="post">
                                                 <table id="example_2" class="table-bordered" style="width:100%">
                                                             <thead>
                                                                 <tr>
