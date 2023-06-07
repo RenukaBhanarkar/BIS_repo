@@ -26,15 +26,15 @@
         <div class="col-md-4">
             <div class="sitenav">
                 <ul class="ul_list p-0">
-                    <li class="li_text"><a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>Home</li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>BIS</li>
-                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>Published Standards</li>
-                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>Know Your Standards</li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>SNAP 2022-27</li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>NBC</li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>NEC</li>
-                    <li class="li_text"><a href="<?php echo base_url() . 'users/contact_us' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>Contact Us</li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>User Manual</li>
+                    <li class="li_text"><a href="<?php echo base_url() . 'Users/welcome' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Home</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">BIS</a></li>
+                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Published Standards</a></li>
+                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Know Your Standards</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">SNAP 2022-27</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NBC</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NEC</a></li>
+                    <li class="li_text"><a href="<?php echo base_url() . 'users/contact_us' ?>" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>Contact Us</li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">User Manual</a></li>
                 </ul>
             </div>
 
