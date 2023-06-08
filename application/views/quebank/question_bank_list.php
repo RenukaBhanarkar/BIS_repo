@@ -150,7 +150,7 @@
 
                                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                                 <?php if (($row['status'] == 1) || ($row['status'] == 4)) { ?>
-                                                    <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="sendForApproval">Send for Approval</button>
+                                                    <button type="button" class="btn btn-info btn-sm mr-2" data-id="<?php echo $row['que_bank_id']; ?>" id="sendForApproval">Send for approval</button>
                                             <?php  }
                                             } ?>
 
@@ -267,7 +267,7 @@
                     title: 'Are you sure you want to Send for Approval?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Send for Approval',
+                    confirmButtonText: 'Send for approval',
                     denyButtonText: `Cancel`,
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */

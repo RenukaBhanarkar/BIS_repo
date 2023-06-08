@@ -358,7 +358,7 @@
               
 
                 <!-- new code start -->
-                  <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#rejectForm" id="reject">Reject</a>
+                  <a class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#rejectForm" id="reject">Reject</a>
               
                 <!-- new code eend -->
 
