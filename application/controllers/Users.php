@@ -638,9 +638,83 @@ class Users extends CI_Controller
      * 
      * correct auth user without api call
      */
+public function authUser()
+    {
 
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|max_length[30]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('MSG', ShowAlert(validation_errors(), "DD"));
+            redirect(base_url() . "Users/login", 'refresh');
+            return false;
+        } else {
+
+            $username        = clearText($this->input->post('username'));
+            $password        = clearText($this->input->post('password'));        
+            
+            
+           $user = $this->Admin_model->getLoginUsers($username, $password);
+                if (empty($user)) {
+                    $this->session->set_flashdata('MSG', ShowAlert("Invalid username or password.", "DD"));
+                    redirect(base_url() . "Users/login", 'refresh');
+                    return true;
+                }
+                
+                else {
+
+                    $admin_id        = encryptids("E", $user['id']);
+                    $admin_email        = encryptids("E", $user['email_id']);
+                    $admin_name      = encryptids("E", $user['name']);
+                    $admin_type        = encryptids("E", $user['admin_type']);
+                    $admin_post        = encryptids("E", $user['post']);
+                    $club_id       = encryptids("E", 0);
+                    $branch_id       = encryptids("E", 0);
+                    $dept_id       = encryptids("E", 0);
+                    $region_id       = encryptids("E", 0);
+                    $is_admin       = encryptids("E", 1);
+
+                    $sess_arr         = array(
+                        "admin_id" => $admin_id,
+                        "admin_email" => $admin_email,
+                        "admin_type" => $admin_type,
+                        "admin_post" => $admin_post,
+                        "admin_name" => $admin_name,
+                        "is_admin" => $is_admin,
+                        "club_id" => $club_id,
+                        "branch_id" => $branch_id,
+                        "region_id" => $region_id,
+                        "dept_id" => $dept_id,
+                        "quiz_lang_id" => 0
+                    );
+
+                    if ($user['admin_type'] == 1 || $user['admin_type'] == 2 || $user['admin_type'] == 3) {
+                          if ($user['admin_type'] == 3) {
+                            // get permission 
+                            $main_mod_per = $this->Admin_model->mainModulePermission($admin_id);
+                            $sub_mod_per = $this->Admin_model->subModulePermission($admin_id);
+                         //   $activity_per = $this->Admin_model->activityPermission($admin_id);
+                            $sess_permissions = array(
+                                "main_mod_per" => $main_mod_per,
+                                "sub_mod_per" => $sub_mod_per,
+                                "activity_per" => $activity_per,
+                             );
+                             $this->session->set_userdata($sess_permissions);
+                          }
+
+                        $this->session->set_userdata($sess_arr);
+
+                        redirect(base_url() . "Admin/Dashboard", 'refresh');
+                        return true;
+                    } else {
+                        $this->session->set_flashdata('MSG',  ShowAlert("Invalid username or password.", "DD"));
+                        redirect(base_url() . "Users/login", 'refresh');
+                        return true;
+                    }
+                }
+    }
+    }
     
-    public function authUser()
+    public function authUser2()
     {
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|max_length[50]');
