@@ -191,7 +191,7 @@ padding-left: 5px;
             <div class="carousel-item <?php if ($list == 0) {
               echo "active";
               } ?>">
-              <img src="<?= base_url() . 'uploads/' . $key['banner_images']; ?>" class="background-banner-image">
+              <img src="<?= base_url() . 'uploads/cms/banner/' . $key['banner_images']; ?>" class="background-banner-image">
             </div>
             <?php } ?>
           </div>

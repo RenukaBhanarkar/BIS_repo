@@ -1730,7 +1730,7 @@ class Admin extends CI_Controller
     {
 
         $banner_img = "bannerimg" . time() . '.jpg';
-        $config['upload_path'] = './uploads';
+        $config['upload_path'] = './uploads/cms/banner';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
         $config['max_width']  = '3024';
@@ -1869,13 +1869,17 @@ class Admin extends CI_Controller
         $formdata['caption'] = $this->input->post('banner_caption');
         //  $formdata['image'] = $this->input->post('old_doc');   
 
+        if (!file_exists('uploads/cms/banner')) {
+            mkdir('uploads/cms/banner', 0777, true);
+        }
+
         $oldDocument = "";
         $oldDocument = $this->input->post('old_img');
         $document = "";
 
         if (!empty($_FILES['bannerimg']['tmp_name'])) {
             $document = "banner_image" . time() . '.jpg';
-            $config['upload_path'] = './uploads';
+            $config['upload_path'] = './uploads/cms/banner';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '100000';
             $config['max_width']  = '3024';
@@ -1913,9 +1917,14 @@ class Admin extends CI_Controller
         try {
             $que_id = $this->input->post('que_id');
             $id = $this->Admin_model->deleteBanner($que_id);
+            $abcd=$this->input->post('banner');
+            $img_name='uploads/cms/banner/'.$abcd;
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
+                if($img_name){
+                    @unlink($img_name);
+                }
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';
