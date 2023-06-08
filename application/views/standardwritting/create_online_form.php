@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
+                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_offline_dashboard';?>" >Standard Writting Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_online_dashboard';?>" >Standard Writting</a></li>
@@ -88,11 +88,11 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" >
+                                <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Qualifying Marks<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="" >
+                                <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                             <div class="mb-2 col-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
@@ -171,7 +171,7 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="" >
+                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value=""oninput="this.value = this.value.replace(/[^0-9]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize<sup class="text-danger">*</sup></label>
@@ -198,7 +198,7 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="" >
+                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
@@ -223,7 +223,7 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="" >
+                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
@@ -248,7 +248,7 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="" >
+                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value=""oninput="this.value = this.value.replace(/[^0-9]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>

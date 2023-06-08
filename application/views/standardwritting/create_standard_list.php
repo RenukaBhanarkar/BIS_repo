@@ -48,7 +48,7 @@
                               <td><?=  $key+1; ?></td>
                               <td><?= $data['standard_club']?></td>
                               <td><?= $data['topic_of_activity']?></td>
-                              <td><?= $data['date_of_activity']?></td>
+                              <td><?= date("d-m-Y", strtotime($data['date_of_activity']));?> </td>
                               <td><?= $data['number_of_participants']?></td>
                               <td>New Created</td> 
                               

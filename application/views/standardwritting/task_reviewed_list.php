@@ -47,7 +47,7 @@
                               <td><?=$value['id']?></td>
                               <td><?=$value['email']?></td>
                               <td><?=$value['user_mobile']?></td>
-                              <td><?=$value['created_on']?></td>
+                              <td> <?= date("d-m-Y h:i:s", strtotime($value['created_on']));?></td>
                               <td>9 th</td>
                               <td>12345</td>
                               <td class="d-flex">

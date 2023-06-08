@@ -42,12 +42,12 @@
                             <td><?=$key+1?></td>
                             <td><?=$value['comp_id']?></td>
                             <td><?=$value['submission_id']?></td>
-                            <td>12345</td>
+                            <td><?=$value['member_id']?></td>
                             <td>9 th</td>
                             <td><?=$value['total_mark']?></td>
                             <td><?=$value['score']?></td>
-                            <td>Anis Mulani</td>
-                            <td><?=$value['sssign_date']?></td>
+                            <td><?=$value['name']?></td>
+                            <td><?= date("d-m-Y h:i:s", strtotime($value['sssign_date']));?></td>
                             <?php
                             if($value['assignStatus']==1)
                             {

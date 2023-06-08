@@ -49,9 +49,9 @@
                               <td><?=  $key+1; ?></td>
                               <td><?= $data['standard_club']?></td>
                               <td><?= $data['topic_of_activity']?></td>
-                              <td><?= $data['date_of_activity']?></td>
+                              <td><?= date("d-m-Y", strtotime($data['date_of_activity']));?></td>
                               <td><?= $data['number_of_participants']?></td>
-                              <td><?= $data['created_on']?></td>
+                              <td><?= date("d-m-Y h:i:s", strtotime($data['created_on']));?></td>
                               <td><?= $data['status_name']?></td>
                               <td><?= $data['reject_reasone']?></td>
                               

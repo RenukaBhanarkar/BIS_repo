@@ -100,16 +100,47 @@ class Standardswritting extends CI_Controller
     }
     public function Competition_Reviewed_list()
     {
+        $getDetails= $this->Standardswritting_model->revised_standard_list();
         $data = array();
-        $data['getData'] = $this->Standardswritting_model->revised_standard_list();
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/Competition_Reviewed_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function Competition_Under_Review_list()
     {
+        $getDetails= $this->Standardswritting_model->revised_standard_list();
         $data = array();
-        $data['getData'] = $this->Standardswritting_model->revised_standard_list(); 
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data;
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/Competition_Under_Review_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -1088,12 +1119,8 @@ if($id){
             array_push($data, $row);
         }         
         
-        $data['getData'] = $data;
+        $data['getData'] = $data; 
 
-
-
-        // $data=array();
-        // $data['getData']=$this->Standardswritting_model->ongoing_online_list();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/ongoing_online_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -1447,8 +1474,25 @@ if($id){
     }
     public function revised_standard_list()
     {
+        
+        $getDetails= $this->Standardswritting_model->revised_standard_list();
         $data = array();
-        $data['getData'] = $this->Standardswritting_model->revised_standard_list();  
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data; 
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/revised_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');

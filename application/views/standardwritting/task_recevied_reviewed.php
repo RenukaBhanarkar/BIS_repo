@@ -44,7 +44,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Submission Date & Time</label>
                             <div>
-                                <p><?=$getData['created_on']?></p>
+                                <p><?= date("d-m-Y h:i:s", strtotime($getData['created_on']));?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -95,7 +95,7 @@
                         <div class="mb-2 col-md-2">
                             <label class="d-block text-font">Score<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
-                                <input type="text" class="form-control input-font" name="score" id="score" placeholder="Enter Score" ><span style="font-size: 20px; padding-left: 8px; margin-top: 3px;" > /<?= $getData['total_mark']?></span>
+                                <input type="text" class="form-control input-font" name="score" id="score" placeholder="Enter Score" oninput="this.value = this.value.replace(/[^0-9]/, '')" ><span style="font-size: 20px; padding-left: 8px; margin-top: 3px;" > /<?= $getData['total_mark']?></span>
                             </div>
                             <span class="text-danger" id="err_score"></span>
                             

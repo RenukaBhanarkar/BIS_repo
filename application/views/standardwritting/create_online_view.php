@@ -50,7 +50,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Date</label>
                             <div>
-                                <p><?=$getData['start_date']?></p>
+                                <p><?= date("d-m-Y", strtotime($getData['start_date']));?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -63,7 +63,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">End Date</label>
                             <div>
-                                <p><?=$getData['end_date']?></p>
+                                <p><?= date("d-m-Y", strtotime($getData['end_date']));?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">

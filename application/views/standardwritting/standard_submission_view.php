@@ -44,7 +44,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Timestamp</label>
                             <div>
-                                <p><?=$getData['created_on']?></p>
+                                <p><?= date("d-m-Y h:i:s", strtotime($getData['created_on']));?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">

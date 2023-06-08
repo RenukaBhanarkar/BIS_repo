@@ -49,10 +49,9 @@
                               <td><?=$key+1?></td>
                               <td><?=$value['comp_id']?></td>
                               <td><?=$value['title']?></td>
-                              <td><?=$value['start_date']?></td>
+                              <td><?= date("d-m-Y", strtotime($value['start_date']));?></td>
                               <td><?=$value['start_time']?></td>
-
-                              <td><?=$value['end_date']?></td>
+                              <td><?= date("d-m-Y", strtotime($value['end_date']));?></td>
                               <td><?=$value['end_time']?></td> 
                               <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
                               <td><?=$value['availability']?></td>

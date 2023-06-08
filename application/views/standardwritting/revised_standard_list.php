@@ -49,18 +49,17 @@
                               <td><?=$key+1?></td>
                               <td><?=$value['comp_id']?></td>
                               <td><?=$value['title']?></td>
-                              <td><?=$value['start_date']?></td>
+                              <td><?= date("d-m-Y", strtotime($value['start_date']));?></td>
                               <td><?=$value['start_time']?></td>
-
-                              <td><?=$value['end_date']?></td>
+                              <td><?= date("d-m-Y", strtotime($value['end_date']));?></td>
                               <td><?=$value['end_time']?></td> 
                               <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
                               <td><?=$value['availability']?></td>
                               <td><?=$value['level']?></td> 
                               <!-- <td><?=$value['status_name']?></td> -->
-                              <td>0</td>
-                              <td>0</td>  
-                              <td>0</td>  
+                              <td><?=$value['totalcount']?></td>
+                              <td><?=$value['sendReview']?></td>  
+                              <td><?=$value['Reviewd']?></td>  
                               <td class="d-flex">
 
                             <a onclick="viewSubmitData('<?= $value['id']?>')" class="btn btn-info btn-sm mr-2" >View & Assign</a>
