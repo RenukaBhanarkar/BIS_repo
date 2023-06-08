@@ -426,7 +426,7 @@ $(document).ready(function(){
                 var row = '';
                 
                 for (i in data) { 
-                    row += '<li><a href="https://'+data[i].link+'" target="_blank" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/'+data[i].image +'" height="100%" width="100%"></a></li>';       
+                    row += '<li><a href="https://'+data[i].link+'" target="_blank" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
                                     
                 }
                 
@@ -452,7 +452,7 @@ $(document).ready(function(){
                 for (i in data) {
                             
                      
-row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].title+'" onclick="follow_pop()" class="jquery-once-4-processed"><img src="<?php echo base_url(); ?>uploads/'+data[i].icon +'"class="social_image">Twitter</a>';            
+row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].title+'" onclick="follow_pop()" class="jquery-once-4-processed"><img src="<?php echo base_url(); ?>uploads/cms/followus/'+data[i].icon +'"class="social_image">Twitter</a>';            
                 }
                 $(".social-content").html(row);
     },
