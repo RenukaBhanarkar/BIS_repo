@@ -36,8 +36,13 @@ class Miscellaneouscompetition extends CI_Controller
     }
     public function task_reviewed()
     {
+        $data = array();
+        $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $abc=$this->Miscellaneous_competition->getAdminUserid($admin_id);
+        $data['records']=$this->Miscellaneous_competition->evaluatedSubmissionsByEvaluator($abc['user_uid']);
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/task_reviewed');
+        $this->load->view('admin/task_reviewed',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_recevied_view($id)
@@ -72,11 +77,15 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function CompetitionUnderReview(){
+        $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/competition_under_review');
+        $this->load->view('admin/competition_under_review',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function CompetitionReviewed(){
+        $data['competition']=$this->Miscellaneous_competition->CompetitionReviewed();
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/competition_reviewed');
         $this->load->view('admin/footers/admin_footer');
@@ -85,5 +94,35 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_writting_thanks');
         $this->load->view('users/footers/footer');
+    }
+    public function addDummyCompRecord($id){
+        $i=1;
+        $uid=2212274963;
+        while($i < $id){
+            
+
+            $data['user_id']=$uid;
+            $data['competiton_id']="C060623vzde";
+            $data['answer_text']="answer text";
+            $data['image']="uploads/competition/response_images/1685366899comp_response_img1234.jpg";
+            $data['score']="0";
+            $data['status']="0";
+            $data['evaluator']="";
+
+            $res=$this->Miscellaneous_competition->addDummyCompRecord($data);
+            if($res){
+
+            }else{
+                die;
+            }
+
+            $uid=$uid+1;
+            $i++;
+        }
+    }
+    public function bulkassign($id){
+        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition2($id);
+        print_r($_POST); 
+        echo count($_POST['evaluator']); die;
     }
 }

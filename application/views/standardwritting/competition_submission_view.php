@@ -66,7 +66,7 @@
                                 <td><?php echo $list['email']; ?></td>
                                 <td><?php echo $list['user_mobile']; ?></td>
                                 <td><?php echo $list['avai_for']; ?></td>
-                                <td></td>
+                                <td><?php echo $list['StdClubMemberClass']; ?></td>
                                 <td><?php echo $list['created_on']; ?></td>
                                 <!-- <td></td> -->
                                 <!-- <td><?php if($list['image']==""){ echo "-"; }else{?><img src="<?php echo base_url().$list['image']; ?>" alt="#" class="" width="100%"><?php } ?></td> -->

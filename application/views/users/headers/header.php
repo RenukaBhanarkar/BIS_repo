@@ -79,6 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="contact">
                             <ul>
                                 <li><a href="#">हिन्दी</a></li>
+                                <!-- <li><a href="#">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
                                     <a href="#" id="blue_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
@@ -118,7 +119,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <div class="after_login_details">
             <div class="profile-top nodtranslate">
-                <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb3fcb-8a0e-4151-82ae-4df1d6639867" width="86px;"></div>
+                <?php if(isset($_SESSION['profile_image'])){ if(encryptids("D", $_SESSION['profile_image'])==""){ ?>
+                    
+                    <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb-82ae-4151-82ae-4df1d6639867" width="86px;" style="border-radius: 50%; height: 86px;"></div>
+              <?php }else{ ?>
+                
+                <div class="profile-pic"><img src="<?php echo base_url().'uploads/user/profile/'.encryptids("D", $_SESSION['profile_image']) ?>" width="86px;" style="border-radius: 50%; height: 86px;"></div>
+              
+              <?php } }else{ ?>
+                <div class="profile-pic"><img src="https://auth.mygov.in/avatar/20fb-82ae-4151-82ae-4df1d6639867" width="86px;" style="border-radius: 50%; height: 86px;"></div>
+                <?php } ?>
                 <span class="mt-2"><?php echo encryptids("D", $_SESSION['admin_name']); ?></span>
             </div>
 		    <ul>
@@ -127,6 +137,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		      </li>
               <li>
 			       <a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/edit_profile">Edit Profile</a>
+		      </li>
+              <li>
+			       <a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/change_password">Change Password</a>
 		      </li>
 		      <li>
 			      <a class="capital" title="My Activity" href="<?php echo base_url(); ?>users/my_activity_list">My Activity</a>

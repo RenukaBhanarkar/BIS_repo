@@ -255,20 +255,22 @@
                 echo $this->session->flashdata('MSG');
             }
         ?>
-                <div class="bg-light-comment p-3" style="background: navy;">
+        <div id="abcd"><a class="btn btn-primary btn-sm mr-2" style="margin-bottom: 10px;">Start Task</a></div>
+                <div class="bg-light-comment p-3">
                     <!-- <div class="Comment_image">
                         <img src="../assets/images/user_image.png">
                     </div> -->
                     
-                    <div class="row">
+                    <div class="row pqr">
                         <form action="<?php echo base_url().'users/competition_response_record/'; ?>" id="comp_form" name="competition_response" method="post" enctype="multipart/form-data">
                         <div class="col-sm-12">
-                                <div class="form-group ">
-                                    <textarea class="form-control w-100" rows="1" id="answer" placeholder="Share Your Comments......" name="answer"></textarea>
-                                    <div id="the-count">
+                                <div class="form-group text_hide" style="text-align:end;">
+                                    <textarea class="form-control w-100" rows="1" id="myTextArea" placeholder="Share Your Comments......" name="myTextArea"></textarea>
+                                    <!-- <div id="the-count">
                                             <span id="current">0</span>
                                             <span id="maximum">/ 5000</span>
-                                    </div>
+                                    </div> -->
+                                    <strong>Letter count: <span id="letterCount"></span></strong>
 
                                     <input type="hidden" name="comp_id" value="<?php echo $competition['competitionn_id']; ?>">
                                     
@@ -281,7 +283,7 @@
                             </div>
                         </div>
                         <div class="button-group  mt-5" style="text-align:end;">
-                                        <button onclick="return submitCompetition(event)" type="submit" class="btn btn-success">Save</button>
+                                        <button onclick="return submitCompetition(event)" type="submit" class="btn btn-success">Submit</button>
                                     </div>
                         
                     </form>
@@ -290,12 +292,62 @@
                     
                 </div>
 </div>
+<script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
+
+<!-- <script>
+   CKEDITOR.replace('answer1',{
+    language:'fr',
+    uiCoclor:'#9AB8F3'
+   });
+
+</script> -->
+<script type="text/javascript">CKEDITOR.replace('myTextArea',{
+   height: '300',
+   maxlength: '5000'
+});
+</script>
 <script>
-     $(".file-upload-wrapper").hide();
+    $(document).ready(function(){
+$('#abcd').show();
+$('.pqr').hide();
+$('#abcd').click(function(){
+    $('#abcd').hide();
+    $('.pqr').show();
+})
+var editAbstract=CKEDITOR.instances.myTextArea;
+
+editAbstract.on("key",function(e) {      
+                        
+   var maxLength=e.editor.config.maxlength;
+      
+   e.editor.document.on("keyup",function() {KeyUp(e.editor,maxLength,"letterCount");});
+   e.editor.document.on("paste",function() {KeyUp(e.editor,maxLength,"letterCount");});
+   e.editor.document.on("blur",function() {KeyUp(e.editor,maxLength,"letterCount");});
+},editAbstract.element.$);
+
+//function to handle the count check
+function KeyUp(editorID,maxLimit,infoID) {
+
+   //If you want it to count all html code then just remove everything from and after '.replace...'
+   var text=editorID.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/^\s+|\s+$/g, '');
+   $("#"+infoID).text(text.length);
+
+   if(text.length>maxLimit) {   
+      Swal.fire("You cannot have more than "+maxLimit+" characters");         
+      editorID.setData(text.substr(0,maxLimit));
+      editor.cancel();
+   } else if (text.length==maxLimit-1) {
+      alert("WARNING:\nYou are one character away from your limit.\nIf you continue you could lose any formatting");
+      editor.cancel();
+   }
+}   
+
+});
+    // $(".file-upload-wrapper").hide();  
     $(document).ready(function () 
     { 
        
-        $("#answer").click(function(){
+        $("#text_hide").click(function(){
          $(".file-upload-wrapper").show();
       });
 
@@ -308,16 +360,22 @@
 function submitCompetition(event){
     event.preventDefault();
 var isValid=true;
-   var answer =$('#answer').val();
+//    var answer =$('#myTextArea').val();
+   var answer = CKEDITOR.instances['myTextArea'].getData();
     if(answer==""){
         Swal.fire("Please enter answer");
         // alert('enter response');
         isValid=false;
+    }else if(answer.length > 5000){
+        isValid=false;
+        Swal.fire("Only 5000 characters allowed");
+    }else{
+        
     }
 
     if(isValid){
         Swal.fire({
-                    title: 'Are you sure you want to Delete?',
+                    title: 'Are you sure you want to Submit?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Submit',

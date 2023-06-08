@@ -75,9 +75,9 @@
                                 <td><img src="<?php echo base_url().$list['thumbnail']; ?>" width="60px"></td>
                                 <td><?php echo $list['avai_for']; ?></td>
                                 <td><?php echo $list['title']; ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo $list['total_task']; ?></td>
+                                <td><?php echo $list['total_task_under_review']; ?></td>
+                                <td><?php echo $list['total_task_reviewed']; ?></td>
                                 
                                 <td>
                                 <a href="<?php echo base_url().'Standardswritting/view_submission_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>

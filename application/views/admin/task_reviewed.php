@@ -3,15 +3,22 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Task Reviewed</h1>
+            <h1 class="h3 mb-0 text-gray-800">Task Evaluated</h1>
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Task Reviewed</li>
+            <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li> -->
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Miscellaneouscompetition/evaluator_dashboard';?>" >Evaluator Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Task Evaluated</li>
                 
                 </ol>
             </nav>
         </div>
+        <!-- <?php print_r($records); ?> -->
 
         <!-- Content Row -->
        <div class="row">
@@ -34,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>Name of Competition</td>
@@ -48,7 +55,24 @@
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>admin/standard_under_view" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                               </td>
-                           </tr>
+                           </tr> -->
+                           <?php if(!empty($records)){ $i=1; foreach($records as $list){ ?>
+                            <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $list['competiton_id']; ?></td>
+                            <td><?php echo $list['competiton_name']; ?></td>
+                            <td><?php echo $list['id']; ?></td>
+                            <td><?php echo $list['StdClubMemberClass']; ?></td>
+                            <td><?php echo $list['created_on']; ?></td>
+                            <td><?php echo $list['name']; ?></td>
+                            <td><?php echo $list['score']; ?></td>
+                            <td><?php echo $list['marks']; ?></td>
+                            <td><?php if($list['status']==3){ echo "Reviewed";} ?></td>
+                            <td class="d-flex">
+                                 <a href="<?php echo base_url(); ?>Miscellaneouscompetition/viewRecord/<?php echo encryptids('E', $list['id']) ?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                              </td>
+                              </tr>
+                          <?php } } ?>
                         </tbody>
                     </table>
                 </div>

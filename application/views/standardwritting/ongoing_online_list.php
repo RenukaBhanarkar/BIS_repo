@@ -68,7 +68,7 @@
                               <td class="d-flex">
 
                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View Details</a> 
-                                 <a href="<?php echo base_url();?>Standardswritting/submission_view/<?= $value['id']?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a onclick="viewSubmissionData('<?= $value['id']?>')" class="btn btn-warning btn-sm mr-2" >View Submission</a>
 
                             <!-- <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
                             <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $value['id']?>')" >Edit</a>
@@ -110,6 +110,22 @@
     if (result.isConfirmed) 
     { 
       window.location.href = "create_online_view/"+id; 
+    }  
+  })
+}
+
+function viewSubmissionData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View Submission ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "submission_view/"+id; 
     }  
   })
 }

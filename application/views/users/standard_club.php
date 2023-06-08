@@ -289,8 +289,9 @@ padding-left: 5px;
                         <div class="quiz-box">
                           <img src="<?= base_url(); ?><?=$OnlineCompData['banner_img']?>" class="w-100 border-2">
                         </div>
+                        
                         <div class="Quiz-button"><a href="#">
-                          <a href="<?php echo base_url() . "users/standard_writting_details/"?><?=$OnlineCompData['id']?>" class="btn startQuiz"> <span>Participate</span></a>
+                          <a href="<?php echo base_url() . "users/standard_writting_details/"?><?php echo  $id= encryptids("E", $OnlineCompData['id'] )?>" class="btn startQuiz"> <span>Participate</span></a>
                         </div>
                         <p class="quiz-text overflow-hidden p-1"><?=$OnlineCompData['title']?></p>
                       </div>

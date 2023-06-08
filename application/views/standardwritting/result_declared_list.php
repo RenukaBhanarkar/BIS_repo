@@ -3,7 +3,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Closed Competition</h1>
+            <h1 class="h3 mb-0 text-gray-800">Result Declared List</h1>
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_offline_dashboard';?>" >Standard Writting Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_online_dashboard';?>" >Standard Writting</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Closed Competition</li>
+                <li class="breadcrumb-item active" aria-current="page">Result Declared List</li>
                 
                 </ol>
             </nav>
@@ -25,63 +25,33 @@
                         <thead>
                             <tr> 
                                 <th>Sr. No.</th>
-                                <th>Competition ID</th>
-                                <th>Title of Competition</th>
-                                <th>Start Date</th>
-                                <th>Start Time</th>
-                                <th>End Date</th>
-                                <th>End Time</th>
-                                <th>Banner</th>
-                                <th>Available for</th>
-                                <th>Level of Competition</th>
-                                <th>Total Task</th>
-                                <th>Task Under Review</th>
-                                <th>Task Reviewed</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Name</th>
+                                <th>Email Id</th>
+                                <th>Contact No.</th>
+                                <th>Member Id</th>
+                                <th>Class</th>
+                                <th>Date</th>
+                                <th>Time Taken</th>
+                                <th>Score</th>
+                                <th>Prize</th>
+                                
+                                
                             </tr>
                         </thead>
                         <tbody>
-
-
-                            <?php foreach ($getData as $key => $value) {?>
-                            <tr>
-                              <td><?=$key+1?></td>
-                              <td><?=$value['comp_id']?></td>
-                              <td><?=$value['title']?></td>
-                              <td><?=$value['start_date']?></td>
-                              <td><?=$value['start_time']?></td>
-
-                              <td><?=$value['end_date']?></td>
-                              <td><?=$value['end_time']?></td> 
-                              <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
-                              <td><?=$value['availability']?></td>
-                              <td><?=$value['level']?></td> 
-                              <td><?=$value['count']?></td>
-
-                              <?php 
-                              if($value['review_status']==0)
-                                { $task="Task Under Review";}
-                            else
-                                {$task="Sent For Review";}
-
-                                ?>
-                                <td><?=$task?></td>
-                              <td>Reviewed</td>
-                              <td><?=$value['status_name']?></td>  
-                              <td class="d-flex">
-                                 <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>
-                                 <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
-                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                                 <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
-                               <?php } ?>
-                             
- 
-                                  
-                              </td>
-                           </tr>
-                         <?php } ?>
+                           <tr>
+                              <td>1</td>
+                              <td>Anis</td>
+                              <td>abc@gmail.com</td>
+                              <td>7057085889</td>
+                              <td>12345</td>
+                              <td>9 th</td>
+                              <td>12/03/2023 12:00:00 </td> 
+                              <td>12:00:00</td>
+                              <td>10</td>
+                              <td>First Prize</td> 
+                            </tr>
+                         
                             
                         </tbody>
                     </table>

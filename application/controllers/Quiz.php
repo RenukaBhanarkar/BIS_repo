@@ -1541,7 +1541,7 @@ class Quiz extends CI_Controller
     }
     public function quiz_view($id)
     {
-        $id = encryptids("D", $id);
+        // $id = encryptids("D", $id);
         $this->load->view('admin/headers/admin_header');
       
          

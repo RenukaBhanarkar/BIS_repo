@@ -255,24 +255,7 @@ $config = array(
 		),
 
 
-		array(
-			'field' => 'second_paticipant',
-			'label' => 'second paticipant',
-			'rules' => 'required'
-		),
-
-
-		array(
-			'field' => 'third_paticipant',
-			'label' => 'third paticipant',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'consolation_paticipant',
-			'label' => 'consolation paticipant',
-			'rules' => 'required'
-		),
+		 
 	),
 
 
@@ -339,89 +322,11 @@ $config = array(
 
 	'standard_writting_login' => array(
 		array(
-			'field' => 'indian_standard',
-			'label' => 'indian_standard',
+			'field' => 'details',
+			'label' => 'details',
 			'rules' => 'required'
 		),
-		array(
-			'field' => 'is_no',
-			'label' => 'is_no',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'product',
-			'label' => 'product',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'name_address',
-			'label' => 'name_address',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'price',
-			'label' => 'price',
-			'rules' => 'required'
-			),
-			array(
-			'field' => 'foreword',
-			'label' => 'foreword',
-			'rules' => 'required'
-			),
-			array(
-			'field' => 'product_specification',
-			'label' => 'product_specification',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'scope',
-			'label' => 'scope',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'reference',
-			'label' => 'reference',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'defination',
-			'label' => 'defination',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'classes',
-			'label' => 'classes',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'manufacture',
-			'label' => 'manufacture',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'requirements',
-			'label' => 'requirements',
-			'rules' => 'required'
-		),
-		array(
-			'field' => 'sampling',
-			'label' => 'sampling',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'methods',
-			'label' => 'methods',
-			'rules' => 'required'
-		),
-
-		array(
-			'field' => 'packing',
-			'label' => 'packing',
-			'rules' => 'required'
-		),
+		 
+  
 	),
 );

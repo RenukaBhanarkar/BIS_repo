@@ -6,7 +6,12 @@
             <h1 class="h3 mb-0 text-gray-800">Create New Competition</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Competition</a></li>
@@ -44,7 +49,7 @@
                 </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Name of Competition</label>
+                                <label class="d-block text-font">Name of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo $competition['competiton_name']; ?>" required="">
                                 <span class="error_text" id="err_name"><?php echo form_error('name'); ?></span>
                                 <input type="hidden" name="comp_id" value="<?php echo $competition['comp_id']; ?>">
@@ -52,28 +57,28 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Name of Competition in Hindi</label>
+                                <label class="d-block text-font">Name of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo $competition['competition_hindi_name']; ?>" required="">
                                 <span class="error_text" id="err_name_hindi"><?php echo form_error('name_hindi'); ?></span>
                             </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
-                             <label class="d-block text-font">Description</label>
+                             <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                              <textarea name="description" id="description"><?php echo $competition['description']; ?></textarea>
                              <div class='validation' id="description_error" style='color:red;margin-bottom:15px;'> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
-                             <label class="d-block text-font">Terms & Conditions</label>
+                             <label class="d-block text-font">Terms & Conditions<sup class="text-danger">*</sup></label>
                              <textarea name="terms_conditions" id="terms_conditions"><?php echo $competition['terms_condition']; ?></textarea>
                              <div class='validation' id="terms_conditions_error" style='color:red;margin-bottom:15px;'> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Start Date</label>
+                                <label class="d-block text-font">Start Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="start_date" id="start_date" value="<?php echo $competition['start_date']; ?>" required="">
                                 <span class="error_text"><?php echo form_error('start_date'); ?></span>
                         </div>
@@ -86,7 +91,7 @@
                            
                         </div>
                         <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">End Date</label>
+                                <label class="d-block text-font">End Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="end_date" id="end_date" value="<?php echo $competition['end_date']; ?>" required="">
                                 <span class="error_text"><?php echo form_error('end_date'); ?></span>
                         </div>
@@ -324,15 +329,15 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Number of Prizes</label>
+                                <label class="d-block text-font">Number of Prizes<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo $competition['fprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Prizes</label>
+                                <label class="d-block text-font">Name of Prizes<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fdetail" id="fdetail" placeholder="Enter Prizes" value="<?php echo $competition['fprize_name']; ?>" required="">
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <!-- <div class="d-flex">
                                 <div>
                                     <input type="file" id="fprize_image" name="fprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadfPrizeImage(event)" value="<?php echo set_value('fprize_image') ?>">

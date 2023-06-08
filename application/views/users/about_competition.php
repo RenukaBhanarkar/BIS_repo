@@ -295,7 +295,15 @@
                             
                         </p>
                         <?php }?>
-                        <?php if($competition['standard'] !="") { ?> 
+                        <?php if($competition['comp_level'] =="1") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Level 
+                                <span class="quiz-text-date m-2">All India Level</span>
+                            </span>
+                            
+                        </p>
+                        <?php }?>
+                        <?php if($competition['standard'] !="0") { ?> 
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
                             <span class="start-end-time-title">Class 
                                 <span class="quiz-text-date m-2"><?= $competition['standard'];?></span>

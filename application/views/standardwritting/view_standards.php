@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Topic of Activity</label>
+                            <label class="d-block text-font">Name of Activity</label>
                             <div>
                                 <p><?=$getData['topic_of_activity']?></p> 
                             </div>

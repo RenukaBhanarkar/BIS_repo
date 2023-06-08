@@ -2325,12 +2325,16 @@ textarea {
 	margin-bottom: 20px;
 }
 .live_img{
-	height: 295px;
+	height: 238px;
     width: 378px;
 }
 .bg-light-comment{
 	--bs-bg-opacity: 1;
     background: black;
+    background: #0000804f;
+    padding-bottom: 20px;
+    margin-bottom: 17px;
+    border-radius: 8px;
 }
 .common_content{
 	width: 100%;

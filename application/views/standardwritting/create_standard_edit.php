@@ -22,6 +22,17 @@
                 <form name="create_standard_edit" id="create_standard_edit" action="<?php echo base_url().'standardswritting/create_standard_edit'?>/<?= $getData['id']?>" method="post"enctype="multipart/form-data">
                     <input type="hidden" id="id" name="id" value="<?= $getData['id']?>" >
                     <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Branch Id<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="branch_id" id="branch_id" placeholder="Enter Branch Id" value="<?= $getData['branch_id']?>" >
+                        </div>
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Department Id<sup class="text-danger">*</sup>  </label>
+                            <input type="text" class="form-control input-font" name="dept_id" id="dept_id" placeholder="Enter Department Id" value="<?= $getData['dept_id']?>" >
+                        </div>
+                        <div class="mb-2 col-md-4">
+                            <a class="btn btn-primary btn-sm text-white" style="margin-top: 30px;" onclick="getStandardClub()">Fetch Details</a>
+                        </div>
                         <div class="mb-2 col-4">
                             <label class="d-block text-font">Standard Club<sup class="text-danger">*</sup></label>
                             <select id="standard_club" name="standard_club" class="form-control input-font">
@@ -34,18 +45,18 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Topic of Activity</label>
-                            <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="<?= $getData['topic_of_activity']?>" required="">
+                            <label class="d-block text-font">Name of Activity<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="topic_of_activity" id="topic_of_activity" placeholder="Enter Topic of Activity" value="<?= $getData['topic_of_activity']?>" >
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Date of Activity</label>
-                            <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="<?= $getData['date_of_activity']?>" required="">
+                            <label class="d-block text-font">Date of Activity<sup class="text-danger">*</sup></label>
+                            <input type="date" class="form-control input-font" name="date_of_activity" id="date_of_activity"  value="<?= $getData['date_of_activity']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Number of Participants</label>
-                            <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="<?= $getData['number_of_participants']?>" required="">
+                            <label class="d-block text-font">Number of Participants<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="<?= $getData['number_of_participants']?>" >
                         </div>
                     </div>
                 </div>
@@ -58,8 +69,8 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" required="">
+                            <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="first_fileold" name="first_fileold" value="<?= $getData['first_file']?>" >
@@ -89,7 +100,7 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" required="">
+                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="second_fileold" name="second_fileold" value="<?= $getData['second_file']?>" >
@@ -118,7 +129,7 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipants</label>
-                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>" required="">
+                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="third_fileold" name="third_fileold" value="<?= $getData['third_file']?>" >
@@ -144,7 +155,7 @@
                         <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>" required="">
+                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <input type="hidden" id="consolation_fileold" name="consolation_fileold" value="<?= $getData['consolation_file']?>" >
@@ -317,39 +328,7 @@ allfields = false;
 } else {
 $("#first_paticipant").next(".validation").remove(); // remove it
 }
-var second_paticipant = $("#second_paticipant").val();
-if (second_paticipant == "" || second_paticipant== null) {
-if ($("#second_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#second_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
-}
-if (!focusSet) { $("#second_paticipant").focus(); }
-allfields = false;
-} else {
-$("#second_paticipant").next(".validation").remove(); // remove it
-}
-var third_paticipant = $("#third_paticipant").val();
-if (third_paticipant == "" || third_paticipant== null) {
-if ($("#third_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#third_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
-}
-if (!focusSet) { $("#third_paticipant").focus(); }
-allfields = false;
-} else {
-$("#third_paticipant").next(".validation").remove(); // remove it
-}
-var consolation_paticipant = $("#consolation_paticipant").val();
-if (consolation_paticipant == "" || consolation_paticipant== null) {
-if ($("#consolation_paticipant").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_paticipant").after("<div class='validation' style='color:red;margin-bottom:15px;'>thise value is required</div>");
-}
-if (!focusSet) { $("#consolation_paticipant").focus(); }
-allfields = false;
-} else {
-$("#consolation_paticipant").next(".validation").remove(); // remove it
-}
+ 
 var first_file=$("#first_file").val();
 var firstfile= '<?= $getData["first_file"]?>';
 if (firstfile=='' || firstfile=='NA') {
@@ -408,19 +387,7 @@ $("#first_file").next(".validation").remove(); // remove it
 }
 }
 //second
-var secondfile= '<?= $getData["second_file"]?>';
-var second_file=$("#second_file").val();
-if (secondfile=='' || secondfile=='NA') {
-if (second_file == "" || second_file== null) {
-if ($("#second_file").next(".validation").length == 0) // only add if not added
-{
-$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
-}
-if (!focusSet) { $("#second_file").focus(); }
-allfields = false;
-} else {
-$("#second_file").next(".validation").remove(); // remove it
-}
+ 
 
 
 if ($("#second_file").val() != '')
@@ -463,23 +430,9 @@ else
 $("#second_file").next(".validation").remove(); // remove it
 }
 }
-}
+ 
 //third
-var thirdfile= '<?= $getData["third_file"]?>';
-var third_file=$("#third_file").val();
-if (thirdfile=='' || thirdfile=='NA') {
-if (third_file == "" || third_file== null) {
-if ($("#third_file").next(".validation").length == 0) // only add if not added
-{
-$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
-}
-if (!focusSet) { $("#third_file").focus(); }
-allfields = false;
-} else {
-$("#third_file").next(".validation").remove(); // remove it
-}
-
-
+ 
 if ($("#third_file").val() != '')
 {
 var fileSize = $('#third_file')[0].files[0].size;
@@ -520,22 +473,9 @@ else
 $("#third_file").next(".validation").remove(); // remove it
 }
 }
-}
-//consolation
-var consolationfile= '<?= $getData["consolation_file"]?>';
 
-var consolation_file=$("#consolation_file").val();
-if (consolationfile=='' || consolationfile=='NA') {
-if (consolation_file == "" || consolation_file== null) {
-if ($("#consolation_file").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Upload file </div>");
-}
-if (!focusSet) { $("#consolation_file").focus(); }
-allfields = false;
-} else {
-$("#consolation_file").next(".validation").remove(); // remove it
-}
+//consolation
+ 
 
 
 if ($("#consolation_file").val() != '')
@@ -578,13 +518,13 @@ else
 $("#consolation_file").next(".validation").remove(); // remove it
 }
 }
-}
+
 if (allfields) {
 Swal.fire({
-title: 'Do you want to Submit?',
+title: 'Do you want to Update?',
 showDenyButton: true,
 showCancelButton: false,
-confirmButtonText: 'Submit',
+confirmButtonText: 'Update',
 denyButtonText: `Cancel`,
 }).then((result) => {
 if (result.isConfirmed) {
@@ -598,3 +538,34 @@ $('#closeform').trigger('click');
 return false;
 }
 });</script>
+
+<script type="text/javascript">
+
+function getStandardClub () {
+    var branch_id = $("#branch_id").val();
+    var dept_id = $("#dept_id").val();
+     $.ajax({
+        url: "<?= base_url() ?>standardswritting/getStandardClub",
+        data: {'branch_id':branch_id,'dept_id':dept_id},
+        type: "JSON",
+        method: "post",
+        success: function(StdClb) 
+        {
+            var res = JSON.parse(StdClb);
+            console.log(res.result)
+            if (res.result=='success') {
+            var stringToAppend = "<option disabled selected value=''> Select Standard Club</option> ";
+            $.each(res.data, function (key, val) {
+                stringToAppend += "<option value='" + val.StdClubName + "'>" + val.StdClubName + "</option>";
+            });
+            $("#standard_club").html(stringToAppend);
+        }
+        else
+        {
+            alert("Data not found .... Please Try agen");
+        }
+        }
+    });
+ }
+
+  </script>

@@ -4,8 +4,12 @@
 //session_start();
 if(!isset($_SESSION['user_session_id'])){ 
     
+    
    redirect(base_url() . "Users/login", 'refresh');
-} ?> 
+}
+$start_time = $_SESSION['start_time'] = date('h:i:s'); 
+
+?> 
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -246,152 +250,26 @@ if(!isset($_SESSION['user_session_id'])){
                  <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 <input type="hidden" name="comp_id" id="comp_id" value="<?=$getData['id']?>">
                 <div class="row">
-                    <div class="mb-2 col-sm-4">
-                        <label class="d-block text-font">Indian Standard</label>
-                        <input type="text" class="form-control title-height" name="indian_standard" id="indian_standard" placeholder="Enter Indian Standard" required>
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-4">
-                        
-                    </div>
-                    <div class="mb-2 col-sm-4">
-                        <label class="d-block text-font">IS No.nnnnn</label>
-                        <input type="text" class="form-control title-height" name="is_no" id="is_no" placeholder="Enter" required>
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+                    <input type="hidden" value="<?= $start_time; ?>" name="start_time">
+                     
                     <div class="mb-2 col-sm-12">
-                        <label class="d-block text-font">Product</label>
-                        <textarea type="text" class="form-control title-height" name="product" id="product" placeholder="Enter Specification BIS..." required></textarea >
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <label class="d-block text-font">Name & Address</label>
-                        <textarea type="text" class="form-control title-height" name="name_address" id="name_address" placeholder="Enter Name & Address" required></textarea >
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-4">
-                        <label class="d-block text-font">Mar 2022 Price</label>
-                        <input type="text" class="form-control title-height" name="price" id="price" placeholder="Enter Price" required>
-                        <div class="invalid-feedback">
-                            This value id Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">Foreword<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="a) Name of the Committee responsible for preparation of the standard, date of publication of the standard etc. b) Information about the brief history of standard, product, practices, uses as relevant.
-                            c) Acknowledging other international/national standard which were taken into consideration. d) Information about other related standards.
-                            e) Reference to IS 2 on Rounding Off. Details as at a), c), d) & e) are generally incorporated at the time of final (printing) stage by Sectt.
-                            " name="foreword" id="foreword"></textarea required>
+                        <div class="form-group" id="yourWall_des"><br>
+                            <label class="d-block text-font">Enter Details<sup class="text-danger">*</sup></label><br>
+                            <textarea class="form-control  w-100"  placeholder="" name="details" id="details"></textarea required>
                             <div class="invalid-feedback">
                                 This value is Required.
                             </div>
                         </div>
                     </div>
-                    <div class="mb-2 col-sm-12">
-                        <label class="d-block text-font">IS No. nnnnn :yyyy Title of the Standard (Product - Specification)</label>
-                        <input type="text" class="form-control title-height" name="product_specification" id="product_specification" placeholder="Enter Specification" required>
-                        <div class="invalid-feedback">
-                            This value is Required.
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">Scope<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="scope" id="scope"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">References<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="reference" id="reference"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">DEFINITIONS<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="defination" id="defination"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">GRADES, TYPES AND CLASSES<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="classes" id="classes"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">MANUFACTURE<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="manufacture" id="manufacture"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">REQUIREMENTS<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="requirements" id="requirements"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">SAMPLING<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="sampling" id="sampling"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">METHODS OF TESTS for various Requirements<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="methods" id="methods"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-2 col-sm-12">
-                        <div class="form-group" id="yourWall_des">
-                            <label class="d-block text-font">PACKING AND PACKAGING<sup class="text-danger">*</sup></label>
-                            <textarea class="form-control  w-100"  placeholder="" name="packing" id="packing"></textarea required>
-                            <div class="invalid-feedback">
-                                This value is Required.
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-md-12 row">
                     <div class="button-group float-end mt-3" style="text-align: end;">
                         <button  type="submit" class="btn btn-success submit">Submit</button>
                         
-                        <button class="btn btn-danger cancel" >Cancel</button>
+                        <button class="btn btn-danger cancel" >Cancel</button> 
+                    <a href="<?= base_url()?>"  class="btn btn-danger">Back</a>
+                 
                     </div>
                 </div>
             </form>
@@ -407,15 +285,7 @@ if(!isset($_SESSION['user_session_id'])){
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
     <script>
-    CKEDITOR.replace('scope');
-    CKEDITOR.replace('reference');
-    CKEDITOR.replace('defination');
-    CKEDITOR.replace('classes');
-    CKEDITOR.replace('manufacture');
-    CKEDITOR.replace('requirements');
-    CKEDITOR.replace('sampling');
-    CKEDITOR.replace('methods');
-    CKEDITOR.replace('packing');
+    CKEDITOR.replace('details'); 
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
     'use strict'
@@ -433,4 +303,141 @@ if(!isset($_SESSION['user_session_id'])){
     }, false)
     })
     })()
-    </script>
+    </script> 
+
+
+    <script type="text/javascript">CKEDITOR.replace('details',{
+   height: '300',
+   maxlength: '5000'
+});
+</script>
+<script> 
+    $(document).ready(function(){
+$('#abcd').show();
+$('.pqr').hide();
+$('#abcd').click(function(){
+    $('#abcd').hide();
+    $('.pqr').show();
+})
+var editAbstract=CKEDITOR.instances.details;
+
+editAbstract.on("key",function(e) {      
+                        
+   var maxLength=e.editor.config.maxlength;
+      
+   e.editor.document.on("keyup",function() {KeyUp(e.editor,maxLength,"letterCount");});
+   e.editor.document.on("paste",function() {KeyUp(e.editor,maxLength,"letterCount");});
+   e.editor.document.on("blur",function() {KeyUp(e.editor,maxLength,"letterCount");});
+},editAbstract.element.$);
+
+//function to handle the count check
+function KeyUp(editorID,maxLimit,infoID) {
+
+   //If you want it to count all html code then just remove everything from and after '.replace...'
+   var text=editorID.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/^\s+|\s+$/g, '');
+   $("#"+infoID).text(text.length);
+
+   if(text.length>maxLimit) {   
+      Swal.fire("You cannot have more than "+maxLimit+" characters");         
+      editorID.setData(text.substr(0,maxLimit));
+      editor.cancel();
+   } else if (text.length==maxLimit-1) {
+      alert("WARNING:\nYou are one character away from your limit.\nIf you continue you could lose any formatting");
+      editor.cancel();
+   }
+}   
+
+});
+    // $(".file-upload-wrapper").hide();  
+    $(document).ready(function () 
+    { 
+       
+        $("#text_hide").click(function(){
+         $(".file-upload-wrapper").show();
+      });
+
+
+    });
+   // $(".file-upload-wrapper").hide();
+  //  $("#file_show").click(function(){
+ // $(".file-upload-wrapper").show();
+//});
+function submitCompetition(event){
+    event.preventDefault();
+var isValid=true;
+//    var answer =$('#details').val();
+   var answer = CKEDITOR.instances['details'].getData();
+    if(answer==""){
+        Swal.fire("Please enter answer");
+        // alert('enter response');
+        isValid=false;
+    }else if(answer.length > 5000){
+        isValid=false;
+        Swal.fire("Only 5000 characters allowed");
+    }else{
+        
+    }
+
+    if(isValid){
+        Swal.fire({
+                    title: 'Are you sure you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        $('#comp_form').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        // alert('kjh');
+       
+        return true;
+    }
+}
+</script>
+<script>
+    $('textarea').keyup(function() {
+    
+    var characterCount = $(this).val().length,
+        current = $('#current'),
+        maximum = $('#maximum'),
+        theCount = $('#the-count');
+      
+    current.text(characterCount);
+   
+    
+    /*This isn't entirely necessary, just playin around*/
+    if (characterCount < 70) {
+      current.css('color', '#666');
+    }
+    if (characterCount > 70 && characterCount < 90) {
+      current.css('color', '#6d5555');
+    }
+    if (characterCount > 90 && characterCount < 100) {
+      current.css('color', '#793535');
+    }
+    if (characterCount > 100 && characterCount < 120) {
+      current.css('color', '#841c1c');
+    }
+    if (characterCount > 120 && characterCount < 139) {
+      current.css('color', '#8f0001');
+    }
+    
+    if (characterCount >= 140) {
+      maximum.css('color', '#8f0001');
+      current.css('color', '#8f0001');
+      theCount.css('font-weight','bold');
+    } else {
+      maximum.css('color','#666');
+      theCount.css('font-weight','normal');
+    }
+    
+        
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -237,6 +237,7 @@ class Users extends CI_Controller
                 $region_id       = encryptids("E", $user_details['standard_club_region']);
                 $StandardClubStateID       = encryptids("E", $user_details['StandardClubStateID']);               
                 $standard_club_category       = encryptids("E", $user_details['standard_club_category']);
+                $user_profile       = encryptids("E", $user_details['profile_image']);
                 $is_admin       = encryptids("E", 0);
                
                 $sess_arr         = array(
@@ -255,7 +256,8 @@ class Users extends CI_Controller
                     'StandardClubStateID' => $StandardClubStateID,
                     "dept_id" => $dept_id,
                     "standard_club_category"=>$standard_club_category ,  
-                    "quiz_lang_id" => 0
+                    "quiz_lang_id" => 0,
+                    "profile_image"=>$user_profile
                 );
 
                 $this->session->set_userdata($sess_arr);
@@ -636,6 +638,8 @@ class Users extends CI_Controller
      * 
      * correct auth user without api call
      */
+
+    
     public function authUser()
     {
 
@@ -791,6 +795,7 @@ class Users extends CI_Controller
 
                 // for class 
                 $standard      = encryptids("E", $user_details['StdClubMemberClass']);
+                $user_profile  = encryptids("E", $user_details['profile_image']);
 
                 $sess_arr         = array(
                     "user_log_id" => $user_log_id,
@@ -811,6 +816,7 @@ class Users extends CI_Controller
                     "quiz_lang_id" => 0,
 
                     "standard" => $standard,
+                    "profile_image" =>$user_profile
 
 
                 );
@@ -1593,6 +1599,12 @@ class Users extends CI_Controller
         $this->load->view('users/help');
         $this->load->view('users/footers/footer');
     }
+    public function change_password()
+    {
+       // $this->load->view('users/headers/header');
+        $this->load->view('users/change_password');
+      //  $this->load->view('users/footers/footer');
+    }
     public function terms_condition()
     {
         $data = $this->Users_model->get_legal_data('tc');
@@ -2173,7 +2185,6 @@ class Users extends CI_Controller
     {
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $data['competition']=$this->Miscellaneous_competition->viewCompetition2($id);
-        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/about_competition',$data);
         $this->load->view('users/footers/footer');
@@ -2279,7 +2290,7 @@ class Users extends CI_Controller
         }
           
         $data['user_id']=encryptids('D',$user_id);
-        $data['answer_text']=$this->input->post('answer');
+        $data['answer_text']=$this->input->post('myTextArea');
         $data['competiton_id']=$this->input->post('comp_id');
 
 
@@ -3219,7 +3230,7 @@ class Users extends CI_Controller
        // echo json_encode($mark_for_review);exit();
         
         $user_id = $this->input->post("user_id");
-      // echo  $user_id ;
+      // echo  $user_id ; 
         $quiz_id = $this->input->post("quiz_id");
         $start_time = $this->input->post("start_time");
        // $review = $this->input->post("review");
@@ -3449,43 +3460,203 @@ class Users extends CI_Controller
     }
     public function standard_writting_details($id){
 
+     $id= encryptids("D", $id);
+
+        $region_id = encryptids("D", $this->session->userdata('region_id'));
+        $branch_id = encryptids("D", $this->session->userdata('branch_id'));
+        $state_id = encryptids("D", $this->session->userdata('state_id')); 
+        $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
+        $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
+        $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $data['getData']=$this->Standardswritting_model->create_online_view($id);
+        $getdata=$this->Standardswritting_model->create_online_view($id);
+
+ $allFilds1=0;
+ $allFilds2=0;
+ $level=$getdata['quiz_level_id'];
+if ($level==1) 
+{
+    $allFilds1=1;
+}
+
+if ($level==2) 
+{
+    if ($getdata['region_id']==$region_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+if ($level==3) 
+{
+    if ($getdata['branch_id']==$branch_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+if ($level==4) 
+{
+    if ($getdata['state_id']==$state_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+ $availability=$getdata['availability_id'];
+
+if ($availability==2) 
+{ 
+    $allFilds2=1;
+}
+
+// if ($availability==1) 
+// {
+//     $std = explode(',', $getdata['standard']);
+//     $standard = 1;
+//     if($standard != 0){
+//         if(in_array($standard,$std))  
+//         {
+//             $allFilds2=1;
+//         }
+//         else
+//         {
+//             $allFilds2=2;
+//         }
+//     }
+// }
+
+ 
+
+    
+
+        $data['getData']=$getdata;
+        $data['allFilds1']=$allFilds1;
+        $data['allFilds2']=$allFilds2;
 
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_writting_details',$data);
         $this->load->view('users/footers/footer');
     }
-    public function standard_writting_login($id){ 
+    public function standard_writting_login($ids){ 
+         $id= encryptids("D", $ids);
 
+
+        $region_id = encryptids("D", $this->session->userdata('region_id'));
+        $branch_id = encryptids("D", $this->session->userdata('branch_id'));
+        $state_id = encryptids("D", $this->session->userdata('state_id')); 
+        $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
+        $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
+        $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $data['getData']=$this->Standardswritting_model->create_online_view($id); 
+        $getdata=$this->Standardswritting_model->create_online_view($id);
+
+        $data['getData']=$getdata;
+        // $data['allFilds1']=$allFilds1;
+        // $data['allFilds2']=$allFilds2;
+
+          
         if ($this->form_validation->run('standard_writting_login') == FALSE) 
         {
-            $this->load->view('users/standard_writting_login',$data);
+            
+
+ $allFilds1=0;
+ $allFilds2=0;
+ $level=$getdata['quiz_level_id'];
+if ($level==1) 
+{
+    $allFilds1=1;
+}
+
+if ($level==2) 
+{
+    if ($getdata['region_id']==$region_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+if ($level==3) 
+{
+    if ($getdata['branch_id']==$branch_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+if ($level==4) 
+{
+    if ($getdata['state_id']==$state_id) {
+        $allFilds1=1;
+    }
+    else
+    {
+        $allFilds1=2;
+    }
+}
+
+ $availability=$getdata['availability_id'];
+
+if ($availability==2) 
+{ 
+    $allFilds2=1;
+}
+
+// if ($availability==1) 
+// {
+//     $std = explode(',', $getdata['standard']);
+//     $standard = 1;
+//     if($standard != 0){
+//         if(in_array($standard,$std))  
+//         {
+//             $allFilds2=1;
+//         }
+//         else
+//         {
+//             $allFilds2=2;
+//         }
+//     }
+// }
+            if ($allFilds1==1 && $allFilds2==1) {
+                $this->load->view('users/standard_writting_login',$data);
+            }
+            else
+            {
+                redirect(base_url() . "users/standard_writting_details/".$ids, 'refresh'); 
+                
+            }
+           
         }
         else
-        {  
+        {
 
-            $formdata['user_id'] = encryptids("D", $_SESSION['admin_type']);
+            $start_time= $this->input->post('start_time');
+            $end_t=date('h:i:s');
 
+            $st_time = strtotime($start_time);
+            $en_time = strtotime($end_t);
+            $diff = $en_time - $st_time; 
+            $time_taken =abs($diff);  
+            $formdata['user_id'] = encryptids("D", $_SESSION['admin_id']);
             $formdata['comp_id'] = $this->input->post('comp_id');
-            $formdata['indian_standard'] = $this->input->post('indian_standard');
-            $formdata['is_no'] = $this->input->post('is_no');
-            $formdata['product'] = $this->input->post('product'); 
-            $formdata['name_address'] = $this->input->post('name_address');
-            $formdata['price'] = $this->input->post('price');
-            $formdata['foreword'] = $this->input->post('foreword');
-            $formdata['product_specification'] = $this->input->post('product_specification');
-            $formdata['scope'] = $this->input->post('scope');
-            $formdata['reference'] = $this->input->post('reference');
-            $formdata['defination'] = $this->input->post('defination');
-            $formdata['classes'] = $this->input->post('classes');
-            $formdata['manufacture'] = $this->input->post('manufacture');
-            $formdata['requirements'] = $this->input->post('requirements');
-            $formdata['sampling'] = $this->input->post('sampling');
-            $formdata['methods'] = $this->input->post('methods');
-            $formdata['packing'] = $this->input->post('packing');
+            $formdata['details'] = $this->input->post('details');
+            $formdata['start_time'] = $start_time;
+            $formdata['end_time'] = $end_t;
+            $formdata['time_taken'] = $time_taken;
+
             $formdata['created_on'] = date('Y-m-d h:i:s'); 
 
             $id = $this->Standardswritting_model->StandardswrittingCompSave($formdata);
@@ -3508,9 +3679,74 @@ class Users extends CI_Controller
         $this->load->view('users/footers/footer');
       }
       public function edit_profile(){
+
+        $UserId = $this->session->userdata('admin_id');
+        $user_id = encryptids("D", $UserId);
+      //  echo $UserId; die;
+        // $data['user_profile']=$this->Users_model->getUsersDetailsByUserId('1800003696');
+        $data['user_profile']=$this->Users_model->getUsersDetailsByUserId( $user_id);
+       
+        // print_r($data['user_profile']); die;
+
         $this->load->view('users/headers/header');
-         $this->load->view('users/edit_profile');
+         $this->load->view('users/edit_profile',$data);
        $this->load->view('users/footers/footer');
+     }
+     public function update_profile(){
+        // print_r($_POST); die;
+        $oldDocument = "";
+        $oldDocument = $this->input->post('old_img');
+        $document = "";
+
+        if (!file_exists('uploads/user/profile')) {
+            mkdir('uploads/user/profile', 0777, true);
+        }
+
+        if (!empty($_FILES['bannerimg']['tmp_name'])) {
+            $document = "user_profile" . time() . '.jpg';
+            $config['upload_path'] = './uploads/user/profile/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']    = '100000';
+            $config['max_width']  = '3024';
+            $config['max_height']  = '2024';
+            $config['file_name'] = $document;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('bannerimg')) {
+                //$err[]=$this->upload->display_errors();
+                $data['status'] = 0;
+                $data['message'] = $this->upload->display_errors();
+            }
+        } else {
+            if (!empty($oldDocument)) {
+                $document =  $oldDocument;
+            }
+        }
+
+        if ($document) {
+            $data['profile_image'] = $document;
+        }
+
+
+        $UserId = $this->session->userdata('admin_id');
+        $user_id = encryptids("D", $UserId);
+        $data['user_name']=$this->input->post('user_name');
+        $data['email']=$this->input->post('email');
+        $data['date_of_birth']=$this->input->post('date_of_birth');
+        $data['gender']=$this->input->post('gender');
+        $data['user_mobile']=$this->input->post('user_mobile');
+        $data['user_id']=$user_id;
+
+        $response=$this->Users_model->updateProfile($data);
+        if($response){
+            $this->session->set_flashdata('MSG', ShowAlert("Profile updated successfully", "DD"));
+            redirect(base_url() . "users/edit_profile/",'refresh');
+        }else{
+            $this->session->set_flashdata('MSG', ShowAlert("Failed to create Create New Competition, Please try again", "DD"));
+            redirect(base_url() . "users/edit_profile/",'refresh');
+        }
+
      }
     
  
