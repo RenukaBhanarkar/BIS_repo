@@ -116,6 +116,7 @@
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
                 <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
                 <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/Manage_session_list'">Back</a>
             </div>
             <?php } ?>
             </form>
@@ -123,9 +124,11 @@
 
 <?php } ?>
                     </div>
+                    <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                           <div class="col-md-12 submit_btn p-3">
                                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/Manage_session_list'">Back</a>
                           </div>  
+                          <?php } ?>
                         </div> 
                       </div>
                     </div>
