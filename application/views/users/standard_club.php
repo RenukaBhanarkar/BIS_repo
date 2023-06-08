@@ -742,8 +742,8 @@ padding-left: 5px;
                 <?php if (!empty($images)) {
                 foreach ($images as $list) { ?>
                 <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                  <!-- <a href="<?php echo base_url() . 'uploads/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light"> -->
-                  <img class="img-fluid" id="gal_img" title="<?php echo $list['title']; ?>" src="<?php echo base_url() . 'uploads/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
+                  <!-- <a href="<?php echo base_url() . 'uploads/cms/gallary/photo/' . $list['image']; ?>" class="fancylight popup-btn" data-fancybox-group="light"> -->
+                  <img class="img-fluid" id="gal_img" title="<?php echo $list['title']; ?>" src="<?php echo base_url() . 'uploads/cms/gallary/photo/' . $list['image']; ?>" style="height:180px; width:100%;" ; alt="" data-bs-toggle="modal" data-bs-target="#thumbnailexampleModal">
                   <!-- </a> -->
                 </div>
                 <?php } ?>
