@@ -102,7 +102,7 @@ img.news_img {
     <div class="container-fluid">
     <div class="join_video_content">
         <div class="row">
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
                 <h1>Whats News</h1>
                 <hr>     
                    <div class="whats_new">
@@ -116,8 +116,8 @@ img.news_img {
                                 </div>
                             </div>  
                         </div>
-            </div> 
-            <div class="col-md-8"> 
+            </div>  -->
+            <div class="col-md-12"> 
                 <h1>Watch Informative Video</h1>
                 <div class="play_video">
                     <video width="100%" height="100%" controls autoplay>

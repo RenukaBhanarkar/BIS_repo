@@ -43,7 +43,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <!-- <tr>
+                           <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>Miscellaneous Competition</td>
@@ -53,13 +53,15 @@
                               <td>Pending</td>
                               <td>task</td>
                               <td>Review</td>
+                              <td>Review</td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >Sent For Review</a>
+                                 <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_submission" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
                               </td>
 
-                           </tr> -->
+                           </tr> 
                           
                            <?php if(!empty($competition)){ $i=1;
                             foreach($competition as $list){ ?>

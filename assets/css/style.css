@@ -2601,5 +2601,17 @@ label.d-block.text-font {
 	text-align: end;
     margin-right: 10px;
 }
+.swal2-title {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    padding: 0.8em 1em 0;
+    color: inherit;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: none;
+    word-wrap: break-word;
+}
 
 

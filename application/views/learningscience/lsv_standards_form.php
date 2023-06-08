@@ -41,7 +41,7 @@
 
                         <div class="row" id="link_session">
                                 <div class="mb-2 col-md-8">
-                                    <label class="d-block text-font">session link<sup class="text-danger">*</sup></label>
+                                    <label class="d-block text-font">Session link<sup class="text-danger">*</sup></label>
                                     <input type="text" class="form-control input-font" name="session_link" id="session_link" placeholder="Enter Title">
                                 </div>
                         </div>
@@ -54,9 +54,11 @@
                                     <input type="file" id="image" name="image" onchange="loadImage(event)" class="form-control-file"  accept="image/png, image/jpeg,image/jpg">
                                     
                                 </div>
+                                <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ImageModal">
                                     Preview 
                                 </button>
+                                </div>
                                 </div>
                         </div> 
                           <!-- Modal -->
@@ -88,9 +90,11 @@
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file"  accept="image/png, image/jpeg,image/jpg"onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
+                                <div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal">
                                     Preview 
                                 </button>
+                                </div>
                                 </div>
                         </div> 
                           <!-- Modal -->

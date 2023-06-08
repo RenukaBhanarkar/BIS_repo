@@ -102,7 +102,7 @@ img.news_img {
     <div class="container-fluid">
     <div class="join_video_content">
         <div class="row">
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
                 <h1>Whats News</h1>
                 <hr>     
                    <div class="whats_new">
@@ -115,15 +115,15 @@ img.news_img {
                                 </div>
                             </div>  
                         </div>
-            </div> 
-            <div class="col-md-8">  
+            </div>  -->
+            <div class="col-md-12">  
                 <div class="play_video">
                     <!-- <p><?= $WatchNow['session_link']?></p> -->
                 </div> 
                 <div class="video__details">
                     <div class="title-text"> 
                         <h3><?= $WatchNow['title']?></h3> 
-                         <img style="height: 320px;width: 832px;" src="<?php echo base_url(); ?><?= $WatchNow['thumbnail']?>" alt="" class="join_img">
+                         <img style="height: 411px; width: 100%;" src="<?php echo base_url(); ?><?= $WatchNow['thumbnail']?>" alt="" class="join_img">
                        <p style="padding: 10px;"> Link: - <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" ><?= $WatchNow['session_link']?></a></p>
                         <span>Date : <?= date("d M Y", strtotime($WatchNow['created_on']));?></span>
 

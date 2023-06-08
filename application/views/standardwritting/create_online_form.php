@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div class="col-2">
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_1">
                                     Preview 
                                 </button>
                                 </div>
@@ -184,10 +184,12 @@
                                     <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
-                                    Preview 
-                                </button>
+                                <div>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> Preview</button>
+                                
                                 </div>
+                                </div>
+                                
                         </div>
                     </div>
                     <div class="col-md-3 prizes-section mt-2" style="margin-left: -21px;">
@@ -209,7 +211,7 @@
                                     <input type="file" id="sprize_img" name="sprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal_1">
                                     Preview 
                                 </button>
                                 </div>
@@ -234,7 +236,7 @@
                                     <input type="file" id="tprize_img" name="tprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal_2">
                                     Preview 
                                 </button>
                                 </div>
@@ -259,7 +261,7 @@
                                     <input type="file" id="cprize_img" name="cprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal" fdprocessedid="3a6f0r">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal_3" fdprocessedid="3a6f0r">
                                     Preview 
                                 </button>
                                 </div>
@@ -280,6 +282,72 @@
         </div>
         
     </div>
+    <div class="modal fade"id="modal_1"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
 </form>
     <!-- /.container-fluid -->
 

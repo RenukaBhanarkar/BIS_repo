@@ -74,7 +74,7 @@
                                 
                                 <?php if ($value['status']==1)
                                 {?>
-                                <button onclick="updateLsvStandards('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img"> Approval</button>
+                                <button onclick="updateLsvStandards('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img"> Approval</button>
                                 
                                 <?php } ?>
                                 <?php if ($value['status']==3  || $value['status']==6 )
@@ -210,7 +210,7 @@
 function updateLsvStandards(id,status)
 {
 
-if (status==2)  { var title1= 'Do you want to Send For Approval?'; var buttonText = 'Send For Approval' }
+if (status==2)  { var title1= 'Do you want to Send For Approval?'; var buttonText = 'Send For approval' }
 if (status==5)  { var title1= 'Do you want to Publish?'; var buttonText = 'Publish' }
 if (status==6)  { var title1= 'Do you want to UnPublish?'; var buttonText = 'UnPublish' }
 if (status==9)  { var title1= 'Do you want to Archive?'; var buttonText = 'Archive' }
