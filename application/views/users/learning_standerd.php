@@ -55,8 +55,8 @@ section.background_coming {
     width: 15px;
     height: 100px;
     position: absolute;
-    top:40%;
-    left: 0px;
+    top:24%;
+    left: -27px;
     display: block !important;
     border:0px solid black;
 }
@@ -65,9 +65,9 @@ section.background_coming {
     width: 15px;
     height: 100px;
     position: absolute;
-    top:40%;
+    top:24%;
 
-    right: 0px;
+    right: -27px;
     display: block !important;
     border:0px solid black;
 }
@@ -103,6 +103,7 @@ section.background_coming {
   text-align: center;
   color: white;
 }
+
 </style>
 <section id="photo">
 <!-- <div class="container-fluid" id="pic" style="height:300px; width:100%">

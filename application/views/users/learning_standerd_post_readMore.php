@@ -146,14 +146,14 @@ font-size: 14px;
     width: 28%;
 }
 </style>
-<div class="container">
-<div class="row mt-5">
+<div class="container-fluid" style="padding:30px;">
+<div class="row">
     <div class="col-md-3">
         <div class="static-content">
             <div class="bloginfo">
                 <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Latest Post</h3>
             </div>
-            <div class="heading-underline" style="width: 200px;">
+            <div class="heading-underline m-0" style="width: 150px;">
                 <div class="left"></div><div class="right"></div>
             </div>
         </div>
@@ -162,7 +162,7 @@ font-size: 14px;
 <div class="your_wall_Outer_Box">
     <div class="inner_wall">
         <div class="row mt-5">
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <h4><?= $ReadMore['title']?></h4>
                 <div class="your_wall_main_card_view">
                     <div class="yourWall_image">
@@ -190,7 +190,7 @@ font-size: 14px;
                     </div>
                 </div>
             </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <div class="right_side">
                         <div class="title_right">
                             <h6>What's New</h6>
@@ -229,7 +229,7 @@ font-size: 14px;
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
         </div>
