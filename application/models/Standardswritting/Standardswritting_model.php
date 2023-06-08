@@ -116,6 +116,18 @@ class Standardswritting_model extends CI_Model {
         return $this->db->get('tbl_standards_writting_online')->result_array(); 
     } 
 
+    
+
+    public function admin_manage_online_list()
+    { 
+        $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->where('status ',2);     
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        return $this->db->get('tbl_standards_writting_online')->result_array(); 
+    } 
+
     public function create_online_view($id)
     { 
         $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  

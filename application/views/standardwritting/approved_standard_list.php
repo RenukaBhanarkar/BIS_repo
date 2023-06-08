@@ -49,11 +49,13 @@
                               <td class="d-flex">
                                  
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a>
+                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
  
 
                                  
                                   <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteData('<?= $data['id']?>')" >Delete</a>
                                  <a href="#" class="btn btn-secondary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
+                                 <?php } ?>
                           
  
  
