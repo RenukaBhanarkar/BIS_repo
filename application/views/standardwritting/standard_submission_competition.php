@@ -47,7 +47,7 @@
                                 <td><?= $value['total_mark'] ?></td>
                                 <td><?= $value['score'] ?></td>
                                 <td>
-                                     <?= $value['name'] ?>
+                                    <?= $value['name'] ?>
                                 </td>
                                 <td><?= $value['sssign_date'] ?></td>
                                 <?php
@@ -60,7 +60,7 @@
                                 if ($value['assignStatus'] == 0) {
                                     $assignStatus = "Not assign";
                                 }
-                                
+
 
                                 ?>
                                 <td><?= $assignStatus ?></td>
@@ -99,7 +99,7 @@
                         <table id="example_1" class="table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                     <th></th>
+                                    <th></th>
                                     <th>Sr. No.</th>
                                     <th>Name of Evaluator</th>
                                 </tr>
@@ -144,7 +144,7 @@
                         <table id="example_2" class="table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><input class="form-control-input " type="checkbox"  name="selectall" id="selectall"></th>
+                                    <th><input class="form-control-input " type="checkbox" name="selectall" id="selectall"></th>
                                     <th>Sr. No.</th>
                                     <th>Name of Evaluator</th>
                                 </tr>
@@ -154,7 +154,7 @@
                                 <?php foreach ($getEvaluator as $key => $Evaluator) { ?>
                                     <tr>
                                         <td>
-                                            <input type="hidden" id="comp_id" name="comp_id" value="<?= $ids ;?>"/>
+                                            <input type="hidden" id="comp_id" name="comp_id" value="<?= $ids; ?>" />
                                             <input class="form-control-input selectedId" type="checkbox" name="evaluator_id[]" value="<?= $Evaluator['id'] ?>" id="select-all">
                                         </td>
                                         <td><?= $key + 1 ?></td>
@@ -177,16 +177,16 @@
 
 <!-- Modal -->
 <script>
-$(document).ready(function () {
-    $('#selectall').click(function () {
-        $('.selectedId').prop('checked', this.checked);
-    });
+    $(document).ready(function() {
+        $('#selectall').click(function() {
+            $('.selectedId').prop('checked', this.checked);
+        });
 
-    $('.selectedId').change(function () {
-        var check = ($('.selectedId').filter(":checked").length == $('.selectedId').length);
-        $('#selectall').prop("checked", check);
+        $('.selectedId').change(function() {
+            var check = ($('.selectedId').filter(":checked").length == $('.selectedId').length);
+            $('#selectall').prop("checked", check);
+        });
     });
-});
     $(document).ready(function() {
         $('#example_1').DataTable({
             // scrollX: true,
@@ -287,60 +287,60 @@ $(document).ready(function () {
 
     function updateOnlineStatusAllEvaluators() {
         // e.preventDefault();
-         var allfields = true;
+        var allfields = true;
         //evaluator=$('input[name="evaluator"]:checked').val();
         var evaluator = $('input[name="evaluator_id[]"]:checked').val();
 
         if (evaluator == "" || evaluator == undefined || evaluator == null) {
-                if ($("#err_module").next(".validation").length == 0) {
-                    $("#err_module").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select atleast one Evaluator </div>");
-                }
-                Swal.fire("Please select atleast one Evaluator");
-                allfields = false;
-            } else {
-                $("#err_module").next(".validation").remove();
+            if ($("#err_module").next(".validation").length == 0) {
+                $("#err_module").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select atleast one Evaluator </div>");
             }
-            if(allfields){
-                Swal.fire({
-            title: 'Do you want to Assign',
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: 'Assign',
-            denyButtonText: `Cancel`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var url = $('#assign_form').attr('action');
-                var userForm = document.getElementById("assign_form");
-                var fd = new FormData(userForm);
+            Swal.fire("Please select atleast one Evaluator");
+            allfields = false;
+        } else {
+            $("#err_module").next(".validation").remove();
+        }
+        if (allfields) {
+            Swal.fire({
+                title: 'Do you want to Assign',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Assign',
+                denyButtonText: `Cancel`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var url = $('#assign_form').attr('action');
+                    var userForm = document.getElementById("assign_form");
+                    var fd = new FormData(userForm);
 
-                jQuery.ajax({
-                            type: "POST",
-                            url: url,
-                            dataType: 'json',
-                            data: fd,
-                            cache: false,
-                            processData: false,
-                            contentType: false,
-                            success: function(res) {
-                                if (res.status == 0) {
-                                    // alert(res.message);
-                                    Swal.fire(res.message);
+                    jQuery.ajax({
+                        type: "POST",
+                        url: url,
+                        dataType: 'json',
+                        data: fd,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function(res) {
+                            if (res.status == 0) {
+                                // alert(res.message);
+                                Swal.fire(res.message);
 
-                                } else {
-                                    // alert(res.message);
-                                    Swal.fire(res.message);
-                                    window.location.replace('<?php echo base_url() . 'standardswritting/standard_submission_competition/'.$ids;?>');
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                //toastr.error('Failed to add '+xData.name+' in wishlist.');
-                                console.log(error);
+                            } else {
+                                // alert(res.message);
+                                Swal.fire(res.message);
+                                window.location.replace('<?php echo base_url() . 'standardswritting/standard_submission_competition/' . $ids; ?>');
                             }
-                        });
-                
-            }
-        })
-    }
-        
+                        },
+                        error: function(xhr, status, error) {
+                            //toastr.error('Failed to add '+xData.name+' in wishlist.');
+                            console.log(error);
+                        }
+                    });
+
+                }
+            })
+        }
+
     }
 </script>
