@@ -13,7 +13,7 @@
 .join_container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
 
 }
@@ -25,6 +25,7 @@
     position: relative;
     padding: 0 0 50px;
     overflow: hidden;
+    margin-right: 12px;
 }
 .start_content{
     width: 100%;

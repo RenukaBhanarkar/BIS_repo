@@ -131,7 +131,7 @@
                                     <tr>
                                         <td><?php echo $i++ ?></td>
                                         <td><?php if ($list_banner['banner_images']) { ?>
-                                                <img src="<?php echo base_url(); ?>uploads/<?php echo $list_banner['banner_images'] ?>" width="50">
+                                                <img src="<?php echo base_url(); ?>uploads/cms/banner/<?php echo $list_banner['banner_images'] ?>" width="50">
                                             <?php } else {
                                                 echo "No Uploaded";
                                             } ?>
@@ -143,7 +143,7 @@
                                             <button onclick="edit('<?php echo $list_banner['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform">Edit</button>
                                             <?php } ?>
                                             <?php if(in_array(4,$permissions)){ ?>
-                                            <button onclick="deleteBanner(' <?php echo $list_banner['id']; ?> ');" data-id='<?php echo $list_banner['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                            <button onclick="deleteBanner(' <?php echo $list_banner['id']; ?> ');" data-id='<?php echo $list_banner['id']; ?>' data-img="<?php echo $list_banner['banner_images']; ?>" class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
                                             <?php } ?>
                                             <!-- Modal -->
 
@@ -244,8 +244,11 @@
 
                                                             <div class="col-9">
                                                             <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="icon_file" onchange="loadFileThumbnail(event)">
-                                                            <span class="text-danger" id="err_update_banner">
-                                                            </span>
+                                                            <!-- <span class="text-danger" id="err_update_banner">
+                                                            </span> -->
+                                                            <div class="invalid-feedback">
+                                                                This value is required
+                                                            </div>
                                                             <input type="hidden" name="old_img" value="" id="bannerimg1">
                                                             <input type="hidden" name="id" value="" id="id1">
                                                             <span class="error_text">
@@ -267,6 +270,9 @@
                     <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Caption</label>
                         <input type="text" class="form-control input-font" name="banner_caption" id="caption1" required="">
+                        <div class="invalid-feedback">
+                        This value is required
+                        </div>
                         <span class="error_text">
                             <?php //echo form_error('title'); 
                             ?>
@@ -549,7 +555,7 @@ function addbanner(e){
     var caption = $('#banner_caption').val();
     if ($("#bannerimg").val() != '') {
         // is_valid = false;
-        // $("#err_image").text("This field is required");
+        $("#err_image").text("This field is required");
     }else{
         allFields = false;
         $("#err_image").text("This field is required"); 
@@ -649,6 +655,7 @@ function addbanner(e){
 
     $('#banner').on('click','.delete_img',function(){
         var id =$(this).attr('data-id');
+        var image =$(this).attr('data-img');
         Swal.fire({
                     title: 'Are you sure you want to Delete ?',
                     showDenyButton: true,
@@ -663,6 +670,7 @@ function addbanner(e){
                             url: '<?php echo base_url(); ?>admin/deleteBanner',
                             data: {
                                 que_id: id,
+                                banner:image,
                             },
                             success: function(result) {
                                 Swal.fire("Record Deleted Successfully.");

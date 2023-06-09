@@ -57,7 +57,9 @@
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Number of Participants<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="" >
+                            <input type="text" class="form-control input-font" name="number_of_participants" placeholder="Enter Number of Participate" id="number_of_participants"  value="" oninput="this.value = this.value.replace(/[^0-9]/,'')" >
+
+
                         </div>
                     </div>
                 </div>
@@ -524,6 +526,33 @@ return false;
 function getStandardClub () {
 var branch_id = $("#branch_id").val();
 var dept_id = $("#dept_id").val();
+
+var focusSet = false;
+var allfields = true; 
+if (branch_id == "" || branch_id== null) {
+if ($("#branch_id").next(".validation").length == 0) // only add if not added
+{
+$("#branch_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#branch_id").focus(); }
+allfields = false;
+} else {
+$("#branch_id").next(".validation").remove(); // remove it
+}
+
+if (dept_id == "" || dept_id== null) {
+if ($("#dept_id").next(".validation").length == 0) // only add if not added
+{
+$("#dept_id").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#dept_id").focus(); }
+allfields = false;
+} else {
+$("#dept_id").next(".validation").remove(); // remove it
+}
+if (allfields) {
+
+
 $.ajax({
 url: "<?= base_url() ?>standardswritting/getStandardClub",
 data: {'branch_id':branch_id,'dept_id':dept_id},
@@ -542,10 +571,23 @@ $("#standard_club").html(stringToAppend);
 }
 else
 {
-alert("Data not found .... Please Try agen");
+    $("#standard_club").html('');
+    Swal.fire({
+    title: 'Data Not Found ?',
+    showDenyButton: false,
+    showCancelButton: false,
+    confirmButtonText:'Back', 
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+       
+    }  
+  })
+ 
 }
 }
 });
+}
 }
 
 </script>

@@ -143,7 +143,7 @@
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php if($list_follow['icon']){ ?>                                 
-                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $list_follow['icon']?>" width="50">
+                                    <img src="<?php echo base_url(); ?>uploads/cms/followus/<?php echo $list_follow['icon']?>" width="50">
                                     <?php }else{ echo "No Uploaded";} ?></td>
                                     <td><?php echo $list_follow['title']; ?></td>
                                 <td><?php echo $list_follow['link']; ?></td>
@@ -154,7 +154,7 @@
                                         data-target="#editform">Edit</button>
                                         <?php } ?>
                                         <?php  if(in_array(4,$permissions)){ ?>
-                                    <button onclick="deleteFollowUs(' <?php echo $list_follow['id']; ?> ');" data-id ='<?php echo $list_follow['id']; ?>'
+                                    <button onclick="deleteFollowUs(' <?php echo $list_follow['id']; ?> ','<?php echo $list_follow['icon']; ?>');" data-id ='<?php echo $list_follow['id']; ?>'
                                     class="btn btn-danger btn-sm mr-2">Delete</button>
                                     <?php } ?>
                                     <!-- Modal -->
@@ -197,8 +197,8 @@
                                                                                         <img src="" id="outputicon" width="100%"/>
                                                                                         </div>
                                                                                         <div class="modal-footer">
-                                                                                        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                                                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
+                                                                                        <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+                                                                                        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button> -->
                                                                                         </div> 
                                                                                     </div>
                                                                                     </div>
@@ -211,6 +211,9 @@
                                                             <input type="file" class="form-control input-font" name="follow_us"
                                                                 id="icon_file" value=""  accept="image/*" onchange="loadFileThumbnail2(event)">
                                                                 <?php //echo form_error('title'); ?>
+                                                                <div class="invalid-feedback">
+                                                                    This value is required
+                                                                </div>
                                                             <input type="hidden" id="old_img" name="old_img" value="">                                                            <span class="error_text">
                                                             <input type="hidden" id="id" name="id" value="">  
                                                             </div>
@@ -384,7 +387,7 @@
     $(document).ready(function(){
         $('#followus').DataTable();
     });
-function deleteFollowUs(que_id) {
+function deleteFollowUs(que_id,image) {
  //   $('#delete').modal('show');
     //    $('.abcd').on('click', function() {
                     // var c = confirm("Are you sure to delete this survey details? ");
@@ -422,6 +425,7 @@ function deleteFollowUs(que_id) {
                             url: '<?php echo base_url(); ?>admin/deleteFollowUs',
                             data: {
                                 que_id: que_id,
+                                image:image,
                             },
                             success: function(result) {
                                 // $('#row' + que_id).css({
@@ -472,7 +476,7 @@ function deleteFollowUs(que_id) {
                 var img=res.image;
                 
                 $('#old_img').attr('href','<?php echo base_url(); ?>"uploads/admin/wall_of_wisdom/"; ?>'+img);
-                $('#outputicon').attr('src','<?php echo base_url(); ?>uploads/'+res.icon);
+                $('#outputicon').attr('src','<?php echo base_url(); ?>uploads/cms/followus/'+res.icon);
                 },
                 error: function(result) {
                     alert("Error,Please try again.");
@@ -486,6 +490,16 @@ function deleteFollowUs(que_id) {
              var title = $("#title1").val();
              var link= $("#link1").val();
              var is_valid = true;
+
+             var img= $('#icon_file').attr('required');
+
+            // alert(img);
+            if(img=="required"){
+                var useful_img =$('#icon_file').val();
+                if(useful_img==""){
+                    is_valid=false;
+                }
+            }
                         
              if (title == "") {
                  $("#err_title").text("This value is required");

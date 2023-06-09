@@ -40,7 +40,7 @@
                             <td><?=$value['title']?></td>
                             <td><?=$value['id']?></td>
                             <td><?=$value['avail']?></td>
-                            <td><?=$value['created_on']?></td>
+                            <td><?= date("d-m-Y h:i:s", strtotime($value['created_on']));?></td>
                             <td>Name of Evaluator</td>
                             <td><?=$value['total_mark']?></td>
                             <td><?=$value['score']?></td>

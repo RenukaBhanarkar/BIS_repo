@@ -128,11 +128,11 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="<?=$getData['total_mark']?>" >
+                                <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="<?=$getData['total_mark']?>"oninput="this.value = this.value.replace(/[^0-9]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Qualifying Marks<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="<?=$getData['qualifying_mark']?>" >
+                                <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="<?=$getData['qualifying_mark']?>"oninput="this.value = this.value.replace(/[^0-9]/, '')" >
                             </div>
                             <div class="mb-2 col-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
@@ -248,29 +248,13 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?=$getData['fprize']?>" >
+                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?=$getData['fprize']?>" oninput="this.value = this.value.replace(/[^0-9]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="fdetails" id="fdetails" placeholder="Enter Prizes" value="<?=$getData['fdetails']?>" >
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                <div class="mb-2 col-md-4">
+                            <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['fprize_img'])) {?>
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
@@ -327,63 +311,19 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-                    </div>
+                        </div>
                     <div class="col-md-3 prizes-section mt-2" style="margin-left: -21px;">
                                 <h4 class="m-2">Second Prize</h4>
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?=$getData['sprize']?>" >
+                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?=$getData['sprize']?>" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
                                 <input type="text" class="form-control input-font" name="sdetails" id="sdetails" placeholder="Enter Prizes" value="<?=$getData['sdetails']?>" >
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['sprize_img'])) {?>
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
@@ -442,16 +382,6 @@
                                 </div>
                             </div>
 
-
-
-
-
-
-
-
-
-
-
  
                     </div>
                     <div class="col-md-3 prizes-section mt-2" style="margin-left: -21px;">
@@ -460,27 +390,13 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?=$getData['tprize']?>" >
+                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?=$getData['tprize']?>"oninput="this.value = this.value.replace(/[^0-9]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
                                 <input type="text" class="form-control input-font" name="tdetails" id="tdetails" placeholder="Enter Prizes" value="<?=$getData['tdetails']?>" >
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
                             <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['tprize_img'])) {?>
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
@@ -538,23 +454,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
                     </div>
                     <div class="col-md-3 prizes-section mt-2" style="margin-left: -21px;">
@@ -563,44 +462,12 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
-                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?=$getData['cprize']?>" >
+                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?=$getData['cprize']?>" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prize</label>
                                 <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Prizes" value="<?=$getData['cdetails']?>" >
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                              <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['cprize_img'])) {?>
@@ -658,32 +525,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+                            </div> 
                     </div>
                     <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" id="">Update</a> -->

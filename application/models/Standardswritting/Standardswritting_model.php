@@ -381,6 +381,18 @@ class Standardswritting_model extends CI_Model
         return $this->db->get('tbl_standards_writting_online')->result_array();
     }
 
+    
+
+    public function admin_manage_online_list()
+    { 
+        $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');  
+        $this->db->where('status ',2);     
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
+        $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
+        $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        return $this->db->get('tbl_standards_writting_online')->result_array(); 
+    } 
+
     public function create_online_view($id)
     {
         $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
@@ -498,10 +510,35 @@ class Standardswritting_model extends CI_Model
         return $query->num_rows();
     }
 
+    public function getSendReview($id)
+    { 
+        $this->db->select('*');
+        $this->db->from('tbl_standard_writing_competition_online');
+        $this->db->where('comp_id',$id); 
+        $this->db->where('status',1); 
+        $query= $this->db->get();
+        return $query->num_rows();
+    }
 
+    public function getReviewd($id)
+    { 
+        $this->db->select('*');
+        $this->db->from('tbl_standard_writing_competition_online');
+        $this->db->where('comp_id',$id); 
+        $this->db->where('status',2); 
+        $query= $this->db->get();
+        return $query->num_rows();
+    }
+
+
+<<<<<<< HEAD
     public function submission_view($comp_id)
     {
         $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name');
+=======
+    public function submission_view($comp_id){
+        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.member_id');
+>>>>>>> 6010f8781219aea29542d7efd7cdf461af914bca
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_users tbl_users', 'tbl_users.user_id=tbl_standard_writing_competition_online.user_id');
         $this->db->where('tbl_standard_writing_competition_online.comp_id', $comp_id);

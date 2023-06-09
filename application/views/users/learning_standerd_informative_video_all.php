@@ -13,7 +13,7 @@
 .join_container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
 
 }
@@ -24,6 +24,7 @@
     min-height: 150px;
     position: relative;
     padding: 0 0 50px;
+    margin-right: 12px;
 }
 .start_content{
     width: 100%;

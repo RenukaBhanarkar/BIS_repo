@@ -49,9 +49,9 @@
                               <td><?=  $key+1; ?></td>
                               <td><?= $data['standard_club']?></td>
                               <td><?= $data['topic_of_activity']?></td>
-                              <td><?= $data['date_of_activity']?></td>
+                              <td><?= date("d-m-Y", strtotime($data['date_of_activity']));?></td>
                               <td><?= $data['number_of_participants']?></td>
-                              <td><?= $data['created_on']?></td>
+                              <td><?= date("d-m-Y h:i:s", strtotime($data['created_on']));?></td>
                               <td><?= $data['status_name']?></td>
                               <td><?= $data['reject_reasone']?></td>
                               
@@ -59,15 +59,26 @@
                                  
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a>
 
-                                 <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $data['id']?>')" >Edit</a>
+                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+
+
+                         
+                                
+
+
+
                                  <?php if($data['status'] == 1 || $data['status'] == 3 || $data['status'] == 6) { ?>
+                                   <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $data['id']?>')" >Edit</a>
                                   <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteData('<?= $data['id']?>')" >Delete</a>
                                  <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
                                 <?php }?>
                                 <?php if($data['status'] == 1) { ?>
                                   <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',2)">Send for approval</a>
                                 <?php }?>
+
+                                <?php } ?>
                               </td>
+
                           </tr>
                           <?php } ?>
                             

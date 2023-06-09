@@ -125,4 +125,9 @@ class Miscellaneouscompetition extends CI_Controller
         print_r($_POST); 
         echo count($_POST['evaluator']); die;
     }
+    public function result_declared_submission(){
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('EvaluatorForCompetition/result_declared_submission');
+        $this->load->view('admin/footers/admin_footer');
+    }
 }

@@ -61,19 +61,20 @@
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">Caption</label>
-                                                <input type="text" class="form-control input-font" name="title" id="" required="">
+                                                <input type="text" class="form-control input-font" name="title" id="add_caption" required="">
                                                 <div class="invalid-feedback">
                                                 This value is required
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button class="btn btn-primary save">Submit</button>
+                                            <a class="btn btn-primary save">Submit</a>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                                </form>
                         </div>
                     </div>
                 </div>
@@ -105,7 +106,7 @@
                                 foreach ($photos as $list_photos) { ?>
                                     <tr>
                                         <td><?php echo $i++ ?></td>
-                                        <td><img src="<?php echo base_url() . "uploads/" . $list_photos['image']; ?>" data-toggle="modal" data-target="#viewImage" width="40px"></td>
+                                        <td><img src="<?php echo base_url() . "uploads/cms/gallary/photo/" . $list_photos['image']; ?>" data-toggle="modal" data-target="#viewImage" width="40px"></td>
                                         <td><?php echo $list_photos['title']; ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                             <td class="d-flex border-bottom-0">
@@ -220,7 +221,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo base_url(); ?>admin/update_photo" class="was-validated" method="post" enctype="multipart/form-data">
+                <form action="<?php echo base_url(); ?>admin/update_photo" class="was-validated" method="post" enctype="multipart/form-data" id="update_photo_form">
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
@@ -289,7 +290,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary">Update</button>
+                        <a class="btn btn-primary update_photo">Update</a>
                     </div>
                 </form>
             </div>
@@ -474,7 +475,7 @@
                 $('#caption1').val(res.title);
                 var img = res.image;
                 $('#old_img').attr('href', '<?php echo base_url() . "uploads/admin/wall_of_wisdom/"; ?>' + img);
-                $('#outputicon').attr('src', '<?php echo base_url(); ?>uploads/' + res.image);
+                $('#outputicon').attr('src', '<?php echo base_url(); ?>uploads/cms/gallary/photo/' + res.image);
             },
             error: function(result) {
                 alert("Error,Please try again.");
@@ -500,5 +501,76 @@
         })
 
         $('#photos').DataTable();
+    });
+
+    $('.save').click(function(){
+       var image = $('#add_new_photo').val();
+       var caption = $('#add_caption').val();
+       var isvalid = true;
+
+       if(image==""){
+        isvalid= false;
+       }
+
+       if(caption==""){
+        isvalid= false;
+       }
+
+       if(isvalid){
+        Swal.fire({
+                    title: 'Are you sure you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {                    
+                    if (result.isConfirmed) {                       
+                       $('#add_photo').submit();
+                                                   
+                    } else if (result.isDenied) {
+                      
+                    }
+                    })
+       }
+       
+    });
+    $('.update_photo').click(function(){
+       
+       var caption = $('#caption1').val();
+       var isvalid = true;
+
+       var abc = $('#icon_file').attr('required');
+       if(abc=="required"){
+        var image = $('#icon_file').val();
+        if(image==""){
+            isvalid = false;
+        }
+        
+       }
+       if(image==""){
+        isvalid= false;
+       }
+
+       if(caption==""){
+        isvalid= false;
+       }
+
+       if(isvalid){
+        Swal.fire({
+                    title: 'Are you sure you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {                    
+                    if (result.isConfirmed) {                       
+                       $('#update_photo_form').submit();
+                                                   
+                    } else if (result.isDenied) {
+                      
+                    }
+                    })
+       }
+       
     });
 </script>

@@ -69,6 +69,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <?php if($getData['second_paticipant']='' || !empty($getData['second_paticipant'])) {?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">2<sup>nd</sup>Prizes</h4>
@@ -88,6 +90,10 @@
                             </div>
                         </div>
                     </div>
+                <?php } ?>
+                <?php if($getData['third_paticipant']='' || !empty($getData['third_paticipant'])) {?>
+
+
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">3<sup>nd</sup>Prizes</h4>
@@ -107,6 +113,8 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
+                <?php if($getData['consolation_paticipant']='' || !empty($getData['consolation_paticipant'])) {?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Consolation Prizes</h4>
@@ -128,6 +136,8 @@
                     </div>
                   
                 </div>
+
+                 <?php } ?>
 
 
 

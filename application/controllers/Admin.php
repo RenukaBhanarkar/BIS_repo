@@ -1730,7 +1730,7 @@ class Admin extends CI_Controller
     {
 
         $banner_img = "bannerimg" . time() . '.jpg';
-        $config['upload_path'] = './uploads';
+        $config['upload_path'] = './uploads/cms/banner';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
         $config['max_width']  = '3024';
@@ -1869,13 +1869,17 @@ class Admin extends CI_Controller
         $formdata['caption'] = $this->input->post('banner_caption');
         //  $formdata['image'] = $this->input->post('old_doc');   
 
+        if (!file_exists('uploads/cms/banner')) {
+            mkdir('uploads/cms/banner', 0777, true);
+        }
+
         $oldDocument = "";
         $oldDocument = $this->input->post('old_img');
         $document = "";
 
         if (!empty($_FILES['bannerimg']['tmp_name'])) {
             $document = "banner_image" . time() . '.jpg';
-            $config['upload_path'] = './uploads';
+            $config['upload_path'] = './uploads/cms/banner';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '100000';
             $config['max_width']  = '3024';
@@ -1913,9 +1917,14 @@ class Admin extends CI_Controller
         try {
             $que_id = $this->input->post('que_id');
             $id = $this->Admin_model->deleteBanner($que_id);
+            $abcd=$this->input->post('banner');
+            $img_name='uploads/cms/banner/'.$abcd;
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
+                if($img_name){
+                    @unlink($img_name);
+                }
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';
@@ -2191,8 +2200,13 @@ class Admin extends CI_Controller
     }
     public function add_useful_links()
     {
+        if (!file_exists('uploads/cms/useful_links')) {
+            mkdir('uploads/cms/useful_links', 0777, true);
+        }
+
+
         $banner_img = "useful_links" . time() . '.jpg';
-        $config['upload_path'] = './uploads';
+        $config['upload_path'] = './uploads/cms/useful_links';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size']    = '500';
         $config['max_width']  = '3024';
@@ -2228,6 +2242,10 @@ class Admin extends CI_Controller
     }
     public function update_useful_links()
     {
+        if (!file_exists('uploads/cms/useful_links')) {
+            mkdir('uploads/cms/useful_links', 0777, true);
+        }
+        
         $formdata['id'] = $this->input->post('id');
         $formdata['title'] = $this->input->post('title');
         // $formdata['caption'] = $this->input->post('banner_caption');  
@@ -2239,7 +2257,7 @@ class Admin extends CI_Controller
 
         if (!empty($_FILES['image']['tmp_name'])) {
             $document = "banner_image" . time() . '.jpg';
-            $config['upload_path'] = './uploads';
+            $config['upload_path'] = './uploads/cms/useful_links';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '500';
             $config['max_width']  = '3024';
@@ -2276,10 +2294,15 @@ class Admin extends CI_Controller
     {
         try {
             $que_id = $this->input->post('que_id');
+            $img = $this->input->post('image');
+            $img_useful='uploads/cms/useful_links/'.$img;
             $id = $this->Admin_model->deleteUsefulLinks($que_id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
+                if($img_useful){
+                    @unlink($img_useful);
+                }
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';
@@ -2325,8 +2348,11 @@ class Admin extends CI_Controller
     }
     public function add_follow_us()
     {
+        if (!file_exists('uploads/cms/followus')) {
+            mkdir('uploads/cms/followus', 0777, true);
+        }
         $banner_img = "follow_us" . time() . '.jpg';
-        $config['upload_path'] = './uploads';
+        $config['upload_path'] = './uploads/cms/followus';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
         $config['max_width']  = '3024';
@@ -2357,6 +2383,10 @@ class Admin extends CI_Controller
     }
     public function update_followus()
     {
+        if (!file_exists('uploads/cms/followus')) {
+            mkdir('uploads/cms/followus', 0777, true);
+        }
+
         $formdata['id'] = $this->input->post('id');
         $formdata['title'] = $this->input->post('title');
         // $formdata['caption'] = $this->input->post('banner_caption');  
@@ -2368,7 +2398,7 @@ class Admin extends CI_Controller
 
         if (!empty($_FILES['follow_us']['tmp_name'])) {
             $document = "banner_image" . time() . '.jpg';
-            $config['upload_path'] = './uploads';
+            $config['upload_path'] = './uploads/cms/followus';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '100000';
             $config['max_width']  = '3024';
@@ -2406,11 +2436,17 @@ class Admin extends CI_Controller
         try {
             //$encUserId = $this->session->userdata('user_id');
             //$user = encryptids("D", $encUserId);
+            $img = $this->input->post('image');
+            $img_useful='uploads/cms/followus/'.$img;
+
             $que_id = $this->input->post('que_id');
             $id = $this->Admin_model->deleteFollowUs($que_id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
+                if($img_useful){
+                    @unlink($img_useful);
+                }
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';
@@ -2458,9 +2494,12 @@ class Admin extends CI_Controller
     }
     public function add_photos()
     {
+        if (!file_exists('uploads/cms/gallary/photo')) {
+            mkdir('uploads/cms/gallary/photo', 0777, true);
+        }
         //    print_r($_POST); die;
         $banner_img = "photos" . time() . '.jpg';
-        $config['upload_path'] = './uploads';
+        $config['upload_path'] = './uploads/cms/gallary/photo';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '500';
         $config['max_width']  = '3024';
@@ -2516,6 +2555,9 @@ class Admin extends CI_Controller
 
     public function update_photo()
     {
+        if (!file_exists('uploads/cms/gallary/photo')) {
+            mkdir('uploads/cms/gallary/photo', 0777, true);
+        }
         // print_r($_POST); die;
         $formdata['id'] = $this->input->post('id');
         //$formdata['title'] = $this->input->post('title');
@@ -2527,8 +2569,8 @@ class Admin extends CI_Controller
         $document = "";
 
         if (!empty($_FILES['bannerimg']['tmp_name'])) {
-            $document = "banner_image" . time() . '.jpg';
-            $config['upload_path'] = './uploads';
+            $document = "photo" . time() . '.jpg';
+            $config['upload_path'] = './uploads/cms/gallary/photo';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '100000';
             $config['max_width']  = '3024';

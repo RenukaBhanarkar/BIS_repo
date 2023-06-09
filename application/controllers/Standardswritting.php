@@ -292,16 +292,47 @@ class Standardswritting extends CI_Controller
 
     public function Competition_Reviewed_list()
     {
+        $getDetails= $this->Standardswritting_model->revised_standard_list();
         $data = array();
-        $data['getData'] = $this->Standardswritting_model->revised_standard_list();
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/Competition_Reviewed_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function Competition_Under_Review_list()
     {
+        $getDetails= $this->Standardswritting_model->revised_standard_list();
         $data = array();
-        $data['getData'] = $this->Standardswritting_model->revised_standard_list(); 
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data;
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/Competition_Under_Review_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -1247,14 +1278,21 @@ if($id){
         $this->load->view('admin/footers/admin_footer');
     }
 
+     public function admin_manage_online_list()
+    {
+        $data=array();
+        $data['getData']=$this->Standardswritting_model->admin_manage_online_list(); 
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/admin_manage_online_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
 
- 
 
-     
     public function Manage_online_list()
     {
         $data=array();
         $data['getData']=$this->Standardswritting_model->Manage_online_list();
+
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/Manage_online_list',$data);
@@ -1263,7 +1301,7 @@ if($id){
     public function ongoing_online_list()
     {
 
-        $getDetails= $this->Standardswritting_model->Manage_online_list();
+        $getDetails= $this->Standardswritting_model->ongoing_online_list();
         $data = array();
         foreach ($getDetails as $row) 
         {
@@ -1273,12 +1311,8 @@ if($id){
             array_push($data, $row);
         }         
         
-        $data['getData'] = $data;
+        $data['getData'] = $data; 
 
-
-
-        // $data=array();
-        // $data['getData']=$this->Standardswritting_model->ongoing_online_list();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/ongoing_online_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -1405,17 +1439,28 @@ if($id){
             $formdata['standard_club'] = $this->input->post('standard_club');
             $formdata['topic_of_activity'] = $this->input->post('topic_of_activity');
             $formdata['date_of_activity'] = $this->input->post('date_of_activity'); 
-            $formdata['number_of_participants'] = $this->input->post('number_of_participants'); 
+            $formdata['number_of_participants'] = $this->input->post('number_of_participants');
+
             $formdata['first_paticipant'] = $this->input->post('first_paticipant');
-            $formdata['first_file'] =$first_filelocation; 
-            $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
-            $formdata['second_file'] = $second_filelocation;
-            $formdata['third_paticipant'] = $this->input->post('third_paticipant'); 
-            $formdata['third_file'] = $third_filelocation;
-            $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant'); 
-            $formdata['consolation_file'] = $consolation_filelocation; 
-             $formdata['created_on'] = date('Y-m-d h:i:s'); 
-             $formdata['updated_on'] = date('Y-m-d h:i:s'); 
+            $formdata['first_file'] =$first_filelocation;  
+            
+            $formdata['created_on'] = date('Y-m-d h:i:s'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s'); 
+            if($this->input->post('second_paticipant')!= "")
+            { 
+                $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
+                $formdata['second_file'] = $second_filelocation; 
+            }
+            if($this->input->post('third_paticipant')!= "")
+            { 
+                $formdata['third_paticipant'] = $this->input->post('third_paticipant');
+                 $formdata['third_file'] = $third_filelocation;
+             }
+             if($this->input->post('consolation_paticipant')!= "")
+             { 
+                $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant');
+                $formdata['consolation_file'] = $consolation_filelocation; 
+            } 
             $id = $this->Standardswritting_model->StandardswrittingSave($formdata);
             if ($id)
             {
@@ -1530,12 +1575,25 @@ if($id){
             $formdata['first_paticipant'] = $this->input->post('first_paticipant');
             $formdata['first_file'] =$first_filelocation; 
             $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
-            $formdata['second_file'] = $second_filelocation;
-            $formdata['third_paticipant'] = $this->input->post('third_paticipant'); 
-            $formdata['third_file'] = $third_filelocation;
-            $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant'); 
-            $formdata['consolation_file'] = $consolation_filelocation;  
+           
+            
             $formdata['updated_on'] = date('Y-m-d h:i:s'); 
+
+            if($this->input->post('second_paticipant')!= "")
+            { 
+                $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
+                $formdata['second_file'] = $second_filelocation; 
+            }
+            if($this->input->post('third_paticipant')!= "")
+            { 
+                $formdata['third_paticipant'] = $this->input->post('third_paticipant');
+                 $formdata['third_file'] = $third_filelocation;
+             }
+             if($this->input->post('consolation_paticipant')!= "")
+             { 
+                $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant');
+                $formdata['consolation_file'] = $consolation_filelocation; 
+            } 
             $formdata['status'] = 1; 
             $id = $this->Standardswritting_model->StandardswrittingUpdate($formdata,$formid);
             if ($id)
@@ -1608,8 +1666,25 @@ if($id){
     }
     public function revised_standard_list()
     {
+        
+        $getDetails= $this->Standardswritting_model->revised_standard_list();
         $data = array();
-        $data['getData'] = $this->Standardswritting_model->revised_standard_list();  
+        foreach ($getDetails as $row) 
+        {
+            $ids= $row['id'];
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
+            array_push($data, $row);
+        }         
+        
+        $data['getData'] = $data; 
+
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/revised_standard_list',$data);
         $this->load->view('admin/footers/admin_footer');

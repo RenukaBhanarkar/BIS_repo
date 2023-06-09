@@ -118,7 +118,7 @@
                                     <?php } ?>
                                     <!-- <button onclick="location.reload('<?php echo base_url(); ?>admin/footer_links')"  class="btn btn-danger mb-2" type="cancle">Cancle</button> -->
                                     <!-- <a href="<?php echo base_url(); ?>admin/footer_links" class="btn btn-danger mb-2">Cancle</a> -->
-                                    <button class="btn btn-danger btn-sm text-white mb-2 cancel">Cancel</button>
+                                    <a class="btn btn-danger btn-sm text-white mb-2 cancel">Cancel</a>
                                 </td>
                             </tr>
     </div>
@@ -172,6 +172,8 @@
 //     });
 // });
 $('.cancel').on('click',function(){
+   
+    $('#updateform').attr('action',"");
     Swal.fire({
                     title: 'Are you sure you want to Cancel?',
                     showDenyButton: true,
@@ -182,7 +184,7 @@ $('.cancel').on('click',function(){
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {                       
                         window.location.replace('<?php echo base_url().'admin/footer_links' ?>');
-                      
+                        return false;
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')

@@ -434,7 +434,7 @@
                   </div>
                 <?php } ?>
                   <div class="row" id="add_file2" >
-                    <div class="col-12">
+                    <div class="col-12 d-flex">
                     <input type="hidden" id="sp_img1"  name="sp_img" value="1">
                       <input type="file" id="sprize_img" accept="image/jpeg,image/png,image/jpg" name="sprize_img" class="form-control-file" id="icon_file2" onchange="loadFileSecond(event)">
 
@@ -450,7 +450,7 @@
                         <?php //echo form_error('title'); 
                         ?>
                       </span>
-                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalSecond"> View
+                      <button type="button" class="btn btn-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#exampleModalSecond"> Preview
                       </button>
 
                     </div>

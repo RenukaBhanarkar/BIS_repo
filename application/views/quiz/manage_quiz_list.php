@@ -92,7 +92,7 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                            
                           <?php if ($quiz['status'] == 1 ) { ?>
-                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send For Approval</a>
+                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send For approval</a>
                           <?php } ?>
 
                           <?php if ($quiz['status'] == 3 || $quiz['status'] == 6) { ?>
@@ -434,7 +434,7 @@
       $('#listView').on('click','.send_to_approve',function(){
         var quiz_id=$(this).attr('data-id');
         Swal.fire({
-                    title: 'Are you sure you want to Send for Approval?',
+                    title: 'Are you sure you want to Send for approval?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Submit',

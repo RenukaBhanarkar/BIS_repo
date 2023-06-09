@@ -41,14 +41,14 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?php echo base_url(); ?>admin/add_useful_links" class="was-validated"  method="post" enctype="multipart/form-data">
+                                <form action="<?php echo base_url(); ?>admin/add_useful_links" id="addUsefulLinks" class=""  method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Image</label>
                                         <div class="d-flex">
                                             <div class="row">
                                                 <div class="col-8">
-                                            <input type="file" class="form-control input-font" name="image" id="addimage" required="" accept="image/jpeg" title="please select File" onchange="loadFileThumbnail1(event)">
+                                            <input type="file" class="form-control input-font" name="image" id="addimage" required="" accept="image/*" title="please select File" onchange="loadFileThumbnail1(event)">
                                             <span class="error_text"></span>
                                             <div class="invalid-feedback">Please Select File
                                                                             </div>
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Title</label>
-                                        <input type="text" class="form-control input-font" name="title" id="" minlength="5" maxlength="20" required="" placeholder="Please Enter title">
+                                        <input type="text" class="form-control input-font" name="title" id="title_add" minlength="5" maxlength="20" required="" placeholder="Please Enter title">
                                         <span class="error_text">
                                             <?php //echo form_error('title'); ?>
                                         </span>
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Link</label>
-                                        <input type="text" class="form-control input-font" name="link" id="" minlength="5" maxlength="200" required="" placeholder="https://www.bis.gov.in">
+                                        <input type="text" class="form-control input-font" name="link" id="link_add" minlength="5" maxlength="200" required="" placeholder="https://www.bis.gov.in">
                                         <span class="error_text">
                                             <?php //echo form_error('title'); ?>
                                         </span>
@@ -100,9 +100,10 @@
                                                                         </div>
                                     </div>
                                 </div>
+                                </form>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                    <button class="btn btn-primary">Submit</button>
+                                    <button class="btn btn-primary addLinks">Submit</button>
                                 </div>
                             </div>
                                 </form>
@@ -141,7 +142,7 @@
                             <tr>
                                 <td><?php echo $i++?></td>
                                 <td><?php if($list_ul['image']){ ?>                                 
-                                    <img src="<?php echo base_url(); ?>uploads/<?php echo $list_ul['image']?>" width="50">
+                                    <img src="<?php echo base_url(); ?>uploads/cms/useful_links/<?php echo $list_ul['image']?>" width="50">
                                     <?php }else{ echo "No Uploaded";} ?>
                                 </td> 
                                 <td><?php echo $list_ul['title']; ?></td>
@@ -153,7 +154,7 @@
                                         data-target="#editform">Edit</button>
                                         <?php } ?>
                                         <?php  if(in_array(4,$permissions)){ ?>
-                                    <button onclick="deleteUsefulLinks(' <?php echo $list_ul['id']; ?> ');" data-id ='<?php echo $list_ul['id']; ?>' class="btn btn-danger btn-sm mr-2">Delete</button>
+                                    <button onclick="deleteUsefulLinks(' <?php echo $list_ul['id']; ?> ','<?php echo $list_ul['image']; ?>');" data-id ='<?php echo $list_ul['id']; ?>' class="btn btn-danger btn-sm mr-2">Delete</button>
                                     <?php } ?>
                                     <!-- Modal -->
                                     <div class="modal fade" id="viewImage" tabindex="-1" role="dialog"
@@ -229,7 +230,7 @@
                                                                 <div class="invalid-feedback">
                                                                     This value is required
                                                                 </div>
-                                                                <span class="text-danger" id="err_updated_image"></span>
+                                                                <!-- <span class="text-danger" id="err_updated_image"></span> -->
                                                             <input type="hidden" name="old_img" id="image" value="">
                                                             <input type="hidden" name="id" id="id" value="">
                                                             </div>
@@ -336,12 +337,12 @@ var loadFileThumbnail1 = function(event)
         if(fileSize < 5120){
             $('#addimage').val('');
             // $('#lessSize').modal('show');
-            Swal.fire("File size should be more than 5KB")
+            Swal.fire("File size should be between 5KB to 200KB")
             $('#err_update_banner').text('This value is required');
         }else if(fileSize > 204800){
             $('#addimage').val('');
             // $('#greaterSize').modal('show');
-            Swal.fire("File size should be less than 200KB")
+            Swal.fire("File size should be between 5KB to 200KB")
             $('#err_update_banner').text('This value is required');
         }else if($.inArray(fileNameExt, validExtensions) == -1){
             $('#addimage').val('');
@@ -415,19 +416,25 @@ var loadFileThumbnail1 = function(event)
     }
 
 
-    function deleteUsefulLinks(que_id) {
-        // var c = confirm("Are you sure to delete this survey details? ");
-        // if (c == true) {
-            $('#delete').modal('show');
-        $('.abcd').on('click', function() {
-            // const $loader = $('.igr-ajax-loader');
-            //$loader.show();
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo base_url(); ?>admin/deleteUsefulLinks',
-                data: {
-                    que_id: que_id,
-                },
+    function deleteUsefulLinks(que_id,image) {
+
+
+        Swal.fire({
+                        title: 'Are you sure you want to Delete ?',
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: 'Delete',
+                        denyButtonText: `Cancel`,
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {   
+                            $.ajax({
+                            type: 'POST',
+                            url: '<?php echo base_url(); ?>admin/deleteUsefulLinks',
+                            data: {
+                                que_id: que_id,
+                                image:image,
+                            },
                 success: function(result) {
                     // $('#row' + que_id).css({
                     //     'display': 'none'
@@ -438,9 +445,14 @@ var loadFileThumbnail1 = function(event)
                 error: function(result) {
                     alert("Error,Please try again.");
                 }
-            });
-
-        })
+            });                      
+                        } else if (result.isDenied) {
+                            // Swal.fire('Changes are not saved', '', 'info')
+                        }
+                        })
+        // var c = confirm("Are you sure to delete this survey details? ");
+        // if (c == true) {
+        
     }
 
     function edit(que_id){
@@ -472,7 +484,7 @@ var loadFileThumbnail1 = function(event)
                 
                 var img=res.image;
                 $('#old_img').attr('href','<?php echo base_url()."uploads/admin"; ?>'+img);
-                $('#outputicon').attr('src','<?php echo base_url(); ?>uploads/'+res.image);
+                $('#outputicon').attr('src','<?php echo base_url(); ?>uploads/cms/useful_links/'+res.image);
                 },
                 error: function(result) {
                     alert("Error,Please try again.");
@@ -480,12 +492,58 @@ var loadFileThumbnail1 = function(event)
             });          
     }
 
+    $('.addLinks').click(function(){
+        $('#addUsefulLinks').addClass('was-validated');
+        var image = $('#addimage').val();
+        var title = $('#title_add').val();
+        var link = $('#link_add').val();
+        var isvalid=true;
+        if(image==""){
+            isvalid = false;
+        }
+        if(title==""){
+            isvalid = false;
+        }
+        if(link==""){
+            isvalid = false;
+        }
+
+        if(isvalid){
+
+        
+            Swal.fire({
+                        title: 'Are you sure you want to Submit ?',
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: 'Submit',
+                        denyButtonText: `Cancel`,
+                        }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {   
+                            $('#addUsefulLinks').submit();
+                            // Swal.fire('Saved!', '', 'success')                                
+                        } else if (result.isDenied) {
+                            // Swal.fire('Changes are not saved', '', 'info')
+                        }
+                        })
+            }
+    })
 
     function submitButton(event) {
         event.preventDefault();
              var title = $("#title").val();
              var link= $("#link").val();
              var is_valid = true;
+
+            var img= $('#updated_image').attr('required');
+
+            // alert(img);
+            if(img=="required"){
+                var useful_img =$('#updated_image').val();
+                if(useful_img==""){
+                    is_valid=false;
+                }
+            }
              
                         
              if (title == "") {
