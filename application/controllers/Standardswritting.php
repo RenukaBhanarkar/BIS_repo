@@ -204,6 +204,130 @@ class Standardswritting extends CI_Controller
         }
        // redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
+
+
+
+    public function view_submission_competition($id)
+    {
+        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition2($id);
+        $data['evaluators']=$this->Miscellaneous_competition->evaluators();
+        $data['ids']=$id;
+        //  print_r($data);die;
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/view_submission_competition',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function updateMisComStatusAllEvaluators(){
+        try {
+            
+          
+            $evaluator = array();
+
+            $evaluator = $this->input->post('evaluator_id');
+            $eval = implode(',',$evaluator);
+            $evaluator = explode(',',$eval);
+
+            //echo json_encode($evaluator);
+            $count_eva = count($evaluator);
+         
+
+            $comp_id =  $this->input->post('comp_id');
+          //  echo $comp_id ;exit();
+            $users_details = $this->Standardswritting_model->getMisceCompUsers($comp_id); 
+            $count_users = count($users_details);
+            //  echo json_encode($users_details);  exit();
+
+            $remainder = $count_users % $count_eva;
+            $assign_counter = 1;
+            $eva = 0;
+            if( $remainder == 0 ){
+                $Eva_assign_user_count = $count_users / $count_eva;
+                foreach($users_details as $row){
+                    if($assign_counter <=  $Eva_assign_user_count){
+
+                        ///////////////////////
+                        $formdata['evaluator'] = $evaluator[$eva];
+                        $formdata['status']="1";
+                        $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
+        
+                        $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
+                        ///////////////////////////
+                    }
+                    $assign_counter++;
+                    if($assign_counter > $Eva_assign_user_count){
+                        $assign_counter = 1;
+                        $eva++;
+                    }
+                }   
+            }else{
+
+                $Eva_assign_user_count = (int)($count_users / $count_eva);
+                $renaming_users = $remainder;
+               
+              
+                $new_list_cnt =  $count_users - $renaming_users;
+                // echo $new_list_cnt."<br>";  echo $renaming_users."<br>"; 
+                $users_details_new = $this->Standardswritting_model->getMisceCompUsersNew($comp_id,$new_list_cnt);
+                $users_count= count($users_details_new );
+               
+                //echo json_encode(count($users_details_new));
+                foreach($users_details_new as $row){
+                    if($assign_counter <=  $Eva_assign_user_count){
+
+                        ///////////////////////
+                        $formdata['evaluator'] = $evaluator[$eva];
+                        $formdata['status']="1";
+                        $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
+        
+                        $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
+                        ///////////////////////////
+                    }
+                    $assign_counter++;
+                    if($assign_counter > $Eva_assign_user_count){
+                        $assign_counter = 1;
+                      
+                            $eva++;
+                      
+                      
+                    }
+                    
+                } 
+               // echo $new_list_cnt."<br>";  echo $renaming_users."<br>"; 
+                $users_details_new1 = $this->Standardswritting_model->getMisceCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users);
+               // echo json_encode($users_details_new1);exit();
+                foreach($users_details_new1 as $row){                  
+
+                        ///////////////////////
+                        $formdata['evaluator'] = $evaluator[0];
+                        $formdata['status']="1";
+                        $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
+        
+                        $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
+                        ///////////////////////////
+                    }
+                  
+            } 
+            echo json_encode([
+                'status' => '1',
+                'message' => "Review assigned successfully.",
+            ]);exit();
+           
+            //redirect(base_url() . "Standardsmaking/standard_submission_competition/".$comp_id, 'refresh');
+
+            
+            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => '0',
+                'message' => $e->getMessage(),
+            ]);exit();
+           
+        }
+       // redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+    
      /**
       * 
       * result_declared_list END
@@ -220,15 +344,7 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/review_competition_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function view_submission_competition($id)
-    {
-        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition2($id);
-        $data['evaluators']=$this->Miscellaneous_competition->evaluators($id);
-        //  print_r($data);die;
-        $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/view_submission_competition',$data);
-        $this->load->view('admin/footers/admin_footer');
-    }
+    
     public function assign_eveluator(){
       //  $t = date();
         $current_time = date("Y-m-d H:i:s");

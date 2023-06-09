@@ -242,6 +242,8 @@ class Standardswritting_model extends CI_Model
         return $rs;
     }
 
+    
+
     /*public function resultDeclareUser($id)
     { 
         $rs = array();
@@ -273,17 +275,49 @@ class Standardswritting_model extends CI_Model
     }
     public function  getStdWriCompUsersNew($comp_id,$new_list_cnt){
         $res = array();
-        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} limit $new_list_cnt AND status= 0";
+        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} AND status= 0 limit $new_list_cnt ";
         $query = $this->db->query($myQue);
         $res = $query->result_array();
         return $res;
     }
     public function getStdWriCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users){
-        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} AND status= 0 limit $new_list_cnt ,$renaming_users";
+        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id}  limit $new_list_cnt ,$renaming_users";
         $query = $this->db->query($myQue);
         $res = $query->result_array();
         return $res;
     }
+   
+
+    /**
+     * start miscellaneous
+     */
+    public function getMisceCompUsers($comp_id){
+        $res = array();
+        $myQue = "SELECT * from tbl_users_competition_attempt_record  where competiton_id = '{$comp_id}' AND status= 0";
+        $query = $this->db->query($myQue);
+        $res = $query->result_array();
+        return $res;
+
+    }
+    public function  getMisceCompUsersNew($comp_id,$new_list_cnt){
+        $res = array();
+        $myQue = "SELECT * from tbl_users_competition_attempt_record  where competiton_id = '{$comp_id}' AND status= 0 limit $new_list_cnt ";
+        $query = $this->db->query($myQue);
+        $res = $query->result_array();
+        return $res;
+    }
+    public function getMisceCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users){
+        $myQue = "SELECT * from tbl_users_competition_attempt_record  where competiton_id = '{$comp_id}' limit $new_list_cnt ,$renaming_users";
+        $query = $this->db->query($myQue);
+        $res = $query->result_array();
+        return $res;
+    }
+    public function updateMisceCompetition($id, $formdata)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_users_competition_attempt_record', $formdata);
+    }
+    
     /**
      * NEW CODE END
      */
@@ -694,7 +728,7 @@ class Standardswritting_model extends CI_Model
 
     public function getEvaluator()
     {
-        $this->db->where('admin_type ', 3);
+        $this->db->where('designation ', 4);
         return $this->db->get('tbl_admin')->result_array();
     }
 

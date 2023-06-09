@@ -24,11 +24,13 @@ class Miscellaneouscompetition extends CI_Controller
         //print_r($_SESSION); die;
         $data = array();
         $admin_id= encryptids("D", $_SESSION['admin_id']);
+       // echo  $admin_id ; exit();
         $abc=$this->Miscellaneous_competition->getAdminUserid($admin_id);
         //echo $abc;
         // print_r($abc); die;
         //$data['admin_id'] = $admin_id;
-        $data['records']=$this->Miscellaneous_competition->SubmissionForReview($abc['user_uid']);
+      //  $data['records']=$this->Miscellaneous_competition->SubmissionForReview($abc['user_uid']);
+        $data['records']=$this->Miscellaneous_competition->SubmissionForReview($admin_id);
     //    print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/task_recevied_list',$data);
