@@ -3615,21 +3615,21 @@ if ($availability==2)
     $allFilds2=1;
 }
 
-// if ($availability==1) 
-// {
-//     $std = explode(',', $getdata['standard']);
-//     $standard = 1;
-//     if($standard != 0){
-//         if(in_array($standard,$std))  
-//         {
-//             $allFilds2=1;
-//         }
-//         else
-//         {
-//             $allFilds2=2;
-//         }
-//     }
-// }
+if ($availability==1) 
+{
+    $std = explode(',', $getdata['standard']);
+    $standard = encryptids("D", $this->session->userdata('standard'));
+    // if($standard != 0){
+        if(in_array($standard,$std))  
+        {
+            $allFilds2=1;
+        }
+        else
+        {
+            $allFilds2=2;
+        }
+    // }
+}
             if ($allFilds1==1 && $allFilds2==1) {
                 $this->load->view('users/standard_writting_login',$data);
             }
