@@ -573,6 +573,13 @@ class Miscellaneous_competition extends CI_Model {
     //   $this->db->select('tucar.*,tmcd.competiton_name,tu.StdClubMemberClass,ta.name,tmcd.score,tucar.score as marks');
     //   $this->db->from('tbl_users_competition_attempt_record tucar');
     //   $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id','left');
+    //   $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
+    //   $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
+    //   $this->db->where('tucar.evaluator',$data);
+    //  $this->db->where('tucar.status !=','3');
+    //   $this->db->select('tucar.*,tmcd.competiton_name,tu.StdClubMemberClass,ta.name,tmcd.score,tucar.score as marks');
+    //   $this->db->from('tbl_users_competition_attempt_record tucar');
+    //   $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id','left');
     //  $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
     //   $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator');
     //   $this->db->where('tucar.evaluator',$data);
@@ -593,8 +600,8 @@ class Miscellaneous_competition extends CI_Model {
           $this->db->select('tucar.*,tmcd.competiton_name,tu.StdClubMemberClass,ta.name,tmcd.score,tucar.score as marks,tucar.created_on');
           $this->db->from('tbl_users_competition_attempt_record tucar');
           $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
-          $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
-          $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator');
+          $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
+          $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
           $this->db->where('tucar.evaluator',$data);
           $this->db->where('tucar.status','3');
           $res=$this->db->get();
@@ -607,7 +614,7 @@ class Miscellaneous_competition extends CI_Model {
       $this->db->from('tbl_users_competition_attempt_record tucar');
       $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id','left');
       $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
-      $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator');
+      $this->db->join('tbl_admin ta','ta.id=tucar.evaluator');
       $this->db->where('tucar.id',$id);
       $res=$this->db->get();
       $result= $res->result_array();
@@ -651,5 +658,144 @@ class Miscellaneous_competition extends CI_Model {
 		}else{
 			return false;
 		}
+    }
+    public function resultDeclarationList($id)
+    {
+        $rs = array();
+        $this->db->select('*');
+        $this->db->from('tbl_mst_competition_detail tmcd');
+        $this->db->join('tbl_mst_competition_prize tmcp','tmcp.competitionn_id=tmcd.comp_id');
+        $this->db->where('tmcd.comp_id', $id);
+        $query = $this->db->get();
+        // echo json_encode($query->result_array());
+        // exit();
+        $prizes_details = array();
+        $comp_details = array();
+        $count = 0;
+        if ($query->num_rows() > 0) {
+
+            $comp_details = $query->row_array();
+
+            $count =  $count + $comp_details['fprize_no'] + $comp_details['sprize_no'] + $comp_details['tprize_no'] + $comp_details['cprize_no'];
+
+            if ($comp_details['fprize_no'] != "" && $comp_details['fprize_no'] > 0) {
+                $fprize_arr = array(
+                    'prize_id' => 1,
+                    'no_of_prize' => $comp_details['fprize_no']
+                );
+                array_push($prizes_details, $fprize_arr);
+            }
+            if ($comp_details['sprize_no'] != "" && $comp_details['sprize_no'] > 0) {
+                $sprize_arr = array(
+                    'prize_id' => 2,
+                    'no_of_prize' => $comp_details['sprize_no']
+                );
+                array_push($prizes_details, $sprize_arr);
+            }
+            if ($comp_details['tprize_no'] != "" && $comp_details['tprize_no'] > 0) {
+                $tprize_arr = array(
+                    'prize_id' => 3,
+                    'no_of_prize' => $comp_details['tprize_no']
+                );
+                array_push($prizes_details, $tprize_arr);
+            }
+            if ($comp_details['cprize_no'] != "" && $comp_details['cprize_no'] > 0) {
+                $cprize_arr = array(
+                    'prize_id' => 4,
+                    'no_of_prize' => $comp_details['cprize_no']
+                );
+                array_push($prizes_details, $cprize_arr);
+            }
+        }
+        $this->db->select('tbl_users_competition_attempt_record.*,tbl_users.*');
+        $this->db->where('tbl_users_competition_attempt_record.competiton_id', $id);
+        $this->db->where('tbl_users_competition_attempt_record.score !=', 0);
+        $this->db->join('tbl_users', 'tbl_users.user_id =  tbl_users_competition_attempt_record.user_id', 'right');
+        $this->db->order_by('tbl_users_competition_attempt_record.score', 'DESC');
+        $this->db->order_by('tbl_users_competition_attempt_record.time_taken', 'Asc');
+        $this->db->limit($count);
+        //return  $this->db->get(' tbl_standard_writing_competition_online')->result_array();
+        $result =  $this->db->get('tbl_users_competition_attempt_record')->result_array();
+        // $usersCont = $this->db->get('tbl_standard_writing_competition_online')->num_rows();
+        $first = 0;
+        $second = 0;
+        $third = 0;
+        $fourth = 0;
+        // echo json_encode($prizes_details);
+
+        //echo json_encode($result);
+
+        // exit();
+
+        foreach ($prizes_details as $prize) {
+            if ($prize['prize_id'] == 1) {
+                $first = $prize['no_of_prize'];
+            }
+            if ($prize['prize_id'] == 2) {
+                $sec = $prize['no_of_prize'];
+                $second = $first +  $sec;
+            }
+            if ($prize['prize_id'] == 3) {
+                $thi = $prize['no_of_prize'];
+                $third =  $second +  $thi;
+            }
+            if ($prize['prize_id'] == 4) {
+                $fou = $prize['no_of_prize'];
+                $fourth =  $third +  $fou;
+            }
+        }
+
+        $cnt = 1;
+        $rsNew = array();
+        //if($cnt <= $usersCont){}
+        foreach ($result as $row) {
+
+            if ($cnt <= $first) {
+                $row['prize'] = "First Prize";
+            } else if ($cnt > $first && $cnt <= $second) {
+                $row['prize'] = "Second Prize";
+            } else if ($cnt > $second && $cnt <= $third) {
+                $row['prize'] = "Third Prize";
+            } else if ($cnt > $third && $cnt <= $fourth) {
+                $row['prize'] = "Concelation Prize";
+            }
+            $cnt++;
+            array_push($rsNew, $row);
+        }
+        return $rsNew;
+    }
+
+    public function isExistResultDeclaration($comp_id)
+    {
+        $this->db->where('quiz_id', $comp_id);
+        return $this->db->get("tbl_comp_result_declaration")->result_array();
+    }
+    public function getQuizinfo($id)
+    {
+        $this->db->where('comp_id', $id);
+        return $quiz = $this->db->get('tbl_mst_competition_detail')->row_array();
+    }
+    // public function isExistResultDeclaration($comp_id)
+    // {
+    //     $this->db->where('comp_id', $comp_id);
+    //     return $this->db->get("tbl_standard_result_declaration")->result_array();
+    // }
+    public function insertResultDesc($data)
+    {
+        if ($this->db->insert('tbl_comp_result_declaration', $data)) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+    }
+    public function updateResultDeclaration($quiz_id, $data)
+    {
+
+        $this->db->where('id', $quiz_id);
+        if ($this->db->update('tbl_comp_result_declaration', $data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
