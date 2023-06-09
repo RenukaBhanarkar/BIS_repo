@@ -2293,6 +2293,16 @@ class Users extends CI_Controller
         $data['answer_text']=$this->input->post('myTextArea');
         $data['competiton_id']=$this->input->post('comp_id');
 
+        
+	 $start_time= $this->input->post('start_time');
+     $end_t=date('h:i:s');
+
+     $st_time = strtotime($start_time);
+     $en_time = strtotime($end_t);
+     $diff = $en_time - $st_time; 
+     $time_taken =abs($diff); 
+     $data['time_taken']=$time_taken;
+
 
         if (!file_exists('uploads/competition/response_images')) { mkdir('uploads/competition/response_images', 0777, true); }
         if (!($_FILES['image']['name'] == "")) {

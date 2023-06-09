@@ -159,6 +159,17 @@
   font-size: 0.875rem;
 }
 </style><?php if(!($is_allow==1)){ redirect(base_url() . "users/about_competition/". $quiz_id, 'refresh'); } ?>
+<?php
+// new code start R
+//session_start();
+if(!isset($_SESSION['user_session_id'])){ 
+    
+    
+   redirect(base_url() . "Users/login", 'refresh');
+}
+$start_time = $_SESSION['start_time'] = date('h:i:s'); 
+
+?> 
 <div class="container">
 <div class="row">
               <div class="col-md-3">
@@ -266,6 +277,7 @@
                         <div class="col-sm-12">
                                 <div class="form-group text_hide" style="text-align:end;">
                                     <textarea class="form-control w-100" rows="1" id="myTextArea" placeholder="Share Your Comments......" name="myTextArea"></textarea>
+                                    <input type="hidden" value="<?= $start_time; ?>" name="start_time">
                                     <!-- <div id="the-count">
                                             <span id="current">0</span>
                                             <span id="maximum">/ 5000</span>
