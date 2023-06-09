@@ -582,7 +582,7 @@ class Miscellaneous_competition extends CI_Model {
      $this->db->from('tbl_users_competition_attempt_record tucar');
    
      $this->db->where('tucar.evaluator',$data);
-    $this->db->where('tucar.status !=','3');
+     $this->db->where('tucar.status !=','3');
       $res=$this->db->get();
       $result= $res->result_array();
       return $result;
