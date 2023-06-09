@@ -3763,7 +3763,8 @@ if ($availability==1)
      }
      public function standard_writting_all(){
         $this->load->view('users/headers/header');
-        $this->load->view('users/standard_writting_all');
+        $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
+        $this->load->view('users/standard_writting_all',$data);
         $this->load->view('users/footers/footer');
       }
     

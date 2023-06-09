@@ -92,7 +92,7 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                            
                           <?php if ($quiz['status'] == 1 ) { ?>
-                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send For approval</a>
+                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send for approval</a>
                           <?php } ?>
 
                           <?php if ($quiz['status'] == 3 || $quiz['status'] == 6) { ?>

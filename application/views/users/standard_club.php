@@ -343,7 +343,7 @@ padding-left: 5px;
                     </div>
                     <?php } ?>
                   </div>
-                  <?php if(count($essy_writing) > 4){ ?>
+                  <?php if(count($essy_writing) >= 4){ ?>
                   <div class="view-button">
                     <a href="<?= base_url(); ?>users/more_copetition">View All</a>
                   </div>
@@ -383,7 +383,7 @@ padding-left: 5px;
                       </div>
                       <?php } ?>
                     </div>
-                    <?php if(count($poster) > 4){ ?>
+                    <?php if(count($poster) >= 4){ ?>
                     <div class="view-button">
                       <a href="<?= base_url(); ?>users/more_copetition">View All</a>
                     </div>
@@ -423,7 +423,7 @@ padding-left: 5px;
                         </div>
                         <?php } ?>
                       </div>
-                      <?php if(count($competition) > 4){ ?>
+                      <?php if(count($competition) >= 4){ ?>
                       <div class="view-button">
                         <a href="<?= base_url(); ?>users/more_copetition">View All</a>
                       </div>
