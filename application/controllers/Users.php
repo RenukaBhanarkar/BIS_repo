@@ -792,7 +792,8 @@ class Users extends CI_Controller
                 $StandardClubStateID       = encryptids("E", $user_details['StandardClubStateID']);               
                 $standard_club_category       = encryptids("E", $user_details['standard_club_category']);
                 $is_admin       = encryptids("E", 0);
-
+                $admin_designation       = encryptids("E",0);
+               
                 // for class 
                 $standard      = encryptids("E", $user_details['StdClubMemberClass']);
                 $user_profile  = encryptids("E", $user_details['profile_image']);
@@ -814,7 +815,7 @@ class Users extends CI_Controller
                     "dept_id" => $dept_id,
                     "standard_club_category"=>$standard_club_category ,  
                     "quiz_lang_id" => 0,
-
+                    "admin_designation"=>$admin_designation,
                     "standard" => $standard,
                     "profile_image" =>$user_profile
 
@@ -867,6 +868,7 @@ class Users extends CI_Controller
                     $admin_name      = encryptids("E", $user['name']);
                     $admin_type        = encryptids("E", $user['admin_type']);
                     $admin_post        = encryptids("E", $user['post']);
+                    $admin_designation       = encryptids("E", $user['designation']);
                     $club_id       = encryptids("E", 0);
                     $branch_id       = encryptids("E", 0);
                     $state_id       = encryptids("E", 0);
@@ -887,6 +889,7 @@ class Users extends CI_Controller
                         "state_id" => $state_id,
                         "region_id" => $region_id,
                         "dept_id" => $dept_id,
+                        "admin_designation" => $admin_designation,
                         "quiz_lang_id" => 0
                     );
 
@@ -3625,21 +3628,21 @@ if ($availability==2)
     $allFilds2=1;
 }
 
-// if ($availability==1) 
-// {
-//     $std = explode(',', $getdata['standard']);
-//     $standard = 1;
-//     if($standard != 0){
-//         if(in_array($standard,$std))  
-//         {
-//             $allFilds2=1;
-//         }
-//         else
-//         {
-//             $allFilds2=2;
-//         }
-//     }
-// }
+if ($availability==1) 
+{
+    $std = explode(',', $getdata['standard']);
+    $standard = encryptids("D", $this->session->userdata('standard'));
+    // if($standard != 0){
+        if(in_array($standard,$std))  
+        {
+            $allFilds2=1;
+        }
+        else
+        {
+            $allFilds2=2;
+        }
+    // }
+}
             if ($allFilds1==1 && $allFilds2==1) {
                 $this->load->view('users/standard_writting_login',$data);
             }
