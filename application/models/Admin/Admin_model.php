@@ -1371,5 +1371,13 @@ class Admin_model extends CI_Model {
 			return false;
 		}
     }
+    public function update_profile($data){
+        $this->db->where('id', $data['id']);
+        if ($this->db->update('tbl_admin', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

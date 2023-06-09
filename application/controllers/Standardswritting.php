@@ -17,6 +17,197 @@ class Standardswritting extends CI_Controller
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         date_default_timezone_set("Asia/Calcutta");
     }
+
+    /**
+     * 
+     * NEW code start
+     */
+    public function result_declared_list($quiz_id)
+    {
+        $quiz_id = encryptids("D", $quiz_id);
+        $users = $this->Standardswritting_model->resultDeclarationList($quiz_id); 
+       
+        $data['UsersDetails']=$users; 
+        $getQuizinfo = $this->Standardswritting_model->getQuizinfo($quiz_id); 
+        $data['Quizinfo']=$getQuizinfo;                
+
+            $Declaration=$this->Standardswritting_model->isExistResultDeclaration($quiz_id);
+            //echo json_encode($Declaration);exit();
+           
+            if (empty($Declaration)) {
+                    
+                    foreach ($users as $r1){
+                    $formdata['user_id']= $r1['user_id'];
+                    $formdata['prize']= $r1['prize'];
+                    $formdata['comp_id']= $r1['comp_id'];
+                    $formdata['created_on']= date('Y-m-d h:i:s'); 
+                    $this->Standardswritting_model->insertResultDesc($formdata);
+                    }   
+                    $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
+                    $dbobj = array(
+                        "result_declared" =>1,
+                        'modify_by' => $login_admin_id,
+                        'updated_on'=>date('Y-m-d h:i:s')
+                    );
+                    $this->Standardswritting_model->updateResultDeclaration($quiz_id,$dbobj);                          
+            }
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/result_declared_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
+   
+   
+
+
+    public function result_declared_submission(){
+
+        $data = array();
+        
+        $users = $this->Standardswritting_model->resultDeclarationListdata(); 
+        $data['DeclarationList']=$users; 
+        
+
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/result_declared_submisson',$data);
+        $this->load->view('admin/footers/admin_footer');
+
+    }
+
+
+    public function result_declared_view($id)
+    { 
+        $data = array();
+        $id = encryptids("D", $id);
+        $ResultData = $this->Standardswritting_model->getResultDeclarationList($id);
+        //$quiz_id= $ResultData['quiz_id']; 
+        $data['ResultData']=$ResultData; 
+
+        $users = $this->Standardswritting_model->resultDeclareUser($id); 
+        $data['UsersDetails']=$users;
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('standardwritting/result_declared_view',$data);
+        $this->load->view('admin/footers/admin_footer');
+    } 
+
+
+    public function updateOnlineStatusAllEvaluators(){
+        try {
+            
+          
+            $evaluator = array();
+
+            $evaluator = $this->input->post('evaluator_id');
+            $eval = implode(',',$evaluator);
+            $evaluator = explode(',',$eval);
+
+            //echo json_encode($evaluator);
+            $count_eva = count($evaluator);
+            // echo $count_eva ;exit();
+
+            $comp_id =  $this->input->post('comp_id');
+
+            $users_details = $this->Standardswritting_model->getStdWriCompUsers($comp_id); 
+            $count_users = count($users_details);
+            //  echo json_encode($users_details);  exit();
+
+            $remainder = $count_users % $count_eva;
+            $assign_counter = 1;
+            $eva = 0;
+            if( $remainder == 0 ){
+                $Eva_assign_user_count = $count_users / $count_eva;
+                foreach($users_details as $row){
+                    if($assign_counter <=  $Eva_assign_user_count){
+
+                        ///////////////////////
+                        $formdata['evaluator_id'] = $evaluator[$eva];
+                        $formdata['status']="1";
+                        $formdata['sssign_date']=date("Y-m-d H:i:s"); 
+        
+                        $id = $this->Standardswritting_model->updateCompetition($row['id'],$formdata);
+                        ///////////////////////////
+                    }
+                    $assign_counter++;
+                    if($assign_counter > $Eva_assign_user_count){
+                        $assign_counter = 1;
+                        $eva++;
+                    }
+                }   
+            }else{
+
+                $Eva_assign_user_count = (int)($count_users / $count_eva);
+                $renaming_users = $remainder;
+               
+                $cnt = 1;
+                $new_list_cnt =  $count_users - $renaming_users;
+             
+                $users_details_new = $this->Standardswritting_model->getStdWriCompUsersNew($comp_id,$new_list_cnt);
+                $users_count= count($users_details_new );
+               
+                //echo json_encode($users_details_new);exit();
+                foreach($users_details_new as $row){
+                    if($assign_counter <=  $Eva_assign_user_count){
+
+                        ///////////////////////
+                        //echo $evaluator[0];
+                      //  echo $row['id']."<br>";
+                      //  echo $evaluator[$eva]."<br>";
+                        // exit();
+                        $formdata['evaluator_id'] = $evaluator[$eva];
+                        $formdata['status']="1";
+                        $formdata['sssign_date']=date("Y-m-d H:i:s"); 
+        
+                        $id = $this->Standardswritting_model->updateCompetition($row['id'],$formdata);
+                        ///////////////////////////
+                    }
+                    $assign_counter++;
+                    if($assign_counter > $Eva_assign_user_count){
+                        $assign_counter = 1;
+                        if($cnt < $users_count ){
+                            $eva++;
+                        }
+                      
+                    }
+                    $cnt++;
+                } 
+               // echo $new_list_cnt."<br>";  echo $renaming_users."<br>"; 
+                $users_details_new1 = $this->Standardswritting_model->getStdWriCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users);
+                 //  echo json_encode($users_details_new1);exit();
+                foreach($users_details_new1 as $row){
+                  
+
+                        ///////////////////////
+                        $formdata['evaluator_id'] = $evaluator[0];
+                        $formdata['status']="1";
+                        $formdata['sssign_date']=date("Y-m-d H:i:s"); 
+        
+                        $id = $this->Standardswritting_model->updateCompetition($row['id'],$formdata);
+                        ///////////////////////////
+                    }
+                  
+            } 
+            echo json_encode([
+                'status' => '1',
+                'message' => "Review assigned successfully.",
+            ]);exit();
+           
+            //redirect(base_url() . "Standardsmaking/standard_submission_competition/".$comp_id, 'refresh');
+
+            
+            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => '0',
+                'message' => $e->getMessage(),
+            ]);exit();
+           
+        }
+       // redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+     /**
+      * 
+      * result_declared_list END
+      */
     public function miscellaneous_dashboard()
     {
         $this->load->view('admin/headers/admin_header');
@@ -71,6 +262,8 @@ class Standardswritting extends CI_Controller
         $data=array();
         $data['getEvaluator']=$this->Standardswritting_model->getEvaluator();
         $data['getData']=$this->Standardswritting_model->standard_submission_competition($id);
+
+       // print_r( $data['getData']); die;
         $data['ids']=$id;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -86,18 +279,17 @@ class Standardswritting extends CI_Controller
             if ($res) {
                $this->load->view('standardwritting/standard_submission_competition/'.$id,$data);
             }
-
         }
         else
         {
             $this->load->view('standardwritting/standard_submission_competition',$data);
-        }
-
-
-        
+        }     
         
         $this->load->view('admin/footers/admin_footer');
     }
+
+
+
     public function Competition_Reviewed_list()
     {
         $getDetails= $this->Standardswritting_model->revised_standard_list();
@@ -1453,7 +1645,7 @@ if($id){
     public function closed_standard_list()
     {
 
-         $getDetails= $this->Standardswritting_model->closed_standard_list();
+        $getDetails= $this->Standardswritting_model->closed_standard_list();
         $data = array();
         foreach ($getDetails as $row) 
         {
@@ -1865,6 +2057,7 @@ public function updateStatus(){
         }
         redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
     }
+ 
 
 
 
@@ -2011,24 +2204,14 @@ public function updateStatus(){
         $this->load->view('admin/footers/admin_footer');
     }
 
-    public function result_declared_list()
-    {
-        $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/result_declared_list');
-        $this->load->view('admin/footers/admin_footer');
-    }
+   
     public function result_declared_submisson()
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/result_declared_submisson');
         $this->load->view('admin/footers/admin_footer');
     }
-    public function result_declared_view()
-    {
-        $this->load->view('admin/headers/admin_header');
-        $this->load->view('standardwritting/result_declared_view');
-        $this->load->view('admin/footers/admin_footer');
-    }
+    
 
     
     

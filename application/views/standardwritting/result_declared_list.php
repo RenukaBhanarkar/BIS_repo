@@ -31,29 +31,53 @@
                                 <th>Member Id</th>
                                 <th>Class</th>
                                 <th>Date</th>
-                                <th>Time Taken</th>
                                 <th>Score</th>
-                                <th>Prize</th>
-                                
-                                
+                                <th>Time Taken</th>
+                              
+                                <th>Prize</th>   
                             </tr>
                         </thead>
+                     
                         <tbody>
-                           <tr>
-                              <td>1</td>
-                              <td>Anis</td>
-                              <td>abc@gmail.com</td>
-                              <td>7057085889</td>
-                              <td>12345</td>
-                              <td>9 th</td>
-                              <td>12/03/2023 12:00:00 </td> 
-                              <td>12:00:00</td>
-                              <td>10</td>
-                              <td>First Prize</td> 
+                            <?php $j = 1;
+                                 foreach ($UsersDetails as $key => $user): ?>
+                            <tr>
+                              
+                                <td><?= $j;?></td>
+                                <td><?= $user['user_name']?></td>
+                                <td><?= $user['email']?></td>
+                                <td><?= $user['user_mobile']?></td>
+                                <td><?= $user['member_id']?></td> 
+
+                                <td><?= $user['stdClubMemberClass']?></td> 
+                                <td><?= $user['created_on']?></td>
+                               
+                                
+                                <td><?= $user['score']?></td>
+                                <?php 
+                                 $t =  $user['time_taken'];
+                                 $h = (int)$t/3600;
+                                 $m= (int)$t/60%60;
+                                 $s= (int)$t%60;
+
+                                 $timeTaken = sprintf('%02d:%02d:%02d', ($h),($m),($s) );
+                                 ?>
+
+                                <td><?= $timeTaken ?> </td> 
+                                 <td><?= $user['prize']?></td>
+                              
+                              
                             </tr>
-                         
+                             
+                            <?php $j++; endforeach ?>
+                            
+                            
+                            
+                            
+                            
                             
                         </tbody>
+                       
                     </table>
                 </div>
             </div>
@@ -64,7 +88,8 @@
     </div>
     <!-- End of Main Content -->
  </body>
-                                  <script>
+<script>
+  /*
 function viewData(id) 
 { 
   Swal.fire({
@@ -96,9 +121,7 @@ function viewSubmissionData(id)
     }  
   })
 }
-</script>
 
-<script>
   function updateOnlineStatusReview(id) {
     if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Update'; }
@@ -189,7 +212,7 @@ $('.sent_approve').on('click',function(){
                     confirmButtonText: 'Cancel',
                     denyButtonText: `Close`,
                     }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
+                    // Read more about isConfirmed, isDenied below 
                     if (result.isConfirmed) {    
                         window.location.replace('<?php echo base_url(); ?>Standardswritting/review_management_dashboard');                   
                         //$('#competition_edit').submit();
@@ -197,6 +220,7 @@ $('.sent_approve').on('click',function(){
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
-                    })
-})
+                    });
+});
+*/
 </script>
