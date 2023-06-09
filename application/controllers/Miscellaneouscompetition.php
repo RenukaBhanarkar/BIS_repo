@@ -28,7 +28,7 @@ class Miscellaneouscompetition extends CI_Controller
         //echo $abc;
         // print_r($abc); die;
         //$data['admin_id'] = $admin_id;
-        $data['records']=$this->Miscellaneous_competition->SubmissionForReview($abc['user_uid']);
+        $data['records']=$this->Miscellaneous_competition->SubmissionForReview($admin_id);
     //    print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/task_recevied_list',$data);
@@ -39,7 +39,7 @@ class Miscellaneouscompetition extends CI_Controller
         $data = array();
         $admin_id= encryptids("D", $_SESSION['admin_id']);
         $abc=$this->Miscellaneous_competition->getAdminUserid($admin_id);
-        $data['records']=$this->Miscellaneous_competition->evaluatedSubmissionsByEvaluator($abc['user_uid']);
+        $data['records']=$this->Miscellaneous_competition->evaluatedSubmissionsByEvaluator($admin_id);
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/task_reviewed',$data);
@@ -128,6 +128,41 @@ class Miscellaneouscompetition extends CI_Controller
     public function result_declared_submission(){
         $this->load->view('admin/headers/admin_header');
         $this->load->view('EvaluatorForCompetition/result_declared_submission');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function result_declared_list($quiz_id)
+    {
+       // $quiz_id = encryptids("D", $quiz_id);
+        $users = $this->Miscellaneous_competition->resultDeclarationList($quiz_id); 
+        // print_r($users);
+        // die;
+       
+        $data['UsersDetails']=$users; 
+        $getQuizinfo = $this->Miscellaneous_competition->getQuizinfo($quiz_id); 
+        $data['Quizinfo']=$getQuizinfo;                
+
+            $Declaration=$this->Miscellaneous_competition->isExistResultDeclaration($quiz_id);
+            //echo json_encode($Declaration);exit();
+           
+            if (empty($Declaration)) {
+                    
+                    foreach ($users as $r1){
+                    $formdata['user_id']= $r1['user_id'];
+                    $formdata['prize']= $r1['prize'];
+                    $formdata['quiz_id']= $r1['competiton_id'];
+                    $formdata['created_on']= date('Y-m-d h:i:s'); 
+                    $this->Miscellaneous_competition->insertResultDesc($formdata);
+                    }   
+                    $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
+                    $dbobj = array(
+                        "result_declared" =>1,
+                        'modify_by' => $login_admin_id,
+                        'updated_on'=>date('Y-m-d h:i:s')
+                    );
+                    $this->Miscellaneous_competition->updateResultDeclaration($quiz_id,$dbobj);                          
+            }
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('Miscellaneous/result_declared_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 }
