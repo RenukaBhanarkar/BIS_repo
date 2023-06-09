@@ -1049,7 +1049,7 @@ class Users extends CI_Controller
         $data['allquize'] = $allquize;
         $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
         $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
-        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5)); 
+        $data['competition']=$this->Miscellaneous_competition->getPublishedComp1('4',array(3,4,5)); 
 
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         //print_r($data['competition']); die;
