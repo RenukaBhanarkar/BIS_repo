@@ -257,28 +257,36 @@ aria-hidden="true">
                                         </div>
                                         <div class="modal-body">
                                             
-                                            <div class="row">
+                                            
+                                                <form action="<?php echo base_url().'admin/updatePassword'; ?>" id="changePassword" method="post">
+                                                <div class="row">
                                                     <div class="mb-2 col-md-12">
                                                     <label class="d-block text-font"style="text-align:left;">Current Password</label>
-                                                    <input type="password" class="form-control form-control-md show-hide-password" placeholder="Enter Old/Current Password">
+                                                    <input type="password" class="form-control form-control-md show-hide-password" name="oldpassword" id="OldPassword" placeholder="Enter Old/Current Password">
                                                          <i class="fa password fa-eye-slash"></i>
+                                                         <span class="text-danger" id="err_oldpass"></span>
+                                                         <span class="text-danger" id="err_currentpass"></span>
                                                     </div>
                                                     <div class="mb-2 col-md-12">
                                                     <label class="d-block text-font"style="text-align:left;">New Password</label>
-                                                    <input type="password" class="form-control form-control-md show-hide-password" placeholder="Enter New Password">
+                                                    <input type="password" class="form-control form-control-md show-hide-password" name="newpassword" id="password" placeholder="Enter New Password">
                                                          <i class="fa password fa-eye-slash"></i>
+                                                         <span class="text-danger" id="err_newpass"></span>
                                                     </div>
                                                     <div class="mb-2 col-md-12">
                                                     <label class="d-block text-font"style="text-align:left;">Confirm Password</label>
-                                                    <input type="password" class="form-control form-control-md show-hide-password" placeholder="Enter Confirm Password">
+                                                    <input type="password" class="form-control form-control-md show-hide-password" id="repassword" placeholder="Enter Confirm Password">
                                                          <i class="fa password fa-eye-slash"></i>
+                                                         <span class="text-danger" id="err_confpass"></span>
                                                     </div>
-                                            </div>
+                                                    </div>
+                                                </form>
+                                            
                                             
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 269px;">Skip</button>
-                                            <button type="button" class="btn btn-success">Submit</button>
+                                            <a type="button" class="btn btn-success submit">Submit</a>
                                         </div>
                                         </div>
                                     </div>
@@ -318,5 +326,62 @@ $("#imageUpload").change(function() {
                 ele.classList.remove('fa-eye');
             }
         });
+    });
+
+    $('.submit').click(function(){       
+        var old_pass = $('#OldPassword').val();
+        var pass = $('#password').val();
+        var repass = $('#repassword').val();
+        var isvalid =true;
+
+
+        if(old_pass == ""){
+            $('#err_currentpass').text('This value is required');
+            isvalid =false;
+        }else{
+            $('#err_currentpass').text('');
+        }
+        if(pass == ""){
+            $('#err_newpass').text('This value is required');
+            isvalid =false;
+        }else{
+            $('#err_newpass').text('');
+        }
+        if(repass == ""){
+            $('#err_confpass').text('This value is required');
+            isvalid =false;
+        }else{
+            $('#err_confpass').text('');
+        }
+
+        if(isvalid){
+            if(pass == repass){
+                $.ajax({
+                                type: 'POST',
+                                url: '<?php echo base_url(); ?>admin/update_password',
+                                data: {
+                                    pass: pass,
+                                    old_password:old_pass,                               
+                                },
+                                success: function(result) {
+                                    var res = JSON.parse(result); 
+                                    // Swal.fire(res.message);
+                                    if(res.status==1){
+                                        Swal.fire(res.message);
+                                        $('#change_password').modal('hide');
+                                    }else{
+                                        $('#err_oldpass').text('Old Password not match with record');
+                                    
+                                    }
+                                },
+                                error: function(result) {
+                                    Swal.fire("Error,Please try again.");
+                                }
+                            });
+            }else{
+                $('#err_confpass').text("not match with new password");
+                Swal.fire("password and confirm password should be same");
+            }
+        }
     });
         </script>
