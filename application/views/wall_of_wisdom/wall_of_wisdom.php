@@ -86,7 +86,7 @@
                                             if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                              
                                             <?php if($list_wow['status'] == 1){ ?>
-                                            <button onclick="sendapproval('<?php echo $list_wow['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white send_approval" data-id ='<?php echo $list_wow['id']; ?>'>Send For Approval</button>
+                                            <button onclick="sendapproval('<?php echo $list_wow['id']; ?>')" class="btn btn-success btn-sm mr-2 text-white send_approval" data-id ='<?php echo $list_wow['id']; ?>'>Send For approval</button>
                                             <button class="btn btn-primary btn-sm mr-2 archive" onclick="sendArchive('<?php echo $list_wow['id']; ?>')" data-id ='<?php echo $list_wow['id']; ?>'>Archive</button>
                                            <?php } ?>
                                            
@@ -1059,7 +1059,7 @@ var loadFileThumbnail = function(event)
         $('#wow_table').on('click','.approve',function(){
             var id = $(this).attr('data-id');
             Swal.fire({
-                    title: 'Are you sure you want to Approve?',
+                    title: 'Are you sure you want to approve?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Approve',
@@ -1365,10 +1365,10 @@ var loadFileThumbnail = function(event)
             var id=$(this).attr('data-id');
             
             Swal.fire({
-                    title: 'Are you sure you want to Send For Approval ?',
+                    title: 'Are you sure you want to Send For approval ?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Send For Approval',
+                    confirmButtonText: 'Send For approval',
                     denyButtonText: `Cancel`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */

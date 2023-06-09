@@ -142,12 +142,14 @@
                         <table id="example_2" class="table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>
+                                    
+                                     
                                         <th>Sr. No.</th>
                                         <th>Name of Evaluator</th>
                                         
-                                    </tr>
+                                </tr>
                                 </thead>
+                                
                                 <tbody>
                                     
                                     <?php foreach ($getEvaluator as $key => $Evaluator) {?>
@@ -173,6 +175,7 @@
     </form>
 
     <!-- Modal -->
+
     <script>
     $(document).ready(function () {
     $('#example_1').DataTable({
