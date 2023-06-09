@@ -65,7 +65,7 @@
                               <td><?=$value['status_name']?></td>  
                               <td class="d-flex">
 
-                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
+                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >Approve/Reject</a>
                                </td>
                            </tr>
                        <?php } ?>
