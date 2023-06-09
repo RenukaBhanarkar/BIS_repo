@@ -569,7 +569,6 @@ public function updateQuiz($id,$formdata)
         }else{
             return false;
         }
-       
     }
 
     public function getMstResultDeclaration($quiz_id)

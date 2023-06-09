@@ -68,16 +68,25 @@
                                 ?>
                                 <td><?=$task?></td>
                               <td>Reviewed</td>
-                              <td><?=$value['status_name']?></td>  
+                              <!-- <td><?=$value['status_name']?></td>   -->
+                              <?php if($value['result_declared'] == 0 ){ ?>
+
+                                <td><?php echo "Closed"; ?></td>  
+
+                                <?php } else { ?>
+                                  <td><?php echo "Result Declared"; ?></td>  
+                                  <?php } ?>
                               <td class="d-flex">
                                  <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>
-                                 <a href="<?php echo base_url(); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
-                               <?php } ?>
-                             
- 
+
+                                <?php if($value['result_declared'] == 0 ){ ?>
+                                 <a href="<?php echo base_url(); ?>Standardswritting/result_declared_list/<?= encryptids('E',$value['id']); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
+                                 <?php } ?>
+
+                               <?php } ?>     
                                   
                               </td>
                            </tr>
@@ -94,8 +103,8 @@
     </div>
     <!-- End of Main Content -->
  </body>
-                                  <script>
-function viewData(id) 
+<script>
+/*function viewData(id) 
 { 
   Swal.fire({
     title: 'Do you want to View ?',
@@ -110,7 +119,6 @@ function viewData(id)
     }  
   })
 }
-
 function viewSubmissionData(id) 
 { 
   Swal.fire({
@@ -125,11 +133,11 @@ function viewSubmissionData(id)
       window.location.href = "submission_view/"+id; 
     }  
   })
-}
+}*/
 </script>
 
 <script>
-  function updateOnlineStatusReview(id) {
+/*  function updateOnlineStatusReview(id) {
     if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Update'; }
     Swal.fire({
@@ -219,7 +227,7 @@ $('.sent_approve').on('click',function(){
                     confirmButtonText: 'Cancel',
                     denyButtonText: `Close`,
                     }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
+                    //* Read more about isConfirmed, isDenied below 
                     if (result.isConfirmed) {    
                         window.location.replace('<?php echo base_url(); ?>Standardswritting/review_management_dashboard');                   
                         //$('#competition_edit').submit();
@@ -228,5 +236,5 @@ $('.sent_approve').on('click',function(){
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
                     })
-})
+})*/
 </script>

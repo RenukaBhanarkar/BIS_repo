@@ -20,51 +20,52 @@
         <div class="col-12 mt-3">
             <div class="card border-top">
                 <div class="card-body">
+                <?php foreach ($ResultData as $row) { ?> 
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Competition</label>
                             <div>
-                                <p>Name</p>
+                            <p><?=$row['title']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Competition Id</label>
                             <div>
-                                <p>12345</p>
+                            <p><?=$row['comp_id']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Competition Start Date</label>
                             <div>
-                                <p>12:00:00</p>
+                            <p><?=$row['start_date']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Marks</label>
                             <div>
-                                <p>100</p>
+                            <p><?=$row['total_mark']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Submission</label>
                             <div>
-                                <p>50</p>
+                            <p><?=$row['total_submissions']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Winners</label>
                             <div>
-                                <p>10</p>
+                            <p><?=$row['total_winners']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Declared on</label>
                             <div>
-                                <p>12/03/2023 12:00:00</p>
+                            <p><?=$row['declared_on']?></p>
                             </div>
                         </div>
                     </div>
-                 
+                    <?php } ?>
                     <div class="row">
                         <div class="col-12 mt-3 ">
                             <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
@@ -85,27 +86,37 @@
                                 </thead>
                                 <tbody>
                                    
+                                <?php foreach ($UsersDetails as $key => $value) {?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Name Competition</td>
-                                        <td>abc@gmail.com</td>
-                                        <td>7057085889</td>
-                                        <td>12345</td> 
+                                        <td><?= $key+1?></td>
+                                        <td><?= $value['user_name']?></td>
+                                        <td><?= $value['email']?></td>
+                                        <td><?= $value['user_mobile']?></td>
+                                        <td><?= $value['member_id']?></td> 
 
-                                        <td>9</td> 
-                                        <td>12/03/2023 12:00:00</td>
-                                       
+                                        <td><?= $value['stdClubMemberClass']?></td> 
+                                        <td><?= $value['created_on']?></td>
+                                        <?php 
+                                            $t =  $value['time_taken'];
+                                            $h = (int)$t/3600;
+                                            $m= (int)$t/60%60;
+                                            $s= (int)$t%60;
 
-                                        <td>12:00:00</td> 
-                                        <td>100</td>
-                                        <td>First Prize</td>
+                                            $timeTaken = sprintf('%02d:%02d:%02d', ($h),($m),($s) );
+                                            ?>
+
+                                             <td><?= $timeTaken ?> </td> 
+                                        <!-- <td><?= $value['time_taken']?></td> -->
+                                        <td><?= $value['score']?></td>
+                                        <td><?= $value['userprize']?></td>
+                                     
                                         
                                     </tr>
-                                                                      
+                                    <?php } ?>
                                     
                                     
                                     
-                                    
+                                       
                                     
                                 </tbody>
                             </table>
