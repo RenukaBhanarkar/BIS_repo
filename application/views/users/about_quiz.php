@@ -237,40 +237,49 @@
         margin-top: 5px;
     }
 #countdown{
-    text-align: end;
+    /* text-align: end; */
+    padding-top:10px;
 }    
-#countdown li {
+.count_down_new{
     display: inline-block;
-    font-size: -2px;
-    /* list-style-type: none; */
+    font-size: 13px;
+    list-style-type: none;
     padding: 1em;
     text-transform: uppercase;
     text-align: center;
+    background: black;
+    color: white;
+    border-radius: 12px;
 }
 
-#countdown li span {
+li span {
     display: block;
-    font-size: 18px;
+    font-size: 23px;
 }
 
-#countdown .emoji {
+.emoji {
   display: none;
   padding: 1rem;
 }
 
-#countdown .emoji span {
+.emoji span {
   font-size: 4rem;
   padding: 0 .5rem;
 }
 
 @media all and (max-width: 768px) {
-#countdown li {
+  h1 {
+    font-size: calc(1.5rem * var(--smaller));
+  }
+  
+  li {
     font-size: calc(1.125rem * var(--smaller));
   }
   
-#countdown  li span {
+  li span {
     font-size: calc(3.375rem * var(--smaller));
   }
+
 }
 
     /* about quiz end */
@@ -287,14 +296,7 @@
             </select>
         </div>
         <?php } ?>
-        <!-- <div id="countdown">
-            <ul>
-                <li><span id="days"></span>days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-            </ul>
-        </div> -->
+      
         <div class="row">
             <div class="col-sm-5">
                 <div class="quiz-image shadow">
@@ -446,7 +448,15 @@
                                 if($status == 0) { ?>
 
                                                
-                                                <p id="countdown" class="countdown"> </p>
+                                                <!-- <p id="countdown1" class="countdown1"> </p> -->
+                                                <div id="countdown">
+                            <ul style="padding-left:0px">
+                            <li class="count_down_new"><span id="days"></span>days</li>
+                            <li class="count_down_new"><span id="hours"></span>Hours</li>
+                            <li class="count_down_new"><span id="minutes"></span>Minutes</li>
+                            <li class="count_down_new"><span id="seconds"></span>Seconds</li>
+                            </ul>
+                      </div>
                                                 <p id="ShowLoginButton" style="display:none">
                                                 <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
                                     
@@ -642,8 +652,13 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
  
-  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+//   document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+//   + minutes + "m " + seconds + "s ";
+
+document.getElementById("days").innerHTML = days + "d ";
+document.getElementById("hours").innerHTML = hours + "h ";
+document.getElementById("minutes").innerHTML = minutes + "m ";
+document.getElementById("seconds").innerHTML = seconds + "s ";
     
   
   if (distance < 0) {
