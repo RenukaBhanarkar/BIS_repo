@@ -353,13 +353,92 @@ li span {
                         </p>
                         <?php }?> 
                     </div>
-                      <!-- <a href="<?= base_url(); ?>users/start_competition" class="btn startQuiz"> <span>Login to Participate</span></a> -->
-                      <?php if(isset($_SESSION['admin_type'])){ if (!encryptids("D", $_SESSION['is_admin']) == 0){ ?>
-                        <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate</span></a>
-                    <?php  }else{ ?>                      
-                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz mb-2"> <span>Start Competition</span></a>
-                      
-                      <div id="countdown">
+
+
+                    <?php   
+                            date_default_timezone_set("Asia/Calcutta");
+                            $start_date = $competition['start_date'];
+                            $end_date = $competition['end_date'];
+                            $current_date = date('Y-m-d');
+
+                            $start_time = strtotime($competition['start_time']);
+                            $end_time = strtotime($competition['end_time']);
+                            $current_time = strtotime (date('H:i:s'));
+                            $status = 0;
+                            if($current_date > $start_date && $current_date < $end_date ){
+                                $status = 1;
+                                $user_type = encryptids("D", $this->session->userdata('admin_type'));                    
+                                if ($user_type != "") { 
+                                      ?>
+                                         <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
+                                    <?php  }else{ ?>                                 
+                                        
+                                    
+                                    <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                    <?php  
+                                  }  ?>
+                                <?php                           
+                             
+                             }
+                             if($current_date == $start_date  && $current_date == $end_date ){
+
+                                if($current_time >= $start_time && $current_time <= $end_time  ){
+                                    $status = 1;
+                                    $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                        
+                                    if ($user_type != "") { 
+                                         ?>
+                                             <!-- <a href="<?= base_url(); ?>users/quiz_start/<?= $competition['id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a> -->
+                                             <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                     
+                                        
+                                           
+                                        <?php  
+                                      } else { ?>
+                                        <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate</span></a>
+                                    <?php }
+                                 }
+                                 
+                                 }
+                                 if($current_date == $start_date  && $current_date < $end_date  ){
+
+                                    if($current_time >= $start_time  ){
+                                        $status = 1;
+                                        $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                            
+                                        if ($user_type != "") { 
+                                              ?>
+                                                 <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                           
+                                            <?php  
+                                          } else { ?>
+                                            <a href="<?= base_url(); ?>users/login/" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                        <?php }
+                                     } 
+                                     
+                                }
+                                if($current_date > $start_date  && $current_date == $end_date  ){
+
+                                        if($current_time <= $end_time  ){
+                                            $status = 1;
+                                            $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                                
+                                            if ($user_type != "") { 
+                                                 ?>
+                                                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                              
+                                             <?php } else { ?>
+                                                <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                            <?php }
+                                         }
+                                         
+                                }
+                               
+                                if($status == 0) { ?>
+
+                                               
+                                                <!-- <p id="countdown1" class="countdown1"> </p> -->
+                                                <div id="countdown">
                             <ul style="padding-left:0px">
                             <li class="count_down_new"><span id="days"></span>days</li>
                             <li class="count_down_new"><span id="hours"></span>Hours</li>
@@ -367,9 +446,38 @@ li span {
                             <li class="count_down_new"><span id="seconds"></span>Seconds</li>
                             </ul>
                       </div>
-                   <?php } }else{ ?>
-                    <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate</span></a>
-                    <?php } ?>
+                                                <p id="ShowLoginButton" style="display:none">
+                                                <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                                    
+                                                    if ($user_type != "") { 
+                                                        { ?>
+                                                            <!-- <a href="<?= base_url(); ?>users/quiz_start/<?= encryptids("E", $competition['id']); ?>" class="btn startQuiz"> <span>Start Quiz </span></a> -->
+                                                            <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz mb-2"> <span>Start Competition</span></a>
+                                                        <?php  } { ?>
+                                                        
+                                                            <!-- <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a> -->
+                                                        <?php  }
+                                                    } else { ?>
+                                                        <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E", $competition['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                                    <?php } ?>
+                                                </p>
+
+                                        <?php } ?>
+
+
+
+
+                      <!-- <a href="<?= base_url(); ?>users/start_competition" class="btn startQuiz"> <span>Login to Participate</span></a> -->
+                    
+                      <!-- <div id="countdown">
+                            <ul style="padding-left:0px">
+                            <li class="count_down_new"><span id="days"></span>days</li>
+                            <li class="count_down_new"><span id="hours"></span>Hours</li>
+                            <li class="count_down_new"><span id="minutes"></span>Minutes</li>
+                            <li class="count_down_new"><span id="seconds"></span>Seconds</li>
+                            </ul>
+                      </div> -->
+                  
                     <?php
                     if ($this->session->flashdata('MSG')) {
                         echo $this->session->flashdata('MSG');
@@ -496,49 +604,54 @@ li span {
 
 </div>
 <script>
-    (function () {
-  const second = 1000,
-        minute = second * 60,
-        hour = minute * 60,
-        day = hour * 24;
+// Set the date we're counting down to
+<?php date_default_timezone_set("Asia/Calcutta"); ?>
 
-  //I'm adding this section so I don't have to keep updating this pen every year :-)
-  //remove this if you don't need it
-  let today = new Date(),
-      dd = String(today.getDate()).padStart(2, "0"),
-      mm = String(today.getMonth() + 1).padStart(2, "0"),
-      yyyy = today.getFullYear(),
-      nextYear = yyyy + 1,
-      dayMonth = "09/30/",
-      birthday = dayMonth + yyyy;
+var current_time = '<?php echo date('Y-m-d H:i:s');?>';
+
+var startTime = '<?php echo $competition['start_date'];?> <?php echo $competition['start_time'];?>';
+
+// if(current_time < startTime){
+    //var countDownDate = new Date("2023-05-24 22:00:00").getTime();
+var countDownDate = new Date(startTime).getTime();
+
+
+var x = setInterval(function() {
+
   
-  today = mm + "/" + dd + "/" + yyyy;
-  if (today > birthday) {
-    birthday = dayMonth + nextYear;
+  var now = new Date().getTime();
+    
+ 
+  var distance = countDownDate - now;
+    
+  
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+ 
+//   document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+//   + minutes + "m " + seconds + "s ";
+
+document.getElementById("days").innerHTML = days + "d ";
+document.getElementById("hours").innerHTML = hours + "h ";
+document.getElementById("minutes").innerHTML = minutes + "m ";
+document.getElementById("seconds").innerHTML = seconds + "s ";
+    
+  
+  if (distance < 0) {
+    clearInterval(x);
+    $('#ShowLoginButton').css('display','block');
+    $('#countdown').css('display','none');
+    countdown
+   
   }
-  //end
-  
-  const countDown = new Date(birthday).getTime(),
-      x = setInterval(function() {    
+}, 1000);
+   
 
-        const now = new Date().getTime(),
-              distance = countDown - now;
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+</script>
 
-        //do something later when date is reached
-        if (distance < 0) {
-          document.getElementById("headline").innerText = "It's my birthday!";
-          document.getElementById("countdown").style.display = "none";
-          document.getElementById("content").style.display = "block";
-          clearInterval(x);
-        }
-        //seconds
-      }, 0)
-  }());
-    </script>
 
 

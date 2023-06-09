@@ -35,15 +35,15 @@
                                 <th>End Date</th>
                                 <th>Banner</th>
                                
-                                <th>Submitted Task</th>
+                                <!-- <th>Submitted Task</th>
                                 <th>Task Under Review</th>
-                                <th>Task Reviewed</th>
+                                <th>Task Reviewed</th> -->
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
+                           <!-- <tr>
                               <td>1</td>
                               <td>12345</td>
                               <td>Miscellaneous Competition</td>
@@ -61,7 +61,7 @@
                                  <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_submission" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
                               </td>
 
-                           </tr> 
+                           </tr>  -->
                           
                            <?php if(!empty($competition)){ $i=1;
                             foreach($competition as $list){ ?>
@@ -73,20 +73,21 @@
                             <td><?php echo $list['end_date']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
                             
-                            <td>Submited task</td>
+                            <!-- <td>Submited task</td>
                             <td></td>
-                            <td></td>
+                            <td></td> -->
                             <!-- <td><?php echo $list['status_name'];  ?></td> -->
                             <td><?php if($list['review_status']==1){ echo "Send for Review"; } ;  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <!-- <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a> -->
                                  <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
-                                 <?php if(!$list['review_status']==1){ ?>
+                                 <?php if($list['review_status']==0){ ?>
                                  <button comp-id="<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2 send_for_review" >Send for review</button>
-                                 <?php } ?>
-                                 <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_submission/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
+                                 <?php }else if($list['review_status']==1){ ?>
+                                 <!-- <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_submission/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a> -->
                                  <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_list/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration List</a>
+                                 <?php } ?>
                                 </td>
                              </tr>
                             <?php $i++; } } ?>
