@@ -199,7 +199,7 @@
         position: absolute;
         width: 100%;
     }
-    .countdown {
+  .countdown {
     margin-right: 13px;
     font-size: 16px;
     font-weight: 600;
@@ -213,6 +213,66 @@
     height: 60px;
     color: #ffffff;
 }
+    .view_join_content:hover .discuss_caption {
+        display: block;
+    }
+
+    span.date-time {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    span.last-date {
+        font-size: 18px;
+        font-weight: 600;
+        color: black;
+    }
+
+    .quiz-text-date {
+        font-size: 14px;
+        color: red;
+        font-weight: 500;
+        width: 100%;
+
+        margin-top: 5px;
+    }
+#countdown{
+    text-align: end;
+}    
+#countdown li {
+    display: inline-block;
+    font-size: -2px;
+    /* list-style-type: none; */
+    padding: 1em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#countdown li span {
+    display: block;
+    font-size: 18px;
+}
+
+#countdown .emoji {
+  display: none;
+  padding: 1rem;
+}
+
+#countdown .emoji span {
+  font-size: 4rem;
+  padding: 0 .5rem;
+}
+
+@media all and (max-width: 768px) {
+#countdown li {
+    font-size: calc(1.125rem * var(--smaller));
+  }
+  
+#countdown  li span {
+    font-size: calc(3.375rem * var(--smaller));
+  }
+}
+
     .view_join_content:hover .discuss_caption {
         display: block;
     }
@@ -363,14 +423,15 @@ li span {
                     ?>
 
                     <?php }?>
-                    <div id="countdown">
+                    <p id="countdown" class="countdown"> </p>
+                    <!-- <div id="countdown">
                             <ul style="padding-left:0px">
                             <li class="count_down_new"><span id="days"></span>days</li>
                             <li class="count_down_new"><span id="hours"></span>Hours</li>
                             <li class="count_down_new"><span id="minutes"></span>Minutes</li>
                             <li class="count_down_new"><span id="seconds"></span>Seconds</li>
                             </ul>
-                      </div>
+                      </div> -->
                     
 
                     
@@ -479,48 +540,42 @@ li span {
 </div>
 </div>
 <script>
-    (function () {
-  const second = 1000,
-        minute = second * 60,
-        hour = minute * 60,
-        day = hour * 24;
+// Set the date we're counting down to
+<?php date_default_timezone_set("Asia/Calcutta"); ?>
 
-  //I'm adding this section so I don't have to keep updating this pen every year :-)
-  //remove this if you don't need it
-  let today = new Date(),
-      dd = String(today.getDate()).padStart(2, "0"),
-      mm = String(today.getMonth() + 1).padStart(2, "0"),
-      yyyy = today.getFullYear(),
-      nextYear = yyyy + 1,
-      dayMonth = "09/30/",
-      birthday = dayMonth + yyyy;
+var current_time = '<?php echo date('Y-m-d H:i:s');?>';
+
+var endDate = '<?php echo $getData['start_date'];?> <?php echo $getData['start_time'];?>'; 
+
+var countDownDate = new Date(endDate).getTime();
+
+var x = setInterval(function() {
   
-  today = mm + "/" + dd + "/" + yyyy;
-  if (today > birthday) {
-    birthday = dayMonth + nextYear;
+  var now = new Date().getTime();
+    
+ 
+  var distance = countDownDate - now;
+    
+  
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+ 
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  
+  if (distance < 0) {
+    clearInterval(x);
+    $('#ShowLoginButton').css('display','block');
+    $('#countdown').css('display','none');
+    countdown
+   
   }
-  //end
-  
-  const countDown = new Date(birthday).getTime(),
-      x = setInterval(function() {    
+}, 1000);
+   
 
-        const now = new Date().getTime(),
-              distance = countDown - now;
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-
-        //do something later when date is reached
-        if (distance < 0) {
-          document.getElementById("headline").innerText = "It's my birthday!";
-          document.getElementById("countdown").style.display = "none";
-          document.getElementById("content").style.display = "block";
-          clearInterval(x);
-        }
-        //seconds
-      }, 0)
-  }());
-    </script>
-
+</script>
