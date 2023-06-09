@@ -3758,6 +3758,11 @@ if ($availability==2)
         }
 
      }
+     public function standard_writting_all(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_all');
+        $this->load->view('users/footers/footer');
+      }
     
  
 }

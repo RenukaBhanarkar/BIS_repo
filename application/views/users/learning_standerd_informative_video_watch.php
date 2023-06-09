@@ -11,7 +11,7 @@ h1 {
 } 
 .like_button {
 background: #ffd600;
-margin-left: 273px;
+margin-left: 3px;
 padding: 3px;
 width: 76px;
 text-align: center;
@@ -87,7 +87,7 @@ img.news_img {
     font-weight: 700;
     font-size: 14px;
 }
-.like_button {
+/* .like_button {
     background: #ffd600;
     margin-left: 273px;
     padding: 3px;
@@ -96,7 +96,7 @@ img.news_img {
     border-radius: 10px;
     font-weight: 700;
     font-size: 14px;
-}   
+}    */
 </style>    
 <section>
     <div class="container-fluid">

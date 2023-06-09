@@ -16,7 +16,7 @@ h1 {
 }
 .like_button {
 background: #ffd600;
-margin-left: 273px;
+margin-left: 3px;
 padding: 3px;
 width: 76px;
 text-align: center;
@@ -89,7 +89,7 @@ img.news_img {
 }
 .like_button {
     background: #ffd600;
-    margin-left: 273px;
+    margin-left: 3px;
     padding: 3px;
     width: 76px;
     text-align: center;
