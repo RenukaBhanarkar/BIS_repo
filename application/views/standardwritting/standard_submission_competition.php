@@ -144,7 +144,7 @@
                         <table id="example_2" class="table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th><input class="form-control-input " type="checkbox"  name="selectall" id="selectall"></th>
                                     <th>Sr. No.</th>
                                     <th>Name of Evaluator</th>
                                 </tr>
@@ -155,7 +155,7 @@
                                     <tr>
                                         <td>
                                             <input type="hidden" id="comp_id" name="comp_id" value="<?= $ids ;?>"/>
-                                            <input class="form-control-input" type="checkbox" name="evaluator_id[]" value="<?= $Evaluator['id'] ?>" id="select-all">
+                                            <input class="form-control-input selectedId" type="checkbox" name="evaluator_id[]" value="<?= $Evaluator['id'] ?>" id="select-all">
                                         </td>
                                         <td><?= $key + 1 ?></td>
                                         <td><?= $Evaluator['name'] ?></td>
@@ -177,6 +177,16 @@
 
 <!-- Modal -->
 <script>
+$(document).ready(function () {
+    $('#selectall').click(function () {
+        $('.selectedId').prop('checked', this.checked);
+    });
+
+    $('.selectedId').change(function () {
+        var check = ($('.selectedId').filter(":checked").length == $('.selectedId').length);
+        $('#selectall').prop("checked", check);
+    });
+});
     $(document).ready(function() {
         $('#example_1').DataTable({
             // scrollX: true,
