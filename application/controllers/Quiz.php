@@ -1541,13 +1541,13 @@ class Quiz extends CI_Controller
     }
     public function quiz_view($id)
     {
-        // $id = encryptids("D", $id);
+         $id = encryptids("D", $id);
         $this->load->view('admin/headers/admin_header');
       
          
         $data=array();
         $quiz = $this->Quiz_model->viewQuiz($id);
-       // echo json_encode($quiz);exit();
+        //echo json_encode($quiz);exit();
         $quizdata=array();
         $data['quizdata']=$quiz; 
         //End Quize Data

@@ -264,13 +264,13 @@ class Standardswritting extends CI_Controller
                 $Eva_assign_user_count = (int)($count_users / $count_eva);
                 $renaming_users = $remainder;
                
-                $cnt = 1;
+              
                 $new_list_cnt =  $count_users - $renaming_users;
-             
+                // echo $new_list_cnt."<br>";  echo $renaming_users."<br>"; 
                 $users_details_new = $this->Standardswritting_model->getMisceCompUsersNew($comp_id,$new_list_cnt);
                 $users_count= count($users_details_new );
                
-                //echo json_encode($users_details_new);exit();
+                //echo json_encode(count($users_details_new));
                 foreach($users_details_new as $row){
                     if($assign_counter <=  $Eva_assign_user_count){
 
@@ -285,25 +285,24 @@ class Standardswritting extends CI_Controller
                     $assign_counter++;
                     if($assign_counter > $Eva_assign_user_count){
                         $assign_counter = 1;
-                        if($cnt < $users_count ){
+                      
                             $eva++;
-                        }
+                      
                       
                     }
-                    $cnt++;
+                    
                 } 
                // echo $new_list_cnt."<br>";  echo $renaming_users."<br>"; 
                 $users_details_new1 = $this->Standardswritting_model->getMisceCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users);
-                //echo json_encode($users_details_new1);exit();
-                foreach($users_details_new1 as $row){
-                  
+               // echo json_encode($users_details_new1);exit();
+                foreach($users_details_new1 as $row){                  
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[0];
                         $formdata['status']="1";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
-                        $id = $this->Standardswritting_model->updateCompetition($row['id'],$formdata);
+                        $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
                         ///////////////////////////
                     }
                   

@@ -46,6 +46,41 @@
                                 <p><?=$row['total_mark']?></p>
                             </div>
                         </div>
+                        
+                        <?php if($row['quizlevel'] !="" ){ ?>
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Available For</label>
+                                    <div>
+                                        <p><?=$row['quizlevel']?></p>
+                                    </div>
+                            </div>
+                        <?php } ?>
+                        <?php if($row['branch'] !="" ){ ?>
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Branch</label>
+                                    <div>
+                                        <p><?=$row['branch']?></p>
+                                    </div>
+                            </div>
+                        <?php } ?>
+                        <?php if($row['region'] !="" ){ ?>
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">region</label>
+                                    <div>
+                                        <p><?=$row['Region']?></p>
+                                    </div>
+                            </div>
+                        <?php } ?>
+                        <?php if($row['statename'] !="" ){ ?>
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">State</label>
+                                    <div>
+                                        <p><?=$row['statename']?></p>
+                                    </div>
+                            </div>
+                        <?php } ?>                           
+                            
+                         
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Total Submission</label>
                             <div>

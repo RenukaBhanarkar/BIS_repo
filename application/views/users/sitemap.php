@@ -26,14 +26,13 @@
         <div class="col-md-4">
             <div class="sitenav">
                 <ul class="ul_list p-0">
-                    <li class="li_text"><a href="<?php echo base_url() . 'Users/welcome' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Home</a></li>
                     <li class="li_text"><a href="https://www.bis.gov.in/" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">BIS</a></li>
-                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Published Standards</a></li>
-                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Know Your Standards</a></li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">SNAP 2022-27</a></li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NBC</a></li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NEC</a></li>
-                    <li class="li_text"><a href="<?php echo base_url() . 'users/contact_us' ?>" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;"></a>Contact Us</li>
+                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="blank" onclick="publish_pop()" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Published Standards</a></li>
+                    <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" target="blank" onclick="know_pop()" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Know Your Standards</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" target="blank" class="text_dot" onclick="snap_pop()" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">SNAP 2022-27</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" target="blank"  class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NBC</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot"  style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NEC</a></li>
+                    <li class="li_text"><a href="<?php echo base_url() . 'users/contact_us' ?>" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Contact Us</a></li>
                     <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">User Manual</a></li>
                 </ul>
             </div>
@@ -45,16 +44,16 @@
                     <li class="li_text"><h5>Standard Club</h5>
                     <hr style="padding: 0px; margin: 0px;">
                         <ul class="ul_list p-0">
-                            <li class="li_text"><a href="#" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Quiz</a></li>
-                            <li class="li_text"><a href="#" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Standard Writting</a></li>
-                            <li class="li_text"><a href="#" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Essay Writting</a></li>
-                            <li class="li_text"><a href="#" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Poster Making</a></li>
-                            <li class="li_text"><a href="#"class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">More</a></li>
+                            <li class="li_text"><a href="<?php echo base_url() . 'users/quiz' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Quiz</a></li>
+                            <li class="li_text"><a href="<?php echo base_url() . 'users/standard_writting_all' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Standard Writting</a></li>
+                            <li class="li_text"><a href="<?php echo base_url() . 'users/standard' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Essay Writting</a></li>
+                            <li class="li_text"><a href="<?php echo base_url() . 'users/standard' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Poster Making</a></li>
+                            <li class="li_text"><a href="<?php echo base_url() . 'users/standard' ?>"class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">More</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'wall_of_wisdom/wallOfWisdom' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Wall of Wisdom</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'users/learning_standerd' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Classroom</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'users/your_wall_posts' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Your Wall</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'users/byTheMentor' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">By the Mentor</a></li>
-                            <li class="li_text"><a href="<?php echo base_url() . 'users/standard' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">By the Mentor</a></li>
+                           
                         </ul>
                     </li>
                     
@@ -88,3 +87,28 @@
 </div>   
               
   </div>
+  <script>
+        function publish_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+    <script>
+        function know_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+      <script>
+        function snap_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+    <script>
+        function nbc_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+    <script>
+        function nec_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>

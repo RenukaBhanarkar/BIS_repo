@@ -73,26 +73,26 @@
                       <td class="d-flex border-bottom-0">
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) {
                           if ($quiz['status'] == 2 ) { ?>
-                            <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
+                            <a href="quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
                         <?php }
                         } ?>
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) {
                           if ($quiz['status'] == 3 || $quiz['status'] == 4 || $quiz['status'] == 5 || $quiz['status'] == 6) {
                         ?>
-                            <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <a href="quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">View</a>
                         <?php }
                         } ?>
 
 
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                           <?php if(in_array(1,$permissions)){ ?> 
-                          <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                          <a href="quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">View</a>
                         <?php } } ?>
 
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                            
                           <?php if ($quiz['status'] == 1 ) { ?>
-                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send For approval</a>
+                               <a data-id="<?= $quiz['id'] ?>" class="btn btn-success btn-sm mr-2 send_to_approve">Send for approval</a>
                           <?php } ?>
 
                           <?php if ($quiz['status'] == 3 || $quiz['status'] == 6) { ?>

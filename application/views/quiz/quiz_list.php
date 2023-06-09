@@ -83,7 +83,7 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
 
                           <?php if (in_array(1, $permissions)) { ?>
-                            <a href="quiz_view/<?= $quiz['id'] ?>" class="btn btn-primary btn-sm">View</a>
+                            <a href="quiz_view/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm">View</a>
 
                           <?php } ?>
 

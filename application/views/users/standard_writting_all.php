@@ -89,91 +89,26 @@ span.last-date {
             <h3 style="margin-bottom: 14px; /* margin-top: 20px; */ color: #0086b2!important; font-weight: 600; margin-left: 24px;">Standard Writting
             </h3>
         </div>
-        <div class="join_container">
-                <div class="view_join_content">
+        <div class="join_container"> 
+                    <?php foreach ($getOnlineCompData as $key => $OnlineCompData) {?>
+                     <div class="view_join_content">
                     <a href="#">
                         <div class="start_content">
-                            <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" alt="" class="join_img">
+                            <img src="<?= base_url(); ?><?=$OnlineCompData['banner_img']?>" alt="" class="join_img">
                         </div>
                     </a>
                     <div class="join_body">
                         <div class="title_join">
-                            <h3><a href="">Standards of vnyl printing system </a> </h3>
-                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;">23/03/2023</span></span>
-                            <a href=""><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
+                            <h3><a href="<?php echo base_url() . "users/standard_writting_details/"?><?php echo  $id= encryptids("E", $OnlineCompData['id'] )?>"><?=$OnlineCompData['title']?></a> </h3>
+                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;"><?=$OnlineCompData['start_date']?></span></span>
+                            <a href="<?php echo base_url() . "users/standard_writting_details/"?><?php echo  $id= encryptids("E", $OnlineCompData['id'] )?>"><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
                         </div>
                     </div>
                 </div>
-                <div class="view_join_content">
-                    <a href="#">
-                        <div class="start_content">
-                            <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" alt="" class="join_img">
-                        </div>
-                    </a>
-                    <div class="join_body">
-                        <div class="title_join">
-                            <h3><a href="">Standards of vnyl printing system </a> </h3>
-                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;">23/03/2023</span></span>
-                            <a href="#"><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="view_join_content">
-                    <a href="#">
-                        <div class="start_content">
-                            <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" alt="" class="join_img">
-                        </div>
-                    </a>
-                    <div class="join_body">
-                        <div class="title_join">
-                            <h3><a href="">Standards of vnyl printing system </a> </h3>
-                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;">23/03/2023</span></span>
-                            <a href="#"><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="view_join_content">
-                    <a href="#">
-                        <div class="start_content">
-                            <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" alt="" class="join_img">
-                        </div>
-                    </a>
-                    <div class="join_body">
-                        <div class="title_join">
-                            <h3><a href="">Standards of vnyl printing system </a> </h3>
-                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;">23/03/2023</span></span>
-                            <a href="#"><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="view_join_content">
-                    <a href="#">
-                        <div class="start_content">
-                            <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" alt="" class="join_img">
-                        </div>
-                    </a>
-                    <div class="join_body">
-                        <div class="title_join">
-                            <h3><a href="">Standards of vnyl printing system </a> </h3>
-                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;">23/03/2023</span></span>
-                            <a href="#"><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="view_join_content">
-                    <a href="#">
-                        <div class="start_content">
-                            <img src="<?php echo base_url(); ?>/assets/images/img_2.jpg" alt="" class="join_img">
-                        </div>
-                    </a>
-                    <div class="join_body">
-                        <div class="title_join">
-                            <h3><a href="">Standards of vnyl printing system </a> </h3>
-                            <span class="last-date">Date:<span class="date-time" style="margin-left: 5px;">23/03/2023</span></span>
-                            <a href="#"><div class="discuss_caption"><span href="#" title=" Discuss" style="padding:8px;"></span><span class="">Participate</span></div></a>
-                        </div>
-                    </div>
-                </div>
+                   <?php  }?> 
+                
+                 
+                
         </div>
         
     </div>
