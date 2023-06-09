@@ -228,8 +228,7 @@ class Standardswritting_model extends CI_Model
         tbl_users.email,
         tbl_users.user_mobile,
         tbl_users.member_id,
-        tbl_users.stdClubMemberClass
-        
+        tbl_users.stdClubMemberClass   
         ');
         $this->db->where('tbl_standard_writing_competition_online.comp_id', $id);
 
@@ -243,9 +242,30 @@ class Standardswritting_model extends CI_Model
         return $rs;
     }
 
+    /*public function resultDeclareUser($id)
+    { 
+        $rs = array();
+              $this->db->select('tbl_quiz_submission_details.*,
+       
+        tbl_result_declaration.prize as userprize,
+        tbl_users.user_name,tbl_users.email,tbl_users.user_mobile,tbl_users.member_id,tbl_users.stdClubMemberClass
+        
+        '); 
+    $this->db->where('tbl_quiz_submission_details.quiz_id',$id); 
+    
+    $this->db->join('tbl_users','tbl_users.user_id = tbl_quiz_submission_details.user_id');
+    $this->db->join('tbl_result_declaration','tbl_result_declaration.user_id = tbl_quiz_submission_details.user_id');
+    $this->db->order_by('score', 'DESC'); 
+    $this->db->order_by('time_taken', 'ASC');    
+    $rs = $this->db->get('tbl_quiz_submission_details')->result_array(); 
+
+    //echo json_encode($rs);exit();
+    return $rs;
+    }*/
+
     public function getStdWriCompUsers($comp_id){
         $res = array();
-        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id}";
+        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} AND status= 0";
         $query = $this->db->query($myQue);
         $res = $query->result_array();
         return $res;
@@ -253,13 +273,13 @@ class Standardswritting_model extends CI_Model
     }
     public function  getStdWriCompUsersNew($comp_id,$new_list_cnt){
         $res = array();
-        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} limit $new_list_cnt ";
+        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} limit $new_list_cnt AND status= 0";
         $query = $this->db->query($myQue);
         $res = $query->result_array();
         return $res;
     }
     public function getStdWriCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users){
-        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} limit $new_list_cnt ,$renaming_users";
+        $myQue = "SELECT * from tbl_standard_writing_competition_online  where comp_id = {$comp_id} AND status= 0 limit $new_list_cnt ,$renaming_users";
         $query = $this->db->query($myQue);
         $res = $query->result_array();
         return $res;
@@ -531,14 +551,9 @@ class Standardswritting_model extends CI_Model
     }
 
 
-<<<<<<< HEAD
     public function submission_view($comp_id)
     {
         $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name');
-=======
-    public function submission_view($comp_id){
-        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.member_id');
->>>>>>> 6010f8781219aea29542d7efd7cdf461af914bca
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_users tbl_users', 'tbl_users.user_id=tbl_standard_writing_competition_online.user_id');
         $this->db->where('tbl_standard_writing_competition_online.comp_id', $comp_id);
