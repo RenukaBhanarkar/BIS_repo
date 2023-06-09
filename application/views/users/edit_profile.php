@@ -110,7 +110,7 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Email Id</label>
-                                <input type="text" class="form-control input-font" name="email" id="Name" value="<?php echo $user_profile['email']; ?>" placeholder="Enter Email Id">
+                                <input type="text" class="form-control input-font" name="email" id="Name" value="<?php echo $user_profile['email']; ?>" placeholder="Enter Email Id" readonly>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Date of birth</label>
