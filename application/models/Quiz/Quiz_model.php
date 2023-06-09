@@ -151,13 +151,21 @@ public function updateQuiz($id,$formdata)
             tbl_mst_language.title as language,
             tbl_mst_quiz_availability.title as availability,
             tbl_mst_quiz_level.title as level,
-            tbl_que_bank.no_of_ques
+            tbl_que_bank.no_of_ques,
+            b.uvc_department_name as branch,
+            r.uvc_region_title as region,
+            s.state_name as state,
             ');
         $this->db->where('tbl_quiz_details.id',$id);
         $this->db->join('tbl_mst_language','tbl_mst_language.id = tbl_quiz_details.language_id');
         $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_quiz_details.availability_id');
         $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_quiz_details.quiz_level_id');
         $this->db->join('tbl_que_bank','tbl_que_bank.que_bank_id = tbl_quiz_details.que_bank_id');
+
+        $this->db->join('tbl_mst_branch b','b.pki_id = tbl_quiz_details.branch_id','left');
+        $this->db->join('tbl_mst_regions r','r.pki_region_id = tbl_quiz_details.region_id','left');        
+        $this->db->join('tbl_mst_states s','s.state_id = tbl_quiz_details.state_id','left');
+
         return $this->db->get('tbl_quiz_details')->row_array(); 
     }
     public function getAllQb()
@@ -645,9 +653,17 @@ public function updateQuiz($id,$formdata)
     { 
 
 
-        $myQuery = "SELECT distinct res.quiz_id ,res.created_on AS declared_on ,quiz.title, quiz.start_date,quiz.total_mark,quiz.result_declared
-        FROM  tbl_result_declaration AS res INNER JOIN tbl_quiz_details  As quiz
-        ON res.quiz_id = quiz.id
+        $myQuery = "SELECT distinct res.quiz_id ,res.created_on AS declared_on ,quiz.title, quiz.start_date,quiz.total_mark,quiz.result_declared,
+        qlevel.title as quizlevel,
+        b.uvc_department_name as branch,
+        r.uvc_region_title as region,
+        s.state_name as statename
+        FROM  tbl_result_declaration AS res 
+        INNER JOIN tbl_quiz_details  As quiz ON res.quiz_id = quiz.id
+        LEFT JOIN tbl_mst_quiz_level AS qlevel ON qlevel.id = quiz.quiz_level_id
+        LEFT JOIN tbl_mst_branch b ON b.pki_id = quiz.branch_id
+        LEFT JOIN tbl_mst_regions r ON r.pki_region_id = quiz.region_id       
+        LEFT JOIN tbl_mst_states s ON s.state_id = quiz.state_id
         where res.quiz_id = $id ";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();

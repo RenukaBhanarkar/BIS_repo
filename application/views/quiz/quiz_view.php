@@ -105,6 +105,10 @@
                             <label class="d-block text-font">Level of Quiz<sup class="text-danger">*</sup></label>
                             <div>
                                 <p><?= $quizdata['level']; ?></p>
+                                <p><?php if($quizdata['branch'] !="" ){ echo "Branch :".$quizdata['branch'];}?></p>
+                                <p><?php if($quizdata['region'] !="" ){ echo "Region :".$quizdata['region'];}?></p>
+                                <p><?php if($quizdata['state'] !="" ){ echo "State :".$quizdata['state'];}?></p>
+
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
