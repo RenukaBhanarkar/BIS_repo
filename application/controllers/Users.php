@@ -1049,7 +1049,7 @@ class Users extends CI_Controller
         $data['allquize'] = $allquize;
         $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
         $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
-        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5)); 
+        $data['competition']=$this->Miscellaneous_competition->getPublishedComp1('4',array(3,4,5)); 
 
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         //print_r($data['competition']); die;
@@ -2292,6 +2292,16 @@ class Users extends CI_Controller
         $data['user_id']=encryptids('D',$user_id);
         $data['answer_text']=$this->input->post('myTextArea');
         $data['competiton_id']=$this->input->post('comp_id');
+
+        
+	 $start_time= $this->input->post('start_time');
+     $end_t=date('h:i:s');
+
+     $st_time = strtotime($start_time);
+     $en_time = strtotime($end_t);
+     $diff = $en_time - $st_time; 
+     $time_taken =abs($diff); 
+     $data['time_taken']=$time_taken;
 
 
         if (!file_exists('uploads/competition/response_images')) { mkdir('uploads/competition/response_images', 0777, true); }
@@ -3748,6 +3758,11 @@ if ($availability==1)
         }
 
      }
+     public function standard_writting_all(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_all');
+        $this->load->view('users/footers/footer');
+      }
     
  
 }

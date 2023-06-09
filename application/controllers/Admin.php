@@ -1725,6 +1725,99 @@ class Admin extends CI_Controller
         echo  json_encode($data);
     }
 
+    public function update_password(){
+    //  print_r($_SESSION); die;
+        try {
+            $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
+            // $email_id = encryptids("D", $this->session->userdata('admin_email'));
+            $admin_id = encryptids("D", $this->session->userdata('admin_id'));
+            // $email_id = $this->input->post('email');
+            //$random_pass	 = $this->randomPassword();
+            $old_pass     = $this->input->post('old_password');
+            $random_pass     = $this->input->post('pass');
+            //$newPw = password_hash($random_pass, PASSWORD_BCRYPT);
+            $id = $this->Admin_model->getDetailsById($admin_id);
+
+            // print_r($id);
+            // echo $id['password']."<br>";
+            // echo $admin_id;
+            // echo $random_pass;
+            // echo $old_pass;
+            // die;
+            if($old_pass == $id['password']){
+                $dbObj = array(
+                    'password' =>  $random_pass,
+                    'modified_on' => GetCurrentDateTime('Y-m-d H:i:s'),
+                    'modified_by' => $login_admin_id,
+                );
+                $res = $this->Admin_model->updateData($admin_id, $dbObj);
+
+                if ($res) {
+                    $data['status'] = 1;
+                    $data['message'] = 'Reset password successfully.';
+
+
+                        $msg = "Dear " . $name .
+                            " <p>Your password has changed. ";
+                        $subject = "Login Credentials for the BIS Portal.";
+
+                        $config = array(
+                            'protocol' => 'smtp',
+                            'smtp_host' => 'ssl://smtp.googlemail.com',
+                            'smtp_port' => 465,
+                            'smtp_user' => 'exchangeforum1@gmail.com',
+                            'smtp_pass' => 'niycbrjxnzfazrud',
+                            'mailtype' => 'html',
+                            'charset' => 'iso-8859-1',
+                        );
+                        $this->load->library('email', $config);
+                        $this->email->initialize($config); // add this line
+                        $this->email->set_newline("\r\n");
+                        $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                        $this->email->to($email_id);
+                        $this->email->subject($subject);
+                        $this->email->message($msg);
+                        $this->email->send();
+
+
+                } else {
+                    $data['status'] = 0;
+                    $data['message'] = 'Failed , Please try again.';
+                }
+            echo  json_encode($data);
+            return true;
+            }else{
+
+                $data['status'] = 0;
+                $data['message'] = 'Failed , old password not mattch with record.';
+                echo  json_encode($data);
+                return true;
+            }
+          
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+    
+    }
+    public function update_profile(){
+        $data['name']=$this->input->post('name');
+        $data['dob']=$this->input->post('dob');
+        $data['gender']=$this->input->post('gender');
+        $data['contact_number']=$this->input->post('contact_number');
+        $data['id'] = encryptids("D", $this->session->userdata('admin_id'));
+        $res=$this->Admin_model->update_profile($data);
+        if($res){
+            $this->session->set_flashdata('MSG', ShowAlert("Profile Updated Successfully", "SS"));
+            redirect(base_url() . "admin/profile_list", 'refresh');
+        }else{
+            $this->session->set_flashdata('MSG', ShowAlert("Failed", "SS"));
+            redirect(base_url() . "admin/profile_list", 'refresh');
+        }
+    }
 
     public function addbannerimg()
     {

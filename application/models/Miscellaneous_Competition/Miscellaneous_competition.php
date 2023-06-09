@@ -225,6 +225,78 @@ class Miscellaneous_competition extends CI_Model {
         }
         return $rs;  
     }
+    public function getPublishedComp1($limit,$type){
+        $t = time();
+
+        $current_time = (date("H:i:s", $t));
+        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tbl_mst_competition_prize.*'); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
+        $this->db->join('tbl_mst_competition_prize','tbl_mst_competition_prize.competitionn_id=tbl_mst_competition_detail.comp_id');
+        $this->db->where_in('tbl_mst_competition_detail.status','5');
+        $this->db->where('tbl_mst_competition_detail.end_date >=' ,date("Y-m-d")); 
+    //   $this->db->where('tbl_mst_competition_detail.end_time >=' ,date("H:i:s")); 
+    //    $this->db->where('tbl_mst_competition_detail.start_date <=' ,date("Y-m-d")); 
+     ///  $this->db->where('tbl_mst_competition_detail.start_time <=' ,date("H:i:s")); 
+     $this->db->order_by('tbl_mst_competition_detail.created_on', 'DESC');
+       $this->db->where_in('tbl_mst_competition_detail.type',$type);
+       $this->db->limit($limit);
+     //   return $this->db->get('tbl_mst_competition_detail')->result_array();
+
+        $res = array();
+        $rs = array();
+        $query=$this->db->get('tbl_mst_competition_detail');
+        if($query->num_rows() > 0){
+            $res = $query->result_array();
+            // foreach($res as $row){
+            //     if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+            //         if(($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time) ){
+            //             array_push($rs,$row);
+            //         }
+            //     }else if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+            //         if($row['start_time'] <= $current_time){
+            //             array_push($rs,$row);
+            //         }
+            //     }else if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+            //         if($row['end_time'] >= $current_time){
+            //             array_push($rs,$row);
+            //         }
+            //     }else{
+            //         array_push($rs,$row);
+            //     }
+            // }
+            foreach($res as $row){
+                if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                    // if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
+                    //     array_push($rs,$row);
+                    // }
+                    if(($row['end_time'] >= $current_time) ){
+                        array_push($rs,$row);
+                    }
+                }
+                if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                    // if($row['start_time'] <= $current_time){
+                        array_push($rs,$row);
+                   // }
+                }
+                if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                   
+                        array_push($rs,$row);
+                    
+                }
+                if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                    if($row['end_time'] >= $current_time){
+                        array_push($rs,$row);
+                    }
+                }
+                if(($row['start_date'] > date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                  
+                    array_push($rs,$row);
+                
+            }
+        }
+        }
+        return $rs;  
+    }
 
     public function submitCompResponse($data){
        // print_r($data); die;

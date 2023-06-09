@@ -125,9 +125,9 @@
 
  <script>
   function updateOnlineStatus(id,status) {
-    if (status==2) { statusdata='Sent to admin for approval';title="Do you want to Send it for approval ?"; }
-    if (status==5) { statusdata='Published'; title="Do you want to Publish ?";}
-    if (status==6) { statusdata='UnPublished'; title="Do you want to Unpublish ?";}
+    if (status==2) { statusdata='Send';title="Do you want to Send it for approval ?"; }
+    if (status==5) { statusdata='Publish'; title="Do you want to Publish ?";}
+    if (status==6) { statusdata='Unpublish'; title="Do you want to Unpublish ?";}
     if (status==9) { statusdata='Archive'; title="Do you want to Archive ?";}
     Swal.fire({
       title: title,

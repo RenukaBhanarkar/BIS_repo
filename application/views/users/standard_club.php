@@ -224,12 +224,12 @@ padding-left: 5px;
       <h3 style="font-weight: 600; color: brown;">Events & Competitions</h3>
       
     </div>
-    <ul class="get-involved-links nav nav-pills mb-3" role="tablist">
-      <li class="tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%"><h3 class="tabl_title">Quiz</h3></a></li>
-      <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard-writing.png" width="40%" height="77%"><h3 class="tabl_title">Standard Writing</h3></a></li>
-      <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay-writing.png" width="40%" height="77%"><h3 class="tabl_title">Essay Writing</h3></a></li>
-      <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster.jpg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
-      <li class="tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/view-more.jpg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
+    <ul class="row get-involved-links nav nav-pills mb-3" role="tablist">
+      <li class="col-md-2 tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%"><h3 class="tabl_title">Quiz</h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard-writing.png" width="40%" height="77%"><h3 class="tabl_title">Standard Writing</h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay-writing.png" width="40%" height="77%"><h3 class="tabl_title">Essay Writing</h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster.jpg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/view-more.jpg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade active show" id="tab1" role="tabpanel">
@@ -304,7 +304,7 @@ padding-left: 5px;
                   
                 </div>
                 <div class="view-button">
-                  <a href="<?= base_url(); ?>users/">View All</a>
+                  <a href="<?= base_url(); ?>users/standard_writting_all">View All</a>
                 </div>
               </div>
             </section>

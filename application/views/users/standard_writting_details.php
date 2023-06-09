@@ -236,41 +236,46 @@
 
         margin-top: 5px;
     }
-#countdown{
-    text-align: end;
-}    
-#countdown li {
+    .count_down_new{
     display: inline-block;
-    font-size: -2px;
-    /* list-style-type: none; */
+    font-size: 13px;
+    list-style-type: none;
     padding: 1em;
     text-transform: uppercase;
     text-align: center;
+    background: black;
+    color: white;
+    border-radius: 12px;
 }
 
-#countdown li span {
+li span {
     display: block;
-    font-size: 18px;
+    font-size: 23px;
 }
 
-#countdown .emoji {
+.emoji {
   display: none;
   padding: 1rem;
 }
 
-#countdown .emoji span {
+.emoji span {
   font-size: 4rem;
   padding: 0 .5rem;
 }
 
 @media all and (max-width: 768px) {
-#countdown li {
+  h1 {
+    font-size: calc(1.5rem * var(--smaller));
+  }
+  
+  li {
     font-size: calc(1.125rem * var(--smaller));
   }
   
-#countdown  li span {
+  li span {
     font-size: calc(3.375rem * var(--smaller));
   }
+
 }
 
     /* about quiz end */
@@ -358,6 +363,14 @@
                     ?>
 
                     <?php }?>
+                    <div id="countdown">
+                            <ul style="padding-left:0px">
+                            <li class="count_down_new"><span id="days"></span>days</li>
+                            <li class="count_down_new"><span id="hours"></span>Hours</li>
+                            <li class="count_down_new"><span id="minutes"></span>Minutes</li>
+                            <li class="count_down_new"><span id="seconds"></span>Seconds</li>
+                            </ul>
+                      </div>
                     
 
                     
@@ -465,4 +478,49 @@
 </section>
 </div>
 </div>
+<script>
+    (function () {
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+  //I'm adding this section so I don't have to keep updating this pen every year :-)
+  //remove this if you don't need it
+  let today = new Date(),
+      dd = String(today.getDate()).padStart(2, "0"),
+      mm = String(today.getMonth() + 1).padStart(2, "0"),
+      yyyy = today.getFullYear(),
+      nextYear = yyyy + 1,
+      dayMonth = "09/30/",
+      birthday = dayMonth + yyyy;
+  
+  today = mm + "/" + dd + "/" + yyyy;
+  if (today > birthday) {
+    birthday = dayMonth + nextYear;
+  }
+  //end
+  
+  const countDown = new Date(birthday).getTime(),
+      x = setInterval(function() {    
+
+        const now = new Date().getTime(),
+              distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          document.getElementById("headline").innerText = "It's my birthday!";
+          document.getElementById("countdown").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+    </script>
 
