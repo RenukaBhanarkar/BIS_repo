@@ -23,6 +23,7 @@
     <div class="row">
         <div class="col-12 mt-3">
             <div class="card border-top card-body ">
+            <?php if(!empty ($DeclarationList)) { ?> 
                 <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
                     <thead>
                         <tr>                            
@@ -39,35 +40,43 @@
                         </tr>
                     </thead>
                    
-                    <tbody>
-                        
+                    <tbody>   
+                    <?php foreach ($DeclarationList as $key => $value): ?>
                         <tr>
-                            <td>1</td>
-                            <td>title</td>
-                            <td>1234</td>
-                            <td>12/03/2023</td>
-                            <td>100</td>
-                            <td>10</td>
-                            <td>9</td>
-                            <td>12/03/2023 12:00:00</td>
+                            <td><?= $key+1?></td>
+                            <td><?= $value['title']?></td>
+                            <td><?= $value['comp_id']?></td>
+                            <td><?= $value['start_date']?></td>
+                            <td><?= $value['total_mark']?></td>
+                            <td><?= $value['total_submissions']?></td>
+                            <td><?= $value['total_winners']?></td>
+                            <td><?= $value['declared_on']?></td>
                             <td>
-                           
-                                <a href="<?php echo base_url();?>standardswritting/result_declared_view" class="btn btn-primary btn-sm mr-2">View</a>
+                            <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+                                <?php $id= encryptids("E", $value['comp_id'] )?>
+                                <a href="<?php echo base_url();?>standardswritting/result_declared_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
                             
+                               
+                            <?php } ?>
+                            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                <?php //if (in_array(1, $permissions)) { ?>
+                                <?php $id= encryptids("E", $value['comp_id'] )?>
+                                <a href="<?php echo base_url();?>standardswritting/result_declared_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <?php //} ?>
+                        
+                             <?php } ?>
 
                             </td>
                             
                         </tr>
                         
-                       
-                        
-                        
-                        
-                        
-                        
+                        <?php endforeach ?>   
                         
                     </tbody>
                 </table>
+                <?php } else { ?>
+                <div class="alert alert-warning">Details are not available</div>
+                <?php } ?> 
                
             </div>
         </div>
