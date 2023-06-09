@@ -1052,7 +1052,7 @@ class Users extends CI_Controller
         $data['allquize'] = $allquize;
         $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
         $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
-        $data['competition']=$this->Miscellaneous_competition->getPublishedComp('4',array(3,4,5)); 
+        $data['competition']=$this->Miscellaneous_competition->getPublishedComp1('4',array(3,4,5)); 
 
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         //print_r($data['competition']); die;
@@ -3628,21 +3628,21 @@ if ($availability==2)
     $allFilds2=1;
 }
 
-// if ($availability==1) 
-// {
-//     $std = explode(',', $getdata['standard']);
-//     $standard = 1;
-//     if($standard != 0){
-//         if(in_array($standard,$std))  
-//         {
-//             $allFilds2=1;
-//         }
-//         else
-//         {
-//             $allFilds2=2;
-//         }
-//     }
-// }
+if ($availability==1) 
+{
+    $std = explode(',', $getdata['standard']);
+    $standard = encryptids("D", $this->session->userdata('standard'));
+    // if($standard != 0){
+        if(in_array($standard,$std))  
+        {
+            $allFilds2=1;
+        }
+        else
+        {
+            $allFilds2=2;
+        }
+    // }
+}
             if ($allFilds1==1 && $allFilds2==1) {
                 $this->load->view('users/standard_writting_login',$data);
             }
@@ -3761,6 +3761,11 @@ if ($availability==2)
         }
 
      }
+     public function standard_writting_all(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_writting_all');
+        $this->load->view('users/footers/footer');
+      }
     
  
 }

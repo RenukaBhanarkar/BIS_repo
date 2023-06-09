@@ -73,7 +73,7 @@
                                  <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
                                 <?php }?>
                                 <?php if($data['status'] == 1) { ?>
-                                  <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',2)">Send for approval</a>
+                                  <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',2)">Send for approval</a>
                                 <?php }?>
 
                                 <?php } ?>
