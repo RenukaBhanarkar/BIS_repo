@@ -74,6 +74,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                             <input type="hidden" value="<?= $quiz_start_time; ?>" name="start_time">
                             <input type="hidden" value="<?= $user_id; ?>" name="user_id">
                             <input type="hidden" value="<?= $quizdata['id'] ?>" name="quiz_id">
+                           
 
                             <?php $i = 1;
                             $marks = $quizdata['total_mark'] / $quizdata['total_question'];
@@ -273,6 +274,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                         </div>
                                     </div>
                                     <div>
+                                    <input type="checkbox"  name="mark_review_ids[]" id="mark_review_ids<?= $details['que_id'] ?>" value="0" style="display:none" >
                                     <button type="button" id="review" data-id="<?= $details['que_id'] ?>" class="btn btn-success markForReview  startQuiz me-2" style="background: purple;">Mark For Review</button>
                                     <!--  <input type="checkbox" id="review" name="review[]" value="<?= $details['que_id'] ?>" /> <label for="subscribeNews">Mark For Review</label> -->
                                 </div>
@@ -309,16 +311,19 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
                             <h6 class="quiz-title mb-4"><?= $quizdata['title'] ?></h6>
                             <div id="afterSubmitHide">
-                                <!-- <li class="ans-green">1</li>
-                                    <li class="ans-red">2</li>
-                                    <li class="ans-blue">3</li>
-                                    <li class="ans-blue">4</li> -->
+                              
                                 <?php
                                 foreach ($que_details as $key => $details) {
                                     $key++; ?>
                                     <span id="counter<?= $details['que_id'] ?>" style="cursor:pointer;" 
-                                    <?php if($details['selected_op']== 1 || $details['selected_op']== 2 ||$details['selected_op']== 3 ||$details['selected_op']== 4 ||$details['selected_op']== 5 ){echo "class='ans-green'";}else {echo "class='ans-red'";}?>  onclick="que(<?= $key; ?>)">
-                                    <?= $key; ?></span>
+                                    
+                                  
+                                    <?php  if($details['mark_review']== 1  ){echo "class='ans-yellow'";} else{
+                                            if($details['selected_op']== 1 || $details['selected_op']== 2 ||$details['selected_op']== 3 ||$details['selected_op']== 4 ||$details['selected_op']== 5 ){echo "class='ans-green'";}else {echo "class='ans-red'";}
+
+                                    }?>                   
+                                    onclick="que(<?= $key; ?>)" >
+                                    <?= $key; ?> </span>
                                 <?php } ?>
                             </div>
 
@@ -439,6 +444,7 @@ document.onkeydown = function(){
                 var quiz_id = "<?= $quizdata['id']; ?>";
                 var user_id = "<?= $user_id; ?>";
                 var ques_id = res;
+                var mark_review_id = $("#mark_review_ids"+res).val();
                 var selected_op = $('input[name="option' + res + k + '"]:checked').val();
                 if (selected_op == undefined) {
                     selected_op = 0;
@@ -450,7 +456,8 @@ document.onkeydown = function(){
                         quiz_id: quiz_id,
                         user_id: user_id,
                         ques_id:ques_id,
-                        selected_op:selected_op
+                        selected_op:selected_op,
+                        mark_review_id :mark_review_id 
                     },
                     success: function(result) {
                        console.log("Success");
@@ -526,7 +533,7 @@ document.onkeydown = function(){
         function que(n) {
             // var res = $(".viewedQuestion .quiz-option .active_question_id").val();
             var n = n - 1;
-            //alert(n);
+          
             var k = $(".viewedQuestion .quiz-option .k_value").val();
             var switching_type = $(".viewedQuestion .quiz-option .switching_type").val();
             var is_valid = true;
@@ -637,9 +644,12 @@ document.onkeydown = function(){
         $(function() {
             $(".markForReview").click(function(e) {                   
                     e.preventDefault();
+                  
                     const $root = $(this);
                     var id = $root.data('id');   
-                                  
+                
+                    $('#mark_review_ids'+id).prop('checked', true);  
+                    $('#mark_review_ids'+id).val(id);  
                     $("#counter"+id).removeClass('ans-red').removeClass('ans-green').addClass('ans-yellow');
                 });
             <?php

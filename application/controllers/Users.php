@@ -3372,11 +3372,17 @@ class Users extends CI_Controller
         $quiz_id = clearText($this->input->post('quiz_id'));
         $ques_id = clearText($this->input->post('ques_id'));
         $selected_op = clearText($this->input->post('selected_op'));
-
+        $mark_review_id = clearText($this->input->post('mark_review_id'));
+        if($mark_review_id  == 0){
+            $mark_review_id =0;
+        }else{
+            $mark_review_id = 1;
+        }
         $toCheckExisted = $this->Users_model->toCheckExistedQuestion($user_id,$quiz_id,$ques_id);
         if($toCheckExisted){
             $dbObj = array(                        
                 'selected_op' => $selected_op,
+                'mark_review' =>$mark_review_id,
                 'created_on' => GetCurrentDateTime('Y-m-d h:i:s')
             );
             $id = $this->Users_model->updateAttemptedQuesDetailsOfUser($user_id,$quiz_id,$ques_id,$dbObj);
@@ -3386,7 +3392,8 @@ class Users extends CI_Controller
                 'user_id' => $user_id,
                 'quiz_id' => $quiz_id,
                 'ques_id' => $ques_id,             
-                'selected_op' => $selected_op,
+                'selected_op' =>$selected_op,
+                'mark_review' =>$mark_review_id,
                 'created_on' => GetCurrentDateTime('Y-m-d h:i:s')
             );
             $id = $this->Users_model->insertAttemptedQuesDetailsOfUser($dbObj);

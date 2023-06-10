@@ -1187,6 +1187,7 @@
             $res = $query->result_array();
             foreach ($res as $row){
                 $row['selected_op'] = 0;
+                $row['mark_review'] = 0;
                 array_push($rs,$row);
             }
             
@@ -1202,7 +1203,7 @@
             if($query->num_rows() >0 ) {
                 $res = $query->result_array();
                 foreach ($res as $row){
-                    $this->db->select('userquiz.selected_op');
+                    $this->db->select('userquiz.selected_op,userquiz.mark_review');
                     $this->db->from('tbl_user_quiz_temp userquiz');
                    
                     $this->db->where('userquiz.ques_id',$row['que_id']);
@@ -1213,8 +1214,10 @@
                         if($query1->num_rows() >0 ) {
                             $queRow = $query1->row_array();
                             $row['selected_op'] =  $queRow['selected_op'];
+                            $row['mark_review'] =  $queRow['mark_review'];
                         }else{
                             $row['selected_op'] =  0;
+                            $row['mark_review'] =  0;
                         }
                     array_push($result,$row);
                 }                
