@@ -167,4 +167,19 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('Miscellaneous/result_declared_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function result_declaration_list(){
+        $users = $this->Miscellaneous_competition->resultDeclarationListdata(); 
+        $data['DeclarationList']=$users; 
+        $permissions = array();
+        // if (encryptids("D", $_SESSION['admin_type']) == 3) { 
+        //     if (in_array(6, $_SESSION['sub_mod_per'])) { 
+        //         $sub_model_id = 6;
+        //         $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+        //     }
+        //     $data['permissions'] =  $permissions;
+        // }
+        $this->load->view('admin/headers/admin_header');;
+        $this->load->view('Miscellaneous/result_declaration_list',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
 }

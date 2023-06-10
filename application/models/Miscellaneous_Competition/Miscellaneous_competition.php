@@ -585,9 +585,11 @@ class Miscellaneous_competition extends CI_Model {
     //   $this->db->where('tucar.evaluator',$data);
     //  $this->db->where('tucar.status !=','3');
 
-     $this->db->select('tucar.*');
+     $this->db->select('tucar.*,tucar.score as marks,tmcd.competiton_name,tu.StdClubMemberClass,ta.name');
      $this->db->from('tbl_users_competition_attempt_record tucar');
-   
+     $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id','left');
+     $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
+     $this->db->join('tbl_admin ta','ta.id=tucar.evaluator','left');
      $this->db->where('tucar.evaluator',$data);
      $this->db->where('tucar.status !=','3');
       $res=$this->db->get();
@@ -797,5 +799,40 @@ class Miscellaneous_competition extends CI_Model {
         } else {
             return false;
         }
+    }
+    public function resultDeclarationListdata()
+    { 
+
+        // $myQuery = "SELECT distinct res.quiz_id ,res.created_on AS declared_on ,quiz.start_date,quiz.total_mark,quiz.result_declared
+        // FROM  tbl_comp_result_declaration AS res INNER JOIN tbl_mst_competition_detail  As quiz
+        // ON res.quiz_id = quiz.comp_id order by res.created_on desc";
+        // $query = $this->db->query($myQuery);
+        // $result=$query->result_array();
+        // //echo json_encode($result);exit();
+         
+
+        //  $rs = array();
+        //  foreach($result as $row){
+        //     $myQue = "SELECT id from tbl_users_competition_attempt_record  where competiton_id = {$row['quiz_id']} ";
+        //     $query = $this->db->query($myQue);
+        //     $total_submissions = $query->num_rows();
+        //     $row['total_submissions'] = $total_submissions;
+
+        //     $myQue1 = "SELECT * from tbl_mst_competition_prize  where competitionn_id = {$row['quiz_id']} ";
+        //     $query1 = $this->db->query($myQue1);
+        //     $result1=$query1->result_array();
+        //     $cnt = 0;
+        //     foreach ($result1 as $r){
+        //         $cnt = $cnt + $r['no_of_prize'];
+        //     }
+        //     $row['total_winners'] = $cnt;
+
+           
+        //     array_push($rs,$row);
+           
+        //  }
+        //  return $rs;
+ 
+        
     }
 }
