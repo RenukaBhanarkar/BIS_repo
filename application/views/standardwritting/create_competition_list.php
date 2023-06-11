@@ -79,7 +79,7 @@
                             <td><?php echo $list['comp_type_name']; ?></td>
                             <td><?php echo $list['avai_for']; ?></td>
                             <td><?php echo $list['title']; ?></td>
-                            <td><?php echo $list['status']; ?></td>
+                            <td><?php if($list['status']==0){ echo "-";} ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
                                  <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>

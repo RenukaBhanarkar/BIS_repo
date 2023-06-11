@@ -360,7 +360,7 @@
                     <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a> -->
                             <button onclick="return submitForm(event)" type="submit" class="btn btn-success btn-sm text-white" >Submit</button>
-                            <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                            <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -852,5 +852,25 @@ var available =$('#Available').val();
 if(available==2){
     $('#standard_check').hide();
 }
+
+$('.cancel').click(function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        // return true;
+                        // $('#competition_reg').submit();
+                       // Swal.fire('Saved!', '', 'success')  
+                       window.location.replace('<?php echo base_url().'Standardswritting/create_competition_list'; ?>');                              
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
         
 </script>
