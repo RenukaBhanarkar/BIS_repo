@@ -68,7 +68,7 @@
                                 <button onclick="updateWinnerWall('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">UnPublish</button>
                                 <?php }?>
                                 <?php if ($value['status']!=5) {?>
-                                <button onclick="updateWinnerWall('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Publish</button>
+                                <button onclick="updateWinnerWall('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Publish</button>
                                 <button onclick="updateWinnerWall('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
 
 

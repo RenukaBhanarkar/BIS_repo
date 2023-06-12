@@ -124,8 +124,8 @@ color: red;
                         <button  class="btn btn-success btn-sm text-white"  id="addbtn">Update</button>
                     </div>
                     <div class="row">
-                        <div class="table-responsive text-nowrap">
-                            <table id="formtbl" class="table-bordered display nowrap">
+                        <div class="col-12 mt-3 table-responsive">
+                                <table id="example" class="table-bordered display nowrap">
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
@@ -146,7 +146,7 @@ color: red;
                     </div>
                     <div class="col-md-12 submit_btn p-3">
                         <a class="btn btn-success btn-sm text-white" onclick="return formubmit(event)">Update</a>
-                        <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                        <a class="btn btn-danger btn-sm text-white" onclick="history.back()">Cancel</a>
                         <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                     
@@ -425,8 +425,7 @@ return false;
 <script type="text/javascript">
 $(document).ready(function ()
 {
-    $('#formtbl').DataTable({
-    });
+     
     $("#addbtn").hide();
 displayWall();
 });

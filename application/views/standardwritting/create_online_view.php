@@ -231,14 +231,16 @@
                         </div>
                     </div>
             </div>
-            <?php if( $getData['status']==2){?>
+            
             <div class="col-md-12 submit_btn p-3"> 
+                <?php if( $getData['status']==2){?>
                 <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> 
                 <a class="btn btn-danger btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
-                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_online_list/'">Back</a>
+                 <?php } ?>
+                <a class="btn btn-primary btn-sm text-white"onclick="history.back()">Back</a>
             </div>
-            <?php } ?>
+           
            
         <?php } ?>
 
@@ -282,13 +284,13 @@
         remark=$("#remark").val();
         id="<?=$getData['id']?>"; 
 
-    if (status==1) { statusdata='Update'; }
+    if (status==1) { statusdata='Submit'; }
     if (status==9) { statusdata='Archive'; }
     Swal.fire({
-      title: 'Do you want to Update?',
+      title: 'Do you want to Submit?',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Update',
+      confirmButtonText: 'Submit',
       denyButtonText: `Cancel`,
     }).then((result) => 
     { 
@@ -305,7 +307,8 @@
         success: function(result)
         {
           Swal.fire('Saved!', '', 'success');
-          location.reload();
+          // location.reload();
+          history.back();
         },
         error: function(result) 
         {

@@ -898,7 +898,7 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
 
        // -- sweet alert start
        Swal.fire({
-                    title: 'Are you sure you want to delete?',
+                    title: 'Are you sure you want to delete1?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Delete',
@@ -1030,7 +1030,7 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        window.location.replace('<?php echo base_url() . 'Quiz/quiz_list' ?>');
+        window.location.replace('<?php echo base_url() . 'Standardswritting/create_online_list' ?>');
       } else if (result.isDenied) {
         // Swal.fire('Changes are not saved', '', 'info')
       }
@@ -1442,6 +1442,8 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
             return false;
         }
     });
+    
+
     $('.cancel').on('click',function(){
         Swal.fire({
                     title: 'Are you sure you want to Cancel?',
@@ -1451,7 +1453,7 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
                     denyButtonText: `Close`,
                     }).then((result) => { 
                     if (result.isConfirmed) {               
-                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                       window.location.replace('<?php echo base_url().'Standardswritting/create_online_list' ?>');                           
                     } else if (result.isDenied) { 
                     }
                     })

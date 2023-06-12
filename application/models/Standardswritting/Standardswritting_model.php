@@ -449,9 +449,26 @@ class Standardswritting_model extends CI_Model
 
     public function create_online_view($id)
     {
-        $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
+        $this->db->select('tbl_standards_writting_online.*,
+            tbl_mst_status.status_name,
+            tbl_mst_quiz_availability.title as availability,
+            tbl_mst_quiz_level.title as level,
+            tbl_mst_regions.uvc_region_title as region,
+             tbl_mst_branch.uvc_department_name as branch,
+             tbl_mst_states.state_name as state,
+
+            ');
         $this->db->where('tbl_standards_writting_online.id ', $id);
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
+
+
+
+        $this->db->join('tbl_mst_regions', 'tbl_mst_regions.pki_region_id = tbl_standards_writting_online.region_id', 'left');
+        $this->db->join('tbl_mst_branch', 'tbl_mst_branch.i_branch_id= tbl_standards_writting_online.branch_id', 'left');
+        $this->db->join('tbl_mst_states', 'tbl_mst_states.state_id= tbl_standards_writting_online.state_id', 'left');
+
+
+
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
         return $this->db->get('tbl_standards_writting_online')->row_array();
@@ -484,36 +501,78 @@ class Standardswritting_model extends CI_Model
         $t = time();
         $current_time = (date("H:i:s", $t));
         $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
+        $this->db->from('tbl_standards_writting_online');
         $this->db->where('status ', 5);
         $this->db->where('end_date >=', date("Y-m-d"));
         // $this->db->where('start_date <=', date("Y-m-d"));
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
-        $query = $this->db->get('tbl_standards_writting_online')->result_array();
-        $rs = array();
-        if (!(empty($query))) {
-            foreach ($query as $row) {
-                if (($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d"))) {
-                    if (($row['start_time'] <= $current_time) && ($row['end_time'] >= $current_time)) {
-                        array_push($rs, $row);
+        // $query = $this->db->get('tbl_standards_writting_online')->result_array();
+       // $this->db->limit(4);
+
+            // $rs = array();
+            // $query = $this->db->get();
+            // if ($query->num_rows() > 0) {
+            //     $rs = $query->result_array();
+            // }
+            // return $rs;
+            $res = array();
+            $rs = array();
+            $query=$this->db->get();
+            // echo $query->num_rows();
+            // exit();
+            if($query->num_rows() > 0){
+                $res = $query->result_array();
+
+                //echo json_encode($res);exit();
+                foreach($res as $row){
+                    if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+                        // if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
+                        //     array_push($rs,$row);
+                        // }
+                        if(($row['end_time'] >= $current_time) ){
+                            array_push($rs,$row);
+                        }
                     }
-                } else if (($row['start_date'] == date("Y-m-d")) &&  $row['end_date'] > date("Y-m-d")) {
-                    if ($row['start_time'] <= $current_time) {
-                        array_push($rs, $row);
+                    if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
+                        // if($row['start_time'] <= $current_time){
+                            array_push($rs,$row);
+                       // }
                     }
-                } else if (($row['start_date'] < date("Y-m-d")) && ($row['end_date'] == date("Y-m-d"))) {
-                    if ($row['end_time'] >= $current_time) {
-                        array_push($rs, $row);
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                       
+                            array_push($rs,$row);
+                        
                     }
-                } else {
-                    array_push($rs, $row);
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                        if($row['end_time'] >= $current_time){
+                            array_push($rs,$row);
+                        }
+                    }
+                    if(($row['start_date'] > date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                      
+                        array_push($rs,$row);
+                    
+                }
+                    // else{
+                    //     array_push($rs,$row);
+                    // }
                 }
             }
+            $res = array();
+            if(count($rs) > 4){
+                array_push($res,$rs[0]);
+                array_push($res,$rs[1]);
+                array_push($res,$rs[2]);
+                array_push($res,$rs[3]);
+                return $res;  
+            }else {
+                return $rs;
+            }
+            
+            
         }
-        return $rs;
-    }
-
     public function StandardswrittingCompSave($formdata)
     {
         $this->db->insert('tbl_standard_writing_competition_online', $formdata);

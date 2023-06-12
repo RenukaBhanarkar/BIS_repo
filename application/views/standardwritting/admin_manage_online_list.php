@@ -174,10 +174,10 @@ function editData(id)
  function viewData(id) 
 { 
   Swal.fire({
-    title: 'Do you want to View ?',
+     title: 'Do you want to Approve / Reject ?',
     showDenyButton: true,
     showCancelButton: false,
-    confirmButtonText:'View',
+    confirmButtonText:'Approve / Reject',
     denyButtonText: `Cancel`,
   }).then((result) => { 
     if (result.isConfirmed) 

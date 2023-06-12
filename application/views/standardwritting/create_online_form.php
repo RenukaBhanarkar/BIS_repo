@@ -1015,7 +1015,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                     denyButtonText: `Close`,
                     }).then((result) => { 
                     if (result.isConfirmed) {               
-                       window.location.replace('<?php echo base_url().'quiz/quiz_list' ?>');                           
+                       window.location.replace('<?php echo base_url().'Standardswritting/create_online_list' ?>');                           
                     } else if (result.isDenied) { 
                     }
                     })

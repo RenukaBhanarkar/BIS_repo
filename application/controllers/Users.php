@@ -1047,7 +1047,7 @@ class Users extends CI_Controller
         $data['news'] = $this->Admin_model->news();
         $data['events'] = $this->Admin_model->events();
         $allquize = $this->Users_model->getStdClubQuizAll();
-
+ 
         $data['Winnerwall'] = $this->Users_model->getWinnerWall();
         $data['allquize'] = $allquize;
         $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));

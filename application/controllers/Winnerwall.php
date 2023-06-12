@@ -46,7 +46,7 @@ class Winnerwall extends CI_Controller
         $this->load->view('winnerwall/winner_wall_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-
+ 
     public function winner_wall_form()
     {   
         $this->load->view('admin/headers/admin_header');
@@ -60,8 +60,8 @@ class Winnerwall extends CI_Controller
         else 
         {  
             if (!file_exists('uploads/winnerwall')) { mkdir('uploads/winnerwall', 0777, true); }
-            $imagesize=$_FILES['image']['size'];  
-            if ($imagesize > 0 ) 
+            $imagelocation="";  
+            if (!empty($_FILES['image']['tmp_name'])) 
             {
                 $imagepath = 'uploads/winnerwall/'; 
                 $imagelocation = $imagepath . time() .'image'. $_FILES['image']['name']; 
