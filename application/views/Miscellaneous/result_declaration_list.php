@@ -5,11 +5,16 @@
         <h1 class="h3 mb-0 text-gray-800">Competition Result Declaration</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competitions</a></li>
-                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/quiz_dashboard';?>" >Quiz Dashboard</a></li> -->
-                <!-- <li class="breadcrumb-item active" aria-current="page">Quiz Result Declaration</li> -->
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Competition Result Declaration</li>
                 
             </ol>
         </nav>
@@ -43,23 +48,23 @@
                         <?php foreach ($DeclarationList as $key => $value): ?>
                         <tr>
                             <td><?= $key+1?></td>
-                            <td><?= $value['title']?></td>
+                            <td><?= $value['competiton_name']?></td>
                             <td><?= $value['quiz_id']?></td>
                             <td><?= $value['start_date']?></td>
-                            <td><?= $value['total_mark']?></td>
-                            <td><?= $value['total_submissions']?></td>
+                            <td><?= $value['score']?></td>
+                            <td><?= count($value['total_submissions'])?></td>
                             <td><?= $value['total_winners']?></td>
                             <td><?= $value['declared_on']?></td>
                             <td>
-                            <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
+                            <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?> -->
                                 <?php $id= encryptids("E", $value['quiz_id'] )?>
                                 <a href="<?php echo base_url();?>Quiz/result_declaration_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
-                            <?php } ?>
+                            <!-- <?php } ?> -->
                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                                <?php if (in_array(1, $permissions)) { ?>
-                                <?php $id= encryptids("E", $value['quiz_id'] )?>
-                                <a href="<?php echo base_url();?>Quiz/result_declaration_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
-                            <?php } } ?>
+                              
+                                <!-- <?php $id= encryptids("E", $value['quiz_id'] )?> -->
+                                <a href="<?php echo base_url();?>Miscellaneouscompetition/result_declared_list/<?= $value['quiz_id'];?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <?php  } ?>
 
                             </td>
                             
@@ -81,6 +86,7 @@
         </div>
     </div>
 </div>
+<button onclick="history.back()" class="btn btn-primary mr-5 mt-2 btn-sm text-white submit" style="float:right;">Back</button>
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->

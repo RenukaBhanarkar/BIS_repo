@@ -6,11 +6,16 @@
             <h1 class="h3 mb-0 text-gray-800">Result Declared List</h1>
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_offline_dashboard';?>" >Standard Writting Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/standard_online_dashboard';?>" >Standard Writting</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Miscellaneouscompetition/result_declaration_list';?>" >Result Declaration</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Result Declared List</li>
                 
                 </ol>
@@ -84,8 +89,9 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-
+    <button onclick="history.back()" class="btn btn-primary mr-5 mt-2 btn-sm text-white submit" style="float:right;">Back</button>
     </div>
+    
     <!-- End of Main Content -->
  </body>
 <script>

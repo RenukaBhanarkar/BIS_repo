@@ -803,36 +803,152 @@ class Miscellaneous_competition extends CI_Model {
     public function resultDeclarationListdata()
     { 
 
-        // $myQuery = "SELECT distinct res.quiz_id ,res.created_on AS declared_on ,quiz.start_date,quiz.total_mark,quiz.result_declared
-        // FROM  tbl_comp_result_declaration AS res INNER JOIN tbl_mst_competition_detail  As quiz
-        // ON res.quiz_id = quiz.comp_id order by res.created_on desc";
-        // $query = $this->db->query($myQuery);
-        // $result=$query->result_array();
-        // //echo json_encode($result);exit();
+        $myQuery = "SELECT distinct res.quiz_id ,res.created_on AS declared_on ,quiz.start_date,quiz.score,quiz.result_declared,quiz.competiton_name
+        FROM  tbl_comp_result_declaration AS res INNER JOIN tbl_mst_competition_detail  As quiz
+        ON res.quiz_id = quiz.comp_id order by res.created_on desc";
+        $query = $this->db->query($myQuery);
+        $result=$query->result_array();
+        // echo json_encode($result);exit();
          
 
-        //  $rs = array();
-        //  foreach($result as $row){
-        //     $myQue = "SELECT id from tbl_users_competition_attempt_record  where competiton_id = {$row['quiz_id']} ";
-        //     $query = $this->db->query($myQue);
-        //     $total_submissions = $query->num_rows();
-        //     $row['total_submissions'] = $total_submissions;
+         $rs = array();
+         foreach($result as $row){
+            // $myQue = "SELECT `id` from `tbl_users_competition_attempt_record`  where `competiton_id` = {$row['quiz_id']} ";
+            $this->db->select('id')->from('tbl_users_competition_attempt_record');
+            $this->db->where('competiton_id',$row['quiz_id']);
+            $myQue=$this->db->get();
+            // $query = $this->db->query($myQue);
+            $total_submissions = $myQue->result_array();
+            // echo count($total_submissions); die;
+            $row['total_submissions'] = $total_submissions;
+            // echo json_encode($total_submissions);exit();
+            // $myQue1 = "SELECT * from tbl_mst_competition_prize  where competiton_id = {$row['quiz_id']} ";
 
-        //     $myQue1 = "SELECT * from tbl_mst_competition_prize  where competitionn_id = {$row['quiz_id']} ";
-        //     $query1 = $this->db->query($myQue1);
-        //     $result1=$query1->result_array();
-        //     $cnt = 0;
-        //     foreach ($result1 as $r){
-        //         $cnt = $cnt + $r['no_of_prize'];
-        //     }
-        //     $row['total_winners'] = $cnt;
+            $this->db->select('*')->from('tbl_mst_competition_prize');
+            $this->db->where('competitionn_id',$row['quiz_id']);
+            $myQue1=$this->db->get();
+            // $query = $this->db->query($myQue1);
+            
+           
+
+            // $query1 = $this->db->query($myQue1);
+            $result1=$myQue1->result_array();
+            $cnt = 0;
+            // print_r($result1); die;
+            foreach ($result1 as $r){
+                $cnt = $cnt + $r['fprize_no']+$r['fprize_no']+$r['tprize_no']+$r['cprize_no'];
+            }
+            $row['total_winners'] = $cnt;
 
            
-        //     array_push($rs,$row);
+            array_push($rs,$row);
            
-        //  }
-        //  return $rs;
+         }
+        //  print_r($rs); die;
+         return $rs;
  
         
+    }
+    public function reviewedCompetition(){
+        $this->db->select('tmcd.*,tmcd.competiton_name,tmqa.title as avai_for,tmql.title');
+        $this->db->from('tbl_mst_competition_detail tmcd');
+        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
+        //$this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        $this->db->where('tmcd.review_status !=','0');        
+            //         $query=$this->db->get();
+            //         return $query->result_array(); 
+            // die;
+        
+        $res = array();
+        $rs = array();
+        $query=$this->db->get();
+                if($query->num_rows() > 0){
+                    $res = $query->result_array();
+                    foreach($res as $row){
+                        $this->db->select('tucar.competiton_id,tucar.score as marks');
+                        $this->db->from('tbl_users_competition_attempt_record tucar');
+                        $this->db->where('tucar.competiton_id',$row['comp_id']);
+                        $this->db->where('tucar.score !=','0');
+                        $que=$this->db->get();
+                        $query=$que->result_array();
+                        // print_r($query[0]['ev_name']); die;
+                        $row['total_reviewed']=count($query);
+
+                        $this->db->select('tucar.*');
+                        $this->db->from('tbl_users_competition_attempt_record tucar');
+                        $this->db->where('tucar.competiton_id',$row['comp_id']);
+                        // $this->db->where('tucar.status','2');
+                        $que=$this->db->get();
+                        $query1=$que->result_array();
+                        // print_r($query[0]['ev_name']); die;
+                        $row['total_submission']=count($query1);                        
+
+                     array_push($rs,$row);
+             
+                    }
+
+                    $abcd=array();
+                    foreach($rs as $list){
+                        // echo $list['total_reviewed']." ".$list['total_submission']."\n";
+                        if($list['total_reviewed']==$list['total_submission']){
+                          array_push($abcd,$list);
+                            // echo "equal".$list['id']."\n";
+                        }
+
+                    }
+                }
+                return $abcd;
+    }
+    public function underReviewedCompetition(){
+        $this->db->select('tmcd.*,tmcd.competiton_name,tmqa.title as avai_for,tmql.title');
+        $this->db->from('tbl_mst_competition_detail tmcd');
+        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
+        //$this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
+        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        $this->db->where('tmcd.review_status !=','0');        
+            //         $query=$this->db->get();
+            //         return $query->result_array(); 
+            // die;
+        
+        $res = array();
+        $rs = array();
+        $query=$this->db->get();
+                if($query->num_rows() > 0){
+                    $res = $query->result_array();
+                    foreach($res as $row){
+                        $this->db->select('tucar.competiton_id,tucar.score as marks');
+                        $this->db->from('tbl_users_competition_attempt_record tucar');
+                        $this->db->where('tucar.competiton_id',$row['comp_id']);
+                        $this->db->where('tucar.score !=','0');
+                        $que=$this->db->get();
+                        $query=$que->result_array();
+                        // print_r($query[0]['ev_name']); die;
+                        $row['total_reviewed']=count($query);
+
+                        $this->db->select('tucar.*');
+                        $this->db->from('tbl_users_competition_attempt_record tucar');
+                        $this->db->where('tucar.competiton_id',$row['comp_id']);
+                        // $this->db->where('tucar.status','2');
+                        $que=$this->db->get();
+                        $query1=$que->result_array();
+                        // print_r($query[0]['ev_name']); die;
+                        $row['total_submission']=count($query1);                        
+
+                     array_push($rs,$row);
+             
+                    }
+
+                    $abcd=array();
+                    foreach($rs as $list){
+                        // echo $list['total_reviewed']." ".$list['total_submission']."\n";
+                        if(!($list['total_reviewed']==$list['total_submission'])){
+                          array_push($abcd,$list);
+                            // echo "equal".$list['id']."\n";
+                        }
+
+                    }
+                }
+                return $abcd;
     }
 }

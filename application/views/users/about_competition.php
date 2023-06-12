@@ -233,6 +233,9 @@
     color: white;
     border-radius: 12px;
 }
+#countdown{
+    margin-top: 20px;
+}
 
 li span {
     display: block;
