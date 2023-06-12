@@ -161,7 +161,7 @@
                         <?php } ?>
                     </div>
                           <div class="col-md-12 submit_btn p-3">
-                               <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/your_wall_list'">Back</a>
+                          <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
                           </div>  
                         </div> 
                       </div>

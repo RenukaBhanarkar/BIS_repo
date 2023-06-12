@@ -164,10 +164,11 @@
         <?php } ?>
 
 
-
+        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
         <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_standard_list/'">Back</a>
+        <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
                 </div>
+                <?php } ?>
                 <!-- Modal -->
           </div>
         </div>

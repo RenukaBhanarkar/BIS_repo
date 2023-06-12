@@ -30,8 +30,8 @@
 		<div class="tab-content p-3 border bg-light" id="nav-tabContent" style="padding: 0px !important;">
 			<div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example_1" class="table-bordered display nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example_1" class="table-bordered display nowrap table-responsive" style="width:100%">
                         <thead>
                         <tr>
                                 <th>Sr. No.</th>
@@ -68,7 +68,7 @@
  <!-- commented for set permission -->
                                                 <button onclick="deleteYourwall(' <?php echo $list_yw['id']; ?> ');" data-id='<?php echo $list_yw['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
                                                 <button onclick="approve('<?php echo $list_yw['id']; ?>')" data-id='<?php echo $list_yw['id']; ?>' class="btn btn-success btn-sm mr-2 approve">Approve</button>
-                                                <button onclick="reject('<?php echo $list_yw['id']; ?>')" class="btn btn-danger btn-sm mr-2 text-white">Reject</button>
+                                                <button onclick="reject('<?php echo $list_yw['id']; ?>')" class="btn btn-warning btn-sm mr-2 text-white">Reject</button>
                                                 <button class="btn btn-secondary btn-sm archive" onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button>
 
                                                 <!-- comment end -->
@@ -93,8 +93,8 @@
 			</div>
 			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example_2" class="table-bordered display nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example_2" class="table-bordered display nowrap table-responsive" style="width:100%">
                         <thead>
                         <tr>
                                 <th>Sr. No.</th>
@@ -157,8 +157,8 @@
 			</div>
 			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example_3" class="table-bordered display nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example_3" class="table-bordered display nowrap table-responsive" style="width:100%">
                         <thead>
                         <tr>
                         <th>Sr. No.</th>
@@ -211,8 +211,8 @@
 			</div>
             <div class="tab-pane fade" id="archive-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example_4" class="table-bordered display nowrap" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example_4" class="table-bordered display nowrap table-responsive" style="width:100%">
                         <thead>
                         <tr>
                         <th>Sr. No.</th>
@@ -265,7 +265,7 @@
 </div>
         <!-- Content Row -->
         <div class="col-md-12 submit_btn p-3">
-        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/exchange_forum'">Back</a>
+        <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
     </div>
        
     </div>
@@ -821,7 +821,7 @@ $(document).ready(function () {
         var id=$(this).attr('data-id'); 
 
         Swal.fire({
-                    title: 'Are you sure you want to Approve ?',
+                    title: 'Are you sure you want to approve ?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText: 'Approve',

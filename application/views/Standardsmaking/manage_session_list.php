@@ -16,8 +16,8 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="hover table-bordered" style="width:100%">
+            <div class="card border-top card-body">
+                <table id="example" class="table-bordered table-responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -77,7 +77,7 @@
                                 <?php }?>
                                 <?php if ($value['status']==1)
                                 {?>
-                                <button onclick="updateStatusLiveSession('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img"> Approval</button>
+                                <button onclick="updateStatusLiveSession('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Send for approval</button>
                                 
                                 <?php } ?>
                                 <?php if ($value['status']==3  || $value['status']==6 )
@@ -227,7 +227,7 @@ function updateStatusLiveSession(id,status)
 //         }
 //     });
 // });
-if (status==2)  { var titletext= "Are you sure you want to Send for Approval ?"; var buttontext ="Send for Approval"; }
+if (status==2)  { var titletext= "Are you sure you want to Send for approval ?"; var buttontext ="Send for Approval"; }
 if (status==5)  { var titletext= "Are you sure you want to Publish ?"; var buttontext ="Publish"; }
 if (status==6)  { var titletext= "Are you sure you want to UnPublish ?"; var buttontext ="UnPublish"; }
 if (status==9)  { var titletext= "Are you sure you want to Archives ?"; var buttontext ="Archives"; }

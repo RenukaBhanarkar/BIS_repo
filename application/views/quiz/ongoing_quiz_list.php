@@ -79,7 +79,7 @@
 
 
                                             <!-- <button onClick="location.href='closed_quiz_submission/<?= encryptids('E', $quiz['id']); ?>'" class="btn btn-warning btn-sm mr-2">View submission</i></button> -->
-                                            <a href="closed_quiz_submission/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-primary btn-sm mr-2">View submission</a>
+                                            <a href="closed_quiz_submission/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-info btn-sm mr-2">View submission</a>
 
 
                                         </td>

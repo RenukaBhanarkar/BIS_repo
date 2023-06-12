@@ -336,9 +336,11 @@
                         </div>
                     </div>
                 </div>
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                  <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Quiz/quiz_list'">Back</a>
+                 <button onclick="history.back()" class="btn btn-primary btn-sm text-white">Back</button>
                 </div>
+                <?php } ?>
                
             </div>
         </div>
