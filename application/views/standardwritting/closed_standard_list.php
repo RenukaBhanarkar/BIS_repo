@@ -76,7 +76,7 @@
                                   <td><?php echo "Result Declared"; ?></td>  
                                   <?php } ?>
                               <td class="d-flex">
-                                 <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-warning btn-sm mr-2" >View Submission</a>
                                  <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>

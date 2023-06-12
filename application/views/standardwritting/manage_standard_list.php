@@ -98,7 +98,7 @@
   function updateStatus(id,status) {
     if (status==1) { statusdata='Create'; }
     if (status==9) { statusdata='Archive'; }
-    if (status==2) { statusdata='Send For Approval'; }
+    if (status==2) { statusdata='Send for approval'; }
     if (status==5) { statusdata='Publish'; }
     if (status==6) { statusdata='Unpublish'; }
     Swal.fire({

@@ -122,7 +122,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary assign" data-bs-dismiss="modal">Assign</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -212,7 +212,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateMisComStatusAllEvaluators();">Assign</a> <button type="button" class="btn btn-danger cancel" data-bs-dismiss="modal">Cancel</button>
+                    <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateMisComStatusAllEvaluators();">Assign</a>
+                     <button type="button" class="btn btn-danger btn-sm cancel" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

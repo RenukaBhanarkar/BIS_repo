@@ -35,8 +35,8 @@
     ?>
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="hover table-bordered" style="width:100%">
+            <div class="card border-top card-body ">
+                <table id="example" class="hover table-bordered table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -84,7 +84,7 @@
                                 <?php }?>
                                 
                                 <?php if ($value['status'] == 5) {?>
-                                <button onclick="updateStatusConversation('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Unpublish</button>
+                                <button onclick="updateStatusConversation('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
                                 <?php }?>
                                 
                                 <button onclick="updateStatusConversation('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-primary btn-sm mr-2 delete_img">Archives</button>

@@ -67,10 +67,11 @@
                                             <input type="file" id="image" name="image" class="form-control-file"  accept="image/png, image/jpeg,image/jpg" onchange="loadFileImage(event)">
                                             <span class="error_text"></span>
                                         </div>
-                                        
+                                        <div>
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ImageModal">
                                         Preview
                                         </button>
+                                        </div>
                                         <?php } else {?>
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastImageModal">
                                         View Image
@@ -125,10 +126,11 @@
                                             <input type="file" id="thumbnail" name="thumbnail" class="form-control-file"  accept="image/png, image/jpeg,image/jpg"onchange="loadFileThumbnail(event)">
                                             <span class="error_text"></span>
                                         </div>
-                                        
+                                        <div>
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal">
                                         Preview
                                         </button>
+                                        </div>
                                         <?php } else {?>
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastThumbnailModal">
                                         View  Thumbnail
@@ -180,10 +182,11 @@
                                         <div>
                                             <input type="file" id="doc_pdf" name="doc_pdf" class="form-control-file"accept="application/pdf" / >
                                         </div>
-                                        
+                                        <div>
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal">
                                         Preview
                                         </button>
+                                        </div>
                                         <?php } else {?>
                                         <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>"class="btn btn-info  btn-sm" target="_blank" >View PDF</a>
                                         <a onclick="deleteLiveSessionFile(' <?= $liveSession['id']?> ',3);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>

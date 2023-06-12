@@ -44,7 +44,7 @@
                               <td><?= $data['created_on']?></td>
                               <td><?= $data['status_name']?></td> 
                               
-                              <td class="d-flex"> <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a> </td>
+                              <td class="d-flex"> <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >Approve/Reject</a> </td>
                           </tr>
                           <?php } ?>
                             

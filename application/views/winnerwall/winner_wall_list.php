@@ -29,8 +29,8 @@
     
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="table-bordered display nowrap" style="width:100%">
+            <div class="card border-top card-body">
+                <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -133,7 +133,7 @@
 </div>
 <!-- /.container-fluid -->
 <div class="col-md-12 submit_btn p-3">
-    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/exchange_forum'">Back</a>
+<button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
 </div>
 </div>
 <!-- End of Main Content -->

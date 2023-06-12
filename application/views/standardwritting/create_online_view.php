@@ -235,7 +235,7 @@
             <div class="col-md-12 submit_btn p-3"> 
                 <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> 
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-danger btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
                 <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_online_list/'">Back</a>
             </div>
             <?php } ?>
@@ -247,7 +247,7 @@
                 </div>
                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_online_list/'">Back</a>
+                <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
                 </div>
                 <?php } ?>
                 <!-- Modal -->

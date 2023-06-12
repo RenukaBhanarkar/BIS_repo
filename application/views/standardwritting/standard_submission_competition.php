@@ -168,7 +168,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatusAllEvaluators();">Assign</a> <button type="button" class="btn btn-danger cancel" data-bs-dismiss="modal">Cancel</button>
+                    <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateOnlineStatusAllEvaluators();">Assign</a> 
+                    <a type="button" class="btn btn-danger btn-sm cancel" data-bs-dismiss="modal">Cancel</a>
                 </div>
             </div>
         </div>

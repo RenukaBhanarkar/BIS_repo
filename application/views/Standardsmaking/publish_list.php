@@ -18,8 +18,8 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="hover table-bordered" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -55,7 +55,7 @@
                               <td><?= $value['status_name']?></td>
                               <td><?= $value['reason']?></td>
                               <td><?= $value['updated_on']?></td>
-                              <td class="" style="width:559px;">
+                              <td class="d-flex">
                                  <?php $id= encryptids("E", $value['id'] )?>
 
                                   <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
