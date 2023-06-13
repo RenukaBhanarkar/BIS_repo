@@ -130,6 +130,9 @@
         if(description=="" || description==null){
             $('#err_description').text('This value is required');
             allfield=false;
+        } if(description.length > 2000){
+            $('#err_description').text('Description length should be 2000 characters only');
+            allfield=false;
         }else{
             $('#err_description').text('');
            
@@ -147,7 +150,7 @@
                             }).then((result) => {
                             /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
-                                Swal.fire('Saved!', '', 'success')
+                                Swal.fire('Feedback submitted successfully!', '', 'success')
                                 // return true;
                                 $('#addFeedback').submit();
                                 // return true

@@ -2947,7 +2947,7 @@ class Users extends CI_Controller
             $email_id=$this->input->post('email');
            // echo $msg.'<br>'.$subject.'<br>',$email_id; die;
             $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
-            $this->session->set_flashdata('MSG', ShowAlert("Feedback recorded successfully.", "SS"));
+            $this->session->set_flashdata('MSG', ShowAlert("Feedback Submitted Successfully.", "SS"));
             redirect(base_url() . "users/feedback_form", 'refresh');
         }
     }

@@ -579,7 +579,7 @@ var loadFileThumbnail = function(event)
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#document2').val('');
             // $('#lessSize').modal('show');
             $('#imgerror3').text('This value is required');
@@ -686,16 +686,16 @@ var loadFileThumbnail = function(event)
                 $("#err_description").text("Description size should be 10 to 5000 characters");
                 $("#description").focus();
                  is_valid = false;
-            } else if ((description.length > 5000)) {
+            } else if ((description.length > 7000)) {
                 is_valid = false;
                 // alert('Description length must be less than 2000 characters ');
                 //$("#err_description").text("Maximum 5000 characters allowed");
-                $("#err_description").text("You entered "+description.length+" Characters. Description size should be 10 to 5000 characters");
+                $("#err_description").text("You entered "+description.length+" Characters. Description size should be 10 to 7000 characters");
                 $("#description").focus();
                 //  is_valid = false;
                 
             } else {
-                var remain = 5000-description.length;
+                var remain = 7000-description.length;
                 $("#err_description").text("You can enter "+remain+" more characters");
             }
             
@@ -836,8 +836,8 @@ var loadFileThumbnail = function(event)
                $("#err_description1").text("Please Enter minimum 5 Characters");
                $("#description").focus();
                var is_valid = false;
-           } else if ((description.length > 5000)) {
-               $("#err_description1").text("Maximum 5000 characters allowed");
+           } else if ((description.length > 7000)) {
+               $("#err_description1").text("Maximum 7000 characters allowed");
                $("#description").focus();
                var is_valid = false;
            } else {
