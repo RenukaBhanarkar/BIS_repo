@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Closed Competition</li>
                 
                 </ol>
-            </nav>
+            </nav> 
         </div>
 
         <!-- Content Row -->
@@ -103,7 +103,7 @@
     <!-- End of Main Content -->
  </body>
 <script>
-/*function viewData(id) 
+function viewData(id) 
 { 
   Swal.fire({
     title: 'Do you want to View ?',
@@ -132,11 +132,11 @@ function viewSubmissionData(id)
       window.location.href = "submission_view/"+id; 
     }  
   })
-}*/
+}
 </script>
 
 <script>
-/*  function updateOnlineStatusReview(id) {
+   function updateOnlineStatusReview(id) {
     if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Update'; }
     Swal.fire({
@@ -235,5 +235,5 @@ $('.sent_approve').on('click',function(){
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
                     })
-})*/
+})
 </script>

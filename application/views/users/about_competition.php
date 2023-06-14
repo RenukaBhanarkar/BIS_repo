@@ -350,7 +350,14 @@ li span {
                         <?php if($competition['standard'] !="0") { ?> 
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
                             <span class="start-end-time-title">Class 
-                                <span class="quiz-text-date m-2"><?= $competition['standard'];?></span>
+                                <span class="quiz-text-date m-2">
+                                    <!-- <?= $competition['standard'];?> -->
+                                <?php  $class = explode(",",$competition['standard']); 
+                                    foreach ($class as $classdata) 
+                                    {?>
+                                         <?=$classdata?><sup>th</sup>
+                                    <?php } ?>
+                                    </span>
                             </span>
                             
                         </p>
@@ -392,7 +399,7 @@ li span {
                                     if ($user_type != "") { 
                                          ?>
                                              <!-- <a href="<?= base_url(); ?>users/quiz_start/<?= $competition['id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a> -->
-                                             <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                             <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                      
                                         
                                            
@@ -411,7 +418,7 @@ li span {
                             
                                         if ($user_type != "") { 
                                               ?>
-                                                 <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                                 <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                            
                                             <?php  
                                           } else { ?>
@@ -428,7 +435,7 @@ li span {
                                 
                                             if ($user_type != "") { 
                                                  ?>
-                                                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                               
                                              <?php } else { ?>
                                                 <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate </span></a>
