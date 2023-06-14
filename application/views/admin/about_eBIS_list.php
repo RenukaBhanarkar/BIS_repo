@@ -24,7 +24,7 @@
                     <div class="card border-top card-body">
                         <div>
                            <button type="button" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#add_new">Add New</button>
-                           <a href="<?php echo base_url(); ?>" type="button" class="btn btn-primary btn-sm mr-2" >Archive</a>
+                           <!-- <a href="<?php echo base_url(); ?>" type="button" class="btn btn-primary btn-sm mr-2" >Archive</a> -->
                         </div>
                     </div>
                 </div>
