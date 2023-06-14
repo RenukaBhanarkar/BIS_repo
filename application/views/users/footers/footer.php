@@ -426,7 +426,7 @@ $(document).ready(function(){
                 var row = '';
                 
                 for (i in data) { 
-                    row += '<li><a href="https://'+data[i].link+'" target="_blank" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
+                    row += '<li><a href="https://'+data[i].link+'" target="_blank" onclick="useful_link()" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
                                     
                 }
                 
@@ -475,6 +475,11 @@ row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].ti
     </script>
       <script>
         function know_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+    <script>
+        function useful_link(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
     </script>
