@@ -4,6 +4,16 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create new post/ live session</h1>
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'learningscience/lsv_standards_dashboard';?>" >Classroom</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().'learningscience/lsv_standards_list';?>" >Create new</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create new post/ live session</li>
+                
+            </ol>
+        </nav>
         </div> 
 
         <form name="lsv_standards_form" id="lsv_standards_form" action="<?php echo base_url().'learningscience/lsv_standards_form'?>" method="post"enctype="multipart/form-data">
