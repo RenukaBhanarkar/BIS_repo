@@ -74,18 +74,25 @@
                         ?>
                         <div class="col-12 mt-3">
                         <div class="card border-top">
-                            <form action="<?php echo base_url().'admin/update_profile/'; ?>" id="updateprofile" method="post">
+                            <form action="<?php echo base_url().'admin/update_profile/'; ?>" id="updateprofile" method="post" enctype="multipart/form-data">
                            <div class="card-body"> 
                             <div class="row">  
                             <div class="mb-2 col-md-12">
                                                     <!-- <img src="<?php echo base_url(); ?>/assets/images/login.png" class="border-2" width="22%"> -->
                                                     <div class="avatar-upload">
                                                             <div class="avatar-edit">
-                                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                                <input type='file' id="imageUpload" name="bannerimg" accept=".png, .jpg, .jpeg" />
+                                                                <input type="hidden" name="old_img" id="old_img">
                                                                 <label for="imageUpload"></label>
                                                             </div>
                                                             <div class="avatar-preview">
+                                                            <?php if($details['photo']==""){ ?>
                                                                 <div id="imagePreview" style="background-image: url('<?php echo base_url(); ?>/assets/images/login.png');">
+
+                                                                <?php  }else{ ?>
+                                                                  
+                                                                  <div id="imagePreview" style="background-image: url('<?php echo base_url(); ?>/uploads/admin/profile/<?php echo $details['photo']; ?>');">
+                                                                  <?php  } ?>
                                                                 </div>
                                                             </div>
                                                         </div>       
@@ -94,7 +101,7 @@
                                 <div class="mb-2 col-md-4">
                                    
                                     <label class="d-block text-font">Name</label>
-                                 
+                                    
                                         <input class="form-control input-font" type="text" name="name" id="name" value="<?= $details['name'];?>">
                                         <!-- <p><?= $details['name'];?></p> -->
                                    
