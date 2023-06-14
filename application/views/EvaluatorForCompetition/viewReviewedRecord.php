@@ -35,7 +35,7 @@
                                         <p><?php echo $records_details['competiton_name']; ?></p>
                                     </div>    
                                 </div>
-                                <div class="mb-2 col-md-4">
+                                <!-- <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Start Date</label>
                                     <div>
                                         <p><?php echo $records_details['start_date']; ?></p>
@@ -46,7 +46,7 @@
                                     <div>
                                         <p><?php echo $records_details['end_date']; ?></p>
                                     </div>    
-                                </div>
+                                </div> -->
                             </div>
                             
                           </div>
@@ -60,6 +60,11 @@
                                 <p>
                                 <?php echo $records_details['answer_text']; ?>
                                 </p>
+                                </div>
+                                <div class="mb-2 col-md-12">
+                                <?php if(!($records_details['image']=="")){ ?>
+                                <a class="btn btn-primary btn-sm text-white" href="<?php echo base_url().$records_details['image'] ?>" target="_blank"> View Document</a>
+                                <?php } ?>
                                 </div>
                                 <div class="mb-2 col-md-2">
                                     <label class="d-block text-font">Score</label>

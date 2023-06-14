@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="mb-2 col-md-12">
                                     <?php if(!($records_details['image']=="")){ ?>
-                                    <a href="<?php echo base_url().$records_details['image'] ?>" target="_blank"> View Document</a>
+                                    <a class="btn btn-primary btn-sm text-white" href="<?php echo base_url().$records_details['image'] ?>" target="_blank"> View Document</a>
                                     <?php } ?>
                                 </div>
                                 <div class="mb-2 col-md-2">

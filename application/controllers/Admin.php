@@ -1729,7 +1729,7 @@ class Admin extends CI_Controller
     //  print_r($_SESSION); die;
         try {
             $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
-            // $email_id = encryptids("D", $this->session->userdata('admin_email'));
+            $name = encryptids("D", $this->session->userdata('admin_name'));
             $admin_id = encryptids("D", $this->session->userdata('admin_id'));
             // $email_id = $this->input->post('email');
             //$random_pass	 = $this->randomPassword();
