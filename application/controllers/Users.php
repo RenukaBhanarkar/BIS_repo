@@ -3774,6 +3774,11 @@ if ($availability==1)
         $this->load->view('users/standard_writting_all',$data);
         $this->load->view('users/footers/footer');
       }
+      public function language(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/language');
+        $this->load->view('users/footers/footer');
+      }
     
  
 }

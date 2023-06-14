@@ -78,8 +78,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="contact">
                             <ul>
-                                <li><a href="#">हिन्दी</a></li>
-                                <!-- <li><a href="#">English</a></li> -->
+                                <!-- <select onchange="set_language()" name="language" id="language">
+                                <?php
+                               $en_select='';
+                               $hn_select='';
+                               $language=''; 
+                                if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+                                    $en_select='selected';
+                                    $language='en';
+                                }else{
+                                    $hn_select='selected';
+                                    $language='hn';
+                                }
+                                ?>
+                                    <option value="en" <?php echo $en_select ?>>English</option>
+                                    <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
+                                </select> -->
+                                 <li><a href="#" value="hn">हिन्दी</a></li>
+                                <!-- <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
                                     <a href="#" id="blue_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
@@ -189,7 +205,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </div>
                         </nav>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -254,3 +269,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
     </script>
+    <!-- <script>
+        function set_language(){
+            var language=jQuery('#language').val();
+            window.location.href='<?php echo base_url(); ?>users/welcome/?language='+language;
+        }
+    </script> -->
