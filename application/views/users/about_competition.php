@@ -399,7 +399,7 @@ li span {
                                     if ($user_type != "") { 
                                          ?>
                                              <!-- <a href="<?= base_url(); ?>users/quiz_start/<?= $competition['id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a> -->
-                                             <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                             <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                      
                                         
                                            
@@ -418,7 +418,7 @@ li span {
                             
                                         if ($user_type != "") { 
                                               ?>
-                                                 <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                                 <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                            
                                             <?php  
                                           } else { ?>
@@ -435,7 +435,7 @@ li span {
                                 
                                             if ($user_type != "") { 
                                                  ?>
-                                                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                                      <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                               
                                              <?php } else { ?>
                                                 <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate </span></a>

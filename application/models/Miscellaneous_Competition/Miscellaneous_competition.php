@@ -81,6 +81,7 @@ class Miscellaneous_competition extends CI_Model {
 
       //  $this->db->where('tbl_mst_competition_detail.end_date <' ,date("Y-m-d")); 
        $this->db->where('tbl_mst_competition_detail.end_date <=' ,date("Y-m-d")); 
+       $this->db->order_by('created_on','desc');
       // $this->db->where('tbl_mst_competition_detail.end_time <=' ,date("H:i:s"));
        // return $this->db->get('tbl_mst_competition_detail')->result_array();
         $res = array();
@@ -125,6 +126,7 @@ class Miscellaneous_competition extends CI_Model {
      //  $this->db->where('tbl_mst_competition_detail.end_time >=' ,date("H:i:s")); 
        $this->db->where('tbl_mst_competition_detail.start_date <=' ,date("Y-m-d")); 
     //   $this->db->where('tbl_mst_competition_detail.start_time <=' ,date("H:i:s"));
+    $this->db->order_by('created_on','desc');
         $query= $this->db->get('tbl_mst_competition_detail')->result_array();
          // $res = $query->result_array();
       //  print_r($query); die;
@@ -495,7 +497,8 @@ class Miscellaneous_competition extends CI_Model {
         $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
         //$this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
         $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
-        $this->db->where('tmcd.review_status','1');        
+        $this->db->where('tmcd.review_status','1');  
+        $this->db->order_by('created_on','desc');      
         // $query=$this->db->get();
         // return $query->result_array(); 
 
@@ -906,6 +909,7 @@ class Miscellaneous_competition extends CI_Model {
         $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
         //$this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
         $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        $this->db->order_by('created_on','desc');
         $this->db->where('tmcd.review_status !=','0');        
             //         $query=$this->db->get();
             //         return $query->result_array(); 
