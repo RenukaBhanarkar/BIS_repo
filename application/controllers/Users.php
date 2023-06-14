@@ -3780,6 +3780,11 @@ if ($availability==1)
         $this->load->view('users/language');
         $this->load->view('users/footers/footer');
       }
+      public function about_eBIS(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/about_eBIS');
+        $this->load->view('users/footers/footer');
+      }
     
  
 }

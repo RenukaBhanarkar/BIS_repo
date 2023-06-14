@@ -3685,4 +3685,10 @@ class Admin extends CI_Controller
         $this->load->view('admin/master_data_list');
         $this->load->view('admin/footers/admin_footer');
     }
+    public function about_eBIS_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/about_eBIS_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
 }
