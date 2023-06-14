@@ -81,6 +81,85 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
+                   <div class="World_of_standers_inner_Box  shadow">
+                    <a href="#">
+                    <div class="World_of_standers_image_box">
+                        <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                       
+                    </div>
+                    <p class="Title_Section">Meeting the Startups</p>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Research Projects</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Work Shops & Seminars</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Offer for the Membership of technical committus</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Offer for the Membership of Working Panels</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Join the sustainablity programme</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="<?php echo base_url().'users/about_eBIS'?>">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">About eBIS</p>
+                        </a>
+                    </div>
+                </div>
+            
+            <!-- <div class="row">
+                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="item_proposal_list">
                     <div class="World_of_standers_image_box">
@@ -132,9 +211,9 @@
                        
                 </div>
                 </div>
-            </div>
-                <div class="row">
-                <div class="col-md-3">
+            </div> -->
+                
+                <!-- <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/standard_review/Standard_review/" onclick="standard_pop()" target="blank">
                     <div class="World_of_standers_image_box">
@@ -146,7 +225,7 @@
                   
                        
                 </div>
-                </div>
+                </div> -->
                 <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="<?php echo base_url().'users/share_your_thoughts'?>">
