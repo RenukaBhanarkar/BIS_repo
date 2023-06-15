@@ -1925,8 +1925,7 @@ public function updateStatus(){
         try {
             $id = $this->input->post('id');
             $comp_id = $this->input->post('comp_id');
-            $formdata['score'] = $this->input->post('score'); 
-            $formdata['comment'] = $this->input->post('comment'); 
+            $formdata['score'] = $this->input->post('score');  
             $formdata['status'] = 2;
 
             $id = $this->Standardswritting_model->updateCompetition($id,$formdata);
@@ -2210,7 +2209,7 @@ public function updateStatus(){
                  
             $id = $this->input->post('id');
             $formdata['status'] = $this->input->post('status'); 
-            $formdata['reject_reasone'] = $this->input->post('remark'); 
+            $formdata['remark'] = $this->input->post('remark'); 
             $formdata['updated_on'] = date('Y-m-d h:i:s');
             
 

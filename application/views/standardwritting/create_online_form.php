@@ -73,7 +73,7 @@
                                 <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
-                                    <input type="file" id="banner_img" name="banner_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg"  onchange="loadThumbnail(event)">
+                                    <input type="file" id="banner_img" name="banner_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg"  onchange="loadFileBanner(event)">
                                     <span class="error_text"></span>
                                     <div class="invalid-feedback">
                                     This value is required
@@ -86,6 +86,7 @@
                                 </div>
                                 </div>
                             </div>
+                           
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
@@ -181,11 +182,11 @@
                                 <label class="d-block">Upload Image</label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadFileFirst(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> Preview</button>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_2"> Preview</button>
                                 
                                 </div>
                                 </div>
@@ -205,13 +206,13 @@
                                 <input type="text" class="form-control input-font" name="sdetails" id="sdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image </label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="sprize_img" name="sprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="sprize_img" name="sprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadFileSecond(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal_1">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_3">
                                     Preview 
                                 </button>
                                 </div>
@@ -230,13 +231,13 @@
                                 <input type="text" class="form-control input-font" name="tdetails" id="tdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image </label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="tprize_img" name="tprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="tprize_img" name="tprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadFileThird(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal_2">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_4">
                                     Preview 
                                 </button>
                                 </div>
@@ -245,7 +246,7 @@
                     <div class="col-md-3 prizes-section mt-2" style="margin-left: -21px;">
                                 <h4 class="m-2">Consolation Prize</h4>
                     </div>
-                    <div class="row">
+                    <div class="row"> 
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prize</label>
                                 <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value=""oninput="this.value = this.value.replace(/[^0-9]/, '')" >
@@ -255,13 +256,13 @@
                                 <input type="text" class="form-control input-font" name="cdetails" id="cdetails" placeholder="Enter Prizes" value="" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image </label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="cprize_img" name="cprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
+                                    <input type="file" id="cprize_img" name="cprize_img" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadFileConsol(event)">
                                     <span class="error_text"></span>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal_3" fdprocessedid="3a6f0r">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_5" fdprocessedid="3a6f0r">
                                     Preview 
                                 </button>
                                 </div>
@@ -286,17 +287,16 @@
     <div class="modal-dialog" style="max-width:1000px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <h5 class="modal-title" id="exampleModalLabelImg">Thumbnail Preview</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
             </div>
-            <div class="modal-body">
-                
-            </div>
-            
+           <div class="modal-body">
+            <img id="outputbanner"width="100%"/>
         </div>
     </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    </div>
+    <div class="modal fade" id="modal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header">
@@ -304,12 +304,25 @@
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
-        ...
+            <img id="outputFirst"width="100%"/>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <img id="outputSecond"width="100%"/>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="exampleModal_1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header">
@@ -317,12 +330,12 @@
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
-        ...
+        <img id="outputThird"width="100%"/>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="exampleModal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header">
@@ -330,20 +343,7 @@
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="exampleModal_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width:1000px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
-        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-      </div>
-      <div class="modal-body">
-        ...
+       <img id="outputConsol"width="100%"/>
       </div>
     </div>
   </div>
@@ -974,17 +974,17 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
                 $("#state_id").next(".validation").remove();
             }
         }
-        var fprize_img = $("#fprize_img").val();
-        if (fprize_img == "" || fprize_img== null) {
-            if ($("#fprize_img").next(".validation").length == 0) 
-            {
-                $("#fprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select First Prize Image Icon </div>");
-            }
-            if (!focusSet) { $("#fprize_img").focus(); }
-            allfields = false;
-        } else {
-            $("#fprize_img").next(".validation").remove(); 
-        }
+        // var fprize_img = $("#fprize_img").val();
+        // if (fprize_img == "" || fprize_img== null) {
+        //     if ($("#fprize_img").next(".validation").length == 0) 
+        //     {
+        //         $("#fprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select First Prize Image Icon </div>");
+        //     }
+        //     if (!focusSet) { $("#fprize_img").focus(); }
+        //     allfields = false;
+        // } else {
+        //     $("#fprize_img").next(".validation").remove(); 
+        // }
 
         if (allfields) {
             // $('#create_online_form').submit();
@@ -1022,3 +1022,5 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
     })
     
 </script>
+
+ 

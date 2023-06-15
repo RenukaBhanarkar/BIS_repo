@@ -79,14 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Comment</label>
-                            <div>
-                                <p><?=$getData['comment']?></p>
-                            </div>
-                        </div>
-                    </div>
+                    
                          <?php }?>
 
                     <?php if ($getData['status']==1) {?> 
@@ -95,21 +88,13 @@
                         <div class="mb-2 col-md-2">
                             <label class="d-block text-font">Score<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
-                                <input type="text" class="form-control input-font" name="score" id="score" placeholder="Enter Score" oninput="this.value = this.value.replace(/[^0-9]/, '')" ><span style="font-size: 20px; padding-left: 8px; margin-top: 3px;" > /<?= $getData['total_mark']?></span>
+                                <input type="text" class="form-control input-font" name="score" id="score" placeholder="Enter Score" oninput="this.value = this.value.replace(/[^0-9]/, '')" onchange="check(this.value)" ><span style="font-size: 20px; padding-left: 8px; margin-top: 3px;" > /<?= $getData['total_mark']?></span>
                             </div>
                             <span class="text-danger" id="err_score"></span>
                             
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Comment</label>
-                            <div class="d-flex">
-                                <textarea type="text" class="form-control input-font" name="comment" id="comment" placeholder="Comments"></textarea>
-                            </div>
-                            <span class="text-danger" id="err_comment"></span>
-                        </div>
-                    </div>
+                     
                      <?php }?>
                  </div>
 
@@ -129,6 +114,32 @@
     </div>
 </div>
 <script>
+
+ function check(score) { 
+    totalmark="<?= $getData['total_mark']?>";
+    if (parseInt(score) > parseInt(totalmark)) 
+            {
+                Swal.fire({
+                    title: 'Please Enter Valid Score',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText:'OK',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) 
+                    {
+                        $("#score").val('');
+                    }  
+                    else
+                    {
+                       $("#score").val(''); 
+                    }
+            })
+                }
+            }
+
+
+
 $('.cancel').on('click',function(){
 Swal.fire({
 title: 'Are you sure you want to Cancel?',
@@ -177,20 +188,34 @@ if (result.isConfirmed) {
             $("#score").next(".validation").remove();
         }
 
-        var comment = $("#comment").val();
-
-        if (comment == "" || comment == null) {
-            if ($("#comment").next(".validation").length == 0) {
-                $("#err_comment").after("<div><div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div></div>");
-            }
-            if (!focusSet) {
-                $("#comment").focus();
-            }
-            allfields = false;
-        } else {
-            $("#comment").next(".validation").remove();
-        }
+         
         if (allfields) {
+
+            totalmark="<?= $getData['total_mark']?>";
+           var tmark= parseInt(totalmark);
+
+
+    if (parseInt(score) > parseInt(totalmark)) 
+            {
+                Swal.fire({
+                    title: 'Please Enter Valid Score',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText:'OK',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) 
+                    {
+                        $("#score").val('');
+                    }  
+                    else
+                    {
+                       $("#score").val(''); 
+                    }
+            })
+                }
+                else{
+            
 
             var id="<?=$getData['id']?>"; 
             var comp_id="<?=$getData['comp_id']?>"; 
@@ -211,8 +236,7 @@ if (result.isConfirmed) {
         data: {
           id: id,
           comp_id: comp_id,
-          score: score, 
-          comment: comment, 
+          score: score,   
         },
         success: function(result)
         {
@@ -227,5 +251,6 @@ if (result.isConfirmed) {
       } 
     })
     }
+}
   }
  </script>
