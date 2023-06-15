@@ -436,7 +436,7 @@ padding-left: 5px;
               </div>
             </div>
           </section>
-          <a href="<?= base_url(); ?>users/essay_writting_all">View All</a>
+          
           <!-- <section>
             <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding:3%">
               <div class="row text-center">
