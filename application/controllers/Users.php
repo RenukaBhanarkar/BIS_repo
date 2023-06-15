@@ -3785,6 +3785,11 @@ if ($availability==1)
         $this->load->view('users/about_eBIS');
         $this->load->view('users/footers/footer');
       }
+      public function essay_writting_all(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/essay_writting_all');
+        $this->load->view('users/footers/footer');
+      }
     
  
 }
