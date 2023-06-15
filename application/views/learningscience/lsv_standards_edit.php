@@ -1,13 +1,11 @@
 <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Create new post/ live session</h1>
-        </div>
-
-        <form name="lsv_standards_edit" id="lsv_standards_edit" action="<?php echo base_url().'Learningscience/lsv_standards_edit'?>/<?= $lsvStandardsView['id']?>" method="post"enctype="multipart/form-data">
-      <!-- Content Row -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Create new post/ live session</h1>
+    </div>
+    <form name="lsv_standards_edit" id="lsv_standards_edit" action="<?php echo base_url().'Learningscience/lsv_standards_edit'?>/<?= $lsvStandardsView['id']?>" method="post"enctype="multipart/form-data">
+        <!-- Content Row -->
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top">
@@ -59,15 +57,16 @@
                                             <input type="file" id="image" name="image" class="form-control-file"  accept="image/png, image/jpeg,image/jpg" onchange="loadFileImage(event)">
                                             <span class="error_text"></span>
                                         </div>
-                                        
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ImageModal">
-                                        Preview
-                                        </button>
+                                        <div>
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ImageModal">
+                                            Preview
+                                            </button>
+                                        </div>
                                         <?php } else {?>
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastImageModal">
                                         View Image
                                         </button>&nbsp;
-                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',1);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',1,11);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -105,11 +104,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
+                            </div>
+                            
+                            
                             
                             <div class="row" id="video_thumbnail">
-                                <div class="mb-2 col-md-4">
+                                <div class="mb-12 col-md-12">
                                     <?php if(empty($lsvStandardsView['thumbnail'])){?>
                                     <label class="d-block">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                     <div class="d-flex">
@@ -118,14 +118,17 @@
                                             <span class="error_text"></span>
                                         </div>
                                         
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal">
-                                        Preview
-                                        </button>
+                                        <div>
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal">
+                                            Preview
+                                            </button>
+                                        </div>
+                                        
                                         <?php } else {?>
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastThumbnailModal">
                                         View  Thumbnail
                                         </button>
-                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',2);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',2,11);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         <?php }?>
                                     </div>
                                 </div>
@@ -164,26 +167,43 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="pdf_upload">
-                                <div class="mb-2 col-md-4">
+                            <div class="row" id="pdf_upload" style="padding: 10px;">
+                                <div class="mb-12 col-md-12">
                                     <?php if(empty($lsvStandardsView['doc_pdf'])){?>
-                                    <label class="d-block">Upload PDF<sup class="text-danger">*</sup></label>
+                                    <label class="d-block">Upload PDF </label>
                                     <div class="d-flex">
                                         <div>
-                                            <input type="file" id="doc_pdf" name="doc_pdf" class="form-control-file"accept="application/pdf" / >
+                                            
+                                            <input type="file" id="doc_pdf" name="doc_pdf" class="form-control-file"accept="application/pdf" onchange="loadFilepdf(event)">
+                                            <span class="error_text"></span>
                                         </div>
-                                        
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ThumbnailModal">
-                                        Preview
-                                        </button>
+                                        <div>
+                                            
+                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#pdf">
+                                            Preview
+                                            </button>
+                                        </div>
                                         <?php } else {?>
                                         <a href="<?= base_url()?><?= $lsvStandardsView['doc_pdf']?>"class="btn btn-info  btn-sm" target="_blank" >View PDF</a>
-                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',3);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',3,22);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         <?php }?>
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="modal fade"id="pdf"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+                                <div class="modal-dialog" style="max-width:1000px;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                                            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe id="pdffiledata" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row" id="videoDiv">
                                 <div class="mb-2 col-md-4">
                                     <?php if(empty($lsvStandardsView['video'])){?>
@@ -196,39 +216,38 @@
                                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#videoModal">
                                         Preview
                                         </button>
-                                    <?php } else {?>
-                                        <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastVideoModal">
-                                        View  Video
-                                        </button>
-                                        <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',4);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <?php } else {?>
+                                        <div style="padding:10px;">
+                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastVideoModal">
+                                            View  Video
+                                            </button>
+                                            <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',4,33);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        </div>
                                         <?php }?>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal fade" id="LastVideoModal" tabindex="-1" aria-labelledby="lastVideoModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" style="max-width:700px;">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="lastThumbnailModalLabel">Last Upload Viode</h5>
-                                                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                
-
-                                                     <video width="320" height="240" controls>
-  <source src="<?= base_url()?><?= $lsvStandardsView['video']?>" type="video/mp4">
-  <source src="<?= base_url()?><?= $lsvStandardsView['video']?>" type="video/ogg">
-Your browser does not support the video tag.
-</video>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Close </button>
-                                            </div>
+                                <div class="modal-dialog" style="max-width:700px;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="lastThumbnailModalLabel">Last Upload Viode</h5>
+                                            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                            <video width="670" height="500" controls>
+                                                <source src="<?= base_url()?><?= $lsvStandardsView['video']?>" type="video/mp4">
+                                                <source src="<?= base_url()?><?= $lsvStandardsView['video']?>" type="video/ogg">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Close </button>
                                         </div>
                                     </div>
                                 </div>
-
-
+                            </div>
                             <div class="row" id="video_show">
                                 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width:700px;">
@@ -273,26 +292,7 @@ Your browser does not support the video tag.
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal -->
-                        <!-- Modal -->
-                        <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Are you sure you want to cancel?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" onclick="location.href='question_bank_list'">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal -->
+                        
                     </div>
                 </div>
             </form>
@@ -318,13 +318,15 @@ Your browser does not support the video tag.
         </div>
         <script>
         $(document).ready(function ()
-        {   CKEDITOR.replace('description');
+        {
+        CKEDITOR.replace('description');
         
         
         var argument="<?= $lsvStandardsView['type_of_post']?>";
         getval(argument)
         });
         function getval(argument) {
+        console.log(argument)
         if (argument==1)
         {
         $("#text_image").show();
@@ -362,7 +364,7 @@ Your browser does not support the video tag.
         if (type_of_post == "" || type_of_post== null) {
         if ($("#type_of_post").next(".validation").length == 0) // only add if not added
         {
-        $("#type_of_post").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select Type of Post </div>");
+        $("#type_of_post").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required  </div>");
         }
         if (!focusSet) { $("#type_of_post").focus(); }
         allfields = false;
@@ -375,7 +377,7 @@ Your browser does not support the video tag.
         if (session_link == "" || session_link== null) {
         if ($("#session_link").next(".validation").length == 0) // only add if not added
         {
-        $("#session_link").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter session link</div>");
+        $("#session_link").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required </div>");
         }
         if (!focusSet) { $("#session_link").focus(); }
         allfields = false;
@@ -389,7 +391,7 @@ Your browser does not support the video tag.
         if (title == "" || title== null) {
         if ($("#title").next(".validation").length == 0) // only add if not added
         {
-        $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter  Title </div>");
+        $("#title").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required </div>");
         }
         if (!focusSet) { $("#title").focus(); }
         allfields = false;
@@ -400,70 +402,18 @@ Your browser does not support the video tag.
         if (description == "" || description== null) {
         if ($("#description").next(".validation").length == 0) // only add if not added
         {
-        $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Enter description </div>");
+        $("#description").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required </div>");
         }
         if (!focusSet) { $("#description").focus(); }
         allfields = false;
         } else {
         $("#description").next(".validation").remove(); // remove it
         }
-        var doc_pdfdata="<?= $lsvStandardsView['doc_pdf']?>";
-        if (type_of_post==1 && doc_pdfdata=='')
-        {
-        var doc_pdf=$("#doc_pdf").val();
-        if (doc_pdf == "" || doc_pdf== null) {
-        if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
-        {
-        $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Upload PDF </div>");
-        }
-        if (!focusSet) { $("#doc_pdf").focus(); }
-        allfields = false;
-        } else {
-        $("#doc_pdf").next(".validation").remove(); // remove it
-        }
-        if ($("#doc_pdf").val() != '')
-        {
-        var fileSize = $('#doc_pdf')[0].files[0].size;
-        $("#doc_pdf").next(".validation").remove();
-        if (fileSize > 41943040)
-        {
-        if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
-        {
-        $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
-        }
-        allfields = false;
-        if (!focusSet) {
-        $("#doc_pdf").focus();
-        }
-        }
-        else
-        {
-        $("#doc_pdf").next(".validation").remove(); // remove it
-        }
-        var validExtensions = ['pdf']; //array of valid extensions
-        var fileName = $("#doc_pdf").val();;
-        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-        $("#doc_pdf").next(".validation").remove();
-        if ($.inArray(fileNameExt, validExtensions) == -1)
-        {
-        if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
-        {
-        $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only PDF  file allowed. </div>");
-        }
-        allfields = false;
-        if (!focusSet)
-        {
-        $("#doc_pdf").focus();
-        }
-        }
-        else
-        {
-        $("#doc_pdf").next(".validation").remove(); // remove it
-        }
-        }
-        }
-
-
+        
+        
+        
+        
+        
         var thumbnaildata="<?= $lsvStandardsView['thumbnail']?>";
         if (thumbnaildata=='')
         {
@@ -519,9 +469,6 @@ Your browser does not support the video tag.
         }
         }
         }
-
-
-
         var imagedata="<?= $lsvStandardsView['image']?>";
         if (type_of_post==1 && imagedata=='')
         {
@@ -577,8 +524,6 @@ Your browser does not support the video tag.
         }
         }
         }
-
-
         var videodata="<?= $lsvStandardsView['video']?>";
         if (type_of_post==2 && videodata=='')
         {
@@ -594,7 +539,7 @@ Your browser does not support the video tag.
         $("#video").next(".validation").remove(); // remove it
         }
         if ($("#video").val() != '')
-        { 
+        {
         var validExtensions = ['mp4','mkv']; //array of valid extensions
         var fileName = $("#video").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
@@ -617,71 +562,45 @@ Your browser does not support the video tag.
         }
         }
         }
-
-
-         
+        
+        
         if (allfields) {
-        $("#submitForm").show();
+        // $('#create_online_form').submit();
+        Swal.fire({
+        title: 'Are you sure you want to Update ?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Update',
+        denyButtonText: `Cancel`,
+        }).then((result) => {
+        if (result.isConfirmed) {
         $('#lsv_standards_edit').submit();
+        } else if (result.isDenied) {
+        }
+        })
         } else {
         return false;
         }
         });
-        var loadFileImage = function(event)
-        {
-        $("#outputimage").show();
-        var outputimage = document.getElementById('outputimage');
-        outputimage.src = URL.createObjectURL(event.target.files[0]);
-        outputimage.onload = function()
-        {
-        URL.revokeObjectURL(outputimage.src);
-        }
-        };
-        function resetimage()
-        {
-        $("#image").val('');
-        $("#outputimage").hide();
-        }
-        var loadFileThumbnail = function(event)
-        {
-        $("#outputThumbnail").show();
-        var outputThumbnail = document.getElementById('outputThumbnail');
-        outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
-        outputThumbnail.onload = function()
-        {
-        URL.revokeObjectURL(outputThumbnail.src);
-        }
-        };
-        function resetThumbnail()
-        {
-        $("#thumbnail").val('');
-        $("#outputThumbnail").hide();
-        }
-        var loadFilevideo = function(event)
-        {
-        $("#outputvideo").show();
-        var outputvideo = document.getElementById('outputvideo');
-        outputvideo.src = URL.createObjectURL(event.target.files[0]);
-        outputvideo.onload = function()
-        {
-        URL.revokeObjectURL(outputvideo.src);
-        }
-        };
-        function resetvideo()
-        {
-        $("#video").val('');
-        $("#outputvideo").hide();
-        }
+        
         </script>
         <script type="text/javascript">
-        function deleteLvsFile(id,val)
+        function deleteLvsFile(id,val,del)
         {
-        console.log(val)
-        if (val==1)  { $(".sms").text('Image'); }
-        if (val==2)  { $(".sms").text('Video'); }
-        $('#updatemodel').modal('show');
-        $('.updatestatus').on('click', function()
-        {
+        if (del==11)  { data= "Image"; }
+        if (del==22)  { data= "PDF"; }
+        if (del==33)  { data= "Video"; }
+        Swal.fire({
+        // title: title1,
+        title: 'Are you sure you want to Delete'+ data +'?',
+        showDenyButton: true,
+        showCancelButton: false,
+        // confirmButtonText: buttonText,
+        confirmButtonText: 'Delete',
+        denyButtonText: `Cancel`,
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
         $.ajax({
         type: 'POST',
         url: '<?php echo base_url(); ?>Learningscience/deleteLvsFile',
@@ -697,6 +616,125 @@ Your browser does not support the video tag.
         alert("Error,Please try again.");
         }
         });
-        });
+        // Swal.fire('Saved!', '', 'success')
+        } else if (result.isDenied) {
+        // Swal.fire('Changes are not saved', '', 'info')
         }
-        </script> 
+        })
+        }
+        
+        </script>
+        <script type="text/javascript">
+        var loadFileImage = function(event) {
+        $("#loadImage").show();
+        var fileSize = $('#image')[0].files[0].size;
+        var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+        
+        console.log(fileSize);
+        if(fileSize < 20480){
+        $('#image').val('');
+        Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 41943040){
+        $('#image').val('');
+        Swal.fire('File size should be between 20KB to 200KB')
+        //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+        $('#image').val('');
+        Swal.fire('Only jpg,jpeg,png allowed')
+        $('#err_icon_file').text('This value is required');
+        }else{
+        $('#err_icon_file').text('');
+        }
+        var loadImage = document.getElementById('outpuimage');
+        loadImage.src = URL.createObjectURL(event.target.files[0]);
+        loadImage.onload = function() {
+        URL.revokeObjectURL(loadImage.src);
+        }
+        };
+        var loadFileThumbnail = function(event) {
+        $("#loadThumbnail").show();
+        var fileSize = $('#thumbnail')[0].files[0].size;
+        var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#thumbnail").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+        
+        console.log(fileSize);
+        if(fileSize < 20480){
+        $('#thumbnail').val('');
+        Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 41943040){
+        $('#thumbnail').val('');
+        Swal.fire('File size should be between 20KB to 200KB')
+        //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+        $('#thumbnail').val('');
+        Swal.fire('Only jpg,jpeg,png allowed')
+        $('#err_icon_file').text('This value is required');
+        }else{
+        $('#err_icon_file').text('');
+        }
+        var loadThumbnail = document.getElementById('outputhumbnail');
+        loadThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        loadThumbnail.onload = function() {
+        URL.revokeObjectURL(loadThumbnail.src);
+        }
+        };
+        var loadFilevideo = function(event) {
+        $("#loadThumbnail").show();
+        var fileSize = $('#video')[0].files[0].size;
+        var validExtensions = ['mkv', 'mp4']; //array of valid extensions
+        var fileName = $("#video").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+        
+        console.log(fileSize);
+        if(fileSize < 0){
+        $('#video').val('');
+        Swal.fire('File size should be between 5MB to 40MB')
+        }else if(fileSize > 335544320){
+        $('#video').val('');
+        Swal.fire('File size should be between 5MB to 40MB')
+        //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+        $('#video').val('');
+        Swal.fire('Only mkv,mp4 allowed')
+        $('#err_icon_file').text('This value is required');
+        }else{
+        $('#err_icon_file').text('');
+        }
+        var loadThumbnail = document.getElementById('outputvideo');
+        loadThumbnail.src = URL.createObjectURL(event.target.files[0]);
+        loadThumbnail.onload = function() {
+        URL.revokeObjectURL(loadThumbnail.src);
+        }
+        };
+        
+        var loadFilepdf = function(event) {
+        $("#loadThumbnail").show();
+        var fileSize = $('#doc_pdf')[0].files[0].size;
+        var validExtensions = ['pdf']; //array of valid extensions
+        var fileName = $("#doc_pdf").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+        
+        console.log(fileSize);
+        if(fileSize < 0){
+        $('#doc_pdf').val('');
+        Swal.fire('File size should be between 1kb to 5MB')
+        }else if(fileSize > 41943040){
+        $('#doc_pdf').val('');
+        Swal.fire('File size should be between 1kb to 5MB')
+        //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+        $('#doc_pdf').val('');
+        Swal.fire('Only PDF allowed')
+        $('#err_icon_file').text('This value is required');
+        }else{
+        $('#err_icon_file').text('');
+        }
+        pdffile=document.getElementById("doc_pdf").files[0];
+        pdffile_url=URL.createObjectURL(pdffile);
+        $('#pdffiledata').attr('src',pdffile_url);
+        
+        };
+        </script>

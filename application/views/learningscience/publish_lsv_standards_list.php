@@ -49,8 +49,8 @@
                                 <?= $data?></td> 
                               <td><?= $value['created_on']?></td>
 
-                              <td>567</td>
-                              <td>45</td>
+                              <td><?= $value['likes']?></td>
+                            <td><?= $value['views']?></td>
                               <td><?= $value['status_name']?></td> 
                               <td><?= $value['updated_on']?></td>
                               <td class="" style="width:559px;">
@@ -59,13 +59,13 @@
 
                                 <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
                                 <?php if ($user_id!=3) {?>
-                                    <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                    <a  onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php  }  else { ?>
 
 
 
                                  <?php if (in_array(1, $permissions)) { ?>
-                                    <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                    <a  onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
 
                                 
@@ -170,5 +170,41 @@
                     })
     }
     </script>
+
+    
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "lsv_standards_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "lsv_standards_edit/"+id; 
+    }  
+  })
+}
+
+</script>
     <!-- End of Main Content -->
  </body> 

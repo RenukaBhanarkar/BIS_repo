@@ -15,7 +15,7 @@
             </nav>
     </div>  
     <!-- Content Row -->
-    <form name="conversation_form" id="conversation_form" action="<?php echo base_url().'Standardsmaking/conversation_edit/'?><?=$conversationdata['id'] ?>" method="post"enctype="multipart/form-data">
+    <form name="conversation_edit" id="conversation_edit" action="<?php echo base_url().'Standardsmaking/conversation_edit/'?><?=$conversationdata['id'] ?>" method="post"enctype="multipart/form-data">
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top">
@@ -100,7 +100,7 @@
                                 <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="video" name="video" class="form-control-file" accept="video/mp4,video/mkv"/>
+                                        <input type="file" id="video" name="video" class="form-control-file" accept="video/mp4,video/mkv"onchange="loadVideo(event)"/>
                                         <span class="error_text"></span>
                                     </div>
                                     
@@ -111,6 +111,21 @@
                                     </div>
                                     
                                 </div>
+                                <div class="modal fade" id="VideoPriview" tabindex="-1" aria-labelledby="exampleModalLabel"aria-hidden="true">
+                            <div class="modal-dialog" style="max-width:700px;">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Upload Video</h5>
+                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body"> 
+                                        <video width="650" height="300" controls id="outputvideo"width="100%"/>   
+ 
+                                    </div>
+                                     
+                                </div>
+                            </div>
+                        </div>
                                 
                                 <?php } else {?>
                                 <label class="d-block">Video<sup class="text-danger">*</sup></label>
@@ -172,7 +187,8 @@
                         <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#submitForm">Update</a> -->
                             <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#" onclick="submitdata()" id="submitdata">Update</a>
-                            <a class="btn btn-danger btn-sm text-white" data-toggle="modal" data-target="#cancelForm">Cancel</a>
+                       
+                            <a class="btn btn-danger btn-sm text-white"onclick="history.back()">Back</a>
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="submitForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -394,24 +410,46 @@
         }
         }
         }
+
+         if (allfields) {
+    // $('#create_online_form').submit();
+    Swal.fire({
+    title: 'Are you sure you want to Update ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Update',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    if (result.isConfirmed) {
+    $('#conversation_edit').submit();
+    } else if (result.isDenied) {
+    }
+    })
+    } else {
+    return false;
+    }
         
         
-        if (allfields) {
-        $('#conversation_form').submit();
-        } else {
-        return false;
-        }
+         
         });</script>
         <script type="text/javascript">
-        function deleteConvesationFile(id,val)
+
+            function deleteConvesationFile(id,val)
         {
-        console.log(val)
-        if (val==1)  { $(".sms").text('Image'); }
-        if (val==2)  { $(".sms").text('Video'); }
-        $('#updatemodel').modal('show');
-        $('.updatestatus').on('click', function()
-        {
-        $.ajax({
+        if (val==1)  { data= "Image"; }
+        if (val==2)  { data= "video"; } 
+        Swal.fire({
+        // title: title1,
+        title: 'Are you sure you want to Delete '+ data +'?',
+        showDenyButton: true,
+        showCancelButton: false,
+        // confirmButtonText: buttonText,
+        confirmButtonText: 'Delete',
+        denyButtonText: `Cancel`,
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+       $.ajax({
         type: 'POST',
         url: '<?php echo base_url(); ?>Standardsmaking/deleteConvesationFile',
         data: {
@@ -426,6 +464,21 @@
         alert("Error,Please try again.");
         }
         });
-        });
+        // Swal.fire('Saved!', '', 'success')
+        } else if (result.isDenied) {
+        // Swal.fire('Changes are not saved', '', 'info')
         }
+        })
+        }
+        var loadVideo = function(event) 
+    {
+        $("#outputvideo").show();
+        var outputvideo = document.getElementById('outputvideo');
+        outputvideo.src = URL.createObjectURL(event.target.files[0]);
+        outputvideo.onload = function()
+        {
+            URL.revokeObjectURL(outputvideo.src);
+        }
+    };
+         
         </script>
