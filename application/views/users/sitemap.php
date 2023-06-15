@@ -26,7 +26,7 @@
         <div class="col-md-4">
             <div class="sitenav">
                 <ul class="ul_list p-0">
-                    <li class="li_text"><a href="https://www.bis.gov.in/" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">BIS</a></li>
+                    <li class="li_text"><a href="https://www.bis.gov.in/" target="blank" class="text_dot" onclick="bis_pop()" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">BIS</a></li>
                     <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="blank" onclick="publish_pop()" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Published Standards</a></li>
                     <li class="li_text"><a href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" target="blank" onclick="know_pop()" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Know Your Standards</a></li>
                     <li class="li_text"><a href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" target="blank" class="text_dot" onclick="snap_pop()" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">SNAP 2022-27</a></li>
@@ -109,6 +109,11 @@
     </script>
     <script>
         function nec_pop(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+    <script>
+        function bis_pop(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
     </script>

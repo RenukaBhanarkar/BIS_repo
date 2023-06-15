@@ -116,6 +116,19 @@ padding-right: 5px;
 padding-left: 5px;
 }
 </style>
+<?php
+include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+$en_select='';
+$hn_select='';
+$language=''; 
+if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+    $en_select='selected';
+    $language='en';
+}else{
+    $hn_select='selected';
+    $language='hn';
+}
+?>
 <!-- <section id="exchange_forum">
   <div class="container-fluid">
     <div class="row">
@@ -171,7 +184,7 @@ padding-left: 5px;
             
             
             <div class="more_button">
-              <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winners'">More<i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>
+              <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winners'"><?php echo $standard_club_section[$language]['1'] ?><i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
@@ -223,15 +236,15 @@ padding-left: 5px;
 <section style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
   <div class="container-fluid pt-5">
     <div class="row text-center">
-      <h3 style="font-weight: 600; color: brown;">Events & Competitions</h3>
+      <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3>
       
     </div>
     <ul class="row get-involved-links nav nav-pills mb-3" role="tablist" style="padding: 21px;">
-      <li class="col-md-2 tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%"><h3 class="tabl_title">Quiz</h3></a></li>
-      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard-writing.png" width="40%" height="77%"><h3 class="tabl_title">Standard Writing</h3></a></li>
-      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay-writing.png" width="40%" height="77%"><h3 class="tabl_title">Essay Writing</h3></a></li>
-      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster.jpg" width="40%" height="77%"><h3 class="tabl_title">Poster Making</h3></a></li>
-      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/view-more.jpg" width="40%" height="77%"><h3 class="tabl_title">More</h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab"><img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%"><h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/standard-writing.png" width="40%" height="77%"><h3 class="tabl_title"><?php echo $standard_club_section[$language]['4'] ?></h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab3" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/essay-writing.png" width="40%" height="77%"><h3 class="tabl_title"><?php echo $standard_club_section[$language]['5'] ?></h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab4" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/poster.jpg" width="40%" height="77%"><h3 class="tabl_title"><?php echo $standard_club_section[$language]['6'] ?></h3></a></li>
+      <li class="col-md-2 tab-link"><a class="nav-link" data-bs-toggle="pill" href="#tab5" aria-selected="false" role="tab" tabindex="-1"><img src="<?php echo base_url(); ?>/assets/images/view-more.jpg" width="40%" height="77%"><h3 class="tabl_title"><?php echo $standard_club_section[$language]['7'] ?></h3></a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade active show" id="tab1" role="tabpanel">
@@ -239,7 +252,7 @@ padding-left: 5px;
           <section>
             <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
               <div class="row text-center">
-                <h3 style="font-weight: 700; color: black;">Quiz</h3>
+                <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['3'] ?></h3>
                 <!-- <p>Miscellaneous For You</p> -->
               </div>
               <div class="row" id="banner-align">
@@ -277,7 +290,7 @@ padding-left: 5px;
             <section>
               <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                 <div class="row text-center">
-                  <h3 style="font-weight: 700; color: black;">Standard Writing</h3>
+                  <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['4'] ?></h3>
                   <!-- <p>Miscellaneous For You</p> -->
                 </div>
                 <div class="row">
@@ -317,7 +330,7 @@ padding-left: 5px;
               <section>
                 <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                   <div class="row text-center">
-                    <h3 style="font-weight: 700; color: black;">Essay Writing</h3>
+                    <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['5'] ?></h3>
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                   <div class="row">
@@ -357,7 +370,7 @@ padding-left: 5px;
                 <section>
                   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                     <div class="row text-center">
-                      <h3 style="font-weight: 700; color: black;">Poster Making</h3>
+                      <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['6'] ?></h3>
                       <!-- <p>Miscellaneous For You</p> -->
                     </div>
                     <div class="row">
@@ -397,7 +410,7 @@ padding-left: 5px;
                   <section>
                     <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                       <div class="row text-center">
-                        <h3 style="font-weight: 700; color: black;">More</h3>
+                        <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['7'] ?></h3>
                         <!-- <p>Miscellaneous For You</p> -->
                       </div>
                       <div class="row">
@@ -622,7 +635,7 @@ padding-left: 5px;
                     <div class="card image-card" style="width:100%;">
                       <img src="<?= base_url(); ?>assets/images/wisdom.jpeg" class="card-img-top" alt="...">
                       <div class="card-body-new">
-                        <p class="card-text">Wall Of Wisdom</p>
+                        <p class="card-text" style="font-size: 17px;"><?php echo $standard_club_section[$language]['8'] ?></p>
                       </div>
                     </div>
                   </a>
@@ -632,7 +645,7 @@ padding-left: 5px;
                     <div class="card image-card" style="width:100%;">
                       <img src="<?= base_url(); ?>assets/images/classroom.jpg" class="card-img-top" alt="...">
                       <div class="card-body-new">
-                        <p class="card-text">Classroom</p>
+                        <p class="card-text" style="font-size: 17px;"><?php echo $standard_club_section[$language]['9'] ?></p>
                       </div>
                     </div>
                   </a>
@@ -642,7 +655,7 @@ padding-left: 5px;
                     <div class="card image-card" style="width:100%;">
                       <img src="<?= base_url(); ?>assets/images/wall_of_wisdom.jpeg" class="card-img-top" alt="...">
                       <div class="card-body-new">
-                        <p class="card-text">Your Wall</p>
+                        <p class="card-text" style="font-size: 17px;"><?php echo $standard_club_section[$language]['10'] ?></p>
                       </div>
                     </div>
                   </a>
@@ -652,7 +665,7 @@ padding-left: 5px;
                     <div class="card image-card" style="width:100%;">
                       <img src="<?= base_url(); ?>assets/images/mentors1.jpg" class="card-img-top" alt="...">
                       <div class="card-body-new">
-                        <p class="card-text">By the Mentors</p>
+                        <p class="card-text" style="font-size: 17px;"><?php echo $standard_club_section[$language]['11'] ?></p>
                       </div>
                     </div>
                   </a>
@@ -729,16 +742,16 @@ padding-left: 5px;
             <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-12 text-center my-2 pt-3">
-                  <h4>Images & Video Gallery</h4>
+                  <h4><?php echo $standard_club_section[$language]['12'] ?></h4>
                 </div>
               </div>
               <div class="portfolio-menu mt-2 mb-4">
                 <ul>
                   <!-- <li class="btn btn-outline-dark active" data-filter="*" id="img">Images</li> -->
-                  <li style="padding: 0px;"><button onclick="gal_images()" class="btn btn-outline-dark active img" id="img">Images</button></li>
+                  <li style="padding: 0px;"><button onclick="gal_images()" class="btn btn-outline-dark active img" id="img"><?php echo $standard_club_section[$language]['13'] ?></button></li>
                   <!-- <li class="btn btn-outline-dark" data-filter=".gts">Girls T-shirt</li>
                   <li class="btn btn-outline-dark" data-filter=".lap">Laptops</li> -->
-                  <li style="padding: 0px;"><button onclick="abcd()" class="btn btn-outline-dark vdo" id="vdo">Video</button></li>
+                  <li style="padding: 0px;"><button onclick="abcd()" class="btn btn-outline-dark vdo" id="vdo"><?php echo $standard_club_section[$language]['14'] ?></button></li>
                 </ul>
               </div>
               <div class="portfolio-item row" id="photo_gallary" style="margin-left: 10px;">
