@@ -133,6 +133,10 @@
                                     Swal.fire('Enter Score');
                                 }else if(score =="0"){
                                   //  isvalid = true;
+                                  $('#err_score').text('');
+                                }else if(score > 0){
+                                   
+                                    $('#err_score').text('');
                                 }
 
                                 if(comment > 500){

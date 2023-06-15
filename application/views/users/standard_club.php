@@ -117,7 +117,8 @@ padding-left: 5px;
 }
 </style>
 <?php
-include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+// include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+require(APPPATH.'views/users/language.php');
 $en_select='';
 $hn_select='';
 $language=''; 

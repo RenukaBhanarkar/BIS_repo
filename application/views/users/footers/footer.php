@@ -1,5 +1,9 @@
 <?php
-include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+// include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+// include '../Users/language.php';
+// require('..\users\language.php');
+// $this->load->view('users/language');
+require(APPPATH.'views/users/language.php');
 $en_select='';
 $hn_select='';
 $language=''; 
