@@ -60,16 +60,33 @@ class Miscellaneous_competition extends CI_Model {
         }
     }
     public function manageCompetition(){
+        $t=time();
+        $current_time = (date("H:i:s",$t));
+
         $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
         $this->db->where_in('tbl_mst_competition_detail.status',array(2,3,4,5,6,1));
         $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tbl_mst_competition_detail.comp_level');
         $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tbl_mst_competition_detail.available_for');
         $this->db->join('tbl_mst_competition_type tmct','tmct.id=tbl_mst_competition_detail.type');
+        $this->db->where('tbl_mst_competition_detail.end_date >=' ,date("Y-m-d"));
         $this->db->order_by('created_on','desc');
 
        // $this->db->where('tbl_mst_competition_detail.start_date >=' ,date("Y-m-d")); 
-        return $this->db->get('tbl_mst_competition_detail')->result_array();
+        // return $this->db->get('tbl_mst_competition_detail')->result_array();
+        $rs=array();
+        $res=$this->db->get('tbl_mst_competition_detail')->result_array();
+
+        foreach($res as $row){
+            if($row['end_date'] == date("Y-m-d") ){
+                 if($row['end_time'] >= $current_time){
+                     array_push($rs,$row);
+                 }
+             }else{
+                 array_push($rs,$row);
+             }
+         }
+         return $rs;
     }
     public function closedCompetition(){
         $t = time();
@@ -107,7 +124,49 @@ class Miscellaneous_competition extends CI_Model {
                 }
             }
         }
-        return $rs;  
+       // return $rs;  
+        $abcd=array();
+        // if(count($rs) > 0){
+        //     foreach($rs as $list){
+
+                
+        //     }
+        // }
+        if(!empty($rs)){
+          //  $res = $query->result_array();
+            foreach($rs as $list){
+                $this->db->select('tucar.*');
+                $this->db->from('tbl_users_competition_attempt_record tucar');
+                $this->db->where('tucar.competiton_id',$list['comp_id']);
+                $que=$this->db->get();
+                $query=$que->result_array();
+                // print_r($query[0]['ev_name']); die;
+                $list['total_task']=count($query);
+
+                $this->db->select('tucar.*');
+                $this->db->from('tbl_users_competition_attempt_record tucar');
+                $this->db->where('tucar.competiton_id',$list['comp_id']);
+                $this->db->where('tucar.status','2');
+                $que=$this->db->get();
+                $query1=$que->result_array();
+                // print_r($query[0]['ev_name']); die;
+                $list['total_task_under_review']=count($query1);
+
+                $this->db->select('tucar.*');
+                $this->db->from('tbl_users_competition_attempt_record tucar');
+                $this->db->where('tucar.competiton_id',$list['comp_id']);
+                $this->db->where('tucar.status','3');
+                $que=$this->db->get();
+                $query1=$que->result_array();
+                // print_r($query[0]['ev_name']); die;
+                $list['total_task_reviewed']=count($query1);
+
+
+                    array_push($abcd,$list);
+                
+            }
+        }
+        return $abcd;
     }
     public function ongoingCompetition(){
         $t = time();
@@ -373,7 +432,7 @@ class Miscellaneous_competition extends CI_Model {
      public function SubmittedCompetition($comp_id){
         $this->db->select('tucar.*,tu.user_mobile,tu.email,tu.user_name,tu.StdClubMemberClass,tmcd.competiton_name,tmqa.title as avai_for,tmcd.score as total_marks,tmcd.comp_id');
         $this->db->from('tbl_users_competition_attempt_record tucar');
-        $this->db->join('tbl_users tu','tu.user_id=tucar.user_id');
+        $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
         $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id');
         $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
         $this->db->where('tucar.competiton_id',$comp_id);        
