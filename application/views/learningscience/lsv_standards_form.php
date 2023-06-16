@@ -184,8 +184,9 @@
                     </div>
                     <div class="col-md-12 submit_btn p-3">
                         <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#" id="btnsubmitdata">Submit</a>
+                         <button onclick="history.back()" class="btn btn-danger btn-sm text-white">Cancel</button> 
                         <input type="reset" class="btn btn-warning btn-sm text-white"  name="Reset">
-                        <a href="lsv_standards_list"class="btn btn-primary btn-sm text-white submit">Back</a>
+                        <!-- <a href="lsv_standards_list"class="btn btn-primary btn-sm text-white submit">Back</a> -->
                         <!-- <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button> -->
                     </div>
                     

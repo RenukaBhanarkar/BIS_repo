@@ -71,7 +71,7 @@
                                 
                                 
                                 
-                                <button onclick="updateStatusLiveSession('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Create</button>
+                                <button onclick="updateStatusLiveSession('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Create</button>
                                 <button onclick="updateStatusLiveSession('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
                                 <?php if (in_array(4, $permissions)) { ?>
                                 <button onclick="deleteLiveSession(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>

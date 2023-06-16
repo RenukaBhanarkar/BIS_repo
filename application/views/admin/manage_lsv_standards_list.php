@@ -62,7 +62,7 @@
                                   <td><?= $value['views']?></td>
                                   <td>Send For Approval</td>
                                   <td><?= date("m-d-Y", strtotime($value['updated_on']));?></td>
-                                  <td><a href="lsv_standards_view/<?= encryptids("E",$value['id']);;?>" class="btn btn-primary btn-sm mr-2" title="View">Approva / Reject</a></td>
+                                  <td><a href="lsv_standards_view/<?= encryptids("E",$value['id']);;?>" class="btn btn-primary btn-sm mr-2" title="View">Approve / Reject</a></td>
                               </tr>
                           <?php }?>
                          
@@ -278,4 +278,5 @@
     $('#example_4').DataTable();
 
     });
+    
 </script>                                    

@@ -12,7 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BIS</title>
+    <title>Bureau of indian standard</title>
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/bis_logo.png" type="image/x-icon">
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url();?>assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

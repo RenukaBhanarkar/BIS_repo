@@ -129,7 +129,7 @@
                                  
                                     <!-- commented for set permission -->
                                     <?php if($list_yw['status']=="5"){ ?>
-                                    <button class="btn btn-warning btn-sm mr-2 unpublish" onclick="sendUnPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' title="View">UnPublish</button>
+                                    <button class="btn btn-warning btn-sm mr-2 unpublish" onclick="sendUnPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' title="View">Unpublish</button>
                                     <?php }else if($list_yw['status']=="6" || $list_yw['status']=="3"){ ?>
                                         <button class="btn btn-success btn-sm mr-2 publish" onclick="sendPublish('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>' data-email="<?php echo $list_yw['email']; ?>" title="View">Publish</button>
                                         <button class="btn btn-secondary btn-sm archive" onclick="sendArchive('<?php echo $list_yw['id']; ?>')" data-id ='<?php echo $list_yw['id']; ?>'>Archive</button>
@@ -264,9 +264,7 @@
 	</div>
 </div>
         <!-- Content Row -->
-        <div class="col-md-12 submit_btn p-3">
-        <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
-    </div>
+       
        
     </div>
     

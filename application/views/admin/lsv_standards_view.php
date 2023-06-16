@@ -1,7 +1,7 @@
  <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">learning Science via Standards</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Classroom</h1>
                         
                     </div>
 <!-- Content Row -->
@@ -41,30 +41,30 @@
                                 </div>
                             </div>
                             <div class="row">   
-                                    <div class="mb-2 col-md-12">
-                                        <label class="d-block text-font">Thumbnail Image</label>
+                                    <div class="mb-2 col-md-4">
+                                        <label class="d-block text-font">Thumbnail</label>
                                         <div>
                                             <img src="<?= base_url()?><?= $liveSession['thumbnail']?>" alt="#" class=""style="width: 200px;">
                                         </div> 
                                     </div>
-                                </div>
+                                
 
                              <?php 
                              if ($liveSession['type_of_post']==1) { ?>
-                                <div class="row">   
-                                    <div class="mb-2 col-md-12">
-                                        <label class="d-block text-font">View Image</label>
+                                  
+                                    <div class="mb-2 col-md-4">
+                                        <label class="d-block text-font">Image</label>
                                         <div>
                                             <img src="<?= base_url()?><?= $liveSession['image']?>" alt="#" class="" style="width: 200px;">
                                         </div> 
                                     </div>
-                                </div>
+                                    </div>
 
                                 <div class="row">   
                                     <div class="mb-2 col-md-12">
-                                        <label class="d-block text-font">View PDF</label>
+                                        <!-- <label class="d-block text-font">View PDF</label> -->
                                         <div> 
-                                            <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">view PDF</a>
+                                            <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">View PDF</a>
                                         </div> 
                                     </div>
                                 </div>
@@ -115,8 +115,8 @@
                 <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve">
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
                 <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
-                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/Manage_session_list'">Back</a>
+                <a class="btn btn-warning btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-danger btn-sm text-white cancel" onclick="location.href='<?php echo base_url();?>admin/manage_lsv_standards_list'">Cancel</a>
             </div>
             <?php } ?>
             </form>
@@ -126,7 +126,7 @@
                     </div>
                     <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                           <div class="col-md-12 submit_btn p-3">
-                               <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/Manage_session_list'">Back</a>
+                               <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/manage_lsv_standards_list'">Back</a>
                           </div>  
                           <?php } ?>
                         </div> 
@@ -152,7 +152,26 @@
 
     }
 </script>
-
+<script>
+$('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url();?>admin/manage_lsv_standards_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+</script>
             <!-- End of Main Content -->
 
             <!-- Footer -->
