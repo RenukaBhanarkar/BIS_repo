@@ -1729,7 +1729,7 @@ class Admin extends CI_Controller
     //  print_r($_SESSION); die;
         try {
             $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
-            // $email_id = encryptids("D", $this->session->userdata('admin_email'));
+            $name = encryptids("D", $this->session->userdata('admin_name'));
             $admin_id = encryptids("D", $this->session->userdata('admin_id'));
             // $email_id = $this->input->post('email');
             //$random_pass	 = $this->randomPassword();
@@ -1804,11 +1804,52 @@ class Admin extends CI_Controller
     
     }
     public function update_profile(){
+        // print_r($_FILES); die;
+        $formdata['id'] = $this->input->post('id');
+        //$formdata['title'] = $this->input->post('title');
+        $formdata['caption'] = $this->input->post('banner_caption');
+        //  $formdata['image'] = $this->input->post('old_doc');   
+
+        if (!file_exists('uploads/admin/profile')) {
+            mkdir('uploads/admin/profile', 0777, true);
+        }
+
+        $oldDocument = "";
+        $oldDocument = $this->input->post('old_img');
+        $document = "";
+
+        if (!empty($_FILES['bannerimg']['tmp_name'])) {
+            $document = "admin_profile" . time() . '.jpg';
+            $config['upload_path'] = './uploads/admin/profile';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']    = '100000';
+            $config['max_width']  = '3024';
+            $config['max_height']  = '2024';
+            $config['file_name'] = $document;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('bannerimg')) {
+                //$err[]=$this->upload->display_errors();
+                $data['status'] = 0;
+                $data['message'] = $this->upload->display_errors();
+            }
+        } else {
+            if (!empty($oldDocument)) {
+                $document =  $oldDocument;
+            }
+        }
+
+        if ($document) {
+            $data['photo'] = $document;
+        }
+
         $data['name']=$this->input->post('name');
         $data['dob']=$this->input->post('dob');
         $data['gender']=$this->input->post('gender');
         $data['contact_number']=$this->input->post('contact_number');
         $data['id'] = encryptids("D", $this->session->userdata('admin_id'));
+        // print_r($data); die;
         $res=$this->Admin_model->update_profile($data);
         if($res){
             $this->session->set_flashdata('MSG', ShowAlert("Profile Updated Successfully", "SS"));
@@ -3636,6 +3677,18 @@ class Admin extends CI_Controller
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/bt_the_mentorList');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function master_data_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/master_data_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function about_eBIS_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/about_eBIS_list');
         $this->load->view('admin/footers/admin_footer');
     }
 }

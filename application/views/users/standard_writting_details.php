@@ -199,7 +199,37 @@
         position: absolute;
         width: 100%;
     }
-  .countdown {
+  
+    .view_join_content:hover .discuss_caption {
+        display: block;
+    }
+
+    span.date-time {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    span.last-date {
+        font-size: 18px;
+        font-weight: 600;
+        color: black;
+    }
+
+    .quiz-text-date {
+        font-size: 14px;
+        color: red;
+        font-weight: 500;
+        width: 100%;
+
+        margin-top: 5px;
+    }
+ 
+#countdown{
+    /* text-align: end; */
+    padding-top:10px;
+}  
+ 
+    .countdown {
     margin-right: 13px;
     font-size: 16px;
     font-weight: 600;
@@ -237,40 +267,25 @@
         margin-top: 5px;
     }
 #countdown{
-    text-align: end;
+    /* text-align: end; */
+    padding-top:10px;
 }    
-#countdown li {
+.count_down_new{
     display: inline-block;
-    font-size: -2px;
-    /* list-style-type: none; */
+    font-size: 13px;
+    list-style-type: none;
     padding: 1em;
     text-transform: uppercase;
     text-align: center;
+    background: black;
+    color: white;
+    border-radius: 12px;
 }
 
-#countdown li span {
-    display: block;
-    font-size: 18px;
-}
-
-#countdown .emoji {
-  display: none;
-  padding: 1rem;
-}
-
-#countdown .emoji span {
-  font-size: 4rem;
-  padding: 0 .5rem;
-}
-
-@media all and (max-width: 768px) {
-#countdown li {
-    font-size: calc(1.125rem * var(--smaller));
-  }
+ 
+ 
+ 
   
-#countdown  li span {
-    font-size: calc(3.375rem * var(--smaller));
-  }
 }
 
     .view_join_content:hover .discuss_caption {
@@ -369,11 +384,37 @@ li span {
                         </p>
                         
                         <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
-                            <span class="start-end-time-title">Region 
+                            <span class="start-end-time-title">level
+ 
                                 <span class="quiz-text-date m-2">  <?=$getData['level']?> </span>
                             </span>
                             
                         </p>
+
+                        <?php if($getData['region'] !="") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Region 
+                                <span class="quiz-text-date m-2"><?= $getData['region'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php }?>
+                        <?php if($getData['branch'] !="") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">Branch 
+                                <span class="quiz-text-date m-2"><?= $getData['branch'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php }?>
+                        <?php if($getData['state'] !="") { ?> 
+                        <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
+                            <span class="start-end-time-title">State 
+                                <span class="quiz-text-date m-2"><?= $getData['state'];?></span>
+                            </span>
+                            
+                        </p>
+                        <?php }?>
 
                         <?php if ($getData['standard']!=0) {?>
                              <p class="time-start-end d-flex" style="margin-bottom:0px; margin-top: 10px; margin-left: 10px;">
@@ -392,46 +433,34 @@ li span {
                        
                         
                     </div>
-
- 
-                  
-
-
-                    <?php  if (!isset($_SESSION['user_session_id'])) {?>
-                    <?php if ($allFilds1==1 && $allFilds2==1) {?>
-                    <a href="<?php echo base_url() . "users/login"?>" class="btn startQuiz" id="startQuizLang"> <span>Login to Participate</span></a>
-                    <?php } else
-                    {?><br>
-                    <div class="alert alert-danger background-danger">
-                        
-                        Access denied
-                        </div>
-                    <?php }
-                    ?>
-                    
-                    <?php } else {?>
-                    <?php if ($allFilds1==1 && $allFilds2==1) {?>
-                    <a href="<?php echo base_url() . "users/standard_writting_login/"?><?php echo  $id= encryptids("E", $getData['id'] )?>" class="btn startQuiz" id="startQuizLang"> <span>Start</span></a>
-                    <?php } else
-                    {?>
-                        <br>
-                    <div class="alert alert-danger background-danger">
-                        
-                        Access denied
-                        </div>
-                    <?php }
-                    ?>
-
-                    <?php }?>
-                    <p id="countdown" class="countdown"> </p>
-                    <!-- <div id="countdown">
+                    <p id="ShowLoginButton" style="display:none">
+                        <?php  if (!isset($_SESSION['user_session_id'])) 
+                        { ?>
+                            <a href="<?php echo base_url() . "users/login"?>" class="btn startQuiz" id="startQuizLang"> <span>Login to Participate</span></a>
+                            <?php 
+                        } else
+                        {
+                            if ($allFilds1==1 && $allFilds2==1)  
+                                { ?>
+                                <a href="<?php echo base_url() . "users/standard_writting_login/"?><?php echo  $id= encryptids("E", $getData['id'] )?>" class="btn startQuiz" id="startQuizLang"> <span>Start</span></a>
+                            <?php }
+                            else
+                                { ?>
+                                    <div class="alert alert-danger background-danger">
+                                        Access denied
+                                    </div>
+                                <?php }
+                            }?>
+                        </p>
+                    <!-- <p id="countdown" class="countdown"> </p> -->
+                    <div id="countdown">
                             <ul style="padding-left:0px">
                             <li class="count_down_new"><span id="days"></span>days</li>
                             <li class="count_down_new"><span id="hours"></span>Hours</li>
                             <li class="count_down_new"><span id="minutes"></span>Minutes</li>
                             <li class="count_down_new"><span id="seconds"></span>Seconds</li>
                             </ul>
-                      </div> -->
+                      </div>
                     
 
                     
@@ -540,16 +569,20 @@ li span {
 </div>
 </div>
 <script>
-// Set the date we're counting down to
+ 
 <?php date_default_timezone_set("Asia/Calcutta"); ?>
 
 var current_time = '<?php echo date('Y-m-d H:i:s');?>';
 
-var endDate = '<?php echo $getData['start_date'];?> <?php echo $getData['start_time'];?>'; 
+var startTime = '<?php echo $getData['start_date'];?> <?php echo $getData['start_time'];?>';
 
-var countDownDate = new Date(endDate).getTime();
+// if(current_time < startTime){
+    //var countDownDate = new Date("2023-05-24 22:00:00").getTime();
+var countDownDate = new Date(startTime).getTime();
+
 
 var x = setInterval(function() {
+
   
   var now = new Date().getTime();
     
@@ -563,8 +596,13 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
  
-  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+//   document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+//   + minutes + "m " + seconds + "s ";
+
+document.getElementById("days").innerHTML = days + "d ";
+document.getElementById("hours").innerHTML = hours + "h ";
+document.getElementById("minutes").innerHTML = minutes + "m ";
+document.getElementById("seconds").innerHTML = seconds + "s ";
     
   
   if (distance < 0) {
@@ -575,7 +613,6 @@ var x = setInterval(function() {
    
   }
 }, 1000);
-   
-
+  
 
 </script>

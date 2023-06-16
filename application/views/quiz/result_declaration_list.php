@@ -21,9 +21,9 @@
     
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
+            <div class="card border-top card-body ">
                 <?php if(!empty ($DeclarationList)) { ?> 
-                <table id="example" class="table-bordered display nowrap" style="width:100%">
+                <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
                     <thead>
                         <tr>                            
                             <th>Sr. No.</th>

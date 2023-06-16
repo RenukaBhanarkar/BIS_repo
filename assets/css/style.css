@@ -1754,7 +1754,7 @@ button.btn_common {
 	background-clip: border-box;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;
-	margin: 12px;
+	/* margin: 12px; */
 	/* border-top: 4px solid green; */
 	height: 100%;
 }
@@ -1769,6 +1769,7 @@ p.card-text {
 .card-body-new {
 	flex: 1 1 auto;
 	font-weight: 700;
+    padding: 8px;
 }
 /* .card-text {
 	text-align: center;

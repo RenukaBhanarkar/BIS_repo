@@ -9,12 +9,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="DVBETBF, DVBETBF, Government of NCT of Delhi">
-    <meta name="description" content="DVBETBF, DVBETBF, Government of NCT of Delhi">
+    <meta name="keywords" content="BIS exchangeforum">
+    <meta name="description" content="BIS exchangeforum">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" />
     <!-- <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" class="">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap5.min.css" class="">
     <!-- Bootstrap CSS -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,8 +78,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="contact">
                             <ul>
-                                <li><a href="#">हिन्दी</a></li>
-                                <!-- <li><a href="#">English</a></li> -->
+                                <select onchange="set_language()" name="language" id="language">
+                                <?php
+                                // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+                                // $this->load->view('users/language');
+                                require(APPPATH.'views/users/language.php');
+                               $en_select='';
+                               $hn_select='';
+                               $language=''; 
+                                if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+                                    $en_select='selected';
+                                    $language='en';
+                                }else{
+                                    $hn_select='selected';
+                                    $language='hn';
+                                }
+                                ?>
+                                    <option value="en" <?php echo $en_select ?>>English</option>
+                                    <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
+                                </select>
+                                 <!-- <li><a href="#" value="hn">हिन्दी</a></li> -->
+                                <!-- <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
                                     <a href="#" id="blue_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
@@ -189,7 +208,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </div>
                         </nav>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -206,24 +224,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="<?php echo base_url(); ?>" style="color: white;">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="<?php echo base_url(); ?>" style="color: white;"><?php echo $top_nav[$language]['0'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link active" href="https://www.bis.gov.in/" target="_blank" aria-current="page" onclick="bis_pop()" style="color: white;">BIS</a>
+                                     <a class="nav-link active" href="https://www.bis.gov.in/" target="_blank" aria-current="page" onclick="bis_pop()" style="color: white;"><?php echo $top_nav[$language]['1'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;">About Exchange Forum</a>
+                                    <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;"><?php echo $top_nav[$language]['2'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link active" href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="_blank" aria-current="page" onclick="publish_pop()" style="color: white;">Published Standards</a>
+                                     <a class="nav-link active" href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="_blank" aria-current="page" onclick="publish_pop()" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" target="_blank" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" onclick="know_pop()" style="color: white;">Know Your Standards</a>
+                                    <a class="nav-link" target="_blank" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" onclick="know_pop()" style="color: white;"><?php echo $top_nav[$language]['4'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" target="_blank" href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" style="color: white;">SNAP 2022 - 27</a>
+                                    <a class="nav-link" target="_blank" href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" style="color: white;"><?php echo $top_nav[$language]['5'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" style="color: white;">NBC</a>
@@ -232,10 +250,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" style="color: white;">NEC</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url(); ?>users/contact_us" style="color: white;">Contact Us</a>
+                                    <a class="nav-link" href="<?php echo base_url(); ?>users/contact_us" style="color: white;"><?php echo $top_nav[$language]['6'] ?></a>
                                 </li>
                                 <li class="nav-item guidance_quest">
-                                    <a class="nav-link"  target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" style="color: white;">User Manual</a>
+                                    <a class="nav-link"  target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" style="color: white;"><?php echo $top_nav[$language]['7'] ?></a>
                                 </li>
                                 
                                 
@@ -254,3 +272,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
     </script>
+    

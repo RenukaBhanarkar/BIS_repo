@@ -80,12 +80,12 @@
                                 <td><img src="<?php echo base_url().$list['thumbnail']; ?>" width="60px"></td>
                                 <td><?php echo $list['avai_for']; ?></td>
                                 <td><?php echo $list['title']; ?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo $list['total_submission']; ?></td>
+                                <td>0</td>
+                                <td><?php echo $list['total_reviewed']; ?></td>
                                 
                                 <td>
-                                <a href="<?php echo base_url().'Standardswritting/view_submission_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <!-- <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a> -->
                                  <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                                 </td>

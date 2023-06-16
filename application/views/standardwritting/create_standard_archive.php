@@ -49,7 +49,7 @@
                               
                               <td class="d-flex">
                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >View</a>
-                                 <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',1)">Restore</a>
+                                 <a href="#" class="btn btn-success btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',0)">Restore</a>
                              </td>
                           </tr>
                           <?php } ?>
@@ -68,7 +68,7 @@
 
 <script>
   function updateStatus(id,status) {
-    if (status==1) { statusdata='Restore'; }
+    if (status==0) { statusdata='Restore'; }
     if (status==9) { statusdata='Archive'; }
     if (status==2) { statusdata='Send For Approval'; }
     if (status==5) { statusdata='Publish'; }

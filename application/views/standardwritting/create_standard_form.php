@@ -170,7 +170,7 @@
                     </div>
                     <div class="col-md-12 submit_btn p-3">
                         <a class="btn btn-success btn-sm text-white" id="btnsubmitdata" >Submit</a>
-                        <a class="btn btn-danger btn-sm text-white cancel" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                        <a class="btn btn-danger btn-sm text-white "onclick="cancel()" >Cancel</a>
                         <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -229,22 +229,7 @@
 <!-- End of Main Content -->
 <script>
 $(document).ready(function(){
-$('.cancel').on('click',function(){
-Swal.fire({
-title: 'Do you want to cancel?',
-showDenyButton: true,
-showCancelButton: false,
-confirmButtonText: 'Cancel',
-denyButtonText: `Close`,
-}).then((result) => {
-/* Read more about isConfirmed, isDenied below */
-if (result.isConfirmed) {
-// Swal.fire('Saved!', '', 'success')
-} else if (result.isDenied) {
-// Swal.fire('Changes are not saved', '', 'info')
-}
-})
-})
+ 
 });
 $(document).ready(function(){
 $('.submit').on('click',function(){
@@ -612,5 +597,21 @@ function PreviewImage4() {
 pdffile=document.getElementById("consolation_file").files[0];
 pdffile_url=URL.createObjectURL(pdffile);
 $('#cviewer').attr('src',pdffile_url);
+}
+
+function cancel() 
+{ 
+  Swal.fire({
+    title: 'Do you want to Cancel Form ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Cancel Form',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "create_standard_list"; 
+    }  
+  })
 }
 </script>

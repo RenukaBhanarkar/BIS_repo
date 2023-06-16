@@ -29,8 +29,8 @@
     
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="table-bordered display nowrap" style="width:100%">
+            <div class="card border-top card-body">
+                <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -68,7 +68,7 @@
                                 <button onclick="updateWinnerWall('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">UnPublish</button>
                                 <?php }?>
                                 <?php if ($value['status']!=5) {?>
-                                <button onclick="updateWinnerWall('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Publish</button>
+                                <button onclick="updateWinnerWall('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Publish</button>
                                 <button onclick="updateWinnerWall('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
 
 
@@ -133,7 +133,7 @@
 </div>
 <!-- /.container-fluid -->
 <div class="col-md-12 submit_btn p-3">
-    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/exchange_forum'">Back</a>
+<button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
 </div>
 </div>
 <!-- End of Main Content -->

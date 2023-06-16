@@ -44,6 +44,7 @@
                                 <th>Available For</th>
                                 <th>Level of Competition</th>
                                 <th>Status</th>
+                                <th>Reject Reason</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -63,9 +64,14 @@
                               <td><?=$value['availability']?></td>
                               <td><?=$value['level']?></td> 
                               <td><?=$value['status_name']?></td>  
-                              <td class="d-flex">
+                              <td><?=$value['remark']?></td>  
+                              <td class="d-flex"> 
+                                <?php if($value['status']==2) {?>
+                                <a  class="btn btn-primary btn-sm mr-2" onclick="viewApprove('<?= $value['id']?>')" >Approve/Reject</a>
+                              <?php } else { ?><a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
 
-                                 <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >Approve/Reject</a>
+                            <?php }?>
+
                                </td>
                            </tr>
                        <?php } ?>
@@ -174,10 +180,26 @@ function editData(id)
  function viewData(id) 
 { 
   Swal.fire({
-    title: 'Do you want to View ?',
+     title: 'Do you want to View ?',
     showDenyButton: true,
     showCancelButton: false,
     confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "create_online_view/"+id; 
+    }  
+  })
+}
+
+ function viewApprove(id) 
+{ 
+  Swal.fire({
+     title: 'Do you want to Approve / Reject ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Approve / Reject',
     denyButtonText: `Cancel`,
   }).then((result) => { 
     if (result.isConfirmed) 

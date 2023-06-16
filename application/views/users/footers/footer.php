@@ -1,3 +1,20 @@
+<?php
+// include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+// include '../Users/language.php';
+// require('..\users\language.php');
+// $this->load->view('users/language');
+require(APPPATH.'views/users/language.php');
+$en_select='';
+$hn_select='';
+$language=''; 
+if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+    $en_select='selected';
+    $language='en';
+}else{
+    $hn_select='selected';
+    $language='hn';
+}
+?>
 <style class="">
  
  a.dropdown-item:hover {
@@ -26,13 +43,13 @@ i.fa.fa-chevron-down {
                                     </ul>
                             </div> -->
                             <div class="d-flex">
-                            <h4 id="helf_toggle" style="cursor: pointer;">Accessibility & Help</h4>
+                            <h4 id="helf_toggle" style="cursor: pointer;"><?php echo $footer_content[$language]['0'] ?></h4>
                             <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </div>
                             <ul id="toggle_show" style="display:none;">
-                                <li><a href="<?php echo base_url(); ?>users/feedback_form">Feedback</a></li>
-                                <li><a href="<?php echo base_url(); ?>users/help">Help</a></li>
-                                <li><a href="<?php echo base_url(); ?>users/sitemap">Sitemap</a></li>
+                                <li><a href="<?php echo base_url(); ?>users/feedback_form"><?php echo $footer_content[$language]['1'] ?></a></li>
+                                <li><a href="<?php echo base_url(); ?>users/help"><?php echo $footer_content[$language]['2'] ?></a></li>
+                                <li><a href="<?php echo base_url(); ?>users/sitemap"><?php echo $footer_content[$language]['3'] ?></a></li>
                                 <!-- <li><a href="#">Accessibility</a></li> -->
                             </ul>
                         </div>
@@ -55,24 +72,21 @@ i.fa.fa-chevron-down {
                                     </ul>
                             </div> -->
                             <div class="d-flex">
-                             <h4 id="legal_toggle" style="cursor: pointer;">Legal</h4>
+                             <h4 id="legal_toggle" style="cursor: pointer;"><?php echo $footer_content[$language]['4'] ?></h4>
                              <i class="fa fa-chevron-down" aria-hidden="true"></i>
                              </div>
                             <div class="col-lg-12 footer_text">
                                 <ul id="legal_show" style="display:none;">
-                                    <li><a  href="<?php echo base_url(); ?>users/terms_condition">Terms & Conditions</a>
+                                    <li><a  href="<?php echo base_url(); ?>users/terms_condition"><?php echo $footer_content[$language]['5'] ?></a>
                                     </li>
-                                    <li><a  href="<?php echo base_url(); ?>users/privacy_policy">Privacy Policy</a></li>
-                                    <li><a  href="<?php echo base_url(); ?>users/hyperlinking_policy">Hyper Linking
-                                            Policy</a></li>
-                                    <li><a  href="<?php echo base_url(); ?>users/disclaimer">Disclaimer</a></li>
-                                    <li><a  href="<?php echo base_url(); ?>users/copyright">Copyright Policy</a></li>
-                                    <li><a  href="<?php echo base_url(); ?>users/cmap">Website Content Contribution,
-                                            Moderation & Approval Policy (CMAP)</a></li>
-                                    <li><a  href="<?php echo base_url(); ?>users/cap">Content Archival Policy (CAP)</a>
+                                    <li><a  href="<?php echo base_url(); ?>users/privacy_policy"><?php echo $footer_content[$language]['6'] ?></a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/hyperlinking_policy"><?php echo $footer_content[$language]['7'] ?></a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/disclaimer"><?php echo $footer_content[$language]['8'] ?></a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/copyright"><?php echo $footer_content[$language]['9'] ?></a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/cmap"><?php echo $footer_content[$language]['10'] ?></a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/cap"><?php echo $footer_content[$language]['11'] ?></a>
                                     </li>
-                                    <li><a  href="<?php echo base_url(); ?>users/content_review_policy">Content Review
-                                            Policy (CRP)</a></li>
+                                    <li><a  href="<?php echo base_url(); ?>users/content_review_policy"><?php echo $footer_content[$language]['12'] ?></a></li>
 
                                 </ul>
                             </div> 
@@ -95,7 +109,7 @@ i.fa.fa-chevron-down {
                     <div class="row">
                         <div class="col-sm-12 col-lg-12 footer_text">
                             <div class="block-menu">
-                                <h4>Useful Links</h4>
+                                <h4><?php echo $footer_content[$language]['13'] ?></h4>
                                 <ul class="usefull-links">
                                     
                                 </ul>
@@ -112,7 +126,7 @@ i.fa.fa-chevron-down {
 
                 </div> -->
                 <div class="row">
-                <div class="col-2"> <h4>Follow us</h4></div>
+                <div class="col-2"> <h4><?php echo $footer_content[$language]['14'] ?></h4></div>
                     <div class="social-content col-4">
                    
                        
@@ -426,7 +440,7 @@ $(document).ready(function(){
                 var row = '';
                 
                 for (i in data) { 
-                    row += '<li><a href="https://'+data[i].link+'" target="_blank" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
+                    row += '<li><a href="https://'+data[i].link+'" target="_blank" onclick="useful_link()" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
                                     
                 }
                 
@@ -463,7 +477,7 @@ row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].ti
 });
  });
 </script>
-<script>
+    <script>
         function bis_pop(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
@@ -477,6 +491,27 @@ row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].ti
         function know_pop(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
+    </script>
+    <script>
+        function useful_link(){
+            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+    </script>
+    <script>
+        <?php 
+         if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+         $url = "https://";   
+    else  
+         $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+        $url.= $_SERVER['REQUEST_URI'];   ?>
+        function set_language(){
+            var language=jQuery('#language').val();
+            window.location.href='?language='+language;
+        
+        }
+        
     </script>
 </body>
 

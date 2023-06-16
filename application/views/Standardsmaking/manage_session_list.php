@@ -16,8 +16,8 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="hover table-bordered" style="width:100%">
+            <div class="card border-top card-body">
+                <table id="example" class="table-bordered table-responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -45,8 +45,8 @@
                                 ?>
                             <?= $data?></td>
                             <td><?= $value['created_on']?></td>
-                            <td>567</td>
-                            <td>45</td>
+                            <td><?= $value['likes']?></td>
+                            <td><?= $value['views']?></td>
                             <td><?= $value['status_name']?></td>
                             <td><?= $value['reason']?></td>
                             <td><?= $value['updated_on']?></td>
@@ -55,17 +55,17 @@
 
                                  <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
                                 <?php if ($user_id!=3) {?>
-                                    <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                    <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php  }  else { ?>
 
 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
                                 <?php if (in_array(3, $permissions)) { ?>
                                 <?php if ($value['status']!=5 && $value['status']!=2 && $value['status']!=3)
                                 {?>
-                                <a href="live_session_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <a onclick="editData('<?= $id?>')" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
                                 
                                 <?php } ?>
                                 <?php }?>
@@ -77,7 +77,7 @@
                                 <?php }?>
                                 <?php if ($value['status']==1)
                                 {?>
-                                <button onclick="updateStatusLiveSession('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img"> Approval</button>
+                                <button onclick="updateStatusLiveSession('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Send for approval</button>
                                 
                                 <?php } ?>
                                 <?php if ($value['status']==3  || $value['status']==6 )
@@ -227,7 +227,7 @@ function updateStatusLiveSession(id,status)
 //         }
 //     });
 // });
-if (status==2)  { var titletext= "Are you sure you want to Send for Approval ?"; var buttontext ="Send for Approval"; }
+if (status==2)  { var titletext= "Are you sure you want to Send for approval ?"; var buttontext ="Send for Approval"; }
 if (status==5)  { var titletext= "Are you sure you want to Publish ?"; var buttontext ="Publish"; }
 if (status==6)  { var titletext= "Are you sure you want to UnPublish ?"; var buttontext ="UnPublish"; }
 if (status==9)  { var titletext= "Are you sure you want to Archives ?"; var buttontext ="Archives"; }
@@ -261,6 +261,41 @@ alert("Error,Please try again.");
 }
 })
 }
+</script>
+
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_edit/"+id; 
+    }  
+  })
+}
+
 </script>
 <!-- End of Main Content -->
 </body>

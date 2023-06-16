@@ -22,7 +22,7 @@
             </div>
             <div class="mb-2 col-md-4">
                 <label class="d-block text-font">Mobile Number<sup class="text-danger">*</sup></label>
-                <input type="tel" class="form-control input-font" name="mobile_no" id="mobile_no" pattern="[1-9]{1}[0-9]{9}" minlength="10" maxlength="10" placeholder="Enter Mobile Number" required="">
+                <input type="tel" class="form-control input-font" name="mobile_no" id="mobile_no" pattern="[1-9]{1}[0-9]{9}" minlength="10" maxlength="10" placeholder="Enter Mobile Number" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
                 <span class="text-danger" id="err_mobile"></span>
             </div>
             <div class="mb-2 col-md-4">
@@ -130,6 +130,9 @@
         if(description=="" || description==null){
             $('#err_description').text('This value is required');
             allfield=false;
+        } if(description.length > 2000){
+            $('#err_description').text('Description length should be 2000 characters only');
+            allfield=false;
         }else{
             $('#err_description').text('');
            
@@ -147,7 +150,7 @@
                             }).then((result) => {
                             /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
-                                Swal.fire('Saved!', '', 'success')
+                                Swal.fire('Feedback submitted successfully!', '', 'success')
                                 // return true;
                                 $('#addFeedback').submit();
                                 // return true
@@ -196,7 +199,17 @@
                     }
                     })
     })
-   
+    $(document).ready(function(){
+    $("#name").keydown(function(event){
+        var inputValue = event.which;
+        // allow letters and whitespaces only.
+        if(!(inputValue >= 65 && inputValue <= 90) && (inputValue != 32 && inputValue != 8 && inputValue!= 9)) { 
+            event.preventDefault(); 
+        }
+    });
+});
+
+
 
 //});
 </script>

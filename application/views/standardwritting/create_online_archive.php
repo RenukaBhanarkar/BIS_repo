@@ -57,7 +57,7 @@
 
                             <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
                            
-                            <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',1)" >Restore</a>
+                            <a href="#" class="btn btn-info btn-sm mr-2" onclick="updateOnlineStatus('<?= $value['id']?>',10)" >Restore</a>
  
                                   
                               </td>
@@ -76,7 +76,7 @@
     <!-- End of Main Content -->
 <script>
   function updateOnlineStatus(id,status) {
-    if (status==1) { statusdata='Restore'; }
+    if (status==10) { statusdata='Restore'; }
     if (status==9) { statusdata='Archive'; }
     Swal.fire({
       title: 'Do you want to Restore?',

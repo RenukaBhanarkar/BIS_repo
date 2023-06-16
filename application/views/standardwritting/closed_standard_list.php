@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Closed Competition</li>
                 
                 </ol>
-            </nav>
+            </nav> 
         </div>
 
         <!-- Content Row -->
@@ -76,7 +76,7 @@
                                   <td><?php echo "Result Declared"; ?></td>  
                                   <?php } ?>
                               <td class="d-flex">
-                                 <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                 <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-warning btn-sm mr-2" >View Submission</a>
                                  <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>
@@ -103,7 +103,7 @@
     <!-- End of Main Content -->
  </body>
 <script>
-/*function viewData(id) 
+function viewData(id) 
 { 
   Swal.fire({
     title: 'Do you want to View ?',
@@ -132,11 +132,11 @@ function viewSubmissionData(id)
       window.location.href = "submission_view/"+id; 
     }  
   })
-}*/
+}
 </script>
 
 <script>
-/*  function updateOnlineStatusReview(id) {
+   function updateOnlineStatusReview(id) {
     if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Update'; }
     Swal.fire({
@@ -235,5 +235,5 @@ $('.sent_approve').on('click',function(){
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
                     })
-})*/
+})
 </script>

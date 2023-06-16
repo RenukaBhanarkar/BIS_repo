@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-12 mt-3">
             <div class="card border-top card-body">
-                <table id="example" class="hover table-bordered" style="width:100%">
+                <table id="example" class="hover table-bordered table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -63,10 +63,10 @@
                                 <?php $id= encryptids("E", $value['id'] )?>
                                 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewData('<?= $id?>')"class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
                                 <?php if (in_array(3, $permissions)) { ?>
-                                <a href="live_session_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <a onclick="editData('<?= $id?>')" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
                                 <?php }?>
                                 
                                 
@@ -237,4 +237,40 @@ alert("Error,Please try again.");
 }
 })
 }
+</script>
+
+
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_edit/"+id; 
+    }  
+  })
+}
+
 </script>

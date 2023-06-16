@@ -664,7 +664,8 @@ class Users extends CI_Controller
           
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
-                CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
+                CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
+               // CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
            // CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
               
                 CURLOPT_RETURNTRANSFER => true,
@@ -1047,11 +1048,11 @@ class Users extends CI_Controller
         $data['news'] = $this->Admin_model->news();
         $data['events'] = $this->Admin_model->events();
         $allquize = $this->Users_model->getStdClubQuizAll();
-
+ 
         $data['Winnerwall'] = $this->Users_model->getWinnerWall();
         $data['allquize'] = $allquize;
-        $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp('4',array(1));
-        $data['poster']=$this->Miscellaneous_competition->getPublishedComp('4',array(2));
+        $data['essy_writing']=$this->Miscellaneous_competition->getPublishedComp1('4',array(1));
+        $data['poster']=$this->Miscellaneous_competition->getPublishedComp1('4',array(2));
         $data['competition']=$this->Miscellaneous_competition->getPublishedComp1('4',array(3,4,5)); 
 
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
@@ -2947,7 +2948,7 @@ class Users extends CI_Controller
             $email_id=$this->input->post('email');
            // echo $msg.'<br>'.$subject.'<br>',$email_id; die;
             $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
-            $this->session->set_flashdata('MSG', ShowAlert("Feedback recorded successfully.", "SS"));
+            $this->session->set_flashdata('MSG', ShowAlert("Feedback Submitted Successfully.", "SS"));
             redirect(base_url() . "users/feedback_form", 'refresh');
         }
     }
@@ -3772,6 +3773,21 @@ if ($availability==1)
         $this->load->view('users/headers/header');
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         $this->load->view('users/standard_writting_all',$data);
+        $this->load->view('users/footers/footer');
+      }
+      public function language(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/language');
+        $this->load->view('users/footers/footer');
+      }
+      public function about_eBIS(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/about_eBIS');
+        $this->load->view('users/footers/footer');
+      }
+      public function essay_writting_all(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/essay_writting_all');
         $this->load->view('users/footers/footer');
       }
     

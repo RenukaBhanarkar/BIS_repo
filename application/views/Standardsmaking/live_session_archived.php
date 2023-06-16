@@ -53,11 +53,11 @@
 
                                <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
                                 <?php if ($user_id!=3) {?>
-                                    <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                    <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php  }  else { ?>
 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
 
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
@@ -158,5 +158,40 @@
     }
 
     </script>
+    
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_edit/"+id; 
+    }  
+  })
+}
+
+</script>
     <!-- End of Main Content -->
  </body>

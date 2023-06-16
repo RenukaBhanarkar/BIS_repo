@@ -318,6 +318,18 @@
                 </div>
                 </a>
             </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="<?php echo base_url().'admin/about_eBIS_list'; ?>"> 
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center d-flex">
+                            <h5 class="font-weight-bold text-success mb-1">About eBIS</h5>
+                            <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
             <?php } ?>
            <?php }else{  ?> 
                       
@@ -363,8 +375,6 @@
                 </div>
                 </a>
             </div>
-          
-            
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url().'subadmin/WordOfStandardBanner'; ?>"> 
                 <div class="card border-left-primary shadow h-100 py-2">

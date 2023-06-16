@@ -66,6 +66,11 @@
                                 <?php echo $records_details['answer_text']; ?>
                                 </p>
                                 </div>
+                                <div class="mb-2 col-md-12">
+                                    <?php if(!($records_details['image']=="")){ ?>
+                                    <a class="btn btn-primary btn-sm text-white" href="<?php echo base_url().$records_details['image'] ?>" target="_blank"> View Document</a>
+                                    <?php } ?>
+                                </div>
                                 <div class="mb-2 col-md-2">
                                     <label class="d-block text-font">Score<sup class="text-danger">*</sup></label>
                                     <div class="d-flex">
@@ -128,6 +133,10 @@
                                     Swal.fire('Enter Score');
                                 }else if(score =="0"){
                                   //  isvalid = true;
+                                  $('#err_score').text('');
+                                }else if(score > 0){
+                                   
+                                    $('#err_score').text('');
                                 }
 
                                 if(comment > 500){

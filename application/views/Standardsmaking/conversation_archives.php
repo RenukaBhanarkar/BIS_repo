@@ -36,11 +36,12 @@
                             <td><?= $key+1;?></td>
                             <td><?= $value['title'];?></td>
                             <td><?= $value['description'];?></td>
+                            <?php $id= encryptids("E", $value['id'] )?>
                             <td><a href="<?= base_url()?><?= $value['video']?>"><i class="fa fa-video"></i></a></td>
                             <td><?= $value['status_name'];?></td>
                             <td class="d-flex">
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="conversation_view/<?= $value['id'];?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php } ?>
                                 <button onclick="updateStatusConversation('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Restore</button>
                             </td>
@@ -74,14 +75,27 @@
     </div>
 </div>
 </div>
+ 
 <script type="text/javascript">
+ 
+
+ 
+
 function updateStatusConversation(id,status)
-{
-console.log(status)
-if (status==1)  { $(".sms").text('Restore'); }
-$('#updatemodel').modal('show');
-$('.updatestatus').on('click', function()
-{
+{ 
+if (status==1)  { var titletext='Restore'; }
+if (status==6)  { var titletext='Unpublish'; }
+if (status==9)  { var titletext='Archives'; }
+
+Swal.fire({
+title: 'Are you sur you want to '+ titletext +' ?',
+showDenyButton: true,
+showCancelButton: false,
+confirmButtonText: titletext,
+denyButtonText: `Cancel`,
+}).then((result) => {
+/* Read more about isConfirmed, isDenied below */
+if (result.isConfirmed) {
 $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>Standardsmaking/updateStatusConversation',
@@ -97,8 +111,76 @@ error: function(result) {
 alert("Error,Please try again.");
 }
 });
-});
+// Swal.fire('Saved!', '', 'success')
+} else if (result.isDenied) {
+// Swal.fire('Changes are not saved', '', 'info')
 }
-</script>>
+})
+}
+</script>
+
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "conversation_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "conversation_edit/"+id; 
+    }  
+  })
+}
+
+function deleteConversation(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Delete ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Delete',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+     $.ajax({
+type: 'POST',
+url: '<?php echo base_url(); ?>Standardsmaking/deleteConversation',
+data: {
+id: id,
+},
+success: function(result)
+{
+location.reload();
+},
+error: function(result) {
+alert("Error,Please try again.");
+}
+}); 
+    }  
+  })
+}
+
+</script>
 <!-- End of Main Content -->
 </body>

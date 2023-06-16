@@ -125,7 +125,7 @@
                                  <?php } ?>
                                  <?php   }else if($list['status']==1){ ?>
                                       
-                                        <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-info btn-sm mr-2 send_for_approval" >Sent for Approval</button>
+                                        <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2 send_for_approval" >Sent for approval</button>
                                         <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
                                         <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
                                  <button data-id="<?php echo $list['comp_id']; ?>" img_name="<?php echo $list['thumbnail']; ?>" class="btn btn-danger btn-sm mr-2 delete" >Delete</button>
@@ -335,10 +335,10 @@ $('#example').on('click','.unpublish', function(){
 $('#example').on('click','.send_for_approval', function(){
     id =$(this).attr('data-id');
     Swal.fire({
-                title: 'Are you sure you want to Send for Approval?',
+                title: 'Are you sure you want to Send for approval?',
                 showDenyButton: true,
                 showCancelButton: false,
-                confirmButtonText: 'Send for Approval',
+                confirmButtonText: 'Send for approval',
                 denyButtonText: `Cancel`,
                 }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */

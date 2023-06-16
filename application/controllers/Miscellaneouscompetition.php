@@ -79,17 +79,17 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function CompetitionUnderReview(){
-        $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
+        $data['competition']=$this->Miscellaneous_competition->underReviewedCompetition();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/competition_under_review',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function CompetitionReviewed(){
-        $data['competition']=$this->Miscellaneous_competition->CompetitionReviewed();
+        $data['competition']=$this->Miscellaneous_competition->reviewedCompetition();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/competition_reviewed');
+        $this->load->view('admin/competition_reviewed',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function thanks(){
@@ -170,7 +170,8 @@ class Miscellaneouscompetition extends CI_Controller
     public function result_declaration_list(){
         $users = $this->Miscellaneous_competition->resultDeclarationListdata(); 
         $data['DeclarationList']=$users; 
-        $permissions = array();
+        // print_r($data['DeclarationList']); die;
+        // $permissions = array();
         // if (encryptids("D", $_SESSION['admin_type']) == 3) { 
         //     if (in_array(6, $_SESSION['sub_mod_per'])) { 
         //         $sub_model_id = 6;

@@ -67,6 +67,7 @@
                 </div> -->
             <?php } ?>
             <?php if (encryptids("D", $_SESSION['admin_type']) == 2 || encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+                <?php if(!(encryptids("D", $_SESSION['admin_designation']) == 4)){  ?>
                 <div class="col-xl-3 col-md-6 mb-4">
                     <a href="<?php echo base_url(); ?>admin/exchange_forum">
                         <div class="card border-left-primary shadow h-100 py-2">
@@ -80,7 +81,7 @@
                     </a>
                 </div>
               
-            <?php } ?>
+            <?php } } ?>
             <?php if (encryptids("D", $_SESSION['admin_type']) == 1) {   ?>
                 <div class="col-xl-3 col-md-6 mb-4">
                     <a href="<?php echo base_url(); ?>admin/log_dashboard">
@@ -94,9 +95,21 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo base_url(); ?>admin/master_data_list">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center d-flex">
+                                    <h5 class="font-weight-bold text-danger mb-1">Master Data</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             <?php } ?>
 
-            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3 && encryptids("D", $_SESSION['admin_designation']) == 4) {   ?>
             <div class="col-xl-3 col-md-6 mb-4">
                     <a href="<?php echo base_url(); ?>Miscellaneouscompetition/evaluator_dashboard">
                         <div class="card border-left-primary shadow h-100 py-2">

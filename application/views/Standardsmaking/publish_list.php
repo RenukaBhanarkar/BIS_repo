@@ -18,8 +18,8 @@
         <!-- Content Row -->
        <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body table-responsive">
-                    <table id="example" class="hover table-bordered" style="width:100%">
+                <div class="card border-top card-body ">
+                    <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -55,18 +55,18 @@
                               <td><?= $value['status_name']?></td>
                               <td><?= $value['reason']?></td>
                               <td><?= $value['updated_on']?></td>
-                              <td class="" style="width:559px;">
+                              <td class="d-flex">
                                  <?php $id= encryptids("E", $value['id'] )?>
 
                                   <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
                                 <?php if ($user_id!=3) {?>
-                                    <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                    <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php  }  else { ?>
 
                                 
 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="live_session_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php }?>
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                     <button onclick="updateStatusLiveSession('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
@@ -198,5 +198,41 @@
 
 
     </script>
+
+    
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "live_session_edit/"+id; 
+    }  
+  })
+}
+
+</script>
     <!-- End of Main Content -->
  </body>

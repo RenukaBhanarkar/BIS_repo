@@ -85,6 +85,9 @@
                                 <label class="d-block text-font">Start Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="start_date" id="start_date" value="<?php echo set_value('start_date') ?>" required="">
                                 <span class="error_text"><?php echo form_error('start_date'); ?></span>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
@@ -98,6 +101,9 @@
                                 <label class="d-block text-font">End Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="end_date" id="end_date" value="" required="">
                                 <span class="error_text"><?php echo form_error('end_date'); ?></span>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font"> End Time<sup class="text-danger">*</sup></label>
@@ -206,11 +212,14 @@
                         </div>
                         <div class="mb-2 col-4">
                                 <label class="d-block text-font">Available For<sup class="text-danger">*</sup></label>
-                                <select id="Available" name="Available" class="form-control input-font" value="">
-                                    <option>--select-- </option>
+                                <select id="Available" name="Available" class="form-control input-font" value="" required>
+                                    <option value="" selected disabled>--select-- </option>
                                     <option value="1">School</option>
                                     <option value="2">Higher Qualification</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
                         </div>
                         <div class="mb-2 col-8" id="standard_check">
                                 <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
@@ -295,7 +304,7 @@
                                 <input type="text" class="form-control input-font" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo set_value('sdetail') ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="sprize_image" name="sprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadsPrizeImage(event)" value="<?php echo set_value('sprize_image') ?>">
@@ -320,7 +329,7 @@
                                 <input type="text" class="form-control input-font" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo set_value('tdetail') ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="tprize_image" name="tprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadtPrizeImage(event)" value="<?php echo set_value('tprize_image') ?>">
@@ -345,7 +354,7 @@
                                 <input type="text" class="form-control input-font" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo set_value('cdetail') ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <div class="d-flex">
                                 <div>
                                     <input type="file" id="cprize_image" name="cprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadcPrizeImage(event)" value="<?php echo set_value('cprize_image') ?>">
@@ -360,7 +369,7 @@
                     <div class="col-md-12 submit_btn p-3">
                             <!-- <a class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#submitForm">Submit</a> -->
                             <button onclick="return submitForm(event)" type="submit" class="btn btn-success btn-sm text-white" >Submit</button>
-                            <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                            <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
                             <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                     </div>
                 </div>
@@ -463,11 +472,11 @@
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#cprize_image').val('');
            // $('#lessSize').modal('show');
            Swal.fire("Image size should be between 20 to 200KB");
-        }else if(fileSize > 200000){
+        }else if(fileSize > 204800){
             $('#cprize_image').val('');
            // $('#greaterSize').modal('show');
            Swal.fire("Image size should be between 20 to 200KB");
@@ -492,10 +501,10 @@
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#tprize_image').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
-        }else if(fileSize > 200000){
+        }else if(fileSize > 204800){
             $('#tprize_image').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
         }else if($.inArray(fileNameExt, validExtensions) == -1){
@@ -518,10 +527,10 @@
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#sprize_image').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
-        }else if(fileSize > 200000){
+        }else if(fileSize > 204800){
             $('#sprize_image').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
         }else if($.inArray(fileNameExt, validExtensions) == -1){
@@ -543,10 +552,10 @@
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#fprize_image').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
-        }else if(fileSize > 200000){
+        }else if(fileSize > 204800){
             $('#fprize_image').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
         }else if($.inArray(fileNameExt, validExtensions) == -1){
@@ -569,10 +578,10 @@
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#thumbnail').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
-        }else if(fileSize > 200000){
+        }else if(fileSize > 204800){
             $('#thumbnail').val('');           
            Swal.fire("Image size should be between 20 to 200KB");
         }else if($.inArray(fileNameExt, validExtensions) == -1){
@@ -640,8 +649,8 @@
         $('#terms_conditions_error').text('');
        }
 
-       if(score=="" || score <= 9){
-       $('#err_score').text('Score should be greater than 9');
+       if(score=="" || score <= 0){
+       $('#err_score').text('Score should be greater than 0');
        
         isvalid =false;
        }else{
@@ -852,5 +861,25 @@ var available =$('#Available').val();
 if(available==2){
     $('#standard_check').hide();
 }
+
+$('.cancel').click(function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
+                        // return true;
+                        // $('#competition_reg').submit();
+                       // Swal.fire('Saved!', '', 'success')  
+                       window.location.replace('<?php echo base_url().'Standardswritting/create_competition_list'; ?>');                              
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
         
 </script>

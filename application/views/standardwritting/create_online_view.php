@@ -90,18 +90,67 @@
                                 <p><?=$getData['qualifying_mark']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-4"> 
                             <label class="d-block text-font">Level of Competition</label>
                             <div>
                                 <p><?=$getData['level']?></p>
                             </div>
                         </div>
+
+
+                        <?php if(!empty($getData['region'])) {?>
+                        <div class="mb-2 col-md-4"> 
+                            <label class="d-block text-font">region</label>
+                            <div>
+                                <p><?=$getData['region']?></p>
+                            </div>
+                        </div>
+                    <?php }?>
+                    <?php if(!empty($getData['branch'])) {?>
+
+                        <div class="mb-2 col-md-4"> 
+                            <label class="d-block text-font">branch</label>
+                            <div>
+                                <p><?=$getData['branch']?></p>
+                            </div>
+                        </div>
+                        <?php }?>
+
+                        <?php if(!empty($getData['state'])) {?>
+                        <div class="mb-2 col-md-4"> 
+                            <label class="d-block text-font">state</label>
+                            <div>
+                                <p><?=$getData['state']?></p>
+                            </div>
+                        </div>
+                        <?php }?>
+
+
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Availabile for</label>
                             <div>
                                 <p><?=$getData['availability']?></p>
                             </div>
                         </div>
+
+                        <?php if(!empty($getData['availability_id']==1)) {?>
+
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">Class</label>
+                            <div> 
+
+                                 <span class="quiz-text-date m-2">
+                                    <?php  $class = explode(",",$getData['standard']); 
+                                    foreach ($class as $classdata) 
+                                    {?>
+                                         <?=$classdata?><sup>th</sup>,
+                                    <?php } ?>
+                                </span>
+                            </div>
+                        </div>
+
+                        <?php }?>
+
                     </div>
                  </div>
 
@@ -231,14 +280,20 @@
                         </div>
                     </div>
             </div>
-            <?php if( $getData['status']==2){?>
+            
             <div class="col-md-12 submit_btn p-3"> 
-                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
-                <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> 
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
-                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_online_list/'">Back</a>
+                <?php if( $getData['status']==2){?>
+                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus(1) ">
+
+
+                <input type="submit" name="Approval" value="Reject" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus(2) "> 
+
+
+                <a class="btn btn-danger btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                 <?php } ?>
+                <a class="btn btn-primary btn-sm text-white"onclick="history.back()">Back</a>
             </div>
-            <?php } ?>
+           
            
         <?php } ?>
 
@@ -247,7 +302,7 @@
                 </div>
                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?= base_url(); ?>Standardswritting/create_online_list/'">Back</a>
+                <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
                 </div>
                 <?php } ?>
                 <!-- Modal -->
@@ -276,19 +331,19 @@
 
     }
 
-    function updateStatus() {
+    function updateStatus(data) {
 
         status=$("#status_id").val();
         remark=$("#remark").val();
         id="<?=$getData['id']?>"; 
 
-    if (status==1) { statusdata='Update'; }
-    if (status==9) { statusdata='Archive'; }
+    if (data==1) { statusdata='Approve'; }
+    if (data==2) { statusdata='Reject'; }
     Swal.fire({
-      title: 'Do you want to Update?',
+      title: 'Do you want to '+ statusdata + ' ? ',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Update',
+      confirmButtonText: statusdata,
       denyButtonText: `Cancel`,
     }).then((result) => 
     { 
@@ -296,7 +351,7 @@
       { 
         $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>standardswritting/updateOnlineStatus',
+        url: '<?php echo base_url(); ?>standardswritting/updateOnlineStatusAdmin',
         data: {
           id: id,
           status: status, 
@@ -305,7 +360,8 @@
         success: function(result)
         {
           Swal.fire('Saved!', '', 'success');
-          location.reload();
+          // location.reload();
+          history.back();
         },
         error: function(result) 
         {

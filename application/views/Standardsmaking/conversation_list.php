@@ -35,8 +35,8 @@
     ?>
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="hover table-bordered" style="width:100%">
+            <div class="card border-top card-body ">
+                <table id="example" class="hover table-bordered table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -59,18 +59,18 @@
                             <td class="d-flex">
                                 <?php  $user_id=encryptids("D", $_SESSION['admin_type']);?>
                                 <?php if ($user_id!=3) {?>
-                                    <a href="conversation_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                    <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php  }  else { ?>
 
 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="conversation_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php } ?>
                                 <?php if ($user_id == 3  ){ ?>
                                 <?php if ($value['status']!=5) {?>
 
                                 <?php if (in_array(3, $permissions)) { ?>
-                                    <a href="conversation_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                    <a onclick="editData('<?= $id?>')" onclick="viewData('<?= $id?>')" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
                                 <?php } ?>
 
                                 <?php if (in_array(4, $permissions)) { ?>
@@ -84,7 +84,7 @@
                                 <?php }?>
                                 
                                 <?php if ($value['status'] == 5) {?>
-                                <button onclick="updateStatusConversation('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Unpublish</button>
+                                <button onclick="updateStatusConversation('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
                                 <?php }?>
                                 
                                 <button onclick="updateStatusConversation('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-primary btn-sm mr-2 delete_img">Archives</button>
@@ -142,15 +142,25 @@
 </body>
 <!-- Modal -->
 <script type="text/javascript">
+ 
+
+ 
+
 function updateStatusConversation(id,status)
-{
-console.log(status)
-if (status==5)  { $(".sms").text('Publish'); }
-if (status==6)  { $(".sms").text('Unpublish'); }
-if (status==9)  { $(".sms").text('Archives'); }
-$('#updatemodel').modal('show');
-$('.updatestatus').on('click', function()
-{
+{ 
+if (status==5)  { var titletext='Publish'; }
+if (status==6)  { var titletext='Unpublish'; }
+if (status==9)  { var titletext='Archives'; }
+
+Swal.fire({
+title: 'Are you sur you want to '+ titletext +' ?',
+showDenyButton: true,
+showCancelButton: false,
+confirmButtonText: titletext,
+denyButtonText: `Cancel`,
+}).then((result) => {
+/* Read more about isConfirmed, isDenied below */
+if (result.isConfirmed) {
 $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>Standardsmaking/updateStatusConversation',
@@ -166,14 +176,59 @@ error: function(result) {
 alert("Error,Please try again.");
 }
 });
-});
+// Swal.fire('Saved!', '', 'success')
+} else if (result.isDenied) {
+// Swal.fire('Changes are not saved', '', 'info')
 }
-function deleteConversation(id)
-{
-$('#delete').modal('show');
-$('.deletecall').on('click', function()
-{
-$.ajax({
+})
+}
+</script>
+
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "conversation_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "conversation_edit/"+id; 
+    }  
+  })
+}
+
+function deleteConversation(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Delete ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Delete',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+     $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>Standardsmaking/deleteConversation',
 data: {
@@ -186,7 +241,9 @@ location.reload();
 error: function(result) {
 alert("Error,Please try again.");
 }
-});
-});
+}); 
+    }  
+  })
 }
+
 </script>

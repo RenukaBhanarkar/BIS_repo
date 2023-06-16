@@ -70,6 +70,22 @@
   background-position: center;
 }
     </style>
+    <?php
+// include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
+// include 'language.php';
+// require('language.php');
+require(APPPATH.'views/users/language.php');
+$en_select='';
+$hn_select='';
+$language=''; 
+if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+    $en_select='selected';
+    $language='en';
+}else{
+    $hn_select='selected';
+    $language='hn';
+}
+?>
 <section>
      <div class="container-fluid">
         <div class="row">
@@ -83,11 +99,11 @@
          <div class="col-md-8" id="Forum">
                  <div class="bis_welcome">
                      <a href="">
-                         <h2>Welcome to Manak Rath</h2>
+                         <h2><?php echo $welcome_text[$language]['0'] ?></h2>
                      </a>
                  </div>
                 <div class="platform">
-                         <h4>(A platform for exchange of information and conducting Standards based activities)</h4>
+                         <h4>(<?php echo $welcome_text[$language]['1'] ?>)</h4>
                  </div>
              </div>
         <div class="col-md-2">
@@ -111,21 +127,21 @@
                                 <a href="<?=base_url();?>users/standard">
                                 <div class="LiveDataBox" style="height: 182px; overflow: hidden;" >
                                      <!-- <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons"> -->
-                                      <h3 class="text_standard">Standards Club</h3>
-                                     <p class="mb-0">(An initiative to nurture the students as Brand Ambassadors of Quality)</p>
+                                      <h3 class="text_standard"><?php echo $welcome_text[$language]['2'] ?></h3>
+                                     <p class="mb-0">(<?php echo $welcome_text[$language]['3'] ?>)</p>
                                 </div>
                                 </a>
                                 </div>
                             </div>
                             <div class="innerBox" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
                             <div style="background:#00000099;">
-                                <!-- <a href="<?=base_url();?>users/quality_index"> -->
+                                <a href="<?=base_url();?>users/quality_index">
                                   <div class="LiveDataBox" style="height: 182px; overflow: hidden;">
                                       <!-- <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons"> -->
-                                       <h3 class="text_standard">World of Standards</h3>
-                                       <p class="mb-0">(An initiative to broad-base the stakeholder engagement for development of Standards)</p>
+                                       <h3 class="text_standard"><?php echo $welcome_text[$language]['4'] ?></h3>
+                                       <p class="mb-0">(<?php echo $welcome_text[$language]['5'] ?>)</p>
                                  </div>
-                                 <!-- </a> -->
+                                 </a>
                             </div>
                             </div>
                           </div>
@@ -141,10 +157,10 @@
             $('#change_password_skip').click(function(){
                 $('#exampleModal_1').modal('show'); 
             });
-            $('#wos').click(function(){
-                // alert("kjhkl");
-                Swal.fire("This section is under development. The World of Standards will open up for you soon.");
-                return false;
-            })
+            // $('#wos').click(function(){
+            //     // alert("kjhkl");
+            //     Swal.fire("This section is under development. The World of Standards will open up for you soon.");
+            //     return false;
+            // })
         })
     </script>
