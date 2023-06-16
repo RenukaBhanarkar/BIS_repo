@@ -58,7 +58,7 @@
                             <td>
                             <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?> -->
                                 <?php $id= encryptids("E", $value['quiz_id'] )?>
-                                <a href="<?php echo base_url();?>Quiz/result_declaration_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2">View</a>
+                                <a href="<?php echo base_url();?>Miscellaneouscompetition/result_declared_list/<?= $value['quiz_id'];?>" class="btn btn-primary btn-sm mr-2">View</a>
                             <!-- <?php } ?> -->
                             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                               

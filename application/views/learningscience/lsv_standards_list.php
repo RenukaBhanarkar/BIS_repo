@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Create new post/ live session</h1>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb"> 
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'learningscience/lsv_standards_dashboard';?>" >Classroom</a></li>
@@ -62,12 +62,16 @@
                             <td>New Entry</td>
                             <td class="d-flex">
                                 <?php $id= encryptids("E", $value['id'] )?>
+
+
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="lsv_standards_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+
+                                <a  onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+
                                 <?php }?>
                                 
                                 <?php if (in_array(3, $permissions)) { ?>
-                                <a href="lsv_standards_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <a onclick="editData('<?= $id?>')" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
                                 <?php }?>
                                 <?php if (in_array(4, $permissions)) { ?>
                                 <button onclick="deleteLsvStandards(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
@@ -131,56 +135,8 @@
 </div>
 <!-- Modal -->
 <script type="text/javascript">
-// function updateLsvStandards(id,status)
-//     {
-//         console.log(status)
-//         if (status==1)  { $(".sms").text('Create'); }
-//         if (status==9)  { $(".sms").text('Archives'); }
-//         $('#updatemodel').modal('show');
-//         $('.updatestatus').on('click', function()
-//         {
-//             $.ajax({
-//                 type: 'POST',
-//                 url: '<?php echo base_url(); ?>Learningscience/updateLsvStandards',
-//                 data: {
-//                     id: id,
-//                     status: status,
-//                 },
-//                 success: function(result)
-//                 {
-//                     location.reload();
-//                 },
-//                 error: function(result) {
-//                     alert("Error,Please try again.");
-//                 }
-//             });
-//         });
-//     }
-//  function deleteLsvStandards(id)
-// {
-//     $('#delete').modal('show');
-//     $('.deletecall').on('click', function()
-//     {
-//         $.ajax({
-//             type: 'POST',
-//             url: '<?php echo base_url(); ?>Learningscience/deleteLsvStandards',
-//             data: {
-//                 id: id,
-//             },
-//             success: function(result)
-//             {
-//                 location.reload();
-//             },
-//             error: function(result) {
-//                 alert("Error,Please try again.");
-//             }
-//         });
-//     });
-// }
-function deleteLsvStandards(id){
-// if (status==5)  { var title1= 'Do you want to Publish?'; var buttonText = 'Publish' }
-// if (status==6)  { var title1= 'Do you want to Unublish?'; var buttonText = 'Unublish' }
-// if (status==9)  { var title1= 'Do you want to Archive?'; var buttonText = 'Archive' }
+ 
+function deleteLsvStandards(id){ 
 Swal.fire({
 // title: title1,
 title: 'Are you sure you want to Delete?',
@@ -246,4 +202,39 @@ alert("Error,Please try again.");
 }
 })
 }
+</script>
+
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "lsv_standards_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "lsv_standards_edit/"+id; 
+    }  
+  })
+}
+
 </script>

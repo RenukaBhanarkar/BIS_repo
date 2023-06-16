@@ -39,13 +39,15 @@
                             <h3>Submited Files</h3>
                         </div>
                         <div class="col-md-12">
-                            <p><a href="<?php echo base_url().$response['image']; ?>">view Document</a></p>
+                            <?php if(!($response['image']=="")){ ?>
+                            <p><a class="btn btn-primary btn-sm text-white" href="<?php echo base_url().$response['image']; ?>" target="_blank">view Document</a></p>
+                            <?php } ?>
                         </div>
                         
                     </div>
                 </div>
             </div>
-                
+            <button onclick="history.back()" class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;">Back</button>
         </div>
     </div>
     <!-- /.container-fluid -->

@@ -83,7 +83,7 @@
                                         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
                                     </div>
                                     <div class="modal-body"> 
-                                        <video width="650" height="300" controls id="outputvideo"width="100%"/>  </video>
+                                        <video width="650" height="300" controls id="outputvideo"width="100%"/>   
  
                                     </div>
                                      
@@ -277,14 +277,26 @@ var loadFileThumbnail = function(event)
         $("#video").next(".validation").remove(); // remove it
         }
         }
-                }
+                } 
 
-                    if (allfields) { 
-                        $("#submitForm").show();
-                        $('#conversation_form').submit();
-                    } else {
-                        return false;
-                    }
+                     
+                    if (allfields) {
+    // $('#create_online_form').submit();
+    Swal.fire({
+    title: 'Are you sure you want to Submit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Submit',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    if (result.isConfirmed) {
+    $('#conversation_form').submit();
+    } else if (result.isDenied) {
+    }
+    })
+    } else {
+    return false;
+    }
                 });
             </script>
 <script type="text/javascript">

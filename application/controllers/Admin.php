@@ -1493,8 +1493,8 @@ class Admin extends CI_Controller
             // $post        = clearText($this->input->post('post'));
             // $department        = clearText($this->input->post('department'));
             // $username        = clearText($this->input->post('username'));
-            //$random_pass	 = $this->randomPassword();
-            $random_pass     = 12345678;
+            $random_pass	 = $this->randomPassword();
+            //$random_pass     = 12345678;
             //$newPw = password_hash($random_pass, PASSWORD_BCRYPT);
             $admin_type = 2;
             $data = array(
@@ -1528,8 +1528,8 @@ class Admin extends CI_Controller
                     'protocol' => 'smtp',
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
-                    'smtp_user' => 'exchangeforum1@gmail.com',
-                    'smtp_pass' => 'niycbrjxnzfazrud',
+                    'smtp_user' => 'exchangeforumbis@gmail.com',
+                    'smtp_pass' => 'Vidya@123',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1537,7 +1537,7 @@ class Admin extends CI_Controller
                 $this->load->library('email', $config);
                 $this->email->initialize($config); // add this line
                 $this->email->set_newline("\r\n");
-                $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                $this->email->from('exchangeforumbis@gmail.com', 'BIS');
                 $this->email->to($email_id);
                 $this->email->subject($subject);
                 $this->email->message($msg);
@@ -1640,8 +1640,8 @@ class Admin extends CI_Controller
             $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
             $admin_id = $this->input->post('id');
             $email_id = $this->input->post('email');
-            //$random_pass	 = $this->randomPassword();
-            $random_pass     = 12345678;
+            $random_pass	 = $this->randomPassword();
+            //$random_pass     = 12345678;
             //$newPw = password_hash($random_pass, PASSWORD_BCRYPT);
 
 
@@ -1671,8 +1671,8 @@ class Admin extends CI_Controller
                     'protocol' => 'smtp',
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
-                    'smtp_user' => 'exchangeforum1@gmail.com',
-                    'smtp_pass' => 'niycbrjxnzfazrud',
+                    'smtp_user' => 'exchangeforumbis@gmail.com',
+                    'smtp_pass' => 'Vidya@123',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1680,7 +1680,7 @@ class Admin extends CI_Controller
                 $this->load->library('email', $config);
                 $this->email->initialize($config); // add this line
                 $this->email->set_newline("\r\n");
-                $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                $this->email->from('exchangeforumbis@gmail.com', 'BIS');
                 $this->email->to($email_id);
                 $this->email->subject($subject);
                 $this->email->message($msg);
@@ -1765,15 +1765,15 @@ class Admin extends CI_Controller
                             'protocol' => 'smtp',
                             'smtp_host' => 'ssl://smtp.googlemail.com',
                             'smtp_port' => 465,
-                            'smtp_user' => 'exchangeforum1@gmail.com',
-                            'smtp_pass' => 'niycbrjxnzfazrud',
+                            'smtp_user' => 'exchangeforumbis@gmail.com',
+                            'smtp_pass' => 'Vidya@123',
                             'mailtype' => 'html',
                             'charset' => 'iso-8859-1',
                         );
                         $this->load->library('email', $config);
                         $this->email->initialize($config); // add this line
                         $this->email->set_newline("\r\n");
-                        $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                        $this->email->from('exchangeforumbis@gmail.com', 'BIS');
                         $this->email->to($email_id);
                         $this->email->subject($subject);
                         $this->email->message($msg);

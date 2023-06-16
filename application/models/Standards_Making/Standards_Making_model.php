@@ -20,7 +20,7 @@ class Standards_Making_model extends CI_Model {
     { 
         $this->db->where('id ',$id);  
         return $this->db->get("tbl_inconversation_with_expert")->row_array();
-    }
+    } 
      public function getConversation($id)
     {
         $this->db->where('id',$id); 

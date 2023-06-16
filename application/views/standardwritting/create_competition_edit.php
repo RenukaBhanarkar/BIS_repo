@@ -84,7 +84,7 @@
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
-                            <input type="time" class="form-control input-font" name="start_time" id="start_time" placeholder="Select Date" value="<?php echo set_value('start_time', $competition['start_time']); ?>">
+                            <input type="text" class="form-control input-font timepicker" name="start_time" id="start_time" placeholder="Select Date" value="<?php echo set_value('start_time', $competition['start_time']); ?>">
                             <span class="error_text"><?php echo form_error('start_time'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -97,7 +97,7 @@
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font"> End Time<sup class="text-danger">*</sup></label>
-                            <input type="time" class="form-control input-font" name="end_time" id="end_time" placeholder="Select Date" value="<?php echo set_value('end_time', $competition['end_time']); ?>">
+                            <input type="text" class="form-control input-font timepicker" name="end_time" id="end_time" placeholder="Select Date" value="<?php echo set_value('end_time', $competition['end_time']); ?>">
                             <span class="error_text"><?php echo form_error('end_time'); ?></span>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -151,8 +151,8 @@
                         </div>
                         <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
-                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Marks" value="<?php echo set_value('end_time', $competition['score']); ?>">
-                            <span class="error_text"><?php echo form_error('score'); ?></span>
+                        <input type="text" class="form-control input-font" name="score" id="score" placeholder="Total Marks" value="<?php echo set_value('end_time', $competition['score']); ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')">
+                            <span class="error_text" id="err_score"><?php echo form_error('score'); ?></span>
                         </div>
                         <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
@@ -389,14 +389,14 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?php echo $competition['sprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?php echo $competition['sprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo $competition['sprize_name']; ?>" required="">
+                                <input type="text" class="form-control input-font" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo $competition['sprize_name']; ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <!-- <div class="d-flex">
                                 <div>
                                     <input type="file" id="sprize_image" name="sprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadsPrizeImage(event)" value="<?php echo set_value('sprize_image') ?>">
@@ -448,14 +448,14 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php echo $competition['tprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php echo $competition['tprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo $competition['tprize_name']; ?>" required="">
+                                <input type="text" class="form-control input-font" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo $competition['tprize_name']; ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <!-- <div class="d-flex">
                                 <div>
                                     <input type="file" id="tprize_image" name="tprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadtPrizeImage(event)" value="<?php echo set_value('tprize_image') ?>">
@@ -507,14 +507,14 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php echo $competition['cprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="">
+                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php echo $competition['cprize_no']; ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo $competition['cprize_name']; ?>" required="">
+                                <input type="text" class="form-control input-font" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo $competition['cprize_name']; ?>" >
                             </div>
                             <div class="mb-2 col-md-4">
-                                <label class="d-block">Prize Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Prize Image</label>
                                 <!-- <div class="d-flex">
                                 <div>
                                     <input type="file" id="cprize_image" name="cprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadcPrizeImage(event)" value="<?php echo set_value('cprize_image') ?>">
@@ -655,7 +655,21 @@
         CKEDITOR.replace( 'description' );
         CKEDITOR.replace( 'terms_conditions' );
 </script>
+<script type="text/javascript">
+    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("start_date")[0].setAttribute('min', today);
+        document.getElementsByName("end_date")[0].setAttribute('min', today);
+    }
+</script>
 <script>
+    $(document).ready(function(){
+    $(".timepicker").click(function(){
+        $(".bootstrap-timepicker-widget .glyphicon-chevron-up").html("<i class='fa fa-chevron-up' aria-hidden='true'></i>");
+    $(".bootstrap-timepicker-widget .glyphicon-chevron-down").html("<i class='fa fa-chevron-down' aria-hidden='true'></i>");
+    });
+    $(".timepicker").timepicker();
+});
     $(document).ready(function(){
       var cimg = $('#cdelete_preview').attr('p-id');
       if(cimg==""){
@@ -877,7 +891,7 @@
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
             console.log(fileSize);
-        if(fileSize < 20000){
+        if(fileSize < 20480){
             $('#ticon_file').val('');           
             $('#terr_icon_file').text('This value is required');
             Swal.fire('File size should be greater than 20KB');
@@ -945,6 +959,7 @@
 
     function updateCompetition(event){
         event.preventDefault();
+        $('#competition_edit').addClass('was-validated');
         var name =$('#name').val();
         var name_hindi =$('#name_hindi').val();
 
@@ -958,6 +973,7 @@
         var Available = $('#Available').val();
 
         var fprize =$('#fprize').val();
+        var score =$('#score').val();
 
         var isValid=true;
 
@@ -973,6 +989,14 @@
         }else{
             $('#err_name_hindi').text('');
         }
+        
+        if(score=="" || score <= 0){
+       $('#err_score').text('Score should be greater than 0');
+       
+        isValid=false;
+       }else{
+        $('#err_score').text('');
+       }
 
         if(terms_conditions==""){
             $('#terms_conditions_error').text('This value is required');
@@ -1000,7 +1024,7 @@
 
         }
 
-        if(isValid){
+        if(isValid){            
             // return true;
             Swal.fire({
                     title: 'Are you sure you want to Update?',

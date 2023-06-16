@@ -237,20 +237,64 @@ class Learningscience extends CI_Controller
 
             if (!file_exists('uploads/learning_Science/image')) { mkdir('uploads/learning_Science/image', 0777, true); }
 
-            $lastvideo=$this->input->post('lastvideo');
-            if (empty($lastvideo)) 
+            $val=$this->input->post('type_of_post');
+            if ($val==2) 
             {
-                $videopath = 'uploads/learning_Science/video/'; 
-                $videolocation = $videopath . time() .'video'. $_FILES['video']['name']; 
-                move_uploaded_file($_FILES['video']['tmp_name'], $videolocation);
+                $lastvideo=$this->input->post('lastvideo');
+                if (!empty($_FILES['video']['tmp_name']))
+                {
+                    $videopath = 'uploads/learning_Science/video/'; 
+                    $videolocation = $videopath . time() .'video'. $_FILES['video']['name']; 
+                    move_uploaded_file($_FILES['video']['tmp_name'], $videolocation);
+                }
+                else
+                {
+                    $videolocation=$lastvideo;
+                }
             }
             else
             {
-                $videolocation=$lastvideo;
+                $videolocation='';
             }
 
+            if ($val==1) 
+            {
+                $lastdoc_pdf=$this->input->post('lastdoc_pdf');
+                if (!empty($_FILES['doc_pdf']['tmp_name'])) 
+                {
+                    $doc_pdfpath = 'uploads/learning_Science/doc_pdf/'; 
+                    $doc_pdflocation = $doc_pdfpath . time() .'doc_pdf'. $_FILES['doc_pdf']['name']; 
+                    move_uploaded_file($_FILES['doc_pdf']['tmp_name'], $doc_pdflocation);
+                }
+                else
+                {
+                    $doc_pdflocation=$lastdoc_pdf;
+                } 
+                $imagelast=$this->input->post('lastimage');
+                if(!empty($_FILES['image']['tmp_name'])){
+                    $imagepath = 'uploads/learning_Science/image/'; 
+                    $imagelocation = $imagepath . time() .'image'. $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], $imagelocation);
+                }
+                else
+                {
+                    $imagelocation=$imagelast; 
+                }
+            }
+            else
+            {
+                $imagelocation='';
+                $doc_pdflocation='';
+            }
+            if ($val==3) 
+            {
+                $imagelocation='';
+                $doc_pdflocation='';
+                $videolocation='';
+            }
+ 
             $lastthumbnail=$this->input->post('lastthumbnail');
-            if (empty($lastthumbnail)) 
+            if (!empty($_FILES['thumbnail']['tmp_name'])) 
             {
                 $thumbnailpath = 'uploads/learning_Science/thumbnail/'; 
                 $thumbnaillocation = $thumbnailpath . time() .'thumbnail'. $_FILES['thumbnail']['name']; 
@@ -261,30 +305,9 @@ class Learningscience extends CI_Controller
                 $thumbnaillocation=$lastthumbnail; 
                 // $videolocation=$this->input->post('lastvideo');
             }
-            $imagelast=$this->input->post('lastimage'); 
-            if(empty($imagelast)){
-                $imagepath = 'uploads/learning_Science/image/'; 
-                $imagelocation = $imagepath . time() .'image'. $_FILES['image']['name']; 
-                move_uploaded_file($_FILES['image']['tmp_name'], $imagelocation);
-            }
-            else
-            {
-                $imagelocation=$imagelast;  
-            }
+            
 
-            $lastdoc_pdf=$this->input->post('lastdoc_pdf'); 
-
-            if (empty($lastdoc_pdf)) 
-            {
-                $doc_pdfpath = 'uploads/learning_Science/doc_pdf/'; 
-                $doc_pdflocation = $doc_pdfpath . time() .'doc_pdf'. $_FILES['doc_pdf']['name']; 
-                move_uploaded_file($_FILES['doc_pdf']['tmp_name'], $doc_pdflocation);
-            }
-            else
-            {
-                $doc_pdflocation=$lastdoc_pdf;
-                // $videolocation=$this->input->post('lastvideo');
-            } 
+            
 
             $formdata = array(); 
             $frmid = $this->input->post('id');
