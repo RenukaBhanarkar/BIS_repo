@@ -101,6 +101,7 @@
                                 <th>Sr. No.</th>
                                 <th>Image</th>
                                 <th>Description</th>
+                                
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                 <th>Action</th>
                                 <?php } ?>
