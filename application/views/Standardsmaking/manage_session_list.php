@@ -227,7 +227,7 @@ function updateStatusLiveSession(id,status)
 //         }
 //     });
 // });
-if (status==2)  { var titletext= "Are you sure you want to Send for approval ?"; var buttontext ="Send for Approval"; }
+if (status==2)  { var titletext= "Are you sure you want to Send for approval ?"; var buttontext ="Send for approval"; }
 if (status==5)  { var titletext= "Are you sure you want to Publish ?"; var buttontext ="Publish"; }
 if (status==6)  { var titletext= "Are you sure you want to UnPublish ?"; var buttontext ="UnPublish"; }
 if (status==9)  { var titletext= "Are you sure you want to Archives ?"; var buttontext ="Archives"; }

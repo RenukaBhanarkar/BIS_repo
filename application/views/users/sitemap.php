@@ -44,6 +44,7 @@
                     <li class="li_text"><h5>Standard Club</h5>
                     <hr style="padding: 0px; margin: 0px;">
                         <ul class="ul_list p-0">
+                        <li class="li_text"><a href="<?php echo base_url() . 'users/standard' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Winners Wall</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'users/quiz' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Quiz</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'users/standard_writting_all' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Standard Writting</a></li>
                             <li class="li_text"><a href="<?php echo base_url() . 'users/standard' ?>" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Essay Writting</a></li>

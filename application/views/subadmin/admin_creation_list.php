@@ -21,7 +21,7 @@
             <div class="col-12">
               <div class="card border-top card-body">
                 <div>
-                  <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/admin_creation_form'">Create New Sub Admin</button>
+                  <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url(); ?>subadmin/admin_creation_form'">Create New Sub admin</button>
                 </div>
               </div>
             </div>
@@ -71,9 +71,9 @@
                         <td class="d-flex border-bottom-0">
                          
                           <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url().'subadmin/admin_creation_view/'.encryptids('E', $row['id']) ; ?>" >View</a>
-                          <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>subadmin/editsubAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
+                          <a class="btn btn-warning btn-sm mr-2 text-white edit" href="<?php echo base_url(); ?>subadmin/editsubAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>
-                          <button class="btn btn-primary btn-sm mr-2" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
+                          <button class="btn btn-primary btn-sm mr-2 reset" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
                          
                           <a class="btn btn-success btn-sm mr-2 " href="<?php echo base_url(); ?>admin/set_permission?id=<?php echo encryptids('E', $row['id']) ?>"> Set Permission</a>
                           
@@ -94,30 +94,7 @@
           </div>
           
         </div>
-      </div>
-     <!--  <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Bureau of Indian Standards 2022</span>
-          </div>
-        </div>
-      </footer> -->
-    </div>
-  </div>
-  <!-- /.container-fluid -->
-
-  </div>
-  <!-- End of Main Content -->
-
-  <!-- Footer -->
-
-  <!-- End of Footer -->
-
-  </div>
-  </div>
-  <!-- /.container-fluid -->
-
-  </div>
+     
   <!-- End of Main Content -->
 
 
@@ -166,6 +143,44 @@
                     })
        })
      </script> -->
+     <script>
+$('.reset').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Reset Password?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url();?>subadmin/admin_creation_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+$('.edit').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Edit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Edit',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        //window.location.replace('<?php echo base_url();?>subadmin/admin_creation_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+</script>
      <script>
           function deleteRecord(id) {
               Swal.fire({

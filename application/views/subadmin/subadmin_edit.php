@@ -71,7 +71,7 @@
                             <!--   <a class="btn btn-success btn-sm text-white update" >Update</a> -->
                             <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
                             <!-- <a class="btn btn-warning btn-sm text-white" onclick="resetFields()">Reset</a> -->
-                            <a class="btn btn-warning btn-sm text-white reset">Reset</a>
+                            <!-- <a class="btn btn-warning btn-sm text-white reset">Reset</a> -->
                         </div>
                     </div>
                 </div>

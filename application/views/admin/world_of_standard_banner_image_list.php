@@ -142,9 +142,9 @@
         </div>
 
         <!-- /.container-fluid -->
-        <div class="col-md-12 submit_btn p-3">
+        <!-- <div class="col-md-12 submit_btn p-3">
     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/cmsManagenent_dashboard'">Back</a>
-</div>
+</div> -->
 </div>
 
 <div class="modal fade" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="viewImageLabel" aria-hidden="true">

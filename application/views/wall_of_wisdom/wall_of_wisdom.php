@@ -86,7 +86,7 @@
                                             if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                                              
                                             <?php if($list_wow['status'] == 1){ ?>
-                                            <button onclick="sendapproval('<?php echo $list_wow['id']; ?>')" class="btn btn-success btn-sm mr-2 text-white send_approval" data-id ='<?php echo $list_wow['id']; ?>'>Send For approval</button>
+                                            <button onclick="sendapproval('<?php echo $list_wow['id']; ?>')" class="btn btn-success btn-sm mr-2 text-white send_approval" data-id ='<?php echo $list_wow['id']; ?>'>Send for approval</button>
                                             <button class="btn btn-primary btn-sm mr-2 archive" onclick="sendArchive('<?php echo $list_wow['id']; ?>')" data-id ='<?php echo $list_wow['id']; ?>'>Archive</button>
                                            <?php } ?>
                                            
@@ -108,13 +108,13 @@
                                                 if ($list_wow['status'] == 3 || $list_wow['status'] == 6) {  ?>
                                                     <button class="btn btn-success btn-sm publish" onclick="sendPublish('<?php echo $list_wow['id']; ?>')" data-id='<?php echo $list_wow['id']; ?>'>Publish</button>
                                                 <?php } else if ($list_wow['status'] == 5) { ?>
-                                                    <button class="btn btn-secondary btn-sm mr-2 unpublish_record" onclick="sendUnPublish('<?php echo $list_wow['id']; ?>')" data-id='<?php echo $list_wow['id']; ?>'>UnPublish</button>
+                                                    <button class="btn btn-secondary btn-sm mr-2 unpublish_record" onclick="sendUnPublish('<?php echo $list_wow['id']; ?>')" data-id='<?php echo $list_wow['id']; ?>'>Unpublish</button>
                                                 <?php  }
                                             }else if(encryptids("D", $_SESSION['admin_type']) == 2){ ?>
                                                     <?php if($list_wow['status'] == 3){ ?>
                                                                   
                                                   <?php  }else if($list_wow['status'] == 2) { ?>
-                                                <button onclick="approve('<?php echo $list_wow['id']; ?>')" class="btn btn-info btn-sm mr-2 text-white approve" data-id='<?php echo $list_wow['id']; ?>'>Approve</button>
+                                                <button onclick="approve('<?php echo $list_wow['id']; ?>')" class="btn btn-success btn-sm mr-2 text-white approve" data-id='<?php echo $list_wow['id']; ?>'>Approve</button>
                                                 <button onclick="reject('<?php echo $list_wow['id']; ?>')" class="btn btn-danger btn-sm mr-2 text-white">Reject</button>
                                           <?php }  } ?>
                                         </td>
@@ -1365,10 +1365,10 @@ var loadFileThumbnail = function(event)
             var id=$(this).attr('data-id');
             
             Swal.fire({
-                    title: 'Are you sure you want to Send For approval ?',
+                    title: 'Are you sure you want to Send for approval ?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Send For approval',
+                    confirmButtonText: 'Send for approval',
                     denyButtonText: `Cancel`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */

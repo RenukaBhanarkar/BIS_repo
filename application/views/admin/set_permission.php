@@ -1747,8 +1747,9 @@
                         </tbody>
                     </table>
                     <div class="col-md-12 submit_btn p-3">
-                        <!-- <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a> -->
-                        <input type="submit" name="Submit" id="addPermissionsBtn" class="btn btn-info btn-sm">
+                       
+                        <input type="submit" name="Submit" id="addPermissionsBtn" class="btn btn-success btn-sm">
+                        <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
 
                     </div>
                 </form>
@@ -1758,10 +1759,30 @@
 </div>
 
 <!-- /.container-fluid -->
-<div class="col-md-12 submit_btn p-3">
+<!-- <div class="col-md-12 submit_btn p-3">
     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>admin/cmsManagenent_dashboard'">Back</a>
+</div> -->
 </div>
-</div>
+<script>
+$('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url();?>subadmin/admin_creation_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+</script>
 <script>
     $(document).ready(function() {
       //  $('input[type=checkbox]').removeAttr('checked');

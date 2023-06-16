@@ -74,7 +74,7 @@
                                 
                                 <?php if ($value['status']==1)
                                 {?>
-                                <button onclick="updateLsvStandards('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img"> Approval</button>
+                                <button onclick="updateLsvStandards('<?= $value['id']?>',2);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Send for approval</button>
                                 
                                 <?php } ?>
                                 <?php if ($value['status']==3  || $value['status']==6 )
@@ -96,7 +96,7 @@
                                     <?php }?>
 
 
-                                <button onclick="updateLsvStandards('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
+                                <button onclick="updateLsvStandards('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archive</button>
                                 
                                 <?php } } ?>
                                 
@@ -210,9 +210,9 @@
 function updateLsvStandards(id,status)
 {
 
-if (status==2)  { var title1= 'Do you want to Send For Approval?'; var buttonText = 'Send For approval' }
+if (status==2)  { var title1= 'Do you want to Send for approval?'; var buttonText = 'Send for approval' }
 if (status==5)  { var title1= 'Do you want to Publish?'; var buttonText = 'Publish' }
-if (status==6)  { var title1= 'Do you want to UnPublish?'; var buttonText = 'UnPublish' }
+if (status==6)  { var title1= 'Do you want to Unpublish?'; var buttonText = 'Unpublish' }
 if (status==9)  { var title1= 'Do you want to Archive?'; var buttonText = 'Archive' }
 Swal.fire({
 title: title1,
@@ -265,7 +265,7 @@ function deleteLsvStandards(id)
 //     });
 // });
 Swal.fire({
-title: 'Are you sure you want to Delete',
+title: 'Are you sure you want to Delete ?',
 showDenyButton: true,
 showCancelButton: false,
 confirmButtonText: 'Delete',

@@ -1,7 +1,7 @@
 <?php
 $top_nav=array(
-    'en'=>array('Home','BIS','About Exchange Forum','Published Standard','Know your Standards','SNAP 2022 - 27','Contact Us','User Manual'),
-    'hn'=>array('होम','बीआईएस','एक्सचेंज फोरम के बारे में','प्रकाशित मानक','अपने मानकों को जानें','स्नैप 2022 - 27','संपर्क करें','उपयोगकर्ता पुस्तिका'),
+    'en'=>array('Home','BIS','About Manak Rath','Published Standard','Know your Standards','SNAP 2022 - 27','Contact Us','User Manual'),
+    'hn'=>array('होम','बीआईएस','मानक रथ के बारे में','प्रकाशित मानक','अपने मानकों को जानें','स्नैप 2022 - 27','संपर्क करें','उपयोगकर्ता पुस्तिका'),
 );
 
 $welcome_text=array(
