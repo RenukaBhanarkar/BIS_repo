@@ -197,8 +197,8 @@ class Subadmin extends CI_Controller
             // $post        = clearText($this->input->post('post'));
           
             // $username        = clearText($this->input->post('username'));
-            //$random_pass	 = $this->randomPassword();
-            $random_pass     = 12345678;
+            $random_pass	 = $this->randomPassword();
+            //$random_pass     = 12345678;
             //$newPw = password_hash($random_pass, PASSWORD_BCRYPT);
             $admin_type = 3;
             $data = array(
@@ -219,6 +219,37 @@ class Subadmin extends CI_Controller
             $admin_id = $this->Admin_model->insertData($data);
 
             if ($admin_id) {
+                // email to Admin to notify  start
+                $msg = "Dear " . $name .
+                    " <p>You are added on the BIS Portal as Admin . Your login credentials for the portal are:
+                    </p>
+                    <p>Username: " . $email_id . "</p>
+                    <p>Password: " . $random_pass . "</p>";
+                $subject = "Login Credentials for the BIS Portal.";
+
+                $config = array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'exchangeforumbis@gmail.com',
+                    'smtp_pass' => 'Vidya@123',
+                    'mailtype' => 'html',
+                    'charset' => 'iso-8859-1',
+                );
+
+                $this->load->library('email', $config);
+                $this->email->initialize($config); // add this line
+                $this->email->set_newline("\r\n");
+                $this->email->from('exchangeforum@gmail.com', 'BIS');
+                $this->email->to($email_id);
+                $this->email->subject($subject);
+                $this->email->message($msg);
+                $this->email->send();
+                // email code end
+
+
+
+
 
                 $this->session->set_flashdata('MSG', ShowAlert("New Admin added successfully", "SS"));
                 redirect(base_url() . "subadmin/admin_creation_list", 'refresh');
