@@ -38,15 +38,30 @@
 							<td><?=$value['user_name']?></td>
 							<td><?=$value['description']?></td>
 							<td><?= date("d-m-Y", strtotime($value['created_on']));?></td>
-							<td class="d-flex">
-								<?php if ($value['status']==1 || $value['status']==6 ) { ?>
-								<button onclick="updateStandardPublishComments('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Publish</button>
-								<?php } else {?>
-								<button onclick="updateStandardPublishComments('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
-								<?php } ?>
-								<button onclick="updateStandardPublishComments('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archived</button>
-								<button onclick="deleteStandardPublishComments(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
-							</td>
+
+							<td class="d-flex"> 
+                                <?php if ($value['status']==1 || $value['status']==6 ) { ?>
+                                    <button onclick="updateStandardPublishComments('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Publish</button>
+                                <?php } 
+
+                                if ($value['status']==5 ) {?>
+                                    <button onclick="updateStandardPublishComments('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
+                                <?php } 
+                                if ($value['status']==1 || $value['status']==6 ) { ?>
+                                <button onclick="updateStandardPublishComments('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archived</button>
+
+                                <button onclick="deleteStandardPublishComments(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                            <?php } 
+                            if ($value['status']==9  ) { ?>
+                                <button onclick="updateStandardPublishComments('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Restore</button>
+
+                                <button onclick="deleteStandardPublishComments(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+
+
+                            <?php } ?>
+                            </td>
+
+
 						</tr>
 						<?php }?>
 					</tbody>
@@ -56,56 +71,57 @@
 	</div>
 </div>
 </div>
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
-			<button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">×</span>
-			</button>
-		</div>
-		<div class="modal-body">
-			<p>Are you sure you want to delete?</p>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary deletecall" data-bs-dismiss="modal">Delete</button>
-		</div>
-	</div>
-</div>
-</div>
-<div class="modal fade" id="updatemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel"><span class="sms"></span> Record</h5>
-			<button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">×</span>
-			</button>
-		</div>
-		<div class="modal-body">
-			<p>Are you sure you want to <span class="sms"> </span> ?</p>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary updatestatus" data-bs-dismiss="modal"><span class="sms"> </span></button>
-		</div>
-	</div>
-</div>
-</div>
+ 
+ 
 <!-- Modal -->
+ 
+
 <script type="text/javascript">
-function updateStandardPublishComments(id,status)
+    function deleteStandardPublishComments(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Delete ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Delete',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      $.ajax({
+type: 'POST',
+url: '<?php echo base_url(); ?>Shareyourthoughts/deleteStandardPublishComments',
+data: {
+id: id,
+},
+success: function(result)
 {
-console.log(status)
-if (status==5)  { $(".sms").text('Publish'); }
-if (status==6)  { $(".sms").text('UnPublish'); }
-if (status==9)  { $(".sms").text('Archives'); }
-$('#updatemodel').modal('show');
-$('.updatestatus').on('click', function()
-{
-$.ajax({
+location.reload();
+},
+error: function(result) {
+alert("Error,Please try again.");
+}
+});
+    }  
+  })
+}
+
+  function updateStandardPublishComments(id,status)
+{ 
+    if (status==5)  { stsdata='Publish'; }
+if (status==6)  { stsdata='UnPublish';  }
+if (status==9)  { stsdata='Archives';  }
+if (status==1)  { stsdata='Restore';  }
+  Swal.fire({
+    title: 'Do you want to '+stsdata+' ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:stsdata,
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>Shareyourthoughts/updateStandardPublishComments',
 data: {
@@ -120,27 +136,7 @@ error: function(result) {
 alert("Error,Please try again.");
 }
 });
-});
-}
-function deleteStandardPublishComments(id)
-{
-$('#delete').modal('show');
-$('.deletecall').on('click', function()
-{
-$.ajax({
-type: 'POST',
-url: '<?php echo base_url(); ?>Shareyourthoughts/deleteStandardPublishComments',
-data: {
-id: id,
-},
-success: function(result)
-{
-location.reload();
-},
-error: function(result) {
-alert("Error,Please try again.");
-}
-});
-});
+    }  
+  })
 }
 </script>

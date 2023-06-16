@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-md-12 submit_btn p-3">
                     <a class="btn btn-success btn-sm text-white" id="btnsubmitdata">Submit</a>
-                    <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
+                    <a class="btn btn-danger btn-sm text-white"  href="create_discussion_list">Cancel</a>
                     <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                 </div>
             </div>
@@ -234,35 +234,57 @@ CKEDITOR.replace( 'description' );
             else 
             { $("#image").next(".validation").remove(); }
         }
-        if (allfields) 
-        {
-            $('#updatemodel').modal('show');
-            $('.updatestatus').on('click', function()
-            {
-                $('#create_discussion_form').submit();
-            });
-        }
-        else 
-        {
-            $('#closeform').trigger('click');
-            return false;
-        }
+
+
+        if (allfields) {
+    // $('#create_online_form').submit();
+    Swal.fire({
+    title: 'Are you sure you want to Submit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Submit',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    if (result.isConfirmed) {
+    $('#create_discussion_form').submit();
+    } else if (result.isDenied) {
+    }
+    })
+    } else {
+    return false;
+    }
+
+         
     });
 </script>
 
 <script type="text/javascript">
-var loadImage = function(event) 
-    {
-        $("#image").show();
-        var loadImage = document.getElementById('outpuimage');
-        loadImage.src = URL.createObjectURL(event.target.files[0]);
-        loadImage.onload = function()
-        {
-            URL.revokeObjectURL(loadImage.src);
-        }
-    };
-    function resetimg()
-    {
-        $("#image").val('');  
+var loadImage = function(event) {
+    $("#loadImage").show();
+    var fileSize = $('#image')[0].files[0].size;
+    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+    var fileName = $("#image").val();;
+    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+    
+    console.log(fileSize);
+    if(fileSize < 20480){
+    $('#image').val('');
+    Swal.fire('File size should be between 20KB to 5MB')
+    }else if(fileSize > 41943040){
+    $('#image').val('');
+    Swal.fire('File size should be between 20KB to 5MB')
+    //   $('#err_icon_file').text('This value is required');
+    }else if($.inArray(fileNameExt, validExtensions) == -1){
+    $('#image').val('');
+    Swal.fire('Only jpg,jpeg,png allowed')
+    $('#err_icon_file').text('This value is required');
+    }else{
+    $('#err_icon_file').text('');
     }
+    var loadImage = document.getElementById('outpuimage');
+    loadImage.src = URL.createObjectURL(event.target.files[0]);
+    loadImage.onload = function() {
+    URL.revokeObjectURL(loadImage.src);
+    }
+    };
          </script>

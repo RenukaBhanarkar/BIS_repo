@@ -15,8 +15,8 @@
     
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body"> 
-                <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
+            <div class="card border-top card-body table-responsive"> 
+                <table id="example" class="table-bordered display nowrap " style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -35,8 +35,9 @@
                             <td><?= date("d-m-Y", strtotime($value['quiz_date']));?></td>
                             <td>Winners of Poster Making</td>
                             <td><?= date("d-m-Y h:i:s", strtotime($value['created_on']));?></td>
-                            <td class="d-flex border-bottom-0">
-                                <button onclick="submit()" class="btn btn-primary btn-sm mr-2">View</button> 
+                             <?php $id= encryptids("E", $value['id'] )?>
+                            <td class="d-flex border-bottom-0"> 
+                                <a onclick="viewData('<?= $id ?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <button onclick="updateWinnerWall('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Restore</button> 
 
                                 
@@ -181,4 +182,20 @@ function updateWinnerWall(id,status)
             });
         });
     }
+
+    function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "winner_wall_view/"+id; 
+    }  
+  })
+}
 </script>

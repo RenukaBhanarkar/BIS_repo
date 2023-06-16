@@ -146,8 +146,7 @@ color: red;
                     </div>
                     <div class="col-md-12 submit_btn p-3">
                         <a class="btn btn-success btn-sm text-white" onclick="return formubmit(event)">Update</a>
-                        <a class="btn btn-danger btn-sm text-white" onclick="history.back()">Cancel</a>
-                        <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
+                        <a class="btn btn-danger btn-sm text-white" onclick="history.back()">Cancel</a> 
                     </div>
                     
                     
@@ -161,63 +160,7 @@ color: red;
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
-<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
-            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to delete?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary deletecall" data-bs-dismiss="modal">Delete</button>
-        </div>
-    </div>
-</div>
-</div>
-<div class="modal fade" id="submit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Submit Record</h5>
-            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to Submit?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary submitcall" data-bs-dismiss="modal">Submit</button>
-        </div>
-    </div>
-</div>
-</div>
-<div class="modal fade" id="editdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Record</h5>
-            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to Edit?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary editdatacall" data-bs-dismiss="modal" onclick="hideAdd();">Ok</button>
-        </div>
-    </div>
-</div>
-</div>
+ 
 <?php
 function random_strings($length_of_string)
 {
@@ -375,10 +318,22 @@ var wall_id = $("#wall_id").val();
 var old_file = $("#old_file").val();
 
 
+
+
+
 if (allfields) {
-var fd = new FormData();
 
 
+ Swal.fire({
+    title: 'Do you want to Update ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Update',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      var fd = new FormData();
 var files = $('#image')[0].files;
 fd.append('image', files[0]); 
 fd.append('old_file', old_file);
@@ -411,11 +366,17 @@ $("#location").val("");
 $("#email").val("");
 displayWall(submit_id);
 },
-});
-// } else {
-// alert("Please select a file.");
-// }
+}); 
+    }  
+  })
+
+
+ 
 }
+
+
+
+
 else {
 return false;
 }
@@ -452,9 +413,13 @@ j = 0
 for (i in data)
 {
 j++;
+if (data[i].prize==1)  {prize='1st Prize'}
+if (data[i].prize==2)  {prize='2nd Prize'}
+if (data[i].prize==3)  {prize='3rd Prize'}
+if (data[i].prize==4)  {prize='Consolation Prizes'}
 row += '<tr id="row' + data[i].id + '">' +
 '<td>' + j + '</td>' +
-'<td>' + data[i].prize  + '</td>' +
+'<td>' + prize  + '</td>' +
 '<td>' + data[i].name  + '</td>' +
 '<td>' + data[i].email + '</td>' +
 '<td>' + data[i].contact_no + '</td>' +
@@ -469,13 +434,19 @@ $("#que_body").html(row);
 </script>
 <!-- End of Main Content -->
 <script type="text/javascript">
-function getWinnerData(id)
-{
-    
-$('#editdata').modal('show');
-$('.editdatacall').on('click', function()
-{
-$.ajax({
+
+    function getWinnerData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>winnerwall/getWinnerData',
 data: {
@@ -497,9 +468,10 @@ error: function(result) {
 alert("Error,Please try again.");
 }
 });
-});
+    }  
+  })
 }
-
+ 
 // function DeleteData(id)
 // {
 // $('#delete').modal('show');
@@ -661,60 +633,8 @@ Swal.fire({
                         $("#contact_no").next(".validation").remove(); // remove it
                     }
 
-                    var image = $("#image").val();
-                    if (image == "" || image== null) {
-                        if ($("#image").next(".validation").length == 0) // only add if not added
-                        {
-                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select image</div>");
-                        }
-                        if (!focusSet) { $("#image").focus(); }
-                        allfields = false;
-                    } else {
-                        $("#image").next(".validation").remove(); // remove it
-                    }
- 
-
-                    if ($("#image").val() != '') 
-                {
-                    var fileSize = $('#image')[0].files[0].size;
-                    $("#image").next(".validation").remove();
-                    if (fileSize > 41943040) 
-                    {
-                        if ($("#image").next(".validation").length == 0) // only add if not added
-                        {
-                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
-                        }
-                        allfields = false;
-                        if (!focusSet) {
-                            $("#image").focus();
-                        }
-                    } 
-                    else 
-                    {
-                        $("#image").next(".validation").remove(); // remove it
-                    }
-                    var validExtensions = ['jpeg','jpg','png']; //array of valid extensions
-                    var fileName = $("#image").val();;
-                    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-                    $("#image").next(".validation").remove();
-                    if ($.inArray(fileNameExt, validExtensions) == -1) 
-                    {
-                        if ($("#image").next(".validation").length == 0) // only add if not added
-                        {
-                            $("#image").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only Jpeg, jpg,png  file allowed. </div>");
-                        }
-                        allfields = false;
-                        if (!focusSet) 
-                        {
-                            $("#image").focus();
-                        }
-                    } 
-                    else 
-                    {
-                        $("#image").next(".validation").remove(); // remove it
-                    }
-                }
-
+                     
+  
                 var location = $("#location").val();
                     if (location == "" || location== null) {
                         if ($("#location").next(".validation").length == 0) // only add if not added
@@ -753,12 +673,21 @@ Swal.fire({
                     }
  
 
-            if (allfields) {  
-                var fd = new FormData();
-                var files = $('#image')[0].files;
-                // Check file selected or not
-                if (files.length > 0) {
-                    fd.append('image', files[0]);
+            if (allfields) {
+
+                    var fd = new FormData();
+                     var files = $('#image')[0].files;
+
+                    Swal.fire({
+                title: 'Do you want to Add Winner ?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText:'Add Winner',
+                denyButtonText: `Cancel`,
+                }).then((result) => { 
+            if (result.isConfirmed) 
+                { 
+                fd.append('image', files[0]);
                     fd.append('quiz_id', quiz_id);
                     fd.append('wall_title', wall_title);
                     fd.append('quiz_date', quiz_date);
@@ -791,13 +720,15 @@ Swal.fire({
                             $("#location").val("");
                             $("#email").val("");
                             displayWall(submit_id);
+                            $("#formsubmit").show();
                         },
                     });
-                } else {
-                    alert("Please select a file.");
                 }
-            }
-            else {
+            })
+
+            } 
+            else
+            {
                 return false;
             }
         });
