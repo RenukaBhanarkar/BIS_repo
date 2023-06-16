@@ -9,7 +9,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">
                 <?php
-                if (encryptids("D", $_SESSION['admin_type']) == 1) { ?> Super Admin Dashboard <?php } else  if (encryptids("D", $_SESSION['admin_type']) == 2) { ?> Admin Dashboard <?php } else { ?> Sub Admin Dashboard<?php } ?></h1>
+                if (encryptids("D", $_SESSION['admin_type']) == 1) { ?> Super Admin Dashboard <?php } else  if (encryptids("D", $_SESSION['admin_type']) == 2) { ?> Admin Dashboard <?php } else if (encryptids("D", $_SESSION['admin_type']) == 3) { ?><?php if(encryptids("D", $_SESSION['admin_designation']) == 4){?> Evaluator Dashhoard <?php }else{ ?> Sub Admin Dashboard<?php } } ?></h1>
 
         </div>
         <!-- Content Row -->

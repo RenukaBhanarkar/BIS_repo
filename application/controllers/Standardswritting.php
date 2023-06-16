@@ -209,7 +209,7 @@ class Standardswritting extends CI_Controller
 
     public function view_submission_competition($id)
     {
-        $data['competition']=$this->Miscellaneous_competition->SubmittedCompetition2($id);
+        $data['competition']=$this->Miscellaneous_competition->SubmittedAttemptsUnderReview($id);
         $data['evaluators']=$this->Miscellaneous_competition->evaluators();
         $data['ids']=$id;
         //  print_r($data);die;
@@ -592,9 +592,9 @@ class Standardswritting extends CI_Controller
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $formdataall['quizlavel']=$quizlavel;
         
-     //print_r($_POST); 
+     print_r($_POST); 
         // print_r($formdata);
-        // die;
+        die;
         
 
         if (!file_exists('uploads/competition/thumbnail')) { mkdir('uploads/competition/thumbnail', 0777, true); }
@@ -688,7 +688,8 @@ class Standardswritting extends CI_Controller
                 $formdata['branch']= 0;
                 $formdata['state'] = $this->input->post('state_id');
             }
-
+print_r($formdata);
+        die;
        
             $formdata1 = array();
             $formdata1['fprize_no']=$this->input->post('fprize');            
@@ -750,14 +751,19 @@ class Standardswritting extends CI_Controller
             $formdata['start_date'] = $this->input->post('start_date');
             $formdata['end_date'] = $this->input->post('end_date');
             $formdata['comp_level'] = $this->input->post('Level');
-            $formdata['start_time'] = $this->input->post('start_time');
-            $formdata['end_time'] = $this->input->post('end_time');
+            // $formdata['start_time'] = $this->input->post('start_time');
+            // $formdata['end_time'] = $this->input->post('end_time');
             $formdata['score'] = $this->input->post('score');
+
+            $start = $this->input->post('start_time');
+            $formdata['start_time'] = date("H:i:s", strtotime($start));
+            $end = $this->input->post('end_time');
+            $formdata['end_time'] = date("H:i:s", strtotime($end));
             // $formdata['region'] = $this->input->post('Region');
             // $formdata['branch'] = $this->input->post('Branch');
             $formdata['available_for'] = $this->input->post('Available');
           //  $formdata['thumbnail'] = $thumbnail_imglocation;
-            $formdata['status'] = "0";
+            // $formdata['status'] = "0";
 
 
             if($formdata['comp_level']=='2'){
@@ -900,7 +906,7 @@ class Standardswritting extends CI_Controller
         //   print_r($formdata1); die;
             $this->Miscellaneous_competition->UpdateCompPrizes($formdata1);
 
-//print_r($formdata); die;
+// print_r($formdata); die;
            $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
            $id = $this->Miscellaneous_competition->updateCompetition($formdata);
 //echo $comp_id; die;

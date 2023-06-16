@@ -291,7 +291,8 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                         
                         <div class="col-sm-6 mt-3">
                             <div class="file-upload-wrapper" data-text="Select your file">
-                                <input type="file" class="file-upload-field" name="image" id="image" value="">
+                                <input type="file" class="file-upload-field" name="image" id="image" value="" onchange="loadThumbnail(event)">
+                                <!-- <span class="text-danger" id="err_image"></span> -->
                             </div>
                         </div>
                         <div class="button-group  mt-5" style="text-align:end;">
@@ -369,6 +370,46 @@ function KeyUp(editorID,maxLimit,infoID) {
   //  $("#file_show").click(function(){
  // $(".file-upload-wrapper").show();
 //});
+
+var loadThumbnail = function(event) {
+        // $("#outputConsol").show();
+        var fileSize = $('#image')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var fileName = $("#image").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+        var validExtensions1 = ['pdf']; 
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#image').val('');           
+           Swal.fire("Image size should be between 20 to 400KB");
+        }else if(fileSize > 409600){
+            $('#image').val('');           
+           Swal.fire("Image size should be between 20 to 400KB");
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            
+            if(!($.inArray(fileNameExt, validExtensions1) == -1)){            
+            if(fileSize > 500000){
+                $('#image').val('');  
+                Swal.fire("Document file size should be less than 5MB");
+            }else{
+
+            }
+        }else{
+            $('#image').val('');  
+            Swal.fire("Only Image and pdf files allowed");
+        }
+                     
+           
+        }
+
+        var outputConsol = document.getElementById('thumbnail_img');
+        outputConsol.src = URL.createObjectURL(event.target.files[0]);
+        outputConsol.onload = function() {
+            URL.revokeObjectURL(outputConsol.src);
+        }
+    };
+
 function submitCompetition(event){
     event.preventDefault();
 var isValid=true;

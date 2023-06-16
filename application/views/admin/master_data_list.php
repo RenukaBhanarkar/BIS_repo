@@ -62,7 +62,7 @@
                   </thead>
                   <tbody>
                     
-                      <tr>
+                      <!-- <tr>
                         <td>1</td>
                         <td>Role</td>
                         <td class="d-flex border-bottom-0">
@@ -70,7 +70,18 @@
                             <a class="btn btn-danger btn-sm mr-2 delete">delete</a>                    
 
                         </td>
-                      </tr>
+                      </tr> -->
+                      <?php if(!empty($roles)){ $i=1; foreach($roles as $list){ ?>
+                        <tr>
+                        <td><?=$i;?></td>
+                        <td><?=$list['role'];?></td>
+                        <td class="d-flex border-bottom-0">
+                            <a href="#" class="btn btn-info btn-sm mr-2 edit">Edit</a>
+                            <a class="btn btn-danger btn-sm mr-2 delete" data-id="<?=$list['id'];?>">delete</a>                    
+
+                        </td>
+                        </tr>
+                        <?php $i++; } } ?>
 
                    
                   </tbody>
@@ -104,7 +115,8 @@ $('.cancel').on('click',function(){
                     }
                     })
 })
-$('.delete').on('click',function(){
+$('#example').on('click','.delete',function(){
+  var id = $(this).attr('data-id');
     Swal.fire({
                     title: 'Are you sure you want to delete?',
                     showDenyButton: true,
@@ -113,7 +125,24 @@ $('.delete').on('click',function(){
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {    
+                    if (result.isConfirmed) { 
+                      postdata={
+                        id :id,
+                      }
+                      $.ajax({
+                        url: "<?= base_url() ?>admin/deleteRole",
+                        data: postdata,
+                        // type: "JSON",
+                        method: "post",
+                        success: function(response) {
+                            console.log(response);
+                          var res = JSON.parse(response);
+                            if (res.status==1) {
+                                Swal.fire('Deleted');
+                                location.reload();
+                            }
+                        }
+                    }); 
                        // window.location.replace('<?php echo base_url(); ?>Standardswritting/create_competition_list');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
@@ -139,6 +168,37 @@ $('.edit').on('click',function(){
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
                     })
+})
+$('.submit').click(function(){
+  var role = $('#role').val();
+  var isvalid=true;
+
+  if(role==""){
+    isvalid=false;
+  }
+if(isvalid){
+
+          postdata = {
+                        'role': role,
+                        // 'comp_id': comp_id,
+                        // 'evaluator': id,
+                        // 'submission_id':submission_id
+                    };
+                    $.ajax({
+                        url: "<?= base_url() ?>admin/addRole",
+                        data: postdata,
+                        // type: "JSON",
+                        method: "post",
+                        success: function(response) {
+                            console.log(response);
+
+                            if (response) {
+                                Swal.fire('Success');
+                                location.reload();
+                            }
+                        }
+                    });
+                  }
 })
 </script>
  

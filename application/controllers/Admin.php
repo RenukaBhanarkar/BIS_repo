@@ -3681,9 +3681,38 @@ class Admin extends CI_Controller
     }
     public function master_data_list()
     {
+        $data['roles'] = $this->Admin_model->getMasterRoles();
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/master_data_list');
+        $this->load->view('admin/master_data_list',$data);
         $this->load->view('admin/footers/admin_footer');
+    }
+    public function addRole(){
+        $data['role'] = $this->input->post('role');
+        $data['assign_role']= '0';
+        $data['admin_type']= '9';
+        // print_r($data); die;
+       $res = $this->Admin_model->addMasterRoles($data);
+       if($res){
+        $data1['status']='1';
+        $data1['message'] = 'record added successfully';
+        
+       }
+       echo json_encode($data1);
+    }
+    public function deleteRole(){
+        $data['id'] = $this->input->post('id');
+       
+        // print_r($data); die;
+       $res = $this->Admin_model->deleteMasterRoles($data);
+       if($res){
+        $data1['status']='1';
+        $data1['message'] = 'record Deleted successfully';        
+       }else{
+        $data1['status']='0';
+        $data1['message'] = 'Failed to delete';   
+       }
+       echo json_encode($data1);
     }
     public function about_eBIS_list()
     {

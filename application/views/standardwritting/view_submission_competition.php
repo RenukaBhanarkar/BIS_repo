@@ -110,7 +110,7 @@
                                     $i = 1;
                                     foreach ($evaluators as $list) { ?>
                                         <tr>
-                                            <td><input class="form-control-input" type="radio" name="evaluator" value="<?php echo $list['user_uid']; ?>" id="flexCheckDefault"></td>
+                                            <td><input class="form-control-input" type="radio" name="evaluator" value="<?php echo $list['id']; ?>" id="flexCheckDefault"></td>
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $list['name']; ?></td>
                                         </tr>

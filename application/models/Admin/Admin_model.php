@@ -1379,5 +1379,30 @@ class Admin_model extends CI_Model {
             return false;
         }
     }
+    public function getMasterRoles(){
+        $this->db->select('*');
+        $this->db->from('tbl_mst_admin_role');   
+        // $this->db->where('id',$id);   
+        $query= $this->db->get();       
+        $result=$query->result_array();
+        return $result;
+    }
+    public function addMasterRoles($data){
+        // print_r($data); die;
+        if($this->db->insert('tbl_mst_admin_role',$data)){
+			// return $this->db->insert_id();
+            return true;
+		}else{
+			return false;
+		} 
+    }
+    public function deleteMasterRoles($data){
+        $result=$this->db->delete('tbl_mst_admin_role',['id'=>$data['id']]);
+        if($result){
+            return true;
+        }else{
+            return false;
+        } 
+    }
 
 }

@@ -17,7 +17,7 @@
         <a class="nav-link" href="<?php echo base_url(); ?>admin/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span> <?php
-                if (encryptids("D", $_SESSION['admin_type']) == 1) { ?> Super Admin Dashboard <?php } else  if (encryptids("D", $_SESSION['admin_type']) == 2) { ?> Admin Dashboard <?php } else { ?> Sub Admin Dashboard<?php } ?>
+                if (encryptids("D", $_SESSION['admin_type']) == 1) { ?> Super Admin Dashboard <?php } else  if (encryptids("D", $_SESSION['admin_type']) == 2) { ?> Admin Dashboard <?php } else { if(encryptids("D", $_SESSION['admin_designation']) == 4){ ?>Evaluator Dashboard<?php }else{?> Sub Admin Dashboard<?php } } ?>
             </span></a>
     </li>
 
@@ -70,6 +70,25 @@
 
 
     <?php if (encryptids("D", $_SESSION['admin_type']) == 2 || encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
+        <?php if(encryptids("D", $_SESSION['admin_designation']) == 4){ ?>
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages_1" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Evaluator Dashboard</span>
+            </a>
+
+            
+            <div id="collapsePages_1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+
+                    <!-- <h6 class="collapse-header">Standards Club</h6> -->
+                    <a class="collapse-item" href="<?php echo base_url(); ?>Miscellaneouscompetition/task_recevied_list">Miscellaneous Competition</a>
+                    <a class="collapse-item" href="<?php echo base_url(); ?>Miscellaneouscompetition/task_reviewed">Standard Writing Competition</a>
+                    
+                </div>
+            </div>
+        </li>
+            <?php }else{ ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
@@ -111,7 +130,8 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item">
+        <?php } ?>
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages_1" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Evaluator Dashboard</span>
@@ -121,13 +141,13 @@
             <div id="collapsePages_1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
 
-                    <!-- <h6 class="collapse-header">Standards Club</h6> -->
+                    
                     <a class="collapse-item" href="<?php echo base_url(); ?>Miscellaneouscompetition/task_recevied_list">Miscellaneous Competition</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>Miscellaneouscompetition/task_reviewed">Standard Writing Competition</a>
                     
                 </div>
             </div>
-        </li>
+        </li> -->
     <?php } ?>
 
 
