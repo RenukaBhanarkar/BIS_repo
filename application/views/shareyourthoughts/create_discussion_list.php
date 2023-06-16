@@ -28,8 +28,8 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body ">
-                <table id="example" class="table-bordered table-responsive nowrap" style="width:100%">
+            <div class="card border-top card-body table-responsive">
+                <table id="example" class="table-bordered  nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -52,11 +52,13 @@
                             <td>Pending</td> 
                             <td class="d-flex">
                                 <?php $id = encryptids("E", $value['id']);?>
-                                <a href="<?php echo base_url(); ?>Shareyourthoughts/discussion_view/<?= $id ?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
-                                <a href="<?php echo base_url(); ?>Shareyourthoughts/discussion_foram_edit/<?= $id ?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a onclick="editData('<?= $id?>')" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
                                  
                                 <button onclick="updateStatusDiscussionForum('<?= $value['id']?>',1);" data-id='<?php echo $value['id']; ?>' class="btn btn-info btn-sm mr-2 delete_img">Create</button>
                                 <button onclick="deleteDiscussionForum(' <?= $value['id']?> ');" data-id='<?php echo $value['id']; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+
+                                <button onclick="updateStatusDiscussionForum('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archive</button>
                                 
                             </td>
                         </tr>
@@ -111,17 +113,21 @@
 </div>
 <!-- Modal -->
 <script type="text/javascript">
-function updateStatusDiscussionForum(id,status)
-{
-console.log(status)
-if (status==1)  { $(".sms").text('Create'); }
-if (status==5)  { $(".sms").text('Publish'); }
-if (status==6)  { $(".sms").text('UnPublish'); }
-if (status==9)  { $(".sms").text('Archives'); }
-$('#updatemodel').modal('show');
-$('.updatestatus').on('click', function()
-{
-$.ajax({
+     function updateStatusDiscussionForum(id,status)
+     { 
+
+    if (status==1)  { showdata='Create'; }
+    if (status==9)  { showdata='Archive'; } 
+    Swal.fire({
+    title: 'Do you want to '+ showdata+ '  ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:showdata,
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+     $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>Shareyourthoughts/updateStatusDiscussionForum',
 data: {
@@ -136,14 +142,22 @@ error: function(result) {
 alert("Error,Please try again.");
 }
 });
-});
+    }  
+  })
 }
+
 function deleteDiscussionForum(id)
-{
-$('#delete').modal('show');
-$('.deletecall').on('click', function()
-{
-$.ajax({
+{ 
+  Swal.fire({
+    title: 'Do you want to Delete ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Delete',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+     $.ajax({
 type: 'POST',
 url: '<?php echo base_url(); ?>Shareyourthoughts/deleteDiscussionForum',
 data: {
@@ -157,6 +171,43 @@ error: function(result) {
 alert("Error,Please try again.");
 }
 });
-});
+    }  
+  })
 }
+ 
+</script>
+
+<script type="text/javascript">
+function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "discussion_view/"+id; 
+    }  
+  })
+}
+
+function editData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to Edit ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Edit',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "discussion_foram_edit/"+id; 
+    }  
+  })
+}
+
 </script>

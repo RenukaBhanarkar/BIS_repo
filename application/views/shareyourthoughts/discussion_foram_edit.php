@@ -9,7 +9,7 @@
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Shareyourthoughts/share_your_dashboard';?>" >Share Your Thoughts</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Shareyourthoughts/discussion_forum_dashboard';?>" >Discussion Forum</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Create New Discussion</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Discussion</li>
                 
             </ol>
         </nav>
@@ -55,10 +55,7 @@
                                             <div class="modal-body">
                                                 <img id="outpuimage"width="100%"/>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button"  onclick="resetimg()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-                                                <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save changes</button>
-                                            </div>
+                                             
                                         </div>
                                     </div>
                                 </div>
@@ -99,59 +96,23 @@
                             <input type="date" class="form-control input-font" name="end_date" id="end_date" value="<?= $getData['end_date']?>">
                         </div>
                     </div>
-                    <div class="col-md-12 submit_btn p-3">
-                        <a class="btn btn-success btn-sm text-white" id="btnsubmitdata">Submit</a>
-                        <a class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#cancelForm">Cancel</a>
-                        <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
-                    </div>
+                    
                 </div>
                 
             </div>
             
         </div>
     </form>
+    <div class="col-md-12 submit_btn p-3">
+        <a class="btn btn-success btn-sm text-white" id="btnsubmitdata">Submit</a>
+        <button onclick="history.back()" class="btn btn-primary btn-sm text-white">Back</button> 
+    </div>
 </div>
 
 </div>
-<div class="modal fade" id="updatemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create Record</h5>
-            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to Create Record ?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary updatestatus" data-bs-dismiss="modal">Submit</button>
-        </div>
-    </div>
-</div>
-</div>
+ 
 
-<div class="modal fade" id="DeleteImagemodel" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel3">Delete image</h5>
-            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to Delete image ?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger DeleteImage" data-bs-dismiss="modal">Delete</button>
-        </div>
-    </div>
-</div>
-</div>
+ 
 </body>
  
 <script>
@@ -282,45 +243,42 @@ CKEDITOR.replace( 'description' );
             { $("#image").next(".validation").remove(); }
         }
     }
-        if (allfields) 
-        {
-            $('#updatemodel').modal('show');
-            $('.updatestatus').on('click', function()
-            { 
-                $('#discussion_foram_edit').submit();
-            });
-        }
-        else 
-        {
-            $('#closeform').trigger('click');
-            return false;
-        }
+        
+
+        if (allfields) {
+    // $('#create_online_form').submit();
+    Swal.fire({
+    title: 'Are you sure you want to Update ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Update',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    if (result.isConfirmed) {
+    $('#discussion_foram_edit').submit();
+    } else if (result.isDenied) {
+    }
+    })
+    } else {
+    return false;
+    }
     });
 </script>
 
 <script type="text/javascript">
-var loadImage = function(event) 
-    {
-        $("#image").show();
-        var loadImage = document.getElementById('outpuimage');
-        loadImage.src = URL.createObjectURL(event.target.files[0]);
-        loadImage.onload = function()
-        {
-            URL.revokeObjectURL(loadImage.src);
-        }
-    };
-    function resetimg()
-    {
-        $("#image").val('');  
-    }
-
-
+ 
 function DeleteImageDiscussionForum(id)
-{
-    $('#DeleteImagemodel').modal('show');
-    $('.DeleteImage').on('click', function()
-    {
-    $.ajax({
+{ 
+  Swal.fire({
+    title: 'Do you want to Delete ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'Delete',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      $.ajax({
         type: 'POST',
         url: '<?php echo base_url(); ?>Shareyourthoughts/DeleteImageDiscussionForum',
         data: 
@@ -336,6 +294,40 @@ function DeleteImageDiscussionForum(id)
             alert("Error,Please try again.");
         }
     });
-});
+    }  
+  })
 }
-</script>
+
+ 
+</script> 
+
+<script type="text/javascript">
+var loadImage = function(event) {
+    $("#loadImage").show();
+    var fileSize = $('#image')[0].files[0].size;
+    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+    var fileName = $("#image").val();;
+    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+    
+    console.log(fileSize);
+    if(fileSize < 20480){
+    $('#image').val('');
+    Swal.fire('File size should be between 20KB to 5MB')
+    }else if(fileSize > 41943040){
+    $('#image').val('');
+    Swal.fire('File size should be between 20KB to 5MB')
+    //   $('#err_icon_file').text('This value is required');
+    }else if($.inArray(fileNameExt, validExtensions) == -1){
+    $('#image').val('');
+    Swal.fire('Only jpg,jpeg,png allowed')
+    $('#err_icon_file').text('This value is required');
+    }else{
+    $('#err_icon_file').text('');
+    }
+    var loadImage = document.getElementById('outpuimage');
+    loadImage.src = URL.createObjectURL(event.target.files[0]);
+    loadImage.onload = function() {
+    URL.revokeObjectURL(loadImage.src);
+    }
+    };
+         </script>

@@ -619,7 +619,7 @@ public function discussion_foram_edit($id)
         if ($id)
         {
             $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-            redirect(base_url() . "Shareyourthoughts/create_discussion_list", 'refresh');
+            redirect(base_url() . "Shareyourthoughts/manage_discussion_list", 'refresh');
         }
         else
         {
@@ -705,5 +705,14 @@ public function DeleteImageDiscussionForum(){
             return true;
         }
         redirect(base_url() . "Shareyourthoughts/discussion_comments_view", 'refresh');
+    }
+
+    public function discussion_forum_archive()
+    {
+         
+        $data['getData'] = $this->Shareyourthoughts_model->discussion_forum_archive();
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('Shareyourthoughts/discussion_forum_archive',$data);
+        $this->load->view('admin/footers/admin_footer');
     }
 }

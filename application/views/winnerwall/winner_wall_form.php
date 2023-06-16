@@ -401,12 +401,24 @@ var loadFileThumbnail = function(event)
                     }
  
 
-            if (allfields) {  
-                var fd = new FormData();
-                var files = $('#image')[0].files;
-                // Check file selected or not
+             
+
+  
                 if (allfields) {
-                    fd.append('image', files[0]);
+
+                    var fd = new FormData();
+                     var files = $('#image')[0].files;
+
+                    Swal.fire({
+                title: 'Do you want to Add Winner ?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText:'Add Winner',
+                denyButtonText: `Cancel`,
+                }).then((result) => { 
+            if (result.isConfirmed) 
+                { 
+                fd.append('image', files[0]);
                     fd.append('quiz_id', quiz_id);
                     fd.append('wall_title', wall_title);
                     fd.append('quiz_date', quiz_date);
@@ -442,14 +454,15 @@ var loadFileThumbnail = function(event)
                             $("#formsubmit").show();
                         },
                     });
-                } 
-                else {
-                    // alert("Please select a file.");
                 }
-            }
-            else {
+            })
+
+            } 
+            else
+            {
                 return false;
             }
+         
         });
     </script>
     <script type="text/javascript">
@@ -471,9 +484,13 @@ var loadFileThumbnail = function(event)
                 j = 0
                 for (i in data) {
                     j++;
+                    if (data[i].prize==1)  {prize='1st Prize'}
+                    if (data[i].prize==2)  {prize='2nd Prize'}
+                    if (data[i].prize==3)  {prize='3rd Prize'}
+                    if (data[i].prize==4)  {prize='Consolation Prizes'}
                     row += '<tr id="row' + data[i].id + '">' +
                         '<td>' + j + '</td>' +
-                        '<td>' + data[i].prize  + '</td>' +
+                        '<td>' + prize + '</td>' +
                         '<td>' + data[i].name  + '</td>' +
                         '<td>' + data[i].email + '</td>' +
                         '<td>' + data[i].contact_no + '</td>' +

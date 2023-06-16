@@ -1383,7 +1383,7 @@ if($id){
             if ($quiz_id) { 
                    
                 $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-                redirect(base_url() . "Standardswritting/create_online_list", 'refresh');
+                redirect(base_url() . "Standardswritting/manage_online_list", 'refresh');
             }
             else
             {
@@ -1760,14 +1760,21 @@ if($id){
     }
     public function closed_standard_list()
     {
+ 
 
         $getDetails= $this->Standardswritting_model->closed_standard_list();
         $data = array();
         foreach ($getDetails as $row) 
         {
             $ids= $row['id'];
-            $count= $this->Standardswritting_model->getSubmissionOnline($ids);
-            $row['count'] = $count;
+            $totalcount= $this->Standardswritting_model->getSubmissionOnline($ids);
+            $row['totalcount'] = $totalcount;
+
+            $sendReview= $this->Standardswritting_model->getSendReview($ids);
+            $row['sendReview'] = $sendReview;
+
+            $Reviewd= $this->Standardswritting_model->getReviewd($ids);
+            $row['Reviewd'] = $Reviewd;
             array_push($data, $row);
         }         
         
@@ -1799,7 +1806,7 @@ if($id){
             array_push($data, $row);
         }         
         
-        $data['getData'] = $data; 
+        $data['getData'] = $data;  
 
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/revised_standard_list',$data);
