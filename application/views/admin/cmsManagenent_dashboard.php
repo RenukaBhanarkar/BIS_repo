@@ -61,7 +61,7 @@
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
-                            <h5 class="font-weight-bold text-warning mb-1">About Exchange forum</h5>
+                            <h5 class="font-weight-bold text-warning mb-1">About Manak Rath</h5>
                             
 
                         </div>

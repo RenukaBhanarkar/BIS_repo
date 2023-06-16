@@ -125,8 +125,8 @@
                                 if(score > out_of){
                                     $('#score').val("");
                                     isvalid=false;
-                                    Swal.fire("Makrs should be less than out of marks");
-                                    $('#err_score').text('Makrs should be less than' + out_of);
+                                    Swal.fire("Marks should be less than out of marks");
+                                    $('#err_score').text('Marks should be less than'  +  out_of);
                                   //  return false;
                                 }else if(score =="NaN"){
                                     isvalid =false;

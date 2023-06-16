@@ -29,8 +29,8 @@
     
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body">
-                <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
+            <div class="card border-top card-body table-responsive">
+                <table id="example" class="table-bordered display nowrap " style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -162,7 +162,7 @@ console.log(status)
 //     });
 // });
 if (status==5)  { var title1= 'Do you want to Publish?'; var buttonText = 'Publish' }
-if (status==6)  { var title1= 'Do you want to Unublish?'; var buttonText = 'Unublish' }
+if (status==6)  { var title1= 'Do you want to Unpublish?'; var buttonText = 'Unpublish' }
 if (status==9)  { var title1= 'Do you want to Archive?'; var buttonText = 'Archive' }
 Swal.fire({
 title: title1,

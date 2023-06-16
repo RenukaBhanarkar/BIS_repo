@@ -170,9 +170,9 @@
                             </div>
                         </div> -->
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Upload Competition Banner</label>
+                            <label class="d-block text-font">Banner</label>
                             <div>
-                                <p><img src="<?php echo base_url().$quizdata['thumbnail']; ?>" style="width:200px;"></p>
+                                <p><img src="<?php echo base_url().$quizdata['thumbnail']; ?>" style="width:150px;"></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
@@ -206,9 +206,9 @@
                             <div>
                             <?php if($quizdata['fprize_image']== '') { ?>
                                 <!-- // echo "NA"; -->
-                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:150px;"></p>
                             <?php } else { ?>
-                                  <p><img src="<?php echo base_url().$quizdata['fprize_image']; ?>" style="width:200px;"></p>
+                                  <p><img src="<?php echo base_url().$quizdata['fprize_image']; ?>" style="width:150px;"></p>
                             <?php  } ?>
                               
                             </div>
@@ -337,10 +337,14 @@
                 <div class="col-md-12 submit_btn p-3">
                 <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { 
   if($quizdata['status']==2 ){  ?>
-<button class="btn btn-success btn-sm float-right ml-2 text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
-<button class="btn btn-danger btn-sm float-right ml-2 text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
+<button class="btn btn-success btn-sm text-white approve" data-id="<?= $quizdata['competitionn_id'] ?>">Approve</button>
+<button class="btn btn-warning btn-sm text-white reject" data-id="<?= $quizdata['competitionn_id'] ?>">Reject</button>
+<button onclick="history.back()" class="btn btn-danger btn-sm text-white submit">Cancel</button>
 <?php } } ?>
-<button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
+
+                </div>
+                <div class="col-md-12 submit_btn p-3">
+                <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
                 </div>
                 <!-- Modal -->
                 <!-- <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -282,7 +282,7 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                                             <span id="current">0</span>
                                             <span id="maximum">/ 5000</span>
                                     </div> -->
-                                    <strong>Letter count: <span id="letterCount"></span></strong>
+                                    <strong>Letter count: <span id="letterCount"></span><span>/5000</span></strong>
 
                                     <input type="hidden" name="comp_id" value="<?php echo $competition['competitionn_id']; ?>">
                                     

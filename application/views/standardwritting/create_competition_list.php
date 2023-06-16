@@ -82,7 +82,7 @@
                             <td><?php if($list['status']==0){ echo "-";} ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View</a>
-                                 <a href="<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >Edit</a>
+                                 <a href="#" class="btn btn-info btn-sm mr-2 edit" >Edit</a>
                                  <button data-id="<?php echo $list['comp_id']; ?>" data-status="create" class="btn btn-success btn-sm mr-2 create" >Create</button>
                                  <button class="btn btn-danger btn-sm mr-2 delete" data-id="<?php echo $list['comp_id']; ?>" >Delete</button>
                                  <button data-id="<?php echo $list['comp_id']; ?>" data-status="create" class="btn btn-primary btn-sm mr-2 archive" >Archive</button>
@@ -256,7 +256,7 @@ location.reload();
     $('#example').on('click','.create',function(){
         id =$(this).attr('data-id');
             Swal.fire({
-                        title: 'Are you sure you want to Create?',
+                        title: 'Do you want to Create?',
                         showDenyButton: true,
                         showCancelButton: false,
                         confirmButtonText: 'Create',
@@ -292,5 +292,22 @@ location.reload();
     });
 
     });
-   
+    $('.edit').on('click',function(){
+    Swal.fire({
+                    title: 'Do you want to Edit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Edit',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url().'standardswritting/create_competition_edit/'.$list['comp_id']; ?>');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
 </script>

@@ -44,7 +44,7 @@
                 </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Name of Competition<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Title of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo set_value('name') ?>" required="">
                                 <div class="invalid-feedback">
                                     This value is required
@@ -55,7 +55,7 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Name of Competition in Hindi<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Title of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo set_value('name_hindi') ?>" required="">
                                 <div class="invalid-feedback">
                                     This value is required
@@ -115,7 +115,7 @@
                            
                         </div>
                         <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" required onchange="loadThumbnail(event)">

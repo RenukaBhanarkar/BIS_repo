@@ -6,7 +6,7 @@ $top_nav=array(
 
 $welcome_text=array(
     'en'=>array('Welcome to Manak Rath','A platform for exchange of information and conducting Standards based activities','Standards Club','An initiative to nurture the students as Brand Ambassadors of Quality','World of Standards','An initiative to broad-base the stakeholder engagement for development of Standards'),
-    'hn'=>array('माणक रथ में आपका स्वागत है','सूचनाओं के आदान-प्रदान और मानक आधारित गतिविधियों के संचालन के लिए एक मंच','मानक क्लब','गुणवत्ता के ब्रांड एंबेसडर के रूप में छात्रों को पोषित करने की एक पहल','मानकों की दुनिया','मानकों के विकास के लिए हितधारक जुड़ाव को व्यापक आधार देने की पहल'),
+    'hn'=>array('मानक रथ में आपका स्वागत है','सूचनाओं के आदान-प्रदान और मानक आधारित गतिविधियों के संचालन के लिए एक मंच','मानक क्लब','गुणवत्ता के ब्रांड एंबेसडर के रूप में छात्रों को पोषित करने की एक पहल','मानकों की दुनिया','मानकों के विकास के लिए हितधारक जुड़ाव को व्यापक आधार देने की पहल'),
 );
 
 $footer_content=array(

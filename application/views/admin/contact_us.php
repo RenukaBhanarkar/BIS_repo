@@ -125,7 +125,7 @@
                                 <th>Sr. No.</th>
                                 <th>Contact no.</th>
                                 <th>Address</th>
-                                <th>TELE FAX</th>
+                                <!-- <th>TELE FAX</th> -->
                                 <th>Email</th>
                                 <!-- <th>Location URL</th> -->
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
@@ -141,7 +141,7 @@
                                         <td><?php echo $i++; ?></td>
                                         <td><?php echo $list_contact['contact_no']; ?></td>
                                         <td><?php echo $list_contact['address']; ?></td>
-                                        <td><?php echo $list_contact['tele_fax']; ?></td>
+                                        <!-- <td><?php echo $list_contact['tele_fax']; ?></td> -->
                                         <td><?php echo $list_contact['email']; ?></td>
                                         <!-- <td style="word-break: break-all;"><?php echo $list_contact['location']; ?></td> -->
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>

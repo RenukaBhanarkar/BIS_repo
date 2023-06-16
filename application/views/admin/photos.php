@@ -184,9 +184,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 submit_btn p-3">
-        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>admin/gallery'">Back</a>
-    </div>
+    
     <!-- /.container-fluid -->
     <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -557,10 +555,10 @@
 
        if(isvalid){
         Swal.fire({
-                    title: 'Are you sure you want to Submit?',
+                    title: 'Are you sure you want to Update?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Submit',
+                    confirmButtonText: 'Update',
                     denyButtonText: `Cancel`,
                     }).then((result) => {                    
                     if (result.isConfirmed) {                       

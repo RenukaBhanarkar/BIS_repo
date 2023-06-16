@@ -83,7 +83,7 @@
                                 <span class="text-danger" id="err_score"></span>
                                 </div>
                             </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Comment</label>
                                     <div class="d-flex">
@@ -91,7 +91,7 @@
                                      </div>
                                      <span class="text-danger" id="err_comment"></span>
                                 </div>  
-                            </div>
+                            </div> -->
                             
                           </div>
                           <div class="col-md-12 submit_btn p-3">

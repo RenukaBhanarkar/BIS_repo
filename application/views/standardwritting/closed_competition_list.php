@@ -111,7 +111,7 @@
         $('#example').on('click','.send_for_review',function(){
             var id=$(this).attr('comp-id');
             Swal.fire({
-                title: 'Are you sure you want to Send For Review?',
+                title: 'Do you want to send this competition for review?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Send For Review',

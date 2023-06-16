@@ -141,7 +141,7 @@ color: red;
                             </div>
                             <div class="col-md-12 submit_btn p-3">
                                 <a class="btn btn-success btn-sm text-white" onclick="return formubmit(event)" id="formsubmit">Submit</a>
-                                <a class="btn btn-danger btn-sm text-white" onclick="history.back()">Cancel</a>
+                                <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
                                 <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                             </div>
                             
@@ -574,5 +574,23 @@ var loadFileThumbnail = function(event)
     // function ShowSubmit(argument) { 
     //     $("#formsubmit").show();
     // }
-
+    $('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url(); ?>winnerwall/winner_wall_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
     </script> 
+    

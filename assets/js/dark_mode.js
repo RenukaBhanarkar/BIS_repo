@@ -3,10 +3,10 @@ $(document).ready(function() {
     if (theam === 1) {
         contrast();
     }
-    if (theam === 0) {
+    if (theam === 2) {
         normal();
     }
-    if (theam === 2) {
+    if (theam === 0) {
         orange();
     }
     if (theam === 3) {
@@ -84,7 +84,7 @@ function normal() {
         
          
     });
-    sessionStorage.setItem("theam", 0);
+    sessionStorage.setItem("theam", 2);
 }
 
 function orange() {
@@ -100,7 +100,7 @@ function orange() {
         
       
     });
-    sessionStorage.setItem("theam", 2);
+    sessionStorage.setItem("theam", 0);
 }
 
 function green() {

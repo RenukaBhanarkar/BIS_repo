@@ -101,9 +101,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <!-- <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
+                                    <a href="#" id="orange_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
                                     <a href="#" id="blue_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
                                     <a href="#" id="bright_contrast"><i class="fa fa-square" aria-hidden="true"></i></i></a>
-                                    <a href="#" id="orange_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
                                     <a href="#" id="red_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
                                 </li>
                             </ul>

@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <img src="<?php echo base_url(); ?>assets/admin/img/bis_logo.png" width="80%">
         </div>
-        <div class="sidebar-brand-text mx-3">Exchange Forum</div>
+        <div class="sidebar-brand-text mx-3">Manak Rath</div>
     </a>
 
     <!-- Divider -->
@@ -108,6 +108,23 @@
                     <a class="collapse-item" href="#">Shared your through</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>Standardsmaking/join_the_classroom_dashboard">Join the Class Room</a>
                     <a class="collapse-item" href="<?php echo base_url(); ?>Standardsmaking/conversation_dashboard">In Conversation with Expert</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages_1" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Evaluator Dashboard</span>
+            </a>
+
+            
+            <div id="collapsePages_1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+
+                    <!-- <h6 class="collapse-header">Standards Club</h6> -->
+                    <a class="collapse-item" href="<?php echo base_url(); ?>Miscellaneouscompetition/task_recevied_list">Miscellaneous Competition</a>
+                    <a class="collapse-item" href="<?php echo base_url(); ?>Miscellaneouscompetition/task_reviewed">Standard Writing Competition</a>
+                    
                 </div>
             </div>
         </li>

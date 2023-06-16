@@ -115,7 +115,7 @@
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center d-flex">
-                                    <h5 class="font-weight-bold text-warning mb-1">Evaluator for Competition</h5>
+                                    <h5 class="font-weight-bold text-warning mb-1">Task Assessment for Miscellaneous Competition</h5>
                                     
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center d-flex">
-                                    <h5 class="font-weight-bold text-warning mb-1">Evaluator for StandardWriting</h5>
+                                    <h5 class="font-weight-bold text-danger mb-1">Task Assessment for Standard Writing Competition </h5>
                                     
                                 </div>
                             </div>

@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">About Exchange forum</h1>
+        <h1 class="h3 mb-0 text-gray-800">About Manak Rath</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
@@ -26,7 +26,7 @@
             <div>
                
                 <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add
-                    New About Exchange forum</button>
+                    New About Manak Rath</button>
                    
                 <form id="add_admin" class="was-validated"  action="<?php echo base_url(); ?>admin/add_about_exchange_forum" method="post" enctype="multipart/form-data">
                     <div class="modal fade " id="newform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -263,9 +263,7 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-    <div class="col-md-12 submit_btn p-3">
-        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/cmsManagenent_dashboard'">Back</a>
-    </div> 
+
 
 </div>
 <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
