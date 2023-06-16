@@ -60,7 +60,7 @@
                               <td><?=$value['email']?></td>
                               <td><?=$value['user_mobile']?></td>
                               <td><?= date("d-m-Y h:i:s", strtotime($value['created_on']));?></td>
-                              <td>9 th</td>
+                             <td><?=$value['stdClubMemberClass']?> th</td>
                               <td><?=$value['member_id']?></td>
                               <td class="d-flex">
                                  <a href="<?php echo base_url(); ?>standardswritting/standard_submission_view/<?=$value['id']?>" class="btn btn-primary btn-sm mr-2" >View</a>

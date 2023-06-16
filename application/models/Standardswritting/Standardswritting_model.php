@@ -647,7 +647,7 @@ class Standardswritting_model extends CI_Model
 
     public function submission_view($comp_id)
     {
-        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name');
+        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.stdClubMemberClass');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_users tbl_users', 'tbl_users.user_id=tbl_standard_writing_competition_online.user_id');
         $this->db->where('tbl_standard_writing_competition_online.comp_id', $comp_id);
@@ -723,7 +723,7 @@ class Standardswritting_model extends CI_Model
 
     public function standard_submission_view($id)
     {
-        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.member_id');
+        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.member_id,tbl_users.stdClubMemberClass');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_users tbl_users', 'tbl_users.user_id=tbl_standard_writing_competition_online.user_id');
         $this->db->where('tbl_standard_writing_competition_online.id', $id);

@@ -230,12 +230,16 @@
                                         <input type="checkbox" value="11"name="standard[]"   <?php if (in_array(11,$std)) {echo "checked";}?> class="custom-control-input"  id="Standard_3"  >
                                         <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
                                     </div>
+
                                     <div class="custom-control custom-checkbox mr-3">
-                                        <input type="checkbox" value="12" name="standard[]"   <?php if (in_array(12,$std)) {echo "checked";}?>class="custom-control-input"  id="Standard_4">
+                                        <input type="checkbox" value="11"name="standard[]"   <?php if (in_array(12,$std)) {echo "checked";}?> class="custom-control-input"  id="Standard_4"  >
                                         <label class="custom-control-label" for="Standard_4">12<sup>th</sup>Standard</label>
                                     </div>
+
+                                    
                                 </div>
                         </div>
+                         
             </div>
                 </div>
                 <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">

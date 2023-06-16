@@ -50,7 +50,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Class</label>
                             <div>
-                                <p>9 th</p>
+                                <p><?=$getData['stdClubMemberClass']?></p>
                             </div>
                         </div>
                         <div class="mb-2 col-md-4">
