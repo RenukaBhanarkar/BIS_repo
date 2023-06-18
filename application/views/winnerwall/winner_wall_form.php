@@ -141,7 +141,7 @@ color: red;
                             </div>
                             <div class="col-md-12 submit_btn p-3">
                                 <a class="btn btn-success btn-sm text-white" onclick="return formubmit(event)" id="formsubmit">Submit</a>
-                                <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
+                                <a class="btn btn-danger btn-sm text-white" onclick="history.back()">Cancel</a>
                                 <input type="reset" name="Reset" class="btn btn-warning btn-sm text-white">
                             </div>
                             
@@ -401,24 +401,12 @@ var loadFileThumbnail = function(event)
                     }
  
 
-             
-
-  
+            if (allfields) {  
+                var fd = new FormData();
+                var files = $('#image')[0].files;
+                // Check file selected or not
                 if (allfields) {
-
-                    var fd = new FormData();
-                     var files = $('#image')[0].files;
-
-                    Swal.fire({
-                title: 'Do you want to Add Winner ?',
-                showDenyButton: true,
-                showCancelButton: false,
-                confirmButtonText:'Add Winner',
-                denyButtonText: `Cancel`,
-                }).then((result) => { 
-            if (result.isConfirmed) 
-                { 
-                fd.append('image', files[0]);
+                    fd.append('image', files[0]);
                     fd.append('quiz_id', quiz_id);
                     fd.append('wall_title', wall_title);
                     fd.append('quiz_date', quiz_date);
@@ -454,15 +442,14 @@ var loadFileThumbnail = function(event)
                             $("#formsubmit").show();
                         },
                     });
+                } 
+                else {
+                    // alert("Please select a file.");
                 }
-            })
-
-            } 
-            else
-            {
+            }
+            else {
                 return false;
             }
-         
         });
     </script>
     <script type="text/javascript">
@@ -484,13 +471,9 @@ var loadFileThumbnail = function(event)
                 j = 0
                 for (i in data) {
                     j++;
-                    if (data[i].prize==1)  {prize='1st Prize'}
-                    if (data[i].prize==2)  {prize='2nd Prize'}
-                    if (data[i].prize==3)  {prize='3rd Prize'}
-                    if (data[i].prize==4)  {prize='Consolation Prizes'}
                     row += '<tr id="row' + data[i].id + '">' +
                         '<td>' + j + '</td>' +
-                        '<td>' + prize + '</td>' +
+                        '<td>' + data[i].prize  + '</td>' +
                         '<td>' + data[i].name  + '</td>' +
                         '<td>' + data[i].email + '</td>' +
                         '<td>' + data[i].contact_no + '</td>' +
@@ -591,23 +574,5 @@ var loadFileThumbnail = function(event)
     // function ShowSubmit(argument) { 
     //     $("#formsubmit").show();
     // }
-    $('.cancel').on('click',function(){
-    Swal.fire({
-                    title: 'Are you sure you want to Cancel?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Cancel',
-                    denyButtonText: `Close`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url(); ?>winnerwall/winner_wall_list');                   
-                        //$('#competition_edit').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-})
+
     </script> 
-    

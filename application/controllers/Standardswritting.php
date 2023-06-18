@@ -372,7 +372,7 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/view_submitted_comp_response',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-    public function standard_submission_competition($id)
+    public function standard_submission_competition($id) 
     {
         $this->load->view('admin/headers/admin_header');
         $data=array();

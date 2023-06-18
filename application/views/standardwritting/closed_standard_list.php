@@ -88,9 +88,9 @@
                                   # code...
                                 
 
-                                if($value['result_declared'] == 0 ){ ?>
+                                // if($value['result_declared'] == 0 ){ ?>
                                  <a href="<?php echo base_url(); ?>Standardswritting/result_declared_list/<?= encryptids('E',$value['id']); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
-                                 <?php } }?>
+                                 <?php  }?>
 
                                <?php } ?>     
                                   
@@ -147,10 +147,10 @@ function viewSubmissionData(id)
     if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Update'; }
     Swal.fire({
-      title: 'Do you want to Create?',
+      title: 'Do you want to Send For Review ?',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Update',
+      confirmButtonText: 'Send For Review',
       denyButtonText: `Cancel`,
     }).then((result) => 
     { 

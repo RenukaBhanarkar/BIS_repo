@@ -343,7 +343,7 @@ class Standardswritting_model extends CI_Model
     public function admin_manage_standard_list()
     {
         $this->db->select('tbl_standards_writting_offline.*,tbl_mst_status.status_name');
-        $this->db->where('status ', 2);
+        $this->db->where_in('status ', array(2,3,4,5,6,7,8,9)) ; 
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_offline.status');
         return $this->db->get('tbl_standards_writting_offline')->result_array();
     }
@@ -647,7 +647,7 @@ class Standardswritting_model extends CI_Model
 
     public function submission_view($comp_id)
     {
-        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.stdClubMemberClass');
+        $this->db->select('tbl_standard_writing_competition_online.*,tbl_users.user_mobile,tbl_users.email,tbl_users.user_name,tbl_users.stdClubMemberClass,tbl_users.member_id');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_users tbl_users', 'tbl_users.user_id=tbl_standard_writing_competition_online.user_id');
         $this->db->where('tbl_standard_writing_competition_online.comp_id', $comp_id);

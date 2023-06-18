@@ -29,8 +29,8 @@
     
     <div class="row">
         <div class="col-12 mt-3">
-            <div class="card border-top card-body table-responsive">
-                <table id="example" class="table-bordered display nowrap " style="width:100%">
+            <div class="card border-top card-body">
+                <table id="example" class="table-bordered display nowrap table-responsive" style="width:100%">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
@@ -50,31 +50,26 @@
                             <td><?= $value['wall_title'];?></td>
                             <td><?= date("d-m-Y h:i:s", strtotime($value['created_on']));?></td>
                             <td class="d-flex border-bottom-0">
-
                                 <?php $id= encryptids("E", $value['id'] )?>
                                 
-                                 
+                                
 
 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a onclick="viewData('<?= $id ?>')" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a href="winner_wall_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php } ?>
-                                <?php if ($value['status']!=5) {?>
 
                                 <?php if (in_array(3, $permissions)) { ?>
-                                <a onclick="editData('<?= $id ?>')" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
-                                <?php } }?>
-
+                                <a href="winner_wall_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <?php } ?>
                                 
                                 
                                 <?php if ($value['status']==5) {?>
-                                <button onclick="updateWinnerWall('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">Unpublish</button>
+                                <button onclick="updateWinnerWall('<?= $value['id']?>',6);" data-id='<?php echo $value['id']; ?>' class="btn btn-warning btn-sm mr-2 delete_img">UnPublish</button>
                                 <?php }?>
                                 <?php if ($value['status']!=5) {?>
                                 <button onclick="updateWinnerWall('<?= $value['id']?>',5);" data-id='<?php echo $value['id']; ?>' class="btn btn-success btn-sm mr-2 delete_img">Publish</button>
-                                <button onclick="updateWinnerWall('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archive</button>
-
-
+                                <button onclick="updateWinnerWall('<?= $value['id']?>',9);" data-id='<?php echo $value['id']; ?>' class="btn btn-secondary btn-sm mr-2 delete_img">Archives</button>
 
 
                                 <?php if (in_array(4, $permissions)) { ?>
@@ -96,11 +91,50 @@
         </div>
     </div>
     
-     
-    
+    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary deletecall" data-bs-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="updatemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><span class="sms"></span> Record</h5>
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to <span class="sms"> </span> ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary updatestatus" data-bs-dismiss="modal"><span class="sms"> </span></button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>
- 
+<!-- /.container-fluid -->
+<div class="col-md-12 submit_btn p-3">
+<button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
+</div>
 </div>
 <!-- End of Main Content -->
 <script type="text/javascript">
@@ -130,7 +164,7 @@ console.log(status)
 //     });
 // });
 if (status==5)  { var title1= 'Do you want to Publish?'; var buttonText = 'Publish' }
-if (status==6)  { var title1= 'Do you want to Unpublish?'; var buttonText = 'Unpublish' }
+if (status==6)  { var title1= 'Do you want to Unublish?'; var buttonText = 'Unublish' }
 if (status==9)  { var title1= 'Do you want to Archive?'; var buttonText = 'Archive' }
 Swal.fire({
 title: title1,
@@ -212,37 +246,5 @@ alert("Error,Please try again.");
 // Swal.fire('Changes are not saved', '', 'info')
 }
 })
-}
-
-
-function editData(id) 
-{
-  Swal.fire({
-    title: 'Do you want to Edit ?',
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'Edit',
-    denyButtonText: `Cancel`,
-  }).then((result) => { 
-    if (result.isConfirmed) 
-    { 
-      window.location.href = "winner_wall_edit/"+id; 
-    }  
-  })
-}
- function viewData(id) 
-{ 
-  Swal.fire({
-    title: 'Do you want to View ?',
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'View',
-    denyButtonText: `Cancel`,
-  }).then((result) => { 
-    if (result.isConfirmed) 
-    { 
-      window.location.href = "winner_wall_view/"+id; 
-    }  
-  })
 }
 </script>
