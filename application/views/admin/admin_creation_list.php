@@ -40,10 +40,10 @@
                       <th>Sr. No.</th>
                       <th>Name</th>
                       <th>Email id</th>
-                      <!-- <th>Designation</th>
+                      <!-- <th>Designation</th> <th>Post</th>-->
                       <th>Branch</th>
-                      <th>Post</th>
-                      <th>Department</th> -->
+                   
+                      <th>Department</th>
                       <th>Created On</th>
                       <th>Action</th>
                     </tr>
@@ -60,10 +60,10 @@
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['email_id']; ?></td>
 
-                        <!-- <td><?php echo $row['designation']; ?></td>
-                        <td><?php echo $row['branch']; ?></td>
-                        <td><?php echo $row['post']; ?></td>
-                        <td><?php echo $row['department']; ?></td> -->
+                        <!-- <td><?php echo $row['designation']; ?></td><td><?php echo $row['post']; ?></td>-->
+                        <td><?php echo $row['branchnew']; ?></td>
+                        
+                        <td><?php echo $row['uvc_department_name']; ?></td>
 
                         <td><?php echo date('d-m-Y h:i:s', strtotime($row['created_on'])) ?></td>
                         <td class="d-flex border-bottom-0">
@@ -76,7 +76,7 @@
                           <a class="btn btn-warning btn-sm mr-2 text-white" href="<?php echo base_url(); ?>admin/editAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>
 
-                          <button class="btn btn-primary btn-sm mr-2" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
+                          <button class="btn btn-primary btn-sm mr-2" onclick="resetPassword(<?php echo $row['id']; ?>,'<?php echo $row['email_id']; ?>')">Reset Password</button>
                           
 
                           <!-- <a class="btn btn-danger btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#delete">delete</a>                     -->
@@ -168,6 +168,31 @@
         
         function resetPassword(id,email) {
                         
+                        // $.ajax({
+                        //         type: 'POST',
+                        //         url: '<?php echo base_url(); ?>admin/resetPassword',
+                        //         data: {
+                        //             id: id,
+                        //             email:email,
+                        //         },
+                        //         success: function(result) {
+                                  
+                        //             Swal.fire('Reset password Successfully.Mail sent.');
+                        //         },
+                        //         error: function(result) {
+                        //             Swal.fire("Error,Please try again.");
+                        //         }
+                        //     });
+
+                        Swal.fire({
+                    title: 'Do you want to reset password?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Reset',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
                         $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url(); ?>admin/resetPassword',
@@ -176,13 +201,18 @@
                                     email:email,
                                 },
                                 success: function(result) {
-                                  
-                                    Swal.fire('Reset password Successfully.Mail sent.');
+                                    
+                                    Swal.fire('Reset Password Successfully');
                                 },
                                 error: function(result) {
                                     Swal.fire("Error,Please try again.");
                                 }
                             });
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
                                                   
                    
         }   

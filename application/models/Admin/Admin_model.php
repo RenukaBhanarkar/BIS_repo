@@ -300,12 +300,13 @@ class Admin_model extends CI_Model {
         }
 
     }
-    public function getAllAdmin(){      
-        $this->db->select('*');
-        $this->db->from('tbl_admin');
-        $this->db->where('is_active',1); 
-        $this->db->where('admin_type',2); 
-        $this->db->order_by('created_on', 'DESC');
+    public function getAllAdmin(){  
+        $this->db->select('ta.*,b.uvc_department_name,c.uvc_department_name as branchnew');
+        $this->db->from('tbl_admin ta');
+       
+        $this->db->join('tbl_mst_branch b','ta.department = b.pki_id','left');
+        $this->db->join('tbl_mst_branch c','ta.branch = c.pki_id','left');
+              
          $query = $this->db->get();
         $rs = array();
         if ($query->num_rows() > 0) {
@@ -313,7 +314,20 @@ class Admin_model extends CI_Model {
                 array_push($rs,$row);
             }
         }
-        return $rs;
+        return $rs;    
+        // $this->db->select('*');
+        // $this->db->from('tbl_admin');
+        // $this->db->where('is_active',1); 
+        // $this->db->where('admin_type',2); 
+        // $this->db->order_by('created_on', 'DESC');
+        //  $query = $this->db->get();
+        // $rs = array();
+        // if ($query->num_rows() > 0) {
+        //     foreach ($query->result_array() as $row) {
+        //         array_push($rs,$row);
+        //     }
+        // }
+        // return $rs;
     }
     public function getAllBranches()
     { 
