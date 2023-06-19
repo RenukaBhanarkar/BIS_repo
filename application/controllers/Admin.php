@@ -16,7 +16,34 @@ class Admin extends CI_Controller
         date_default_timezone_set("Asia/Calcutta");
     }
 
-    public function randomPassword()
+    // public function randomPassword()
+    // {
+    //     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    //     $special = '!@#$%^&*';
+    //     $pass = array(); //remember to declare $pass as an array
+    //     $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    //     for ($i = 0; $i < 8; $i++) {
+    //         if($i < 7){
+    //             $n = rand(0, $alphaLength);
+    //             $pass[] = $alphabet[$n];
+    //         }
+    //         if($i == 7){
+    //             $n1 = rand(0, $special);
+    //             $pass[] = $alphabet[$n1];
+    //         }
+           
+    //     }
+      
+    //     return implode($pass); //turn the array into a string
+    // }
+
+    //$str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+ 
+    // Shuffle the $str_result and returns substring
+    // of specified length
+   // return substr(str_shuffle($str_result),0, $length_of_string);
+     
+     public function randomPassword()
     {
         $alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $special = '!@#$%^&*';
@@ -36,6 +63,13 @@ class Admin extends CI_Controller
       
         return implode($pass); //turn the array into a string
     }
+
+
+
+
+
+
+
     public function index()
     {
         if ($this->Admin_model->checkAdminLogin()) {
@@ -1529,7 +1563,7 @@ class Admin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'Vidya@123',
+                    'smtp_pass' => 'moihgnpbowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1661,7 +1695,7 @@ class Admin extends CI_Controller
 
                 // email to Admin to notify  start
                 $msg = "Dear " . $name .
-                    " <p>Your password has changed. Your login credentials for the portal are:
+                    " <p>Your password has reset. Your login credentials for the portal are:
                     </p>
                     <p>Username: " . $email_id . "</p>
                     <p>Password: " . $random_pass . "</p>";
@@ -1672,7 +1706,7 @@ class Admin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'Vidya@123',
+                    'smtp_pass' => 'moihgnpbowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1754,11 +1788,11 @@ class Admin extends CI_Controller
 
                 if ($res) {
                     $data['status'] = 1;
-                    $data['message'] = 'Reset password successfully.';
+                    $data['message'] = 'Updated password successfully.';
 
 
                         $msg = "Dear " . $name .
-                            " <p>Your password has changed. ";
+                            " <p>Your password has updated. ";
                         $subject = "Login Credentials for the BIS Portal.";
 
                         $config = array(
@@ -1766,7 +1800,7 @@ class Admin extends CI_Controller
                             'smtp_host' => 'ssl://smtp.googlemail.com',
                             'smtp_port' => 465,
                             'smtp_user' => 'exchangeforumbis@gmail.com',
-                            'smtp_pass' => 'moihgnbpowcxlzod',
+                            'smtp_pass' => 'moihgnpbowcxlzod',
                             'mailtype' => 'html',
                             'charset' => 'iso-8859-1',
                         );

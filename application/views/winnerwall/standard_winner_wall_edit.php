@@ -6,29 +6,28 @@ color: red;
 </style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Quiz Winner Wall Edit</h1>
+    <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Standard Writting  Winners Wall Edit</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
                 <li class="breadcrumb-item " aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="<?php echo base_url().'winnerwall/winner_wall_dashbaord';?>" >Winner Wall Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quiz Winner Wall Edit</li>
+                <li class="breadcrumb-item active" aria-current="page">Standard Writting  Winners Wall Edit</li>
             </ol>
         </nav>
     </div>
-    <!-- Page Heading -->
-    
  
     <div class="">
-        <form action="<?php echo base_url().'winnerwall/winner_wall_edit'; ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url().'Standardwinnerwall/standard_winner_wall_edit'; ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" class="form-control input-font" name="submit_id" id="submit_id" value="<?= random_strings(10)?>">
             <div class="col-12 mt-3">
                 <div class="card border-top">
                     <div class="card-body">
                         <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Quiz Competition<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Name of Standard Writting Competition<sup class="text-danger">*</sup></label>
                                 <select class="form-control input-font" name="quiz_id" id="quiz_id" aria-label="Default select example">
                                     <option selected value="" disabled>--select--</option>
                                     <?php
@@ -399,7 +398,7 @@ fd.append('contact_no', contact_no);
 fd.append('location', location);
 fd.append('wall_id', wall_id);
 $.ajax({
-url: '<?php echo base_url(); ?>winnerwall/winner_wall_edit2',
+url: '<?php echo base_url(); ?>Standardwinnerwall/standard_winner_wall_edit2',
 type: 'post',
 data: fd,
 contentType: false,
@@ -441,7 +440,7 @@ function displayWall() {
     $("#addbtn").hide();
     $("#addnew").show();
 var quiz_id="<?= $masterWinners['quiz_id']?>";
-$.post("<?php echo base_url(); ?>winnerwall/viewWallWinner",
+$.post("<?php echo base_url(); ?>Standardwinnerwall/viewWallWinner",
 {
 quiz_id: quiz_id
 }, function(result)
@@ -452,20 +451,25 @@ $('.errorbox').show().text("Error,Please try again.");
 }
 else
 {
-res = JSON.parse(result);
-console.log(res.data)
+res = JSON.parse(result); 
 data = res.data;
 var row = '';
 j = 0
 for (i in data)
 {
-j++;
-if (data[i].image=='') { var winnrimg="<?php base_url();?>/assets/images/winners.jpg" }
-                    else { winnrimg=data[i].image; }
-                    if (data[i].prize==1) {prize="First Prize"}
+    if (data[i].image=='') 
+    {
+        var winnrimg="<?php base_url();?>/assets/images/winners.jpg"
+    }
+    else
+    {
+        winnrimg=data[i].image;
+    }
+    if (data[i].prize==1) {prize="First Prize"}
                     if (data[i].prize==2) {prize="Second Prize"}
                     if (data[i].prize==3) {prize="Third Prize"}
                     if (data[i].prize==4) {prize="Consolation Prize"}
+j++;
 row += '<tr id="row' + data[i].id + '">' +
 '<td>' + j + '</td>' +
 '<td>' +  prize  + '</td>' +
@@ -487,6 +491,7 @@ function getWinnerData(id)
 {
 
 
+
      Swal.fire({
                     title: 'Do you want to Edit ?',
                     showDenyButton: true,
@@ -496,12 +501,12 @@ function getWinnerData(id)
                     }).then((result) => {
 
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {  
+                    if (result.isConfirmed) {    
                      $("#addbtn").show();
-                     $("#addnew").hide();                     
+                     $("#addnew").hide();                   
                        $.ajax({
 type: 'POST',
-url: '<?php echo base_url(); ?>winnerwall/getWinnerData',
+url: '<?php echo base_url(); ?>Standardwinnerwall/getWinnerData',
 data: {
 id: id,
 },
@@ -540,7 +545,7 @@ alert("Error,Please try again.");
 // {
 // $.ajax({
 // type: 'POST',
-// url: '<?php echo base_url(); ?>winnerwall/DeleteData',
+// url: '<?php echo base_url(); ?>Standardwinnerwall/DeleteData',
 // data: {
 // id: id,
 // },
@@ -568,7 +573,7 @@ function DeleteData(id)
                     if (result.isConfirmed) {                       
                         $.ajax({
                                 type: 'POST',
-                                url: '<?php echo base_url(); ?>winnerwall/DeleteData',
+                                url: '<?php echo base_url(); ?>Standardwinnerwall/DeleteData',
                                 data: {
                                 id: id,
                                 },
@@ -591,23 +596,21 @@ function DeleteData(id)
 function formubmit(event)
 {
 event.preventDefault();
-// alert('Submitted Successfully');
-// Swal.fire('Submitted Successfully');
 Swal.fire({
-                    title: 'Do you want to Update?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Update',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
+    title: 'Do you want to Update All?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Update',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        window.location.href = "../winner_wall_list";
-                                                   
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
+    if (result.isConfirmed) 
+    {  
+        window.location.href = "../standard_winner_wall_list";
+    } else if (result.isDenied) 
+    {
+    }
+})
 }
 
 
@@ -693,7 +696,8 @@ Swal.fire({
                     } else {
                         $("#contact_no").next(".validation").remove(); // remove it
                     }
- 
+
+                    
  
 
                     if ($("#image").val() != '') 
@@ -779,7 +783,7 @@ Swal.fire({
                 var fd = new FormData();
                 var files = $('#image')[0].files;
                 // Check file selected or not
-                if (files.length > 0) {
+                if (allfields) {
                     fd.append('image', files[0]);
                     fd.append('quiz_id', quiz_id);
                     fd.append('wall_title', wall_title);
@@ -790,9 +794,18 @@ Swal.fire({
                     fd.append('contact_no', contact_no);
                     fd.append('location', location);
                     fd.append('submit_id', submit_id);
-                    $.ajax({
 
-                        url: '<?php echo base_url(); ?>winnerwall/winner_wall_form',
+                    Swal.fire({
+                    title: 'Do you want to add new Record?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'add new Record',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {
+                        $.ajax({ 
+
+                        url: '<?php echo base_url();?>Standardwinnerwall/standard_winner_wall_form',
                         type: 'post',
                         data: fd,
                      
@@ -813,10 +826,16 @@ Swal.fire({
                             $("#location").val("");
                             $("#email").val("");
                             displayWall(submit_id);
+                            $("#formsubmit").show();
                         },
                     });
-                } else {
-                    alert("Please select a file.");
+                    } else if (result.isDenied) {
+                    }
+                })
+                    
+                } 
+                else {
+                    // alert("Please select a file.");
                 }
             }
             else {
@@ -830,4 +849,3 @@ function hideAdd()
 
 }
     </script>
-    

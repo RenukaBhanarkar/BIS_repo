@@ -231,7 +231,7 @@ var loadFileThumbnail = function(event)
                     {
                         $("#video_thumbnail").next(".validation").remove(); // remove it
                     }
-                    var validExtensions = ['Jpeg','jpg','png']; //array of valid extensions
+                    var validExtensions = ['Jpeg','jpg','png','JPG', 'JPEG', 'PNG']; //array of valid extensions
                     var fileName = $("#video_thumbnail").val();;
                     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                     $("#video_thumbnail").next(".validation").remove();

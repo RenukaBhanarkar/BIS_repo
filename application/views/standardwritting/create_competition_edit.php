@@ -780,7 +780,7 @@
 
     var loadFileThumbnail = function (event){
         var fileSize = $('#thumbnailicon_file')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#thumbnailicon_file").val();
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -815,7 +815,7 @@
 
     var loadFileFirst = function (event){
         var fileSize = $('#ficon_file')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#ficon_file").val();
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -850,7 +850,7 @@
 
     var loadFileSecond = function (event){
         var fileSize = $('#sicon_file')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#sicon_file").val();
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -886,7 +886,7 @@
 
     var loadFileThird = function (event){
         var fileSize = $('#ticon_file')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#ticon_file").val();
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -922,7 +922,7 @@
 
     var loadFileConsolidated = function (event){
         var fileSize = $('#cicon_file')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#cicon_file").val();
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Winnerwall extends CI_Controller
+class Standardwinnerwall extends CI_Controller
 {
 
     public function __construct()
@@ -13,7 +13,7 @@ class Winnerwall extends CI_Controller
         $this->load->model('Admin/Your_wall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Learningscience/Learningscience_model');
-        $this->load->model('Winnerwall/Winnerwall_model');
+        $this->load->model('Winnerwall/Standard_winnerwall_model');
         date_default_timezone_set("Asia/Calcutta");
          
     } 
@@ -36,10 +36,10 @@ class Winnerwall extends CI_Controller
 
 
 
-    public function winner_wall_list()
+    public function standard_winner_wall_list()
     {  
         $data = array();
-        $data['winnerwall'] = $this->Winnerwall_model->getWinnerWallList();
+        $data['winnerwall'] = $this->Standard_winnerwall_model->getWinnerWallList();
 
         $permissions = array();
         if (encryptids("D", $_SESSION['admin_type']) == 3) { 
@@ -52,22 +52,24 @@ class Winnerwall extends CI_Controller
             $data['permissions']=array();
         }
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('winnerwall/winner_wall_list',$data);
+        $this->load->view('winnerwall/standard_winner_wall_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
  
-    public function winner_wall_form()
-    {   
+    public function standard_winner_wall_form()
+    {  
+     
         $this->load->view('admin/headers/admin_header');
-        $data['prises']=$this->Winnerwall_model->prises();
-        $data['competation']=$this->Winnerwall_model->published_quiz();
+        $data['prises']=$this->Standard_winnerwall_model->prises();
+        $data['competation']=$this->Standard_winnerwall_model->published_quiz();
 
-        if ($this->form_validation->run('winner_wall_form') == FALSE) 
+        if ($this->form_validation->run('standard_winner_wall_form') == FALSE) 
         {
-            $this->load->view('winnerwall/winner_wall_form',$data);
+            $this->load->view('winnerwall/standard_winner_wall_form',$data);
         } 
         else 
-        {  
+        { 
+         
             if (!file_exists('uploads/winnerwall')) { mkdir('uploads/winnerwall', 0777, true); }
             $imagelocation="";  
             if (!empty($_FILES['image']['tmp_name'])) 
@@ -78,9 +80,9 @@ class Winnerwall extends CI_Controller
             }
             else
             {
-                $imagelocation="/assets/images/winners.jpg";
-            }
+                 $imagelocation="/assets/images/winners.jpg";
 
+            }
 
             $quiz_id = $this->input->post('quiz_id');
             $quiz_date = $this->input->post('quiz_date');
@@ -97,7 +99,7 @@ class Winnerwall extends CI_Controller
             $formdata['submit_id'] = $this->input->post('submit_id');
             $formdata['submit_flag'] = 0;
             $formdata['image'] = $imagelocation;
-            $insertMasterData = $this->Winnerwall_model->checkWinnerMaster($quiz_id);
+            $insertMasterData = $this->Standard_winnerwall_model->checkWinnerMaster($quiz_id);
             if (empty($insertMasterData)) 
             {
                 $formdata2['quiz_id'] = $quiz_id;
@@ -105,9 +107,9 @@ class Winnerwall extends CI_Controller
                 $formdata2['wall_title'] = $wall_title;
                 $formdata2['status'] = 1;
                 $formdata2['created_on'] = date('Y-m-d h:i:s');
-                $this->Winnerwall_model->insertWinnerMaster($formdata2);
+                $this->Standard_winnerwall_model->insertWinnerMaster($formdata2);
             }
-            $dataadd = $this->Winnerwall_model->insertWinnerwall($formdata);
+            $dataadd = $this->Standard_winnerwall_model->insertWinnerwall($formdata);
             if ($dataadd) {
                 $data1['status'] = 1;
                 $data1['message'] = 'Deleted successfully.'; 
@@ -131,7 +133,7 @@ public function displayWall()
 
         $details = array();
         // $details = '';
-        $details = $this->Winnerwall_model->displayWall($submit_id);
+        $details = $this->Standard_winnerwall_model->displayWall($submit_id);
         if (empty($details)) {
             $data['status'] = 0;
             $data['message'] = 'Failed to get details , Please try again.';
@@ -151,7 +153,7 @@ public function displayWall()
         $data = array();
         $id = $this->input->post('id');
         $details = array(); 
-        $details = $this->Winnerwall_model->getWinnerData($id);
+        $details = $this->Standard_winnerwall_model->getWinnerData($id);
         if (empty($details)) {
             $data['status'] = 0;
             $data['message'] = 'Failed to get details , Please try again.';
@@ -174,7 +176,7 @@ public function displayWall()
 
         $details = array();
         // $details = '';
-        $details = $this->Winnerwall_model->viewWallWinner($quiz_id);
+        $details = $this->Standard_winnerwall_model->viewWallWinner($quiz_id);
         if (empty($details)) {
             $data['status'] = 0;
             $data['message'] = 'Failed to get details , Please try again.';
@@ -192,7 +194,7 @@ public function displayWall()
         try {   
                  
             $id = $this->input->post('id');
-            $id = $this->Winnerwall_model->DeleteData($id);
+            $id = $this->Standard_winnerwall_model->DeleteData($id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
@@ -211,14 +213,14 @@ public function displayWall()
             ]);
             return true;
         }
-        redirect(base_url() . "winnerwall/winner_wall_form", 'refresh');
+        redirect(base_url() . "winnerwall/standard_winner_wall_form", 'refresh');
     }
 
      public function submitWinnerWall(){
         try {   
                  
             $submit_id = $this->input->post('submit_id');
-            $id = $this->Winnerwall_model->submitWinnerWall($id);
+            $id = $this->Standard_winnerwall_model->submitWinnerWall($id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
@@ -237,7 +239,7 @@ public function displayWall()
             ]);
             return true;
         }
-        redirect(base_url() . "winnerwall/winner_wall_form", 'refresh');
+        redirect(base_url() . "winnerwall/standard_winner_wall_form", 'refresh');
     }
 
      public function updateWinnerWall(){
@@ -245,7 +247,7 @@ public function displayWall()
             $id = $this->input->post('id');
             $formdata['status'] = $this->input->post('status');  
 
-            $id = $this->Winnerwall_model->updateWinnerWall($formdata,$id);
+            $id = $this->Standard_winnerwall_model->updateWinnerWall($formdata,$id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Updated successfully.';
@@ -263,7 +265,7 @@ public function displayWall()
             ]);
             return true;
         }
-        redirect(base_url() . "winnerwall/winner_wall_list", 'refresh');
+        redirect(base_url() . "winnerwall/standard_winner_wall_list", 'refresh');
     }
 
     public function deleteWinnerWall(){
@@ -271,7 +273,7 @@ public function displayWall()
                  
             $id = $this->input->post('id');
             $quiz_id = $this->input->post('quiz_id');
-            $delId = $this->Winnerwall_model->deleteWinnerWall($id,$quiz_id);
+            $delId = $this->Standard_winnerwall_model->deleteWinnerWall($id,$quiz_id);
             if ($delId) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
@@ -294,38 +296,38 @@ public function displayWall()
 
 
 
-    public function winner_wall_archive()
+    public function standard_winner_wall_archive()
     {
         $data = array();
-        $data['winnerwall'] = $this->Winnerwall_model->getArchiveWinnerWallList();
+        $data['winnerwall'] = $this->Standard_winnerwall_model->getArchiveWinnerWallList();
  
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('winnerwall/winner_wall_archive',$data);
+        $this->load->view('winnerwall/standard_winner_wall_archive',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
-    public function winner_wall_view($id)
+    public function standard_winner_wall_view($id)
     {
         $id= encryptids("D", $id);
         $data = array();
-        $data['masterWinners'] = $this->Winnerwall_model->getMasterWinnerWall($id);
+        $data['masterWinners'] = $this->Standard_winnerwall_model->getMasterWinnerWall($id);
  
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('winnerwall/winner_wall_view',$data);
+        $this->load->view('winnerwall/standard_winner_wall_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
-    public function winner_wall_edit($id)
+    public function standard_winner_wall_edit($id)
     {
         $this->load->view('admin/headers/admin_header');
         $id= encryptids("D", $id);
-        $data['masterWinners']= $this->Winnerwall_model->getMasterWinnerWall($id);
-        $data['prises']=$this->Winnerwall_model->prises();
-        $data['competation']=$this->Winnerwall_model->published_quiz();
+        $data['masterWinners']= $this->Standard_winnerwall_model->getMasterWinnerWall($id);
+        $data['prises']=$this->Standard_winnerwall_model->prises();
+        $data['competation']=$this->Standard_winnerwall_model->published_quiz();
 
-        if ($this->form_validation->run('winner_wall_form') == FALSE) 
+        if ($this->form_validation->run('standard_winner_wall_form') == FALSE) 
         {
-            $this->load->view('winnerwall/winner_wall_edit',$data);
+            $this->load->view('winnerwall/standard_winner_wall_edit',$data);
         } 
         else 
         {  
@@ -352,7 +354,7 @@ public function displayWall()
             $formdata['location'] = $this->input->post('location');
             $wall_id = $this->input->post('wall_id'); 
             // $formdata['image'] = $imagelocation;
-            $insertMasterData = $this->Winnerwall_model->checkWinnerMaster($quiz_id);
+            $insertMasterData = $this->Standard_winnerwall_model->checkWinnerMaster($quiz_id);
             if (empty($insertMasterData)) 
             {
                 $formdata2['quiz_id'] = $quiz_id;
@@ -360,9 +362,9 @@ public function displayWall()
                 $formdata2['wall_title'] = $wall_title;
                 $formdata2['status'] = 1;
                 $formdata2['created_on'] = date('Y-m-d h:i:s');
-                $this->Winnerwall_model->insertWinnerMaster($formdata2);
+                $this->Standard_winnerwall_model->insertWinnerMaster($formdata2);
             }
-            $updatedata = $this->Winnerwall_model->updateWinnerwallDetails($formdata,$wall_id);
+            $updatedata = $this->Standard_winnerwall_model->updateWinnerwallDetails($formdata,$wall_id);
             if ($updatedata) {
                 $data1['status'] = 1;
                 $data1['message'] = 'Deleted successfully.'; 
@@ -378,7 +380,7 @@ public function displayWall()
         $this->load->view('admin/footers/admin_footer'); 
     }
 
-    public function winner_wall_edit2()
+    public function standard_winner_wall_edit2()
     {   
              $old_file = $this->input->post('old_file');
              if (!file_exists('uploads/winnerwall')) { mkdir('uploads/winnerwall', 0777, true); }
@@ -411,7 +413,7 @@ public function displayWall()
             $formdata['location'] = $this->input->post('location');
             $wall_id = $this->input->post('wall_id'); 
             $formdata['image'] = $imagelocation;
-            $insertMasterData = $this->Winnerwall_model->checkWinnerMaster($quiz_id);
+            $insertMasterData = $this->Standard_winnerwall_model->checkWinnerMaster($quiz_id);
             if (empty($insertMasterData)) 
             {
                 $formdata2['quiz_id'] = $quiz_id;
@@ -419,9 +421,9 @@ public function displayWall()
                 $formdata2['wall_title'] = $wall_title;
                 $formdata2['status'] = 1;
                 $formdata2['created_on'] = date('Y-m-d h:i:s');
-                $this->Winnerwall_model->insertWinnerMaster($formdata2);
+                $this->Standard_winnerwall_model->insertWinnerMaster($formdata2);
             }
-            $updatedata = $this->Winnerwall_model->updateWinnerwallDetails($formdata,$wall_id);
+            $updatedata = $this->Standard_winnerwall_model->updateWinnerwallDetails($formdata,$wall_id);
             if ($updatedata) {
                 $data1['status'] = 1;
                 $data1['message'] = 'Updated successfully.'; 

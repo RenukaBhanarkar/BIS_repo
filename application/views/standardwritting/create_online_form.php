@@ -372,7 +372,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
     var loadFileBanner = function(event) {
         $("#outputbanner").show();
         var fileSize = $('#banner_img')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#banner_img").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -412,7 +412,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
     var loadFileFirst = function(event) {
         $("#outputFirst").show();
         var fileSize = $('#fprize_img')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#fprize_img").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -448,7 +448,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
     var loadFileSecond = function(event) {
         $("#outputSecond").show();
         var fileSize = $('#sprize_img')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#sprize_img").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -484,7 +484,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
     var loadFileThird = function(event) {
         $("#outputThird").show();
         var fileSize = $('#tprize_img')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#tprize_img").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -520,7 +520,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
     var loadFileConsol = function(event) {
         $("#outputConsol").show();
         var fileSize = $('#cprize_img')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#cprize_img").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    

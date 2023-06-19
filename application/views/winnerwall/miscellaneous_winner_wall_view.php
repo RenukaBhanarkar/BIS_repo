@@ -1,16 +1,16 @@
-<div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Quiz Winners Wall View</h1>
+ <div class="container-fluid">
+    <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Miscellaneous  Winners Wall View</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
                 <li class="breadcrumb-item " aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="<?php echo base_url().'winnerwall/winner_wall_dashbaord';?>" >Winner Wall Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quiz Winner Wall View</li>
+                <li class="breadcrumb-item active" aria-current="page">Miscellaneous  Winners Wall View</li>
             </ol>
         </nav>
     </div>
-   
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Quiz Competition</label>
+                            <label class="d-block text-font">Name of Miscellaneous Competition</label>
                             <div>
                                 <p><?=$masterWinners['title']?></p>
                             </div>
@@ -74,7 +74,7 @@
      });
 function displayWall() {
     var quiz_id="<?= $masterWinners['quiz_id']?>";
-    $.post("<?php echo base_url(); ?>winnerwall/viewWallWinner", 
+    $.post("<?php echo base_url(); ?>Miscellaneouswinnerwall/viewWallWinner", 
     {
         quiz_id: quiz_id
     }, function(result) 
@@ -94,14 +94,13 @@ function displayWall() {
             {
                 j++;
 
-                 if (data[i].prize==1) {prize="First Prize"}
+                if (data[i].prize==1) {prize="First Prize"}
                     if (data[i].prize==2) {prize="Second Prize"}
                     if (data[i].prize==3) {prize="Third Prize"}
                     if (data[i].prize==4) {prize="Consolation Prize"}
-
                 row += '<tr id="row' + data[i].id + '">' +
                     '<td>' + j + '</td>' +
-                    '<td>' + prize  + '</td>' +
+                    '<td>' +  prize  + '</td>' +
                     '<td>' + data[i].name  + '</td>' +
                     '<td>' + data[i].email + '</td>' +
                     '<td>' + data[i].contact_no + '</td>' +
