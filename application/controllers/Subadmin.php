@@ -221,7 +221,7 @@ class Subadmin extends CI_Controller
             if ($admin_id) {
                 // email to Admin to notify  start
                 $msg = "Dear " . $name .
-                    " <p>You are added on the BIS Portal as Admin . Your login credentials for the portal are:
+                    " <p>You are added on the BIS Portal as Subadmin . Your login credentials for the portal are:
                     </p>
                     <p>Username: " . $email_id . "</p>
                     <p>Password: " . $random_pass . "</p>";
@@ -232,7 +232,7 @@ class Subadmin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'Vidya@123',
+                    'smtp_pass' => 'moihgnpbowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -251,7 +251,7 @@ class Subadmin extends CI_Controller
 
 
 
-                $this->session->set_flashdata('MSG', ShowAlert("New Admin added successfully", "SS"));
+                $this->session->set_flashdata('MSG', ShowAlert("New Subadmin added successfully", "SS"));
                 redirect(base_url() . "subadmin/admin_creation_list", 'refresh');
             } else {
                 $this->session->set_flashdata('MSG', ShowAlert("Failed to create new admin,Please try again", "DD"));
@@ -348,20 +348,40 @@ class Subadmin extends CI_Controller
         }
         return implode($pass); //turn the array into a string
     }*/
+    // public function randomPassword()
+    // {
+    //     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    //     $special = '!@#$%^&*';
+    //     $pass = array(); //remember to declare $pass as an array
+    //     $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    //     for ($i = 0; $i < 8; $i++) {
+    //         if($i < 7){
+    //             $n = rand(0, $alphaLength);
+    //             $pass[] = $alphabet[$n];
+    //         }
+    //         if($i == 7){
+    //             $n1 = rand(0, $special);
+    //             $pass[] = $alphabet[$n1];
+    //         }
+           
+    //     }
+      
+    //     return implode($pass); //turn the array into a string
+    // }
     public function randomPassword()
     {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $special = '!@#$%^&*';
         $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        //$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
         for ($i = 0; $i < 8; $i++) {
             if($i < 7){
-                $n = rand(0, $alphaLength);
-                $pass[] = $alphabet[$n];
+                $n = substr(str_shuffle($alphabet),0,1);
+                $pass[] = $n;
             }
             if($i == 7){
-                $n1 = rand(0, $special);
-                $pass[] = $alphabet[$n1];
+                $n1 =substr(str_shuffle($special),0,1);
+                $pass[] =$n1;
             }
            
         }
