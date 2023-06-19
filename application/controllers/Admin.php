@@ -1693,7 +1693,7 @@ class Admin extends CI_Controller
                 $data['status'] = 1;
                 $data['message'] = 'Reset password successfully.';
 
-                email to Admin to notify  start
+                // email to Admin to notify  start
                 $msg = "Dear " . $name .
                     " <p>Your password has reset. Your login credentials for the portal are:
                     </p>

@@ -84,7 +84,7 @@
                    <div class="World_of_standers_inner_Box  shadow">
                     <a href="#">
                     <div class="World_of_standers_image_box">
-                        <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                        <img src="<?=base_url();?>assets/images/startup.JPEG" class="card-img-top" alt="Discussion Forum">
                        
                     </div>
                     <p class="Title_Section">Meeting the Startups</p>
@@ -95,7 +95,7 @@
                     <div class="World_of_standers_inner_Box  shadow">
                         <a href="#">
                         <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?=base_url();?>assets/images/research_project.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
                         <p class="Title_Section">Research Projects</p>
@@ -106,7 +106,7 @@
                 <div class="World_of_standers_inner_Box  shadow">
                         <a href="#">
                         <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?=base_url();?>assets/images/seminar.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
                         <p class="Title_Section">Work Shops & Seminars</p>
@@ -117,7 +117,7 @@
                     <div class="World_of_standers_inner_Box  shadow">
                         <a href="#">
                         <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?=base_url();?>assets/images/offer_1.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
                         <p class="Title_Section">Offer for the Membership of technical committus</p>
@@ -139,7 +139,7 @@
                     <div class="World_of_standers_inner_Box  shadow">
                         <a href="#">
                         <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?=base_url();?>assets/images/offer_sustainable.JPEG" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
                         <p class="Title_Section">Join the sustainablity programme</p>
@@ -150,7 +150,7 @@
                     <div class="World_of_standers_inner_Box  shadow">
                         <a href="<?php echo base_url().'users/about_eBIS'?>">
                         <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?=base_url();?>assets/images/about_bis.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
                         <p class="Title_Section">About eBIS</p>
