@@ -1563,7 +1563,7 @@ class Admin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnpbowcxlzod',
+                    'smtp_pass' => 'moihgnbpowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1706,7 +1706,7 @@ class Admin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnpbowcxlzod',
+                    'smtp_pass' => 'moihgnbpowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1765,7 +1765,7 @@ class Admin extends CI_Controller
             $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
             $name = encryptids("D", $this->session->userdata('admin_name'));
             $admin_id = encryptids("D", $this->session->userdata('admin_id'));
-            // $email_id = $this->input->post('email');
+            $email_id = encryptids("D", $this->session->userdata('admin_email'));
             //$random_pass	 = $this->randomPassword();
             $old_pass     = $this->input->post('old_password');
             $random_pass     = $this->input->post('pass');
@@ -1800,7 +1800,7 @@ class Admin extends CI_Controller
                             'smtp_host' => 'ssl://smtp.googlemail.com',
                             'smtp_port' => 465,
                             'smtp_user' => 'exchangeforumbis@gmail.com',
-                            'smtp_pass' => 'moihgnpbowcxlzod',
+                            'smtp_pass' => 'moihgnbpowcxlzod',
                             'mailtype' => 'html',
                             'charset' => 'iso-8859-1',
                         );
@@ -3752,6 +3752,17 @@ class Admin extends CI_Controller
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/about_eBIS_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function profile_view()
+    {
+        $data = array();
+        $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $data['admin_id'] = $admin_id;
+        $data['admin_type'] =  encryptids("D", $_SESSION['admin_type']);
+        $data['details'] = $this->Admin_model->getAdminDetail($admin_id);
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/profile_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 }

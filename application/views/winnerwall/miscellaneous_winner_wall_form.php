@@ -6,20 +6,21 @@ color: red;
 </style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+    <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Quiz Winners Wall Form</h1>
+        <h1 class="h3 mb-0 text-gray-800">Miscellaneous  Winners Wall Form</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
                 <li class="breadcrumb-item " aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="<?php echo base_url().'winnerwall/winner_wall_dashbaord';?>" >Winner Wall Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quiz Winner Wall Form</li>
+                <li class="breadcrumb-item active" aria-current="page">Miscellaneous  Winners Wall Form</li>
             </ol>
         </nav>
     </div>
-
- 
+    
+    
+    <!-- Content Row -->
     
     
     <div class="row">
@@ -30,11 +31,11 @@ color: red;
                     <div class="card-body">
                         <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Quiz Competition<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Name of Miscellaneous Competition<sup class="text-danger">*</sup></label>
                                 <select class="form-control input-font" name="quiz_id" id="quiz_id" aria-label="Default select example">
                                     <option selected value="" disabled>--select--</option>
                                     <?php foreach($competation as $list){ ?>
-                                    <option value="<?php echo $list['id']; ?>"><?php echo $list['title']; ?></option>
+                                    <option value="<?php echo $list['id']; ?>"><?php echo $list['competiton_name']; ?></option>
                                     <?php } ?>
                                 </select> 
                             </div>
@@ -121,7 +122,7 @@ color: red;
                             </div>
                         </div>
                         <div class="col-md-12 submit_btn p-3" style="text-align: center;">
-                            <button  class="btn btn-success btn-sm text-white"  id="addbtn" onclick="ShowSubmit();">Add</button>
+                            <button  class="btn btn-success btn-sm text-white"  id="addbtn">Add</button>
                         </div>
                         <div class="row">
                             <div class="col-12 mt-3 table-responsive">
@@ -422,9 +423,18 @@ var loadFileThumbnail = function(event)
                     fd.append('contact_no', contact_no);
                     fd.append('location', location);
                     fd.append('submit_id', submit_id);
-                    $.ajax({
 
-                        url: '<?php echo base_url(); ?>winnerwall/winner_wall_form',
+                    Swal.fire({
+                    title: 'Do you want to add new Record?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'add new Record',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => { 
+                    if (result.isConfirmed) {
+                        $.ajax({ 
+
+                        url: '<?php echo base_url();?>Miscellaneouswinnerwall/miscellaneous_winner_wall_form',
                         type: 'post',
                         data: fd,
                      
@@ -448,6 +458,10 @@ var loadFileThumbnail = function(event)
                             $("#formsubmit").show();
                         },
                     });
+                    } else if (result.isDenied) {
+                    }
+                })
+                    
                 } 
                 else {
                     // alert("Please select a file.");
@@ -461,7 +475,7 @@ var loadFileThumbnail = function(event)
     <script type="text/javascript">
         function displayWall(submit_id) {
             // console.log(submit_id)
-        $.post("<?php echo base_url(); ?>winnerwall/displayWall", {
+        $.post("<?php echo base_url(); ?>Miscellaneouswinnerwall/displayWall", {
             submit_id: submit_id
         }, function(result) {
             if (result.status == 0) 
@@ -486,7 +500,7 @@ var loadFileThumbnail = function(event)
                     j++;
                     row += '<tr id="row' + data[i].id + '">' +
                         '<td>' + j + '</td>' +
-                        '<td>' +  prize  + '</td>' +
+                        '<td>' + prize  + '</td>' +
                         '<td>' + data[i].name  + '</td>' +
                         '<td>' + data[i].email + '</td>' +
                         '<td>' + data[i].contact_no + '</td>' +
@@ -499,7 +513,7 @@ var loadFileThumbnail = function(event)
         });
 
     }
-   function DeleteData(id) 
+    function DeleteData(id) 
     {
         Swal.fire({
             title: 'Do you want to Delete?',
@@ -512,7 +526,7 @@ var loadFileThumbnail = function(event)
             if (result.isConfirmed) {                       
                 $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url(); ?>Standardwinnerwall/DeleteData',
+                url: '<?php echo base_url(); ?>Miscellaneouswinnerwall/DeleteData',
                 data: {
                     id: id,
                 },
@@ -530,7 +544,30 @@ var loadFileThumbnail = function(event)
         })
         }
 
-     
+    // function formubmit(id) 
+    // {
+    //     var submit_id = $("#submit_id").val();
+    //     $('#submit').modal('show');
+    //     $('.submitcall').on('click', function() 
+    //     {
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '<?php echo base_url(); ?>Miscellaneouswinnerwall/submitWinnerWall',
+    //             data: {
+    //                 submit_id: submit_id,
+    //             },
+    //             success: function(result) 
+    //             { 
+    //                     $('.errorbox').show().text("Error,Please try again.");
+    //                     alert('Submitted Successfully');
+    //                     window.location.href = "miscellaneous_winner_wall_form"; 
+    //             },
+    //             error: function(result) {
+    //                 alert("Error,Please try again.");
+    //             }
+    //         });
+    //     });
+    // }
 
     function formubmit(event) 
     {
@@ -548,7 +585,7 @@ var loadFileThumbnail = function(event)
                     if (result.isConfirmed) {                       
                         $.ajax({
                                 type: 'POST',
-                                url: '<?php echo base_url(); ?>winnerwall/submitWinnerWall',
+                                url: '<?php echo base_url(); ?>Miscellaneouswinnerwall/submitWinnerWall',
                                 data: {
                                     submit_id: submit_id,
                                 },
@@ -557,7 +594,7 @@ var loadFileThumbnail = function(event)
                                         // $('.errorbox').show().text("Error,Please try again.");
                                         // alert('Submitted Successfully');
                                         Swal.fire('Submitted Successfully');
-                                        window.location.href = "winner_wall_list"; 
+                                        window.location.href = "miscellaneous_winner_wall_form"; 
                                 },
                                 error: function(result) {
                                     alert("Error,Please try again.");

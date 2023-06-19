@@ -349,7 +349,7 @@
     {
     $("#image").next(".validation").remove(); // remove it
     }
-    var validExtensions = ['jpeg','jpg','png']; //array of valid extensions
+    var validExtensions = ['jpeg','jpg','png','JPG', 'JPEG', 'PNG']; //array of valid extensions
     var fileName = $("#image").val();;
     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
     $("#image").next(".validation").remove();
@@ -389,7 +389,7 @@
     {
     $("#thumbnail").next(".validation").remove(); // remove it
     }
-    var validExtensions = ['jpeg','jpg','png']; //array of valid extensions
+    var validExtensions = ['jpeg','jpg','png','JPG', 'JPEG', 'PNG']; //array of valid extensions
     var fileName = $("#thumbnail").val();;
     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
     $("#thumbnail").next(".validation").remove();
@@ -397,7 +397,7 @@
     {
     if ($("#thumbnail").next(".validation").length == 0) // only add if not added
     {
-    $("#thumbnail").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only Jpeg, jpg,png  file allowed. </div>");
+    $("#thumbnail").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only Jpeg,jpg,png  file allowed. </div>");
     }
     allfields = false;
     if (!focusSet)
@@ -430,14 +430,14 @@
     $("#doc_pdf").next(".validation").remove(); // remove it
     }
     var validExtensions = ['pdf']; //array of valid extensions
-    var fileName = $("#doc_pdf").val();;
+    var fileName = $("#doc_pdf").val();
     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
     $("#doc_pdf").next(".validation").remove();
     if ($.inArray(fileNameExt, validExtensions) == -1)
     {
     if ($("#doc_pdf").next(".validation").length == 0) // only add if not added
     {
-    $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only Jpeg, jpg,png  file allowed. </div>");
+    $("#doc_pdf").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only pdf file allowed. </div>");
     }
     allfields = false;
     if (!focusSet)
@@ -496,8 +496,8 @@
     var loadImage = function(event) {
     $("#loadImage").show();
     var fileSize = $('#image')[0].files[0].size;
-    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
-    var fileName = $("#image").val();;
+    var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
+    var fileName = $("#image").val();
     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
     
     console.log(fileSize);
@@ -524,7 +524,7 @@
     var loadThumbnail = function(event) {
     $("#loadThumbnail").show();
     var fileSize = $('#thumbnail')[0].files[0].size;
-    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+    var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
     var fileName = $("#thumbnail").val();;
     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
     

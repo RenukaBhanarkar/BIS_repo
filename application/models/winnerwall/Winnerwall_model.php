@@ -57,6 +57,16 @@ class Winnerwall_model extends CI_Model {
         return $this->db->get('tbl_mst_winner_wall')->result_array();  
     }
 
+     public function getWinnerWallListFront()
+    { 
+    $this->db->select('tbl_mst_winner_wall.*,tbl_mst_status.status_name,tbl_quiz_details.title'); 
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_winner_wall.status'); 
+        $this->db->join('tbl_quiz_details','tbl_quiz_details.id = tbl_mst_winner_wall.quiz_id');
+         $this->db->where_not_in('tbl_mst_winner_wall.status ',9);  
+         $this->db->where('tbl_mst_winner_wall.status ',5);  
+        return $this->db->get('tbl_mst_winner_wall')->result_array();  
+    }
+
     public function updateWinnerWall($formdata,$id)
     { 
         $this->db->where('id', $id);

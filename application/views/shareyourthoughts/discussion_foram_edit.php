@@ -226,7 +226,7 @@ CKEDITOR.replace( 'description' );
             {
                 $("#image").next(".validation").remove(); // remove it
             }
-            var validExtensions = ['jpeg','jpg','png']; //array of valid extensions
+            var validExtensions = ['jpeg','jpg','png','JPG', 'JPEG', 'PNG']; //array of valid extensions
             var fileName = $("#image").val();;
             var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
             $("#image").next(".validation").remove();
@@ -305,7 +305,7 @@ function DeleteImageDiscussionForum(id)
 var loadImage = function(event) {
     $("#loadImage").show();
     var fileSize = $('#image')[0].files[0].size;
-    var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+    var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
     var fileName = $("#image").val();;
     var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
     
