@@ -13,6 +13,7 @@ class Admin extends CI_Controller
         $this->load->model('Admin/Your_wall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Learningscience/Learningscience_model');
+        $this->load->model('Admin/By_the_mentor_model');
         date_default_timezone_set("Asia/Calcutta");
     }
 
@@ -1558,26 +1559,27 @@ class Admin extends CI_Controller
                     <p>Password: " . $random_pass . "</p>";
                 $subject = "Login Credentials for the BIS Portal.";
 
-                $config = array(
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl://smtp.googlemail.com',
-                    'smtp_port' => 465,
-                    'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnbpowcxlzod',
-                    'mailtype' => 'html',
-                    'charset' => 'iso-8859-1',
-                );
+                // $config = array(
+                //     'protocol' => 'smtp',
+                //     'smtp_host' => 'ssl://smtp.googlemail.com',
+                //     'smtp_port' => 465,
+                //     'smtp_user' => 'exchangeforumbis@gmail.com',
+                //     'smtp_pass' => 'moihgnbpowcxlzod',
+                //     'mailtype' => 'html',
+                //     'charset' => 'iso-8859-1',
+                // );
 
-                $this->load->library('email', $config);
-                $this->email->initialize($config); // add this line
-                $this->email->set_newline("\r\n");
-                $this->email->from('exchangeforumbis@gmail.com', 'BIS');
-                $this->email->to($email_id);
-                $this->email->subject($subject);
-                $this->email->message($msg);
-                $this->email->send();
+                // $this->load->library('email', $config);
+                // $this->email->initialize($config); // add this line
+                // $this->email->set_newline("\r\n");
+                // $this->email->from('exchangeforumbis@gmail.com', 'BIS');
+                // $this->email->to($email_id);
+                // $this->email->subject($subject);
+                // $this->email->message($msg);
+                // $this->email->send();
                 // email code end
-
+            // $email_id=''
+                $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
 
                 $this->session->set_flashdata('MSG', ShowAlert("New Admin added successfully", "SS"));
                 redirect(base_url() . "Admin/admin_creation_list", 'refresh');
@@ -1693,6 +1695,7 @@ class Admin extends CI_Controller
                 $data['status'] = 1;
                 $data['message'] = 'Reset password successfully.';
 
+                // email to Admin to notify  start
                // email to Admin to notify  start
                 $msg = "Dear " . $name .
                     " <p>Your password has reset. Your login credentials for the portal are:
@@ -1701,25 +1704,26 @@ class Admin extends CI_Controller
                     <p>Password: " . $random_pass . "</p>";
                 $subject = "Login Credentials for the BIS Portal.";
 
-                $config = array(
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl://smtp.googlemail.com',
-                    'smtp_port' => 465,
-                    'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnbpowcxlzod',
-                    'mailtype' => 'html',
-                    'charset' => 'iso-8859-1',
-                );
+                // $config = array(
+                //     'protocol' => 'smtp',
+                //     'smtp_host' => 'ssl://smtp.googlemail.com',
+                //     'smtp_port' => 465,
+                //     'smtp_user' => 'exchangeforumbis@gmail.com',
+                //     'smtp_pass' => 'moihgnbpowcxlzod',
+                //     'mailtype' => 'html',
+                //     'charset' => 'iso-8859-1',
+                // );
 
-                $this->load->library('email', $config);
-                $this->email->initialize($config); // add this line
-                $this->email->set_newline("\r\n");
-                $this->email->from('exchangeforumbis@gmail.com', 'BIS');
-                $this->email->to($email_id);
-                $this->email->subject($subject);
-                $this->email->message($msg);
-                $this->email->send();
+                // $this->load->library('email', $config);
+                // $this->email->initialize($config); // add this line
+                // $this->email->set_newline("\r\n");
+                // $this->email->from('exchangeforumbis@gmail.com', 'BIS');
+                // $this->email->to($email_id);
+                // $this->email->subject($subject);
+                // $this->email->message($msg);
+                // $this->email->send();
                 // email code end
+                $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
 
             } else {
                 $data['status'] = 0;
@@ -1768,6 +1772,8 @@ class Admin extends CI_Controller
             //$newPw = password_hash($random_pass, PASSWORD_BCRYPT);
             $id = $this->Admin_model->getDetailsById($admin_id);
 
+            
+
             // print_r($id);
             // echo $id['password']."<br>";
             // echo $admin_id;
@@ -1786,7 +1792,7 @@ class Admin extends CI_Controller
                     $data['status'] = 1;
                     $data['message'] = 'Updated password successfully.';
                         $msg = "Dear " . $name .
-                            " <p>Your password has updated. ";
+                            " <p>Your password has updated. </p>";
                         $subject = "Login Credentials for the BIS Portal.";
 
                         $config = array(
@@ -3180,8 +3186,7 @@ class Admin extends CI_Controller
     public function yourwallPublish()
     {
         try {
-            $this->load->model('admin/Your_wall_model');
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             // $id = $this->Your_wall_model->yourwallPublish($que_id);
             $email_id = $this->input->post('email');
@@ -3267,8 +3272,8 @@ class Admin extends CI_Controller
             }
             $data['permissions'] =  $permissions;
         }
-        $this->load->model('admin/By_the_mentor_model');
-        // $this->load->model('admin/By_the_mentor_model');        
+        
+        //         
         $data['archive'] = $this->By_the_mentor_model->all_archievd_btm();
         // $data['bythementors']=$this->By_the_mentor_model->allbtm();
         $data['created'] = $this->By_the_mentor_model->allbtmbycreated();
@@ -3285,7 +3290,7 @@ class Admin extends CI_Controller
     {
         // print_r($_POST);
         // die;
-        $this->load->model('admin/By_the_mentor_model');
+        
         $formdata['id'] = $this->input->post('id');
         $formdata['reject_reason'] = $this->input->post('reason');
         $formdata['status'] = "4";
@@ -3302,7 +3307,7 @@ class Admin extends CI_Controller
     }
     public function view_btm($id)
     {
-        $this->load->model('admin/By_the_mentor_model');
+        
         $data['data'] = $this->By_the_mentor_model->get_btm($id);
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
@@ -3311,7 +3316,7 @@ class Admin extends CI_Controller
     }
     public function bythementor_archivelist()
     {
-        $this->load->model('admin/By_the_mentor_model');
+        
         $data['bythementors'] = $this->By_the_mentor_model->all_archievd_btm();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/archived_by_the_mentors', $data);
@@ -3321,7 +3326,7 @@ class Admin extends CI_Controller
     {
 
         try {
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             $email_id = $this->input->post('email');
             //$email_id="vol.bhagyashree@gmail.com";
@@ -3351,7 +3356,7 @@ class Admin extends CI_Controller
     public function btm_unpublish()
     {
         try {
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             $id = $this->By_the_mentor_model->btm_Unpublish($que_id);
             if ($id) {
@@ -3376,7 +3381,7 @@ class Admin extends CI_Controller
     public function btm_archive()
     {
         try {
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             $id = $this->By_the_mentor_model->btm_archive($que_id);
             if ($id) {
@@ -3402,7 +3407,7 @@ class Admin extends CI_Controller
     public function btm_unarchive()
     {
         try {
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             $id = $this->By_the_mentor_model->btm_unarchive($que_id);
             if ($id) {
@@ -3428,7 +3433,7 @@ class Admin extends CI_Controller
     public function approve_btm()
     {
         try {
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             $id = $this->By_the_mentor_model->btm_approve($que_id);
             if ($id) {
@@ -3454,7 +3459,7 @@ class Admin extends CI_Controller
     public function deleteByTheMentor()
     {
         try {
-            $this->load->model('admin/By_the_mentor_model');
+            
             $que_id = $this->input->post('que_id');
             $id = $this->By_the_mentor_model->delet_btm($que_id);
             if ($id) {
