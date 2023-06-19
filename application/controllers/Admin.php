@@ -1694,6 +1694,7 @@ class Admin extends CI_Controller
                 $data['message'] = 'Reset password successfully.';
 
                 // email to Admin to notify  start
+               // email to Admin to notify  start
                 $msg = "Dear " . $name .
                     " <p>Your password has reset. Your login credentials for the portal are:
                     </p>
@@ -1720,10 +1721,6 @@ class Admin extends CI_Controller
                 $this->email->message($msg);
                 $this->email->send();
                 // email code end
-
-
-
-                 
 
             } else {
                 $data['status'] = 0;
@@ -1789,8 +1786,6 @@ class Admin extends CI_Controller
                 if ($res) {
                     $data['status'] = 1;
                     $data['message'] = 'Updated password successfully.';
-
-
                         $msg = "Dear " . $name .
                             " <p>Your password has updated. ";
                         $subject = "Login Credentials for the BIS Portal.";
