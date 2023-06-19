@@ -73,7 +73,7 @@
                           <a class="btn btn-primary btn-sm mr-2" href="<?php echo base_url().'subadmin/admin_creation_view/'.encryptids('E', $row['id']) ; ?>" >View</a>
                           <a class="btn btn-warning btn-sm mr-2 text-white edit" href="<?php echo base_url(); ?>subadmin/editsubAdmin?id=<?php echo encryptids('E', $row['id']) ?>"> Edit </a>
                           <button class="btn btn-danger btn-sm mr-2" onclick="deleteRecord(<?php echo $row['id']; ?>)">Delete</button>
-                          <button class="btn btn-primary btn-sm mr-2 reset" onclick="resetPassword(<?php echo $row['id']; ?>,<?php echo $row['email_id']; ?>)">Reset Password</button>
+                          <button class="btn btn-primary btn-sm mr-2 reset" onclick="resetPassword(<?php echo $row['id']; ?>,'<?php echo $row['email_id']; ?>')">Reset Password</button>
                          
                           <a class="btn btn-success btn-sm mr-2 " href="<?php echo base_url(); ?>admin/set_permission?id=<?php echo encryptids('E', $row['id']) ?>"> Set Permission</a>
                           
@@ -144,24 +144,7 @@
        })
      </script> -->
      <script>
-$('.reset').on('click',function(){
-    Swal.fire({
-                    title: 'Are you sure you want to Reset Password?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Yes',
-                    denyButtonText: `Close`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url();?>subadmin/admin_creation_list');                   
-                        //$('#competition_edit').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-})
+
 $('.edit').on('click',function(){
     Swal.fire({
                     title: 'Are you sure you want to Edit?',
@@ -215,24 +198,36 @@ $('.edit').on('click',function(){
                     })
         }    
           
-        function resetPassword(id,email) {
-                        
+      
+        function resetPassword(id,email){
+          Swal.fire({
+                    title: 'Do you want to Reset Password of subadmin?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Reset',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {                       
                         $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url(); ?>admin/resetPassword',
                                 data: {
-                                    id: id,
+                                  id: id,
                                     email:email,
                                 },
                                 success: function(result) {
-                                  
+                                    
                                     Swal.fire('Reset password Successfully.Mail sent.');
                                 },
                                 error: function(result) {
                                     Swal.fire("Error,Please try again.");
                                 }
                             });
-                                                  
-                   
-        } 
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        }
   </script>

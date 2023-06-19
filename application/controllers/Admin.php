@@ -1521,7 +1521,7 @@ class Admin extends CI_Controller
         } else {
             $uid        = clearText($this->input->post('uid'));
             $name        = clearText($this->input->post('name'));
-            $email_id        = clearText($this->input->post('email'));
+            $email_id        = $this->input->post('email');
             $department        = clearText($this->input->post('department'));
             $branch        = clearText($this->input->post('branch'));
             // $post        = clearText($this->input->post('post'));
@@ -1670,7 +1670,7 @@ class Admin extends CI_Controller
     }
     public function resetPassword()
     {
-        try {
+       
             $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
             $admin_id = $this->input->post('id');
             $email_id = $this->input->post('email');
@@ -1693,7 +1693,7 @@ class Admin extends CI_Controller
                 $data['status'] = 1;
                 $data['message'] = 'Reset password successfully.';
 
-                // email to Admin to notify  start
+                email to Admin to notify  start
                 $msg = "Dear " . $name .
                     " <p>Your password has reset. Your login credentials for the portal are:
                     </p>
@@ -1723,21 +1723,21 @@ class Admin extends CI_Controller
 
 
 
-
+                 
 
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed , Please try again.';
             }
             echo  json_encode($data);
-            return true;
-        } catch (Exception $e) {
-            echo json_encode([
-                'status' => 'error',
-                'message' => $e->getMessage(),
-            ]);
-            return true;
-        }
+            exit();
+        // } catch (Exception $e) {
+        //     echo json_encode([
+        //         'status' => 'error',
+        //         'message' => $e->getMessage(),
+        //     ]);
+        //     exit();
+        // }
     }
     public function getUniqueEmail()
     {
