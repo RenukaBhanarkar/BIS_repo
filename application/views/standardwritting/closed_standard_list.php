@@ -37,7 +37,9 @@
                                 <th>Total Task</th>
                                 <th>Task Under Review</th>
                                 <th>Task Reviewed</th>
-                                <th>Status</th>
+                                
+                                <th> Status</th>
+                                <th>Review Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -56,17 +58,9 @@
                               <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
                               <td><?=$value['availability']?></td>
                               <td><?=$value['level']?></td> 
-                              <td><?=$value['count']?></td>
-
-                              <?php 
-                              if($value['review_status']==0)
-                                { $task="Task Under Review";}
-                            else
-                                {$task="Sent For Review";}
-
-                                ?>
-                                <td><?=$task?></td>
-                              <td>Reviewed</td>
+                              <td><?=$value['totalcount']?></td>
+                              <td><?=$value['sendReview']?></td>
+                              <td><?=$value['Reviewd']?></td> 
                               <!-- <td><?=$value['status_name']?></td>   -->
                               <?php if($value['result_declared'] == 0 ){ ?>
 
@@ -75,15 +69,28 @@
                                 <?php } else { ?>
                                   <td><?php echo "Result Declared"; ?></td>  
                                   <?php } ?>
+
+                                  <?php  if($value['review_status']==0) { $task="Task Under Review";}
+                              else {$task="Sent For Review";} ?>
+                                <td><?=$task?></td>
                               <td class="d-flex">
                                  <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-warning btn-sm mr-2" >View Submission</a>
                                  <a onclick="viewData(<?=$value['id']?>)" class="btn btn-info btn-sm mr-2" >View Details</a>
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-                                 <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>
 
-                                <?php if($value['result_declared'] == 0 ){ ?>
+                                  <?php if($value['review_status'] == 0 ){ ?>
+
+                                 <a  class="btn btn-primary btn-sm mr-2" onclick="updateOnlineStatusReview(<?=$value['id']?>)" >Sent for Review</a>
+                               <?php } ?>
+
+                                <?php 
+                                if ($value['totalcount']==$value['Reviewd']) { 
+                                  # code...
+                                
+
+                                // if($value['result_declared'] == 0 ){ ?>
                                  <a href="<?php echo base_url(); ?>Standardswritting/result_declared_list/<?= encryptids('E',$value['id']); ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a>
-                                 <?php } ?>
+                                 <?php  }?>
 
                                <?php } ?>     
                                   
@@ -140,10 +147,10 @@ function viewSubmissionData(id)
     if (status==1) { statusdata='Update'; }
     if (status==9) { statusdata='Update'; }
     Swal.fire({
-      title: 'Do you want to Create?',
+      title: 'Do you want to Send For Review ?',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Update',
+      confirmButtonText: 'Send For Review',
       denyButtonText: `Cancel`,
     }).then((result) => 
     { 

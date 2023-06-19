@@ -37,7 +37,7 @@
                                 <!-- <th>Date & Time</th> -->
                                 <th>School/Institute</th>
                                 <th>Class</th>
-                                <th>Submission Date & Time</th>
+                                <th>Submission Timestamp</th>
                                 <th>Uploads</th>
                                 <!-- <th>Image</th> -->
                                 <th>Action</th>

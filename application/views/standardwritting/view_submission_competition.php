@@ -15,6 +15,7 @@
                     <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
                     <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competition</a></li>
                     <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Standardswritting/miscellaneous_dashboard'; ?>">Miscellaneous Competition</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/review_competition_dashboard';?>" >Review Competition Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">View Submission</li>
 
                 </ol>
@@ -66,7 +67,7 @@
                                         <td class="d-flex">
                                             <a href="<?php echo base_url() . 'Standardswritting/view_submitted_comp_response/' . $list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                                             <?php if ($list['submission_status'] != "3") { ?>
-                                                <a href="#" class="btn btn-primary btn-sm mr-2 abcd" sub-id="<?php echo $list['id']; ?>" comp-id="<?php echo $list['competiton_id']; ?>" user_id="<?php echo $list['user_id']; ?>" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
+                                                <a href="#" class="btn btn-info btn-sm mr-2 abcd" sub-id="<?php echo $list['id']; ?>" comp-id="<?php echo $list['competiton_id']; ?>" user_id="<?php echo $list['user_id']; ?>" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                                             <?php } ?>
                                         </td>
                                     </tr>
@@ -80,7 +81,7 @@
             </div>
             <div class="col-md-12 submit_btn p-3">
                 <button class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#assignForm2">Assign for Review</button>
-                <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm text-white">Cancel</a>
+                <a href="#" class="btn btn-danger btn-sm text-white cancel">Cancel</a>
             </div>
         </div>
     </div>
@@ -98,7 +99,7 @@
                         <table id="example" class="table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th>
+                                    <th></th>
                                     <th>Sr. No.</th>
                                     <th>Name of Evaluator</th>
 
@@ -109,7 +110,7 @@
                                     $i = 1;
                                     foreach ($evaluators as $list) { ?>
                                         <tr>
-                                            <td><input class="form-control-input" type="radio" name="evaluator" value="<?php echo $list['user_uid']; ?>" id="flexCheckDefault"></td>
+                                            <td><input class="form-control-input" type="radio" name="evaluator" value="<?php echo $list['id']; ?>" id="flexCheckDefault"></td>
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $list['name']; ?></td>
                                         </tr>
@@ -121,7 +122,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary assign" data-bs-dismiss="modal">Assign</button>
+                    <button type="button" class="btn btn-primary btn-sm assign" data-bs-dismiss="modal">Assign</button>
                     <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -324,7 +325,7 @@
         }
         if (allfields) {
             Swal.fire({
-                title: 'Do you want to Assign',
+                title: 'Do you want to Assign ?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Assign',
@@ -365,4 +366,22 @@
         }
 
     }
+    $('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Do you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url(); ?>Standardswritting/revised_competition_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
     </script>

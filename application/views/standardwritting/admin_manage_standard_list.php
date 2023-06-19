@@ -42,9 +42,18 @@
                               <td><?= $data['date_of_activity']?></td>
                               <td><?= $data['number_of_participants']?></td>
                               <td><?= $data['created_on']?></td>
-                              <td><?= $data['status_name']?></td> 
+                              <td><?= $data['status_name']?></td>
+
+
                               
-                              <td class="d-flex"> <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>')" >Approve/Reject</a> </td>
+                              <td class="d-flex"> 
+                                <?php if ($data['status']==2) {?>
+                                  <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>',1)" >Approve/Reject</a>
+                                <?php  } 
+                                else  {?>
+                                  <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $data['id']?>',2)" >View</a>
+                                <?php  } ?> 
+                              </td>
                           </tr>
                           <?php } ?>
                             
@@ -146,13 +155,15 @@ function editData(id)
     }  
   })
 }
- function viewData(id) 
+ function viewData(id,stsdata) 
 { 
+  if (stsdata==1)  { lbl='Approve / Reject'}
+  if (stsdata==2)  { lbl='View'}
   Swal.fire({
-    title: 'Do you want to Approve / Reject ?',
+    title: 'Do you want to '+ lbl+'  ?',
     showDenyButton: true,
     showCancelButton: false,
-    confirmButtonText:'Approve / Reject',
+    confirmButtonText:lbl,
     denyButtonText: `Cancel`,
   }).then((result) => { 
     if (result.isConfirmed) 

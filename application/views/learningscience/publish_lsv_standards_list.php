@@ -25,10 +25,10 @@
                                 <th>Sr. No.</th>
                                 <th>Title</th>
                                 <th>Type of Post</th>
-                                <th>Created on</th>
                                 <th>Likes</th>
                                 <th>Views/Joined</th>
                                 <th>Status</th> 
+                                <th>Created on</th>
                                 <th>Last Updated</th>
                                 <th>Action</th>
                             </tr>
@@ -47,11 +47,12 @@
                                 ?>
 
                                 <?= $data?></td> 
-                              <td><?= $value['created_on']?></td>
+                              
 
                               <td><?= $value['likes']?></td>
                             <td><?= $value['views']?></td>
                               <td><?= $value['status_name']?></td> 
+                              <td><?= $value['created_on']?></td>
                               <td><?= $value['updated_on']?></td>
                               <td class="" style="width:559px;">
                                  <?php $id= encryptids("E", $value['id'] )?>

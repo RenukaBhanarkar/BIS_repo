@@ -50,7 +50,7 @@
                                 <td><?= $user['member_id']?></td> 
 
                                 <td><?= $user['stdClubMemberClass']?></td> 
-                                <td><?= $user['created_on']?></td>
+                                <td><?= date("d-m-Y h:i:s", strtotime($user['created_on']));?></td>
                                
                                 
                                 <td><?= $user['score']?></td>

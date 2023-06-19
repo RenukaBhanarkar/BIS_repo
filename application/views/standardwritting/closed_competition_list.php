@@ -77,7 +77,7 @@
                             <td><?php echo $list['total_task_under_review']; ?></td>
                             <td><?php echo $list['total_task_reviewed']; ?></td>
                             <!-- <td><?php echo $list['status_name'];  ?></td> -->
-                            <td><?php if($list['review_status']==1){ echo "Send for Review"; } ;  ?></td>
+                            <td><?php if($list['review_status']==1){ echo "Send for Review"; }else { echo "Closed"; } ;  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <!-- <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a> -->
@@ -111,7 +111,7 @@
         $('#example').on('click','.send_for_review',function(){
             var id=$(this).attr('comp-id');
             Swal.fire({
-                title: 'Are you sure you want to Send For Review?',
+                title: 'Do you want to send this competition for review?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Send For Review',

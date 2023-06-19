@@ -50,7 +50,7 @@
                                                 <div class="col-8">
                                             <input type="file" class="form-control input-font" name="image" id="addimage" required="" accept="image/*" title="please select File" onchange="loadFileThumbnail1(event)">
                                             <span class="error_text"></span>
-                                            <div class="invalid-feedback">Please Select File
+                                            <div class="invalid-feedback">This Value is required.
                                                                             </div>
                                                                             </div>
                                             <div class="col-2">
@@ -87,7 +87,7 @@
                                         <span class="error_text">
                                             <?php //echo form_error('title'); ?>
                                         </span>
-                                        <div class="invalid-feedback">Title length should be 5 to 20 characters
+                                        <div class="invalid-feedback">This value is required.
                                                                         </div>
                                     </div>
                                     <div class="mb-2 col-md-4">
@@ -96,14 +96,14 @@
                                         <span class="error_text">
                                             <?php //echo form_error('title'); ?>
                                         </span>
-                                        <div class="invalid-feedback">Enter valid URL
+                                        <div class="invalid-feedback">This value is required.
                                                                         </div>
                                     </div>
                                 </div>
                                 </form>
                                 <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                    <button class="btn btn-primary addLinks">Submit</button>
+                                    <button class="btn btn-danger btn-sm" type="button" data-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary btn-sm addLinks">Submit</button>
                                 </div>
                             </div>
                                 </form>
@@ -321,9 +321,7 @@
     </div>
 </div>
     <!-- /.container-fluid -->
-    <div class="col-md-12 submit_btn p-3">
-    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/footer_links'">Back</a>
-    </div>
+    
 </div>
 <script type="text/javascript">
 var loadFileThumbnail1 = function(event) 
@@ -420,7 +418,7 @@ var loadFileThumbnail1 = function(event)
 
 
         Swal.fire({
-                        title: 'Are you sure you want to Delete ?',
+                        title: 'Do you want to Delete ?',
                         showDenyButton: true,
                         showCancelButton: false,
                         confirmButtonText: 'Delete',

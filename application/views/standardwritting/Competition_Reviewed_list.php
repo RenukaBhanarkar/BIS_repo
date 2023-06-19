@@ -39,7 +39,8 @@
                                 <th>Total Task</th>
                                 <th>Task Under Review</th>
                                 <th>Task Reviewed</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
+                                <th>Review Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -58,11 +59,14 @@
                               <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
                               <td><?=$value['availability']?></td>
                               <td><?=$value['level']?></td> 
-                              <!-- <td><?=$value['status_name']?></td> -->
+                              
                               <td><?=$value['totalcount']?></td>
                               <td><?=$value['sendReview']?></td>  
                               <td><?=$value['Reviewd']?></td>  
-                              <td>Status</td>  
+                              <!-- <td><?=$value['status_name']?></td>  -->
+                              <?php  if($value['review_status']==0) { $task="Task Under Review";}
+                              else {$task="Sent For Review";} ?>
+                                <td><?=$task?></td>
                               <td class="d-flex">
 
                            <a onclick="viewSubmissionData(<?=$value['id']?>)" class="btn btn-primary btn-sm mr-2" >View Submission</a>

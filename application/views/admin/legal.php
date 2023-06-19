@@ -108,19 +108,7 @@
                             
                             
                         </tbody>
-                        <tr>
-                                <td>
-                                    <!-- <button onclick="submitButton()" class="btn btn-primary mb-2" type="submit">Submit</button>
-                                    <button onclick="" class="btn btn-danger mb-2" type="submit">Submit</button> -->
-
-                                    <?php if(in_array(2,$permissions)){ ?>
-                                    <button onclick="return submitButton(event)" class="btn btn-primary btn-sm text-white mb-2" type="submit">Submit</button>
-                                    <?php } ?>
-                                    <!-- <button onclick="location.reload('<?php echo base_url(); ?>admin/footer_links')"  class="btn btn-danger mb-2" type="cancle">Cancle</button> -->
-                                    <!-- <a href="<?php echo base_url(); ?>admin/footer_links" class="btn btn-danger mb-2">Cancle</a> -->
-                                    <a class="btn btn-danger btn-sm text-white mb-2 cancel">Cancel</a>
-                                </td>
-                            </tr>
+                        
     </div>
                     </table>
                     </form>
@@ -128,6 +116,14 @@
             </div>
         </div>
     </div>
+    <?php if(in_array(2,$permissions)){ ?>
+        <div class="col-md-12 submit_btn p-3">
+                                    <button onclick="return submitButton(event)" class="btn btn-success btn-sm text-white mb-2" type="submit">Submit</button>
+                                    <?php } ?>
+                                    <!-- <button onclick="location.reload('<?php echo base_url(); ?>admin/footer_links')"  class="btn btn-danger mb-2" type="cancle">Cancle</button> -->
+                                    <!-- <a href="<?php echo base_url(); ?>admin/footer_links" class="btn btn-danger mb-2">Cancle</a> -->
+                                    <a class="btn btn-danger btn-sm text-white mb-2 cancel">Cancel</a>
+        </div>
 
 </div>
 <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

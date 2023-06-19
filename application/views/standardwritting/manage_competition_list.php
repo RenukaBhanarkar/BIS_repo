@@ -100,7 +100,7 @@
                                  <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                                     <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                         <?php  if ($list['status'] == 2) { ?>
-                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id'] ?>" class="btn btn-primary btn-sm mr-2">Approve/ Reject</a>
+                            <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id'] ?>" class="btn btn-info btn-sm mr-2">Approve/ Reject</a>
                         <?php }
                         } ?>
                         <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
@@ -335,7 +335,7 @@ $('#example').on('click','.unpublish', function(){
 $('#example').on('click','.send_for_approval', function(){
     id =$(this).attr('data-id');
     Swal.fire({
-                title: 'Are you sure you want to Send for approval?',
+                title: 'Do you want to send this for approval?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Send for approval',

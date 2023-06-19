@@ -44,6 +44,7 @@
                                 <th>Available For</th>
                                 <th>Level of Competition</th>
                                 <th>Status</th>
+                                <th>Reject Reasone</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,7 +62,9 @@
                               <td><img src="<?= base_url()?><?=$value['banner_img']?>" alt="#" class="" width="100%"></td>
                               <td><?=$value['availability']?></td>
                               <td><?=$value['level']?></td> 
-                              <td><?=$value['status_name']?></td>  
+                              
+                              <td><?=$value['status_name']?></td> 
+                              <td><?=$value['remark']?></td>  
                               <td class="d-flex">
 
                                  <a  class="btn btn-primary btn-sm mr-2" onclick="viewData('<?= $value['id']?>')" >View</a>
@@ -165,7 +168,7 @@
  function deleteOnlineData(id) 
  { 
   Swal.fire({
-                    title: 'Do you want to Create?',
+                    title: 'Do you want to Delete?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText:'Delete',

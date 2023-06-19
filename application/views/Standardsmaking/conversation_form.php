@@ -40,8 +40,7 @@
                                 <input type="file" id="video_thumbnail" name="video_thumbnail" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
                                 <span class="error_text"></span> 
                             </div>
-                            <div>
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg">Preview </button>
+                            <div><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg">Preview </button>
                             </div>
                         </div>
                         </div>

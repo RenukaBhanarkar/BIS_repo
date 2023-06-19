@@ -40,14 +40,16 @@
                         </div>
                         <div class="col-md-12">
                             <?php if(!($response['image']=="")){ ?>
-                            <p><a class="btn btn-primary btn-sm text-white" href="<?php echo base_url().$response['image']; ?>" target="_blank">view Document</a></p>
+                            <p><a class="btn btn-primary btn-sm text-white" href="<?php echo base_url().$response['image']; ?>" target="_blank">View Upload</a></p>
                             <?php } ?>
                         </div>
                         
                     </div>
                 </div>
             </div>
-            <button onclick="history.back()" class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;">Back</button>
+            <div class="col-md-12 submit_btn p-3">
+            <button onclick="history.back()" class="btn btn-primary btn-sm text-white mr-3 mt-2">Back</button>
+            </div>
         </div>
     </div>
     <!-- /.container-fluid -->

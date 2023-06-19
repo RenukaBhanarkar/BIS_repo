@@ -1,4 +1,13 @@
     <!-- Begin Page Content -->
+    <style>
+        input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+    </style>
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -6,7 +15,12 @@
             <h1 class="h3 mb-0 text-gray-800">Create New Competition</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li>
+                <?php }else{ ?>
+                    <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Admin Dashboard</a></li>
+                <?php } ?>
+                <!-- <li class="breadcrumb-item"><a href="<?php echo base_url().'Admin/dashboard';?>" >Sub Admin Dashboard</a></li> -->
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'quiz/organizing_quiz';?>" >Competition</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'Standardswritting/miscellaneous_dashboard';?>" >Miscellaneous Competition</a></li>
@@ -44,7 +58,7 @@
                 </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Name of Competition<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Title of Competition<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name" id="name" placeholder="Enter Name of Competition" value="<?php echo set_value('name') ?>" required="">
                                 <div class="invalid-feedback">
                                     This value is required
@@ -55,7 +69,7 @@
                     </div>
                     <div class="row">
                             <div class="mb-2 col-md-12">
-                                <label class="d-block text-font">Name of Competition in Hindi<sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Title of Competition in Hindi<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo set_value('name_hindi') ?>" required="">
                                 <div class="invalid-feedback">
                                     This value is required
@@ -115,7 +129,7 @@
                            
                         </div>
                         <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup><sup class="text-danger">*</sup></label>
+                                <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
                                     <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" required onchange="loadThumbnail(event)">
@@ -241,6 +255,7 @@
                                                 <label class="custom-control-label" for="Standard_4">12<sup>th</sup>Standard</label>
                                             </div>
                                         </div>
+                                        <span class="text-danger" id="err_school"></span>
                         </div>
                         <!-- <div class="mb-2 col-4">
                                 <label class="d-block text-font">Standard<sup class="text-danger">*</sup></label>
@@ -266,10 +281,12 @@
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="" minlength="1">
+                                <input type="number" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>" min="1" oninput="this.value = this.value.replace(/[^0-9/]/, '')" required="" >
+                                <!-- <input type="number" class="form-control input-font" name="fprize" id="fprize" placeholder="Enter Prizes" value="<?php echo set_value('fprize') ?>"  required="" min="1"> -->
                                 <div class="invalid-feedback" id="fprize_no">
                                 This value is required
                                 </div>
+                                
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes<sup class="text-danger">*</sup></label>
@@ -662,10 +679,14 @@
 
        }
     //    alert(fprize);
-       if(fprize=="" || fprize < 1){
-       // $('#terms_conditions_error').text('This value is required');
-       $('#fprize_no').text('Enter value should be equal or more than 1');
-       Swal.fire('First prize number should be greater than or equal to 1');
+       if(fprize==""){
+       $('#fprize_no').text('This value is required');
+    //    $('#fprize_no').text('Enter value should be equal or more than 1');
+    //    Swal.fire('First prize number should be greater than or equal to 1');
+        isvalid =false;
+       }else if(fprize <= 1){
+        $('#fprize_no').text('Enter value should be equal or more than 1');
+        Swal.fire('First prize number should be greater than or equal to 1');
         isvalid =false;
        }else{
 
@@ -699,7 +720,8 @@
         checked = $("input[type=checkbox]:checked").length;
 
         if(!checked) {
-            Swal.fire("You must check at least one checkbox of standard.");
+            // Swal.fire("You must check at least one checkbox of standard.");
+            $('#err_school').text('Please Select atleast one checkbox');
             isvalid =false;
         }else{
 
@@ -852,7 +874,7 @@ if(id==1){
     checked = $("input[type=checkbox]:checked").length;
 
         if(!checked) {
-            Swal.fire("You must check at least one checkbox of standard.");
+            // Swal.fire("You must check at least one checkbox of standard.");
             return false;
         }
 }

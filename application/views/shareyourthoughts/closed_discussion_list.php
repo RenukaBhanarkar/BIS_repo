@@ -38,7 +38,8 @@
                             <td><?= date("d-m-Y", strtotime($value['start_date']));?></td>
                             <td><?= date("d-m-Y", strtotime($value['end_date']));?></td>  
                             <td class="d-flex">
-                                <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a>
+                                <?php $id = encryptids("E", $value['id']);?>
+                                <a onclick="viewData('<?= $id?>')" class="btn btn-primary btn-sm mr-2" title="View">View Comments</a>
                             </td>
                         </tr>
                         
@@ -53,4 +54,21 @@
 <!-- /.container-fluid -->
 </div>
 <!-- End of Main Content -->
+<script type="text/javascript">
+    function viewData(id) 
+{ 
+  Swal.fire({
+    title: 'Do you want to View Comments ?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText:'View Comments',
+    denyButtonText: `Cancel`,
+  }).then((result) => { 
+    if (result.isConfirmed) 
+    { 
+      window.location.href = "discussion_comments_view/"+id; 
+    }  
+  })
+}
+</script>
 </body>

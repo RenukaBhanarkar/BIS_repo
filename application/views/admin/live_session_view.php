@@ -59,12 +59,11 @@
                                         </div> 
                                     </div>
                                 </div>
-
                                 <div class="row">   
                                     <div class="mb-2 col-md-12">
                                         <label class="d-block text-font">View PDF</label>
                                         <div> 
-                                            <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">view PDF</a>
+                                            <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">View PDF</a>
                                         </div> 
                                     </div>
                                 </div>
@@ -112,10 +111,11 @@
             <?php if( $liveSession['status']==2){?>
             <div class="col-md-12 submit_btn p-3">
                 <!-- <a id="approve" class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval">Approval</a> -->
-                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve">
+                <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white approve" id="approve">
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit">
                 <!-- <a class="btn btn-success btn-sm text-white" data-toggle="modal" data-target="#approval" id="submit">Submit</a> -->
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-warning btn-sm text-white reject" id="reject" onclick="rejectFun()">Reject</a>
+                <a class="btn btn-danger btn-sm text-white cancel">Cancel</a>
             </div>
             <?php } ?>
             </form>
@@ -123,9 +123,9 @@
 
 <?php } ?>
                     </div>
-                          <div class="col-md-12 submit_btn p-3">
+                          <!-- <div class="col-md-12 submit_btn p-3">
                                <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/Manage_session_list'">Back</a>
-                          </div>  
+                          </div>   -->
                         </div> 
                       </div>
                     </div>
@@ -133,6 +133,44 @@
 
 
             </div> 
+<script>
+    $('.cancel').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Cancel?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancel',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url(); ?>admin/manage_session_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+$('.reject').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Reject?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Reject',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                     //   window.location.replace('<?php echo base_url(); ?>admin/manage_session_list');                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+    </script>
     <script type="text/javascript">
      $(document).ready(function () 
     {  
