@@ -1563,7 +1563,7 @@ class Admin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnpbowcxlzod',
+                    'smtp_pass' => 'moihgnbpowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1706,7 +1706,7 @@ class Admin extends CI_Controller
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
                     'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnpbowcxlzod',
+                    'smtp_pass' => 'moihgnbpowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -1800,7 +1800,7 @@ class Admin extends CI_Controller
                             'smtp_host' => 'ssl://smtp.googlemail.com',
                             'smtp_port' => 465,
                             'smtp_user' => 'exchangeforumbis@gmail.com',
-                            'smtp_pass' => 'moihgnpbowcxlzod',
+                            'smtp_pass' => 'moihgnbpowcxlzod',
                             'mailtype' => 'html',
                             'charset' => 'iso-8859-1',
                         );
@@ -3756,8 +3756,13 @@ class Admin extends CI_Controller
     }
     public function profile_view()
     {
+        $data = array();
+        $admin_id= encryptids("D", $_SESSION['admin_id']);
+        $data['admin_id'] = $admin_id;
+        $data['admin_type'] =  encryptids("D", $_SESSION['admin_type']);
+        $data['details'] = $this->Admin_model->getAdminDetail($admin_id);
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/profile_view');
+        $this->load->view('admin/profile_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 }

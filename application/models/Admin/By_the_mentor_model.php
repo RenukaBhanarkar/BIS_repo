@@ -217,8 +217,8 @@ class By_the_mentor_model extends CI_Model {
                     'protocol' => 'smtp',
                     'smtp_host' => 'ssl://smtp.googlemail.com',
                     'smtp_port' => 465,
-                    'smtp_user' => 'exchangeforum1@gmail.com',
-                    'smtp_pass' => 'niycbrjxnzfazrud',
+                    'smtp_user' => 'exchangeforumbis@gmail.com',
+                    'smtp_pass' => 'moihgnbpowcxlzod',
                     'mailtype' => 'html',
                     'charset' => 'iso-8859-1',
                 );
@@ -226,7 +226,7 @@ class By_the_mentor_model extends CI_Model {
                 $this->load->library('email', $config);
                 $this->email->initialize($config); // add this line
                 $this->email->set_newline("\r\n");
-                $this->email->from('exchangeforum1@gmail.com', 'BIS');
+                $this->email->from('exchangeforumbis@gmail.com', 'BIS');
                 $this->email->to($email_id);
                 $this->email->subject($subject);
                 $this->email->message($msg);

@@ -70,53 +70,58 @@
                     
                         <div class="col-12 mt-3">
                         <div class="card border-top">
-                           
+                           <?php //print_r($details); ?>
                            <div class="card-body"> 
                             <div class="row">
                             <div class="mb-2 col-md-12" style="text-align: center;">
+                            <?php if(($details['photo']=="")){ ?>
                                   <img src="<?php echo base_url();?>assets/admin/img/undraw_profile.svg" alt="" width="21%">
+                                  <?php }else{ ?>
+                                    <img src="<?php echo base_url().'uploads/admin/profile/'.$details['photo'];?>" alt="" width="21%">
+                                    <?php } ?>
                                </div>
                             </div>
+                            
                             <div class="row">  
                                  <div class="mb-2 col-md-4">
                                    
                                     <label class="d-block text-font">Name</label>
-                                         <p>Anis</p>
+                                         <p><?php echo $details['name']; ?></p>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">DOB</label>
                                         
-                                        <p>12/03/2023</p>
+                                        <p><?php echo $details['dob']; ?></p>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Gender</label>
-                                         <p>Male</p>
+                                         <p><?php if($details['gender']=1){echo 'Male'; }else if($details['gender']=2){ echo  "Female"; }else{echo "-"; }  ?></p>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Contact Number</label>
-                                        <p>7057085889</p>
+                                        <p><?php echo $details['contact_number']; ?></p>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block text-font">Email Id</label>
-                                       <p>abc@gmail.com</p>
+                                       <p><?php echo $details['email_id']; ?></p>
                                       
                                 </div>
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Designation</label>
                                        
-                                        <p>-----</p>
+                                        <p><?php echo $details['designation']; ?></p>
                                        
                                 </div>
                                 
                               
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Department</label>
-                                        <p>bis</p>
+                                        <p><?php echo $details['department']; ?></p>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Branch</label>
                                         
-                                        <p>branch</p>
+                                        <p><?php echo $details['branchnew']; ?></p>
                                        
                                 </div>
                         </div>
