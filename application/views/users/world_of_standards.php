@@ -128,7 +128,7 @@
                     <div class="World_of_standers_inner_Box  shadow">
                         <a href="#">
                         <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?=base_url();?>assets/images/membership_pannel.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
                         <p class="Title_Section">Offer for the Membership of Working Panels</p>
