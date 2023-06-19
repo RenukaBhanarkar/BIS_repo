@@ -88,6 +88,13 @@ class Users extends CI_Controller
         $this->load->view('users/login',$data);
         $this->load->view('users/footers/login_footer');
     }
+    public function loginCompetition($id){
+        $data = array();
+        $data['comp_id'] = $id;
+        $this->load->view('users/headers/login_header');
+        $this->load->view('users/login',$data);
+        $this->load->view('users/footers/login_footer');
+    }
   
 
     /****************************************************
@@ -654,6 +661,7 @@ class Users extends CI_Controller
             $username        = clearText($this->input->post('username'));
             $password        = clearText($this->input->post('password'));        
             $quiz_id = $this->input->post('quizid');
+            $comp_id = $this->input->post('compid');
             //$quizid = encryptids("D", $quiz_id);
             
             //////////////////////START/////////////
@@ -825,10 +833,15 @@ class Users extends CI_Controller
 
                 $this->session->set_userdata($sess_arr);
                //  exit();
-
+// echo $comp_id;
+// echo $quiz_id;
+// echo $compid;
+// die;
                 if(isset($quiz_id) && !empty($quiz_id)){
                     redirect(base_url() . "users/about_quiz/".$quiz_id, 'refresh');
                    
+                }else if(isset($comp_id) && !empty($comp_id)){
+                    redirect(base_url() . "users/about_competition/".$comp_id, 'refresh');
                 }else{
                     redirect(base_url() . "Users/welcome", 'refresh');
                 }

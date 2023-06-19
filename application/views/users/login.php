@@ -48,7 +48,9 @@
                             </div>
                             <?php if(isset($id) && !empty($id)){ ?>
                                 <input type="hidden" id="quizid" name="quizid" value="<?= $id;?>"/>
-                            <?php } ?> 
+                            <?php }else if(isset($comp_id) && !empty($comp_id)){ ?>
+                                <input type="hidden" id="compid" name="compid" value="<?= $comp_id;?>"/>
+                           <?php } ?> 
                          
 
                             <!-- <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a> -->

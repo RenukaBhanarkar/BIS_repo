@@ -18,18 +18,18 @@ class Admin extends CI_Controller
 
     public function randomPassword()
     {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $special = '!@#$%^&*';
         $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        //$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
         for ($i = 0; $i < 8; $i++) {
             if($i < 7){
-                $n = rand(0, $alphaLength);
-                $pass[] = $alphabet[$n];
+                $n = substr(str_shuffle($alphabet),0,1);
+                $pass[] = $n;
             }
             if($i == 7){
-                $n1 = rand(0, $special);
-                $pass[] = $alphabet[$n1];
+                $n1 =substr(str_shuffle($special),0,1);
+                $pass[] =$n1;
             }
            
         }
@@ -1731,7 +1731,7 @@ class Admin extends CI_Controller
             $login_admin_id = encryptids("D", $this->session->userdata('admin_id'));
             $name = encryptids("D", $this->session->userdata('admin_name'));
             $admin_id = encryptids("D", $this->session->userdata('admin_id'));
-            // $email_id = $this->input->post('email');
+            $email_id = encryptids("D", $this->session->userdata('admin_email'));
             //$random_pass	 = $this->randomPassword();
             $old_pass     = $this->input->post('old_password');
             $random_pass     = $this->input->post('pass');
@@ -1766,7 +1766,7 @@ class Admin extends CI_Controller
                             'smtp_host' => 'ssl://smtp.googlemail.com',
                             'smtp_port' => 465,
                             'smtp_user' => 'exchangeforumbis@gmail.com',
-                            'smtp_pass' => 'Vidya@123',
+                            'smtp_pass' => 'moihgnbpowcxlzod',
                             'mailtype' => 'html',
                             'charset' => 'iso-8859-1',
                         );
@@ -3718,6 +3718,12 @@ class Admin extends CI_Controller
     {
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/about_eBIS_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function profile_view()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/profile_view');
         $this->load->view('admin/footers/admin_footer');
     }
 }

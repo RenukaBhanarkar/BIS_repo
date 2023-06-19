@@ -384,7 +384,7 @@ li span {
                                     <?php  }else{ ?>                                 
                                         
                                     
-                                    <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                    <a href="<?= base_url().'users/loginCompetition/'.$competition['competitionn_id'];?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                     <?php  
                                   }  ?>
                                 <?php                           
@@ -405,7 +405,7 @@ li span {
                                            
                                         <?php  
                                       } else { ?>
-                                        <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate</span></a>
+                                        <a href="<?= base_url().'users/loginCompetition/'.$competition['competitionn_id'];?>" class="btn startQuiz"> <span>Login to Participate</span></a>
                                     <?php }
                                  }
                                  
@@ -422,7 +422,7 @@ li span {
                                            
                                             <?php  
                                           } else { ?>
-                                            <a href="<?= base_url(); ?>users/login/" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                            <a href="<?= base_url(); ?>users/loginCompetition/<?=$competition['competitionn_id']?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                         <?php }
                                      } 
                                      
@@ -438,7 +438,7 @@ li span {
                                                       <a href="<?= base_url().'users/start_competition/'.$competition['competitionn_id']; ?>" class="btn startQuiz"> <span>Start Competition </span></a>
                                               
                                              <?php } else { ?>
-                                                <a href="<?= base_url().'users/login';?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                                <a href="<?= base_url().'users/loginCompetition/'.$competition['competitionn_id'];?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                             <?php }
                                          }
                                          
@@ -468,7 +468,7 @@ li span {
                                                             <!-- <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a> -->
                                                         <?php  }
                                                     } else { ?>
-                                                        <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E", $competition['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                                        <a href="<?= base_url(); ?>users/loginCompetition/<?= encryptids("E", $competition['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                                     <?php } ?>
                                                 </p>
 
