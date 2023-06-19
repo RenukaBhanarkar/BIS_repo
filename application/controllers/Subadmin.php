@@ -10,6 +10,7 @@ class Subadmin extends CI_Controller
         $this->load->model('Admin/Admin_model');
         $this->load->model('Subadmin/Que_bank_model');
         $this->load->model('Subadmin/Questions_model');
+        $this->load->model('Admin/By_the_mentor_model');
         date_default_timezone_set("Asia/Calcutta");
     }
     public function index()
@@ -227,26 +228,27 @@ class Subadmin extends CI_Controller
                     <p>Password: " . $random_pass . "</p>";
                 $subject = "Login Credentials for the BIS Portal.";
 
-                $config = array(
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl://smtp.googlemail.com',
-                    'smtp_port' => 465,
-                    'smtp_user' => 'exchangeforumbis@gmail.com',
-                    'smtp_pass' => 'moihgnpbowcxlzod',
-                    'mailtype' => 'html',
-                    'charset' => 'iso-8859-1',
-                );
+                // $config = array(
+                //     'protocol' => 'smtp',
+                //     'smtp_host' => 'ssl://smtp.googlemail.com',
+                //     'smtp_port' => 465,
+                //     'smtp_user' => 'exchangeforumbis@gmail.com',
+                //     'smtp_pass' => 'moihgnpbowcxlzod',
+                //     'mailtype' => 'html',
+                //     'charset' => 'iso-8859-1',
+                // );
 
-                $this->load->library('email', $config);
-                $this->email->initialize($config); // add this line
-                $this->email->set_newline("\r\n");
-                $this->email->from('exchangeforum@gmail.com', 'BIS');
-                $this->email->to($email_id);
-                $this->email->subject($subject);
-                $this->email->message($msg);
-                $this->email->send();
+                // $this->load->library('email', $config);
+                // $this->email->initialize($config); // add this line
+                // $this->email->set_newline("\r\n");
+                // $this->email->from('exchangeforum@gmail.com', 'BIS');
+                // $this->email->to($email_id);
+                // $this->email->subject($subject);
+                // $this->email->message($msg);
+                // $this->email->send();
                 // email code end
 
+                $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
 
 
 
