@@ -342,7 +342,7 @@ else
 {
 $("#first_file").next(".validation").remove(); // remove it
 }
-var validExtensions = ['pdf']; //array of valid extensions
+var validExtensions = ['pdf','PDF']; //array of valid extensions
 var fileName = $("#first_file").val();;
 var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
 $("#first_file").next(".validation").remove();
@@ -384,7 +384,7 @@ else
 {
 $("#second_file").next(".validation").remove(); // remove it
 }
-var validExtensions = ['pdf']; //array of valid extensions
+var validExtensions = ['pdf','PDF']; //array of valid extensions
 var fileName = $("#second_file").val();;
 var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
 $("#second_file").next(".validation").remove();
@@ -426,7 +426,7 @@ else
 {
 $("#third_file").next(".validation").remove(); // remove it
 }
-var validExtensions = ['pdf']; //array of valid extensions
+var validExtensions = ['pdf','PDF']; //array of valid extensions
 var fileName = $("#third_file").val();;
 var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
 $("#third_file").next(".validation").remove();
@@ -468,7 +468,7 @@ else
 {
 $("#consolation_file").next(".validation").remove(); // remove it
 }
-var validExtensions = ['pdf']; //array of valid extensions
+var validExtensions = ['pdf','PDF']; //array of valid extensions
 var fileName = $("#consolation_file").val();;
 var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
 $("#consolation_file").next(".validation").remove();

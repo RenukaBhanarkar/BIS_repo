@@ -1,14 +1,14 @@
-<!-- Begin Page Content -->
+ <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Quiz Winners Wall List</h1>
+   <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Miscellaneous  Winners Wall List</h1>
         <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
                 <li class="breadcrumb-item " aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
                 <li class="breadcrumb-item" aria-current="page"><a href="<?php echo base_url().'winnerwall/winner_wall_dashbaord';?>" >Winner Wall Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Quiz Winners Wall List</li>
+                <li class="breadcrumb-item active" aria-current="page">Miscellaneous  Winners Wall List</li>
             </ol>
         </nav>
     </div>
@@ -21,9 +21,9 @@
             <div class="card border-top card-body">
                 <div>
                     <?php if (in_array(2, $permissions)) { ?>
-                    <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url();?>winnerwall/winner_wall_form'">Create New Quiz Winner Wall</button>
+                    <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url();?>Miscellaneouswinnerwall/miscellaneous_winner_wall_form'">Create New Miscellaneous Winner Wall</button>
                     <?php } ?>
-                    <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url();?>winnerwall/winner_wall_archive'">Quiz Archive</button>
+                    <button type="button" class="btn btn-primary btn-sm mr-2" onclick="location.href='<?php echo base_url();?>Miscellaneouswinnerwall/miscellaneous_winner_wall_archive'">Miscellaneous Archive</button>
                 </div>
             </div>
         </div>
@@ -58,12 +58,14 @@
 
 
                                 <?php if (in_array(1, $permissions)) { ?>
-                                <a href="winner_wall_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
+                                <a href="miscellaneous_winner_wall_view/<?= $id;?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                                 <?php } ?>
 
+                                 <?php if ($value['status']!=5) {?>
+
                                 <?php if (in_array(3, $permissions)) { ?>
-                                <a href="winner_wall_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
-                                <?php } ?>
+                                <a href="miscellaneous_winner_wall_edit/<?= $id;?>" class="btn btn-info btn-sm mr-2" title="View">Edit</a>
+                                <?php }} ?>
                                 
                                 
                                 <?php if ($value['status']==5) {?>
@@ -151,7 +153,7 @@ console.log(status)
 // {
 //     $.ajax({
 //         type: 'POST',
-//         url: '<?php // echo base_url(); ?>winnerwall/updateWinnerWall',
+//         url: '<?php // echo base_url(); ?>Miscellaneouswinnerwall/updateWinnerWall',
 //         data: {
 //             id: id,
 //             status: status,
@@ -179,7 +181,7 @@ denyButtonText: `Cancel`,
 if (result.isConfirmed) {
 $.ajax({
 type: 'POST',
-url: '<?php echo base_url(); ?>winnerwall/updateWinnerWall',
+url: '<?php echo base_url(); ?>Miscellaneouswinnerwall/updateWinnerWall',
 data: {
 id: id,
 status: status,
@@ -200,7 +202,25 @@ alert("Error,Please try again.");
 }
 function deleteWinnerWall(id,quiz_id)
 {
- 
+// $('#delete').modal('show');
+// $('.deletecall').on('click', function()
+// {
+//     $.ajax({
+//         type: 'POST',
+//         url: '<?php echo base_url(); ?>Miscellaneouswinnerwall/deleteWinnerWall',
+//         data: {
+//             id: id,
+//             quiz_id: quiz_id,
+//         },
+//         success: function(result)
+//         {
+//             location.reload();
+//         },
+//         error: function(result) {
+//             alert("Error,Please try again.");
+//         }
+//     });
+// });
 Swal.fire({
 title: 'Do you want to Delete?',
 showDenyButton: true,
@@ -212,7 +232,7 @@ denyButtonText: `Cancel`,
 if (result.isConfirmed) {
 $.ajax({
 type: 'POST',
-url: '<?php echo base_url(); ?>winnerwall/deleteWinnerWall',
+url: '<?php echo base_url(); ?>Miscellaneouswinnerwall/deleteWinnerWall',
 data: {
 id: id,
 quiz_id: quiz_id,

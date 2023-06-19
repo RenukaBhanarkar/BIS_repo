@@ -13,6 +13,9 @@ class Users extends CI_Controller
         $this->load->model('Users/Users_model');
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         $this->load->model('Winnerwall/Winnerwall_model');
+
+        $this->load->model('Winnerwall/Miscellaneous_winnerwall_model');
+        $this->load->model('Winnerwall/Standard_winnerwall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $this->load->model('Admin/your_wall_model');
@@ -1061,6 +1064,13 @@ class Users extends CI_Controller
         $this->load->view('users/standard_club',$data);
         $this->load->view('users/footers/footer');  
     }
+
+
+    public function winner_wall(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/winner_wall');
+        $this->load->view('users/footers/footer');  
+    }
     public function quality_index()
     {
         $data = array();
@@ -1624,7 +1634,7 @@ class Users extends CI_Controller
     }
      public function winners()
     {
-        $masterWinners= $this->Winnerwall_model->getWinnerWallList();
+        $masterWinners= $this->Winnerwall_model->getWinnerWallListFront();
         $masterArr = array();   
         foreach($masterWinners as $row)
         {
@@ -1638,6 +1648,43 @@ class Users extends CI_Controller
         $this->load->view('users/winners', $data);
         $this->load->view('users/footers/footer');
     }
+
+    public function standard_writting_winners()
+    {
+        $masterWinners= $this->Standard_winnerwall_model->getWinnerWallListFront();
+        $masterArr = array();   
+        foreach($masterWinners as $row)
+        {
+            $quiz_id= $row['quiz_id'];
+            $WinnersArr= $this->Standard_winnerwall_model->getWinners($quiz_id);
+            $row['Winners'] = $WinnersArr;
+            array_push($masterArr, $row);
+        } 
+        $data['masterWinners']=$masterArr; 
+        $this->load->view('users/headers/header');
+        $this->load->view('users/winners', $data);
+        $this->load->view('users/footers/footer');
+    }
+
+    public function miscellaneous_winners()
+    {
+        $masterWinners= $this->Miscellaneous_winnerwall_model->getWinnerWallListFront();
+        $masterArr = array();   
+        foreach($masterWinners as $row)
+        {
+            $quiz_id= $row['quiz_id'];
+            $WinnersArr= $this->Miscellaneous_winnerwall_model->getWinners($quiz_id);
+            $row['Winners'] = $WinnersArr;
+            array_push($masterArr, $row);
+        } 
+        $data['masterWinners']=$masterArr; 
+        $this->load->view('users/headers/header');
+        $this->load->view('users/winners', $data);
+        $this->load->view('users/footers/footer');
+    }
+
+
+
     public function yourwall()
     {
         

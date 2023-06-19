@@ -484,7 +484,7 @@ input[type=number]::-webkit-outer-spin-button {
     var loadcPrizeImage = function(event) {
         // $("#outputConsol").show();
         var fileSize = $('#cprize_image')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#cprize_image").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -513,7 +513,7 @@ input[type=number]::-webkit-outer-spin-button {
     var loadtPrizeImage = function(event) {
         // $("#outputConsol").show();
         var fileSize = $('#tprize_image')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#tprize_image").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -539,7 +539,7 @@ input[type=number]::-webkit-outer-spin-button {
     var loadsPrizeImage = function(event) {
         // $("#outputConsol").show();
         var fileSize = $('#sprize_image')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#sprize_image").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -564,7 +564,7 @@ input[type=number]::-webkit-outer-spin-button {
     var loadfPrizeImage = function(event) {
         // $("#outputConsol").show();
         var fileSize = $('#fprize_image')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#fprize_image").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    
@@ -590,7 +590,7 @@ input[type=number]::-webkit-outer-spin-button {
     var loadThumbnail = function(event) {
         // $("#outputConsol").show();
         var fileSize = $('#thumbnail')[0].files[0].size;
-       var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#thumbnail").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                    

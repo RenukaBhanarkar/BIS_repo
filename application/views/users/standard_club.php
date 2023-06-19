@@ -185,7 +185,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
             
             
             <div class="more_button">
-              <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winners'"><?php echo $standard_club_section[$language]['1'] ?><i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>
+              <button class="btn_common mt-1" onclick="location.href='<?php echo base_url(); ?>users/winner_wall'"><?php echo $standard_club_section[$language]['1'] ?><i class="fa fa-long-arrow-right ms-2" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>

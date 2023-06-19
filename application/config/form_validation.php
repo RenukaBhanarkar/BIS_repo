@@ -157,6 +157,43 @@ $config = array(
 		),
 	),
 
+		'miscellaneous_winner_wall_form' => array(
+		array(
+			'field' => 'name',
+			'label' => 'Name',
+			'rules' => 'required'
+		),
+		array( 
+			'field' => 'email',
+			'label' => 'Email ',
+			'rules' => 'required'
+		),
+		array( 
+			'field' => 'contact_no',
+			'label' => 'Contact',
+			'rules' => 'required'
+		),
+	),
+
+
+		'standard_winner_wall_form' => array(
+		array(
+			'field' => 'name',
+			'label' => 'Name',
+			'rules' => 'required'
+		),
+		array( 
+			'field' => 'email',
+			'label' => 'Email ',
+			'rules' => 'required'
+		),
+		array( 
+			'field' => 'contact_no',
+			'label' => 'Contact',
+			'rules' => 'required'
+		),
+	),
+
 		'new_work_view_comments' => array(
 		array(
 			'field' => 'description',

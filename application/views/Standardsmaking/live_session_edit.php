@@ -457,7 +457,7 @@
         {
         $("#thumbnail").next(".validation").remove(); // remove it
         }
-        var validExtensions = ['jpeg','jpg','png']; //array of valid extensions
+        var validExtensions = ['jpeg','jpg','png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#thumbnail").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
         $("#thumbnail").next(".validation").remove();
@@ -512,7 +512,7 @@
         {
         $("#image").next(".validation").remove(); // remove it
         }
-        var validExtensions = ['jpeg','jpg','png']; //array of valid extensions
+        var validExtensions = ['jpeg','jpg','png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#image").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
         $("#image").next(".validation").remove();
@@ -638,7 +638,7 @@
         var loadFileImage = function(event) {
         $("#loadImage").show();
         var fileSize = $('#image')[0].files[0].size;
-        var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#image").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
         
@@ -666,7 +666,7 @@
         var loadFileThumbnail = function(event) {
         $("#loadThumbnail").show();
         var fileSize = $('#thumbnail')[0].files[0].size;
-        var validExtensions = ['jpg', 'jpeg', 'png']; //array of valid extensions
+        var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
         var fileName = $("#thumbnail").val();;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
         
