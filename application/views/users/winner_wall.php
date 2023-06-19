@@ -143,14 +143,14 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
         <a class="nav-link"   href="<?php echo base_url(); ?>users/winners">
           <img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%">
           <!-- <h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
-          <h3 class="tabl_title">Quiz Winner Wall</h3>
+          <h3 class="tabl_title">winners wall of Quiz</h3>
         </a>
       </li>
       <li class="col-md-3 tab-link">
         <a class="nav-link"   href="<?php echo base_url(); ?>users/standard_writting_winners">
           <img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%">
           <!-- <h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
-          <h3 class="tabl_title">Standard Writting Winner Wall</h3>
+          <h3 class="tabl_title">Winners wall of Standard writting </h3>
         </a>
       </li>
 
@@ -158,7 +158,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
         <a class="nav-link"   href="<?php echo base_url(); ?>users/miscellaneous_winners">
           <img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%">
           <!-- <h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
-          <h3 class="tabl_title">Miscellaneous Winner Wall</h3>
+          <h3 class="tabl_title">Winners wall of other competitions</h3>
 
         </a>
       </li>
