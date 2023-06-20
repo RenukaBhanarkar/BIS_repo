@@ -76,8 +76,8 @@
                         <td><?=$i;?></td>
                         <td><?=$list['role'];?></td>
                         <td class="d-flex border-bottom-0">
-                            <a href="#" class="btn btn-info btn-sm mr-2 edit">Edit</a>
-                            <a class="btn btn-danger btn-sm mr-2 delete" data-id="<?=$list['id'];?>">delete</a>                    
+                            <!-- <a href="#" class="btn btn-info btn-sm mr-2 edit">Edit</a> -->
+                            <a class="btn btn-danger btn-sm mr-2 delete" data-id="<?=$list['id'];?>">Delete</a>                    
 
                         </td>
                         </tr>

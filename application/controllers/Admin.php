@@ -2977,8 +2977,13 @@ class Admin extends CI_Controller
         $admin_id = encryptids("D", $encAdminId);
 
         $pageData['page_menu_select'] = "view_admin";
-        $admintype = encryptids("D", $this->session->userdata('admin_type'));
-        $allRecords = $this->Admin_model->getAllAdmin();
+        // $admintype = encryptids("D", $this->session->userdata('admin_type'));
+        if($admintype=1){
+            $allRecords = $this->Admin_model->getAllAdminByType('2');
+        }else if($admintype=2){
+            $allRecords = $this->Admin_model->getAllAdminByType('3'); 
+        }
+        // $allRecords = $this->Admin_model->getAllAdmin();
         $pageData['allRecords'] = $allRecords;
 
         if ($admintype == 1) {
@@ -3749,9 +3754,119 @@ class Admin extends CI_Controller
     }
     public function about_eBIS_list()
     {
+        $this->load->model('Admin/Admin_model');
+        $data['about_ebis'] = $this->Admin_model->aboutEbisForumData();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('admin/about_eBIS_list');
+        $this->load->view('admin/about_eBIS_list',$data);
         $this->load->view('admin/footers/admin_footer');
+    }
+    public function add_ebis()
+    {
+        if (!file_exists('uploads/cms/ebis')) {
+            mkdir('uploads/cms/ebis', 0777, true);
+        }
+
+
+        $banner_img = "ebis" . time() . '.jpg';
+        $config['upload_path'] = './uploads/cms/ebis';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size']    = '10000';
+        $config['max_width']  = '3024';
+        $config['max_height']  = '2024';
+
+        $config['file_name'] = $banner_img;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('image')) {
+            $data['status'] = 0;
+            $data['message'] = $this->upload->display_errors();
+        }
+        $formdata['description'] = $this->input->post('description');
+        $formdata['image'] = $banner_img;
+        // $formdata['status'] = "created";
+// print_r($formdata); die;
+        $this->Admin_model->aboutEbisForuminsertData($formdata);
+        $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+        redirect(base_url() . "admin/about_eBIS_list", 'refresh');
+    }
+    public function update_ebis()
+    {
+        if (!file_exists('uploads/cms/ebis')) {
+            mkdir('uploads/cms/ebis', 0777, true);
+        }
+        //print_r([$_POST['old_image']]); die;
+        $formdata['id'] = $this->input->post('id');
+        //$formdata['title'] = $this->input->post('title');
+        $formdata['description'] = $this->input->post('description');
+        //  $formdata['image'] = $this->input->post('old_doc');   
+
+        $oldDocument = "";
+        $oldDocument = $this->input->post('old_image');
+        $document = "";
+
+        if (!empty($_FILES['image']['tmp_name'])) {
+            $document = "banner_image" . time() . '.jpg';
+            $config['upload_path'] = './uploads/cms/ebis';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size']    = '250';
+            $config['max_width']  = '3024';
+            $config['max_height']  = '2024';
+            $config['file_name'] = $document;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('image')) {
+                //$err[]=$this->upload->display_errors();
+                $data['status'] = 0;
+                $data['message'] = $this->upload->display_errors();
+            }
+        } else {
+            if (!empty($oldDocument)) {
+                $document =  $oldDocument;
+            }
+        }
+        // print_r($formdata); die;
+        if ($document) {
+            $formdata['image'] = $document;
+        }
+        // $formdata['status']="1";
+        $id = $this->Admin_model->aboutEbisForumupdateData($formdata);
+        if ($id) {
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+            redirect(base_url() . "admin/about_eBIS_list", 'refresh');
+        } else {
+            $this->session->set_flashdata('MSG', ShowAlert("Failed to update record,Please try again", "DD"));
+            redirect(base_url() . "admin/about_eBIS_list", 'refresh');
+        }
+    }
+    public function deletEbisForum()
+    {
+        
+        try {
+            $que_id = $this->input->post('que_id');
+            $id = $this->Admin_model->deletEbisForum($que_id);
+            $image = $this->input->post('image');
+            $image1='uploads/cms/ebis/'.$image;
+            
+            if ($id) {
+                $data['status'] = 1;
+                $data['message'] = 'Deleted successfully.';
+                if($image1){
+                    @unlink($image1);
+                }
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Deleted Successfully", "SS"));
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        // redirect(base_url() . "admin/about_eBIS_list", 'refresh');
     }
     public function profile_view()
     {

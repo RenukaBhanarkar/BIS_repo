@@ -62,7 +62,9 @@
                                             </div>
 
                                         </div>
-                                        <div class="mb-2 col-md-8">
+                                    </div>
+                                    <div class="row">
+                                        <div class="mb-2 col-md-12">
                                             <label class="d-block text-font">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="5" required="" minlength="5" maxlength="1000"></textarea>
                                             <span class="text-danger" id="err_descriptions">
@@ -395,8 +397,8 @@ var loadFileThumbnail = function(event)
                 // $("#description").focus();
                
                 is_valid = false;  
-            } else if((description.length) > 5000){
-               $("#err_descriptions").text("Only 5000 Characters Allowed");                
+            } else if((description.length) > 20000){
+               $("#err_descriptions").text("Only 20000 Characters Allowed");                
                 is_valid = false;  
             }else{
                 $("#err_descriptions").text("");   
@@ -554,8 +556,8 @@ console.log(description.length);
                  $("#description1").focus();
                  $('#updateform').addClass('');
                  is_valid = false;  
-             } else if((description.length) > 5000){
-                $("#err_description").text("Only 5000 Characters Allowed");
+             } else if((description.length) > 20000){
+                $("#err_description").text("Only 20000 Characters Allowed");
                  $("#description1").focus();
                  is_valid = false;  
              }

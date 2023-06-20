@@ -329,6 +329,23 @@ class Admin_model extends CI_Model {
         // }
         // return $rs;
     }
+    public function getAllAdminByType($type){
+        $this->db->select('ta.*,b.uvc_department_name,c.uvc_department_name as branchnew');
+        $this->db->from('tbl_admin ta');
+       
+        $this->db->join('tbl_mst_branch b','ta.department = b.pki_id','left');
+        $this->db->join('tbl_mst_branch c','ta.branch = c.pki_id','left');
+        $this->db->where('ta.admin_type',$type);
+              
+         $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row);
+            }
+        }
+        return $rs;  
+    }
     public function getAllBranches()
     { 
        
@@ -1429,5 +1446,36 @@ class Admin_model extends CI_Model {
             return false;
         } 
     }
+    public function aboutEbisForuminsertData($data){
+        if ($this->db->insert('tbl_about_ebis', $data)) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+     }
+
+     public function aboutEbisForumupdateData($data){
+        $this->db->where('id', $data['id']);
+         if ($this->db->update('tbl_about_ebis', $data)) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+
+     public function aboutEbisForumData(){
+        $myQuery = "SELECT * FROM  tbl_about_ebis";
+        $query = $this->db->query($myQuery);
+        $result=$query->result_array();
+        return $result;
+     }
+     public function deletEbisForum($id){
+        $this->db->where('id', $id);
+        if ($this->db->delete('tbl_about_ebis')) {
+            return true;
+        } else {
+            return false;
+        }
+     }
 
 }

@@ -498,7 +498,7 @@ section#welcome_text p span {
 	border: 1px solid;
 	background: rgb(0 0 0 / 20%);
 	padding: 19px 18px;
-	width: 508px;
+	width: 585px;
 	text-align: center;
 	min-height: 162px;
 	color: white;
@@ -1435,7 +1435,8 @@ footer .main_footer .f_contact ul li i {
 .text_standard {
 	color: white;
 	font-weight: 600;
-	padding-top: 47px;
+	padding-top: 70px;
+    font-size: 32px;
 }
 /* .innerBox:hover {
 	background-color: #0089d0;
@@ -1614,7 +1615,7 @@ footer .main_footer .f_contact ul li i {
 .social-content {
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
+	/* display: flex; */
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;

@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-12 mt-3">
               <div class="card border-top card-body">
-                <table id="example" class="hover table-bordered" style="width:100%">
+                <table id="example" class="hover table-bordered table-responsive nowrap" style="width:100%">
                   <thead>
                     <tr>
                       <th>Sr. No.</th>

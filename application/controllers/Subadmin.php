@@ -250,6 +250,7 @@ class Subadmin extends CI_Controller
                 // $this->email->send();
                 // email code end
 
+                $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
 
 
 
