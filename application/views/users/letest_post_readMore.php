@@ -7,6 +7,17 @@
     margin-bottom: 36px;
 
 }
+  a.view-btn {
+    background: linear-gradient(233.19deg, #43879d -256.88%, #c5232c -167.3%, #2d329a -81.23%, #c25757 -2.2%, #000000 80.36%);
+    border: 0.5px solid rgba(74, 74, 74, 0.25);
+    border-radius: 4px;
+    padding: 3px 12px;
+    display: inline-flex;
+    margin: 9px auto;
+    color: #fff;
+    text-align: center;
+    
+}
 
 .yourWall_image_view {
     height: 200px;
@@ -190,6 +201,11 @@ font-size: 14px;
 
 
                         <p class="Your_Wall_Description_view"><?= $ReadMore['description']?> </p>
+                        <?php if(!empty($ReadMore['doc_pdf']))
+                                {?>
+                                    <a href="<?php echo base_url(); ?><?= $ReadMore['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">View PDF</a>
+
+                                <?php } ?>
                     </div>
                 </div>
             </div>
@@ -304,6 +320,10 @@ font-size: 14px;
                 $("#newlikes").text(newlikes);
                 CheckLiveSessionlike(id)
             }
+            else
+            {
+                Deletesessionlike(id)
+            }
         },
         error: function(result) {
         alert("Error,Please try again.");
@@ -330,6 +350,36 @@ font-size: 14px;
             else
             { 
                 $("#heart").addClass('fa fa-heart-o');
+            }
+        },
+        error: function(result) {
+        alert("Error,Please try again.");
+        }
+        });
+        };
+
+        function Deletesessionlike(id)
+        {  
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Users/Deletesessionlike',
+        data: {
+        id: id, 
+        },
+        success: function(result)
+        {
+            var msg = JSON.parse(result)
+            if (msg.data.status==1) 
+            { 
+            $("#heart").addClass('fa fa-heart-o');
+            var oldlikes=$("#oldlikes").val(); 
+                var newlikes=parseInt(oldlikes);
+                $("#newlikes").text(newlikes);   
+            }
+            else
+            { $('#heart').removeClass('fa fa-heart-o');
+                $("#heart").addClass('fa fa-heart');
+                
             }
         },
         error: function(result) {

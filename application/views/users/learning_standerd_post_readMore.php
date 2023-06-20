@@ -1,11 +1,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <style>
+
+    a.view-btn {
+    background: linear-gradient(233.19deg, #43879d -256.88%, #c5232c -167.3%, #2d329a -81.23%, #c25757 -2.2%, #000000 80.36%);
+    border: 0.5px solid rgba(74, 74, 74, 0.25);
+    border-radius: 4px;
+    padding: 3px 12px;
+    display: inline-flex;
+    margin: 9px auto;
+    color: #fff;
+    text-align: center;
+    
+}
 .your_wall_main_card_view {
     box-shadow: 0px 1px 20px rgb(225 225 225);
     border-radius: 3px;
     -ms-box-shadow: 0px 1px 20px rgb(225 225 225);
     margin-bottom: 36px;
-
+ 
 }
 .like_button {
 background: #ffd600;
@@ -187,49 +199,19 @@ font-size: 14px;
                             <!-- <span class="like_button" type="button" onclick="submitLike('<?= $ReadMore["id"]?>')"><i  id="heart" style="width:18px; font-size: 21px; margin-right: 9px; color:red;"></i>Like</span> -->
 
                         <p class="Your_Wall_Description_view"><?= $ReadMore['description']?> </p>
+
+                         <?php if(!empty($ReadMore['doc_pdf']))
+                                {?>
+                                    <a href="<?php echo base_url(); ?><?= $ReadMore['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">View PDF</a>
+
+                                <?php } ?>
+
+
+                         
                     </div>
                 </div>
             </div>
-                <!-- <div class="col-sm-3">
-                    <div class="right_side">
-                        <div class="title_right">
-                            <h6>What's New</h6>
-                            <div class="banner_image">
-                                <img src="<?php echo base_url();?>/assets/images/1.jpg" class="w-100">
-                                <p>Photography Competition- Share the unknown spots of Mizoram</p>
-                            </div>
-                        </div>
-                        <div class="title_right mt-3">
-                            <h6>Trending</h6>
-                            <div class="banner_image_tending">
-                                <div class="tranding_outer_box">
-                                    <div class="image_tranding">
-                                        <img src="<?php echo base_url();?>/assets/images/2.jpg" class="w-100 h-100">
-                                    </div>
-                                    <div class="text_container_tranding">
-                                        <span class="bg-success text-white Btn-do">Do</span>
-                                        <a href="#" class="tending_para d-block">Photography Competition- Share the
-                                            unknown
-                                            spots of
-                                            Mizoram</a>
-                                    </div>
-                                </div>
-                                <div class="tranding_outer_box">
-                                    <div class="image_tranding">
-                                        <img src="<?php echo base_url();?>/assets/images/2.jpg" class="w-100 h-100">
-                                    </div>
-                                    <div class="text_container_tranding">
-                                        <span class="bg-success text-white Btn-do">Do</span>
-                                        <a href="#" class="tending_para d-block">Photography Competition- Share the  unknown
-                                            spots of
-                                            Mizoram</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> -->
+                
 
             </div>
         </div>
@@ -304,6 +286,10 @@ font-size: 14px;
                 $("#newlikes").text(newlikes);
                 Checkleasrninglike(id)
             }
+            else
+            {
+               Deleteleasrninglike(id)
+            }
         },
         error: function(result) {
         alert("Error,Please try again.");
@@ -311,8 +297,7 @@ font-size: 14px;
         });
         }
 
-
-        function Checkleasrninglike(id)
+         function Checkleasrninglike(id)
         {  
         $.ajax({
         type: 'POST',
@@ -337,25 +322,48 @@ font-size: 14px;
         }
         });
         };
+
+
+        function Deleteleasrninglike(id)
+        {  
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Users/Deleteleasrninglike',
+        data: {
+        id: id, 
+        },
+        success: function(result)
+        {
+            var msg = JSON.parse(result)
+            if (msg.data.status==1) 
+            { 
+            $("#heart").addClass('fa fa-heart-o');
+            var oldlikes=$("#oldlikes").val(); 
+                var newlikes=parseInt(oldlikes);
+                $("#newlikes").text(newlikes);   
+            }
+            else
+            { $('#heart').removeClass('fa fa-heart-o');
+                $("#heart").addClass('fa fa-heart');
+                
+            }
+        },
+        error: function(result) {
+        alert("Error,Please try again.");
+        }
+        });
+        };
         
         </script>
 
 <!-- <script type="text/javascript">
 var countDownDate = new Date(startTime).getTime();
-
-
 var x = setInterval(function() {
-
-  
-  var now = new Date().getTime();
-    
- 
-  var distance = countDownDate - now;
-    
-  
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 </script> -->
