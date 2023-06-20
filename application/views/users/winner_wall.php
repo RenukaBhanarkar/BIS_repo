@@ -47,42 +47,20 @@ position: relative;
 } */
 .tab-link {
 margin-bottom: 30px;
-min-width: 19%;
+min-width: 31%;
 background: #FFFFFF;
 box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.12);
 border-radius: 2px;
 position: relative;
-height: 153px;
+height: 230px;
 padding-right: 0px;
     padding-left: 0px;
+    margin-right: 23px;
+    padding: 18px;
 }
-.nav-link.active:before {
-display: block;
-}
-.nav-link:before {
-content: "";
-display: none;
-border-left: 7px solid transparent;
-border-right: 7px solid transparent;
-border-bottom: 7px solid #50606C;
-position: absolute;
-bottom: -30px;
-left: 50%;
-margin-left: -4px;
-}
-.nav-link.active:after {
-width: 100%;
-}
-.nav-link:after {
-content: "";
-width: 0px;
-display: block;
-background: #50606C;
-height: 4px;
-position: absolute;
-bottom: -32px;
-left: 0px;
-}
+
+
+
 .nav-link {
 text-align: center;
 height: 100%;
@@ -104,7 +82,7 @@ display: none;
 }
 li.tab-link:hover {
 transition: all .5s;
-transform: scale(1.2);
+transform: scale(1.1);
 z-index: 1;
 }
 .row1 >* {
@@ -115,6 +93,38 @@ padding-left: 0;
 padding-right: 5px;
 padding-left: 5px;
 }
+.section-header {
+    margin-bottom: 37px;
+    position: relative;
+    padding-bottom: 20px;
+}
+.section-header::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 5px;
+    background: #f82249;
+    bottom: 0;
+    left: calc(50% - 25px);
+}
+.section-header h2 {
+    font-size: 36px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #0e1b4d;
+}
+.section-header p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #9195a2;
+}
+
 </style>
 <?php
 // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
@@ -133,22 +143,26 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
  
 <section style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
   <div class="container-fluid pt-5">
-    <div class="row text-center">
-      <!-- <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3> -->
+    <!-- <div class="row text-center">
+      <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3>
       <h3 style="font-weight: 600; color: brown;">Winner Wall </h3>
       
-    </div>
+    </div> -->
+    <div class="section-header">
+          <h2>Winners Wall</h2>
+          <!-- <p>Here are some of our speakers</p> -->
+        </div>
     <ul class="row get-involved-links nav nav-pills mb-3" role="tablist" style="padding: 21px;">
       <li class="col-md-3 tab-link">
         <a class="nav-link"   href="<?php echo base_url(); ?>users/winners">
-          <img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%">
+          <img src="<?php echo base_url(); ?>/assets/images/prize_2.avif" style="width: 125px; height: 125px; border-radius: 50%;">
           <!-- <h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
           <h3 class="tabl_title">winners wall of Quiz</h3>
         </a>
       </li>
       <li class="col-md-3 tab-link">
         <a class="nav-link"   href="<?php echo base_url(); ?>users/standard_writting_winners">
-          <img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%">
+          <img src="<?php echo base_url(); ?>/assets/images/prize_2.avif" style="width: 125px; height: 125px; border-radius: 50%;">
           <!-- <h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
           <h3 class="tabl_title">Winners wall of Standard writting </h3>
         </a>
@@ -156,7 +170,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
 
       <li class="col-md-3 tab-link">
         <a class="nav-link"   href="<?php echo base_url(); ?>users/miscellaneous_winners">
-          <img src="<?php echo base_url(); ?>/assets/images/quiz.png" width="40%" height="77%">
+          <img src="<?php echo base_url(); ?>/assets/images/first_prize_1.jpg" style="width: 125px; height: 125px; border-radius: 50%;">
           <!-- <h3 class="tabl_title"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
           <h3 class="tabl_title">Winners wall of other competitions</h3>
 
@@ -173,6 +187,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
       </div>
     </div>
   </section>
+ 
           
            
            

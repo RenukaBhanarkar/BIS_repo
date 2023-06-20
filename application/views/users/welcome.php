@@ -116,7 +116,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
         </div>
     </section>
     <section id="bottom_content">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                <div class="live_data">
                         <!-- <h6>Live Data</h6> -->
@@ -125,7 +125,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
                             <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
                             <div style="background:#00000099;">
                                 <a href="<?=base_url();?>users/standard">
-                                <div class="LiveDataBox" style="height: 182px; overflow: hidden;" >
+                                <div class="LiveDataBox" style="height: 215px; overflow: hidden;" >
                                      <!-- <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons"> -->
                                       <h3 class="text_standard"><?php echo $welcome_text[$language]['2'] ?></h3>
                                      <p class="mb-0">(<?php echo $welcome_text[$language]['3'] ?>)</p>
@@ -136,7 +136,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
                             <div class="innerBox" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
                             <div style="background:#00000099;">
                                 <a href="<?=base_url();?>users/quality_index">
-                                  <div class="LiveDataBox" style="height: 182px; overflow: hidden;">
+                                  <div class="LiveDataBox" style="height: 215px; overflow: hidden;">
                                       <!-- <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons"> -->
                                        <h3 class="text_standard"><?php echo $welcome_text[$language]['4'] ?></h3>
                                        <p class="mb-0">(<?php echo $welcome_text[$language]['5'] ?>)</p>
