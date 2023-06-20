@@ -592,9 +592,9 @@ class Standardswritting extends CI_Controller
         $quizlavel = $this->Quiz_model->getQuizLevel();
         $formdataall['quizlavel']=$quizlavel;
         
-     print_r($_POST); 
+    //  print_r($_POST); 
         // print_r($formdata);
-        die;
+        // die;
         
 
         if (!file_exists('uploads/competition/thumbnail')) { mkdir('uploads/competition/thumbnail', 0777, true); }
@@ -688,8 +688,8 @@ class Standardswritting extends CI_Controller
                 $formdata['branch']= 0;
                 $formdata['state'] = $this->input->post('state_id');
             }
-print_r($formdata);
-        die;
+// print_r($formdata);
+//         die;
        
             $formdata1 = array();
             $formdata1['fprize_no']=$this->input->post('fprize');            
