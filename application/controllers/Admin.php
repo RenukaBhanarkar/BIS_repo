@@ -2977,8 +2977,13 @@ class Admin extends CI_Controller
         $admin_id = encryptids("D", $encAdminId);
 
         $pageData['page_menu_select'] = "view_admin";
-        $admintype = encryptids("D", $this->session->userdata('admin_type'));
-        $allRecords = $this->Admin_model->getAllAdmin();
+        // $admintype = encryptids("D", $this->session->userdata('admin_type'));
+        if($admintype=1){
+            $allRecords = $this->Admin_model->getAllAdminByType('2');
+        }else if($admintype=2){
+            $allRecords = $this->Admin_model->getAllAdminByType('3'); 
+        }
+        // $allRecords = $this->Admin_model->getAllAdmin();
         $pageData['allRecords'] = $allRecords;
 
         if ($admintype == 1) {
