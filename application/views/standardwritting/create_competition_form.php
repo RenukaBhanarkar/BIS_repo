@@ -684,7 +684,7 @@ input[type=number]::-webkit-outer-spin-button {
     //    $('#fprize_no').text('Enter value should be equal or more than 1');
     //    Swal.fire('First prize number should be greater than or equal to 1');
         isvalid =false;
-       }else if(fprize <= 1){
+       }else if(fprize < 1){
         $('#fprize_no').text('Enter value should be equal or more than 1');
         Swal.fire('First prize number should be greater than or equal to 1');
         isvalid =false;

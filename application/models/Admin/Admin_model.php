@@ -1418,5 +1418,36 @@ class Admin_model extends CI_Model {
             return false;
         } 
     }
+    public function aboutEbisForuminsertData($data){
+        if ($this->db->insert('tbl_about_ebis', $data)) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+     }
+
+     public function aboutEbisForumupdateData($data){
+        $this->db->where('id', $data['id']);
+         if ($this->db->update('tbl_about_ebis', $data)) {
+             return true;
+         } else {
+             return false;
+         }
+     }
+
+     public function aboutEbisForumData(){
+        $myQuery = "SELECT * FROM  tbl_about_ebis";
+        $query = $this->db->query($myQuery);
+        $result=$query->result_array();
+        return $result;
+     }
+     public function deletEbisForum($id){
+        $this->db->where('id', $id);
+        if ($this->db->delete('tbl_about_ebis')) {
+            return true;
+        } else {
+            return false;
+        }
+     }
 
 }
