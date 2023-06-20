@@ -78,10 +78,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="contact">
                             <ul>
-                                <select onchange="set_language()" name="language" id="language">
+                                <!-- <select onchange="set_language()" name="language" id="language">
                                 <?php
-                                // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
-                                // $this->load->view('users/language');
+                               
                                 require(APPPATH.'views/users/language.php');
                                $en_select='';
                                $hn_select='';
@@ -96,7 +95,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 ?>
                                     <option value="en" <?php echo $en_select ?>>English</option>
                                     <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
-                                </select>
+                                </select> -->
                                  <!-- <li><a href="#" value="hn">हिन्दी</a></li> -->
                                 <!-- <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>

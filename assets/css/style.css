@@ -1615,7 +1615,7 @@ footer .main_footer .f_contact ul li i {
 .social-content {
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
+	/* display: flex; */
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
