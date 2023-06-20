@@ -3760,6 +3760,7 @@ class Admin extends CI_Controller
         $data['admin_id'] = $admin_id;
         $data['admin_type'] =  encryptids("D", $_SESSION['admin_type']);
         $data['details'] = $this->Admin_model->getAdminDetail($admin_id);
+        $data['superadmin'] = $this->Admin_model->getSuperAdminDetails();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/profile_view',$data);
         $this->load->view('admin/footers/admin_footer');
