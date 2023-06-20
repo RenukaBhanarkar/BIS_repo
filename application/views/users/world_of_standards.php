@@ -40,8 +40,48 @@
     background-size: 100% 100%;
     background-position: 100%;
 }
+.nav-pills {
+    border-bottom: 1px solid gray;
+}
+.news .nav-link.active {
+    color: #0ea2bd;
+    background: none;
+    border-bottom: 3px solid #0ea2bd;
+}
+.nav-pills li+li {
+    margin-left: 15px;
+}
+.news_events{
+    background: white;
+    box-shadow: 0px 0px 10px 0px lightgrey;
+    border-radius: 7px;
+    height: 409px;
+    padding-top: -9px;
+    margin-top: 12px;
+    margin-left: -11px;
+    margin-right: 14px;
+}
+.whats_new{
+    padding: 13px;
+    overflow: auto;
+    height: 340px;
+}
+.get-started{
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-block;
+    padding: 3px 16px;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #ffffff;
+    background: #ffc107;
+    font-family: #ffc107;
+
+}
 </style>
 <section>
+    <div class=row>
+    <div class="col-md-9">
     <div class="world_standard_banner">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -74,6 +114,99 @@
                                 </button>
                 </div>
 
+    </div>
+    </div>
+    <div class="col-md-3">
+        <div class="news_events">
+        <div class="news">
+            <ul class="nav nav-pills mb-3" role="tablist">
+              <li><a class="nav-link active" data-bs-toggle="pill" href="#tab1" aria-selected="true" role="tab" style="font-size: 20px; color: brown;">News</a></li>
+              <li><a class="nav-link" data-bs-toggle="pill" href="#tab2" aria-selected="false" role="tab" tabindex="-1" style="font-size: 20px; color: brown;">Events</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+                <div class="tab-pane fade active show" id="tab1" role="tabpanel">
+                <div class="whats_new">
+                    <div class="news_list">
+                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
+                        </a>
+                         <div class="news__details">
+                                <div class="title">
+                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
+                                    <span>10M Views</span>
+                                </div>
+                            </div> 
+                    </div>
+                    <hr>
+                    <div class="news_list">
+                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
+                        </a>
+                         <div class="news__details">
+                                <div class="title">
+                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
+                                    <span>10M Views</span>
+                                </div>
+                            </div> 
+                    </div>
+                    <hr>
+                    <div class="news_list">
+                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
+                        </a>
+                         <div class="news__details">
+                                <div class="title">
+                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
+                                    <span>10M Views</span>
+                                </div>
+                            </div> 
+                    </div> 
+                    <div>
+                        <a href="#about" class="btn-sm get-started" style="text-align: end;">View All</a>
+                    </div>
+                </div> 
+                </div><!-- End Tab 1 Content -->
+
+              <div class="tab-pane fade" id="tab2" role="tabpanel">
+              <div class="whats_new">
+                    <div class="news_list">
+                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
+                        </a>
+                         <div class="news__details">
+                                <div class="title">
+                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
+                                    <span>10M Views</span>
+                                </div>
+                            </div> 
+                    </div>
+                    <hr>
+                    <div class="news_list">
+                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
+                        </a>
+                         <div class="news__details">
+                                <div class="title">
+                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
+                                    <span>10M Views</span>
+                                </div>
+                            </div> 
+                    </div>
+                    <hr>
+                    <div class="news_list">
+                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
+                        </a>
+                         <div class="news__details">
+                                <div class="title">
+                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
+                                    <span>10M Views</span>
+                                </div>
+                            </div> 
+                    </div> 
+                    <div>
+                        <a href="#about" class="btn-sm get-started" style="text-align: end;">View All</a>
+                    </div>
+                </div>
+               </div><!-- End Tab 2 Content -->
+            </div>
+    </div>
+    </div>
     </div>
 </section>
 <section id="quality-outer my-5" style="padding-top: 49px;">
@@ -158,7 +291,7 @@
                     </div>
                 </div>
             
-            <!-- <div class="row">
+            
                 <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="item_proposal_list">
@@ -185,7 +318,7 @@
                        
                 </div>
                 </div>
-                <div class="col-md-3">
+               <!-- <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" onclick="publish_pop()" target="blank">
                     <div class="World_of_standers_image_box">
@@ -265,7 +398,7 @@
                        
                 </div>
                 </div>
-            </div>
+           
           
             
         </div>
