@@ -11,17 +11,17 @@
         .node-status {
     font-size: 0.786em;
     
-    float: left;
+    /* float: left; */
     
 }
 
 .node-status > div {
-    display: inline-block;
+    /* display: inline-block;
     border-radius: 4px;
     padding: 2px 5px;
-    background: #034e9c;;
-    color: #fff;
-    font-size: 10px;
+    background: #034e9c;; */
+    color: #0046d0;
+    /* font-size: 10px; */
 }
 .card-winners {
     position: relative;
@@ -107,7 +107,7 @@
                 </div>
              </div>  -->
         </div>
-        <div class="row" id="wow_card">
+        <div class="row"    >
         <?php foreach($wow as $list){ ?>
             
             <div class="col-md-4 mb-4">
@@ -120,7 +120,7 @@
                               <div class="status-open">Open</div>
                           </div> -->
                           <div class="title">
-                              <p style="height:37px; overflow:hidden; margin-bottom:0px; text-align: justify;"><?php echo substr_replace($list['title'],"...",110); ?></p>
+                              <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'],"...",110); ?></p>
                           </div>
                           <div class="field-item even">
                               <span class="time_left">
@@ -132,8 +132,9 @@
                           <!-- <div id="abcd" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" c-id="<?php echo $list['id']; ?>" ct="<?php echo $list['card_status']; ?>" class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['card_status']=='1'){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
                               <div  class="status-open likes" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div>
                           </div> -->
-                          <div id="abcd" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php  echo "fa fa-heart fa-heart-o";  ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
+                          <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
                               <!-- <div  class="status-open like_<?=$list['id'];?>" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div> -->
+                              <div style="    float: right; margin-right: 10px;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Read More</span></a></div>
                           </div>
                           
                       </div>
@@ -164,7 +165,7 @@
     cardstatus=$(this).attr('ct');
     likes=$(this).attr('data-likes');
     lid=$(this).attr('lid');
-    console.log(uid);
+    console.log(cardstatus);
     
     if(uid=="0"){
         alert("Please Login");
@@ -173,7 +174,7 @@
         
     }
 
-    if(cardstatus){
+    if(cardstatus==1){
         $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>Wall_of_wisdom/unlikes',
@@ -182,7 +183,7 @@
                        uid: uid,
                     },
                     success: function(result) {
-                        console.log(result);
+                        // console.log(result);
                      //  location.reload();
                      //$('.id').html('hello');
                     },
@@ -201,7 +202,7 @@
                        uid: uid,
                     },
                     success: function(result) {
-                        console.log(result);
+                        // console.log(result);
                      //  location.reload();
                     //  $('.id').html('hello');
                     like=parseInt(likes)+1;

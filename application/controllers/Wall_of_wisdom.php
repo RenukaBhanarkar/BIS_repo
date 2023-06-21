@@ -181,9 +181,15 @@ class Wall_of_wisdom extends CI_Controller
     //      $this->load->view('users/footers/footer');
     //  }
      public function wallOfWisdom(){
+        if(isset($_SESSION['admin_id'])){
+            $uid=encryptids("D",$_SESSION['admin_id']);
+        }else{
+            $uid="";
+        }
         
-          $data['wow']=$this->wow->all_wallofwisdom1();
-         //  print_r($data); die;
+        $limit=6;
+          $data['wow']=$this->wow->all_wallofwisdom3($uid,$limit);
+        //   print_r($data); die;
           $this->load->view('users/headers/header');
           $this->load->view('wall_of_wisdom/wall_of_wisdom_1',$data);
           $this->load->view('users/footers/footer');
