@@ -29,7 +29,7 @@ class Subadmin extends CI_Controller
         $admin_id = encryptids("D", $encAdminId);
 
         $pageData['page_menu_select'] = "view_admin";
-        $admintype = encryptids("D", $this->session->userdata('admin_type'));
+        // $admintype = encryptids("D", $this->session->userdata('admin_type'));
         //$allRecords = $this->Admin_model->getAllSubAdmin();
         $allRecords = $this->Admin_model->getAllSubAdminNew();
         $pageData['allRecords'] = $allRecords;

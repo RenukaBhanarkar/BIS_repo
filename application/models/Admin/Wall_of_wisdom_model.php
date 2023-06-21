@@ -119,7 +119,7 @@ class Wall_of_wisdom_model extends CI_Model {
         $this->db->where('status','5');
         $this->db->order_by('created_on','desc');
         //$this->db->order_by('');
-        $this->db->limit(6);
+        // $this->db->limit(6);
         $query=$this->db->get();
         $res=$query->result_array();
         return $res;
