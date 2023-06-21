@@ -252,19 +252,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <?php  } ?>
                                 <?php if(isset($_SESSION['set_nav'])){ if($_SESSION['set_nav']=1){ ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/" style="color: white;">Consumer and BIS</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/consumer_bis" style="color: white;">Consumer and BIS</a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/" style="color: white;">Standard Promotion</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;">Standard Promotion</a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/" style="color: white;">About Standards Club</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;">About Standards Club</a>
                                     </li> 
                                     <li class="nav-item">
                                         <a class="nav-link" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/get_is_list_by_category/" onclick="catalogue()" target="_blank" style="color: white;">Catalogue of Standards</a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/" style="color: white;">Learning Science via Standards</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;">Learning Science via Standards</a>
                                     </li> 
                                 <?php } } ?>
                                 <li class="nav-item">
