@@ -3909,6 +3909,25 @@ if ($availability==1)
             'data' => $data,    
         ]); 
     }
-    
+    public function consumer_bis(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/consumer_bis');
+        $this->load->view('users/footers/footer');
+      }
+      public function standard_promotion(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_promotion');
+        $this->load->view('users/footers/footer');
+      }
+      public function about_standards_club(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/about_standards_club');
+        $this->load->view('users/footers/footer');
+      }
+      public function Learning_via_standards(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/Learning_via_standards');
+        $this->load->view('users/footers/footer');
+      }
  
 }

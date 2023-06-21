@@ -159,7 +159,8 @@ table thead {
 /* Header CSS start */
 
 header .sub_header {
-	background-image: linear-gradient(to right, #004f9e, #941212);
+	/* background-image: linear-gradient(to right, #004f9e, #941212); */
+    background-image: linear-gradient(to right, rgb(102, 0, 204) 0%, rgb(255, 102, 0) 100%);
 	padding: 5px;
 	color: white;
 }
@@ -221,7 +222,8 @@ li.nav-item:hover {
 /* Welcome text CSS start */
 
 section#welcome_text {
-	background-image: linear-gradient(to right, #004f9e, #941212);
+	/* background-image: linear-gradient(to right, #004f9e, #941212); */
+    background-image: linear-gradient(to right, rgb(102, 0, 204) 0%, rgb(255, 102, 0) 100%);
 	text-align: center;
 	color: white;
 }
@@ -607,7 +609,8 @@ footer .main_footer {
 	padding: 45px 0px 0px;
 	color: #ffffff;
 	font-weight: 600;
-	background-image: linear-gradient(to right, #004f9e, #941212);
+	/* background-image: linear-gradient(to right, #004f9e, #941212); */
+    background-image: linear-gradient(to right, rgb(102, 0, 204) 0%, rgb(255, 102, 0) 100%);
 }
 
 footer .main_footer ul {
