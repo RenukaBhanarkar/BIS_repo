@@ -230,6 +230,11 @@ img.news_img {
                 $("#newlikes").text(newlikes);
                 Checkleasrninglike(id)
             }
+            else
+            {
+               Deleteleasrninglike(id)
+            }
+                
         },
         error: function(result) {
         alert("Error,Please try again.");
@@ -264,6 +269,39 @@ img.news_img {
         });
         };
         
+
+         function Deleteleasrninglike(id)
+        {  
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Users/Deleteleasrninglike',
+        data: {
+        id: id, 
+        },
+        success: function(result)
+        {
+            var msg = JSON.parse(result)
+            if (msg.data.status==1) 
+            { 
+            $("#heart").addClass('fa fa-heart-o');
+            var oldlikes=$("#oldlikes").val(); 
+                var newlikes=parseInt(oldlikes);
+                $("#newlikes").text(newlikes);   
+            }
+            else
+            { $('#heart').removeClass('fa fa-heart-o');
+                $("#heart").addClass('fa fa-heart');
+                
+            }
+        },
+        error: function(result) {
+        alert("Error,Please try again.");
+        }
+        });
+        };
+        
+        </script>
+
         </script>
 
 

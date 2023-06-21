@@ -306,7 +306,7 @@ class Admin_model extends CI_Model {
        
         $this->db->join('tbl_mst_branch b','ta.department = b.pki_id','left');
         $this->db->join('tbl_mst_branch c','ta.branch = c.pki_id','left');
-              
+        $this->db->where('ta.admin_type',2);     
          $query = $this->db->get();
         $rs = array();
         if ($query->num_rows() > 0) {
@@ -329,6 +329,23 @@ class Admin_model extends CI_Model {
         // }
         // return $rs;
     }
+    public function getAllAdminByType($type){
+        $this->db->select('ta.*,b.uvc_department_name,c.uvc_department_name as branchnew');
+        $this->db->from('tbl_admin ta');
+       
+        $this->db->join('tbl_mst_branch b','ta.department = b.pki_id','left');
+        $this->db->join('tbl_mst_branch c','ta.branch = c.pki_id','left');
+        $this->db->where('ta.admin_type',$type);
+              
+         $query = $this->db->get();
+        $rs = array();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                array_push($rs,$row);
+            }
+        }
+        return $rs;  
+    }
     public function getAllBranches()
     { 
        
@@ -348,11 +365,21 @@ class Admin_model extends CI_Model {
          $result=$query->result_array();
          return $result[0];       
     }
+    public function getSuperAdminDetails(){
+        $this->db->select('ta.*');
+        $this->db->from('tbl_admin ta');
+     
+        $this->db->where('ta.id',1);        
+         $query = $this->db->get();
+         $result=$query->result_array();
+         return $result[0];    
+    }
     public function getAllSubAdmin(){      
         $this->db->select('a.*,r.role,r.admin_type');
         $this->db->from('tbl_admin a');
         $this->db->join('tbl_mst_admin_role r','r.admin_type = a.designation');
-        $this->db->where('a.is_active',1); 
+        $this->db->where('a.is_active',1);
+        $this->db->where('a.admin_type',3); 
         $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
         $this->db->order_by('a.id', 'ASC');
          $query = $this->db->get();
@@ -372,6 +399,7 @@ class Admin_model extends CI_Model {
         $this->db->join('tbl_mst_branch b','a.department = b.pki_id','left');
         $this->db->join('tbl_mst_branch c','a.branch = c.pki_id','left');
         $this->db->where('a.is_active',1); 
+        $this->db->where('a.admin_type',3);
         $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
         $this->db->order_by('a.created_on', 'DESC');
          $query = $this->db->get();

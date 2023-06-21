@@ -2977,8 +2977,13 @@ class Admin extends CI_Controller
         $admin_id = encryptids("D", $encAdminId);
 
         $pageData['page_menu_select'] = "view_admin";
-        $admintype = encryptids("D", $this->session->userdata('admin_type'));
-        $allRecords = $this->Admin_model->getAllAdmin();
+        // $admintype = encryptids("D", $this->session->userdata('admin_type'));
+        if($admintype=1){
+            $allRecords = $this->Admin_model->getAllAdminByType('2');
+        }else if($admintype=2){
+            $allRecords = $this->Admin_model->getAllAdminByType('3'); 
+        }
+        // $allRecords = $this->Admin_model->getAllAdmin();
         $pageData['allRecords'] = $allRecords;
 
         if ($admintype == 1) {
@@ -3870,6 +3875,7 @@ class Admin extends CI_Controller
         $data['admin_id'] = $admin_id;
         $data['admin_type'] =  encryptids("D", $_SESSION['admin_type']);
         $data['details'] = $this->Admin_model->getAdminDetail($admin_id);
+        $data['superadmin'] = $this->Admin_model->getSuperAdminDetails();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/profile_view',$data);
         $this->load->view('admin/footers/admin_footer');

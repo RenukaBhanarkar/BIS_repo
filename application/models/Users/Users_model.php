@@ -1905,6 +1905,32 @@
             }
             
         }
+
+    public function Deleteleasrninglike($id,$admin_id,$likes)
+    {
+        $this->db->where('id', $id);   
+        $formdata2['likes'] =$likes;
+        if ($this->db->update('tbl_learning_science_via_standards', $formdata2))
+        {
+            $this->db->where('learning_id', $id);
+            $this->db->where('admin_id', $admin_id);
+            $formdata['user_like'] =0; 
+            return $this->db->update('tbl_learning_science_info', $formdata);
+        }
+    }
+
+    public function Deletesessionlike($id,$admin_id,$likes)
+    {
+        $this->db->where('id', $id);   
+        $formdata2['likes'] =$likes;
+        if ($this->db->update('tbl_join_the_classroom', $formdata2))
+        {
+            $this->db->where('classroom_id', $id);
+            $this->db->where('admin_id', $admin_id);
+            $formdata['user_likes'] =0; 
+            return $this->db->update('tbl_join_the_classroom_info', $formdata);
+        }
+    }
 }
 // =======
 // >>>>>>> 068af7e12f46c89299a5665cd129d7be617b43b1

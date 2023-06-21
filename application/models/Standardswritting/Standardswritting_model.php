@@ -304,7 +304,7 @@ class Standardswritting_model extends CI_Model
         $myQue = "SELECT * from tbl_users_competition_attempt_record  where competiton_id = '{$comp_id}' AND status= 0 limit $new_list_cnt ";
         $query = $this->db->query($myQue);
         $res = $query->result_array();
-        return $res;
+        return $res; 
     }
     public function getMisceCompUsersRemaining($comp_id,$new_list_cnt,$renaming_users){
         $myQue = "SELECT * from tbl_users_competition_attempt_record  where competiton_id = '{$comp_id}' limit $new_list_cnt ,$renaming_users";

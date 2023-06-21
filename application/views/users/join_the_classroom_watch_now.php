@@ -125,7 +125,7 @@ img.news_img {
                         <h3><?= $WatchNow['title']?></h3> 
                          <img style="height: 320px;width: 832px;" src="<?php echo base_url(); ?><?= $WatchNow['thumbnail']?>" alt="" class="join_img">
                          <div class="play_video">
-                            <p style="padding: 10px;"> Link: - <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" ><?= $WatchNow['session_link']?></a></p> 
+                            <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p> 
                         </div>
                         <span>Date : <?= date("d M Y", strtotime($WatchNow['created_on']));?></span>
 
@@ -222,6 +222,10 @@ img.news_img {
                 $("#newlikes").text(newlikes);
                 CheckLiveSessionlike(id)
             }
+            else
+            {
+                Deletesessionlike(id)
+            }
         },
         error: function(result) {
         alert("Error,Please try again.");
@@ -255,6 +259,36 @@ img.news_img {
         }
         });
         };
+         function Deletesessionlike(id)
+        {  
+        $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Users/Deletesessionlike',
+        data: {
+        id: id, 
+        },
+        success: function(result)
+        {
+            var msg = JSON.parse(result)
+            if (msg.data.status==1) 
+            { 
+            $("#heart").addClass('fa fa-heart-o');
+            var oldlikes=$("#oldlikes").val(); 
+                var newlikes=parseInt(oldlikes);
+                $("#newlikes").text(newlikes);   
+            }
+            else
+            { $('#heart').removeClass('fa fa-heart-o');
+                $("#heart").addClass('fa fa-heart');
+                
+            }
+        },
+        error: function(result) {
+        alert("Error,Please try again.");
+        }
+        });
+        };
+       
         
         </script>
 

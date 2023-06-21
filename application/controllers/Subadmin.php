@@ -29,7 +29,7 @@ class Subadmin extends CI_Controller
         $admin_id = encryptids("D", $encAdminId);
 
         $pageData['page_menu_select'] = "view_admin";
-        $admintype = encryptids("D", $this->session->userdata('admin_type'));
+        // $admintype = encryptids("D", $this->session->userdata('admin_type'));
         //$allRecords = $this->Admin_model->getAllSubAdmin();
         $allRecords = $this->Admin_model->getAllSubAdminNew();
         $pageData['allRecords'] = $allRecords;
@@ -227,6 +227,8 @@ class Subadmin extends CI_Controller
                     <p>Username: " . $email_id . "</p>
                     <p>Password: " . $random_pass . "</p>";
                 $subject = "Login Credentials for the BIS Portal.";
+                $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
+
 
                 // $config = array(
                 //     'protocol' => 'smtp',
