@@ -163,7 +163,13 @@ section.background_coming {
                                 </div>
                                 <p class="quiz-text overflow-hidden p-1" > <a href="<?php echo base_url().'users/learning_standerd_post_readMore/'?><?php echo encryptids("E", $value['id'] )?>"><?= $value['title']?></a></p>
 
-                                <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">View PDF</a>
+                                <?php if(!empty($value['doc_pdf']))
+                                {?>
+                                    <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">View PDF</a>
+
+                                <?php } ?>
+
+                             
 
                                 <a href="learning_standerd_posts_all" class="view-btn" title="View All">View All</a>
                             </div>

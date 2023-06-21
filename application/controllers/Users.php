@@ -3852,6 +3852,51 @@ if ($availability==1)
         $this->load->view('users/essay_writting_all');
         $this->load->view('users/footers/footer');
       }
+
+    public function Deleteleasrninglike()    
+    {   
+        $id = $this->input->post('id'); 
+        $admin_id = encryptids("D", $this->session->userdata('admin_id'));
+        $info = $this->Users_model->getContaintlearningStanderd($id);
+        $likes= $info['likes']-1; 
+        $getuserlike = $this->Users_model->Deleteleasrninglike($id,$admin_id,$likes); 
+        if ($getuserlike) {     
+            $data['status'] = 1;    
+            $data['message'] = 'Liked.';    
+        }   
+        else    
+        {   
+                $data['status'] = 0;    
+                $data['message'] = 'Updated successfully.';     
+        }   
+        echo json_encode([  
+            'status' => '1',    
+            'data' => $data,    
+        ]); 
+    }
+
+
+    public function Deletesessionlike()    
+    {   
+        $id = $this->input->post('id'); 
+        $admin_id = encryptids("D", $this->session->userdata('admin_id')); 
+        $info = $this->Users_model->getJoinTheClassroomContaint($id);
+        $likes= $info['likes']-1; 
+        $getuserlike = $this->Users_model->Deletesessionlike($id,$admin_id,$likes); 
+        if ($getuserlike) {     
+            $data['status'] = 1;    
+            $data['message'] = 'Liked.';    
+        }   
+        else    
+        {   
+                $data['status'] = 0;    
+                $data['message'] = 'Updated successfully.';     
+        }   
+        echo json_encode([  
+            'status' => '1',    
+            'data' => $data,    
+        ]); 
+    }
     
  
 }

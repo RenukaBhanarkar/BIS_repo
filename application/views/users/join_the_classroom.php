@@ -207,7 +207,17 @@ a.view-btn {
                                             <img src="<?php echo base_url(); ?><?= $value['thumbnail']?>" class="live_img border-2">
                                         </div>
                                         <p class="quiz-text overflow-hidden p-1" ><?= $value['title']?></p>
-                                        <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="View PDF" style="margin-right: 16px;" target="_blank">View PDF</a>
+
+                                         <?php if(!empty($value['doc_pdf']))
+                                {?>
+                                    <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">View PDF</a>
+
+                                <?php } ?>
+
+                                
+
+                                        <!-- <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="View PDF" style="margin-right: 16px;" target="_blank">View PDF</a> -->
+
                                         <a href="letest_post_view" class="view-btn" title="View All">View All</a>
                                     </div>
                                 </div>

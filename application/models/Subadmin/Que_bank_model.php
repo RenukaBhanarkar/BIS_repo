@@ -160,24 +160,7 @@ class Que_bank_model extends CI_Model {
 			return false;
 		}
     }
-    /*
-    public function getAllSubAdmin(){      
-        $this->db->select('*');
-        $this->db->from('tbl_que_bank');
-        $this->db->where('is_active',1); 
-        $this->db->where('admin_type',3); 
-        $this->db->order_by('id', 'ASC');
-         $query = $this->db->get();
-        $rs = array();
-        if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $row) {
-                array_push($rs,$row);
-            }
-        }
-        return $rs;
-    }
-*/
-    
+   
     
     
    

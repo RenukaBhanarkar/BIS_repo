@@ -227,6 +227,8 @@ class Subadmin extends CI_Controller
                     <p>Username: " . $email_id . "</p>
                     <p>Password: " . $random_pass . "</p>";
                 $subject = "Login Credentials for the BIS Portal.";
+                $this->By_the_mentor_model->send_email($msg,$subject,$email_id);
+
 
                 // $config = array(
                 //     'protocol' => 'smtp',
