@@ -984,6 +984,8 @@ class Users extends CI_Controller
     }
     public function welcome()
     {
+        
+        $this->session->unset_userdata('set_nav');
         $this->load->view('users/headers/header');
         $this->load->view('users/welcome');
         $this->load->view('users/footers/footer');
@@ -1073,6 +1075,8 @@ class Users extends CI_Controller
 
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         //print_r($data['competition']); die;
+        // $data1['set_nav']="1";
+        $_SESSION["set_nav"]="1";
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_club',$data);
         $this->load->view('users/footers/footer');  
