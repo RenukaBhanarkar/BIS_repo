@@ -113,7 +113,7 @@ class By_the_mentor_model extends CI_Model {
         $this->db->select('btm.*,tms.status_name,tu.user_name,tu.email,tu.user_mobile,btm.created_on,tu.standard_club_name,tu.StandardClubState,tu.StandardClubDistrict');
         // $this->db->select('btm.*,tms.status_name');
         $this->db->from('tbl_by_the_mentors as btm');
-       $this->db->join('tbl_users tu','tu.user_id=btm.user_id');
+       $this->db->join('tbl_users tu','tu.user_id=btm.user_id','left');
         $this->db->join('tbl_mst_status tms','tms.id=btm.status');
         $this->db->where('btm.id',$id);
         $query=$this->db->get();
@@ -150,7 +150,7 @@ class By_the_mentor_model extends CI_Model {
     public function getThreeBTM(){
         $this->db->select('btm.*,tu.user_name');
         $this->db->from('tbl_by_the_mentors btm'); 
-        $this->db->join('tbl_users tu','tu.user_id=btm.user_id');      
+        $this->db->join('tbl_users tu','tu.user_id=btm.user_id','left');      
         $this->db->where('status','5');
         $this->db->order_by('created_on','desc');
         $this->db->limit(6);
