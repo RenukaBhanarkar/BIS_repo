@@ -171,6 +171,8 @@
     likes=$(this).attr('data-likes');
     lid=$(this).attr('lid');
     console.log(cardstatus);
+
+    // $(this).attr('ct',1);
     
     if(uid=="0"){
         // alert("Please Login");
@@ -181,6 +183,7 @@
     }
 
     if(cardstatus==1){
+        $(this).attr('ct',0);
         $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>Wall_of_wisdom/unlikes',
@@ -191,14 +194,16 @@
                     success: function(result) {
                         // console.log(result);
                      //  location.reload();
-                     //$('.id').html('hello');
+                    //  $('.id').html('hello');
+                    //  $(this).attr('ct',0);
+                     $(cardstatus).text('0');
                     },
                     error: function(result) {
                         alert("Error,Please try again.");
                     }
                 });
     }else{
-
+        $(this).attr('ct',1);
                 console.log(cid);
             $.ajax({
                     type: 'POST',
@@ -211,8 +216,10 @@
                         // console.log(result);
                      //  location.reload();
                     //  $('.id').html('hello');
-                    like=parseInt(likes)+1;
-                    $('.'+lid).text(like);
+                    
+                    // $(this).attr('lid').text('1');
+                    // like=parseInt(likes)+1;
+                    // $('.'+lid).text(like);
                     },
                     error: function(result) {
                         alert("Error,Please try again.");

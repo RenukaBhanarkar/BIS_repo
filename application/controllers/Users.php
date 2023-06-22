@@ -833,7 +833,10 @@ class Users extends CI_Controller
 
 
                 );
-
+if($user_details['change_password']==0){
+    // $this->session->set_userdata($change_password['0']);
+    $_SESSION["change_password"]="0";
+}
                 $this->session->set_userdata($sess_arr);
                //  exit();
 // echo $comp_id;
