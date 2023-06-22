@@ -126,7 +126,7 @@
                           <div class="field-item even">
                               <span class="time_left">
                                   <!-- <span class="last-date"><?php echo substr_replace($list['description'],"...",140);  ?> </span> -->
-                                  <span class="last-date"><?php echo substr_replace($list['description'],"...",200);  ?> </span>
+                                  <span class="last-date"><?php echo $list['description'];  ?> </span>
                               </span>
                           </div>
                           </a>
@@ -140,21 +140,21 @@
                           </div>
                           <div class="col-6" style="    float: right;    text-align: -webkit-right;    color: blue;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a></div>
                           </div>
-                          
+                  </div>
                           
                       </div>
                   </div>
-                  
+                  <?php }  ?>
                 </div>
          
-                    <?php }  ?>
-        </div>
+                   
+       
         <?php if(count($wow) > 5){ ?>
         <div class="view-button">
                 <a href="<?php echo base_url(); ?>users/all_wall_of_wisdom">View All</a>
             </div> 
             <?php } ?>     
-             </div>
+            
             
         
     </section>

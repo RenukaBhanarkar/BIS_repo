@@ -144,30 +144,33 @@
             
                 <div class="card-winners">
                 <a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>">
-                            <img src="<?php echo base_url().'uploads/admin/wall_of_wisdom/'.$list['image']; ?>" class="card-img-top" alt="Discussion Forum">
+                            <img src="<?php echo base_url().'uploads/admin/wall_of_wisdom/'.$list['image']; ?>" class="card-img-top" alt="Discussion Forum"></a>
                             <div class="winner-body p-2">
-                                <!-- <div class="node-status"><span>Status : </span>
-                                    <div class="status-open">Open</div>
-                                </div> -->
-                                
+                               
+                            <a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>">
                                 <div class="title">
                                     <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'], '...', '150'); ?></p>
                                 </div>
                                 <div class="field-item even">
                                     <span class="time_left">
-                                        <span class="last-date"><?php echo substr_replace($list['description'], '...', '190'); ?></span>
+                                        <span class="last-date"><?php echo $list['description']; ?></span>
                                     </span>
                                  </div>
-                             </div>
-                             </a>
-                             <div class="row d-flex">
-                             <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="col-6 node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
-                             </div>
-                             <!-- <div id="abcd" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"> -->
-                             <!-- <span><i onclick="myFunction(this)" class="<?php  echo "fa fa-heart fa-heart-o";  ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span> -->
+                            </a>
+                            <div class="row d-flex">
+                                <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="col-6 node-status like_review">
+                                    <span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i>
+                                    </span>
+                                    <span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span>
+                                </div>
+                             
                             
-                             <div class="col-6" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a></div>
+                             <div class="col-6" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
+                            </div>
                           </div>
+                             </div>
+                             
+                             
                         </div>
                     
                     </div> 

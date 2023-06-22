@@ -148,7 +148,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Update About Exchange forum
                             </h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
@@ -165,23 +165,7 @@
                                         Preview
                                     </button>
                                                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" style="max-width:700px;">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
-
-                                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                        </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        <img src="<?php echo base_url(); ?>uploads/cms/ebis/<?php echo $about_ebis[0]['image'] ?>" id="outputicon" width="100%"/>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    </div>
-                                                </div>  
+                                                 
                                 </div>
                                     <div class="row" id="add_file">
                                         <div class="col-9">
@@ -194,24 +178,7 @@
                                     </div>     
                                                           
                             </div>
-                            <div class="modal fade" id="Previewimg" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width:700px;">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="PreviewimgLabel">Image Preview</h5>
-
-        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
-        </div>
-        <div class="modal-body">
-        <img id="outputThumbnail" width="100%"/>
-        </div>
-        <!-- <div class="modal-footer">
-        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
-        </div> -->
-    </div>
-    </div>
-</div> 
+                             
                                     
                         </div>
                                 <div class="mb-2 col-md-12">
@@ -237,7 +204,41 @@
                     </div>
                 </div>
     
-    
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" style="max-width:700px;">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Image Preview</h5>
+
+                                                        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                        </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        <img src="<?php echo base_url(); ?>uploads/cms/ebis/<?php echo $about_ebis[0]['image'] ?>" id="outputicon" width="100%"/>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" id="Previewimg" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width:700px;">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="PreviewimgLabel">Image Preview</h5>
+
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body">
+        <img id="outputThumbnail" width="100%"/>
+        </div>
+        <!-- <div class="modal-footer">
+        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
+        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
+        </div> -->
+    </div>
+    </div>
+</div> 
     <script>
             CKEDITOR.replace( 'description' )
         
