@@ -165,7 +165,7 @@ section.background_coming {
 
                                 <?php if(!empty($value['doc_pdf']))
                                 {?>
-                                    <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">View PDF</a>
+                                    <a href="<?php echo base_url(); ?><?= $value['doc_pdf']?>" class="view-btn" title="PDF View" style="margin-right: 16px;" target="_blank">Read Document</a>
 
                                 <?php } ?>
 
