@@ -60,7 +60,7 @@
                                 <button class="btn btn_green" onclick="return submitButton()" type="submit">
                                     log in
                                 </button>
-                                <button class="btn btn-primary" href="<?php echo base_url().'users/welcome/'; ?>">Back to Home</button>
+                                <a class="btn btn-primary" href="<?php echo base_url().'users/welcome/'; ?>">Back to Home</a>
                             </div>
                         </form>
                     </div>

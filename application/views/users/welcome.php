@@ -97,7 +97,7 @@ if(isset($_SESSION['change_password'])){
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: 'Yes',
-      denyButtonText: `Cancel`,
+      denyButtonText: `Skip for now`,
       }).then((result) => {
      
       if (result.isConfirmed) {         
