@@ -9,9 +9,10 @@
         }
         .node-status {
     font-size: 0.786em;
-    margin-left: 10px;
-    margin-bottom: 4px;
-    float: left;
+    /* margin-left: 10px; */
+    /* margin-bottom: 4px;
+    float: left; */
+    flex: auto;
     
 }
 
@@ -159,11 +160,13 @@
                                  </div>
                              </div>
                              </a>
-                             <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
-                            
+                             <div class="row d-flex">
+                             <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="col-6 node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
+                             </div>
                              <!-- <div id="abcd" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"> -->
                              <!-- <span><i onclick="myFunction(this)" class="<?php  echo "fa fa-heart fa-heart-o";  ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span> -->
-                             <div style="    float: right; margin-right: 10px;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Read More</span></a></div>
+                            
+                             <div class="col-6" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a></div>
                           </div>
                         </div>
                     
@@ -202,7 +205,7 @@
     if(uid=="0"){
         // alert("Please Login");
       //  location.reload();
-      window.location.replace('<?php echo base_url().'users/login'; ?>')
+      window.location.replace('<?php echo base_url().'users/login'; ?>');
         return false;
         
     }
