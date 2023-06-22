@@ -1482,12 +1482,15 @@ footer .main_footer .f_contact ul li i {
 /*  Log In page started */
 
 .blue_color {
+    position: absolute;
     background-color: #0000006b;
     height: 100%;
+    width: 100%;
     padding: 0px 108px;
 }
 
 .Welcome_Bis {
+    position: relative;
     font-size: 40px;
     font-weight: 600;
     text-transform: capitalize;
