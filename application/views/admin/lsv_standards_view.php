@@ -64,7 +64,7 @@
                                     <div class="mb-2 col-md-12">
                                         <!-- <label class="d-block text-font">View PDF</label> -->
                                         <div> 
-                                            <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">View PDF</a>
+                                            <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">View Details</a>
                                         </div> 
                                     </div>
                                 </div>

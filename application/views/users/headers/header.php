@@ -225,23 +225,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="<?php echo base_url(); ?>" style="color: white;"><?php echo $top_nav[$language]['0'] ?></a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item bis_pop">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link active" href="https://www.bis.gov.in/" target="_blank" aria-current="page" onclick="bis_pop()" style="color: white;"><?php echo $top_nav[$language]['1'] ?></a>
+                                     <a class="nav-link active " target="_blank" aria-current="page"  style="color: white; cursor:pointer;"><?php echo $top_nav[$language]['1'] ?></a>
                                 </li>
                                 <?php if(!isset($_SESSION['set_nav'])){  ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;"><?php echo $top_nav[$language]['2'] ?></a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item publish_pop">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link active" href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="_blank" aria-current="page" onclick="publish_pop()" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
+                                     <a class="nav-link active"  target="_blank" aria-current="page"  style="color: white; cursor:pointer;"><?php echo $top_nav[$language]['3'] ?></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" target="_blank" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" onclick="know_pop()" style="color: white;"><?php echo $top_nav[$language]['4'] ?></a>
+                                <li class="nav-item know_pop">
+                                    <a class="nav-link" target="_blank"  style="color: white; cursor:pointer;"><?php echo $top_nav[$language]['4'] ?></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" target="_blank" href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" style="color: white;"><?php echo $top_nav[$language]['5'] ?></a>
+                                <li class="nav-item snap">
+                                    <a class="nav-link" target="_blank"  style="color: white; cursor:pointer;"><?php echo $top_nav[$language]['5'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" style="color: white;">NBC</a>
@@ -260,7 +260,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;">About Standards Club</a>
                                     </li> 
-                                    <li class="nav-item">
+                                    <li class="nav-item catalogue">
                                         <a class="nav-link" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/get_is_list_by_category/" onclick="catalogue()" target="_blank" style="color: white;">Catalogue of Standards</a>
                                     </li> 
                                     <li class="nav-item">
@@ -284,14 +284,86 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </section>
     <script>
-        function bis_pop(){
-            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
-        }
-        function publish_pop(){
-            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
-        }
+        // function bis_pop(){
+        //     alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        // }
+        // function publish_pop(){
+        //     alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        // }
         function catalogue(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
+        $('.bis_pop').on('click',function(){
+    Swal.fire({
+                    title: 'You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'OK',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.open("https://www.bis.gov.in/","_blank");                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+$('.publish_pop').on('click',function(){
+    Swal.fire({
+                    title: 'You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'OK',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.open("https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards","_blank");                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+$('.know_pop').on('click',function(){
+    Swal.fire({
+                    title: 'You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'OK',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.open("https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails","_blank");                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+$('.snap').on('click',function(){
+    Swal.fire({
+                    title: 'You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'OK',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.open("https://www.bis.gov.in/standards-national-action-plan-snap-2022/","_blank");                   
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
     </script>
     
