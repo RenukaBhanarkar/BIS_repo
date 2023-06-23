@@ -70,7 +70,7 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" >
+                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="first_fileold" name="first_fileold" value="<?= $getData['first_file']?>" >
@@ -100,12 +100,12 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" >
+                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="second_fileold" name="second_fileold" value="<?= $getData['second_file']?>" >
                             <?php if(empty($getData['second_file'])){?>
-                            <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                            <label class="d-block">Uploads </label>
                             <div class="d-flex">
                                 <div>
                                     <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf" >
@@ -129,12 +129,12 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipants</label>
-                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>" >
+                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>"oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="third_fileold" name="third_fileold" value="<?= $getData['third_file']?>" >
                             <?php if(empty($getData['third_file'])){?>
-                            <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                            <label class="d-block">Uploads </label>
                             <div class="d-flex">
                                 <div>
                                     <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" >
@@ -155,12 +155,12 @@
                         <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>" >
+                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>"oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <input type="hidden" id="consolation_fileold" name="consolation_fileold" value="<?= $getData['consolation_file']?>" >
                                 <?php if(empty($getData['consolation_file'])){?>
-                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads </label>
                                 <div class="d-flex">
                                     <div>
                                         <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf" >

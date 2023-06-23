@@ -606,7 +606,7 @@ footer .social_visitor .numbers .divider {
 
 footer .main_footer {
 	/* background: rgb(237 51 56); */
-	padding: 45px 0px 0px;
+	padding: 45px 0px 27px;
 	color: #ffffff;
 	font-weight: 600;
 	/* background-image: linear-gradient(to right, #004f9e, #941212); */
@@ -2617,6 +2617,16 @@ label.d-block.text-font {
     text-align: center;
     text-transform: none;
     word-wrap: break-word;
+}
+.visit_count{
+    background: #6600cc;
+    padding: 10px 15px!important;
+    height: 100%!important;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 3px 3px lightgrey;
+    color: white;
+    font-weight: bold;
 }
 
 
