@@ -1685,6 +1685,10 @@ if($id){
             {
                 $consolation_filelocation=$this->input->post('consolation_fileold');; 
             } 
+              
+             
+
+
 
             $formdata = array(); 
             $formid = $this->input->post('id');
@@ -1696,7 +1700,13 @@ if($id){
             $formdata['number_of_participants'] = $this->input->post('number_of_participants'); 
             $formdata['first_paticipant'] = $this->input->post('first_paticipant');
             $formdata['first_file'] =$first_filelocation; 
-            $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
+            $formdata['second_paticipant'] = $this->input->post('second_paticipant');
+
+            $editData2 = $this->Standardswritting_model->view_standards($formid);
+            if ($editData2['status']==4) 
+             {
+                $formdata['status'] = 1; 
+             } 
            
             
             $formdata['updated_on'] = date('Y-m-d h:i:s'); 
@@ -1716,7 +1726,7 @@ if($id){
                 $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant');
                 $formdata['consolation_file'] = $consolation_filelocation; 
             } 
-            $formdata['status'] = 1; 
+           
             $id = $this->Standardswritting_model->StandardswrittingUpdate($formdata,$formid);
             if ($id)
             {

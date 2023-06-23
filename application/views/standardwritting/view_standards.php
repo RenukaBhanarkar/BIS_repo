@@ -68,9 +68,9 @@
                                  <a href="<?php echo base_url(); ?><?= $getData['first_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
-                    <?php if($getData['second_paticipant']='' || !empty($getData['second_paticipant'])) {?>
+                    <?php if($getData['second_paticipant']!='' || !empty($getData['second_paticipant'])) {?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">2<sup>nd</sup>Prizes</h4>
@@ -80,18 +80,24 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Participant</label>
                             <div>
-                                <p><?=$getData['second_paticipant']?></p>
+                                <p><?= $getData['second_paticipant']?></p>
                             </div>
                         </div>
+
+                        <?php if($getData['second_file']!='' || !empty($getData['second_file'])) {?>
                        <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
                               <a href="<?php echo base_url(); ?><?= $getData['second_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
+                        <?php } ?>
+
+
                     </div>
                 <?php } ?>
-                <?php if($getData['third_paticipant']='' || !empty($getData['third_paticipant'])) {?>
+
+                <?php if($getData['third_paticipant']!='' || !empty($getData['third_paticipant'])) {?>
 
 
                     <div class="row mt-2">
@@ -106,15 +112,18 @@
                                 <p><?=$getData['third_paticipant']?></p>
                             </div>
                         </div>
+
+                        <?php if($getData['third_file']!='' || !empty($getData['third_file'])) {?>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
                                     <a href="<?php echo base_url(); ?><?= $getData['third_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
                     <?php } ?>
-                <?php if($getData['consolation_paticipant']='' || !empty($getData['consolation_paticipant'])) {?>
+                <?php if($getData['consolation_paticipant']!='' || !empty($getData['consolation_paticipant'])) {?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
                             <h4 class="m-2">Consolation Prizes</h4>
@@ -127,12 +136,15 @@
                                 <p><?=$getData['consolation_paticipant']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+
+                         <?php if($getData['consolation_file']!='' || !empty($getData['consolation_file'])) {?>
+                            <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Document</label>
                             <div>
                                   <a href="<?php echo base_url(); ?><?= $getData['consolation_file']?>" target="_blank" ><p><img src="<?php echo base_url(); ?>assets/admin/img/pdf.png" alt="#" width="10%"></p></a>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
                   
                 </div>
@@ -144,27 +156,50 @@
         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
             <div class="col-12 mt-3">
                 
-                    <div class="row" id="remarkdiv">
+                   <!--  <div class="row" id="remarkdiv">
                         <div class="mb-2 col-md-8">
                             <label class="d-block text-font" text-font>Remarks<sup class="text-danger">*</sup></label>
                             <textarea class="form-control input-font" placeholder="Enter Remark" name="remark" id="remark"> </textarea>
                             <span class="error_text"><?= form_error('terms_conditions'); ?></span>
                             <input type="hidden" name="status_id" value="3" id="status_id">
                         </div>
-                    </div>
+                    </div> -->
             </div>
+            <?php } ?>
             
             <div class="col-md-12 submit_btn p-3"> 
+                <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                 <?php if( $getData['status']==2){?>
                 <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
                 <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> 
-                <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a>
+                <!-- <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a> -->
+                 <a class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#rejectForm" id="reject"onclick="rejectFun()" >Reject</a>
+                <?php } ?>
                 <?php } ?>
                 <button onclick="history.back()" class="btn btn-danger btn-sm text-white">Back</button>
             </div>
+
+             <div class="modal fade" id="rejectForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Reject Quiz</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body"> 
+                            <textarea class="form-control input-font" placeholder="Enter Reason" name="remark" id="remark"></textarea>
+                                                        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="updateStatus2()" id="rejectBtn">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             
            
-        <?php } ?>
+        
 
 
          
@@ -221,7 +256,7 @@
         url: '<?php echo base_url(); ?>standardswritting/updateStatusAdmin',
         data: {
           id: id,
-          status: status, 
+          status: 3, 
           remark: remark, 
         },
         success: function(result)
@@ -236,5 +271,58 @@
       });
       } 
     })
+  }
+
+  function updateStatus2() {
+
+     status=$("#status_id").val();
+        remark=$("#remark").val();
+        id="<?=$getData['id']?>"; 
+
+     var remark = $('#remark').val();
+        allfields = true;
+       
+        if (remark == "" || remark == null || remark.length == 0) {
+            if ($("#remark").next(".validation").length == 0) {
+                $("#remark").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
+            }
+            if (!focusSet) {
+                $("#remark").focus();
+            }
+            allfields = false;
+        } else {
+            $("#remark").next(".validation").remove();
+        }
+        if(allfields){
+            $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>standardswritting/updateStatusAdmin',
+        data: {
+          id: id,
+          status: 4, 
+          remark: remark, 
+        },
+        success: function(result)
+        {
+          Swal.fire('Saved!', '', 'success');
+          history.back();
+        },
+        error: function(result) 
+        {
+          alert("Error,Please try again.");
+        }
+      });
+        }
+
+
+
+       
+
+  
+
+    
+   
+       
+      
   }
 </script>

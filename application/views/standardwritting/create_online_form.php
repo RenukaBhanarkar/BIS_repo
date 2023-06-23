@@ -406,7 +406,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
         $("#banner_img").val('');
         $("#outputbanner").hide();
     }
-    //end
+    //end 
 
     //First Prize Image Preview
     var loadFileFirst = function(event) {
