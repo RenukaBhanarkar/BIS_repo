@@ -34,5 +34,23 @@ class Cms extends CI_Controller
         $this->load->view('cms/consumer_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function standard_promotion_list()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('cms/standard_promotion_list');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function about_standard_club()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('cms/about_standard_club');
+        $this->load->view('admin/footers/admin_footer');
+    }
+    public function learning_science_via()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('cms/learning_science_via');
+        $this->load->view('admin/footers/admin_footer');
+    }
 }
 ?>
