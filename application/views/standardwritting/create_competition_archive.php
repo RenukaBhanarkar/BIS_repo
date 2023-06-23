@@ -53,7 +53,7 @@
                             foreach($competition as $list){ ?>
                             <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo "123"; ?></td>
+                            <td><?php echo $list['comp_id']; ?></td>
                             <td><?php echo $list['competiton_name']; ?></td>
                             <td><?php echo $list['start_date']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
@@ -62,7 +62,7 @@
                             <td>
 
                             <!-- <button href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</button> -->
-                            <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
+                            <a href="<?php echo base_url().'standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
                                  <button data-id="<?php echo $list['comp_id']; ?>" class="btn btn-info btn-sm mr-2 restore">Restore</button>
                             </td>
                             </tr>
@@ -173,7 +173,7 @@
                                         // dataType: 'json',
                                         data: {
                                         "id": id,
-                                        "status": 1
+                                        "status": 0
                                         },
                                         success: function(res) {
                                         if (res) {
