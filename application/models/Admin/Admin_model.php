@@ -369,7 +369,7 @@ class Admin_model extends CI_Model {
         $this->db->select('ta.*');
         $this->db->from('tbl_admin ta');
      
-        $this->db->where('ta.id',1);        
+        $this->db->where('ta.admin_type',1);        
          $query = $this->db->get();
          $result=$query->result_array();
          return $result[0];    

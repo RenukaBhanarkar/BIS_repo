@@ -3,8 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Cms_model extends CI_Model {
 
-    public function aboutExchangeForuminsertData($data){
-        if ($this->db->insert('tbl_about_exchange_forum', $data)) {
+    public function consumerBisinsertData($data){
+        if ($this->db->insert('tbl_mst_cms', $data)) {
             return $this->db->insert_id();
         } else {
             return false;

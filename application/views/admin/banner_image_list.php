@@ -91,6 +91,13 @@
                                                                         This value require
                                                                         </div>
                                             </div>
+                                            <div class="mb-2 col-md-4">
+                                                <label class="d-block text-font">URL</label>
+                                                <input type="text" class="form-control input-font" name="banner_url" id="banner_url" value="" required>
+                                                <span class="text-danger" id="err_url">                                                  
+                                                </span>
+                                                <div class="invalid-feedback"> This value require </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -119,6 +126,7 @@
                                 <th>Sr. No.</th>
                                 <th>Image</th>
                                 <th>Caption</th>
+                                <th>URL</th>
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                 <th>Action</th>
                                 <?php } ?>
@@ -137,6 +145,7 @@
                                             } ?>
                                         </td>
                                         <td><?php echo $list_banner['caption']; ?></td>
+                                        <td><?php echo $list_banner['url']; ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                         <td class="d-flex border-bottom-0">
                                         <?php if(in_array(3,$permissions)){ ?>
@@ -277,6 +286,13 @@
                             <?php //echo form_error('title'); 
                             ?>
                         </span>
+                    </div>
+                    <div class="mb-2 col-md-4">
+                        <label class="d-block text-font">URL</label>
+                        <input type="text" class="form-control input-font" name="banner_url" id="banner_url1" value="" required>
+                        <span class="text-danger" id="err_url">                                                  
+                        </span>
+                        <div class="invalid-feedback"> This value require </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -532,6 +548,7 @@ var loadFileThumbnail = function(event)
                                 $('#id1').val(res.id);
                                 $('#bannerimg1').val(res.banner_images);
                                 $('#caption1').val(res.caption);
+                                $('#banner_url1').val(res.url);
                                 
                                
                               var img=res.image;

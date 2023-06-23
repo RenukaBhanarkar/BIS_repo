@@ -39,6 +39,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Consumer and BIS</h5>
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
+      <form id="add_admin" class="was-validated"  action="<?php echo base_url(); ?>cms/add_consumer_list" method="post" enctype="multipart/form-data">
       <div class="modal-body">
         <div class="row">
                 <div class="mb-2 col-md-4">
@@ -65,8 +66,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm cancel">Cancel</button>
-        <button type="button" class="btn btn-success btn-sm submit">Submit</button>
+        <button type="submit" name="submit" class="btn btn-success btn-sm submit">Submit</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

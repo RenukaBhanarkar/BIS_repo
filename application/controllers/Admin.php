@@ -1912,6 +1912,7 @@ class Admin extends CI_Controller
             $data['message'] = $this->upload->display_errors();
         }
         $formdata['caption'] = $this->input->post('banner_caption');
+        $formdata['url'] = $this->input->post('banner_url');
         $formdata['banner_images'] = $banner_img;
 
         $this->Admin_model->bannerinsertData($formdata);
@@ -2035,6 +2036,7 @@ class Admin extends CI_Controller
         $formdata['id'] = $this->input->post('id');
         //$formdata['title'] = $this->input->post('title');
         $formdata['caption'] = $this->input->post('banner_caption');
+        $formdata['url'] = $this->input->post('banner_url');
         //  $formdata['image'] = $this->input->post('old_doc');   
 
         if (!file_exists('uploads/cms/banner')) {
