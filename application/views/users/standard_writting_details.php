@@ -442,7 +442,15 @@ li span {
                         {
                             if ($allFilds1==1 && $allFilds2==1)  
                                 { ?>
+                                    <?php if(empty($attempt)){?>
                                 <a href="<?php echo base_url() . "users/standard_writting_login/"?><?php echo  $id= encryptids("E", $getData['id'] )?>" class="btn startQuiz" id="startQuizLang"> <span>Start</span></a>
+                            <?php } else {?>
+                                <div class="alert alert-primary background-success">
+                                       You have Already attempt this quiz competition.
+                                    </div>
+
+
+                            <?php }?>
                             <?php }
                             else
                                 { ?>
