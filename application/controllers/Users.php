@@ -3558,12 +3558,13 @@ if($user_details['change_password']==0){
 
      $id= encryptids("D", $id);
 
-        $region_id = encryptids("D", $this->session->userdata('region_id'));
+         $region_id = encryptids("D", $this->session->userdata('region_id'));
         $branch_id = encryptids("D", $this->session->userdata('branch_id'));
         $state_id = encryptids("D", $this->session->userdata('state_id')); 
         $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
         $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
-        $standard = encryptids("D", $this->session->userdata('standard'));
+       echo  $standard = encryptids("D", $this->session->userdata('standard'));
+       
         $data=array();
         $getdata=$this->Standardswritting_model->create_online_view($id);
 
@@ -3614,21 +3615,21 @@ if ($availability==2)
     $allFilds2=1;
 }
 
-// if ($availability==1) 
-// {
-//     $std = explode(',', $getdata['standard']);
-//     $standard = 1;
-//     if($standard != 0){
-//         if(in_array($standard,$std))  
-//         {
-//             $allFilds2=1;
-//         }
-//         else
-//         {
-//             $allFilds2=2;
-//         }
-//     }
-// }
+if ($availability==1) 
+{
+    $std = explode(',', $getdata['standard']);
+    $standard = $standard;
+    if($standard != 0){
+        if(in_array($standard,$std))  
+        {
+            $allFilds2=1;
+        }
+        else
+        {
+            $allFilds2=2;
+        }
+    }
+}
 
  
 
