@@ -18,7 +18,7 @@
             </ol>
         </nav>
     </div>
-        
+        <?php if(count($aboutConsumerBisData) == 0){   ?>
         <div class="row">
                 <div class="col-12">
                     <div class="card border-top card-body">
@@ -29,6 +29,7 @@
                     </div>
                 </div>
          </div>
+         <?php } ?>
 <!-- Modal -->
 
 <div class="modal fade" id="add_new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,6 +112,7 @@
                                         
                                         <td class="d-flex border-bottom-0">
                                             <a href="#" class="btn btn-info btn-sm mr-2 edit">Edit</a>
+                                            <!-- <button onclick="abcd()" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform">Edit</button> -->
                                             <a href="#" class="btn btn-danger btn-sm mr-2 delete">Delete</a>
                                         </td>
                                 </tr>
@@ -121,6 +123,10 @@
                 </div>
             </div>
         </div>
+        
+        <script>
+            CKEDITOR.replace( 'description' )
+        </script>
 <script>
     $('.cancel').on('click',function(){
     Swal.fire({
@@ -140,6 +146,22 @@
                     }
                     })
 })
+function abcd(){
+
+    
+$(document).ready(function(){
+    $('#delete_preview').show();
+                $('#add_file').hide();
+                $('#icon_file').attr('required',false);
+                // $('#outputicon').attr('src',)
+        $('.del_icon').on('click',function(){
+                            $('#delete_preview').hide();
+                            $('#add_file').show();
+                            // $('#icon_file').add('attr','required');
+                            $('#icon_file').attr('required',true);
+        });
+});
+}
 
 </script>        
 
