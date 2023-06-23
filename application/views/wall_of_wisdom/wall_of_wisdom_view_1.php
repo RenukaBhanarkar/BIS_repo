@@ -122,6 +122,14 @@
   /* width: 20em; */
   height: 86px;
 }
+.new_select{
+    margin-left: 17px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1px;
+    width: 116px;
+    background: none;
+}
     </style>
 <section>
         <div class="container-fluid" id="winner-section" style="padding: 19px 37px 50px 37px;">
@@ -136,6 +144,61 @@
                    </div>
                 </div>
               </div>
+              <div class="col-md-9">
+                <div class="col-md-12">
+                <div class="row">
+                       <div class="filter-content">
+                           <img src="http://localhost/BIS/BIS_repo/assets/images/filter_icon.png">
+                           <label class="filter_label">Filters : </label>
+                           <label class="sector_label">Under</label>
+
+                           <!-- Example single danger button -->
+                                <!-- <div class="btn-group">
+                                     <button type="button" class="filter-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">All Sector</button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                </div> -->
+                                <select class="new_select" aria-label="Default select example">
+                                        <option value="1">Last 7 days</option>
+                                        <option value="2">Last Week</option>
+                                        <option value="3">Last Month</option>
+                                        <option value="3">Last Year</option>
+                                </select>
+                                <div class="input-group search_icon" style="top: -2px;">
+                                        <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
+                                        <span class="input-group-append">
+                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                </div>
+                                <label class="sector_label" style="margin-left: -141px;">Sort By:</label>
+
+                           <!-- Example single danger button -->
+                                <!-- <div class="btn-group">
+                                     <button type="button" class="filter-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Newest First</button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Newest First</a></li>
+                                                <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                                                <li><a class="dropdown-item" href="#">Most Popular</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+
+                                            </ul>
+                                </div> -->
+                                <select class="new_select" aria-label="Default select example">
+                                        <option value="1">Newest First</option>
+                                        <option value="2">Oldest First</option>
+                                       
+                                </select>
+                       </div>
+                </div>
+                </div>
+             </div>
               
             </div>
         <div class="row" id="wow_card">
