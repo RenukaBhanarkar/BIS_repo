@@ -3558,12 +3558,13 @@ if($user_details['change_password']==0){
 
      $id= encryptids("D", $id);
 
-        $region_id = encryptids("D", $this->session->userdata('region_id'));
+         $region_id = encryptids("D", $this->session->userdata('region_id'));
         $branch_id = encryptids("D", $this->session->userdata('branch_id'));
         $state_id = encryptids("D", $this->session->userdata('state_id')); 
         $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
         $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
         $standard = encryptids("D", $this->session->userdata('standard'));
+       
         $data=array();
         $getdata=$this->Standardswritting_model->create_online_view($id);
 
@@ -3614,24 +3615,28 @@ if ($availability==2)
     $allFilds2=1;
 }
 
-// if ($availability==1) 
-// {
-//     $std = explode(',', $getdata['standard']);
-//     $standard = 1;
-//     if($standard != 0){
-//         if(in_array($standard,$std))  
-//         {
-//             $allFilds2=1;
-//         }
-//         else
-//         {
-//             $allFilds2=2;
-//         }
-//     }
-// }
+if ($availability==1) 
+{
+    $std = explode(',', $getdata['standard']);
+    $standard = $standard;
+    if($standard != 0){
+        if(in_array($standard,$std))  
+        {
+            $allFilds2=1;
+        }
+        else
+        {
+            $allFilds2=2;
+        }
+    }
+}
 
- 
 
+    
+         $user_id = encryptids("D", $_SESSION['admin_id']);
+         
+         $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+          $data['attempt']=$attempt;
     
 
         $data['getData']=$getdata;
@@ -3642,8 +3647,21 @@ if ($availability==2)
         $this->load->view('users/standard_writting_details',$data);
         $this->load->view('users/footers/footer');
     }
+    public function already_attempt(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/already_attempt');
+        $this->load->view('users/footers/footer');
+      }
     public function standard_writting_login($ids){ 
          $id= encryptids("D", $ids);
+         $user_id = encryptids("D", $_SESSION['admin_id']);
+         
+         $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+         if (!empty($attempt)) 
+         {
+            $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "users/already_attempt", 'refresh'); 
+         }
 
 
         $region_id = encryptids("D", $this->session->userdata('region_id'));
@@ -3656,6 +3674,7 @@ if ($availability==2)
         $getdata=$this->Standardswritting_model->create_online_view($id);
 
         $data['getData']=$getdata;
+        $data['attempt']=$attempt;
         // $data['allFilds1']=$allFilds1;
         // $data['allFilds2']=$allFilds2;
 

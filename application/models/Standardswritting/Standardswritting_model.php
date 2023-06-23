@@ -808,4 +808,11 @@ class Standardswritting_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function checkAttemptCompetitionOnline($user_id,$comp_id)
+    {
+        $this->db->where('user_id ', $user_id);
+        $this->db->where('comp_id ', $comp_id);
+        return $this->db->get('tbl_standard_writing_competition_online')->result_array();
+    }
 }
