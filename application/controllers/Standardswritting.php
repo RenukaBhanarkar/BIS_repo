@@ -1241,6 +1241,9 @@ if($id){
 
 
 
+
+
+
         if ($this->form_validation->run('create_online_form') == FALSE) 
         {
             $this->load->view('standardwritting/create_online_edit',$data);
@@ -1300,6 +1303,20 @@ if($id){
             $formdata['total_mark'] = $this->input->post('total_mark');
             $formdata['created_on'] = date("Y-m-d h:i:s");
             $formdata['updated_on'] = date("Y-m-d h:i:s");
+
+            $mydata=$this->Standardswritting_model->create_online_view($id);  
+        if ($mydata['status']==10) {
+             $formdata['status'] = 10;
+             $mysts=0;
+        }
+        else
+        {
+            $formdata['status'] = 1;
+             $mysts=1;
+
+        }
+
+
 
             $start_d= $this->input->post('start_date');
             $start_date = date("Y-m-d", strtotime($start_d));
@@ -1379,17 +1396,27 @@ if($id){
 
             $formdata['created_by'] = $created_by;
             $formdata['modify_by'] = $created_by;
-            $formdata['status'] = 10;
+             
 
             $update_id = $this->input->post('update_id');
 
+ 
 
             $quiz_id = $this->Standardswritting_model->updateStandardsWrittingOnline($update_id,$formdata);
              
-            if ($quiz_id) { 
-                   
-                $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-                redirect(base_url() . "Standardswritting/manage_online_list", 'refresh');
+            if ($quiz_id) {  
+
+
+                 if ($mysts==1) 
+                {
+                     $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                    redirect(base_url() . "Standardswritting/manage_online_list", 'refresh');
+                }
+                else
+                {
+                    $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                    redirect(base_url() . "Standardswritting/create_online_list", 'refresh');
+                } 
             }
             else
             {
@@ -1701,12 +1728,21 @@ if($id){
             $formdata['first_paticipant'] = $this->input->post('first_paticipant');
             $formdata['first_file'] =$first_filelocation; 
             $formdata['second_paticipant'] = $this->input->post('second_paticipant');
+            $formdata['reject_reasone'] = '';
+
 
             $editData2 = $this->Standardswritting_model->view_standards($formid);
-            if ($editData2['status']==4) 
+            if ($editData2['status']==0) 
              {
-                $formdata['status'] = 1; 
+                $mysts=0;
+                $formdata['status'] = 0; 
              } 
+             else
+             {
+                $mysts=1;
+
+               $formdata['status'] = 1;  
+             }
            
             
             $formdata['updated_on'] = date('Y-m-d h:i:s'); 
@@ -1730,8 +1766,18 @@ if($id){
             $id = $this->Standardswritting_model->StandardswrittingUpdate($formdata,$formid);
             if ($id)
             {
-                $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                if ($mysts==1) 
+                {
+                    $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
                 redirect(base_url() . "Standardswritting/manage_standard_list", 'refresh');
+                }
+                else
+                {
+                    $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "Standardswritting/create_standard_list", 'refresh');
+
+                }
+                
             }
             else
             {

@@ -67,7 +67,7 @@
 
 
 
-                                 <?php if($data['status'] == 1 || $data['status'] == 3 || $data['status'] == 6) { ?>
+                                 <?php if($data['status'] == 1 || $data['status'] == 4 || $data['status'] == 6) { ?>
                                    <a  class="btn btn-info btn-sm mr-2"onclick="editData('<?= $data['id']?>')" >Edit</a>
                                   <a href="#" class="btn btn-danger btn-sm mr-2 " onclick="deleteData('<?= $data['id']?>')" >Delete</a>
                                  <a href="#" class="btn btn-primary btn-sm mr-2" onclick="updateStatus('<?= $data['id']?>',9)" >Archive</a>
