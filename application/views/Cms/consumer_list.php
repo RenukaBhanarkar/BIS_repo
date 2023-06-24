@@ -1,5 +1,5 @@
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container-fluid" id="consumer_page">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -30,6 +30,12 @@
                 </div>
          </div>
          <?php } ?>
+
+         <?php
+        if ($this->session->flashdata('MSG')) {
+            echo $this->session->flashdata('MSG');
+        }
+        ?>
 <!-- Modal -->
 
 <div class="modal fade" id="add_new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -44,9 +50,10 @@
         <div class="row">
                 <div class="mb-2 col-md-4">
                     <div class="row">
-                    <label class="col-12 d-block text-font">Image</label>
+                    <label class="col-12 d-block text-font">Image<sup class="text-danger">*</sup></label>
                     <div class="col-9">
                             <input type="file" class="form-control input-font" name="image" id="image1"  accept="image/*" required="required" onchange="loadFileThumbnail1(event)">
+                            <div class="invalid-feedback"> This value require</div>
                             
                     </div>
                     <div class="col-3">
@@ -59,14 +66,15 @@
         </div>
                 <div class="row">
                     <div class="mb-2 col-md-12">
-                        <label class="d-block text-font">Description</label>
+                        <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                         <textarea class="form-control input-font" placeholder="Enter Description" name="description" id="description"></textarea>
+                        <span class="text-danger" id="err_des"></span>
                     </div>
                </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm cancel">Cancel</button>
-        <button type="submit" name="submit" class="btn btn-success btn-sm submit">Submit</button>
+        <button  onclick="return submitform(event)"  class="btn btn-success btn-sm submit">Submit</button>
       </div>
       </form>
     </div>
@@ -84,10 +92,7 @@
         <div class="modal-body">
         <img id="outputThumbnail" width="100%" style="width: 100%; max-height: 500px;"/>
         </div>
-        <!-- <div class="modal-footer">
-        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
-        </div> -->
+        
     </div>
     </div>
 </div>
@@ -105,22 +110,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if(!empty($aboutConsumerBisData[0])){ ?>
                                 <tr>
                                         <td>1</td>
                                         <td>
-                                            <img src="#" width="50px" style="text-align:center;">
+                                            <img src="<?php echo base_url().'uploads/cms/consumer_bis/'.$aboutConsumerBisData[0]['image']; ?>" width="50px" style="text-align:center;">
                                         </td>
-                                        <td>BIS undertakes various activities, events and competitions for their members and standard clubs situated in various states and regions. Wherein BIS arranges various events for their members and standard clubs. BIS now want to have a separate window as an exchange forum which will be publically available or the platform for the users to get connected and share their views across various events and win the exciting prizes. Also various committee members will now be able to participate in various standard writing competitions and other activities and explore various events and information contents with the help of this forum. People will be able to view the details of various standards getting published under Bureau of India Standards and will also be able to join various discussions on the forum and share their views.</td>
+                                        <td><?php echo $aboutConsumerBisData[0]['description']; ?></td>
                                         
-                                        <td class="d-flex border-bottom-0">
-                                            <!-- <button class="btn btn-info btn-sm mr-2"  data-bs-toggle="modal" data-bs-target="#editform">Edit</button> -->
-                                            <!-- <button type="button" class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#editform">Edit</button> -->
-                                            <!-- <button onclick="abcd()" class="btn btn-info btn-sm mr-2 text-white" data-toggle="modal" data-target="#editform">Edit</button> -->
-                                            <button type="button" class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#edit_form">Edit</button>
-                                            <a href="#" class="btn btn-danger btn-sm mr-2 delete">Delete</a>
+                                        <td class="d-flex border-bottom-0">                                            
+                                            <button type="button" class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#edit_form">Edit</button>                                            
+                                            <button  data-id='<?php echo $aboutConsumerBisData[0]['id']; ?>' data-img="<?php echo $aboutConsumerBisData[0]['image']; ?>" class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
                                         </td>
                                 </tr>
-                                
+                            <?php } ?>
                                 
                       </tbody>
                     </table>
@@ -132,24 +135,29 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Consumer and BIS</h5>
+        <h5 class="modal-title" id="exampleModalLabel"> Edit Consumer and BIS</h5>
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
       </div>
+      
+      <form action="<?php echo base_url().'cms/update_consumer_list'; ?>" id="update_ban" class="was-validated" method="post" enctype="multipart/form-data" >
       <div class="modal-body">
-        <div class="row">
+      <div class="row">
                 <div class="mb-2 col-md-4">
                    
-                    <label class="col-12 d-block text-font">Image</label>
+                    <label class="col-12 d-block text-font">Image<sup class="text-danger">*</sup></label>
                     <div class="d-flex">
                         <div>
-                            <input type="file" class="form-control input-font input" name="image" id="icon_file"  accept="image/*" required="required" onchange="loadFileThumbnail(event)">
+                            <input type="file" class="form-control input-font input" name="image" id="icon_file"  accept="image/*" onchange="loadFileThumbnail(event)">
+                            <input type="hidden" name="old_image" value="<?php echo $aboutConsumerBisData[0]['image']; ?>">
+                            <input type="hidden" name="id" value="<?php echo $aboutConsumerBisData[0]['id']; ?>">
+                            <div class="invalid-feedback"> This value require </div>
                         </div>  
                         <div class="ml-2">  
                             <button type="button" class="btn btn-primary btn-sm mb-4" id="preview_new" data-bs-toggle="modal" data-bs-target="#Previewimg_1"> 
                                 Preview 
                             </button>
                             <button type="button" class="btn btn-primary btn-sm mb-4" id="edit_preview"data-bs-toggle="modal" data-bs-target="#Previewimg_5"> 
-                                Preview 1
+                                Preview
                             </button>
                             <button type="button" class="btn btn-danger btn-sm mb-4" id="delete"> 
                                 Delete 
@@ -161,15 +169,18 @@
         </div>
                 <div class="row">
                     <div class="mb-2 col-md-12">
-                        <label class="d-block text-font">Description</label>
-                        <textarea class="form-control input-font" placeholder="Enter Description" name="description_edit" id="description_edit"></textarea>
+                        <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
+                        <textarea class="form-control input-font" placeholder="Enter Description" name="description" id="description_edit"><?php echo $aboutConsumerBisData[0]['description']; ?></textarea>
+                        <span class="text-danger" id="err_des_edit"></span>
                     </div>
                </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm cancel">Cancel</button>
-        <button type="button" class="btn btn-success btn-sm submit">Update</button>
+      </form>
+      <div class="modal-footer">        
+        <button class="btn btn-secondary btn-sm cancel" >Cancel</button>
+        <button type="submit" class="btn btn-success btn-sm update">Update</button>
       </div>
+                           
     </div>
   </div>
 </div>
@@ -184,12 +195,9 @@
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
         </div>
         <div class="modal-body">
-        <img id="outputThumbnail5" style="width: 100%; max-height: 500px;"/>
+        <img id="outputThumbnail5" src="<?php echo base_url().'uploads/cms/consumer_bis/'.$aboutConsumerBisData[0]['image'] ?>" style="width: 100%; max-height: 500px;"/>
         </div>
-        <!-- <div class="modal-footer">
-        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
-        </div> -->
+        
     </div>
     </div>
 </div>
@@ -204,15 +212,13 @@
         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
         </div>
         <div class="modal-body">
-        <img id="outputThumbnail5" style="width: 100%; max-height: 500px;"/>
+        <img id="outputThumbnail6" style="width: 100%; max-height: 500px;"/>
         </div>
-        <!-- <div class="modal-footer">
-        <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
-        <button type="button" class="btn btn-primary"data-bs-dismiss="modal">Save</button>
-        </div> -->
+        
     </div>
     </div>
 </div>
+
 <!-- modal -->
         <script>
             CKEDITOR.replace( 'description' );
@@ -236,18 +242,15 @@
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {    
-                        //window.location.replace('<?php echo base_url(); ?>Standardswritting/create_competition_list');                   
-                        //$('#competition_edit').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
+                    if (result.isConfirmed) {  
+                       location.reload();                            
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
                     }
                     })
 })
-function abcd(){
 
-    
+function abcd(){
 $(document).ready(function(){
     $('#delete_preview').show();
                 $('#add_file').hide();
@@ -261,6 +264,7 @@ $(document).ready(function(){
         });
 });
 }
+
 var loadFileThumbnail = function(event) 
     {
         var fileSize = $('#icon_file')[0].files[0].size;
@@ -288,8 +292,8 @@ var loadFileThumbnail = function(event)
             $('#err_icon_file').text('');
         }
        //  $("#Previewimg").show();
-        var outputThumbnail = document.getElementById('outputThumbnail5');
-        
+        var outputThumbnail = document.getElementById('outputThumbnail6');
+        console.log(outputThumbnail);
         outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
         console.log(outputThumbnail.src);
         outputThumbnail.onload = function()
@@ -334,6 +338,120 @@ var loadFileThumbnail = function(event)
         }
     }
 
+    $('#example').on('click','.delete_img',function(){
+        var id =$(this).attr('data-id');
+        var image =$(this).attr('data-img');
+        Swal.fire({
+                    title: 'Are you sure you want to Delete ?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {   
+                        $.ajax({
+                             type: 'POST',
+                            url: '<?php echo base_url(); ?>cms/delet_consumer_list',
+                            data: {
+                                que_id: id,
+                                banner:image,
+                            },
+                            success: function(result) {
+                                Swal.fire("Record Deleted Successfully.");
+                                location.reload();
+                            },
+                            error: function(result) {
+                                alert("Error,Please try again.");
+                            }
+                        });
+                        Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+
+       
+    })
+    $('#delete').click(function(){
+            $('#icon_file').attr('required',true);
+        });
+    $('.update').click(function(){
+       var image = $('#icon_file').val();
+       var imgatr = $('#icon_file').attr('required');
+       var description = CKEDITOR.instances['description_edit'].getData();
+       var isvalid = true;
+        // alert(imgatr=="required");
+        if(imgatr=="required"){
+            if(image==""){
+                isvalid=false;
+            }
+        }
+        if(description==""){
+            isvalid=false;
+            $('#err_des_edit').text('This value required');
+        }
+       if(isvalid){
+       
+        Swal.fire({
+                    title: 'Are you sure you want to Update ?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Update',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {  
+                        
+                       $('#update_ban').submit();
+                                                   
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+                }
+    })
+
+  function submitform(event){
+    event.preventDefault();
+    var image = $('#image1').val();
+    var description = CKEDITOR.instances['description'].getData();
+    // console.log(description);
+    // console.log(description);
+   var isvalid = true;
+   if(image==""){
+    isvalid = false;
+   }
+   if(description==""){
+    isvalid = false;
+    $('#err_des').text('This value required');
+   }else{
+    $('#err_des').text('');
+   }
+    if(isvalid){
+       
+       Swal.fire({
+                   title: 'Are you sure you want to Submit ?',
+                   showDenyButton: true,
+                   showCancelButton: false,
+                   confirmButtonText: 'Submit',
+                   denyButtonText: `Cancel`,
+                   }).then((result) => {
+                   /* Read more about isConfirmed, isDenied below */
+                   if (result.isConfirmed) {
+                    
+                      $('#add_admin').submit();
+                    
+                                                
+                   } else if (result.isDenied) {
+                       // Swal.fire('Changes are not saved', '', 'info')
+                   }
+                   })
+               }
+  }  
+
+
 </script>        
 
-        
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
