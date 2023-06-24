@@ -29,7 +29,7 @@ class Cms extends CI_Controller
     {
        
         $data['aboutConsumerBisData'] = $this->Cms_model->aboutConsumerBisData();
-        
+        // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('cms/consumer_list',$data);
         $this->load->view('admin/footers/admin_footer');
@@ -105,23 +105,28 @@ class Cms extends CI_Controller
             $formdata['image'] = $document;
         }
         // $formdata['status']="1";
-        $id = $this->Admin_model->consumerBisdateData($formdata);
+        // print_r($formdata);
+        // print_r($_FILES); die;
+        $id = $this->Cms_model->consumerBisupdatedateData($formdata);
         if ($id) {
             $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
-            redirect(base_url() . "admin/about_exchange_forum", 'refresh');
+            redirect(base_url() . "cms/consumer_list", 'refresh');
         } else {
             $this->session->set_flashdata('MSG', ShowAlert("Failed to update record,Please try again", "DD"));
-            redirect(base_url() . "admin/about_exchange_forum", 'refresh');
+            redirect(base_url() . "cms/consumer_list", 'refresh');
         }
     }
     public function delet_consumer_list()
     {
         try {
             $que_id = $this->input->post('que_id');
-            $id = $this->Admin_model->deletconsumerBis($que_id);
+            $image = $this->input->post('banner');
+            $image1= 'uploads/cms/ebis/'.$image;
+            $id = $this->Cms_model->deletconsumerBis($que_id);
             if ($id) {
                 $data['status'] = 1;
                 $data['message'] = 'Deleted successfully.';
+                @unlink($image1);
             } else {
                 $data['status'] = 0;
                 $data['message'] = 'Failed to delete, Please try again.';
