@@ -162,8 +162,8 @@
     display: none;
 }
 </style>
-<div class="container">
-<div class="row mt-5">
+<div class="container-fluid" style="padding: 22px 39px 29px 39px;">
+<div class="row">
               <div class="col-md-3">
                <div class="static-content">
                   <div class="bloginfo">
@@ -178,14 +178,14 @@
             </div>
     <div class="your_wall_Outer_Box">
         <div class="inner_wall">
-            <div class="row mt-5">
+            <div class="row">
                 <div class="col-sm-12">
-                    <h4>
+                    <h4 style="    font-weight: 600;text-align: justify;">
                 <?php echo $wow['title']; ?></h4>
                     <div class="your_wall_main_card_view">
                         <div class="yourWall_image">
                             <img src="<?php echo base_url().'uploads/admin/wall_of_wisdom/'.$wow['image']; ?>" alt="not found" class="w-100 h-100">
-                            <span><i class="fa fa-calendar icons"></i><?php echo date("m-d-Y",strtotime($wow['created_on'])); ?></span>
+                            <span><i class="fa fa-calendar icons"></i><?php echo date("d-m-Y",strtotime($wow['created_on'])); ?></span>
                         </div>
                         <div class="Text-container_view ">
                             <h6 class="yourWall_title_view ">
@@ -195,20 +195,23 @@
                             <div class="Your_Wall_Description_view">
                             <?php echo $wow['description']; ?>
                             </div>
-                            <p>
+                            <!-- <p>
                                 <b>Likes -</b><?php echo $wow['likes']; ?>
-                            </p>
+                            </p> -->
 
                         </div>
                         
                     </div>
 
-
+                    <div>
+<button  class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;"><a href="<?=base_url().'wall_of_wisdom/wallOfWisdom';?>">Back</a></button>
+</div>
 
                 </div>
                 
 
             </div>
+            
         </div>
 
     </div>

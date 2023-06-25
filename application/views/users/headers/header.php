@@ -229,6 +229,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
                                      <a class="nav-link active" href="https://www.bis.gov.in/" target="_blank" aria-current="page" onclick="bis_pop()" style="color: white;"><?php echo $top_nav[$language]['1'] ?></a>
                                 </li>
+                                <?php if(!isset($_SESSION['set_nav'])){  ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;"><?php echo $top_nav[$language]['2'] ?></a>
                                 </li>
@@ -248,12 +249,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" style="color: white;">NEC</a>
                                 </li>
+                                <?php  } ?>
+                                <?php if(isset($_SESSION['set_nav'])){ if($_SESSION['set_nav']=1){ ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/consumer_bis" style="color: white;">Consumer and BIS</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;">Standard Promotion</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;">About Standards Club</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/get_is_list_by_category/" onclick="catalogue()" target="_blank" style="color: white;">Catalogue of Standards</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;">Learning Science via Standards</a>
+                                    </li> 
+                                <?php } } ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/contact_us" style="color: white;"><?php echo $top_nav[$language]['6'] ?></a>
                                 </li>
                                 <li class="nav-item guidance_quest">
-                                    <a class="nav-link"  target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" style="color: white;"><?php echo $top_nav[$language]['7'] ?></a>
+                                    <a class="nav-link"  target="_blank" href="<?php echo base_url(); ?>assets/documents/user_mannual.pdf" style="color: white;"><?php echo $top_nav[$language]['7'] ?></a>
                                 </li>
+                                
                                 
                                 
                             </ul>
@@ -265,10 +285,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </section>
     <script>
         function bis_pop(){
-            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+            confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
         function publish_pop(){
-            alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+            confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        }
+        function catalogue(){
+            confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
     </script>
     

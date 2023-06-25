@@ -85,6 +85,31 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
     $hn_select='selected';
     $language='hn';
 }
+
+if(isset($_SESSION['change_password'])){
+  if($_SESSION['change_password']==0){ ?>
+    <script>
+    $(document).ready(function(){
+
+   
+    Swal.fire({
+      title: 'Do you want to change password?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Yes',
+      denyButtonText: `Skip for now`,
+      }).then((result) => {
+     
+      if (result.isConfirmed) {         
+          window.location.replace('https://www.services.bis.gov.in/php/BIS_2.0/change-password');
+      } else if (result.isDenied) {
+        
+          <?php $this->session->unset_userdata('change_password'); ?>
+      }
+      })  })
+      </script><?php
+  }
+}
 ?>
 <section>
      <div class="container-fluid">
@@ -162,5 +187,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
             //     Swal.fire("This section is under development. The World of Standards will open up for you soon.");
             //     return false;
             // })
+            
+ 
         })
     </script>

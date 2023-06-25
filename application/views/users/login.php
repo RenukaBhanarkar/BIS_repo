@@ -56,10 +56,11 @@
                             <!-- <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a> -->
                             <a href="https://www.services.bis.gov.in/php/BIS_2.0/forget-password" class="forgetPassword">Forgot Password ?</a>
 
-                            <div class="button_section text-center mt-3">
+                            <div class="button_section text-center mt-3" style="margin-bottom: 13px; padding-top: 10px;">
                                 <button class="btn btn_green" onclick="return submitButton()" type="submit">
                                     log in
                                 </button>
+                                <a class="btn btn-primary" href="<?php echo base_url().'users/welcome/'; ?>">Back to Home</a>
                             </div>
                         </form>
                     </div>

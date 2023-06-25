@@ -10,18 +10,19 @@
         }
         .node-status {
     font-size: 0.786em;
+    flex: auto;
     
-    float: left;
+    /* float: left; */
     
 }
 
 .node-status > div {
-    display: inline-block;
+    /* display: inline-block;
     border-radius: 4px;
     padding: 2px 5px;
-    background: #034e9c;;
-    color: #fff;
-    font-size: 10px;
+    background: #034e9c;; */
+    color: #0046d0;
+    /* font-size: 10px; */
 }
 .card-winners {
     position: relative;
@@ -84,7 +85,7 @@
 }
     </style>
 <section>
-        <div class="container pb-5 pt-5" id="winner-section">
+        <div class="container-fluid" id="winner-section" style="padding: 19px 37px 50px 37px;">
             <div class="row">
               <div class="col-md-8">
                <div class="static-content">
@@ -96,7 +97,7 @@
                    </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <!-- <div class="col-md-4">
                 <div class="input-group search_icon">
                     <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
                     <span class="input-group-append">
@@ -105,50 +106,55 @@
                         </button>
                     </span>
                 </div>
-             </div> 
+             </div>  -->
         </div>
-        <div class="row" id="wow_card">
+        <div class="row" id="wow_card"   >
         <?php foreach($wow as $list){ ?>
             
             <div class="col-md-4 mb-4">
             <!-- <a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"> -->
                   <div class="card-winners">
                   <a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>">
-                      <img src="<?php echo base_url().'uploads/admin/wall_of_wisdom/'.$list['image']; ?>" class="card-img-top" alt="Discussion Forum"></a>
+                      <img src="<?php echo base_url().'uploads/admin/wall_of_wisdom/'.$list['image']; ?>" class="card-img-top" alt="Discussion Forum">
                       <div class="winner-body p-2">
                           <!-- <div class="node-status"><span>Status : </span>
                               <div class="status-open">Open</div>
                           </div> -->
                           <div class="title">
-                              <p style="height:37px; overflow:hidden; margin-bottom:0px;"><?php echo substr_replace($list['title'],"...",150); ?></p>
+                              <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'],"...",110); ?></p>
                           </div>
                           <div class="field-item even">
                               <span class="time_left">
-                                  <!-- <span class="last-date"><?php echo substr_replace($list['description'],"...",150);  ?> </span> -->
+                                  <!-- <span class="last-date"><?php echo substr_replace($list['description'],"...",140);  ?> </span> -->
                                   <span class="last-date"><?php echo $list['description'];  ?> </span>
                               </span>
                           </div>
-                          
+                          </a>
                           <!-- <div id="abcd" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" c-id="<?php echo $list['id']; ?>" ct="<?php echo $list['card_status']; ?>" class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['card_status']=='1'){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
                               <div  class="status-open likes" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div>
                           </div> -->
-                          <div id="abcd" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="node-status like_review"><span><i onclick="myFunction(this)" class="<?php  echo "fa fa-heart fa-heart-o";  ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
-                              <div  class="status-open like_<?=$list['id'];?>" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div>
+                          <div class="row d-flex">
+                          <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="col-6 node-status like_review"><span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i><span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span></span>
+                              <!-- <div  class="status-open like_<?=$list['id'];?>" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div> -->
+                              
                           </div>
+                          <div class="col-6" style="    float: right;    text-align: -webkit-right;    color: blue;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a></div>
+                          </div>
+                  </div>
                           
                       </div>
                   </div>
-                  <!-- </a> -->
+                  <?php }  ?>
                 </div>
          
-                    <?php }  ?>
-        </div>
+                   
+       
         <?php if(count($wow) > 5){ ?>
         <div class="view-button">
                 <a href="<?php echo base_url(); ?>users/all_wall_of_wisdom">View All</a>
             </div> 
             <?php } ?>     
-             </div>
+            
             
         
     </section>
@@ -164,16 +170,20 @@
     cardstatus=$(this).attr('ct');
     likes=$(this).attr('data-likes');
     lid=$(this).attr('lid');
-    console.log(uid);
+    console.log(cardstatus);
+
+    // $(this).attr('ct',1);
     
     if(uid=="0"){
-        alert("Please Login");
+        // alert("Please Login");
+        window.location.replace('<?php echo base_url().'users/login'; ?>')
       //  location.reload();
         return false;
         
     }
 
-    if(cardstatus){
+    if(cardstatus==1){
+        $(this).attr('ct',0);
         $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>Wall_of_wisdom/unlikes',
@@ -182,16 +192,18 @@
                        uid: uid,
                     },
                     success: function(result) {
-                        console.log(result);
+                        // console.log(result);
                      //  location.reload();
-                     //$('.id').html('hello');
+                    //  $('.id').html('hello');
+                    //  $(this).attr('ct',0);
+                     $(cardstatus).text('0');
                     },
                     error: function(result) {
                         alert("Error,Please try again.");
                     }
                 });
     }else{
-
+        $(this).attr('ct',1);
                 console.log(cid);
             $.ajax({
                     type: 'POST',
@@ -201,11 +213,13 @@
                        uid: uid,
                     },
                     success: function(result) {
-                        console.log(result);
+                        // console.log(result);
                      //  location.reload();
                     //  $('.id').html('hello');
-                    like=parseInt(likes)+1;
-                    $('.'+lid).text(like);
+                    
+                    // $(this).attr('lid').text('1');
+                    // like=parseInt(likes)+1;
+                    // $('.'+lid).text(like);
                     },
                     error: function(result) {
                         alert("Error,Please try again.");

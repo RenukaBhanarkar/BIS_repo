@@ -848,7 +848,7 @@ var loadFileThumbnail = function(event)
            console.log(abcd);
            if(abcd=="required"){
             var image = $('#document2').val();
-            if(image=="" || image==NULL){
+            if(image=="" || image=="undefined"){
                 is_valid = false;
                 $('#document2').focus();
             }

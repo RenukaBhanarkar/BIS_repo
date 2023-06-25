@@ -73,13 +73,13 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="" oninput="this.value = this.value.replace(/[^A-Za-z]/, '')" >
+                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block">Upload Prize Details<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf">
+                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf" onchange="loadFileFirst(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
@@ -109,13 +109,13 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="" oninput="this.value = this.value.replace(/[^A-Za-z]/, '')">
+                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block">Upload Prize Details</label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
+                                    <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf" onchange="loadFileSecond(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
@@ -130,13 +130,13 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipants</label>
-                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value=""oninput="this.value = this.value.replace(/[^A-Za-z]/, '')" >
+                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value=""oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block">Upload Prize Details</label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
+                                    <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" onchange="loadFileThird(event)">
                                     <span class="error_text"></span>
                                 </div>
                                 <div>
@@ -151,13 +151,13 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="" oninput="this.value = this.value.replace(/[^A-Za-z]/, '')" >
+                            <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block">Upload Prize Details</label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf" onchange="loadThumbnail(event)">
+                                    <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf" onchange="loadFileCon(event)">
                                     <span class="error_text"></span>
                                     
                                 </div>
@@ -323,11 +323,63 @@ allfields = false;
 } else {
 $("#first_file").next(".validation").remove(); // remove it
 }
+
+
+var second_paticipantname = $("#second_paticipant").val(); 
+
+if (second_paticipantname!='') {
+var second_file=$("#second_file").val();
+if (second_file == "" || second_file== null) {
+if ($("#second_file").next(".validation").length == 0) // only add if not added
+{
+$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#second_file").focus(); }
+allfields = false;
+} else {
+$("#second_file").next(".validation").remove(); // remove it
+}
+}
+
+var third_paticipantname = $("#third_paticipant").val(); 
+
+if (third_paticipantname!='') {
+var third_file=$("#third_file").val();
+if (third_file == "" || third_file== null) {
+if ($("#third_file").next(".validation").length == 0) // only add if not added
+{
+$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#third_file").focus(); }
+allfields = false;
+} else {
+$("#third_file").next(".validation").remove(); // remove it
+}
+}
+
+
+var consolation_paticipantname = $("#consolation_paticipant").val(); 
+if (consolation_paticipantname!='') {
+var consolation_file=$("#consolation_file").val();
+if (consolation_file == "" || consolation_file== null) {
+if ($("#consolation_file").next(".validation").length == 0) // only add if not added
+{
+$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#consolation_file").focus(); }
+allfields = false;
+} else {
+$("#consolation_file").next(".validation").remove(); // remove it
+}
+}
+
+
+
 if ($("#first_file").val() != '')
 {
 var fileSize = $('#first_file')[0].files[0].size;
 $("#first_file").next(".validation").remove();
-if (fileSize > 41943040)
+if (fileSize > 5066573)
 {
 if ($("#first_file").next(".validation").length == 0) // only add if not added
 {
@@ -369,7 +421,7 @@ if ($("#second_file").val() != '')
 {
 var second = $('#second_file')[0].files[0].size;
 $("#second_file").next(".validation").remove();
-if (second > 41943040)
+if (second > 5066573)
 {
 if ($("#second_file").next(".validation").length == 0) // only add if not added
 {
@@ -411,7 +463,7 @@ if ($("#third_file").val() != '')
 {
 var third = $('#third_file')[0].files[0].size;
 $("#third_file").next(".validation").remove();
-if (third > 41943040)
+if (third > 5066573)
 {
 if ($("#third_file").next(".validation").length == 0) // only add if not added
 {
@@ -453,7 +505,7 @@ if ($("#consolation_file").val() != '')
 {
 var consolation = $('#consolation_file')[0].files[0].size;
 $("#consolation_file").next(".validation").remove();
-if (consolation > 41943040)
+if (consolation > 5066573)
 {
 if ($("#consolation_file").next(".validation").length == 0) // only add if not added
 {
@@ -614,4 +666,117 @@ function cancel()
     }  
   })
 }
+</script> 
+
+
+<script type="text/javascript">
+     var loadFileFirst = function(event) { 
+        var fileSize = $('#first_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#first_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#first_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#first_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#first_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputFirst = document.getElementById('outputFirst');
+        outputFirst.src = URL.createObjectURL(event.target.files[0]);
+        outputFirst.onload = function() {
+            URL.revokeObjectURL(outputFirst.src);
+        }
+    };
+</script>
+
+<script type="text/javascript">
+     var loadFileSecond = function(event) { 
+        var fileSize = $('#second_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#second_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#second_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#second_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#second_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputFirst = document.getElementById('outputFirst');
+        outputFirst.src = URL.createObjectURL(event.target.files[0]);
+        outputFirst.onload = function() {
+            URL.revokeObjectURL(outputFirst.src);
+        }
+    };
+</script>
+
+<script type="text/javascript">
+     var loadFileThird = function(event) { 
+        var fileSize = $('#third_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#third_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#third_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#third_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#third_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputFirst = document.getElementById('outputFirst');
+        outputFirst.src = URL.createObjectURL(event.target.files[0]);
+        outputFirst.onload = function() {
+            URL.revokeObjectURL(outputFirst.src);
+        }
+    };
+</script>
+
+<script type="text/javascript">
+     var loadFileCon = function(event) { 
+        var fileSize = $('#consolation_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#consolation_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#consolation_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#consolation_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#consolation_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputFirst = document.getElementById('outputFirst');
+        outputFirst.src = URL.createObjectURL(event.target.files[0]);
+        outputFirst.onload = function() {
+            URL.revokeObjectURL(outputFirst.src);
+        }
+    };
 </script>

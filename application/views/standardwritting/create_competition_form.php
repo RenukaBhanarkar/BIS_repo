@@ -7,6 +7,19 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; 
 }
+.correct_hide:valid{
+    /* border-color: #1cc88a; */
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url()!important;
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+.lbl_clor,input[type=checkbox]{
+    color: #0f1010!important;
+    border-color:#0f1010!important;
+}
+
     </style>
     <div class="container-fluid">
 
@@ -70,7 +83,7 @@ input[type=number]::-webkit-outer-spin-button {
                     <div class="row">
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Title of Competition in Hindi<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Name of Competition" value="<?php echo set_value('name_hindi') ?>" required="">
+                                <input type="text" class="form-control input-font" name="name_hindi" id="name_hindi" placeholder="Enter Title of Competition in Hindi" value="<?php echo set_value('name_hindi') ?>" required="">
                                 <div class="invalid-feedback">
                                     This value is required
                                 </div>
@@ -194,12 +207,15 @@ input[type=number]::-webkit-outer-spin-button {
                             </div>
                             <div class="mb-2 col-md-4" id="region_id_blk">
                                 <label class="d-block text-font" id="region_title">Regional Level<sup class="text-danger">*</sup></label>
-                                <select id="region_id" name="region_id" class="form-control input-font">
+                                <select id="region_id" name="region_id" class="form-control input-font" required="">
                                     <!-- <option value="" selected disabled>--select--</option>
                                     <option value="#">Maharashtra</option>
                                     <option value="#">Karnataka</option> -->
 
                                 </select>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
                                 <span class="error_text"><?php echo form_error('region_id'); ?></span>
 
                             </div>
@@ -212,6 +228,9 @@ input[type=number]::-webkit-outer-spin-button {
 
                                 </select>
                                 <span class="error_state"><?php echo form_error('state_id'); ?></span>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
 
                             </div>
                             <div class="mb-2 col-md-4" id="branch_id_blk">
@@ -220,6 +239,9 @@ input[type=number]::-webkit-outer-spin-button {
                                  
                                 </select>
                                 <span class="error_text"><?php echo form_error('branch_id'); ?></span>
+                                <div class="invalid-feedback">
+                                This value is required
+                                </div>
 
                             </div>
 
@@ -240,19 +262,19 @@ input[type=number]::-webkit-outer-spin-button {
                                         <div class="d-flex">
                                             <div class="custom-control custom-checkbox mr-3">
                                                 <input type="checkbox" value="9" name="standard[]" class="custom-control-input"  id="Standard_1"  >
-                                                <label class="custom-control-label" for="Standard_1">9<sup>th</sup>Standard</label>
+                                                <label class="custom-control-label lbl_clor" for="Standard_1">9<sup>th</sup>Standard</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mr-3">
                                                 <input type="checkbox" value="10" name="standard[]" class="custom-control-input"  id="Standard_2"  >
-                                                <label class="custom-control-label" for="Standard_2">10<sup>th</sup>Standard</label>
+                                                <label class="custom-control-label lbl_clor" for="Standard_2">10<sup>th</sup>Standard</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mr-3">
                                                 <input type="checkbox" value="11" name="standard[]" class="custom-control-input"  id="Standard_3"  >
-                                                <label class="custom-control-label" for="Standard_3">11<sup>th</sup>Standard</label>
+                                                <label class="custom-control-label lbl_clor" for="Standard_3">11<sup>th</sup>Standard</label>
                                             </div>
                                             <div class="custom-control custom-checkbox mr-3">
                                                 <input type="checkbox" value="12" name="standard[]" class="custom-control-input"  id="Standard_4">
-                                                <label class="custom-control-label" for="Standard_4">12<sup>th</sup>Standard</label>
+                                                <label class="custom-control-label lbl_clor" for="Standard_4">12<sup>th</sup>Standard</label>
                                             </div>
                                         </div>
                                         <span class="text-danger" id="err_school"></span>
@@ -314,17 +336,20 @@ input[type=number]::-webkit-outer-spin-button {
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?php echo set_value('sprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
+                                <input type="text" class="form-control input-font correct_hide" name="sprize" id="sprize" placeholder="Enter Prizes" value="<?php echo set_value('sprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo set_value('sdetail') ?>" >
+                                <input type="text" class="form-control input-font correct_hide" name="sdetail" id="sdetail" placeholder="Enter Prizes" value="<?php echo set_value('sdetail') ?>" >
+                                <div class="invalid-feedback" id="">
+                                This value is required
+                                </div>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image</label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="sprize_image" name="sprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadsPrizeImage(event)" value="<?php echo set_value('sprize_image') ?>">
+                                    <input type="file" id="sprize_image" name="sprize_image" class="form-control-file correct_hide" accept="image/png, image/jpeg,image/jpg" onchange="loadsPrizeImage(event)" value="<?php echo set_value('sprize_image') ?>">
                                     <span class="error_text"></span>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sprizeModalConsole" fdprocessedid="3a6f0r">
@@ -339,11 +364,14 @@ input[type=number]::-webkit-outer-spin-button {
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php echo set_value('tprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
+                                <input type="text" class="form-control input-font correct_hide" name="tprize" id="tprize" placeholder="Enter Prizes" value="<?php echo set_value('tprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo set_value('tdetail') ?>" >
+                                <input type="text" class="form-control input-font correct_hide" name="tdetail" id="tdetail" placeholder="Enter Prizes" value="<?php echo set_value('tdetail') ?>" >
+                                <div class="invalid-feedback" id="">
+                                This value is required
+                                </div>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image</label>
@@ -364,17 +392,20 @@ input[type=number]::-webkit-outer-spin-button {
                     <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Number of Prizes</label>
-                                <input type="text" class="form-control input-font" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php echo set_value('cprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
+                                <input type="text" class="form-control input-font correct_hide" name="cprize" id="cprize" placeholder="Enter Prizes" value="<?php echo set_value('cprize') ?>" oninput="this.value = this.value.replace(/[^0-9/]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Prizes</label>
-                                <input type="text" class="form-control input-font" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo set_value('cdetail') ?>" >
+                                <input type="text" class="form-control input-font correct_hide" name="cdetail" id="cdetail" placeholder="Enter Prizes" value="<?php echo set_value('cdetail') ?>" >
+                                <div class="invalid-feedback" id="">
+                                This value is required
+                                </div>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="d-block">Prize Image</label>
                                 <div class="d-flex">
                                 <div>
-                                    <input type="file" id="cprize_image" name="cprize_image" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadcPrizeImage(event)" value="<?php echo set_value('cprize_image') ?>">
+                                    <input type="file" id="cprize_image" name="cprize_image" class="form-control-file correct_hide" accept="image/png, image/jpeg,image/jpg" onchange="loadcPrizeImage(event)" value="<?php echo set_value('cprize_image') ?>">
                                     <span class="error_text"></span>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#cprizeModalConsole" fdprocessedid="3a6f0r">
@@ -612,6 +643,36 @@ input[type=number]::-webkit-outer-spin-button {
             URL.revokeObjectURL(outputConsol.src);
         }
     };
+
+    $('#sprize').keyup(function(){
+        var count = $(this).val();       
+        if(count >= 1){
+            $('#sdetail').attr('required',true);           
+        }
+    })
+    $('#tprize').keyup(function(){
+        var count1 = $(this).val();       
+        if(count1 >= 1){
+            $('#tdetail').attr('required',true);           
+        }
+    })
+    $('#cprize').keyup(function(){
+        var count2 = $(this).val();       
+        if(count2 >= 1){
+            $('#cdetail').attr('required',true);           
+        }
+    })
+    $('#quiz_level_id').change(function(){
+        var level = $(this).val();   
+        // alert(level);    
+        if(level=="2"){
+            $('#region_id').attr('required',true);           
+        }else if(level=="3"){
+            $('#branch_id').attr('required',true);
+        }else if(level=="4"){
+            $('#state_id').attr('required',true);
+        }
+    })
 </script>                          
 <script>
         CKEDITOR.replace( 'description' );
@@ -641,8 +702,47 @@ input[type=number]::-webkit-outer-spin-button {
         var score =$('#score').val();
         var fprize =$('#fprize').val();
 
+        var isvalid =true;
 
-       var isvalid =true;
+        var sprize = $('#sprize').val();
+        if(sprize=="" || sprize==0){
+            $('#sdetail').attr('required',false);
+            
+        }else{
+            var sdet = $('#sdetail').val();
+            if(sdet==""){
+                isvalid =false;
+            }
+           
+        }
+
+        var tprize = $('#tprize').val();
+        if(tprize=="" || tprize==0){
+            $('#tdetail').attr('required',false);
+            
+        }else{
+            $('#tdetail').attr('required',true);
+            var tdet = $('#tdetail').val();
+            if(tdet==""){
+                isvalid =false;
+            }
+            // isvalid =false;
+        }
+
+        var cprize = $('#cprize').val();
+        if(cprize=="" || cprize==0){
+            $('#cdetail').attr('required',false);
+           
+        }else{
+            // isvalid =false;
+            $('#cdetail').attr('required',true);
+            var cdet = $('#cdetail').val();
+            if(cdet==""){
+                isvalid =false;
+            }
+        }
+
+       
        if(name==""){
         isvalid =false;
        }else{
@@ -713,6 +813,22 @@ input[type=number]::-webkit-outer-spin-button {
         isvalid =false;
        }else{
         
+       }
+       if(quiz_level_id=="2"){        
+        var region = $('#region_id').val();   
+        if(region=="" || region==null){          
+            isvalid =false;
+        }
+       }else if(quiz_level_id=="3"){
+        var branch = $('#branch_id').val();  
+        if(branch=="" || branch==null){          
+            isvalid =false;
+        }
+       }else if(quiz_level_id=="4"){
+        var state = $('#state_id').val();  
+        if(state=="" || state==null){          
+            isvalid =false;
+        }
        }
     //    alert(isvalid);
 // console.log(available_for); alert(available_for);

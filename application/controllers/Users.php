@@ -833,7 +833,10 @@ class Users extends CI_Controller
 
 
                 );
-
+if($user_details['change_password']==0){
+    // $this->session->set_userdata($change_password['0']);
+    $_SESSION["change_password"]="0";
+}
                 $this->session->set_userdata($sess_arr);
                //  exit();
 // echo $comp_id;
@@ -984,6 +987,8 @@ class Users extends CI_Controller
     }
     public function welcome()
     {
+        
+        $this->session->unset_userdata('set_nav');
         $this->load->view('users/headers/header');
         $this->load->view('users/welcome');
         $this->load->view('users/footers/footer');
@@ -1073,6 +1078,8 @@ class Users extends CI_Controller
 
         $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
         //print_r($data['competition']); die;
+        // $data1['set_nav']="1";
+        $_SESSION["set_nav"]="1";
         $this->load->view('users/headers/header');
         $this->load->view('users/standard_club',$data);
         $this->load->view('users/footers/footer');  
@@ -1548,7 +1555,15 @@ class Users extends CI_Controller
     }
     public function all_wall_of_wisdom()
     {
-        $data['wow'] = $this->wow->get_allwow();
+        if(isset($_SESSION['admin_id'])){
+            $uid=encryptids("D",$_SESSION['admin_id']);
+        }else{
+            $uid="";
+        }
+        // $uid=encryptids("D",$_SESSION['admin_id']);
+        $limit=100;
+          $data['wow']=$this->wow->all_wallofwisdom3($uid,$limit);
+        // $data['wow'] = $this->wow->get_allwow();
         $this->load->view('users/headers/header');
         $this->load->view('wall_of_wisdom/wall_of_wisdom_view_1', $data);
         $this->load->view('users/footers/footer');
@@ -3543,12 +3558,13 @@ class Users extends CI_Controller
 
      $id= encryptids("D", $id);
 
-        $region_id = encryptids("D", $this->session->userdata('region_id'));
+         $region_id = encryptids("D", $this->session->userdata('region_id'));
         $branch_id = encryptids("D", $this->session->userdata('branch_id'));
         $state_id = encryptids("D", $this->session->userdata('state_id')); 
         $user_dept_id = encryptids("D", $this->session->userdata('dept_id'));
         $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
         $standard = encryptids("D", $this->session->userdata('standard'));
+       
         $data=array();
         $getdata=$this->Standardswritting_model->create_online_view($id);
 
@@ -3599,24 +3615,28 @@ if ($availability==2)
     $allFilds2=1;
 }
 
-// if ($availability==1) 
-// {
-//     $std = explode(',', $getdata['standard']);
-//     $standard = 1;
-//     if($standard != 0){
-//         if(in_array($standard,$std))  
-//         {
-//             $allFilds2=1;
-//         }
-//         else
-//         {
-//             $allFilds2=2;
-//         }
-//     }
-// }
+if ($availability==1) 
+{
+    $std = explode(',', $getdata['standard']);
+    $standard = $standard;
+    if($standard != 0){
+        if(in_array($standard,$std))  
+        {
+            $allFilds2=1;
+        }
+        else
+        {
+            $allFilds2=2;
+        }
+    }
+}
 
- 
 
+    
+         $user_id = encryptids("D", $_SESSION['admin_id']);
+         
+         $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+          $data['attempt']=$attempt;
     
 
         $data['getData']=$getdata;
@@ -3627,8 +3647,21 @@ if ($availability==2)
         $this->load->view('users/standard_writting_details',$data);
         $this->load->view('users/footers/footer');
     }
+    public function already_attempt(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/already_attempt');
+        $this->load->view('users/footers/footer');
+      }
     public function standard_writting_login($ids){ 
          $id= encryptids("D", $ids);
+         $user_id = encryptids("D", $_SESSION['admin_id']);
+         
+         $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+         if (!empty($attempt)) 
+         {
+            $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
+                redirect(base_url() . "users/already_attempt", 'refresh'); 
+         }
 
 
         $region_id = encryptids("D", $this->session->userdata('region_id'));
@@ -3641,6 +3674,7 @@ if ($availability==2)
         $getdata=$this->Standardswritting_model->create_online_view($id);
 
         $data['getData']=$getdata;
+        $data['attempt']=$attempt;
         // $data['allFilds1']=$allFilds1;
         // $data['allFilds2']=$allFilds2;
 
@@ -3852,6 +3886,70 @@ if ($availability==1)
         $this->load->view('users/essay_writting_all');
         $this->load->view('users/footers/footer');
       }
-    
+
+    public function Deleteleasrninglike()    
+    {   
+        $id = $this->input->post('id'); 
+        $admin_id = encryptids("D", $this->session->userdata('admin_id'));
+        $info = $this->Users_model->getContaintlearningStanderd($id);
+        $likes= $info['likes']-1; 
+        $getuserlike = $this->Users_model->Deleteleasrninglike($id,$admin_id,$likes); 
+        if ($getuserlike) {     
+            $data['status'] = 1;    
+            $data['message'] = 'Liked.';    
+        }   
+        else    
+        {   
+                $data['status'] = 0;    
+                $data['message'] = 'Updated successfully.';     
+        }   
+        echo json_encode([  
+            'status' => '1',    
+            'data' => $data,    
+        ]); 
+    }
+
+
+    public function Deletesessionlike()    
+    {   
+        $id = $this->input->post('id'); 
+        $admin_id = encryptids("D", $this->session->userdata('admin_id')); 
+        $info = $this->Users_model->getJoinTheClassroomContaint($id);
+        $likes= $info['likes']-1; 
+        $getuserlike = $this->Users_model->Deletesessionlike($id,$admin_id,$likes); 
+        if ($getuserlike) {     
+            $data['status'] = 1;    
+            $data['message'] = 'Liked.';    
+        }   
+        else    
+        {   
+                $data['status'] = 0;    
+                $data['message'] = 'Updated successfully.';     
+        }   
+        echo json_encode([  
+            'status' => '1',    
+            'data' => $data,    
+        ]); 
+    }
+    public function consumer_bis(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/consumer_bis');
+        $this->load->view('users/footers/footer');
+      }
+      public function standard_promotion(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/standard_promotion');
+        $this->load->view('users/footers/footer');
+      }
+      public function about_standards_club(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/about_standards_club');
+        $this->load->view('users/footers/footer');
+      }
+      public function Learning_via_standards(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/Learning_via_standards');
+        $this->load->view('users/footers/footer');
+      }
  
 }

@@ -119,7 +119,7 @@ class Wall_of_wisdom_model extends CI_Model {
         $this->db->where('status','5');
         $this->db->order_by('created_on','desc');
         //$this->db->order_by('');
-        $this->db->limit(6);
+        // $this->db->limit(6);
         $query=$this->db->get();
         $res=$query->result_array();
         return $res;
@@ -261,5 +261,55 @@ class Wall_of_wisdom_model extends CI_Model {
         // $this->db->where($data);
         // $this->db->delete('tbl_wall_of_wisdom_likes');
         // return "success";
+    }
+    public function all_wallofwisdom3($uid,$limit){
+        // echo $uid; die;
+        // $this->db->select('*');
+        // $this->db->from('tbl_wall_of_wisdom');        
+        // $this->db->where('status','5');
+        // //$this->db->order_by('');
+        // $this->db->limit(6);
+        // $this->db->order_by('created_on','desc');
+        // $query=$this->db->get();
+        // $res=$query->result_array();
+        // return $res;
+
+        $this->db->select('wow.*');
+        $this->db->from('tbl_wall_of_wisdom wow');
+        // $this->db->join('tbl_wall_of_wisdom_likes like','like.card_id=wow.id','left');
+        // $this->db->where("like.user_id=$uid");
+        // $this->db->where("wow.user_id=$uid");
+        $this->db->where('wow.status','5');  
+        $this->db->limit($limit);
+        $this->db->order_by('wow.created_on','desc');
+        $query=$this->db->get();
+        $res=$query->result_array();
+        // return $res;
+        // echo $uid;
+        // die;
+        $rs=array();
+        if(!empty($res)){
+            foreach($res as $list){
+                $this->db->select('*');
+                $this->db->from('tbl_wall_of_wisdom_likes');
+                $this->db->where('card_id',$list['id']);
+                $this->db->where('user_id',$uid);
+                $query1=$this->db->get();
+                $result=$query1->result_array();
+                // return $result;
+                if(!empty($result)){
+                    $list['is_like']=1;
+                    array_push($rs,$list);
+                }else{
+                    $list['is_like']=0;
+                    array_push($rs,$list);
+                }
+// return $list;
+                
+            }
+           
+        }
+        return $rs;
+        // return $rs;
     }
 }

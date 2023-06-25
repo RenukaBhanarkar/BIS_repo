@@ -160,18 +160,7 @@ function editData(id)
 }
  function viewData(id) 
 { 
-  Swal.fire({
-    title: 'Do you want to View ?',
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'View',
-    denyButtonText: `Cancel`,
-  }).then((result) => { 
-    if (result.isConfirmed) 
-    { 
-      window.location.href = "view_standards/"+id; 
-    }  
-  })
+ window.location.href = "view_standards/"+id;
 }
 </script>
  

@@ -70,16 +70,20 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
-                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" >
+                            <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
-                            <input type="hidden" id="first_fileold" name="first_fileold" value="<?= $getData['first_file']?>" >
+                            <input type="hidden" id="first_fileold" name="first_fileold" value="<?= $getData['first_file']?>"  >
                             
                             <?php if(empty($getData['first_file'])){?>
                             <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf" >
+                                    <input type="file" id="first_file" name="first_file" class="form-control-file" accept="application/pdf"  onchange="loadFileFirst(event)" >
+                                    
+                                </div>
+                                <div>
+                                    <input type="button"  value="Preview" onclick="PreviewImage1();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg"/ >
                                     
                                 </div>
                                 
@@ -100,15 +104,19 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipant</label>
-                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" >
+                            <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="second_fileold" name="second_fileold" value="<?= $getData['second_file']?>" >
                             <?php if(empty($getData['second_file'])){?>
-                            <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                            <label class="d-block">Uploads </label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf" >
+                                    <input type="file" id="second_file" name="second_file" class="form-control-file" accept="application/pdf"onchange="loadFileSecond(event)" >
+                                    
+                                </div>
+                                <div>
+                                    <input type="button"  value="Preview" onclick="PreviewImage2();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg2"/ >
                                     
                                 </div>
                                 
@@ -129,16 +137,21 @@
                     <div class="row">
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Paticipants</label>
-                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>" >
+                            <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>"oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                         </div>
                         <div class="mb-2 col-md-4">
                             <input type="hidden" id="third_fileold" name="third_fileold" value="<?= $getData['third_file']?>" >
                             <?php if(empty($getData['third_file'])){?>
-                            <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                            <label class="d-block">Uploads </label>
                             <div class="d-flex">
                                 <div>
-                                    <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" >
-                                </div>  </div>
+                                    <input type="file" id="third_file" name="third_file" class="form-control-file" accept="application/pdf" onchange="loadFileThird(event)">
+                                </div> 
+                                <div>
+                                    <input type="button"  value="Preview" onclick="PreviewImage3();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg3"/ >
+                                    
+                                </div>
+                                 </div>
                                 <?php }
                                 else {?>
                                 <label class="d-block">&nbsp;</label>
@@ -155,16 +168,20 @@
                         <div class="row">
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Name of Paticipant</label>
-                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>" >
+                                <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>"oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
                                 <input type="hidden" id="consolation_fileold" name="consolation_fileold" value="<?= $getData['consolation_file']?>" >
                                 <?php if(empty($getData['consolation_file'])){?>
-                                <label class="d-block">Uploads<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Uploads </label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf" >
+                                        <input type="file" id="consolation_file" name="consolation_file" class="form-control-file" accept="application/pdf"onchange="loadFileCon(event)" >
                                     </div>
+                                    <div>
+                                    <input type="button"  value="Preview" onclick="PreviewImage4();" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalImg4"/ >
+                                    
+                                </div>
                                     
                                 </div>
                                 <?php }
@@ -183,6 +200,63 @@
                         </div>
                     </form>
                 </div>
+ <div class="modal fade"id="exampleModalImg"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+                        <div class="modal-dialog" style="max-width:1000px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe id="viewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="modal fade"id="exampleModalImg2"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="sviewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade"id="exampleModalImg3"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="tviewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade"id="exampleModalImg4"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Upload Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="cviewer" frameborder="0" scrolling="no" width="950" height="500"></iframe>
+            </div>
+            
+        </div>
+    </div>
+</div>
                 
                 
             </div>
@@ -344,180 +418,76 @@ $("#first_file").next(".validation").remove(); // remove it
 }
 
 
-if ($("#first_file").val() != '')
-{
-console.log("hi");
-var fileSize = $('#first_file')[0].files[0].size;
-$("#first_file").next(".validation").remove();
-if (fileSize > 41943040)
-{
-if ($("#first_file").next(".validation").length == 0) // only add if not added
-{
-$("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
-}
-allfields = false;
-if (!focusSet) {
-$("#first_file").focus();
-}
-}
-else
-{
-$("#first_file").next(".validation").remove(); // remove it
-}
-var validExtensions = ['pdf','PDF']; //array of valid extensions
-var fileName = $("#first_file").val();;
-var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-$("#first_file").next(".validation").remove();
-if ($.inArray(fileNameExt, validExtensions) == -1)
-{
-if ($("#first_file").next(".validation").length == 0) // only add if not added
-{
-$("#first_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
-}
-allfields = false;
-if (!focusSet)
-{
-$("#first_file").focus();
-}
-}
-else
-{
-$("#first_file").next(".validation").remove(); // remove it
-}
-}
+ 
 }
 //second
  
 
-
-if ($("#second_file").val() != '')
-{
-var fileSize = $('#second_file')[0].files[0].size;
-$("#second_file").next(".validation").remove();
-if (fileSize > 41943040)
-{
-if ($("#second_file").next(".validation").length == 0) // only add if not added
-{
-$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
-}
-allfields = false;
-if (!focusSet) {
-$("#second_file").focus();
-}
-}
-else
-{
-$("#second_file").next(".validation").remove(); // remove it
-}
-var validExtensions = ['pdf','PDF']; //array of valid extensions
-var fileName = $("#second_file").val();;
-var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-$("#second_file").next(".validation").remove();
-if ($.inArray(fileNameExt, validExtensions) == -1)
-{
-if ($("#second_file").next(".validation").length == 0) // only add if not added
-{
-$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
-}
-allfields = false;
-if (!focusSet)
-{
-$("#second_file").focus();
-}
-}
-else
-{
-$("#second_file").next(".validation").remove(); // remove it
-}
-}
+ 
  
 //third
+
  
-if ($("#third_file").val() != '')
-{
-var fileSize = $('#third_file')[0].files[0].size;
-$("#third_file").next(".validation").remove();
-if (fileSize > 41943040)
-{
-if ($("#third_file").next(".validation").length == 0) // only add if not added
-{
-$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
-}
-allfields = false;
-if (!focusSet) {
-$("#third_file").focus();
-}
-}
-else
-{
-$("#third_file").next(".validation").remove(); // remove it
-}
-var validExtensions = ['pdf','PDF']; //array of valid extensions
-var fileName = $("#third_file").val();;
-var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-$("#third_file").next(".validation").remove();
-if ($.inArray(fileNameExt, validExtensions) == -1)
-{
-if ($("#third_file").next(".validation").length == 0) // only add if not added
-{
-$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
-}
-allfields = false;
-if (!focusSet)
-{
-$("#third_file").focus();
-}
-}
-else
-{
-$("#third_file").next(".validation").remove(); // remove it
-}
-}
+ 
 
 //consolation
  
 
 
-if ($("#consolation_file").val() != '')
-{
-var fileSize = $('#consolation_file')[0].files[0].size;
-$("#consolation_file").next(".validation").remove();
-if (fileSize > 41943040)
-{
+var consolation_paticipantname = $("#consolation_paticipant").val(); 
+var consolation_filedata='<?php echo $getData["consolation_file"]?>';  
+
+if (consolation_paticipantname!='' && consolation_filedata =='' ) {
+var consolation_file=$("#consolation_file").val();
+if (consolation_file == "" || consolation_file== null) {
 if ($("#consolation_file").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select  file of size less than 5 MB </div>");
+{ 
+$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
 }
+if (!focusSet) { $("#consolation_file").focus(); }
 allfields = false;
-if (!focusSet) {
-$("#consolation_file").focus();
-}
-}
-else
-{
-$("#consolation_file").next(".validation").remove(); // remove it
-}
-var validExtensions = ['pdf','PDF']; //array of valid extensions
-var fileName = $("#consolation_file").val();;
-var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-$("#consolation_file").next(".validation").remove();
-if ($.inArray(fileNameExt, validExtensions) == -1)
-{
-if ($("#consolation_file").next(".validation").length == 0) // only add if not added
-{
-$("#consolation_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only .PDF  file allowed. </div>");
-}
-allfields = false;
-if (!focusSet)
-{
-$("#consolation_file").focus();
-}
-}
-else
-{
+} else {
 $("#consolation_file").next(".validation").remove(); // remove it
 }
 }
+
+var third_paticipantname = $("#third_paticipant").val(); 
+var third_filedata='<?php echo $getData["third_file"]?>';  
+
+if (third_paticipantname!='' && third_filedata =='' ) {
+var third_file=$("#third_file").val();
+if (third_file == "" || third_file== null) {
+if ($("#third_file").next(".validation").length == 0) // only add if not added
+{ 
+$("#third_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#third_file").focus(); }
+allfields = false;
+} else {
+$("#third_file").next(".validation").remove(); // remove it
+}
+}
+
+var second_paticipantname = $("#second_paticipant").val(); 
+var second_filedata='<?php echo $getData["second_file"]?>';  
+
+if (second_paticipantname!='' && second_filedata =='' ) {
+var second_file=$("#second_file").val();
+if (second_file == "" || second_file== null) {
+if ($("#second_file").next(".validation").length == 0) // only add if not added
+{ 
+$("#second_file").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+}
+if (!focusSet) { $("#second_file").focus(); }
+allfields = false;
+} else {
+$("#second_file").next(".validation").remove(); // remove it
+}
+}
+
+
+
+ 
 
 if (allfields) {
 Swal.fire({
@@ -606,3 +576,122 @@ if (allfields) {
  }
 
   </script>
+
+
+<script type="text/javascript">
+     var loadFileFirst = function(event) { 
+        var fileSize = $('#first_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#first_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#first_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#first_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#first_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+         
+    };
+</script>
+
+<script type="text/javascript">
+     var loadFileSecond = function(event) { 
+        var fileSize = $('#second_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#second_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#second_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#second_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#second_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+         
+    };
+</script>
+
+<script type="text/javascript">
+     var loadFileThird = function(event) { 
+        var fileSize = $('#third_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#third_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#third_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#third_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#third_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        
+    };
+</script>
+
+<script type="text/javascript">
+     var loadFileCon = function(event) { 
+        var fileSize = $('#consolation_file')[0].files[0].size;
+       var validExtensions = ['PDF', 'pdf']; //array of valid extensions
+        var fileName = $("#consolation_file").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1); 
+        if(fileSize < 1){
+            $('#consolation_file').val('');            
+            Swal.fire('Max file size up to 5MB')
+        }else if(fileSize >5066573){
+            $('#consolation_file').val('');          
+            Swal.fire('Max file size up to 5MB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#consolation_file').val('');           
+            Swal.fire('Only PDF allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+         
+    };
+</script>
+<script>
+    function PreviewImage1() {
+pdffile=document.getElementById("first_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#viewer').attr('src',pdffile_url);
+}
+function PreviewImage2() {
+pdffile=document.getElementById("second_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#sviewer').attr('src',pdffile_url);
+}
+function PreviewImage3() {
+pdffile=document.getElementById("third_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#tviewer').attr('src',pdffile_url);
+}
+function PreviewImage4() {
+pdffile=document.getElementById("consolation_file").files[0];
+pdffile_url=URL.createObjectURL(pdffile);
+$('#cviewer').attr('src',pdffile_url);
+}
+</script>
