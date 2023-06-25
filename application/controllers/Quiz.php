@@ -6,6 +6,11 @@ class Quiz extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // if(empty($this->session->userdata("sess_arr")))
+        // {
+        //     // redirect(site_url(),'refresh');
+        //     redirect(base_url() . "Users/logout", 'refresh');
+        // }
         $this->load->model('Admin/Admin_model');
         $this->load->model('Quiz/Quiz_model');
         $this->load->model('Subadmin/Que_bank_model');

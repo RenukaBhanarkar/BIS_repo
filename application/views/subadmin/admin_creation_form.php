@@ -168,8 +168,7 @@
                             var uid = $('#uid').val();
                             var email_verify = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
                             if (!uid.match(email_verify)) {
-                                uidtype = 2;
-                              
+                                uidtype = 2;                              
                             }else{
                                 uidtype = 1;
                              

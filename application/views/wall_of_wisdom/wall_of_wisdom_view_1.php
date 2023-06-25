@@ -164,15 +164,17 @@
                                             </ul>
                                 </div> -->
                                 <select class="new_select" aria-label="Default select example">
-                                        <option value="1">Last 7 days</option>
-                                        <option value="2">Last Week</option>
-                                        <option value="3">Last Month</option>
+                                        <!-- <option value="1">Last 7 days</option> -->
+                                        <option value="1">Last Week</option>
+                                        <option value="2">Last Month</option>
                                         <option value="3">Last Year</option>
                                 </select>
                                 <div class="input-group search_icon" style="top: -2px;">
-                                        <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
+                                        <!-- <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input"> -->
+                                        <input class="form-control border-end-0 border rounded-pill" type="text" value="search" id="search-text">
+
                                         <span class="input-group-append">
-                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button" >
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>

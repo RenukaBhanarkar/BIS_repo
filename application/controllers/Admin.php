@@ -7,6 +7,11 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if(empty($this->session->userdata("sess_arr")))
+        {
+            // redirect(site_url(),'refresh');
+            redirect(base_url() . "Users/logout", 'refresh');
+        }
         $this->load->model('Admin/Admin_model');
         $this->load->model('subadmin/Que_bank_model');
         $this->load->model('subadmin/Questions_model');
@@ -133,6 +138,13 @@ class Admin extends CI_Controller
         $sub_mod_39 = array();
         $sub_mod_40 = array();
 
+        $sub_mod_41 = array();
+        $sub_mod_42 = array();
+        $sub_mod_43 = array();
+        $sub_mod_44 = array();
+
+
+
         $main_mod_4 = array();
         $main_mod_5 = array();
         $main_mod_7 = array();
@@ -196,6 +208,12 @@ class Admin extends CI_Controller
             $sub_mod_40 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 40);
 
 
+            $sub_mod_41 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 41);
+            $sub_mod_42 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 42);
+            $sub_mod_43 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 43);
+            $sub_mod_44 = $this->Admin_model->getUsersPermissionsByUserid($user_id, 44);
+
+
 
             $main_mod_4  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 4);
             $main_mod_5  =  $this->Admin_model->permissionsByUseridMainModule($user_id, 5);
@@ -251,6 +269,11 @@ class Admin extends CI_Controller
         $data['sub_mod_38'] = $sub_mod_38;
         $data['sub_mod_39'] = $sub_mod_39;
         $data['sub_mod_40'] = $sub_mod_40;
+        
+        $data['sub_mod_41'] = $sub_mod_41;
+        $data['sub_mod_42'] = $sub_mod_42;
+        $data['sub_mod_43'] = $sub_mod_43;
+        $data['sub_mod_44'] = $sub_mod_44;
 
 
         $data['main_mod_4'] = $main_mod_4;
@@ -331,6 +354,21 @@ class Admin extends CI_Controller
         $feedback = $this->input->post('feedback');
         $latestNews = $this->input->post('latestNews');
         $UpcomingEvents = $this->input->post('UpcomingEvents');
+
+
+        $ConsumerandBIS = $this->input->post('ConsumerandBIS');
+        $StandardPromotion = $this->input->post('StandardPromotion');
+        $AboutStandardClub = $this->input->post('AboutStandardClub');
+        $LearningScience = $this->input->post('LearningScience');
+
+        
+
+
+
+
+
+
+
         //  9 - Winners Wall
         $winnersWall = $this->input->post('winnersWall');
         // 10 - Share your thoughts 29-34
@@ -633,6 +671,43 @@ class Admin extends CI_Controller
                         $id = $this->insertPerData($user_id, $mainM, $subM, $UpcomingEvents);
                     }
                 }
+               
+              
+                if (in_array(8, $mainModule)) {
+                    if (in_array(41, $subModule)) {
+                        $ConsumerandBIS = implode(',', $ConsumerandBIS);
+                        $mainM = 8;
+                        $subM = 41;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $ConsumerandBIS);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(42, $subModule)) {
+                        $StandardPromotion = implode(',', $StandardPromotion);
+                        $mainM = 8;
+                        $subM = 42;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $StandardPromotion);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(43, $subModule)) {
+                        $AboutStandardClub = implode(',', $AboutStandardClub);
+                        $mainM = 8;
+                        $subM = 43;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $AboutStandardClub);
+                    }
+                }
+                if (in_array(8, $mainModule)) {
+                    if (in_array(44, $subModule)) {
+                        $LearningScience = implode(',', $LearningScience);
+                        $mainM = 8;
+                        $subM = 44;
+                        $id = $this->insertPerData($user_id, $mainM, $subM, $LearningScience);
+                    }
+                }
+
+
+
             }
             /******************  
              * 9 - Winners Wall
@@ -1484,7 +1559,7 @@ class Admin extends CI_Controller
         // echo json_encode($response);exit();
         if (empty($responseNew)) {
             $data['status'] = 0;
-            $data['message'] = 'Failed to get details , Please enter valid USER ID.';
+            $data['message'] = 'Failed to get details , Please enter valid USER ID /email.';
         } else {
             $data['status'] = 1;
             $data['message'] = 'Details Available.';

@@ -957,11 +957,11 @@
                                     contentType: false,
                                     success: function(res) {
                                         if (res.status == 0) {
-                                            // alert(res.message);
+                                           
                                             Swal.fire(res.message);
 
                                         } else {
-                                            // alert(res.message);
+                                          
                                             Swal.fire(res.message);
                                             var form = document.getElementById("que_bank_form");
                                             var elements = form.elements;
@@ -1221,8 +1221,7 @@
                             var fileSize = $('#que_image')[0].files[0].size;
 
                             if ( fileSize > 200000) {
-                                // alert(fileSize);
-                                // alert('img size is greater than 204800 ');
+                              
                                 if ($("#imgError").next(".validation").length == 0) {
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please select file size less than 200 KB </div>");
                                 }
@@ -1240,9 +1239,10 @@
                             var fileName = $("#que_image").val();;
                             var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                             if ($.inArray(fileNameExt, validExtensions) == -1) {
-                                //alert("Invalid file type");
+                                
                                 if ($("#imgError").next(".validation").length == 0) {
                                     $("#imgError").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please upload .jpg / .jpeg/.png image </div>");
+                                   
                                 }
                                 allFields = false;
                                 imgVal = false;
@@ -1275,7 +1275,7 @@
                         if (que_type == 1 || que_type == 3) {
                            // var que = $("#que").val();
                            var que = CKEDITOR.instances['que'].getData();
-                           // alert(que);
+                         
                             if (que == "") {
                                 if ($("#que").next(".validation").length == 0) {
                                     $("#que").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
@@ -1624,10 +1624,10 @@
                             // enctype :'multipart/form-data',
                             success: function(res) {
                                 if (res.status == 0) {
-                                    // alert(res.message);
+                                  
                                     Swal.fire(res.message);
                                 } else {
-                                    // alert(res.message);
+                                 
                                     Swal.fire(res.message);
                                     $('#que').val('');
                                     $('#que_h').val('');
@@ -1737,11 +1737,13 @@
                         var fileName = $("#option" + id + "_image").val();;
                         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                         if ($.inArray(fileNameExt, validExtensions) == -1) {
-                            alert("Invalid file type");
+                          
+                            Swal.fire("Invalid file type");
                             i++;
 
                             if ($("#imgErrorNew" + id).next(".validation").length == 0) {
                                 $("#imgErrorNew" + id).after("<div class='validation' style='color:red;margin-bottom:15px;'>Please upload .jpg / .jpeg/.png image for English option " + id + " </div>");
+                                Swal.fire("Please upload .jpg / .jpeg/.png image for English option " + id );
                             }
                         } else {
                             $("#imgErrorNew" + id).next(".validation").remove();
@@ -1791,11 +1793,13 @@
                         var fileName = $("#option" + id + "_h_image").val();;
                         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
                         if ($.inArray(fileNameExt, validExtensions) == -1) {
-                            alert("Invalid file type");
+                           
+                            Swal.fire("Invalid file type");
                             i++;
 
                             if ($("#imgErrorNewHindi" + id).next(".validation").length == 0) {
                                 $("#imgErrorNewHindi" + id).after("<div class='validation' style='color:red;margin-bottom:15px;'>Please upload .jpg / .jpeg/.png image for Hindi option " + id + " </div>");
+                                Swal.fire("Please upload .jpg / .jpeg/.png image for Hindi option " + id );
                             }
                         } else {
                             $("#imgErrorNewHindi" + id).next(".validation").remove();
@@ -2043,7 +2047,8 @@
                                 Swal.fire('Questiion Deleted');
                             },
                             error: function(result) {
-                                alert("Error,Please try again.");
+                               
+                                Swal.fire('Error,Please try again.');
                             }
                         });
                         // Swal.fire('Saved!', '', 'success')                                
