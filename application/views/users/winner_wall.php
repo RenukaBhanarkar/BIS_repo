@@ -176,16 +176,14 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
 
         </a>
       </li>
-
+      <div class="" style="text-align:end;">
+                <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2"><a href="<?php echo base_url(); ?>users/standard">Back</a></button>
+            </div>
     </ul>
-    <div class="tab-content">
-      <div class="tab-pane fade active show" id="tab1" role="tabpanel">
-        <div class="" >
-         
-        </div>
-        </div>
-      </div>
+    
     </div>
+    
   </section>
  
           
