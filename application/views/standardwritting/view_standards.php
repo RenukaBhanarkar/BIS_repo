@@ -184,14 +184,14 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Reject Quiz</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body"> 
                             <textarea class="form-control input-font" placeholder="Enter Reason" name="remark" id="remark"></textarea>
                                                         
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary" onclick="updateStatus2()" id="rejectBtn">Reject</button>
                             </div>
                         </div>
@@ -220,14 +220,11 @@
     {  
         $("#submit").hide();
         $("#remarkdiv").hide();
-        $("#remark").val("NA");
+        $("#remark").val(" ");
     });
     function rejectFun()
-     {
-        $("#submit").show();
-        $("#remarkdiv").show();
-        $("#approve").hide();
-        $("#reject").hide();
+     { 
+        $("#remarkdiv").show(); 
         $("#status_id").val(4);
         $("#remark").val('');
 
@@ -242,10 +239,10 @@
     if (status==1) { statusdata='Submit'; }
     if (status==9) { statusdata='Archive'; }
     Swal.fire({
-      title: 'Do you want to Submit?',
+      title: 'Do you want to approve ?',
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'Submit',
+      confirmButtonText: 'approve ',
       denyButtonText: `Cancel`,
     }).then((result) => 
     { 

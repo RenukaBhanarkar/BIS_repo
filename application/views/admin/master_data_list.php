@@ -180,6 +180,7 @@ if(isvalid){
 
           postdata = {
                         'role': role,
+                        'admin_type':<?php $abc =count($roles); $count = $abc+1; echo $count; ?>
                         // 'comp_id': comp_id,
                         // 'evaluator': id,
                         // 'submission_id':submission_id
@@ -194,7 +195,7 @@ if(isvalid){
 
                             if (response) {
                                 Swal.fire('Success');
-                                location.reload();
+                                // location.reload();
                             }
                         }
                     });

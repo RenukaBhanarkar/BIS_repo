@@ -1912,6 +1912,7 @@ class Admin extends CI_Controller
             $data['message'] = $this->upload->display_errors();
         }
         $formdata['caption'] = $this->input->post('banner_caption');
+        $formdata['url'] = $this->input->post('banner_url');
         $formdata['banner_images'] = $banner_img;
 
         $this->Admin_model->bannerinsertData($formdata);
@@ -2035,6 +2036,7 @@ class Admin extends CI_Controller
         $formdata['id'] = $this->input->post('id');
         //$formdata['title'] = $this->input->post('title');
         $formdata['caption'] = $this->input->post('banner_caption');
+        $formdata['url'] = $this->input->post('banner_url');
         //  $formdata['image'] = $this->input->post('old_doc');   
 
         if (!file_exists('uploads/cms/banner')) {
@@ -3727,8 +3729,8 @@ class Admin extends CI_Controller
     }
     public function addRole(){
         $data['role'] = $this->input->post('role');
-        $data['assign_role']= '0';
-        $data['admin_type']= '9';
+        $data['assign_role']= '1';
+        $data['admin_type']= $this->input->post('admin_type');
         // print_r($data); die;
        $res = $this->Admin_model->addMasterRoles($data);
        if($res){

@@ -666,7 +666,7 @@ function cancel()
     }  
   })
 }
-</script>
+</script> 
 
 
 <script type="text/javascript">

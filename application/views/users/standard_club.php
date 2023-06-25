@@ -207,7 +207,9 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
             <div class="carousel-item <?php if ($list == 0) {
               echo "active";
               } ?>">
+              <a href="https://<?php echo $key['url']; ?>" target="_blank">
               <img src="<?= base_url() . 'uploads/cms/banner/' . $key['banner_images']; ?>" class="background-banner-image">
+              </a>
             </div>
             <?php } ?>
           </div>
