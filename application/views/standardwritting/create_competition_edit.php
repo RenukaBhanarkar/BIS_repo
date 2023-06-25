@@ -81,6 +81,7 @@
                                 <label class="d-block text-font">Start Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="start_date" id="start_date" value="<?php echo $competition['start_date']; ?>" required="">
                                 <span class="error_text"><?php echo form_error('start_date'); ?></span>
+                                <div class="invalid-feedback">  This value is required    </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Start Time<sup class="text-danger">*</sup></label>
@@ -94,6 +95,7 @@
                                 <label class="d-block text-font">End Date<sup class="text-danger">*</sup></label>
                                 <input type="date" class="form-control input-font" name="end_date" id="end_date" value="<?php echo $competition['end_date']; ?>" required="">
                                 <span class="error_text"><?php echo form_error('end_date'); ?></span>
+                                <div class="invalid-feedback">  This value is required    </div>
                         </div>
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font"> End Time<sup class="text-danger">*</sup></label>
@@ -974,6 +976,7 @@
 
         var fprize =$('#fprize').val();
         var score =$('#score').val();
+        var quiz_level_id=$('#quiz_level_id').val();
 
         var isValid=true;
 
@@ -1024,6 +1027,73 @@
 
         }
 
+
+        $('#sicon_file').attr('required',false);
+        $('#ticon_file').attr('required',false);
+        $('#cicon_file').attr('required',false);
+        var sprize = $('#sprize').val();
+        if(sprize=="" || sprize==0){
+            $('#sdetail').attr('required',false);
+            
+        }else{
+            var sdet = $('#sdetail').val();
+            if(sdet==""){
+                isValid =false;
+            }
+           
+        }
+
+        var tprize = $('#tprize').val();
+        if(tprize=="" || tprize==0){
+            $('#tdetail').attr('required',false);
+            
+        }else{
+            $('#tdetail').attr('required',true);
+            var tdet = $('#tdetail').val();
+            if(tdet==""){
+                isValid =false;
+            }
+            // isvalid =false;
+        }
+
+        var cprize = $('#cprize').val();
+        
+        if(cprize=="" || cprize==0){
+            $('#cdetail').attr('required',false);
+           
+        }else{
+            // isvalid =false;
+            $('#cdetail').attr('required',true);
+            var cdet = $('#cdetail').val();
+            if(cdet==""){
+                isValid =false;
+            }
+        }
+
+
+        if(quiz_level_id=="" || quiz_level_id==null){
+            isValid =false;
+       }else{
+        
+       }
+       if(quiz_level_id=="2"){        
+        var region = $('#region_id').val(); 
+        // alert(region);  
+        if(region=="" || region==null || region=="null"){          
+            isValid =false;
+        }
+       }else if(quiz_level_id=="3"){
+        var branch = $('#branch_id').val();  
+        if(branch=="" || branch==null){          
+            isValid =false;
+        }
+       }else if(quiz_level_id=="4"){
+        var state = $('#state_id').val();  
+        if(state=="" || state==null){          
+            isValid =false;
+        }
+       }
+
         if(isValid){            
             // return true;
             Swal.fire({
@@ -1056,6 +1126,7 @@
                 $("#branch_id_blk").hide();
                 $("#state_id_blk").hide();
                 $("#region_title").text("Regional Level");
+                $('#region_id').attr('required',true);
                 var postdata = "id=2";  
 
 
@@ -1082,6 +1153,7 @@
                 $("#branch_id_blk").show();
                 $("#state_id_blk").hide();
                 $("#branch_title").text("Branch Level");
+                $('#branch_id').attr('required',true);
                 var postdata = "id=3";  
 
 
@@ -1106,6 +1178,7 @@
                 $("#branch_id_blk").hide();
                 $("#state_id_blk").show();
                 $("#state_title").text("State Level");
+                $('#state_id').attr('required',true);
                 var postdata = "id=3";  
 
 
@@ -1136,6 +1209,12 @@ if(id==2){
 }
 if(id==1){
     $('#standard_check').show();
+    checked = $("input[type=checkbox]:checked").length;
+
+        if(!checked) {
+            // Swal.fire("You must check at least one checkbox of standard.");
+            return false;
+        }
 }
 });
 var available =$('#Available').val();
@@ -1162,4 +1241,22 @@ $('.cancel').on('click',function(){
                     }
                     })
 })
+$('#sprize').keyup(function(){
+        var count = $(this).val();       
+        if(count >= 1){
+            $('#sdetail').attr('required',true);           
+        }
+    })
+    $('#tprize').keyup(function(){
+        var count1 = $(this).val();       
+        if(count1 >= 1){
+            $('#tdetail').attr('required',true);           
+        }
+    })
+    $('#cprize').keyup(function(){
+        var count2 = $(this).val();       
+        if(count2 >= 1){
+            $('#cdetail').attr('required',true);           
+        }
+    })
 </script>

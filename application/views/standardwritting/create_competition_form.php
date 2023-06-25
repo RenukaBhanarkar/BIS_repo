@@ -840,7 +840,7 @@ input[type=number]::-webkit-outer-spin-button {
             $('#err_school').text('Please Select atleast one checkbox');
             isvalid =false;
         }else{
-
+            $('#err_school').text('');
         }
        }else{
 

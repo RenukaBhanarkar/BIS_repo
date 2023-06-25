@@ -3932,23 +3932,32 @@ if ($availability==1)
         ]); 
     }
     public function consumer_bis(){
+        $this->load->model('Admin/Cms_model');
+        $data['consumer_bis']=$this->Cms_model->aboutConsumerBisData();
+        // print_r($data); die;
         $this->load->view('users/headers/header');
-        $this->load->view('users/consumer_bis');
+        $this->load->view('users/consumer_bis',$data);
         $this->load->view('users/footers/footer');
       }
       public function standard_promotion(){
+        $this->load->model('Admin/Cms_model');
+        $data['standard_promotion']=$this->Cms_model->getData('2');
         $this->load->view('users/headers/header');
-        $this->load->view('users/standard_promotion');
+        $this->load->view('users/standard_promotion',$data);
         $this->load->view('users/footers/footer');
       }
       public function about_standards_club(){
+        $this->load->model('Admin/Cms_model');
+        $data['about_standards_club']=$this->Cms_model->getData('3');
         $this->load->view('users/headers/header');
-        $this->load->view('users/about_standards_club');
+        $this->load->view('users/about_standards_club',$data);
         $this->load->view('users/footers/footer');
       }
       public function Learning_via_standards(){
+        $this->load->model('Admin/Cms_model');
+        $data['Learning_via_standards']=$this->Cms_model->getData('4');
         $this->load->view('users/headers/header');
-        $this->load->view('users/Learning_via_standards');
+        $this->load->view('users/Learning_via_standards',$data);
         $this->load->view('users/footers/footer');
       }
  
