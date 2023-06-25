@@ -14,7 +14,7 @@
                 <!-- <li class="breadcrumb-item active" aria-current="page">Create New Competition</li> -->
                 
                 </ol>
-            </nav>
+            </nav> 
         </div>
  <form name="create_online_edit" id="create_online_edit" action="<?php echo base_url() . 'standardswritting/create_online_edit/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data">
 
@@ -74,12 +74,12 @@
                                 <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="banner_img" name="banner_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
+                                        <input type="file" id="banner_img" name="banner_img" class="form-control-file" onchange="loadFileBanner(event)" accept="image/png, image/jpeg,image/jpg">
                                         <span class="error_text"></span>
                                     </div>
 
                                     <div>
-                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg"> Preview
+                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_1"> Preview
                                     </button>
                                     </div>
                                     
@@ -260,22 +260,22 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['fprize_img'])) {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image</label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
+                                        <input type="file" id="fprize_img" name="fprize_img" class="form-control-file" onchange="loadFileFirst(event)" accept="image/png, image/jpeg,image/jpg">
                                         <span class="error_text"></span>
                                     </div>
 
                                     <div>
-                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimgfimage"> Preview
+                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_2"> Preview
                                     </button>
                                     </div>
                                     
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">View Image</label>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastfimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',2);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
@@ -330,22 +330,22 @@
                             </div>
                                 <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['sprize_img'])) {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image</label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="sprize_img" name="sprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
+                                        <input type="file" id="sprize_img" name="sprize_img" class="form-control-file" onchange="loadFileSecond(event)" accept="image/png, image/jpeg,image/jpg">
                                         <span class="error_text"></span>
                                     </div>
 
                                     <div>
-                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimgsimage"> Preview
+                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_3"> Preview
                                     </button>
                                     </div>
                                     
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">View Image</label>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastsimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',3);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
@@ -403,22 +403,22 @@
  
                             <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['tprize_img'])) {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image</label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="tprize_img" name="tprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
+                                        <input type="file" id="tprize_img" name="tprize_img" class="form-control-file" onchange="loadFileThird(event)" accept="image/png, image/jpeg,image/jpg">
                                         <span class="error_text"></span>
                                     </div>
 
                                     <div>
-                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimgtimage"> Preview
+                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_4"> Preview
                                     </button>
                                     </div>
                                     
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">View Image</label>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLasttimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',4);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
@@ -475,22 +475,22 @@
 
                              <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['cprize_img'])) {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">Upload Image</label>
                                 <div class="d-flex">
                                     <div>
-                                        <input type="file" id="cprize_img" name="cprize_img" class="form-control-file" onchange="loadFileThumbnail(event)" accept="image/png, image/jpeg,image/jpg">
+                                        <input type="file" id="cprize_img" name="cprize_img" class="form-control-file" onchange="loadFileConsol(event)" accept="image/png, image/jpeg,image/jpg">
                                         <span class="error_text"></span>
                                     </div>
 
                                     <div>
-                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimgcimage"> Preview
+                                       <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_5"> Preview
                                     </button>
                                     </div>
                                     
                                     
                                 </div>
                                 <?php } else {?>
-                                <label class="d-block">Upload Image<sup class="text-danger">*</sup></label>
+                                <label class="d-block">View Image</label>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ViewLastcimage"> Preview
                                 </button>&nbsp;
                                 <a onclick="deleteOnlineFile(' <?= $getData['id']?> ',5);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
@@ -544,6 +544,72 @@
             
         </div>
         </form>
+
+        <div class="modal fade"id="modal_1"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+    <div class="modal-dialog" style="max-width:1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelImg">Thumbnail Preview</h5>
+                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+            </div>
+           <div class="modal-body">
+            <img id="outputbanner"width="100%"/>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" id="modal_2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+            <img id="outputFirst"width="100%"/>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal_3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <img id="outputSecond"width="100%"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal_4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <img id="outputThird"width="100%"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modal_5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload Preview</h5>
+        <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+       <img id="outputConsol"width="100%"/>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
     <!-- /.container-fluid -->
 
@@ -1411,22 +1477,7 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
             }
         }
 
-        var fprizeimg= "<?= $getData['fprize_img']?>";
-
-        if (fprizeimg=='') {
-
-        var fprize_img = $("#fprize_img").val();
-        if (fprize_img == "" || fprize_img== null) {
-            if ($("#fprize_img").next(".validation").length == 0) 
-            {
-                $("#fprize_img").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please Select First Prize Image Icon </div>");
-            }
-            if (!focusSet) { $("#fprize_img").focus(); }
-            allfields = false;
-        } else {
-            $("#fprize_img").next(".validation").remove(); 
-        }
-        }
+        
 
         if (allfields) { 
             Swal.fire({
@@ -1462,4 +1513,188 @@ if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.k
                     }
                     })
     })
+ </script>
+
+ <script type="text/javascript">
+var loadFileBanner = function(event) {
+        $("#outputbanner").show();
+        var fileSize = $('#banner_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
+        var fileName = $("#banner_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20000){
+            $('#banner_img').val('');
+            // $('#lessSize').modal('show');
+           // $('#err_icon_file').text('This value is required');
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#banner_img').val('');
+            // $('#greaterSize').modal('show');
+            Swal.fire('File size should be between 20KB to 200KB')
+            $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#banner_img').val('');
+            // $('#invalidfiletype').modal('show');
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputbanner = document.getElementById('outputbanner');
+        outputbanner.src = URL.createObjectURL(event.target.files[0]);
+        outputbanner.onload = function() {
+            URL.revokeObjectURL(outputbanner.src);
+        }
+    };
+ 
+    function resetbanner() {
+        $("#banner_img").val('');
+        $("#outputbanner").hide();
+    }
+    //end 
+
+    //First Prize Image Preview
+    var loadFileFirst = function(event) {
+        $("#outputFirst").show();
+        var fileSize = $('#fprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
+        var fileName = $("#fprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#fprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#fprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#fprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputFirst = document.getElementById('outputFirst');
+        outputFirst.src = URL.createObjectURL(event.target.files[0]);
+        outputFirst.onload = function() {
+            URL.revokeObjectURL(outputFirst.src);
+        }
+    };
+
+    function resetFirst() {
+        $("#fprize_img").val('');
+        $("#outputFirst").hide();
+    }
+    //end
+
+    //Second Prize Image Preview
+    var loadFileSecond = function(event) {
+        $("#outputSecond").show();
+        var fileSize = $('#sprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
+        var fileName = $("#sprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#sprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#sprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#sprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputSecond = document.getElementById('outputSecond');
+        outputSecond.src = URL.createObjectURL(event.target.files[0]);
+        outputSecond.onload = function() {
+            URL.revokeObjectURL(outputSecond.src);
+        }
+    };
+
+    function resetSecond() {
+        $("#sprize_img").val('');
+        $("#outputSecond").hide();
+    }
+    //end
+
+    //third Prize Image Preview
+    var loadFileThird = function(event) {
+        $("#outputThird").show();
+        var fileSize = $('#tprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
+        var fileName = $("#tprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#tprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#tprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#tprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputThird = document.getElementById('outputThird');
+        outputThird.src = URL.createObjectURL(event.target.files[0]);
+        outputThird.onload = function() {
+            URL.revokeObjectURL(outputThird.src);
+        }
+    };
+
+    function resetThird() {
+        $("#tprize_img").val('');
+        $("#outputThird").hide();
+    }
+
+
+    //Consolation Prize Image Preview
+    var loadFileConsol = function(event) {
+        $("#outputConsol").show();
+        var fileSize = $('#cprize_img')[0].files[0].size;
+       var validExtensions = ['jpg', 'jpeg', 'png','JPG', 'JPEG', 'PNG']; //array of valid extensions
+        var fileName = $("#cprize_img").val();;
+        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+                   
+            console.log(fileSize);
+        if(fileSize < 20480){
+            $('#cprize_img').val('');            
+            Swal.fire('File size should be between 20KB to 200KB')
+        }else if(fileSize > 204800){
+            $('#cprize_img').val('');          
+            Swal.fire('File size should be between 20KB to 200KB')
+         //   $('#err_icon_file').text('This value is required');
+        }else if($.inArray(fileNameExt, validExtensions) == -1){
+            $('#cprize_img').val('');           
+            Swal.fire('Only jpg,jpeg,png allowed')
+            $('#err_icon_file').text('This value is required');
+        }else{
+            $('#err_icon_file').text('');
+        }
+        var outputConsol = document.getElementById('outputConsol');
+        outputConsol.src = URL.createObjectURL(event.target.files[0]);
+        outputConsol.onload = function() {
+            URL.revokeObjectURL(outputConsol.src);
+        }
+    };
+
+    function resetConsol() {
+        $("#cprize_img").val('');
+        $("#outputConsol").hide();
+    }
  </script>
