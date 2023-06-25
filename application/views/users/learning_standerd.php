@@ -229,6 +229,10 @@ section.background_coming {
                     </div>
                     <a href="learning_standerd_sessions_view_all" class="view-btn" title="View All">View All</a>
                 </div>
+                <div class="" style="text-align:end;">
+                <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right; margin-bottom: 10px;"><a href="<?php echo base_url(); ?>users/standard">Back</a></button>
+            </div>
             </div>
         </div>    
     </div>

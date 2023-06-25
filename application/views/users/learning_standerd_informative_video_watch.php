@@ -157,7 +157,10 @@ img.news_img {
                 
             </div>
 
-
+            <div class="" style="text-align:end;">
+                <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2"><a href="<?php echo base_url(); ?>users/learning_standerd_informative_video_all">Back</a></button>
+            </div>
               
     </div>      
 </section>   

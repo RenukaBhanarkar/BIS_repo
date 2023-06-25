@@ -155,7 +155,10 @@
             </div> 
             <?php } ?>     
             
-            
+            <div class="" style="text-align:end;">
+                <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;"><a href="<?php echo base_url(); ?>users/standard">Back</a></button>
+            </div>
         
     </section>
     <script

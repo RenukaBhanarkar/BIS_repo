@@ -1149,6 +1149,216 @@
                                     </div>
                                 </td>
                             </tr>
+
+                             <!-- *************  41 Consumer and BIS START ***************** -->
+                             <tr>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="41" name="subModule[]" class="custom-control-input 7_mainModuleChk" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="10_subModuleChk" onclick="checkSubmodules(this);" <?php if (in_array(41,$sub_mod_per)) {echo "checked";}?>>
+        <label class="custom-control-label" for="10_subModuleChk">Consumer and BIS</label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="1" name="ConsumerandBIS[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2741_viewChk" onclick="checkAccess(this);" <?php if (in_array(1,$sub_mod_41)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2741_viewChk"></label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="2" name="ConsumerandBIS[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2841_addChk" onclick="checkAccess(this);"  <?php if (in_array(2,$sub_mod_41)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2841_addChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="3" name="ConsumerandBIS[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2941_updateChk" onclick="checkAccess(this);"  <?php if (in_array(3,$sub_mod_41)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2941_updateChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="4" name="ConsumerandBIS[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="3041_deleteChk" onclick="checkAccess(this);"  <?php if (in_array(4,$sub_mod_41)) {echo "checked";}?>>
+        <label class="custom-control-label" for="3041_deleteChk"></label>
+    </div>
+</td>
+</tr>
+
+  <!-- *************  42 Standard Promotion START ***************** -->
+  <tr>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="42" name="subModule[]" class="custom-control-input 7_mainModuleChk" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="10_subModuleChk" onclick="checkSubmodules(this);" <?php if (in_array(42,$sub_mod_per)) {echo "checked";}?>>
+        <label class="custom-control-label" for="10_subModuleChk">Standard Promotion</label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="1" name="StandardPromotion[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2742_viewChk" onclick="checkAccess(this);" <?php if (in_array(1,$sub_mod_42)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2742_viewChk"></label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="2" name="StandardPromotion[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2842_addChk" onclick="checkAccess(this);"  <?php if (in_array(2,$sub_mod_42)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2842_addChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="3" name="StandardPromotion[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2942_updateChk" onclick="checkAccess(this);"  <?php if (in_array(3,$sub_mod_42)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2942_updateChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="4" name="StandardPromotion[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="3042_deleteChk" onclick="checkAccess(this);"  <?php if (in_array(4,$sub_mod_42)) {echo "checked";}?>>
+        <label class="custom-control-label" for="3042_deleteChk"></label>
+    </div>
+</td>
+</tr>
+
+ <!-- *************  43 About Standard Club START ***************** -->
+ <tr>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="43" name="subModule[]" class="custom-control-input 7_mainModuleChk" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="10_subModuleChk" onclick="checkSubmodules(this);" <?php if (in_array(43,$sub_mod_per)) {echo "checked";}?>>
+        <label class="custom-control-label" for="10_subModuleChk">About Standard Club</label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="1" name="AboutStandardClub[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2743_viewChk" onclick="checkAccess(this);" <?php if (in_array(1,$sub_mod_43)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2743_viewChk"></label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="2" name="AboutStandardClub[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2843_addChk" onclick="checkAccess(this);"  <?php if (in_array(2,$sub_mod_43)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2843_addChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="3" name="AboutStandardClub[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2943_updateChk" onclick="checkAccess(this);"  <?php if (in_array(3,$sub_mod_43)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2943_updateChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="4" name="AboutStandardClub[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="3043_deleteChk" onclick="checkAccess(this);"  <?php if (in_array(4,$sub_mod_43)) {echo "checked";}?>>
+        <label class="custom-control-label" for="3042_deleteChk"></label>
+    </div>
+</td>
+</tr>
+
+ <!-- *************  44 Learning Science via Standards START ***************** -->
+ <tr>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="44" name="subModule[]" class="custom-control-input 7_mainModuleChk" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="10_subModuleChk" onclick="checkSubmodules(this);" <?php if (in_array(44,$sub_mod_per)) {echo "checked";}?>>
+        <label class="custom-control-label" for="10_subModuleChk">Learning Science via Standards</label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="1" name="LearningScience[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2744_viewChk" onclick="checkAccess(this);" <?php if (in_array(1,$sub_mod_44)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2744_viewChk"></label>
+    </div>
+</td>
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="2" name="LearningScience[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2844_addChk" onclick="checkAccess(this);"  <?php if (in_array(2,$sub_mod_44)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2844_addChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="3" name="LearningScience[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="2944_updateChk" onclick="checkAccess(this);"  <?php if (in_array(3,$sub_mod_44)) {echo "checked";}?>>
+        <label class="custom-control-label" for="2944_updateChk"></label>
+    </div>
+</td>
+
+
+
+<td>
+    <div class="custom-control custom-checkbox mr-3">
+        <input type="checkbox" value="4" name="LearningScience[]" class="custom-control-input 7_mainModuleChk 10_subModuleChk accessSelected" data-moduleid="7_mainModuleChk" data-submoduleid="10_subModuleChk" id="3044_deleteChk" onclick="checkAccess(this);"  <?php if (in_array(4,$sub_mod_44)) {echo "checked";}?>>
+        <label class="custom-control-label" for="3042_deleteChk"></label>
+    </div>
+</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <!-- /*
                                     9 - Winners Wall
                             */-->

@@ -146,8 +146,8 @@ if(isset($_SESSION['change_password'])){
                <div class="live_data">
                         <!-- <h6>Live Data</h6> -->
                         <div class="row table_data ">
-                            
-                            <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
+                        <div class="col-6">    
+                            <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%;">
                             <div style="background:#00000099;">
                                 <a href="<?=base_url();?>users/standard">
                                 <div class="LiveDataBox" style="height: 215px; overflow: hidden;" >
@@ -158,7 +158,10 @@ if(isset($_SESSION['change_password'])){
                                 </a>
                                 </div>
                             </div>
-                            <div class="innerBox" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round;">
+                            </div>
+                            <div class="col-6">    
+                            
+                            <div class="innerBox" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%;">
                             <div style="background:#00000099;">
                                 <a href="<?=base_url();?>users/quality_index">
                                   <div class="LiveDataBox" style="height: 215px; overflow: hidden;">
@@ -169,7 +172,8 @@ if(isset($_SESSION['change_password'])){
                                  </a>
                             </div>
                             </div>
-                          </div>
+                        </div>  
+                        </div>
                      </div>
                 </div>
            </div>

@@ -7,6 +7,11 @@ class Subadmin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // if(empty($this->session->userdata("sess_arr")))
+        // {
+        //     // redirect(site_url(),'refresh');
+        //     redirect(base_url() . "Users/logout", 'refresh');
+        // }
         $this->load->model('Admin/Admin_model');
         $this->load->model('Subadmin/Que_bank_model');
         $this->load->model('Subadmin/Questions_model');
@@ -118,11 +123,12 @@ class Subadmin extends CI_Controller
         //echo $token;
         // echo json_encode($output);
         $input = $this->input->post('uid');
+        $uidtype = $this->input->post('uidtype');
         $curl_req1 = curl_init();
         $parametersNew = json_encode(array(
             "token" => $token,
             "input" => $input,
-            "search_by" => 2,
+            "search_by" => $uidtype,
             "user_id" => "EXF090323"
         ));
         curl_setopt_array($curl_req1, array(
@@ -143,24 +149,10 @@ class Subadmin extends CI_Controller
         ));
         $responseNew = curl_exec($curl_req1);
         $responseNew = json_decode($responseNew, true);
-        // echo json_encode($output);
-        // exit();
-
-        // $response = array(
-        //     'user_id' => 1800003549,
-        //     'name' => 'D K AGRAWAL',
-        //     'email' => 'agrawal@bis.org.in',
-        //     'designation' => 'dummy1',
-        //     'branch' => 'dummy2',
-        //     'post' => 'dummy3',
-        //     'department' => 'dummy4',
-        // );
-
-
-        // echo json_encode($responseNew);exit();
+      
         if (empty($responseNew)) {
             $data['status'] = 0;
-            $data['message'] = 'Failed to get details , Please enter valid USER ID.';
+            $data['message'] = 'Failed to get details , Please enter valid USER ID /Email.';
         } else {
             $data['status'] = 1;
             $data['message'] = 'Details Available.';

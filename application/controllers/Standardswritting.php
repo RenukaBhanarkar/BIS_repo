@@ -8,6 +8,11 @@ class Standardswritting extends CI_Controller
     { 
 
         parent::__construct();
+        // if(empty($this->session->userdata("sess_arr")))
+        // {
+        //     // redirect(site_url(),'refresh');
+        //     redirect(base_url() . "Users/logout", 'refresh');
+        // }
         $this->load->model('Admin/Admin_model');
         $this->load->helper('comman_fun_helper');
         $this->load->model('Quiz/quiz_model');
