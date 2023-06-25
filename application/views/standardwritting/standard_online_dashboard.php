@@ -100,7 +100,7 @@
                 </div>
                 </a>
             </div>
-            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+             
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>Standardswritting/review_management_dashboard">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 </a>
-            </div>
+            </div> 
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>Standardswritting/result_declared_submission">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -126,8 +126,9 @@
                     </div>
                 </div>
                 </a>
-            </div> 
-            <?php } ?>
+            </div>
+
+            
             
             
             

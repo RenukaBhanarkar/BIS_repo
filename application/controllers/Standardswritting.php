@@ -1435,7 +1435,7 @@ if($id){
         $this->load->view('standardwritting/admin_manage_online_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
-
+ 
 
     public function Manage_online_list()
     {
