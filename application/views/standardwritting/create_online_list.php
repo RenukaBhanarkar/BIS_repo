@@ -126,7 +126,7 @@
  function deleteOnlineData(id) 
  { 
   Swal.fire({
-                    title: 'Do you want to Create?',
+                    title: 'Do you want to Delete?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText:'Delete',
