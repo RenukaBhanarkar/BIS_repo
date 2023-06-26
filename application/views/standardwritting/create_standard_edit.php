@@ -69,7 +69,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Paticipant<sup class="text-danger">*</sup></label>
+                            <label class="d-block text-font">Name of Participant<sup class="text-danger">*</sup></label>
                             <input type="text" class="form-control input-font" name="first_paticipant" id="first_paticipant" placeholder="Enter name" value="<?= $getData['first_paticipant']?>" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Paticipant</label>
+                            <label class="d-block text-font">Name of Participant</label>
                             <input type="text" class="form-control input-font" name="second_paticipant" id="second_paticipant" placeholder="Enter name" value="<?= $getData['second_paticipant']?>" oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')">
                         </div>
                         <div class="mb-2 col-md-4">
@@ -136,7 +136,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Name of Paticipants</label>
+                            <label class="d-block text-font">Name of Participant</label>
                             <input type="text" class="form-control input-font" name="third_paticipant" id="third_paticipant" placeholder="Enter name" value="<?= $getData['third_paticipant']?>"oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                         </div>
                         <div class="mb-2 col-md-4">
@@ -167,7 +167,7 @@
                         </div>
                         <div class="row">
                             <div class="mb-2 col-md-4">
-                                <label class="d-block text-font">Name of Paticipant</label>
+                                <label class="d-block text-font">Name of Participant</label>
                                 <input type="text" class="form-control input-font" name="consolation_paticipant" id="consolation_paticipant" placeholder="Enter name" value="<?= $getData['consolation_paticipant']?>"oninput="this.value = this.value.replace(/[^A-Za-z ]/, '')" >
                             </div>
                             <div class="mb-2 col-md-4">
