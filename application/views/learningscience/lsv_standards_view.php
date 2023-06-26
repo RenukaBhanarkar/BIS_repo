@@ -96,7 +96,17 @@
                                     </div>    
                                 </div>
                             </div>
-                        <?php } ?>
+                            <?php if (!empty($lsvStandardsView['video_url'])) {?>
+                                
+                            <div class="row">   
+                                    <div class="mb-2 col-md-12">
+                                        <label class="d-block text-font btn-sm"> Viedo Link</label>
+                                        <div> 
+                                            <a href="<?= base_url()?><?= $lsvStandardsView['video_url']?>" class="btn btn-primary btn-sm" target="_blank">Play</a>
+                                        </div> 
+                                    </div>
+                                </div>
+                            <?php } } ?> 
                         <?php 
                         if ($lsvStandardsView['type_of_post']==3) { ?>
                             <div class="row">   

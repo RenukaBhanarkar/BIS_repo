@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Learningscience_model extends CI_Model {
-
+ 
     public function getlsvstandardslist()
     {  
         $this->db->where('status ',0);   

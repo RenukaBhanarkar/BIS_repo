@@ -151,6 +151,7 @@
                                 
                             </div>
                             <div class="row" id="video_show">
+                                
                                 <div class="mb-2 col-md-4">
                                     <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
                                     <div class="d-flex">
@@ -163,6 +164,12 @@
                                         </button>
                                     </div>
                                 </div>
+                                <div class="mb-8 col-md-8">
+                                    <label class="d-block">Video Link</label>
+                                    <input type="url" id="video_url" name="video_url" class="form-control" >
+                                    <span class="error_text"></span>
+                                </div> 
+
                                 <!-- Modal -->
                                 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width:700px;">

@@ -3631,13 +3631,14 @@ if ($availability==1)
     }
 }
 
-
+    if (isset($_SESSION['admin_id'])) 
+    {
+        $user_id = encryptids("D", $_SESSION['admin_id']);
+        $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+        $data['attempt']=$attempt;
+    }
     
-         $user_id = encryptids("D", $_SESSION['admin_id']);
-         
-         $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
-          $data['attempt']=$attempt;
-    
+        
 
         $data['getData']=$getdata;
         $data['allFilds1']=$allFilds1;

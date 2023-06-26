@@ -131,6 +131,7 @@ class Learningscience extends CI_Controller
             $formdata['title'] = $this->input->post('title');
             $formdata['description'] = $this->input->post('description'); 
             $formdata['session_link'] = $this->input->post('session_link'); 
+            $formdata['video_url'] = $this->input->post('video_url'); 
             $formdata['thumbnail'] =$thumbnaillocation; 
             $formdata['video'] = $videolocation;
             $formdata['image'] = $imagelocation;
@@ -320,6 +321,7 @@ class Learningscience extends CI_Controller
             $formdata['title'] = $this->input->post('title');
             $formdata['description'] = $this->input->post('description'); 
             $formdata['session_link'] = $this->input->post('session_link'); 
+            $formdata['video_url'] = $this->input->post('video_url'); 
             $formdata['thumbnail'] =$thumbnaillocation; 
             $formdata['video'] = $videolocation;
             $formdata['image'] = $imagelocation;
