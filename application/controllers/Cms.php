@@ -13,6 +13,7 @@ class Cms extends CI_Controller
         //     redirect(base_url() . "Users/logout", 'refresh');
         // }
         $this->load->model('Admin/Cms_model');
+        $this->load->model('Admin/Admin_model');
         $this->load->model('subadmin/Que_bank_model');
         $this->load->model('subadmin/Questions_model');
         $this->load->model('Admin/Your_wall_model');
@@ -32,7 +33,20 @@ class Cms extends CI_Controller
     }
     public function consumer_list()
     {
-       
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
+            // print_r($_SESSION);
+            if (in_array(41, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 41;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        } else {
+            $data[] = "";
+        }
+    //    print_r($data); die;
         $data['aboutConsumerBisData'] = $this->Cms_model->aboutConsumerBisData();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
@@ -148,6 +162,20 @@ class Cms extends CI_Controller
     }
     public function standard_promotion_list()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
+            // print_r($_SESSION);
+            if (in_array(42, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 42;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        } else {
+            $data[] = "";
+        }
+
         $data['aboutConsumerBisData'] = $this->Cms_model->standardPromotionList();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('cms/standard_promotion_list',$data);
@@ -201,6 +229,20 @@ class Cms extends CI_Controller
     }
     public function about_standard_club()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
+            // print_r($_SESSION);
+            if (in_array(43, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 43;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        } else {
+            $data[] = "";
+        }
+
         $data['aboutConsumerBisData'] = $this->Cms_model->aboutStandardClub();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('cms/about_standard_club',$data);
@@ -315,6 +357,19 @@ class Cms extends CI_Controller
     }
     public function learning_science_via()
     {
+        if (encryptids("D", $_SESSION['admin_type']) == 3) {
+            // print_r($_SESSION);
+            if (in_array(44, $_SESSION['sub_mod_per'])) {
+                $sub_model_id = 44;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            } else {
+                $sub_model_id = 0;
+                $permissions = $this->Admin_model->getUsersPermissions($sub_model_id);
+            }
+            $data['permissions'] =  $permissions;
+        } else {
+            $data[] = "";
+        }
         $data['aboutConsumerBisData'] = $this->Cms_model->learningScienceVia();
         $this->load->view('admin/headers/admin_header');
         $this->load->view('cms/learning_science_via',$data);
