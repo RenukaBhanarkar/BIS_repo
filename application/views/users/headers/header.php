@@ -66,9 +66,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 .after_login_details ul li a:hover {
     background: #f7f7f7;
 }
-a.nav-link.active {
-    background-color: #f15559;
-}
+
 
     </style>
 </head>
@@ -230,7 +228,7 @@ a.nav-link.active {
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link"  id="popup" style="color: white;"><?php echo $top_nav[$language]['1'] ?></a>
+                                     <a class="nav-link" id="popup" style="color: white;"><?php echo $top_nav[$language]['1'] ?></a>
                                 </li>
                                 <?php if(!isset($_SESSION['set_nav'])){  ?>
                                 <li class="nav-item">
@@ -238,10 +236,10 @@ a.nav-link.active {
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link " href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards" target="_blank" aria-current="page" onclick="publish_pop()" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
+                                     <a class="nav-link " id="publish_pop" aria-current="page" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" target="_blank" href="https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails" onclick="know_pop()" style="color: white;"><?php echo $top_nav[$language]['4'] ?></a>
+                                    <a class="nav-link" target="_blank" id="know_pop" style="color: white;"><?php echo $top_nav[$language]['4'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" style="color: white;"><?php echo $top_nav[$language]['5'] ?></a>
@@ -287,23 +285,15 @@ a.nav-link.active {
         </div>
     </section>
     <script>
-        function bis_pop(){
-            var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
-            // confirm("Confirm submit?")
-    if (answer){
-    console.log("true");
-    // window.location = "https://www.google.com";// goes to confirmsubmit.jsp
-    window.location.replace('https://www.bis.gov.in/');
-    }
-    else{
-        console.log("False");
-        //should remain in index.jsp but here also confirmsubmit.jsp is opening
-    }
-        }
-        function publish_pop(){
-            confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
-        }
-
+        
+        $('#publish_pop').click(function(){
+            var answer = confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+            if (answer){
+            window.open('https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Published_Standards_new/new_standards','_blank');
+            }
+            else{   
+            }
+        })
         $('#popup2').click(function(){
             var answer = confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
             if (answer){
