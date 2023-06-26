@@ -156,9 +156,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <li>
 			       <a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/edit_profile">Edit Profile</a>
 		      </li>
-              <li>
+              <!-- <li>
 			       <a class="capital" title="Edit Profile" href="<?php echo base_url(); ?>users/change_password">Change Password</a>
-		      </li>
+		      </li> -->
 		      <li>
 			      <a class="capital" title="My Activity" href="<?php echo base_url(); ?>users/my_activity_list">My Activity</a>
 		      </li>
