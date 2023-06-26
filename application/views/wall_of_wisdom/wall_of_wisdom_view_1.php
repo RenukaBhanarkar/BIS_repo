@@ -148,7 +148,7 @@
                 <div class="col-md-12">
                 <div class="row">
                        <div class="filter-content">
-                           <img src="http://localhost/BIS/BIS_repo/assets/images/filter_icon.png">
+                           <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
                            <label class="sector_label">Under</label>
 
@@ -216,7 +216,7 @@
                                 <div class="title">
                                     <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'], '...', '150'); ?></p>
                                 </div>
-                                <div class="field-item even">
+                                <div class="field-item even" style=" max-height: 147px; overflow: hidden;">
                                     <span class="time_left">
                                         <span class="last-date"><?php echo $list['description']; ?></span>
                                     </span>
@@ -227,11 +227,12 @@
                                     <span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i>
                                     </span>
                                     <span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span>
+                                    <div class="" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
+                                    </div>
                                 </div>
                              
                             
-                             <div class="col-6" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
-                            </div>
+                             
                           </div>
                              </div>
                              
