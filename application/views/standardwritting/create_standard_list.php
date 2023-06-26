@@ -77,10 +77,12 @@
     <!-- End of Main Content -->
  <script>
   function updateStatus(id,status) {
-    if (status==1) { statusdata='Create'; }
-    if (status==9) { statusdata='Archive'; }
+    if (status==1) { statusdata='Create'; titletest='Do you want to Create?';}
+    if (status==9) { statusdata='Archive'; titletest='Do you want to Archive?';}
+    // if (status==9) { statusdata='Delete'; }
+    // if (status==9) { statusdata='Archive'; }
     Swal.fire({
-      title: 'Do you want to Create?',
+      title: titletest,
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: statusdata,
@@ -115,7 +117,7 @@
  function deleteData(id) 
  { 
   Swal.fire({
-                    title: 'Do you want to Create?',
+                    title: 'Do you want to Delete?',
                     showDenyButton: true,
                     showCancelButton: false,
                     confirmButtonText:'Delete',
