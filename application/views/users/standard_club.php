@@ -239,7 +239,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
 <section style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
   <div class="container-fluid pt-5">
     <div class="row text-center">
-      <!-- <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3> -->
+      <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3>
       
     </div>
     <ul class="row get-involved-links nav nav-pills mb-3" role="tablist" style="padding: 21px;">
@@ -255,7 +255,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
           <section>
             <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
               <div class="row text-center">
-                <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['3'] ?></h3>
+                <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
                 <!-- <p>Miscellaneous For You</p> -->
               </div>
               <div class="row" id="banner-align">
@@ -293,7 +293,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
             <section>
               <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                 <div class="row text-center">
-                  <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['4'] ?></h3>
+                  <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['4'] ?></h3> -->
                   <!-- <p>Miscellaneous For You</p> -->
                 </div>
                 <div class="row">
@@ -333,7 +333,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
               <section>
                 <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                   <div class="row text-center">
-                    <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['5'] ?></h3>
+                    <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['5'] ?></h3> -->
                     <!-- <p>Miscellaneous For You</p> -->
                   </div>
                   <div class="row">
@@ -373,7 +373,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
                 <section>
                   <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                     <div class="row text-center">
-                      <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['6'] ?></h3>
+                      <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['6'] ?></h3> -->
                       <!-- <p>Miscellaneous For You</p> -->
                     </div>
                     <div class="row">
@@ -413,7 +413,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
                   <section>
                     <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
                       <div class="row text-center">
-                        <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['7'] ?></h3>
+                        <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['7'] ?></h3> -->
                         <!-- <p>Miscellaneous For You</p> -->
                       </div>
                       <div class="row">

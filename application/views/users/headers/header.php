@@ -235,6 +235,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;"><?php echo $top_nav[$language]['2'] ?></a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo base_url(); ?>users/about_eBIS" style="color: white;">About eBIS</a>
+                                </li>
+                                <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
                                      <a class="nav-link " id="publish_pop" aria-current="page" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
                                 </li>
@@ -242,7 +245,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <a class="nav-link" target="_blank" id="know_pop" style="color: white;"><?php echo $top_nav[$language]['4'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" target="_blank" href="https://www.bis.gov.in/standards-national-action-plan-snap-2022/" style="color: white;"><?php echo $top_nav[$language]['5'] ?></a>
+                                    <a class="nav-link" target="_blank"  id="snap" style="color: white;"><?php echo $top_nav[$language]['5'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" style="color: white;">NBC</a>
@@ -307,6 +310,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
             var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
             if (answer){
             window.open('https://www.bis.gov.in/','_blank');
+            }
+            else{   
+            }
+        })
+        $('#snap').click(function(){
+            var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+            if (answer){
+            window.open('https://www.bis.gov.in/standards-national-action-plan-snap-2022/','_blank');
             }
             else{   
             }
