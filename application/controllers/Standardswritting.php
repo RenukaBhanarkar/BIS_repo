@@ -756,7 +756,7 @@ class Standardswritting extends CI_Controller
             $formdata['start_date'] = $this->input->post('start_date');
             $formdata['end_date'] = $this->input->post('end_date');
             $formdata['comp_level'] = $this->input->post('Level');
-            // $formdata['start_time'] = $this->input->post('start_time');
+            $formdata['type'] = $this->input->post('comp_type');
             // $formdata['end_time'] = $this->input->post('end_time');
             $formdata['score'] = $this->input->post('score');
 

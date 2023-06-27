@@ -33,7 +33,7 @@
                     <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" target="blank"  class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NBC</a></li>
                     <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot"  style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">NEC</a></li>
                     <li class="li_text"><a href="<?php echo base_url() . 'users/contact_us' ?>" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">Contact Us</a></li>
-                    <li class="li_text"><a href="https://www.bis.gov.in/wp-content/uploads/2023/03/Brochure_CC_NEC_merged.pdf" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">User Manual</a></li>
+                    <li class="li_text"><a href="<?php echo base_url().'assets/documents/user_mannual.pdf'; ?>" target="blank" class="text_dot" style="background: url(<?php echo base_url();?>assets/images/sitemap_dot.jpg)no-repeat 5px 7px;">User Manual</a></li>
                 </ul>
             </div>
 

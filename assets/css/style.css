@@ -1614,6 +1614,8 @@ footer .main_footer .f_contact ul li i {
     /* display: flex; */
     /* padding: 0 10px; */
     width: 100%;
+	border: none;
+    padding: 0px;
 }
 .social-content {
 	display: -webkit-box;
@@ -1638,6 +1640,7 @@ footer .main_footer .f_contact ul li i {
 	text-align: center;
 	margin-right: 10px;
 	font-size: 0px;
+	border:0px;
 }
 .social_image {
 	width: 100%;

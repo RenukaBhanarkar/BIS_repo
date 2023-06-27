@@ -152,7 +152,7 @@ i.fa.fa-chevron-down {
                 </div> -->
                 <div class="row">
                 <div class="col-2"> <h4><?php echo $footer_content[$language]['14'] ?></h4></div>
-                    <div class="social-content col-4">
+                    <div class="social-content col-4 followus_123">
                    
                        
                     </div>
@@ -489,8 +489,8 @@ $(document).ready(function(){
                 var row = '';
                 
                 for (i in data) { 
-                    row += '<li><a href="https://'+data[i].link+'" target="_blank" onclick="useful_link()" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
-                                    
+                    // row += '<li><a href="https://'+data[i].link+'" target="_blank" onclick="useful_link()" title="'+data[i].title+'" class="jquery-once" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></a></li>';       
+                    row += '<li><button href="https://'+data[i].link+'"  title="'+data[i].title+'" class="jquery-once abc" id="'+data[i].id+'"><img src="<?php echo base_url(); ?>uploads/cms/useful_links/'+data[i].image +'" height="100%" width="100%"></button></li>';               
                 }
                 
                 $(".usefull-links").html(row);
@@ -515,7 +515,7 @@ $(document).ready(function(){
                 for (i in data) {
                             
                      
-row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].title+'" onclick="follow_pop()" class="jquery-once-4-processed"><img src="<?php echo base_url(); ?>uploads/cms/followus/'+data[i].icon +'"class="social_image">Twitter</a>';            
+row += '<button href="https://' +data[i].link + '"target="_blank" title="'+data[i].title+'"  class="jquery-once-4-processed pqr"><img src="<?php echo base_url(); ?>uploads/cms/followus/'+data[i].icon +'"class="social_image">Twitter</button>';            
                 }
                 $(".social-content").html(row);
     },
@@ -532,9 +532,36 @@ row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].ti
         }
     </script>
     <script>
-        function follow_pop(){
-            confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        function follow_pop(){            
+            var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        // window.open('https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails','_blank');
+        if (answer){
+            window.open(uid,'_blank');
+            }
+            else{   
+            }
         }
+        $('.followus_123').delegate('.pqr','click',function(){
+            uid =$(this).attr('href');
+            var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        // window.open('https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails','_blank');
+        if (answer){
+            window.open(uid,'_blank');
+            }
+            else{   
+            }
+        })
+        $('.usefull-links').delegate('.abc','click',function(){
+            uid =$(this).attr('href');
+            var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        // window.open('https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails','_blank');
+        if (answer){
+            window.open(uid,'_blank');
+            }
+            else{   
+            }
+        })
+
     </script>
       <script>
         $('#know_pop').click(function(){

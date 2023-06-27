@@ -84,12 +84,12 @@
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
-                    <?php if (encryptids("D", $_SESSION['admin_type']) != 1) { ?>
+                    <?php //if (encryptids("D", $_SESSION['admin_type']) != 1) { ?>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>admin/profile_list" >
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Edit Profile
                     </a>
-                    <?php } ?>
+                    <?php //} ?>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#change_password">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Change Password

@@ -127,10 +127,10 @@
            
         }
 
-        if(description=="" || description==null){
+        if(description.length==0 || description.length==""){
             $('#err_description').text('This value is required');
-            allfield=false;
-        } if(description.length > 2000){
+            allfield=false;            
+        }else if(description.length > 2000){
             $('#err_description').text('Description length should be 2000 characters only');
             allfield=false;
         }else{
