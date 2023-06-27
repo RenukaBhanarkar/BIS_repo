@@ -239,7 +239,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
 <section style="background-image: url(<?php echo base_url();?>assets/images/whats-new-bg.png);">
   <div class="container-fluid pt-5">
     <div class="row text-center">
-      <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3>
+      <!-- <h3 style="font-weight: 600; color: brown;"><?php echo $standard_club_section[$language]['2'] ?></h3> -->
       
     </div>
     <ul class="row get-involved-links nav nav-pills mb-3" role="tablist" style="padding: 21px;">

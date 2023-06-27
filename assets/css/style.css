@@ -493,7 +493,7 @@ section#welcome_text p span {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-	padding: 35px 0px;
+	padding: 45px;
 }
 
 .innerBox {
@@ -1195,7 +1195,7 @@ footer .main_footer .f_contact ul li i {
 		margin: 40px 10px;
 	}
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px)  {
 	.logo_name {
 		display: none;
 	}

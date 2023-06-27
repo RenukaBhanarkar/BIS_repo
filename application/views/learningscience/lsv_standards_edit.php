@@ -217,15 +217,19 @@
                                         Preview
                                         </button>
                                         <?php } else {?>
-                                        <div style="padding:10px;">
+                                        <div style="padding:5px;">
                                             <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastVideoModal">
                                             View  Video
                                             </button>
-                                            <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',4,33);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                            <a onclick="deleteLvsFile(' <?= $lsvStandardsView['id']?> ',4,33);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         </div>
                                         <?php }?>
+                                        <label class="d-block">Video Link</label>
+                                        <input type="url" id="video_url" name="video_url" class="form-control" value="<?= $lsvStandardsView['video_url']?>" >
+                                        <span class="error_text"></span>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="modal fade" id="LastVideoModal" tabindex="-1" aria-labelledby="lastVideoModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" style="max-width:700px;">

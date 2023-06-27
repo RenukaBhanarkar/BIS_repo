@@ -176,7 +176,7 @@
                  <a class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#rejectForm" id="reject"onclick="rejectFun()" >Reject</a>
                 <?php } ?>
                 <?php } ?>
-                <button onclick="history.back()" class="btn btn-danger btn-sm text-white">Back</button>
+                <button onclick="history.back()" class="btn btn-primary btn-sm text-white">Back</button>
             </div>
 
              <div class="modal fade" id="rejectForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

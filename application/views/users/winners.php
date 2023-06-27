@@ -140,5 +140,10 @@ height: 201px;
                 </div>
             </div>
         <?php }?>
+        <div class="" style="text-align:end;">
+                <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="margin-bottom: 10px;"><a href="<?php echo base_url(); ?>users/winner_wall">Back</a></button>
+            </div>
     </div>
+    
 </section>

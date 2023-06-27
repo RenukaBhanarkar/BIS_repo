@@ -18,7 +18,9 @@
             </ol>
         </nav>
     </div>
+    <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
         <?php if(count($aboutConsumerBisData) == 0){   ?>
+            <?php  if(in_array(2,$permissions)){ ?>
         <div class="row">
                 <div class="col-12">
                     <div class="card border-top card-body">
@@ -30,6 +32,7 @@
                 </div>
          </div>
          <?php } ?>
+         <?php } } ?>
 
          <?php
         if ($this->session->flashdata('MSG')) {
@@ -118,9 +121,15 @@
                                         </td> -->
                                         <td><?php echo $aboutConsumerBisData[0]['description']; ?></td>
                                         
-                                        <td class="d-flex border-bottom-0">                                            
-                                            <button type="button" class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#edit_form">Edit</button>                                            
-                                            <button  data-id='<?php echo $aboutConsumerBisData[0]['id']; ?>' data-img="<?php echo $aboutConsumerBisData[0]['image']; ?>" class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                        <td class="d-flex border-bottom-0">   
+                                        <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                                            <?php  if(in_array(3,$permissions)){ ?>                                         
+                                                <button type="button" class="btn btn-info btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#edit_form">Edit</button>                                            
+                                                <?php } ?>
+                                                <?php  if(in_array(4,$permissions)){ ?>
+                                                <button  data-id='<?php echo $aboutConsumerBisData[0]['id']; ?>' data-img="<?php echo $aboutConsumerBisData[0]['image']; ?>" class="btn btn-danger btn-sm mr-2 delete_img">Delete</button>
+                                            <?php } ?>
+                                        <?php } ?>
                                         </td>
                                 </tr>
                             <?php } ?>
@@ -219,7 +228,7 @@
     </div>
     </div>
 </div>
-
+<button onclick="history.back()" class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;">Back</button>
 <!-- modal -->
         <script>
             CKEDITOR.replace( 'description' );
