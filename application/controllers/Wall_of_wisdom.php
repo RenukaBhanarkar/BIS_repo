@@ -199,6 +199,9 @@ class Wall_of_wisdom extends CI_Controller
           $this->load->view('wall_of_wisdom/wall_of_wisdom_1',$data);
           $this->load->view('users/footers/footer');
       }
+
+
+     
      public function approvewall_of_wisdom(){
         try {   
            // $this->load->model('Admin/Wall_of_wisdom_model wow');         

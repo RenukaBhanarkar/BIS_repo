@@ -147,57 +147,44 @@
               <div class="col-md-9">
                 <div class="col-md-12">
                 <div class="row">
+                <?php
+                    if ($this->session->flashdata('MSG')) {
+                        echo $this->session->flashdata('MSG');
+                    }
+                    ?>
+                    <form id="wow_search" action="<?php echo base_url(); ?>users/searchWow" method="post">
                        <div class="filter-content">
                            <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
                            <label class="sector_label">Under</label>
-
-                           <!-- Example single danger button -->
-                                <!-- <div class="btn-group">
-                                     <button type="button" class="filter-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">All Sector</button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                            </ul>
-                                </div> -->
-                                <select class="new_select" aria-label="Default select example">
-                                        <!-- <option value="1">Last 7 days</option> -->
+                           
+                         
+                                <select class="new_select" name="select_period" id="select_period" aria-label="Default select example">
+                                      
                                         <option value="1">Last Week</option>
                                         <option value="2">Last Month</option>
                                         <option value="3">Last Year</option>
                                 </select>
                                 <div class="input-group search_icon" style="top: -2px;">
-                                        <!-- <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input"> -->
-                                        <input class="form-control border-end-0 border rounded-pill" type="text" value="search" id="search-text">
+                                       
+                                        <input class="form-control border-end-0 border rounded-pill" type="text" placeholder="search" name="search_text" id="search_text">
 
                                         <span class="input-group-append">
-                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button" >
+                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="submit" id="search_btn"  >
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
                                 </div>
                                 <label class="sector_label" style="margin-left: -141px;">Sort By:</label>
 
-                           <!-- Example single danger button -->
-                                <!-- <div class="btn-group">
-                                     <button type="button" class="filter-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Newest First</button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Newest First</a></li>
-                                                <li><a class="dropdown-item" href="#">Oldest First</a></li>
-                                                <li><a class="dropdown-item" href="#">Most Popular</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-
-                                            </ul>
-                                </div> -->
-                                <select class="new_select" aria-label="Default select example">
+                         
+                                <select class="new_select" aria-label="Default select example" name="select_type" id="select_type">
                                         <option value="1">Newest First</option>
                                         <option value="2">Oldest First</option>
                                        
                                 </select>
                        </div>
+</form>
                 </div>
                 </div>
              </div>

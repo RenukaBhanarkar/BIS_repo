@@ -164,12 +164,17 @@
                                 <p><?=$getData['fdetails']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+
+                        <?php if (!empty($getData['fprize_img'])): ?>
+                             <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
                                 <p><img src="<?php echo base_url(); ?><?=$getData['fprize_img']?>" alt="#" width="60%"></p>
                             </div>
                         </div>
+                            
+                        <?php endif ?>
+
                     </div>
                     <?php if (!empty($getData['sprize'])): ?>
                     <div class="row mt-2">
@@ -190,12 +195,19 @@
                                 <p><?=$getData['sprize']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+
+                        <?php if (!empty($getData['sprize_img'])): ?>
+                             <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
                                 <p><img src="<?php echo base_url(); ?><?=$getData['sprize_img']?>" alt="#" width="60%"></p>
                             </div>
                         </div>
+                            
+                        <?php endif ?>
+
+
+                       
                     </div>
                     
                     <?php endif ?>
@@ -219,12 +231,19 @@
                                 <p><?=$getData['tdetails']?></p>
                             </div>
                         </div>
-                        <div class="mb-2 col-md-4">
+
+                          <?php if (!empty($getData['tprize_img'])): ?>
+                            <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
                                 <p><img src="<?php echo base_url(); ?><?=$getData['tprize_img']?>" alt="#" width="60%"></p>
                             </div>
                         </div>
+                            
+                        <?php endif ?>
+
+
+                        
                     </div>
                     <?php endif ?>
                     <?php if (!empty($getData['cprize'])): ?>
@@ -245,13 +264,18 @@
                             <div>
                                 <p><?=$getData['tdetails']?></p>
                             </div>
-                        </div>
-                        <div class="mb-2 col-md-4">
+                        </div> 
+                        <?php if (!empty($getData['cprize_img'])) {?>
+                             <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
-                                <p><img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="#" width="60%"></p>
+                                <p>
+                                    <img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="#" width="60%">
+                                </p>
                             </div>
                         </div>
+                        <?php } ?>
+                       
                     </div>
                     <?php endif ?>
                     

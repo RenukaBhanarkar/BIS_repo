@@ -537,9 +537,14 @@ row += '<a href="https://' +data[i].link + '"target="_blank" title="'+data[i].ti
         }
     </script>
       <script>
-        function know_pop(){
-            confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
-        }
+        $('#know_pop').click(function(){
+            var answer =  confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+            if (answer){
+            window.open('https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails','_blank');
+            }
+            else{   
+            }
+        })
     </script>
     <script>
         function useful_link(){
