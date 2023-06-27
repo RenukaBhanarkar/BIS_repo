@@ -446,6 +446,8 @@ class Standardswritting_model extends CI_Model
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_standards_writting_online.status'); 
         $this->db->join('tbl_mst_quiz_level','tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id'); 
         $this->db->join('tbl_mst_quiz_availability','tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id'); 
+        $this->db->order_by('tbl_standards_writting_online.id', 'DESC');
+        
         return $this->db->get('tbl_standards_writting_online')->result_array(); 
     } 
 
