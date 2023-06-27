@@ -610,8 +610,12 @@ li span {
             <div class="About_point ">
             <?php echo $competition['terms_condition']; ?>
             </div>
+            <div class="" style="text-align:end;">
+                <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2"><a href="<?php echo base_url(); ?>users/standard">Back</a></button>
+            </div>
     </section>
-
+    
 </div>
 <script>
 // Set the date we're counting down to
