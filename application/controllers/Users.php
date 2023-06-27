@@ -3977,5 +3977,29 @@ if ($availability==1)
         $this->load->view('users/Learning_via_standards',$data);
         $this->load->view('users/footers/footer');
       }
- 
+      public function meeting_startup(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/meeting_startup');
+        $this->load->view('users/footers/footer');
+      }
+      public function research_projects(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/research_projects');
+        $this->load->view('users/footers/footer');
+      }
+      public function workshops_seminars(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/workshops_seminars');
+        $this->load->view('users/footers/footer');
+      }
+      public function technical_committees(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/technical_committees');
+        $this->load->view('users/footers/footer');
+      }
+      public function membership_panels(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/membership_panels');
+        $this->load->view('users/footers/footer');
+      }
 }

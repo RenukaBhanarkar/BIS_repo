@@ -33,7 +33,7 @@
                     <div class="row">
                             <div class="mb-2 col-md-12">
                                 <label class="d-block text-font">Title of Competition in Hindi<sup class="text-danger">*</sup></label>
-                                <input type="text" class="form-control input-font" name="title_hindi" id="title_hindi" placeholder="Enter Topic of Activity" value="" >
+                                <input type="text" class="form-control input-font" name="title_hindi" id="title_hindi" placeholder="Enter Title of Competition in Hindi" value="" >
                             </div>
                     </div>
                     <div class="row">

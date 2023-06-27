@@ -306,7 +306,7 @@ font-size: calc(3.375rem * var(--smaller));
 }
 /* about quiz end */
 </style>
-<div class="container-fluid d-flex">
+<div class="container-fluid row">
     <div class="col-md-9">
         <section id="banner-section">
             
