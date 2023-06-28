@@ -83,11 +83,14 @@
           <div class="row">
             <div class="mb-2 col-md-12" style="text-align: center;">
            
-              <?php if (($details['photo'] == "")) { ?>
+              <?php  if (($details['photo'] == "")) { ?>
                 <img src="<?php echo base_url(); ?>assets/admin/img/undraw_profile.svg" alt="" width="21%">
-              <?php } else { ?>
-                <img src="<?php echo base_url() . 'uploads/admin/profile/' . $superadmin['photo']; ?>" alt="" width="21%">
-              <?php } ?>
+              <?php } else {
+                if (encryptids("D", $_SESSION['admin_type']) == 1) { ?>
+                <img src="<?php echo base_url() . 'uploads/admin/profile/' . $superadmin['photo']; ?>" alt="" width="21%" style="width: 190px;    height: 190px;    border-radius: 50%;">
+              <?php }else{ ?>
+                <img src="<?php echo base_url() . 'uploads/admin/profile/' . $details['photo']; ?>" alt="" width="21%" style="width: 190px;    height: 190px;    border-radius: 50%;">
+            <?php  } } ?>
             </div>
           </div>
         
@@ -106,13 +109,13 @@
             <div class="mb-2 col-md-4">
               <label class="d-block text-font">Designation</label>
 
-              <p><?php echo $superadmin['designation']; ?></p>
+              <p><?php echo $details['role']; ?></p>
 
             </div>
             <div class="mb-2 col-md-4">
               <label class="d-block text-font">Branch</label>
 
-              <p><?php echo $superadmin['branch']; ?></p>
+              <p><?php echo $superadmin['branchnew']; ?></p>
 
             </div>
             <div class="mb-2 col-md-4">
@@ -165,9 +168,9 @@
             </div>
             <div class="mb-2 col-md-4">
               <label class="d-block text-font">Gender</label>
-              <p><?php if ($details['gender'] = 1) {
+              <p><?php if ($details['gender'] == 1) {
                     echo 'Male';
-                  } else if ($details['gender'] = 2) {
+                  } else if ($details['gender'] == 2) {
                     echo  "Female";
                   } else {
                     echo "-";
@@ -185,14 +188,16 @@
             <div class="mb-2 col-md-4">
               <label class="d-block text-font">Designation</label>
 
-              <p><?php echo $details['designation']; ?></p>
+              <p><?php echo $details['role']; ?></p>
 
             </div>
 
 
-            <div class="mb-2 col-md-4">
+            
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+              <div class="mb-2 col-md-4">
               <label class="d-block text-font">Department</label>
-              <p><?php echo $details['department']; ?></p>
+              <p><?php echo $details['uvc_department_name']; ?></p>
             </div>
             <div class="mb-2 col-md-4">
               <label class="d-block text-font">Branch</label>
@@ -200,6 +205,8 @@
               <p><?php echo $details['branchnew']; ?></p>
 
             </div>
+            <?php } ?>
+
           </div>
           <?php } ?>
           

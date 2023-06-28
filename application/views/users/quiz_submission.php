@@ -25,6 +25,13 @@
 </head>
 
 <body> 
+<style>
+    .quiz-left-side-main {
+    width: 75%;
+    margin: 58px 0px 45px 27px;
+    height: fit-content;
+}
+</style>
     <div class="row">
 <div class=" col-md-offset-2 col-md-8"style="margin-left: 20%"> 
 <div class="Quiz_section">

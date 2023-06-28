@@ -322,7 +322,11 @@ font-size: calc(3.375rem * var(--smaller));
                         
                         <div class="d-flex">
                             <p class="time-start-end d-flex" style="margin-bottom:0px;">
-                                <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?= date("d-m-Y", strtotime($getData['start_date']));?> </span></span>
+                              <!--   <span class="start-end-time-title mr-2">Start Date<span class="quiz-text-date m-2"><?= date("d-m-Y", strtotime($getData['start_date']));?> </span></span> -->
+
+                                 <span class="start-end-time-title mr-2">Start Date <span class="quiz-text-date m-2"><?= date("d-m-Y", strtotime($getData['start_date']));?> <?=$getData['start_time']?></span></span>
+
+
                             </p>
                             <p class="time-start-end d-flex" style="margin-bottom:0px; margin-left: 8px;">
                                 <span class="start-end-time-title">Marks<span class="quiz-text-date m-2"><?=$getData['total_mark']?></span>

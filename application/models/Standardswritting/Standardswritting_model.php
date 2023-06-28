@@ -468,7 +468,7 @@ class Standardswritting_model extends CI_Model
 
 
         $this->db->join('tbl_mst_regions', 'tbl_mst_regions.pki_region_id = tbl_standards_writting_online.region_id', 'left');
-        $this->db->join('tbl_mst_branch', 'tbl_mst_branch.i_branch_id= tbl_standards_writting_online.branch_id', 'left');
+        $this->db->join('tbl_mst_branch', 'tbl_mst_branch.pki_id= tbl_standards_writting_online.branch_id', 'left');
         $this->db->join('tbl_mst_states', 'tbl_mst_states.state_id= tbl_standards_writting_online.state_id', 'left');
 
 

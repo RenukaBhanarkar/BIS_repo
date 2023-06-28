@@ -115,6 +115,10 @@ padding-left: 0;
 padding-right: 5px;
 padding-left: 5px;
 }
+.quiz-text{
+  font-weight: 600;
+    font-size: 16px;
+}
 </style>
 <?php
 // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');

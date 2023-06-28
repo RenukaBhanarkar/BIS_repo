@@ -120,7 +120,7 @@
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top card-body">
-                    <table id="banner" class="table-bordered">
+                    <table id="banner" class="table-bordered table-responsive">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>

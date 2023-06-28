@@ -42,7 +42,7 @@
             
 
             <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
-            <?php if(in_array(1, $_SESSION['main_mod_per'])){ ?> 
+            <?php //if(in_array(1, $_SESSION['main_mod_per'])){ ?> 
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>quiz/organizing_quiz">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -55,7 +55,7 @@
                 </div>
                 </a>
             </div>
-            <?php } ?>
+            <?php // } ?>
             <?php if(in_array(4, $_SESSION['main_mod_per'])){ ?> 
             <div class="col-xl-3 col-md-6 mb-4">
             <a href="<?php echo base_url().'wall_of_wisdom/'; ?>">
