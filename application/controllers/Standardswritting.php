@@ -1148,7 +1148,7 @@ if($id){
                // $formdata['branch_id'] = $this->input->post('branch_id');
                $pki_id = $this->input->post('branch_id');
                $branch_details = $this->Quiz_model->getbranchDetailsByPkid($pki_id);
-               $formdata['branch_id']  =   $branch_details['i_branch_id'];
+               $formdata['branch_id']  =   $branch_details['pki_id'];
             }
             if($this->input->post('quiz_level_id')== 4){               
                 $formdata['region_id'] = 0;
