@@ -42,7 +42,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 <style>
     h3.quiz_title_heading {
         margin-left: 12px;
-        padding: 14px 0px 0px 0px;
+        padding: 19px 0px 0px 12px;
         font-weight: 600;
         color: crimson;
     }
@@ -60,9 +60,9 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 <body>
 
     <section>
-        <div class="">
-            <div class="Quiz_section ">
-                <div class="quiz-left-side-main shadow">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="quiz-left-side-main shadow col-md-9">
                     <h3 class="quiz_title_heading"><?= $quizdata['title'] ?></h3>
                   
                     <form id="regForm" action="<?= base_url() . 'Users/quiz_submit' ?>" method="post" enctype="multipart/form-data">
@@ -296,7 +296,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                         </div>
 
                 </div>
-                <div class="quiz-right-side-main shadow-1">
+                <div class="quiz-right-side-main shadow-1 col-md-3">
                     <div class="quiz-left-side ">
                         <div class="user-name">
                             <img src="<?php echo base_url(); ?>assets/images/user.png" class="user-icon">
