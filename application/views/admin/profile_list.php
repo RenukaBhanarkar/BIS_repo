@@ -151,13 +151,13 @@
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Department</label>
                                         <div>
-                                        <p><?= $details['department'];?></p>
+                                        <p><?= $details['uvc_department_name'];?></p>
                                         </div> 
                                 </div>
                                 <div class="mb-2 col-md-4">
                                         <label class="d-block text-font">Branch</label>
                                         <div>
-                                        <p><?= $details['branch'];?></p>
+                                        <p><?= $details['branchnew'];?></p>
                                         </div> 
                                 </div>
                                 

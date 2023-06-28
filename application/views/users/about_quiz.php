@@ -19,9 +19,9 @@
         height: 100%;
     }
 
-    .Quiz_text {
+    /* .Quiz_text {
         padding: 40px 0px 11px 50px;
-    }
+    } */
 
     .startQuiz {
         background: #db2721;
@@ -284,7 +284,7 @@ li span {
 
     /* about quiz end */
 </style>
-<div class="container-fluid d-flex">
+<div class="container-fluid row">
     <div class="col-md-9">
     <section id="banner-section">
         <?php if ( $quizdata['language_id'] == 3){?>

@@ -1061,11 +1061,12 @@ footer .main_footer .f_contact ul li i {
 		width: 33px;
 		padding: 0px 0px 15px;
 	}
-	.innerBox h4 {
-		font-size: 16px;
+	.innerBox h3 {
+		font-size: 22px;
+        padding-top: 46px;
 	}
 	.innerBox p {
-		font-size: 16px;
+		font-size: 12px;
 	}
 	.impLink {
 		margin-bottom: 10px !important;
@@ -1073,6 +1074,9 @@ footer .main_footer .f_contact ul li i {
 	#middle_part .aim_vision {
 		margin: 40px 10px;
 	}
+    .text_standard{
+        padding-top: 46px;
+    }
 }
 @media (min-width: 577px) and (max-width: 767.98px) {
 	.pensioners {
@@ -1182,11 +1186,12 @@ footer .main_footer .f_contact ul li i {
 		width: 33px;
 		padding: 0px 0px 15px;
 	}
-	.innerBox h4 {
-		font-size: 16px;
+	.innerBox h3 {
+		font-size: 30px;
+        padding-top: 27px;
 	}
 	.innerBox p {
-		font-size: 16px;
+		font-size: 17px;
 	}
 	.impLink {
 		margin-bottom: 10px !important;
@@ -1299,11 +1304,11 @@ footer .main_footer .f_contact ul li i {
 		width: 33px;
 		padding: 0px 0px 15px;
 	}
-	.innerBox h4 {
-		font-size: 16px;
+	.innerBox h3 {
+		font-size: 35px;
 	}
 	.innerBox p {
-		font-size: 16px;
+		font-size: 17px;
 	}
 	.impLink {
 		margin-bottom: 10px !important;
@@ -1614,6 +1619,8 @@ footer .main_footer .f_contact ul li i {
     /* display: flex; */
     /* padding: 0 10px; */
     width: 100%;
+	border: none;
+    padding: 0px;
 }
 .social-content {
 	display: -webkit-box;
@@ -1638,6 +1645,7 @@ footer .main_footer .f_contact ul li i {
 	text-align: center;
 	margin-right: 10px;
 	font-size: 0px;
+	border:0px;
 }
 .social_image {
 	width: 100%;
