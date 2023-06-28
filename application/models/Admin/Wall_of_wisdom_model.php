@@ -368,9 +368,10 @@ class Wall_of_wisdom_model extends CI_Model {
         $this->db->select('wow.*');
         $this->db->from('tbl_wall_of_wisdom wow');
         $this->db->where('wow.status','5'); 
+        if($select_period != 0){
         $this->db->where('wow.created_on >=',$last_start); 
         $this->db->where('wow.created_on <=',$last_end); 
-        
+        }
        
         if($search_text != ''){
             $this->db->group_start();
