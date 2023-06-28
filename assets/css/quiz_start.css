@@ -255,18 +255,18 @@ div#afterSubmitHide::-webkit-scrollbar {
         }
         
         .quiz-left-side-main {
-            width: 75%;
-            margin: 58px 0px 45px 27px;
+            /* width: 75%; */
+            /* margin: 58px 0px 45px 27px; */
             height: fit-content;
         }
         
         .quiz-right-side-main {
-            width: 20%;
-            height: 100%;
+            /* width: 20%;
+            height: 100%; */
             background: #ededed96;
             color: #373434;
             border-radius: 7px px 0px 0px 7px;
-            padding: 18px 18px;
+            padding: 18px 18px 18px 18px;
             height: auto;
         }
         
@@ -277,7 +277,7 @@ div#afterSubmitHide::-webkit-scrollbar {
         }
         
         .user-icon {
-            width: 13%;
+            /* width: 13%; */
             height: 35px;
             border: 1px solid #ccc;
             border-radius: 50%;
