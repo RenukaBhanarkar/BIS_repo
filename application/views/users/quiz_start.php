@@ -686,7 +686,7 @@ document.onkeydown = function(){
                     setTimeout(updateUserTime, 5000);
                 },
                 error: function(result) {
-                    alert("Error,Please try again.");
+                   // alert("Error,Please try again.");
                 }
             });
           
