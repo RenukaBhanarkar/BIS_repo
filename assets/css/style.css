@@ -67,8 +67,7 @@ h6 {
 }
 
 .main_logo {
-	width: 72%;
-	margin-left: 128%;
+	
 }
 
 .emblem_logo {
@@ -77,7 +76,7 @@ h6 {
 
 @media (max-width: 576px) {
 	.main_logo {
-		width: 50px;
+		width: 100%;
 	}
 }
 
@@ -502,7 +501,7 @@ section#welcome_text p span {
 	padding: 19px 18px;
 	width: 585px;
 	text-align: center;
-	min-height: 162px;
+	/* min-height: 162px; */
 	color: white;
 	position: relative;
 	box-shadow: 0px 0px 5px 0px #00000038;
@@ -831,7 +830,7 @@ footer .main_footer .f_contact ul li i {
 }
 
 .navbar-brand {
-	width: 30%;
+	
 }
 
 .navbarSupportedContent {
@@ -1075,7 +1074,7 @@ footer .main_footer .f_contact ul li i {
 		margin: 40px 10px;
 	}
     .text_standard{
-        padding-top: 46px;
+        /* padding-top: 46px; */
     }
 }
 @media (min-width: 577px) and (max-width: 767.98px) {
@@ -1442,7 +1441,7 @@ footer .main_footer .f_contact ul li i {
 .text_standard {
 	color: white;
 	font-weight: 600;
-	padding-top: 70px;
+	/* padding-top: 70px; */
     font-size: 32px;
 }
 /* .innerBox:hover {

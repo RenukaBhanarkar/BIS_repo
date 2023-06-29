@@ -19,7 +19,7 @@
         div#afterSubmitHide {	
             display: flex;	
             flex-wrap: wrap;	
-            height: 300px;	
+            max-height: 300px;	
             overflow: auto;	
         }	
         /* width */	
@@ -118,7 +118,7 @@ div#afterSubmitHide::-webkit-scrollbar {
         
         .inner-section h3 {
             font-size: 18px;
-            padding: 15px 23px;
+            padding: 15px 0px;
             border-bottom: 1px dashed #ccc;
             font-weight: 600;
         }
@@ -142,11 +142,8 @@ div#afterSubmitHide::-webkit-scrollbar {
         .Quiz-circle {
             height: 12px;
             width: 12px;
-            margin-right: 10px;
+            margin-right: 5px;
             display: inline-block;
-            position: absolute;
-            top: 6px;
-            left: -25px;
             border-radius: 50%;
         }
         
