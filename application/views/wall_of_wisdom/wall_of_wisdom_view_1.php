@@ -160,7 +160,7 @@
                            
                          
                                 <select class="new_select" name="select_period" id="select_period" aria-label="Default select example">
-                                      
+                                        <option value="0" readonly>Select Period</option>
                                         <option value="1">Last Week</option>
                                         <option value="2">Last Month</option>
                                         <option value="3">Last Year</option>
@@ -179,6 +179,7 @@
 
                          
                                 <select class="new_select" aria-label="Default select example" name="select_type" id="select_type">
+                                        <option value="0" readonly>Select Order</option>
                                         <option value="1">Newest First</option>
                                         <option value="2">Oldest First</option>
                                        
@@ -318,4 +319,12 @@
   x.classList.toggle("fa-heart-o");
 }
        
+
+
+
+$("#select_type").change(function () { 
+    if($("#select_type").val() != 0 ){$("#wow_search").submit(); }});
+$("#select_period").change(function () { 
+    if($("#select_period").val() != 0 ){$("#wow_search").submit(); }});
+
     </script>

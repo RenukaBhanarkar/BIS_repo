@@ -106,7 +106,7 @@
                         <?php }?>
                         <?php if(!empty($getData['branch'])) {?>
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">branch</label>
+                            <label class="d-block text-font">Branch</label>
                             <div>
                                 <p><?=$getData['branch']?></p>
                             </div>
@@ -164,16 +164,21 @@
                                 <p><?=$getData['fdetails']?></p>
                             </div>
                         </div>
-
-                        <?php if (!empty($getData['fprize_img'])): ?>
-                             <div class="mb-2 col-md-4">
+                        <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
-                                <p><img src="<?php echo base_url(); ?><?=$getData['fprize_img']?>" alt="#" width="60%"></p>
+                                <p>
+                                    <?php if (!empty($getData['fprize_img'])){ ?>
+                                        <img src="<?php echo base_url(); ?><?=$getData['fprize_img']?>" alt="#" width="60%">
+                                    <?php } else {?>
+                                         <img src="<?php echo base_url(); ?>assets/images/winners.jpg" alt="" class="join_img"width="20%">
+
+                                        <?php } ?> 
+                                    </p>
                             </div>
                         </div>
                             
-                        <?php endif ?>
+                        
 
                     </div>
                     <?php if (!empty($getData['sprize'])): ?>
@@ -200,7 +205,15 @@
                              <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
-                                <p><img src="<?php echo base_url(); ?><?=$getData['sprize_img']?>" alt="#" width="60%"></p>
+
+                                <p>
+                                    <?php if (!empty($getData['sprize_img'])){ ?>
+                                        <img src="<?php echo base_url(); ?><?=$getData['sprize_img']?>" alt="#" width="60%">
+                                    <?php } else {?>
+                                         <img src="<?php echo base_url(); ?>assets/images/winners.jpg" alt="" class="join_img"width="20%">
+
+                                        <?php } ?> 
+                                    </p> 
                             </div>
                         </div>
                             
@@ -236,7 +249,16 @@
                             <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
-                                <p><img src="<?php echo base_url(); ?><?=$getData['tprize_img']?>" alt="#" width="60%"></p>
+
+                                <p>
+                                    <?php if (!empty($getData['tprize_img'])){ ?>
+                                        <img src="<?php echo base_url(); ?><?=$getData['tprize_img']?>" alt="#" width="60%">
+                                    <?php } else {?>
+                                         <img src="<?php echo base_url(); ?>assets/images/winners.jpg" alt="" class="join_img"width="20%">
+
+                                        <?php } ?> 
+                                    </p>
+
                             </div>
                         </div>
                             
@@ -269,9 +291,17 @@
                              <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Prize Image</label>
                             <div>
-                                <p>
-                                    <img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="#" width="60%">
-                                </p>
+
+                                 <p>
+                                    <?php if (!empty($getData['cprize_img'])){ ?>
+                                        <img src="<?php echo base_url(); ?><?=$getData['cprize_img']?>" alt="#" width="60%">
+                                    <?php } else {?>
+                                         <img src="<?php echo base_url(); ?>assets/images/winners.jpg" alt="" class="join_img"width="20%">
+
+                                        <?php } ?> 
+                                    </p>
+
+                                 
                             </div>
                         </div>
                         <?php } ?>

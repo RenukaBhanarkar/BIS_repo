@@ -380,7 +380,7 @@ class Admin_model extends CI_Model {
         $this->db->join('tbl_mst_admin_role r','r.admin_type = a.designation');
         $this->db->where('a.is_active',1);
         $this->db->where('a.admin_type',3); 
-        $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
+        //$this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
         $this->db->order_by('a.id', 'ASC');
          $query = $this->db->get();
         $rs = array();
@@ -400,7 +400,7 @@ class Admin_model extends CI_Model {
         $this->db->join('tbl_mst_branch c','a.branch = c.pki_id','left');
         $this->db->where('a.is_active',1); 
         $this->db->where('a.admin_type',3);
-        $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
+       // $this->db->where_in('a.designation',array(3,4,5,6,7,8)); 
         $this->db->order_by('a.created_on', 'DESC');
          $query = $this->db->get();
          //echo json_encode($query->result_array());exit();
