@@ -11,33 +11,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <title>Bureau of Indian standard | Quiz Start</title>
-    <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="<?php echo base_url();?>" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>" rel="stylesheet">
     <!-- CSS File -->
-    <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet" />
-    <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/bis_logo.png" type="image/x-icon">
-    <link href="<?php echo base_url();?>assets/css/quiz_start.css" rel="stylesheet" />
-    
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/bis_logo.png" type="image/x-icon">
+    <link href="<?php echo base_url(); ?>assets/css/quiz_start.css" rel="stylesheet" />
+
 </head>
 
-<body> 
-<style>
-    .quiz-left-side-main {
-    width: 75%;
-    margin: 58px 0px 45px 27px;
-    height: fit-content;
-}
-</style>
-    <div class="row">
-<div class=" col-md-offset-2 col-md-8"style="margin-left: 20%"> 
-<div class="Quiz_section">
+<body>
+    <style>
+        .quiz-left-side-main {
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+        }
+    </style>
+    <section style="min-height: calc(100vh - 300px);">
+        <div class="row">
+            <div class="offset-md-2 col-md-8">
                 <div class="quiz-left-side-main shadow">
-                	<div class="thank_you_box" id="thankYou">
-                		<img src="assets/images/certificate.png" alt="">
+                    <div class="thank_you_box" id="thankYou">
+                        <!-- <img src="assets/images/certificate.png" alt=""> -->
                         <div class="text_box">
                             <h4>Thank You </h4>
                             <p>For Participating In The Quiz </p>
@@ -45,19 +48,18 @@
                         </div>
                     </div>
                 </div>
-            </div>  
-            </div>  
-            </div> 
+            </div>
+        </div>
+    </section>
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/font_resize.js"></script>
     <script src="assets/js/tab.js"></script>
-    <script src="assets/js/dark_mode.js"></script> 
+    <script src="assets/js/dark_mode.js"></script>
     <script>
     </script>
-    <script> 
-
+    <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
         document.getElementById("submit_button").style.display = "none";
@@ -131,17 +133,15 @@
             //... and adds the "active" class on the current step:
             //  x[n].className += " active";
         }
-         
-
     </script>
     <script>
         $('.login_details').hide()
-jQuery('.show').on('click',function(){
-  jQuery('.login_details').toggle();
-});
-</script>
+        jQuery('.show').on('click', function() {
+            jQuery('.login_details').toggle();
+        });
+    </script>
 
- 
+
 </body>
 
 </html>

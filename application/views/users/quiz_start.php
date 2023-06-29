@@ -2,9 +2,9 @@
 <?php
 // new code start R
 //session_start();
-if(!isset($_SESSION['user_session_id'])){
-   // header('location:<?php echo base_url();users/login');
-   redirect(base_url() . "Users/login", 'refresh');
+if (!isset($_SESSION['user_session_id'])) {
+    // header('location:<?php echo base_url();users/login');
+    redirect(base_url() . "Users/login", 'refresh');
 }
 
 // new code end R
@@ -41,20 +41,108 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 </head>
 <style>
     h3.quiz_title_heading {
-        margin-left: 12px;
-        padding: 19px 0px 0px 12px;
+
         font-weight: 600;
         color: crimson;
     }
+
     .yellow {
-        background-color:  #ffc107 !important ;
-    color: white;
+        background-color: #ffc107 !important;
+        color: white;
     }
+
     .ans-yellow {
-        background-color:  #ffc107 ;
-    color: white;
+        background-color: #ffc107;
+        color: white;
     }
-   
+
+    .name_time_m {
+        display: none;
+    }
+
+    .minheight_left {
+        min-height: 100vh;
+    }
+
+    .savennextbtn {
+        position: absolute;
+        bottom: 20px;
+        right: 10px;
+    }
+    .mrkfrw{
+        position: absolute;
+        bottom: 20px;
+    }
+
+    @media (max-width: 990px) {
+        .name_time_m {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .name_time_d {
+            display: none;
+        }
+
+        .name_time_m {
+            margin: 15px 0px;
+        }
+
+        #submit_button {
+            order: 3;
+        }
+
+    }
+
+    @media (max-width: 768px) {
+        .minheight_left {
+            min-height: auto !important;
+        }
+
+
+        .quiz-left-side {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-left-side #right-bar-ans-none {
+            order: 2;
+        }
+
+        .quiz-left-side .as-color ol li {
+            display: inline;
+            margin-right: 15px;
+        }
+        .quiz-right-side-main{
+            padding: 15px 11.25px;
+        }
+        .as-color ol{
+            margin-bottom: 0px;
+        }
+        .quiz-left-side #afterSubmitHide span{
+            margin-bottom: 0px !important;
+        }
+        .quiz-ans-section p{
+            margin: 0px !important;
+            padding: 0px 10px !important;
+        }
+        .quiz-option{
+            padding: 0px !important;
+        }
+        #right-bar-ans-none{
+            background: none;
+        }
+    }
+
+    @media (min-width: 991px) {
+        .name_time_d {
+            display: block;
+        }
+
+        .quiz_title_heading {
+            margin-top: 15px !important;
+        }
+    }
 </style>
 
 <body>
@@ -62,11 +150,22 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="quiz-left-side-main shadow col-md-9">
+                <div class="shadow col-md-9 minheight_left" style="position: relative; padding-bottom: 60px">
+                    <div class="name_time_m ">
+                        <div class="d-flex">
+                            <img src="<?php echo base_url(); ?>assets/images/user.png" class="user-icon">
+                            <div class="nav-bar-user-icon-section">
+                                <span class="user-profile-font"><b><?php echo encryptids("D", $_SESSION['admin_name']); ?></b></span>
+                            </div>
+                        </div>
+                        <div class="fw-bold">
+                            Time left : <span class="timer"> <span class="countdown"></span></span>
+                        </div>
+                    </div>
                     <h3 class="quiz_title_heading"><?= $quizdata['title'] ?></h3>
-                  
+
                     <form id="regForm" action="<?= base_url() . 'Users/quiz_submit' ?>" method="post" enctype="multipart/form-data">
-                        <input type ="hidden" id="total_que_count" value=" <?= count($que_details); ?>" />
+                        <input type="hidden" id="total_que_count" value=" <?= count($que_details); ?>" />
                         <?php $setLang = $_SESSION["quiz_lang_id"]; ?>
                         <div class="inner-section " id="qustions-tab">
                             <?php // echo  $user_id; 
@@ -74,21 +173,23 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                             <input type="hidden" value="<?= $quiz_start_time; ?>" name="start_time">
                             <input type="hidden" value="<?= $user_id; ?>" name="user_id">
                             <input type="hidden" value="<?= $quizdata['id'] ?>" name="quiz_id">
-                           
+
+
 
                             <?php $i = 1;
                             $marks = $quizdata['total_mark'] / $quizdata['total_question'];
                             ?>
-                          
+
                             <?php
                             $k = 1;
                             foreach ($que_details as $key => $details) {
                             ?>
 
 
-                                <div class="tab p-3">
-                                    <h3>Question <?= $k; ?> of <?= count($que_details); ?><div style="text-align:right"> Marks For Each Question - <?= $marks ?></div>
+                                <div class="tab">
+                                    <h3 class="d-flex justify-content-between"><span>Question <?= $k; ?> of <?= count($que_details); ?></span><span> Marks For Each Question - <?= $marks ?></span>
                                     </h3>
+
                                     <div class="quiz-ans-section">
                                         <div class="d-flex mb-2">
                                             <?php if ($quizdata['language_id'] == 1 || $setLang == 1) { ?>
@@ -96,12 +197,13 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                             <?php } else { ?>
                                                 <p class="qustion-ans"> <?= $i++ . " . " .  $details['que_h'] ?> </p>
                                             <?php }   ?>
-                                            
+
                                         </div>
                                         <?php if ($details['que_type'] == 2 || $details['que_type'] == 3) { ?>
-                                                <div>
-                                                <img width="200" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $details['que_bank_id']; ?>/<?php echo $details['image']; ?>"></div>
-                                            <?php }  ?>
+                                            <div>
+                                                <img width="200" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $details['que_bank_id']; ?>/<?php echo $details['image']; ?>">
+                                            </div>
+                                        <?php }  ?>
 
                                         <div class="quiz-option" style="padding-top:20px;">
                                             <input type="hidden" value="<?= $details['que_id'] ?>" name="que_id[]">
@@ -224,17 +326,17 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                                     $details['no_of_options'] == 4  ||  $details['no_of_options'] == 5
                                                 ) { ?>
                                                     <?php if ($quizdata['language_id'] == 1 || $setLang == 1) { ?>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="1" <?php if($details['selected_op']==1)echo "checked"?>>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="1" <?php if ($details['selected_op'] == 1) echo "checked" ?>>
                                                             <?= $opt1_e ?>
                                                         </li>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="2" <?php if($details['selected_op']==2)echo "checked"?>>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="2" <?php if ($details['selected_op'] == 2) echo "checked" ?>>
                                                             <?= $opt2_e  ?>
                                                         </li>
                                                     <?php } else { ?>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="1" <?php if($details['selected_op']==1)echo "checked"?>>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="1" <?php if ($details['selected_op'] == 1) echo "checked" ?>>
                                                             <?= $opt1_h ?>
                                                         </li>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="2" <?php if($details['selected_op']==2)echo "checked"?>>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="2" <?php if ($details['selected_op'] == 2) echo "checked" ?>>
                                                             <?= $opt2_h  ?>
                                                         </li>
                                                     <?php } ?>
@@ -243,12 +345,12 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                                 <?php if ($details['no_of_options'] == 3 || $details['no_of_options'] == 4  ||  $details['no_of_options'] == 5) { ?>
                                                     <?php if ($quizdata['language_id'] == 1 || $setLang == 1) { ?>
 
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="3" <?php if($details['selected_op']==3)echo "checked"?>>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="3" <?php if ($details['selected_op'] == 3) echo "checked" ?>>
                                                             <?= $opt3_e ?></li>
 
 
                                                     <?php } else { ?>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="3" <?php if($details['selected_op']==3)echo "checked"?>>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="3" <?php if ($details['selected_op'] == 3) echo "checked" ?>>
                                                             <?= $opt3_h ?></li>
 
                                                     <?php } ?>
@@ -257,39 +359,41 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                                                 <?php if ($details['no_of_options'] == 4  ||  $details['no_of_options'] == 5) { ?>
                                                     <?php if ($quizdata['language_id'] == 1 || $setLang == 1) { ?>
 
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="4" <?php if($details['selected_op']==4)echo "checked"?>><?= $opt4_e  ?></li>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="4" <?php if ($details['selected_op'] == 4) echo "checked" ?>><?= $opt4_e  ?></li>
                                                     <?php } else { ?>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="4" <?php if($details['selected_op']==4)echo "checked"?>><?= $opt4_h ?></li>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="4" <?php if ($details['selected_op'] == 4) echo "checked" ?>><?= $opt4_h ?></li>
                                                     <?php } ?>
                                                 <?php } ?>
                                                 <?php if ($details['no_of_options'] == 5) { ?>
                                                     <?php if ($quizdata['language_id'] == 1 || $setLang == 1) { ?>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="5" <?php if($details['selected_op']==5)echo "checked"?>> <?= $opt5_e  ?> </li>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="5" <?php if ($details['selected_op'] == 5) echo "checked" ?>> <?= $opt5_e  ?> </li>
                                                     <?php } else { ?>
-                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="5" <?php if($details['selected_op']==5)echo "checked"?>> <?= $opt5_h  ?> </li>
+                                                        <li> <input type="radio" class="quiz-radio-btn op<?= $details['que_id'] ?>" name="option<?= $details['que_id'] ?><?= $k; ?>" value="5" <?php if ($details['selected_op'] == 5) echo "checked" ?>> <?= $opt5_h  ?> </li>
                                                     <?php } ?>
 
                                                 <?php } ?>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div>
-                                    <input type="checkbox"  name="mark_review_ids[]" id="mark_review_ids<?= $details['que_id'] ?>" value="0" style="display:none" >
-                                    <button type="button" id="review" data-id="<?= $details['que_id'] ?>" class="btn btn-success markForReview  startQuiz me-2" style="background: purple;">Mark For Review</button>
-                                    <!--  <input type="checkbox" id="review" name="review[]" value="<?= $details['que_id'] ?>" /> <label for="subscribeNews">Mark For Review</label> -->
-                                </div>
-                                </div>
-                            <?php $k++;   } ?>
 
-                            <div class="d-flex justify-content-between my-4 w-100 px-3">
-                                <div>
-                                    <!--  <input type="checkbox" id="review" name="review[]" value="<?= $details['que_id'] ?>" /> <label for="subscribeNews">Mark For Review</label> -->
+                                    <div class="mrkfrw">
+                                        <!--  <input type="checkbox" id="review" name="review[]" value="<?= $details['que_id'] ?>" /> <label for="subscribeNews">Mark For Review</label> -->
+                                        <input type="checkbox" name="mark_review_ids[]" id="mark_review_ids<?= $details['que_id'] ?>" value="0" style="display:none">
+                                        <button type="button" id="review" data-id="<?= $details['que_id'] ?>" class="btn btn-success markForReview  startQuiz me-2" style="background: purple;">Mark For Review</button>
+                                    </div>
+
+
                                 </div>
+                            <?php $k++;
+                            } ?>
+
+                            <div class="d-flex justify-content-between savennextbtn">
+
                                 <div class="d-flex">
                                     <button type="button" id="prevBtn" class="btn btn-success startQuiz me-2" onclick="nextPrev(-1)">Previous</button>
 
                                     <button type="button" id="nextBtn" class="btn btn-success startQuiz me-2" onclick="nextPrev(1)"><span>Save & Next</span></button>
-                                </div>                             
+                                </div>
 
                             </div>
 
@@ -298,38 +402,42 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                 </div>
                 <div class="quiz-right-side-main shadow-1 col-md-3">
                     <div class="quiz-left-side ">
-                        <div class="user-name">
-                            <img src="<?php echo base_url(); ?>assets/images/user.png" class="user-icon">
-                            <div class="nav-bar-user-icon-section">
-                                <span class="user-profile-font"><b><?php echo encryptids("D", $_SESSION['admin_name']); ?></b></span>
+                        <div class="name_time_d">
+                            <div class="user-name">
+                                <img src="<?php echo base_url(); ?>assets/images/user.png" class="user-icon">
+                                <div class="nav-bar-user-icon-section">
+                                    <span class="user-profile-font"><b><?php echo encryptids("D", $_SESSION['admin_name']); ?></b></span>
+                                </div>
+                            </div>
+                            <div class="time-left">
+                                Time left : <span class="timer"> <span class="countdown"></span></span>
                             </div>
                         </div>
-                        <div class="time-left">
-                            Time left :  <span class="timer"> <span class="countdown"></span></span>
-                        </div>
-                        <div Id="right-bar-ans-none">
 
-                            <h6 class="quiz-title mb-4"><?= $quizdata['title'] ?></h6>
+                        <div id="right-bar-ans-none">
+
+                            <h6 class="quiz-title mb-4 d-none d-md-block"><?= $quizdata['title'] ?></h6>
                             <div id="afterSubmitHide">
-                              
+
                                 <?php
                                 foreach ($que_details as $key => $details) {
                                     $key++; ?>
-                                    <span id="counter<?= $details['que_id'] ?>" style="cursor:pointer;" 
-                                    
-                                  
-                                    <?php  if($details['mark_review']== 1  ){echo "class='ans-yellow'";} else{
-                                            if($details['selected_op']== 1 || $details['selected_op']== 2 ||$details['selected_op']== 3 ||$details['selected_op']== 4 ||$details['selected_op']== 5 ){echo "class='ans-green'";}else {echo "class='ans-red'";}
-
-                                    }?>                   
-                                    onclick="que(<?= $key; ?>)" >
-                                    <?= $key; ?> </span>
+                                    <span id="counter<?= $details['que_id'] ?>" style="cursor:pointer;" <?php if ($details['mark_review'] == 1) {
+                                                                                                            echo "class='ans-yellow'";
+                                                                                                        } else {
+                                                                                                            if ($details['selected_op'] == 1 || $details['selected_op'] == 2 || $details['selected_op'] == 3 || $details['selected_op'] == 4 || $details['selected_op'] == 5) {
+                                                                                                                echo "class='ans-green'";
+                                                                                                            } else {
+                                                                                                                echo "class='ans-red'";
+                                                                                                            }
+                                                                                                        } ?> onclick="que(<?= $key; ?>)">
+                                        <?= $key; ?> </span>
                                 <?php } ?>
                             </div>
 
                         </div>
                         <div class="as-color">
-                            <ol>
+                            <ol class="p-0">
                                 <li><span class="Quiz-circle green"></span>Answered </li>
                                 <li><span class="Quiz-circle red"></span>Not Answered </li>
                                 <!--   <li><span class="Quiz-circle gray"></span>Not Visited</li> -->
@@ -345,7 +453,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         </div>
         </form>
     </section>
-    
+
 
     <script src="<?= base_url(); ?>assets/js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -353,43 +461,38 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <script src="<?= base_url(); ?>assets/js/font_resize.js"></script>
     <script src="<?= base_url(); ?>assets/js/tab.js"></script>
     <script src="<?= base_url(); ?>assets/js/dark_mode.js"></script>
-    
+
     <script>
-      
+        $('body').bind('copy paste cut drag drop', function(e) {
+            e.preventDefault();
+        });
 
-$('body').bind('copy paste cut drag drop', function (e) {
-  e.preventDefault();
-});
-
-$(document).bind("contextmenu", function(e) {
-    return false;
-});
-
-document.onkeydown = function(){
-  switch (event.keyCode){
-        case 116 : //F5 button
-            event.returnValue = false;
-            event.keyCode = 0;
+        $(document).bind("contextmenu", function(e) {
             return false;
-        case 82 : //R button
-            if (event.ctrlKey){ 
-                event.returnValue = false;
-                event.keyCode = 0;
-                return false;
+        });
+
+        document.onkeydown = function() {
+            switch (event.keyCode) {
+                case 116: //F5 button
+                    event.returnValue = false;
+                    event.keyCode = 0;
+                    return false;
+                case 82: //R button
+                    if (event.ctrlKey) {
+                        event.returnValue = false;
+                        event.keyCode = 0;
+                        return false;
+                    }
             }
-    }
-}
-
-</script>
+        }
+    </script>
 
 
 
-    
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-      
-
         var total_ques = $("#total_que_count").val();
         var app_que_count = 1;
         $('#submit_button').hide();
@@ -415,7 +518,6 @@ document.onkeydown = function(){
                 // document.getElementById("nextBtn").innerHTML = "Submit";
                 document.getElementById("nextBtn").style.display = "none";
                 document.getElementById("submit_button").style.display = "block";
-
             } else {
                 document.getElementById("nextBtn").style.display = "block";
                 document.getElementById("nextBtn").innerHTML = "Save & Next";
@@ -423,99 +525,99 @@ document.onkeydown = function(){
             //... and run a function that will display the correct step indicator:
             fixStepIndicator(n)
         }
-         
+
         function nextPrev(n) {
             var res = $(".viewedQuestion .quiz-option .active_question_id").val();
             var k = $(".viewedQuestion .quiz-option .k_value").val();
             var switching_type = $(".viewedQuestion .quiz-option .switching_type").val();
             var is_valid = true;
-            if(n != -1){
+            if (n != -1) {
 
-         
-            if (switching_type == 2) {
-                var sel_option = $('input[name="option' + res + k + '"]:checked').val();
-                if (sel_option == undefined) {
-                    is_valid = false;
-                }
-            }
-            if (is_valid == true) {
-                app_que_count++;
-                ////////////// SAVING QUE DETAILS START 
-                var quiz_id = "<?= $quizdata['id']; ?>";
-                var user_id = "<?= $user_id; ?>";
-                var ques_id = res;
-                var mark_review_id = $("#mark_review_ids"+res).val();
-                var selected_op = $('input[name="option' + res + k + '"]:checked').val();
-                if (selected_op == undefined) {
-                    selected_op = 0;
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url(); ?>users/saveAttemptedQuesDetailsOfUser',
-                    data: {
-                        quiz_id: quiz_id,
-                        user_id: user_id,
-                        ques_id:ques_id,
-                        selected_op:selected_op,
-                        mark_review_id :mark_review_id 
-                    },
-                    success: function(result) {
-                       console.log("Success");
 
-                    },                   
-                    error: function(result) {
-                        console.log("Error,Please try again.");
+                if (switching_type == 2) {
+                    var sel_option = $('input[name="option' + res + k + '"]:checked').val();
+                    if (sel_option == undefined) {
+                        is_valid = false;
                     }
-                });
-
-
-
-
-
-                ////////////// SAVING QUE DETAILS END 
-                $(".tab.viewedQuestion").removeClass("viewedQuestion");
-                var valid = true;
-                // This function will figure out which tab to display
-                var x = document.getElementsByClassName("tab");
-                // Exit the function if any field in the current tab is invalid:
-                // if (n == 1 && !validateForm()) return false;
-                // Hide the current tab:
-                x[currentTab].style.display = "none";
-                // Increase or decrease the current tab by 1:
-                currentTab = currentTab + n;
-                // if you have reached the end of the form...
-                if (currentTab >= x.length) {
-                    // ... the form gets submitted:
-                    // $("#myForm").submit();
-                    // document.getElementById("regForm").submit();
-                    document.getElementById("afterSubmitHide").style.display = "none";
-                    // $('#afterSubmitHide').hide();
-                    console.log('hello')
-                    return false;
-
                 }
-                // Otherwise, display the correct tab:
-                showTab(currentTab);
-                if (valid) {
-                    document.getElementsByClassName("step")[currentTab].className += " finish";
+                if (is_valid == true) {
+                    app_que_count++;
+                    ////////////// SAVING QUE DETAILS START 
+                    var quiz_id = "<?= $quizdata['id']; ?>";
+                    var user_id = "<?= $user_id; ?>";
+                    var ques_id = res;
+                    var mark_review_id = $("#mark_review_ids" + res).val();
+                    var selected_op = $('input[name="option' + res + k + '"]:checked').val();
+                    if (selected_op == undefined) {
+                        selected_op = 0;
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url(); ?>users/saveAttemptedQuesDetailsOfUser',
+                        data: {
+                            quiz_id: quiz_id,
+                            user_id: user_id,
+                            ques_id: ques_id,
+                            selected_op: selected_op,
+                            mark_review_id: mark_review_id
+                        },
+                        success: function(result) {
+                            console.log("Success");
+
+                        },
+                        error: function(result) {
+                            console.log("Error,Please try again.");
+                        }
+                    });
+
+
+
+
+
+                    ////////////// SAVING QUE DETAILS END 
+                    $(".tab.viewedQuestion").removeClass("viewedQuestion");
+                    var valid = true;
+                    // This function will figure out which tab to display
+                    var x = document.getElementsByClassName("tab");
+                    // Exit the function if any field in the current tab is invalid:
+                    // if (n == 1 && !validateForm()) return false;
+                    // Hide the current tab:
+                    x[currentTab].style.display = "none";
+                    // Increase or decrease the current tab by 1:
+                    currentTab = currentTab + n;
+                    // if you have reached the end of the form...
+                    if (currentTab >= x.length) {
+                        // ... the form gets submitted:
+                        // $("#myForm").submit();
+                        // document.getElementById("regForm").submit();
+                        document.getElementById("afterSubmitHide").style.display = "none";
+                        // $('#afterSubmitHide').hide();
+                        console.log('hello')
+                        return false;
+
+                    }
+                    // Otherwise, display the correct tab:
+                    showTab(currentTab);
+                    if (valid) {
+                        document.getElementsByClassName("step")[currentTab].className += " finish";
+                    }
+                } else {
+                    Swal.fire('It is mandetory to answer the question.')
                 }
             } else {
-                Swal.fire('It is mandetory to answer the question.')
-            }
-        }else{
-            $(".tab.viewedQuestion").removeClass("viewedQuestion");
+                $(".tab.viewedQuestion").removeClass("viewedQuestion");
                 var valid = true;
-              
+
                 var x = document.getElementsByClassName("tab");
-               
+
                 x[currentTab].style.display = "none";
-               
+
                 currentTab = currentTab + n;
                 // if you have reached the end of the form...
                 if (currentTab >= x.length) {
-                 
+
                     document.getElementById("afterSubmitHide").style.display = "none";
-                   
+
                     console.log('hello')
                     return false;
 
@@ -525,7 +627,7 @@ document.onkeydown = function(){
                 if (valid) {
                     document.getElementsByClassName("step")[currentTab].className += " finish";
                 }
-        }
+            }
 
 
         }
@@ -533,21 +635,21 @@ document.onkeydown = function(){
         function que(n) {
             // var res = $(".viewedQuestion .quiz-option .active_question_id").val();
             var n = n - 1;
-          
+
             var k = $(".viewedQuestion .quiz-option .k_value").val();
             var switching_type = $(".viewedQuestion .quiz-option .switching_type").val();
             var is_valid = true;
-            
+
             if (switching_type == 2) {
-                if(total_ques  != app_que_count){
+                if (total_ques != app_que_count) {
                     var sel_option = $('input[name="option' + n + '"]').val();
                     if (sel_option == undefined) {
                         is_valid = false;
                     }
-                }else{
+                } else {
                     is_valid = true;
                 }
-               
+
             }
             if (is_valid == true) {
                 $(".tab.viewedQuestion").removeClass("viewedQuestion");
@@ -579,8 +681,8 @@ document.onkeydown = function(){
             } else {
                 Swal.fire('It is mandetory to answer the question.')
             }
-        } 
-      
+        }
+
 
 
         function validateForm() {
@@ -642,20 +744,20 @@ document.onkeydown = function(){
 
 
         $(function() {
-            $(".markForReview").click(function(e) {                   
-                    e.preventDefault();
-                  
-                    const $root = $(this);
-                    var id = $root.data('id');   
-                
-                    $('#mark_review_ids'+id).prop('checked', true);  
-                    $('#mark_review_ids'+id).val(id);  
-                    $("#counter"+id).removeClass('ans-red').removeClass('ans-green').addClass('ans-yellow');
-                });
+            $(".markForReview").click(function(e) {
+                e.preventDefault();
+
+                const $root = $(this);
+                var id = $root.data('id');
+
+                $('#mark_review_ids' + id).prop('checked', true);
+                $('#mark_review_ids' + id).val(id);
+                $("#counter" + id).removeClass('ans-red').removeClass('ans-green').addClass('ans-yellow');
+            });
             <?php
 
             foreach ($que_details as $key => $details) { ?>
-               
+
                 $("input[class$='op<?= $details['que_id'] ?>']").change(function() {
                     $("#counter<?= $details['que_id'] ?>").removeClass('ans-red').removeClass('ans-yellow').addClass('ans-green');
                 });
@@ -669,7 +771,7 @@ document.onkeydown = function(){
         function updateUserTime() {
             var quiz_id = "<?= $quizdata['id']; ?>";
             var user_id = "<?= $user_id; ?>";
-           
+
             $.ajax({
                 type: 'POST',
                 url: '<?php echo base_url(); ?>users/updateUserTime',
@@ -689,7 +791,7 @@ document.onkeydown = function(){
                    // alert("Error,Please try again.");
                 }
             });
-          
+
         }
 
         $(document).ready(function() {
@@ -753,24 +855,23 @@ document.onkeydown = function(){
         // }
     </script>
 
-     <script>
-
-        function check_session_id(){
-            var session_id = "<?php echo $_SESSION['user_session_id'];?>";
-            fetch('<?php echo base_url();?>users/checkLoginSession').then(function(response){
+    <script>
+        function check_session_id() {
+            var session_id = "<?php echo $_SESSION['user_session_id']; ?>";
+            fetch('<?php echo base_url(); ?>users/checkLoginSession').then(function(response) {
                 return response.json();
-            }).then(function(responseData){
-                if(responseData.output == 'logout'){
+            }).then(function(responseData) {
+                if (responseData.output == 'logout') {
                     $('#regForm').submit();
-                    window.location.href="<?php echo base_url();?>users/logout";
+                    window.location.href = "<?php echo base_url(); ?>users/logout";
                 }
             });
         }
 
-        setInterval(function(){
+        setInterval(function() {
             check_session_id();
-        },10000);
-     </script>
+        }, 10000);
+    </script>
 </body>
 
 </html>

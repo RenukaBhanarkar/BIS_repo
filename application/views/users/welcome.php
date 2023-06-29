@@ -69,6 +69,16 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.LiveDataBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 15px;
+}
+
     </style>
     <?php
 // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
@@ -146,11 +156,11 @@ if(isset($_SESSION['change_password'])){
                <div class="live_data">
                         <!-- <h6>Live Data</h6> -->
                         <div class="row table_data ">
-                        <div class="col-6">    
-                            <div class="innerBox" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%;">
-                            <div style="background:#00000099;">
+                        <div class="col-sm-6">    
+                            <div class="innerBox mb-2" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%; height: 250px;">
+                            <div style="background:#00000099;height: 100%">
                                 <a href="<?=base_url();?>users/standard">
-                                <div class="LiveDataBox" style="height: 215px; overflow: hidden;" >
+                                <div class="LiveDataBox" >
                                      <!-- <img src="<?=base_url();?>assets/images/compliant.png" class="livedata_icons"> -->
                                       <h3 class="text_standard"><?php echo $welcome_text[$language]['2'] ?></h3>
                                      <p class="mb-0">(<?php echo $welcome_text[$language]['3'] ?>)</p>
@@ -159,12 +169,12 @@ if(isset($_SESSION['change_password'])){
                                 </div>
                             </div>
                             </div>
-                            <div class="col-6">    
+                            <div class="col-sm-6">    
                             
-                            <div class="innerBox" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%;">
-                            <div style="background:#00000099;">
+                            <div class="innerBox mb-2" id="wos" style="background-image: url(<?php echo base_url();?>assets/images/world_standard.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%; height: 250px;">
+                            <div style="background:#00000099;height: 100%">
                                 <a href="<?=base_url();?>users/quality_index">
-                                  <div class="LiveDataBox" style="height: 215px; overflow: hidden;">
+                                  <div class="LiveDataBox">
                                       <!-- <img src="<?=base_url();?>assets/images/warranty.png" class="livedata_icons"> -->
                                        <h3 class="text_standard"><?php echo $welcome_text[$language]['4'] ?></h3>
                                        <p class="mb-0">(<?php echo $welcome_text[$language]['5'] ?>)</p>
