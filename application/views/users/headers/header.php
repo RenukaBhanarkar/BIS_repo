@@ -79,7 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="contact">
                             <ul>
-                                <!-- <select onchange="set_language()" name="language" id="language">
+                                <select onchange="set_language()" name="language" id="language">
                                 <?php
                                
                                 require(APPPATH.'views/users/language.php');
@@ -96,7 +96,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 ?>
                                     <option value="en" <?php echo $en_select ?>>English</option>
                                     <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
-                                </select> -->
+                                </select>
                                  <!-- <li><a href="#" value="hn">हिन्दी</a></li> -->
                                 <!-- <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
@@ -193,28 +193,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
           </div>
         <div class="menu_header" id="menu_header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <div class="container-fluid">
-                                <a class="navbar-brand d-flex" href="<?php echo base_url(); ?>">
+        <a class="navbar-brand d-flex justify-content-center" href="<?php echo base_url(); ?>">
                                     <img src="<?php echo base_url(); ?>assets/images/logo-strip.png" class="main_logo" alt="BIS logo">
                                 </a>
                                 <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button> -->
-
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
-    <section id="welcome_text">
-        <div>
-            <div class="row">
+    <section id="welcome_text" class="container-fluid">
+        <div class="row">
+            <div class="col-12">
                 <nav class="navbar navbar-expand-lg navbar-light navbar_padding">
                     <div>
 

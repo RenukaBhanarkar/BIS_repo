@@ -3564,7 +3564,7 @@ if($user_details['change_password']==0){
         $this->load->view('users/footers/footer');
     }
     public function more_copetition(){
-        $data['more_copetition']=$this->Miscellaneous_competition->getPublishedComp('100',array(3,4,5));        
+        $data['more_copetition']=$this->Miscellaneous_competition->getPublishedComp1('100',array(3,4,5));        
        //print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/more_copetition',$data);

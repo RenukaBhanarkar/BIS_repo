@@ -1292,7 +1292,7 @@
              $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_quiz_details.availability_id');
              $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_quiz_details.quiz_level_id');
              $this->db->join('tbl_mst_regions', 'tbl_mst_regions.pki_region_id = tbl_quiz_details.region_id', 'left');
-             $this->db->join('tbl_mst_branch', 'tbl_mst_branch.i_branch_id= tbl_quiz_details.branch_id', 'left');
+             $this->db->join('tbl_mst_branch', 'tbl_mst_branch.pki_id= tbl_quiz_details.branch_id', 'left');
              $this->db->join('tbl_mst_states', 'tbl_mst_states.state_id= tbl_quiz_details.state_id', 'left');
              return $this->db->get('tbl_quiz_details')->row_array();
          }

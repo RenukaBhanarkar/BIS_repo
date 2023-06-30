@@ -119,6 +119,19 @@ padding-left: 5px;
   font-weight: 600;
     font-size: 16px;
 }
+
+#start-quiz{
+  padding: 66px;
+}
+
+@media (max-width: 768px){
+  #start-quiz{
+  padding: 10px !important;
+}
+.tab-link{
+  height: auto;
+}
+}
 </style>
 <?php
 // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
@@ -257,7 +270,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
       <div class="tab-pane fade active show" id="tab1" role="tabpanel">
         <div class="" >
           <section>
-            <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+            <div class="container-fluid pt-4 pb-5" id="start-quiz">
               <div class="row text-center">
                 <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['3'] ?></h3> -->
                 <!-- <p>Miscellaneous For You</p> -->
@@ -268,7 +281,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
                   <strong>Sorry!</strong> Quizes are not available.
                 </div>
                 <?php  } else {  ?>
-                <div class="row">
+                
                   <?php foreach ($allquize as $key => $quize) {  ?>
                   <div class="col-md-3">
                     <div class="quiz-section">
@@ -282,7 +295,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
                     </div>
                   </div>
                   <?php  } ?>
-                </div>
+                
                 <?php } ?>
               </div>
               <div class="view-button">
@@ -295,7 +308,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
         <div class="tab-pane fade" id="tab2" role="tabpanel">
           <div class="" >
             <section>
-              <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+              <div class="container-fluid pt-4 pb-5" id="start-quiz">
                 <div class="row text-center">
                   <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['4'] ?></h3> -->
                   <!-- <p>Miscellaneous For You</p> -->
@@ -335,7 +348,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
           <div class="tab-pane fade" id="tab3" role="tabpanel">
             <div class="" >
               <section>
-                <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                <div class="container-fluid pt-4 pb-5" id="start-quiz">
                   <div class="row text-center">
                     <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['5'] ?></h3> -->
                     <!-- <p>Miscellaneous For You</p> -->
@@ -375,7 +388,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
             <div class="tab-pane fade" id="tab4" role="tabpanel">
               <div class="" >
                 <section>
-                  <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                  <div class="container-fluid pt-4 pb-5" id="start-quiz">
                     <div class="row text-center">
                       <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['6'] ?></h3> -->
                       <!-- <p>Miscellaneous For You</p> -->
@@ -415,7 +428,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
               <div class="tab-pane fade" id="tab5" role="tabpanel">
                 <div class="" >
                   <section>
-                    <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+                    <div class="container-fluid pt-4 pb-5" id="start-quiz">
                       <div class="row text-center">
                         <!-- <h3 style="font-weight: 700; color: black;"><?php echo $standard_club_section[$language]['7'] ?></h3> -->
                         <!-- <p>Miscellaneous For You</p> -->
@@ -491,7 +504,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
           </section> -->
           <!-- <div class="" style="background-image: url(<?php echo base_url();?>assets/images/creative_img.webp);">
             <section>
-              <div class="container-fluid pt-4 pb-5" id="start-quiz" style="padding: 66px;">
+              <div class="container-fluid pt-4 pb-5" id="start-quiz">
                 <div class="row text-center">
                   <h3 style="font-weight: 700; color: white;">Creative Task</h3>
                   <p>Miscellaneous For You</p>
