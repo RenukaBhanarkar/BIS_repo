@@ -85,7 +85,7 @@
 }
     </style>
 <section>
-        <div class="container-fluid" id="winner-section" style="padding: 19px 37px 50px 37px;">
+        <div class="container-fluid" id="winner-section" style="padding: 19px 25px 50px 25px;">
             <div class="row">
               <div class="col-md-8">
                <div class="static-content">
@@ -123,7 +123,7 @@
                           <div class="title">
                               <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'],"...",110); ?></p>
                           </div>
-                          <div class="field-item even">
+                          <div class="field-item even" style="max-height: 147px; overflow: hidden;"> 
                               <span class="time_left">
                                   <!-- <span class="last-date"><?php echo substr_replace($list['description'],"...",140);  ?> </span> -->
                                   <span class="last-date"><?php echo $list['description'];  ?> </span>
