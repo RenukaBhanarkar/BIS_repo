@@ -79,7 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="contact">
                             <ul>
-                                <select onchange="set_language()" name="language" id="language">
+                                <!-- <select onchange="set_language()" name="language" id="language">
                                 <?php
                                
                                 require(APPPATH.'views/users/language.php');
@@ -96,7 +96,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 ?>
                                     <option value="en" <?php echo $en_select ?>>English</option>
                                     <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
-                                </select>
+                                </select> -->
                                  <!-- <li><a href="#" value="hn">हिन्दी</a></li> -->
                                 <!-- <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
@@ -112,7 +112,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-7">
                         <div class="accessibility">
                             <ul>
-                                <li> <span class="mr-2 d-none d-lg-inline text-gray-600 small">BIS -
+                                <li> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                         <?php if (isset($_SESSION['admin_name'])) {
                                             echo encryptids("D", $_SESSION['admin_name']);
                                         } ?>
@@ -223,9 +223,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;"><?php echo $top_nav[$language]['2'] ?></a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_eBIS" style="color: white;">About eBIS</a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
                                      <a class="nav-link " id="publish_pop" aria-current="page" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
