@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<?php
-// new code start R
-//session_start();
-if(!isset($_SESSION['user_session_id'])){ 
-    
-    
-   redirect(base_url() . "Users/login", 'refresh');
-}
-$start_time = $_SESSION['start_time'] = date('h:i:s'); 
 
-?> 
 <html lang="en">
     <head>
         <!-- Required meta tags -->
