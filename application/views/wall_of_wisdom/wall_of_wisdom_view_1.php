@@ -112,7 +112,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 28%;
+    /* width: 28%; */
 }
 .last-date{
     /* text-overflow: ellipsis;
@@ -123,11 +123,11 @@
   height: 86px;
 }
 .new_select{
-    margin-left: 17px;
+    /* margin-left: 17px; */
     border: 1px solid black;
     border-radius: 5px;
     padding: 1px;
-    width: 116px;
+    /* width: 116px; */
     background: none;
 }
     </style>
@@ -145,7 +145,7 @@
                 </div>
               </div>
               <div class="col-md-9">
-                <div class="col-md-12">
+                
                 <div class="row">
                 <?php
                     if ($this->session->flashdata('MSG')) {
@@ -154,6 +154,7 @@
                     ?>
                     <form id="wow_search" action="<?php echo base_url(); ?>users/searchWow" method="post">
                        <div class="filter-content">
+                        <div class="col-md-4">
                            <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
                            <label class="sector_label">Under</label>
@@ -165,6 +166,8 @@
                                         <option value="2">Last Month</option>
                                         <option value="3">Last Year</option>
                                 </select>
+                        </div>
+                        <div class="col-md-4">
                                 <div class="input-group search_icon" style="top: -2px;">
                                        
                                         <input class="form-control border-end-0 border rounded-pill" type="text" placeholder="search" name="search_text" id="search_text">
@@ -175,7 +178,9 @@
                                             </button>
                                         </span>
                                 </div>
-                                <label class="sector_label" style="margin-left: -141px;">Sort By:</label>
+                        </div>
+                        <div class="col-md-4" style="text-align: end;">
+                                <label class="sector_label">Sort By:</label>
 
                          
                                 <select class="new_select" aria-label="Default select example" name="select_type" id="select_type">
@@ -184,10 +189,11 @@
                                         <option value="2">Oldest First</option>
                                        
                                 </select>
+                        </div>
                        </div>
 </form>
                 </div>
-                </div>
+               
              </div>
               
             </div>
