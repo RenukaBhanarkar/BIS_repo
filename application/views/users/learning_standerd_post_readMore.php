@@ -158,7 +158,7 @@ font-size: 14px;
     width: 28%;
 }
 </style>
-<div class="container-fluid" style="padding:30px;">
+<div class="container-fluid" style="padding:20px;">
 <div class="row">
     <div class="col-md-3">
         <div class="static-content">

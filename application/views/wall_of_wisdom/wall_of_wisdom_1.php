@@ -138,7 +138,7 @@
                               <!-- <div  class="status-open like_<?=$list['id'];?>" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div> -->
                               
                           </div>
-                          <div class="col-6" style="    float: right;    text-align: -webkit-right;    color: blue;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a></div>
+                          <div class="col-6" style="    float: right;    text-align: -webkit-right;    color: blue;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span class="read_more">Continue Reading</span></a></div>
                           </div>
                   </div>
                           

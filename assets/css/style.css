@@ -955,6 +955,11 @@ footer .main_footer .f_contact ul li i {
 }
 
 /* media mobile start */
+@media (min-width: 200px) and (max-width: 320px) {
+.read_more{
+    font-size: 12px;
+}
+}
 @media (min-width: 320px) and (max-width: 576px) {
 	.logo_name {
 		display: none;
@@ -1075,6 +1080,16 @@ footer .main_footer .f_contact ul li i {
 	}
     .text_standard{
         /* padding-top: 46px; */
+    }
+    .responsive_content_1{
+        width: 40%
+    }
+    .responsive_content_2{
+        width: 60%
+    }
+    .responsive_content_3{
+        width: 48%;
+        margin-top: -17px;
     }
 }
 @media (min-width: 577px) and (max-width: 767.98px) {

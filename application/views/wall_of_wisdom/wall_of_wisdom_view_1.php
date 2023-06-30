@@ -161,7 +161,7 @@
                     ?>
                     <form id="wow_search" action="<?php echo base_url(); ?>users/searchWow" method="post">
                        <div class="filter-content">
-                        <div class="col-md-4">
+                        <div class="col-md-4 responsive_content_1">
                             <div class="search_content">
                            <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
@@ -176,7 +176,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 responsive_content_2">
                         <div class="search_content">
                                 <div class="input-group search_icon" style="top: -2px;">
                                        
@@ -190,7 +190,7 @@
                                 </div>
                         </div>
                         </div>
-                        <div class="col-md-4" style="text-align: end;">
+                        <div class="col-md-4 responsive_content_3" style="text-align: end;">
                         <div class="search_content">
                                 <label class="sector_label">Sort By:</label>
 
