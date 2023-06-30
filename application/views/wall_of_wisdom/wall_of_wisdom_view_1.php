@@ -76,15 +76,19 @@
 }
 
 .filter-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     background: #dedede;
-    padding: 15px 14px;
+    /* padding: 15px 14px; */
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     /* display: flex; */
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between
+    justify-content: space-between;
 }
 .filter_label {
     margin-left: 9px;
@@ -130,6 +134,9 @@
     /* width: 116px; */
     background: none;
 }
+.search_content{
+    margin: 14px;
+}
     </style>
 <section>
         <div class="container-fluid" id="winner-section" style="padding: 19px 37px 50px 37px;">
@@ -155,6 +162,7 @@
                     <form id="wow_search" action="<?php echo base_url(); ?>users/searchWow" method="post">
                        <div class="filter-content">
                         <div class="col-md-4">
+                            <div class="search_content">
                            <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
                            <label class="sector_label">Under</label>
@@ -166,8 +174,10 @@
                                         <option value="2">Last Month</option>
                                         <option value="3">Last Year</option>
                                 </select>
+                            </div>
                         </div>
                         <div class="col-md-4">
+                        <div class="search_content">
                                 <div class="input-group search_icon" style="top: -2px;">
                                        
                                         <input class="form-control border-end-0 border rounded-pill" type="text" placeholder="search" name="search_text" id="search_text">
@@ -179,7 +189,9 @@
                                         </span>
                                 </div>
                         </div>
+                        </div>
                         <div class="col-md-4" style="text-align: end;">
+                        <div class="search_content">
                                 <label class="sector_label">Sort By:</label>
 
                          
@@ -189,6 +201,7 @@
                                         <option value="2">Oldest First</option>
                                        
                                 </select>
+                        </div>
                         </div>
                        </div>
 </form>
