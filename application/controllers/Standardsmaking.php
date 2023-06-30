@@ -361,8 +361,18 @@ public function updateStatusConversation()
             $formdata['title'] = $this->input->post('title');
             $formdata['description'] = $this->input->post('description'); 
             $formdata['session_link'] = $this->input->post('session_link'); 
+            
+            $formdata['option'] = $this->input->post('option'); 
+            $option=$this->input->post('option');
+            if($option==1)
+            {
+                $formdata['video'] = $videolocation;
+            }
+            if ($option==2) { 
+                $formdata['video_url'] = $this->input->post('video_url'); 
+            }
             $formdata['thumbnail'] =$thumbnaillocation; 
-            $formdata['video'] = $videolocation;
+            
             $formdata['image'] = $imagelocation;
             $formdata['doc_pdf'] = $doc_pdflocation;
             $formdata['created_on'] = date('Y-m-d h:i:s'); 
@@ -449,20 +459,23 @@ public function updateStatusConversation()
             if (!file_exists('uploads/join_the_classroom/doc_pdf')) { mkdir('uploads/join_the_classroom/doc_pdf', 0777, true); }
 
             if (!file_exists('uploads/join_the_classroom/image')) { mkdir('uploads/join_the_classroom/image', 0777, true); }
- $val=$this->input->post('type_of_post');
+            $val=$this->input->post('type_of_post');
             if ($val==2) 
             {
                 $lastvideo=$this->input->post('lastvideo');
                 if (!empty($_FILES['video']['tmp_name']))
-                {
-                    $videopath = 'uploads/learning_Science/video/'; 
-                    $videolocation = $videopath . time() .'video'. $_FILES['video']['name']; 
-                    move_uploaded_file($_FILES['video']['tmp_name'], $videolocation);
+                {   
+                    $ext = pathinfo($_FILES['video']['name'], PATHINFO_EXTENSION);
+                    $videopath = 'uploads/join_the_classroom/video/'; 
+                    $videolocation = $videopath . time() .'join_the_classroom.'. $ext; 
+                    move_uploaded_file($_FILES['video']['tmp_name'], $videolocation); 
                 }
                 else
                 {
                     $videolocation=$lastvideo;
                 }
+
+
             }
             else
             {
@@ -474,7 +487,7 @@ public function updateStatusConversation()
                 $lastdoc_pdf=$this->input->post('lastdoc_pdf');
                 if (!empty($_FILES['doc_pdf']['tmp_name'])) 
                 {
-                    $doc_pdfpath = 'uploads/learning_Science/doc_pdf/'; 
+                    $doc_pdfpath = 'uploads/join_the_classroom/doc_pdf/'; 
                     $doc_pdflocation = $doc_pdfpath . time() .'doc_pdf'. $_FILES['doc_pdf']['name']; 
                     move_uploaded_file($_FILES['doc_pdf']['tmp_name'], $doc_pdflocation);
                 }
@@ -484,7 +497,7 @@ public function updateStatusConversation()
                 } 
                 $imagelast=$this->input->post('lastimage');
                 if(!empty($_FILES['image']['tmp_name'])){
-                    $imagepath = 'uploads/learning_Science/image/'; 
+                    $imagepath = 'uploads/join_the_classroom/image/'; 
                     $imagelocation = $imagepath . time() .'image'. $_FILES['image']['name'];
                     move_uploaded_file($_FILES['image']['tmp_name'], $imagelocation);
                 }
@@ -508,7 +521,7 @@ public function updateStatusConversation()
             $lastthumbnail=$this->input->post('lastthumbnail');
             if (!empty($_FILES['thumbnail']['tmp_name'])) 
             {
-                $thumbnailpath = 'uploads/learning_Science/thumbnail/'; 
+                $thumbnailpath = 'uploads/join_the_classroom/thumbnail/'; 
                 $thumbnaillocation = $thumbnailpath . time() .'thumbnail'. $_FILES['thumbnail']['name']; 
                 move_uploaded_file($_FILES['thumbnail']['tmp_name'], $thumbnaillocation);
             }
@@ -525,6 +538,8 @@ public function updateStatusConversation()
             $formdata['title'] = $this->input->post('title');
             $formdata['description'] = $this->input->post('description'); 
             $formdata['session_link'] = $this->input->post('session_link'); 
+            $formdata['option'] = $this->input->post('option'); 
+            $formdata['video_url'] = $this->input->post('video_url'); 
             $formdata['thumbnail'] =$thumbnaillocation; 
             $formdata['video'] = $videolocation;
             $formdata['image'] = $imagelocation;

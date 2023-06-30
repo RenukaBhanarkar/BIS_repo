@@ -151,8 +151,24 @@
                                 
                             </div>
                             <div class="row" id="video_show">
-                                
+
                                 <div class="mb-2 col-md-4">
+                                    <label class="d-block">Select Option<sup class="text-danger">*</sup></label>
+                                    <div class="d-flex">
+                                        <div>
+                                            <input type="radio" id="html" name="option" value="1">
+                                            <label for="html">Upload Video</label><br>
+                                            <input type="radio" id="css" name="option" value="2">
+                                            <label for="css">Upload Video URL</label><br>  
+                                        </div>
+                                        
+                                    </div>
+                                    <span id="option_err"> </span>
+                                </div>
+                                </div>
+
+                                 <div class="row" id="video_show2">
+                                    <div class="mb-2 col-md-4"id="videoUpload">
                                     <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
                                     <div class="d-flex">
                                         <div>
@@ -164,7 +180,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="mb-8 col-md-8">
+                                <div class="mb-8 col-md-8" id="urlUpload">
                                     <label class="d-block">Video Link</label>
                                     <input type="url" id="video_url" name="video_url" class="form-control" >
                                     <span class="error_text"></span>
@@ -210,6 +226,8 @@
     $("#link_session").hide();
     $("#video_show").hide();
     $("#video_thumbnail").hide();
+    $("#video_show2").hide();
+
     });
     function getval(argument) {
     if (argument==1)
@@ -275,18 +293,54 @@
     // type_of_post--2
     if (type_of_post==2)
     {
-    var video = $("#video").val();
-    if (video == "" || video== null) {
-    if ($("#video").next(".validation").length == 0) // only add if not added
+    
+
+    var option = $('input[name="option"]:checked').val(); 
+    if (option == "" || option== null || option== 'undefined' ) {
+    if ($("#option").next(".validation").length == 0) // only add if not added
     {
-    $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+        $("#option_err").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>"); 
     }
-    if (!focusSet) { $("#video").focus(); }
+    if (!focusSet) { $("#option").focus(); }
     allfields = false;
     } else {
-    $("#video").next(".validation").remove(); // remove it
+    $("#option").next(".validation").remove(); // remove it
     }
-    }
+    if (option != "" && option!= null && option!= 'undefined') {
+    $('input:radio[name="option"]').change(
+            function(){
+                if (this.checked && this.value == '1') 
+                {
+                   var video = $("#video").val();
+                   if (video == "" || video== null) {
+                    if ($("#video").next(".validation").length == 0)
+                    {
+                        $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+                    }
+                    if (!focusSet) { $("#video").focus(); }
+                    allfields = false;
+                    } else {
+                    $("#video").next(".validation").remove(); // remove it
+                    }
+                }
+                if (this.checked && this.value == '2') 
+                {
+                   var video_url = $("#video_url").val();
+                   if (video_url == "" || video_url== null) {
+                    if ($("#video_url").next(".validation").length == 0)
+                    {
+                        $("#video_url").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required</div>");
+                    }
+                    if (!focusSet) { $("#video_url").focus(); }
+                    allfields = false;
+                    } else {
+                    $("#video_url").next(".validation").remove(); // remove it
+                    }
+
+                }
+    });
+}
+}
     // type_of_post--2 end
     // type_of_post--3
     if (type_of_post==3)
@@ -480,6 +534,17 @@
     $("#doc_pdf").next(".validation").remove(); // remove it
     }
     }
+
+ 
+
+
+
+
+   
+
+
+
+    
     if (allfields) {
     // $('#create_online_form').submit();
     Swal.fire({
@@ -611,4 +676,26 @@
     $('#pdffiledata').attr('src',pdffile_url);
     
     };
+
+
+    
+    </script>
+    <script type="text/javascript">
+        $('input:radio[name="option"]').change(
+            function(){
+                if (this.checked && this.value == '1') 
+                {
+                    $("#video_show2").show();
+                    $("#videoUpload").show();
+                    $("#urlUpload").hide(); 
+
+                }
+                if (this.checked && this.value == '2') 
+                {
+                    $("#video_show2").show();
+                    $("#urlUpload").show(); 
+                    $("#videoUpload").hide();
+
+                }
+    });
     </script>

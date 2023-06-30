@@ -120,11 +120,18 @@ img.news_img {
             <div class="col-md-12"> 
                 <h1>Watch Informative Video</h1>
                 <div class="play_video">
-                    <video width="100%" height="100%" controls autoplay>
+                    <?php if($ReadMore['option']==1) { ?>
+                        <video width="100%" height="100%" controls autoplay>
                         <source src="<?= base_url()?><?= $ReadMore['video']?>">
                         <source src="movie.ogg" type="video/ogg">
                             Your browser does not support the video tag.
-                    </video>
+                        </video>
+                <?php } ?>
+
+                <?php if($ReadMore['option']==2) { ?>
+                        <a href="<?= $ReadMore['video_url']?>"><img src="<?= base_url()?><?= $ReadMore['thumbnail']?>" style="width: 500px;"> </a>x
+                <?php } ?>
+
                 </div> 
                 <div class="video__details">
                     <div class="title-text">

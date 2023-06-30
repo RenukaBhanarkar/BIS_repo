@@ -73,8 +73,8 @@ class Learningscience extends CI_Controller
 
             if (!file_exists('uploads/learning_Science/image')) { mkdir('uploads/learning_Science/image', 0777, true); }
 
-            $videosize=$_FILES['video']['size'];  
-            if ($videosize > 0 ) 
+            $videosize=$_FILES['video']['tmp_name'];  
+            if ($videosize) 
             {
                 $videopath = 'uploads/learning_Science/video/'; 
                 $videolocation = $videopath . time() .'video'. $_FILES['video']['name']; 
@@ -131,9 +131,18 @@ class Learningscience extends CI_Controller
             $formdata['title'] = $this->input->post('title');
             $formdata['description'] = $this->input->post('description'); 
             $formdata['session_link'] = $this->input->post('session_link'); 
-            $formdata['video_url'] = $this->input->post('video_url'); 
+            
+            $formdata['option'] = $this->input->post('option'); 
+            $option=$this->input->post('option');
+            if($option==1)
+            {
+                $formdata['video'] = $videolocation;
+            }
+            if ($option==2) { 
+                $formdata['video_url'] = $this->input->post('video_url'); 
+            }
             $formdata['thumbnail'] =$thumbnaillocation; 
-            $formdata['video'] = $videolocation;
+            
             $formdata['image'] = $imagelocation;
             $formdata['doc_pdf'] = $doc_pdflocation;
             $formdata['created_on'] = date('Y-m-d h:i:s'); 
@@ -248,10 +257,11 @@ class Learningscience extends CI_Controller
             {
                 $lastvideo=$this->input->post('lastvideo');
                 if (!empty($_FILES['video']['tmp_name']))
-                {
+                {   
+                    $ext = pathinfo($_FILES['video']['name'], PATHINFO_EXTENSION);
                     $videopath = 'uploads/learning_Science/video/'; 
-                    $videolocation = $videopath . time() .'video'. $_FILES['video']['name']; 
-                    move_uploaded_file($_FILES['video']['tmp_name'], $videolocation);
+                    $videolocation = $videopath . time() .'learning_Science.'. $ext; 
+                    move_uploaded_file($_FILES['video']['tmp_name'], $videolocation); 
                 }
                 else
                 {
@@ -322,6 +332,7 @@ class Learningscience extends CI_Controller
             $formdata['description'] = $this->input->post('description'); 
             $formdata['session_link'] = $this->input->post('session_link'); 
             $formdata['video_url'] = $this->input->post('video_url'); 
+            $formdata['option'] = $this->input->post('option'); 
             $formdata['thumbnail'] =$thumbnaillocation; 
             $formdata['video'] = $videolocation;
             $formdata['image'] = $imagelocation;
