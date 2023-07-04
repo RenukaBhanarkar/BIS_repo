@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <meta name="description" content="BIS exchangeforum">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" />
-    <!-- <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet"> -->
+    <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap5.min.css" class="">
     <!-- Bootstrap CSS -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
