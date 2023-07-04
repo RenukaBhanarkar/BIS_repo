@@ -139,7 +139,7 @@ require(APPPATH.'views/users/language.php');
 $en_select='';
 $hn_select='';
 $language=''; 
-if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SESSION['language'])){
     $en_select='selected';
     $language='en';
 }else{
