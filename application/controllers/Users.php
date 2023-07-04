@@ -4002,4 +4002,8 @@ if ($availability==1)
         $this->load->view('users/membership_panels');
         $this->load->view('users/footers/footer');
       }
+      public function language_set($id){
+        $_SESSION['language']=$id;
+        return true;
+      }
 }

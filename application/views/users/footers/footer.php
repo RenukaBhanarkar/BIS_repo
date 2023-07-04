@@ -470,10 +470,10 @@ window.onhashchange = function (event) {
             }
         }
     })
-    $('.login_details').hide()
-    jQuery('.show').on('click', function() {
-        jQuery('.login_details').toggle();
-    });
+    // $('.login_details').hide()
+    // jQuery('.show').on('click', function() {
+    //     jQuery('.login_details').toggle();
+    // });
     $('.after_login_details').hide()
     jQuery('.after_show').on('click', function() {
         jQuery('.after_login_details').toggle();
