@@ -306,10 +306,8 @@
     } else {
     $("#option").next(".validation").remove(); // remove it
     }
-    if (option != "" && option!= null && option!= 'undefined') {
-    $('input:radio[name="option"]').change(
-            function(){
-                if (this.checked && this.value == '1') 
+
+    if (option == '1') 
                 {
                    var video = $("#video").val();
                    if (video == "" || video== null) {
@@ -323,7 +321,8 @@
                     $("#video").next(".validation").remove(); // remove it
                     }
                 }
-                if (this.checked && this.value == '2') 
+                 
+                if (option == '2') 
                 {
                    var video_url = $("#video_url").val();
                    if (video_url == "" || video_url== null) {
@@ -338,8 +337,9 @@
                     }
 
                 }
-    });
-}
+                 
+
+     
 }
     // type_of_post--2 end
     // type_of_post--3

@@ -266,18 +266,7 @@ alert("Error,Please try again.");
 <script type="text/javascript">
 function viewData(id) 
 { 
-  Swal.fire({
-    title: 'Do you want to View ?',
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'View',
-    denyButtonText: `Cancel`,
-  }).then((result) => { 
-    if (result.isConfirmed) 
-    { 
-      window.location.href = "live_session_view/"+id; 
-    }  
-  })
+ window.location.href = "live_session_view/"+id; 
 }
 
 function editData(id) 
