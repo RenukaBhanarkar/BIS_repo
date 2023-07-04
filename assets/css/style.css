@@ -1678,14 +1678,10 @@ footer .main_footer .f_contact ul li i {
 .social-content a:hover {
 	background-color: black;
 }
+
 .login_details {
-	position: absolute;
-	right: 20px;
-	top: 7%;
-	width: 290px;
-	z-index: 10;
+    width: 290px;
 	padding: 20px;
-	display: none;
 	box-shadow: 0 2px 3px rgb(0 0 0 / 30%);
 	background: linear-gradient(
 		133.16deg,

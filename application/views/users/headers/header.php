@@ -119,7 +119,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </span>
                                 </li>
                                 <?php if (!isset($_SESSION['admin_name'])) { ?>
-                                <li><a href="#" class="show"><img src="<?php echo base_url(); ?>assets/images/user.png" style="height:31px;"></a></li>
+                                <li>
+                                <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="login_details" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<?php echo base_url(); ?>assets/images/user.png" style="height:31px;">
+                                        </a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="login_details">
+                                            <div class="login_details" style="">
+                                                    <span>Welcome To Bureau of Indian Standards</span>
+                                                    <div class="login-link-wrapper">
+                                                        <a href="<?php echo base_url(); ?>users/login" class="ac-login jquery-once-2-processed" title="Login">Login</a>
+                                                        <a href="https://www.services.bis.gov.in/php/BIS_2.0/outsider-registration" class="ac-register jquery-once-2-processed" title="Register">Register</a>
+                                                    </div>
+                                                </div>
+                                        </ul>
+                                </div>
+                                </li>
                                 <?php } else{ ?>
                                 <li><a href="#" class="after_show"><img src="<?php echo base_url(); ?>assets/images/user.png" style="height:31px;"></a></li>
                                 <?php } ?>
@@ -129,13 +145,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="login_details">
-            <span>Welcome To Bureau of Indian Standards</span>
-            <div class="login-link-wrapper">
-                <a href="<?php echo base_url(); ?>users/login" class="ac-login jquery-once-2-processed" title="Login">Login</a>
-                <a href="https://www.services.bis.gov.in/php/BIS_2.0/outsider-registration" class="ac-register jquery-once-2-processed" title="Register">Register</a>
-            </div>
-        </div>
+        
         <div class="after_login_details">
             <div class="profile-top nodtranslate">
                 <?php if(isset($_SESSION['profile_image'])){ if(encryptids("D", $_SESSION['profile_image'])==""){ ?>
