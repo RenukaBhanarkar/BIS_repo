@@ -7,7 +7,7 @@ require(APPPATH . 'views/users/language.php');
 $en_select = '';
 $hn_select = '';
 $language = '';
-if ((isset($_GET['language']) && $_GET['language'] == 'en') || !isset($_GET['language'])) {
+if ((isset($_SESSION['language']) && $_SESSION['language'] == 'en') || !isset($_SESSION['language'])) {
     $en_select = 'selected';
     $language = 'en';
 } else {
@@ -470,10 +470,10 @@ window.onhashchange = function (event) {
             }
         }
     })
-    $('.login_details').hide()
-    jQuery('.show').on('click', function() {
-        jQuery('.login_details').toggle();
-    });
+    // $('.login_details').hide()
+    // jQuery('.show').on('click', function() {
+    //     jQuery('.login_details').toggle();
+    // });
     $('.after_login_details').hide()
     jQuery('.after_show').on('click', function() {
         jQuery('.after_login_details').toggle();
@@ -581,8 +581,19 @@ window.onhashchange = function (event) {
 
     function set_language() {
         var language = jQuery('#language').val();
-        window.location.href = '?language=' + language;
+        // window.location.href = '?language=' + language;
+        $.ajax({
+            url: "<?php echo base_url(); ?>users/language_set/"+language,
+            // type: "JSON",
+            method: "get",
+            success: function(result) {
+               location.reload(); 
+            },
+            error: function(res) {
+                alert("Error,FollowUs Links Not Load.");
+            }
 
+        });
     }
 
     $(document).ready(function() {

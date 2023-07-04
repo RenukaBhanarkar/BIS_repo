@@ -553,7 +553,7 @@ var loadFileThumbnail = function(event)
                                
                               var img=res.image;
                               $('#old_img').attr('href','<?php echo base_url()."uploads/admin/wall_of_wisdom/"; ?>'+img);
-                              $('#outputicon').attr('src','<?php echo base_url(); ?>uploads/'+res.banner_images);
+                              $('#outputicon').attr('src','<?php echo base_url(); ?>uploads/cms/banner/'+res.banner_images);
                             },
                             error: function(result) {
                                 alert("Error,Please try again.");

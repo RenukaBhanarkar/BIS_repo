@@ -79,14 +79,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-5 d-none d-lg-block">
                         <div class="contact">
                             <ul>
-                                <!-- <select onchange="set_language()" name="language" id="language">
+                                <select onchange="set_language()" name="language" id="language">
                                 <?php
                                
                                 require(APPPATH.'views/users/language.php');
                                $en_select='';
                                $hn_select='';
                                $language=''; 
-                                if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+                                if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SESSION['language'])){
                                     $en_select='selected';
                                     $language='en';
                                 }else{
@@ -96,9 +96,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 ?>
                                     <option value="en" <?php echo $en_select ?>>English</option>
                                     <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
-                                </select> -->
-                                 <!-- <li><a href="#" value="hn">हिन्दी</a></li> -->
-                                <!-- <li><a href="#" value="en">English</a></li> -->
+                                </select>
+                                 <!-- <li><a href="#" value="hn" >हिन्दी</a></li>
+                                <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
                                     <a href="#" id="orange_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
@@ -255,19 +255,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <?php  } ?>
                                 <?php if(isset($_SESSION['set_nav'])){ if($_SESSION['set_nav']=1){ ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/consumer_bis" style="color: white;">Consumer and BIS</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/consumer_bis" style="color: white;"><?php echo $top_nav[$language]['8'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;">Standard Promotion</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;"><?php echo $top_nav[$language]['9'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;">About Standards Club</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;"><?php echo $top_nav[$language]['9'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="popup2"   style="color: white;">Catalogue of Standards</a>
+                                        <a class="nav-link" id="popup2"   style="color: white;"><?php echo $top_nav[$language]['10'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;">Learning Science via Standards</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;"><?php echo $top_nav[$language]['11'] ?></a>
                                     </li> 
                                 <?php } } ?>
                                 <li class="nav-item">
