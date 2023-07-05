@@ -1584,6 +1584,22 @@ if($user_details['change_password']==0){
           $this->load->view('wall_of_wisdom/wall_of_wisdom_view_1',$data);
           $this->load->view('users/footers/footer');
       }
+      public function searchBtm(){
+        if(isset($_SESSION['admin_id'])){
+            $uid=encryptids("D",$_SESSION['admin_id']);
+        }else{
+            $uid="";
+        }
+        $select_period =  $this->input->post('select_period');
+        $search_text =  $this->input->post('search_text');
+        $select_type =  $this->input->post('select_type');
+        $limit=100;
+          $data['by_the_mentor']=$this->by_the_mentor_model->searchByTheMentor($uid,$limit,$select_period,$search_text,$select_type);
+        //   print_r($data); die;
+          $this->load->view('users/headers/header');
+          $this->load->view('users/all_by_the_mentors',$data);
+          $this->load->view('users/footers/footer');
+      }
     public function all_by_the_mentors()
     {
         $this->load->model('Admin/by_the_mentor_model');

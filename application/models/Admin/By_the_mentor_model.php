@@ -254,5 +254,76 @@ class By_the_mentor_model extends CI_Model {
         $res=$query->result_array();
         return $res;
     }
+    public function searchByTheMentor($uid,$limit,$select_period,$search_text,$select_type){
+        if($select_type == 2){
+            $ord = "ASC";
+        }else{
+            $ord = "DESC";
+        }
+        $today = date('Y-m-d');
+        if($select_period == 1){
+
+            $last_start_m = date('Y-m-d', strtotime('-7 days'));
+            $last_start = $last_start_m.' 00:00:00';
+
+            $last_end_m= date('Y-m-d',strtotime('-1 days'));
+            $last_end = $last_end_m.' 00:00:00';
+
+        }
+        if($select_period == 2){
+            ///// new start /////
+            $last_m = date('m', strtotime('-1 month'));
+            
+          $year = date('Y');
+          if($year % 4 == 0){
+             if($last_m == 2){
+                 $last_month = $last_m .'-29';
+             }
+             else if ($last_m == 1 || $last_m == 3 || $last_m == 5 || $last_m == 7 || $last_m == 8 || $last_m == 10 || $last_m == 12 ){
+                 $last_month = $last_m .'-31';
+             }else {
+                 $last_month = $last_m .'-30';
+             }
+         }else{
+             if($last_m == 2){
+                 $last_month = $last_m .'-28';
+             } else if ($last_m == 1 || $last_m == 3 || $last_m == 5 || $last_m == 7 || $last_m == 8 || $last_m == 10 || $last_m == 12 ){
+                 $last_month = $last_m .'-31';
+             }else {
+                 $last_month = $last_m .'-30';
+             }
+         }
+          ///// new end //////
+         $last_start = $year.'-'.$last_m ."-01 00:00:00";
+         $last_end = $year.'-'.$last_month ." 00:00:00";
+        }
+        if($select_period == 3){
+            $last_y= date('Y', strtotime('-1 year'));
+            $last_start =$last_y ."-01-01 00:00:00";
+            $last_end=$last_y."-12-31 00:00:00";
+           
+        }      
+
+        $this->db->select('wow.*');
+        $this->db->from('tbl_by_the_mentors wow');
+        $this->db->where('wow.status','5'); 
+        if($select_period != 0){
+        $this->db->where('wow.created_on >=',$last_start); 
+        $this->db->where('wow.created_on <=',$last_end); 
+        }
+       
+        if($search_text != ''){
+            $this->db->group_start();
+            $this->db->like('title',$search_text);
+            $this->db->or_like('description',$search_text);
+            $this->db->group_end();
+        }
+        $this->db->order_by('wow.created_on',$ord);
+        $query=$this->db->get();
+        $res=$query->result_array();
+      
+        
+        return $res;      
+    }
 
 }
