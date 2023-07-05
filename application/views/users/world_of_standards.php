@@ -78,6 +78,14 @@
     font-family: #ffc107;
 
 }
+.news_list a{
+    word-break: break-all;
+    color: blue;
+}
+.news_list h3{
+    font-weight: 600;
+    font-size: 17px;
+}
 </style>
 <section>
     <div class=row>
@@ -128,39 +136,27 @@
                 <div class="tab-pane fade active show" id="tab1" role="tabpanel">
                 <div class="whats_new">
                     <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
+                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
+                        <hr>
+                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
+                        <hr>
+                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
+                        <hr>
+                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
+                        <hr>
                     </div>
-                    <hr>
-                    <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
-                    </div>
-                    <hr>
-                    <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
-                    </div> 
+                    
+                    
                     <div>
-                        <a href="#about" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
                     </div>
                 </div> 
                 </div><!-- End Tab 1 Content -->

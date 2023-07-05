@@ -4006,4 +4006,14 @@ if ($availability==1)
         $_SESSION['language']=$id;
         return true;
       }
+      public function news_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/news_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function event_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/event_list');
+        $this->load->view('users/footers/footer');
+      }
 }

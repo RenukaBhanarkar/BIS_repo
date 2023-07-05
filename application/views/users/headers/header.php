@@ -261,13 +261,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;"><?php echo $top_nav[$language]['9'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;"><?php echo $top_nav[$language]['9'] ?></a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;"><?php echo $top_nav[$language]['10'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="popup2"   style="color: white;"><?php echo $top_nav[$language]['10'] ?></a>
+                                        <a class="nav-link" id="popup2"   style="color: white;"><?php echo $top_nav[$language]['11'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;"><?php echo $top_nav[$language]['11'] ?></a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;"><?php echo $top_nav[$language]['12'] ?></a>
                                     </li> 
                                 <?php } } ?>
                                 <li class="nav-item">
