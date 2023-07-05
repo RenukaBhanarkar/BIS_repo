@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="mb-2 col-md-4">
                                                 <label class="d-block text-font">URL</label>
-                                                <input type="text" class="form-control input-font" name="banner_url" id="banner_url" value="" required>
+                                                <input type="text" class="form-control input-font" name="banner_url" id="banner_url" value="" >
                                                 <span class="text-danger" id="err_url">                                                  
                                                 </span>
                                                 <div class="invalid-feedback"> This value require </div>
@@ -119,8 +119,8 @@
         ?>
         <div class="row">
             <div class="col-12 mt-3">
-                <div class="card border-top card-body">
-                    <table id="banner" class="table-bordered table-responsive">
+                <div class="card border-top card-body table-responsive">
+                    <table id="banner" class="table-bordered ">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -289,7 +289,7 @@
                     </div>
                     <div class="mb-2 col-md-4">
                         <label class="d-block text-font">URL</label>
-                        <input type="text" class="form-control input-font" name="banner_url" id="banner_url1" value="" required>
+                        <input type="text" class="form-control input-font" name="banner_url" id="banner_url1" value="" >
                         <span class="text-danger" id="err_url">                                                  
                         </span>
                         <div class="invalid-feedback"> This value require </div>

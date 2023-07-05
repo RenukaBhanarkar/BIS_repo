@@ -81,7 +81,7 @@
   display: block;
   overflow: hidden;
   /* width: 20em; */
-  height: 90px;
+  /* height: 86px; */
 }
     </style>
 <section>

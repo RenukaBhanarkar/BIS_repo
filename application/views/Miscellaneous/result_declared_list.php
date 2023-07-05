@@ -54,7 +54,7 @@
                                 <td><?= $user['user_mobile']?></td>
                                 <td><?= $user['member_id']?></td> 
 
-                                <td></td> 
+                                <td><?= $user['StdClubMemberClass']?></td> 
                                 <td><?= $user['created_on']?></td>
                                
                                 

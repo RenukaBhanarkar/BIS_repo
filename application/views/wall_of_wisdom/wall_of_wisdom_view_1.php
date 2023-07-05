@@ -121,7 +121,7 @@
 .last-date{
     /* text-overflow: ellipsis;
   white-space: nowrap; */
-  display: block;
+  /* display: block; */
   overflow: hidden;
   /* width: 20em; */
   height: 86px;
@@ -231,11 +231,12 @@
                             </a>
                             <div class="row d-flex">
                                 <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="col-6 node-status like_review">
-                                    <span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i>
+                                    <span><i id="abcd1" onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"></i>
                                     </span>
                                     <span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span>
-                                    <div class="" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
-                                    </div>
+                                    
+                                </div>
+                                <div class="col-6" style="float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
                                 </div>
                              
                             
@@ -274,7 +275,7 @@
   crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            $('#wow_card').delegate('#abcd','click',function(){
+            $('#wow_card').delegate('#abcd1','click',function(){
     uid=$(this).attr('u-id')
     cid=$(this).attr('c-id')
     cardstatus=$(this).attr('ct');
