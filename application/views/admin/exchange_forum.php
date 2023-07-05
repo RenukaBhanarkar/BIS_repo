@@ -391,6 +391,9 @@
             <?php } ?>
           </div>
        </div>
+       <div class="col-md-12 submit_btn p-3" style="margin-left: -63px;">
+                               <a class="btn btn-primary btn-sm text-white" onclick="history.back()">Back</a>
+                          </div>
     <!-- /.container-fluid -->
 
 </div>

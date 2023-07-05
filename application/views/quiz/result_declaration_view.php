@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 submit_btn p-3">
-                    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/admin_creation_list'">Back</a>
+                    <a class="btn btn-primary btn-sm text-white" onclick="history.back()">Back</a>
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="cancelForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

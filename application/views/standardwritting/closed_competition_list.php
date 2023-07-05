@@ -98,9 +98,11 @@
                 </div>
             </div>
         </div>
-        <button onclick="history.back()" class="btn btn-primary btn-sm text-white float-right mt-2 mr-5">Back</button>
+        
     </div>
-    
+    <div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
     <!-- /.container-fluid -->
 
     </div>
