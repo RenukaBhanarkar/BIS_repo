@@ -95,9 +95,9 @@
     
 </div>
 <!-- /.container-fluid -->
-<div class="col-md-12 submit_btn p-3">
-    <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/exchange_forum'">Back</a>
-</div>
+<div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
 </div>
 <!-- End of Main Content -->
 <script type="text/javascript">
