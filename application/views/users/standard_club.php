@@ -224,7 +224,7 @@ if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SES
             <div class="carousel-item <?php if ($list == 0) {
               echo "active";
               } ?>">
-              <a href="https://<?php echo $key['url']; ?>" target="_blank">
+              <a <?php if(!empty($key['url'])){ ?>href="https://<?php echo $key['url']; ?>"<?php } ?> target="_blank">
               <img src="<?= base_url() . 'uploads/cms/banner/' . $key['banner_images']; ?>" class="background-banner-image">
               </a>
             </div>

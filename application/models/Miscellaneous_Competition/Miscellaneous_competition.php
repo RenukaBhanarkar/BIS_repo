@@ -501,7 +501,7 @@ class Miscellaneous_competition extends CI_Model {
         // $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
         //   $this->db->join('tbl_admin ta','ta.user_uid=tucar.evaluator','left');
         $this->db->where('tucar.competiton_id',$comp_id);
-        $this->db->where_in('tucar.status',array(2));
+        // $this->db->where_in('tucar.status',array(2));
         $this->db->order_by('tucar.id','ASC');
        
         // $query=$this->db->get();
@@ -620,7 +620,7 @@ class Miscellaneous_competition extends CI_Model {
                         $this->db->select('tucar.*');
                         $this->db->from('tbl_users_competition_attempt_record tucar');
                         $this->db->where('tucar.competiton_id',$row['comp_id']);
-                        $this->db->where('tucar.status','2');
+                        $this->db->where('tucar.status','1');
                         $que=$this->db->get();
                         $query1=$que->result_array();
                         // print_r($query[0]['ev_name']); die;
@@ -939,7 +939,7 @@ class Miscellaneous_competition extends CI_Model {
             $cnt = 0;
             // print_r($result1); die;
             foreach ($result1 as $r){
-                $cnt = $cnt + $r['fprize_no']+$r['fprize_no']+$r['tprize_no']+$r['cprize_no'];
+                $cnt = $cnt + $r['fprize_no']+$r['sprize_no']+$r['tprize_no']+$r['cprize_no'];
             }
             $row['total_winners'] = $cnt;
 
