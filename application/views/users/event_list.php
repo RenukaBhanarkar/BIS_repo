@@ -49,8 +49,8 @@
   				<div class="breadcrums">
   					<ul>
 
-  						<!-- <li><a href="index">home</a></li>
-  						<li><a class="active">Message by Chairperson</a></li> -->
+  						<li><a href="#">home</a></li>
+  						<li><a class="active">Events</a></li>
 
   					</ul>
   				</div>
