@@ -1,13 +1,13 @@
 <style>
     #banner-section {
-        padding: 37px 37px 37px 37px;
+        padding: 37px 0px 37px 37px;
         background: #ebe6e6;
         margin-top: 35px;
         border-radius: 10px;
     }
 
     .quiz-image {
-        width: 100%;
+        width: 96%;
         height: 300px;
         overflow-y: hidden;
         border-radius: 10px;
@@ -20,7 +20,7 @@
     }
 
     .Quiz_text {
-        padding: 40px 0px 11px 50px;
+        padding: 40px 0px 11px 0px;
     }
 
     .startQuiz {
@@ -272,8 +272,8 @@ li span {
 </style>
 
 <div class="container-fluid">
-<section id="banner-section" class="d-flex">
-        <div class="col-md 9">
+<section id="banner-section" class="row">
+        <div class="col-md 9">  
         
        <!-- <div class="float-end" id="QuizLang">
             <label class="d-block text-font mr-3">Select Language</label>

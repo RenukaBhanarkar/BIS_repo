@@ -183,9 +183,9 @@ if (!function_exists('count_visitor')) {
 
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.bundle.js"></script>
 
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/font_resize.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/dark_mode.js"></script>

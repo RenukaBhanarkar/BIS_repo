@@ -136,21 +136,32 @@
                 <div class="tab-pane fade active show" id="tab1" role="tabpanel">
                 <div class="whats_new">
                     <div class="news_list">
-                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
-                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
                         <hr>
-                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
-                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
                         <hr>
-                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
-                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
                         <hr>
-                        <h3>Metropolitan Commissioner News And Events</h3>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
-                        <p><strong>Link :</strong><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">http://43.231.124.177/BIS/BIS_repo/users/standard</a></p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
                         <hr>
                     </div>
                     

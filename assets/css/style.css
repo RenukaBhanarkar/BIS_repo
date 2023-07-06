@@ -485,6 +485,7 @@ section#welcome_text p span {
 
 #bottom_content {
 	background-image: url("../images/livedata.jpg");
+    background-size: 100%;
 }
 
 .row.table_data {
