@@ -270,7 +270,7 @@ public function updateStatusConversation()
          $this->load->view('Standardsmaking/join_the_classroom_dashboard');
          $this->load->view('admin/footers/admin_footer');
     }
-    public function live_session_list(){
+    public function live_session_list(){ 
         $LiveSessionList = $this->Standards_Making_model->getLiveSession();
         $data = array();
         $data['liveSessionList'] = $LiveSessionList;

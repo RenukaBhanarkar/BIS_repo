@@ -314,8 +314,7 @@
                         <?php if (encryptids("D", $_SESSION['admin_type']) == 2) { ?>
                         <?php if( $getData['status']==2){?>
                         <input type="submit" name="Approval" value="Approve" class="btn btn-success btn-sm text-white" id="approve" onclick="updateStatus() ">
-                        <!-- <input type="submit" name="Approval" value="Submit" class="btn btn-success btn-sm text-white" id="submit" onclick="updateStatus() "> -->
-                        <!-- <a class="btn btn-primary btn-sm text-white" id="reject" onclick="rejectFun()">Reject</a> -->
+                        
                         <a class="btn btn-secondary btn-sm text-white" data-toggle="modal" data-target="#rejectForm" id="reject"onclick="rejectFun()" >Reject</a>
                         <?php } ?>
                         <?php } ?>
@@ -334,7 +333,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reject Quiz</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Reject Reasone</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

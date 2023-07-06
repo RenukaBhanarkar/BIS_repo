@@ -103,7 +103,7 @@
                                     <div class="mb-2 col-md-12">
                                         <label class="d-block text-font btn-sm"> Viedo Link</label>
                                         <div> 
-                                            <a href="<?= base_url()?><?= $lsvStandardsView['video_url']?>" class="btn btn-primary btn-sm" target="_blank">Play</a>
+                                            <a href="<?= $lsvStandardsView['video_url']?>" class="btn btn-primary btn-sm" target="_blank">Click Here</a>
                                         </div> 
                                     </div>
                                 </div>

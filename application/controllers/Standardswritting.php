@@ -1757,17 +1757,35 @@ if($id){
                 $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
                 $formdata['second_file'] = $second_filelocation; 
             }
+            else
+            {
+                $formdata['second_paticipant'] = "";
+                $formdata['second_file'] = "";
+            }
+            
             if($this->input->post('third_paticipant')!= "")
             { 
                 $formdata['third_paticipant'] = $this->input->post('third_paticipant');
                  $formdata['third_file'] = $third_filelocation;
              }
-             if($this->input->post('consolation_paticipant')!= "")
-             { 
+
+             else
+            {
+                $formdata['third_paticipant'] = "";
+                $formdata['third_file'] = "";
+            }
+
+            if($this->input->post('consolation_paticipant')!= "")
+            { 
                 $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant');
                 $formdata['consolation_file'] = $consolation_filelocation; 
+            }
+            else
+            {
+                $formdata['consolation_paticipant'] = "";
+                $formdata['consolation_file'] = "";
             } 
-           
+
             $id = $this->Standardswritting_model->StandardswrittingUpdate($formdata,$formid);
             if ($id)
             {
