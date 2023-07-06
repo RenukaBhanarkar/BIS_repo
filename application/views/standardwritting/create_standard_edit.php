@@ -17,7 +17,7 @@
     </div>
     <!-- Content Row -->
     <div class="row">
-        <div class="col-12 mt-3">
+        <div class="col-12 mt-3"> 
             <div class="card border-top card-body">
                 <form name="create_standard_edit" id="create_standard_edit" action="<?php echo base_url().'standardswritting/create_standard_edit'?>/<?= $getData['id']?>" method="post"enctype="multipart/form-data">
                     <input type="hidden" id="id" name="id" value="<?= $getData['id']?>" >

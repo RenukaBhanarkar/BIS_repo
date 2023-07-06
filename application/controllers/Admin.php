@@ -3957,5 +3957,70 @@ class Admin extends CI_Controller
         $this->load->view('admin/profile_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+
+    public function updatelsvAdmin(){
+        try {  
+
+                 
+            $id = $this->input->post('id');
+            $formdata['status'] = $this->input->post('status'); 
+            $formdata['reason'] = $this->input->post('reason'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            
+
+            $id2 = $this->Learningscience_model->updateLvsStandarStatus($id, $formdata);
+            if ($id2) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+
+    public function updateLiveAdmin(){
+        try {  
+
+                 
+            $id = $this->input->post('id');
+            $formdata['status'] = $this->input->post('status'); 
+            $formdata['reason'] = $this->input->post('reason'); 
+            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            
+
+            $id2 = $this->Admin_model->updateLiveSessiionStatus($id, $formdata);
+            if ($id2) {
+                $data['status'] = 1;
+                $data['message'] = 'Updated successfully.';
+                
+            } else {
+                $data['status'] = 0;
+                $data['message'] = 'Failed to delete, Please try again.';               
+            }
+            $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));            
+            
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+            return true;
+        }
+        redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+    }
+
+
     
 }
