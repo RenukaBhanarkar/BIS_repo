@@ -33,8 +33,8 @@
     /* border: 1px solid rgba(0,0,0,.125); */
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
     border-radius: 0.25rem;
-    
-    height: 100%;
+    /* height: 371px; */
+    /* height: 100%; */
     transition: transform 250ms;
    
 }
@@ -48,6 +48,8 @@
     font-size: 13px;
     line-height: 1.2;
     font-weight: 600;
+    max-height: 48px;
+    overflow: hidden;
 }
 .node-status span{
     font-size: 13px;
@@ -198,12 +200,12 @@
                                     <div class="status-open">Open</div>
                                 </div> -->
                                 
-                                <div class="title">
-                                    <p title="Inviting suggestion on Vivad se Vishwas II – Settling Contractual ..."><?php echo substr_replace($list['title'],"...",130); ?></p>
+                                <div class="title"> 
+                                    <p><?php echo substr_replace($list['title'],"...",70); ?></p>
                                 </div>
                                 <div class="field-item even">
                                     <span class="time_left">
-                                        <span class="last-date"><?php echo substr_replace($list['description'],"...",140); ?></span>
+                                        <span class="last-date"><?php echo ($list['description']); ?></span>
                                     </span>
                                  </div>
                                  <div class="node-status like_review"><span></span>
