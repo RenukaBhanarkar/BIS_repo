@@ -233,8 +233,12 @@
                 </table>
             </div>
         </div>
-
+        <div class="" style="text-align:end;">
+                <!-- <a href="http://43.231.124.177/BIS/BIS_repo/users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2"><a href="<?php echo base_url() . 'users/standard'; ?>">Back</a></button>
+            </div>
     </div>
+    
 </section>
 
 
