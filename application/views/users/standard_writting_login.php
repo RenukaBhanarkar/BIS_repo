@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+// new code start R
+//session_start();
+if(!isset($_SESSION['user_session_id']))
+{ 
+   redirect(base_url() . "Users/login", 'refresh');
+}
+$start_time = $_SESSION['start_time'] = date('h:i:s'); 
+?> 
 
 <html lang="en">
     <head>
@@ -257,7 +266,7 @@
                     <div class="button-group float-end mt-3" style="text-align: end;">
                         <button  type="submit" class="btn btn-success submit">Submit</button>
                         
-                        <button class="btn btn-danger cancel" >Cancel</button> 
+                        <button class="btn btn-danger" onclick="cancle()" >Cancel</button> 
                     <a href="<?= base_url()?>"  class="btn btn-danger">Back</a>
                  
                     </div>
@@ -388,6 +397,29 @@ var isValid=true;
        
         return true;
     }
+}
+</script>
+<script type="text/javascript">
+function cancle() {
+
+
+      Swal.fire({
+                    title: 'Are you sure you want to Cancle?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Cancle',
+                    denyButtonText: `No`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) 
+                    { 
+                        window.location.href = "standard_writting_details";
+
+                    } 
+                    else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
 }
 </script>
 <script>
