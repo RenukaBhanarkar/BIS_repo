@@ -276,17 +276,6 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="World_of_standers_inner_Box  shadow">
-                        <a href="#">
-                        <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/offer_sustainable.JPEG" class="card-img-top" alt="Discussion Forum">
-                        
-                        </div>
-                        <p class="Title_Section">Join the Sustainability Programme</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="important_draft">
                     <div class="World_of_standers_image_box">
@@ -299,6 +288,18 @@
                        
                 </div>
                 </div>
+                <!-- <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/offer_sustainable.JPEG" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Join the Sustainability Programme</p>
+                        </a>
+                    </div>
+                </div> -->
+                
                 <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="#">

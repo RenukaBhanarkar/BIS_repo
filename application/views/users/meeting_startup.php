@@ -1,5 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> -->
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" /> -->
 <style>
   
 .World_of_standers_inner_Box {
@@ -114,7 +114,7 @@
                             <img src="<?=base_url();?>assets/images/seminar.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
-                        <p class="Title_Section">Revision Required</p>
+                        <p class="Title_Section">Revision of Indian Standards</p>
                         </a>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                             <img src="<?=base_url();?>assets/images/membership_pannel.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
-                        <p class="Title_Section">Any Other Thought</p>
+                        <p class="Title_Section">Share Your Thoughts</p>
                         </a>
                     </div>
                 </div>

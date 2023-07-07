@@ -4032,4 +4032,19 @@ if ($availability==1)
         $this->load->view('users/event_list');
         $this->load->view('users/footers/footer');
       }
+      public function project_offer_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/project_offer_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function apply_project_offer(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/apply_project_offer');
+        $this->load->view('users/footers/footer');
+      }
+      public function apply_project_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/apply_project_list');
+        $this->load->view('users/footers/footer');
+      }
 }
