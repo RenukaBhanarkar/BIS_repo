@@ -114,7 +114,7 @@
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Live Session Link</label>
                                     <div>
-                                        <p><?= $lsvStandardsView['session_link']?></p>
+                                        <p><a href="<?= $lsvStandardsView['session_link']?>"><?= $lsvStandardsView['session_link']?></a></p>
                                     </div>    
                                 </div>
                             </div>

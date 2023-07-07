@@ -145,7 +145,7 @@ class Learningscience extends CI_Controller
             
             $formdata['image'] = $imagelocation;
             $formdata['doc_pdf'] = $doc_pdflocation;
-            $formdata['created_on'] = date('Y-m-d h:i:s'); 
+            $formdata['created_on'] = date('Y-m-d H:i:s'); 
             $id = $this->Learningscience_model->lsvStandardsForm($formdata);
             if ($id)
             {
@@ -336,14 +336,35 @@ class Learningscience extends CI_Controller
             $formdata['thumbnail'] =$thumbnaillocation; 
             $formdata['video'] = $videolocation;
             $formdata['image'] = $imagelocation;
-            $formdata['doc_pdf'] = $doc_pdflocation; 
-            $formdata['status'] = 0; 
-            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            $formdata['doc_pdf'] = $doc_pdflocation;  
+            $formdata['updated_on'] = date('Y-m-d H:i:s');
+
+            $mydata=$this->Learningscience_model->lsvStandardsView($frmid); 
+
+            if ($mydata['status']==0) {
+                $formdata['status'] = 0;
+                $mysts=0;
+            }
+            else
+            {
+                $formdata['status'] = 1;
+                $mysts=1;
+
+            } 
             $id = $this->Learningscience_model->updateLsvStandards($formdata,$frmid);
             if ($id)
             {
-                $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
-                redirect(base_url() . "learningscience/lsv_standards_list", 'refresh');
+
+                 if ($mysts==1) 
+                {
+                     $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+                    redirect(base_url() . "learningscience/manage_lsv_standards_list", 'refresh');
+                }
+                else
+                {
+                    $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+                    redirect(base_url() . "learningscience/lsv_standards_list", 'refresh');
+                } 
             }
             else
             {
@@ -388,7 +409,7 @@ class Learningscience extends CI_Controller
                  
             $id = $this->input->post('id');
             $formdata['status'] = $this->input->post('status'); 
-            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            $formdata['updated_on'] = date('Y-m-d H:i:s');
 
             $id = $this->Learningscience_model->updateLsvStandards($formdata,$id);
             if ($id) {
@@ -414,7 +435,7 @@ class Learningscience extends CI_Controller
     public function deleteLvsFile(){
         try {   
                  
-            $id = $this->input->post('id');
+            echo $id = $this->input->post('id');
             $val = $this->input->post('val');
             if ($val==1) 
             {
@@ -431,7 +452,7 @@ class Learningscience extends CI_Controller
             if ($val==4) 
             {
                 $formdata['video']='';
-            }
+            } 
             $id = $this->Learningscience_model->deleteLvsFile($id,$formdata);
             if ($id) {
                 $data['status'] = 1;

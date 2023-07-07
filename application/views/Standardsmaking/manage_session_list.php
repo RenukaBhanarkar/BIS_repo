@@ -14,6 +14,11 @@
         </nav>
     </div>
     <!-- Content Row -->
+     <?php
+    if ($this->session->flashdata('MSG')) {
+    echo $this->session->flashdata('MSG');
+    }
+    ?>
     <div class="row">
         <div class="col-12 mt-3">
             <div class="card border-top card-body">

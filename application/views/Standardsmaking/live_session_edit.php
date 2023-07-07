@@ -628,7 +628,7 @@
         if (result.isConfirmed) {
         $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>Learningscience/deleteLvsFile',
+        url: '<?php echo base_url(); ?>Standardsmaking/deleteLiveSessionFile',
         data: {
         id: id,
         val: val,

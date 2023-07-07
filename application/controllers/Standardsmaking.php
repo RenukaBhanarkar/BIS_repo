@@ -83,7 +83,7 @@ class Standardsmaking extends CI_Controller
             $formdata['description'] = $this->input->post('description'); 
             $formdata['video_thumbnail'] =$thumbnaillocation; 
             $formdata['video'] = $videolocation;
-            $formdata['created_on'] = date('Y-m-d h:i:s'); 
+            $formdata['created_on'] = date('Y-m-d H:i:s'); 
             $id = $this->Standards_Making_model->conversationForm($formdata);
             if ($id)
             {
@@ -250,7 +250,7 @@ public function updateStatusConversation()
     {
         $id = $this->input->post('id');
         $formdata['status'] = $this->input->post('status'); 
-        $formdata['updated_on'] = date('Y-m-d h:i:s'); 
+        $formdata['updated_on'] = date('Y-m-d H:i:s'); 
         $id = $this->Standards_Making_model->ChangeStatusConversation($id,$formdata);
         if ($id)
         {
@@ -375,7 +375,7 @@ public function updateStatusConversation()
             
             $formdata['image'] = $imagelocation;
             $formdata['doc_pdf'] = $doc_pdflocation;
-            $formdata['created_on'] = date('Y-m-d h:i:s'); 
+            $formdata['created_on'] = date('Y-m-d H:i:s'); 
             $id = $this->Standards_Making_model->joinclassroomForm($formdata);
             if ($id)
             {
@@ -545,8 +545,43 @@ public function updateStatusConversation()
             $formdata['image'] = $imagelocation;
             $formdata['doc_pdf'] = $doc_pdflocation; 
             $formdata['status'] = 1; 
-            $formdata['updated_on'] = date('Y-m-d h:i:s');
-            $id = $this->Standards_Making_model->joinclassroomFormUpdate($formdata,$frmid);
+            $formdata['updated_on'] = date('Y-m-d H:i:s');
+
+
+
+             $mydata=$this->Standards_Making_model->liveSessionViewView($frmid); 
+
+            if ($mydata['status']==0) {
+                $formdata['status'] = 0;
+                $mysts=0;
+            }
+            else
+            {
+                $formdata['status'] = 1;
+                $mysts=1;
+
+            } 
+           $id = $this->Standards_Making_model->joinclassroomFormUpdate($formdata,$frmid);
+            if ($id)
+            {
+
+                 if ($mysts==1) 
+                {
+                     $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+                    redirect(base_url() . "Standardsmaking/manage_session_list", 'refresh');
+                }
+                else
+                {
+                    $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
+                    redirect(base_url() . "Standardsmaking/live_session_list", 'refresh');
+                } 
+            }
+
+
+            
+
+
+            
             if ($id)
             {
                 $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
@@ -689,7 +724,7 @@ public function updateStatusConversation()
                  
             $id = $this->input->post('id');
             $formdata['status'] = $this->input->post('status'); 
-            $formdata['updated_on'] = date('Y-m-d h:i:s');
+            $formdata['updated_on'] = date('Y-m-d H:i:s');
 
             $id = $this->Standards_Making_model->updateStatusLiveSession($id,$formdata);
             if ($id) {
