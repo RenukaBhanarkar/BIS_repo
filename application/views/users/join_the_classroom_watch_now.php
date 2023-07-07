@@ -6,7 +6,7 @@ h1 {
     margin-bottom: 10px;
     color: rgb(3, 3, 3);
 }
-.join_video_content {
+.join_video_content { 
     padding: 39px 65px;
 } 
 .news__details {
@@ -118,15 +118,24 @@ img.news_img {
                         </div>
             </div> 
             <div class="col-md-8"> 
+
+
                 
                  
                 <div class="video__details">
                     <div class="title-text">
                         <h3><?= $WatchNow['title']?></h3> 
-                         <img style="height: 320px;width: 832px;" src="<?php echo base_url(); ?><?= $WatchNow['thumbnail']?>" alt="" class="join_img">
-                         <div class="play_video">
+                          
+                        <div class="yourWall_image">
+                        <img src="<?php echo base_url();?><?= $WatchNow['thumbnail']?>" alt="not found" class="w-50 h-50">
+                        <span><i class="fa fa-calendar icons"> <?= date("d/m/Y h:i A", strtotime($WatchNow['created_on']));?></i></span>
+                    </div>
+                    <div class="play_video">
                             <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p> 
                         </div>
+
+
+
                         <span>Date : <?= date("d M Y", strtotime($WatchNow['created_on']));?></span>
 
                          <span><?= $WatchNow['views']?> Views • <?= time_elapsed_string($WatchNow['created_on'])?></span>

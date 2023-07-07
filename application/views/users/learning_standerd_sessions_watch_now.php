@@ -116,7 +116,7 @@ img.news_img {
                             </div>  
                         </div>
             </div>  -->
-            <div class="col-md-12">  
+            <div class="col-md-12">   
                 <div class="play_video">
                     <!-- <p><?= $WatchNow['session_link']?></p> -->
                 </div> 
@@ -125,7 +125,7 @@ img.news_img {
                         <h3><?= $WatchNow['title']?></h3> 
                          <img style="height: 411px; width: 100%;" src="<?php echo base_url(); ?><?= $WatchNow['thumbnail']?>" alt="" class="join_img">
                        <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p>
-                        <span>Date : <?= date("d M Y", strtotime($WatchNow['created_on']));?></span>
+                         
 
                         <span><?= $WatchNow['views']?> Views • <?= time_elapsed_string($WatchNow['created_on'])?></span>
                             <input type="hidden" value="<?= $WatchNow['likes']?>" id="oldlikes">
