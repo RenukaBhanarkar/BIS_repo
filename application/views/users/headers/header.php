@@ -14,7 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" />
     <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap5.min.css" class="">
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap5.min.css" class=""> -->
     <!-- Bootstrap CSS -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">

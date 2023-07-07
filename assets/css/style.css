@@ -483,10 +483,7 @@ section#welcome_text p span {
 
 /* bottom CSS start */
 
-#bottom_content {
-	background-image: url("../images/livedata.jpg");
-    background-size: 100%;
-}
+
 
 .row.table_data {
 	display: flex;

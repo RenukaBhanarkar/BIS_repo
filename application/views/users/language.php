@@ -12,7 +12,7 @@ $welcome_text=array(
 $footer_content=array(
     'en'=>array('Accessibility & Help','Feedback','Help','Sitemap','Legal','Terms & Conditions','Privacy Policy','Hyper Linking Policy','Disclaimer','Copyright Policy','Website Content Contribution, Moderation & Approval Policy (CMAP)','Content Archival Policy (CAP)','Content Review Policy (CRP)','Useful Links','Follow us'),
     'hn'=>array('अभिगम्यता और सहायता','प्रतिक्रिया','मदद','साइट मैप','कानूनी','नियम एवं शर्तें','गोपनीयता नीति','हाइपर लिंकिंग नीति','अस्वीकरण','कॉपीराइट नीति','वेबसाइट सामग्री योगदान,
-    मॉडरेशन और अनुमोदन नीति (CMAP)','सामग्री अभिलेखीय नीति (CAP)','सामग्री समीक्षा नीति (सीआरपी)','उपयोगी कड़ियां','हमारे पर का पालन करें'),
+    मॉडरेशन और अनुमोदन नीति (CMAP)','सामग्री अभिलेखीय नीति (CAP)','सामग्री समीक्षा नीति (सीआरपी)','उपयोगी कड़ियां','फॉलो करे'),
 );
 
 $standard_club_section=array(
