@@ -138,7 +138,11 @@ img.news_img {
                 <?php if($ReadMore['option']==2) { ?>
                         <a href="<?= $ReadMore['video_url']?>"><img src="<?= base_url()?><?= $ReadMore['thumbnail']?>" style="width: 500px;"> </a>
                         <br>
+
+
                         <a href="<?= $ReadMore['video_url']?>" class="btn btn-info btn-sm">Click Here to watch Video</a><br><br>
+
+                        
                 <?php } ?>
 
                 

@@ -359,8 +359,8 @@ $config = array(
 
 	'standard_writting_login' => array(
 		array(
-			'field' => 'details',
-			'label' => 'details',
+			'field' => 'uploadtype',
+			'label' => 'uploadtype',
 			'rules' => 'required'
 		),
 		 

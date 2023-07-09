@@ -675,8 +675,8 @@ class Users extends CI_Controller
           
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
-                // CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
-               CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
+                CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
+               // CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
            // CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
               
                 CURLOPT_RETURNTRANSFER => true,
@@ -3801,6 +3801,35 @@ if ($availability==1)
             $formdata['user_id'] = encryptids("D", $_SESSION['admin_id']);
             $formdata['comp_id'] = $this->input->post('comp_id');
             $formdata['details'] = $this->input->post('details');
+            $uploadtype = $this->input->post('uploadtype');
+            $formdata['uploadtype'] = $uploadtype;
+            if ($uploadtype==1) {
+                $formdata['details'] = $this->input->post('details');
+                $formdata['file'] = "";
+            }
+            if ($uploadtype==2) {
+                $formdata['details'] = "";
+
+                if (!file_exists('uploads/standardswritting/file')) { mkdir('uploads/standardswritting/file', 0777, true); }
+
+                $filepath = 'uploads/standardswritting/file/'; 
+                $filelocation = $filepath . time() .'file'. $_FILES['file']['name']; 
+                move_uploaded_file($_FILES['file']['tmp_name'], $filelocation);
+                $formdata['file'] =$filelocation;
+
+                $ext = pathinfo($filelocation, PATHINFO_EXTENSION);
+
+                if ($ext=='pdf' || $ext=='PDF') 
+                {
+                   $formdata['filetype']='pdf';
+                }
+                else
+                {
+                    $formdata['filetype']='image';
+                }
+
+             
+            }
             $formdata['start_time'] = $start_time;
             $formdata['end_time'] = $end_t;
             $formdata['time_taken'] = $time_taken;
