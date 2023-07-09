@@ -459,7 +459,7 @@ public function getAllManageQuiz()
 
 
 
-            
+
         // $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
         // $this->db->where_not_in('status ', 7);
         // $this->db->where_not_in('status ', 8);
@@ -548,6 +548,7 @@ public function getAllManageQuiz()
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
+        $this->db->order_by('tbl_standards_writting_online.created_on', 'DESC');
         // $query = $this->db->get('tbl_standards_writting_online')->result_array();
        // $this->db->limit(4);
 
