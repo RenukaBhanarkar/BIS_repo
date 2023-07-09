@@ -120,13 +120,41 @@ img.news_img {
             </div> 
             <div class="col-md-8"> 
                 <h1>Watch Informative Video</h1>
-                <div class="play_video">
+
+                 <div class="play_video">
+
+
+
+                    <?php if($WatchNow['option']==1) { ?>
+                        <video width="100%" height="100%" controls autoplay>
+                        <source src="<?= base_url()?><?= $WatchNow['video']?>">
+                        <source src="movie.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                <?php } ?>
+
+
+
+
+
+                <?php if($WatchNow['option']==2) { ?>
+                        <a href="<?= $WatchNow['video_url']?>"><img src="<?= base_url()?><?= $WatchNow['thumbnail']?>" style="width: 500px;"> </a>
+                        <br>
+                        <a href="<?= $WatchNow['video_url']?>" class="btn btn-info btn-sm">Click Here to watch Video</a><br><br>
+                <?php } ?>
+
+                
+
+                </div>
+
+                
+                <!-- <div class="play_video">
                     <video width="100%" height="100%" controls autoplay>
                         <source src="<?= base_url();?><?= $WatchNow['video']?>">
                         <source src="movie.ogg" type="video/ogg">
                             Your browser does not support the video tag.
                     </video>
-                </div> 
+                </div> --> 
                 <div class="video__details">
                     <div class="title-text">
                         <h3><?= $WatchNow['title']?></h3>
@@ -198,8 +226,8 @@ img.news_img {
         CheckLiveSessionlike(id);
 
 
-    });
- </script>
+    }); 
+ </script> 
          
 <script type="text/javascript">
  

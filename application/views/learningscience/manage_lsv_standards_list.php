@@ -11,9 +11,13 @@
                 <li class="breadcrumb-item active" aria-current="page">Manage Session/Post</li>
                 
             </ol>
-        </nav>
+        </nav> 
     </div>
-    
+    <?php
+    if ($this->session->flashdata('MSG')) {
+    echo $this->session->flashdata('MSG');
+    }
+    ?>
     <!-- Content Row -->
     <div class="row">
         <div class="col-12 mt-3">

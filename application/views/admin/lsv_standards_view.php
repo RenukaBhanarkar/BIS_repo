@@ -59,15 +59,19 @@
                                         </div> 
                                     </div>
                                     </div>
-
-                                <div class="row">   
-                                    <div class="mb-2 col-md-12">
-                                        <!-- <label class="d-block text-font">View PDF</label> -->
+                                    <?php if (!empty($liveSession['doc_pdf'])) {?>
+                                        <div class="row">   
+                                    <div class="mb-2 col-md-12"> 
                                         <div> 
                                             <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>" class="btn btn-primary" target="_blank">View Details</a>
                                         </div> 
                                     </div>
                                 </div>
+                                    <?php } ?>
+
+
+                                
+
                             <?php }?>
                             <?php   if ($liveSession['type_of_post']==2) { 
                            if ($liveSession['option']==1) {?>
@@ -101,7 +105,7 @@
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Live Session Link</label>
                                     <div>
-                                        <p><?= $liveSession['session_link']?></p>
+                                        <p><a href="<?= $liveSession['session_link']?>"><?= $liveSession['session_link']?></a></p>
                                     </div>    
                                 </div>
                             </div>

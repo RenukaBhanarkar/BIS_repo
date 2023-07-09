@@ -384,6 +384,11 @@ class Standardswritting extends CI_Controller
         $data['getEvaluator']=$this->Standardswritting_model->getEvaluator();
         $data['getData']=$this->Standardswritting_model->standard_submission_competition($id);
 
+        $mydata=$this->Standardswritting_model->create_online_view($id);
+        $data['resultStatus']=$mydata['result_declared'];
+
+
+
        // print_r( $data['getData']); die;
         $data['ids']=$id;
 
@@ -1109,6 +1114,7 @@ if($id){
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
             $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
             $formdata['total_mark'] = $this->input->post('total_mark');
+            $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
             $formdata['updated_on'] = date("Y-m-d h:i:s");
 
@@ -1306,6 +1312,7 @@ if($id){
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
             $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
             $formdata['total_mark'] = $this->input->post('total_mark');
+            $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
             $formdata['updated_on'] = date("Y-m-d h:i:s");
 
@@ -1319,7 +1326,7 @@ if($id){
             $formdata['status'] = 1;
              $mysts=1;
 
-        }
+        }  
 
 
 
@@ -1431,7 +1438,7 @@ if($id){
         } 
         $this->load->view('admin/footers/admin_footer');
     }
-
+ 
      public function admin_manage_online_list()
     {
         $data=array();
@@ -1929,7 +1936,7 @@ if($id){
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_reviewed()
-    {
+    { 
 
          $encAdminId = $this->session->userdata('admin_id');
          $evaluator_id = encryptids("D", $encAdminId);

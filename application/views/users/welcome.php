@@ -76,7 +76,7 @@ if(isset($_SESSION['change_password'])){
                         <!-- <h6>Live Data</h6> -->
                         <div class="row table_data ">
                         <div class="col-sm-6">    
-                            <div class="innerBox mb-2" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpeg); padding: 0px; margin: 0px; background-repeat: round; width:100%; height: 250px;">
+                            <div class="innerBox mb-2" style="background-image: url(<?php echo base_url();?>assets/images/standard_club.jpg); padding: 0px; margin: 0px; background-repeat: round; width:100%; height: 250px;">
                             <div style="background:#00000099;height: 100%">
                                 <a href="<?=base_url();?>users/standard">
                                 <div class="LiveDataBox" >

@@ -631,7 +631,7 @@
     console.log(fileSize);
     if(fileSize < 0){
     $('#video').val('');
-    Swal.fire('File size should be between 5MB to 40MB1')
+    Swal.fire('File size should be between 5MB to 40MB')
     }else if(fileSize > 335544320){
     $('#video').val('');
     Swal.fire('File size should be between 5MB to 40MB')

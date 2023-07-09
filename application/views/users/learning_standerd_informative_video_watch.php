@@ -120,6 +120,9 @@ img.news_img {
             <div class="col-md-12"> 
                 <h1>Watch Informative Video</h1>
                 <div class="play_video">
+
+
+
                     <?php if($ReadMore['option']==1) { ?>
                         <video width="100%" height="100%" controls autoplay>
                         <source src="<?= base_url()?><?= $ReadMore['video']?>">
@@ -128,9 +131,21 @@ img.news_img {
                         </video>
                 <?php } ?>
 
+
+
+
+
                 <?php if($ReadMore['option']==2) { ?>
-                        <a href="<?= $ReadMore['video_url']?>"><img src="<?= base_url()?><?= $ReadMore['thumbnail']?>" style="width: 500px;"> </a>x
+                        <a href="<?= $ReadMore['video_url']?>"><img src="<?= base_url()?><?= $ReadMore['thumbnail']?>" style="width: 500px;"> </a>
+                        <br>
+
+
+                        <a href="<?= $ReadMore['video_url']?>" class="btn btn-info btn-sm">Click Here to watch Video</a><br><br>
+
+                        
                 <?php } ?>
+
+                
 
                 </div> 
                 <div class="video__details">
@@ -139,7 +154,6 @@ img.news_img {
 
                          <span><?= $ReadMore['views']?> Views • <?= time_elapsed_string($ReadMore['created_on'])?></span>
                             <input type="hidden" value="<?= $ReadMore['likes']?>" id="oldlikes">
-
                             <span id="newlikes"> </span><span> likes </span>
 
                             <?php  $admin_id = encryptids("D", $this->session->userdata('admin_id')); 

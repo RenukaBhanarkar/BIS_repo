@@ -65,18 +65,69 @@
                 <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">
                     <h4 class="m-0">Task Details</h4>
                 </div>
+                <?php if ($getData['uploadtype']==1) {?>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mb-12 col-md-12">
+                            <label class="d-block text-font">Submission Details</label>
+                            <div> 
+                                <?php if (!empty($getData['details'])) {?>
+                                <p><?=$getData['details']?></p>
+                                <?php } else { echo "Not uploaded any Text Answer";}?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+                <?php if ($getData['uploadtype']==2) {?>
+                <?php if ($getData['filetype']=='pdf') {?>
                 <div class="card-body">
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Submission Details</label>
+                            <label class="d-block text-font">View Pdf Submission Details</label>
                             <div>
-                                <p><?=$getData['details']?></p>
+                                <p>
+                                    <?php if (!empty($getData['file'])) {?>
+                                    <a href="<?= base_url()?><?=$getData['file']?>" target="_blank" class="btn btn-primary btn-sm">View PDF File </a>
+                                    <?php } else { echo "Not uploaded any document Answer";}?>
+                                </p>
                             </div>
                         </div>
-                         
-                        
                     </div>
                 </div>
+                <?php } } ?>
+                <?php if ($getData['uploadtype']==2) {?>
+                <?php if ($getData['filetype']=='image') {?>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mb-2 col-md-4">
+                            <label class="d-block text-font">View Image Submission Details</label>
+                            <div>
+                                <?php if (!empty($getData['file'])) {?>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_1">
+                                Preview
+                                </button>
+                                <?php } else { echo "Not uploaded any document Answer";}?>
+                                <div class="modal fade"id="modal_1"tabindex="-1"aria-labelledby="exampleModalLabelImg"aria-hidden="true">
+                                    <div class="modal-dialog" style="max-width:1000px;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabelImg">Image Answer</h5>
+                                                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="<?= base_url()?><?=$getData['file']?>" width="100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } } ?>
+                
+                
                 <div class="col-md-12 submit_btn p-3">
                     <button onclick="history.back()" class="btn btn-primary btn-sm text-white submit">Back</button>
                 </div>
