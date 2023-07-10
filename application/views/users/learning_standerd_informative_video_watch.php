@@ -136,11 +136,11 @@ img.news_img {
 
 
                 <?php if($ReadMore['option']==2) { ?>
-                        <a href="<?= $ReadMore['video_url']?>"><img src="<?= base_url()?><?= $ReadMore['thumbnail']?>" style="width: 500px;"> </a>
+                        <a href="<?= $ReadMore['video_url']?>"><img src="<?= base_url()?><?= $ReadMore['thumbnail']?>" style="width: 100%; height: 400px;"> </a>
                         <br>
 
 
-                        <a href="<?= $ReadMore['video_url']?>" class="btn btn-info btn-sm">Click Here to watch Video</a><br><br>
+                        <a href="<?= $ReadMore['video_url']?>" class="btn btn-info btn-sm" style="margin-top: 10px;">Click Here to watch Video</a><br><br>
 
                         
                 <?php } ?>

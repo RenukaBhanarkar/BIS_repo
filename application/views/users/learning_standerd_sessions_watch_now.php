@@ -7,7 +7,7 @@ h1 {
     color: rgb(3, 3, 3);
 }
 .join_video_content {
-    padding: 39px 65px;
+    padding: 39px 27px;
 } 
 .news__details {
     display: flex;

@@ -238,7 +238,7 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
             </div>
             <div class="col-md-3">
                 <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span><br>
-                Time left : <span class="timer" style="background-color: green;"> <span class="countdown"></span></span>
+                Time left : <span class="timer" style="background-color: green; border-radius: 4px;"> <span class="countdown" style="padding: 10px; color: white;"></span></span>
                 
             </div>
             <div class="time-left">
@@ -290,7 +290,7 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                         <a class="btn btn-success submit btnbtn" onclick="submitCompetition()">Submit</a>
                         
                         <a class="btn btn-danger btnbtn" onclick="cancle()" >Cancel</a> 
-                    <a href="<?= base_url()?>"  class="btn btn-danger">Back</a>
+                    <!-- <a href="<?= base_url()?>"  class="btn btn-danger">Back</a> -->
                  
                     </div>
                 </div>
