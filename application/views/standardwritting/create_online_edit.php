@@ -68,6 +68,11 @@
                                 <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="<?=$getData['end_time']?>" >
                             </div>
 
+                            <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Duration<sup class="text-danger">*</sup></label>
+                                <input type="text" class="form-control input-font" name="duration"  id="duration"  value="<?=$getData['duration']?>" >
+                            </div>
+
 
                             <div class="mb-2 col-md-4">
                                 <?php if (empty($getData['banner_img'])) {?>

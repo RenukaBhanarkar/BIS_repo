@@ -79,7 +79,9 @@
             </div>
         </div>
         <div class="col-md-12 submit_btn p-3">
+            <?php if($resultStatus==0){?>
             <button class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#assignForm2">Assign for Review</button>
+            <?php } ?>
             <a href="<?php echo base_url(); ?>" class="btn btn-danger btn-sm text-white">Cancel</a>
         </div>
     </div>
@@ -225,25 +227,15 @@
 </script>
 <script type="text/javascript">
     function viewSubmitData(id) {
-        Swal.fire({
-            title: 'Do you want to  Assign View ?',
-            showDenyButton: true,
-            showCancelButton: false,
-            confirmButtonText: 'View',
-            denyButtonText: `Cancel`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "../standard_submission_view/" + id;
-            }
-        })
+        window.location.href = "../standard_submission_view/" + id;
     }
 
     function viewAssingData(id) {
         Swal.fire({
-            title: 'Do you want to  Assign View ?',
+            title: 'Do you want to  Assign ?',
             showDenyButton: true,
             showCancelButton: false,
-            confirmButtonText: 'View',
+            confirmButtonText: 'Assign',
             denyButtonText: `Cancel`,
         }).then((result) => {
             if (result.isConfirmed) {

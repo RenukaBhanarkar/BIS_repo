@@ -237,21 +237,35 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                 <h4 style="color: darkblue;"><?=$getData['title']?></h4>
             </div>
             <div class="col-md-3">
-                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span>
+                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span><br>
+                Time left : <span class="timer" style="background-color: green;"> <span class="countdown"></span></span>
                 
             </div>
+            <div class="time-left">
+                                
+                            </div>
             <!-- </div> -->
         </div>
         <div class="bg-light p-3">
             
         
 
-                 <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                 <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate indian>
                 <input type="hidden" name="comp_id" id="comp_id" value="<?=$getData['id']?>">
                 <div class="row">
                     <input type="hidden" value="<?= $start_time; ?>" name="start_time">
-                     
+
                     <div class="mb-2 col-sm-12">
+                        <div class="form-group" id="yourWall_des"><br>
+                            <label class="d-block text-font">Select Answer Type<sup class="text-danger">*</sup></label><br>
+                            <input type="radio"  name="uploadtype" value="1" checked>
+                             <label for="textupload">Text Upload</label><br>
+                             <input type="radio" name="uploadtype" value="2">
+                             <label for="fileupload">File Upload</label><br>
+                         </div>
+                    </div>
+                     
+                    <div class="mb-2 col-sm-12" id="textupload">
                         <div class="form-group" id="yourWall_des"><br>
                             <label class="d-block text-font">Enter Details<sup class="text-danger">*</sup></label><br>
                             <textarea class="form-control  w-100"  placeholder="" name="details" id="details"></textarea required>
@@ -260,13 +274,22 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                             </div>
                         </div>
                     </div>
+
+                    <div class="mb-2 col-sm-12" id="fileupload">
+                        <div class="form-group" id="yourWall_des"><br>
+                            <label class="d-block text-font">Select File<sup class="text-danger">*</sup></label><br>
+                            <input type="file" name="file" id="file" accept="application/pdf, image/jpg,image/jpeg,image/png" class="file-control" onchange="loadVideo(event)">
+                        </div>
+                    </div>
+
+                    
                     
                 </div>
                 <div class="col-md-12 row">
                     <div class="button-group float-end mt-3" style="text-align: end;">
-                        <button  type="submit" class="btn btn-success submit">Submit</button>
+                        <a class="btn btn-success submit btnbtn" onclick="submitCompetition()">Submit</a>
                         
-                        <button class="btn btn-danger" onclick="cancle()" >Cancel</button> 
+                        <a class="btn btn-danger btnbtn" onclick="cancle()" >Cancel</a> 
                     <a href="<?= base_url()?>"  class="btn btn-danger">Back</a>
                  
                     </div>
@@ -312,6 +335,9 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
 </script>
 <script> 
     $(document).ready(function(){
+
+        // $("#textupload").hide();
+        $("#fileupload").hide(); 
 $('#abcd').show();
 $('.pqr').hide();
 $('#abcd').click(function(){
@@ -361,11 +387,15 @@ function KeyUp(editorID,maxLimit,infoID) {
   //  $("#file_show").click(function(){
  // $(".file-upload-wrapper").show();
 //});
-function submitCompetition(event){
-    event.preventDefault();
+function submitCompetition(){
+    
 var isValid=true;
 //    var answer =$('#details').val();
    var answer = CKEDITOR.instances['details'].getData();
+   var file = $("#file").val();
+   var uploadtype = $('input[name="uploadtype"]:checked').val(); 
+
+   if (uploadtype==1) {
     if(answer==""){
         Swal.fire("Please enter answer");
         // alert('enter response');
@@ -375,6 +405,21 @@ var isValid=true;
         Swal.fire("Only 5000 characters allowed");
     }else{
         
+    }
+    }
+    if (uploadtype==2) 
+    {
+        if(file==""){
+        Swal.fire("Please select file");
+        // alert('enter response');
+        isValid=false;
+    }else if(file.length > 5000){
+        isValid=false;
+        Swal.fire("Only 5000 characters allowed");
+    }else{
+        
+    }
+
     }
 
     if(isValid){
@@ -387,7 +432,7 @@ var isValid=true;
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {                       
-                        $('#comp_form').submit();
+                        $('#standard_writting_login').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
                         // Swal.fire('Changes are not saved', '', 'info')
@@ -413,7 +458,8 @@ function cancle() {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) 
                     { 
-                        window.location.href = "standard_writting_details";
+                        // window.location.href = "standard_writting_details";
+                        window.history.back()
 
                     } 
                     else if (result.isDenied) {
@@ -462,4 +508,75 @@ function cancle() {
         
   });
 </script>
+<script type="text/javascript">
+
+        var timer2 = "<?=$getData['duration']?>:00";
+        var interval = setInterval(function() {
+
+
+            var timer = timer2.split(':');
+            //by parsing integer, I avoid all extra string processing
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+            --seconds;
+            minutes = (seconds < 0) ? --minutes : minutes;
+            if (minutes < 0) clearInterval(interval);
+            seconds = (seconds < 0) ? 59 : seconds;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+            //minutes = (minutes < 10) ?  minutes : minutes;
+            $('.countdown').html(minutes + ':' + seconds);
+            timer2 = minutes + ':' + seconds;
+            if (timer2 == '0:00') { 
+                $('#standard_writting_login').submit();
+            }
+        }, 1000);
+</script>
+
+<script type="text/javascript">
+        $('input:radio[name="uploadtype"]').change(
+            function(){
+                if (this.checked && this.value == '1') 
+                {
+                    $("#textupload").show(); 
+                    $("#fileupload").hide(); 
+                    $(".btnbtn").show();
+                }
+                if (this.checked && this.value == '2') 
+                {
+                    $("#textupload").hide(); 
+                    $("#fileupload").show();
+                    $(".btnbtn").show();
+                }
+    });
+    </script>
+
+    <script>
+        var loadVideo = function(event) { 
+    var fileSize = $('#file')[0].files[0].size;
+    var validExtensions = ['PDF','pdf','JPG','jpg','JPEG','jpeg','PNG','png']; //array of valid extensions
+    var fileName = $("#file").val();;
+    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+    
+    console.log(fileSize);
+    if(fileSize < 0){
+    $('#file').val('');
+    Swal.fire('File size up to 5MB')
+    }else if(fileSize > 335544320){
+    $('#file').val('');
+    Swal.fire('File size should be between 5MB to 40MB')
+    //   $('#err_icon_file').text('This value is required');
+    }else if($.inArray(fileNameExt, validExtensions) == -1){
+    $('#file').val('');
+    Swal.fire('Only PDF and Images allowed')
+    $('#err_icon_file').text('This value is required');
+    }else{
+    $('#err_icon_file').text('');
+    }
+    var loadThumbnail = document.getElementById('outputvideo');
+    loadThumbnail.src = URL.createObjectURL(event.target.files[0]);
+    loadThumbnail.onload = function() {
+    URL.revokeObjectURL(loadThumbnail.src);
+    }
+    };
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

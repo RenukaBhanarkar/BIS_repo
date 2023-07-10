@@ -70,6 +70,10 @@
                                 <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Duration<sup class="text-danger">*</sup></label>
+                                <input type="text" class="form-control input-font" name="duration"  id="duration"  value="" >
+                            </div>
+                            <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
@@ -745,6 +749,19 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             allfields = false;
         } else {
             $("#total_mark").next(".validation").remove();
+        }
+
+        var duration = $("#duration").val();
+        if (duration == "" || duration == null) {
+            if ($("#duration").next(".validation").length == 0) {
+                $("#duration").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
+            }
+            if (!focusSet) {
+                $("#duration").focus();
+            }
+            allfields = false;
+        } else {
+            $("#duration").next(".validation").remove();
         }
 
         
