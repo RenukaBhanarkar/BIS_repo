@@ -50,7 +50,7 @@
                         <div class="mb-2 col-md-4">
                             <label class="d-block text-font">Name of Evaluator</label>
                             <div>
-                                <p>Name of Evaluator</p>
+                                <p><?=$getData['eval_name']?></p>
                             </div>
                         </div>
                     </div>

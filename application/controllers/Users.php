@@ -3699,6 +3699,8 @@ if ($availability==1)
          $user_id = encryptids("D", $_SESSION['admin_id']);
          
          $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+
+         $userData = $this->Standardswritting_model->getUserDetails($user_id);
          if (!empty($attempt)) 
          {
             $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
@@ -3713,10 +3715,13 @@ if ($availability==1)
         $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
         $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $getdata=$this->Standardswritting_model->create_online_view($id);
-
+        $getdata=$this->Standardswritting_model->create_online_view($id); 
         $data['getData']=$getdata;
         $data['attempt']=$attempt;
+        $data['userData']=$userData;
+
+         
+
         // $data['allFilds1']=$allFilds1;
         // $data['allFilds2']=$allFilds2;
 
