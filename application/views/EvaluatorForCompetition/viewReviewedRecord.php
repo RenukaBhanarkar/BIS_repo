@@ -56,7 +56,7 @@
                             
                           </div>
                           <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">
-            	              <h4 class="m-0">Task Details</h4>
+            	              <h4 class="m-0">Submission Details</h4>
                          </div>
                          <div class="card-body"> 
                             <div class="row">

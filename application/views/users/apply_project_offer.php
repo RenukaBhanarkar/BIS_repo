@@ -2,8 +2,34 @@
     .heading-underline .right{
         width:10%;
     }
+    .breadcrums ul {
+    list-style: none;
+    display: block;
+    text-align: end;
+    margin: 0px;
+}
+.breadcrums ul li {
+    display: inline-block;
+}
+.breadcrums ul li:not(:last-child)::after {
+    content: '\f105';
+    font-family: 'fontAwesome';
+    margin: 0px 10px;
+}
 </style>
 <div id="privacy-content" class="container">
+<div class="col-12 mt-1">
+  				<div class="breadcrums">
+  					<ul>
+
+  						<li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
+                        <li><a href="<?php echo base_url().'users/research_projects'?>">Research Projects</a></li>
+                        <li><a href="<?php echo base_url().'users/project_offer_list'?>">Project on offer</a></li>
+  						<li><a class="active">Project on offer</a></li>
+
+  					</ul>
+  				</div>
+  			</div>
     <div class="col-sx-12 col-sm-12 col-md-12" style="border-left: 3px solid cadetblue; padding: 0px 25px;">
         <div class="static-content">
             <div class="bloginfo">

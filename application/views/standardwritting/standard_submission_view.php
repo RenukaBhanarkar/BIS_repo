@@ -63,7 +63,7 @@
                     
                 </div>
                 <div class="card-header p-2" style="background-color: #cdd4e0; text-align: center;">
-                    <h4 class="m-0">Task Details</h4>
+                    <h4 class="m-0">Submission Details</h4>
                 </div>
                 <?php if ($getData['uploadtype']==1) {?>
                 <div class="card-body">
@@ -101,7 +101,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">View Image Submission Details</label>
+                            <!-- <label class="d-block text-font">View Image Submission Details</label> -->
                             <div>
                                 <?php if (!empty($getData['file'])) {?>
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal_1">

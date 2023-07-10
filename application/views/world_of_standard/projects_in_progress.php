@@ -60,7 +60,7 @@
                             		<tr>
                             			<td>2</td>
                             			<td>Department</td>
-                            			<td><a href="<?php echo base_url().'users/apply_project_offer'?>" class="count" style="color:blue;">3ss</a></td>
+                            			<td><a href="#" class="count" style="color:blue;">3ss</a></td>
                             		</tr>
                             		
                             	</tbody>
@@ -87,7 +87,7 @@
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'users/apply_project_offer'?>');                   
+                        // window.location.replace('<?php echo base_url().'users/apply_project_offer'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
