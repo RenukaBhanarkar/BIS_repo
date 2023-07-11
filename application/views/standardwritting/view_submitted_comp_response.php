@@ -34,6 +34,7 @@
                         </div>
                         
                     </div>
+                    <?php if(!$response['image']==""){ ?>
                     <div class="col-md-12">
                         <div class="col-md-12">
                             <h3>Submited Files</h3>
@@ -45,6 +46,7 @@
                         </div>
                         
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-md-12 submit_btn p-3">

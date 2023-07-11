@@ -66,7 +66,7 @@
 
                                         <td class="d-flex">
                                             <a href="<?php echo base_url() . 'Standardswritting/view_submitted_comp_response/' . $list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                                            <?php if ($list['submission_status'] != "3") { ?>
+                                            <?php if (($list['submission_status'] == "1") || ($list['submission_status'] == "0")) { ?>
                                                 <a href="#" class="btn btn-info btn-sm mr-2 abcd" sub-id="<?php echo $list['id']; ?>" comp-id="<?php echo $list['competiton_id']; ?>" user_id="<?php echo $list['user_id']; ?>" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                                             <?php } ?>
                                         </td>

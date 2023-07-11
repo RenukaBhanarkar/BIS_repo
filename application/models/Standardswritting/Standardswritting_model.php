@@ -781,9 +781,12 @@ public function getAllManageQuiz()
             tbl_standards_writting_online.title,
             tbl_standards_writting_online.total_mark,
             tbl_mst_quiz_availability.title as avail,
+            tbl_admin.name as eval_name, tbl_admin.email_id as eval_email
             ');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_standards_writting_online', 'tbl_standards_writting_online.id= tbl_standard_writing_competition_online.comp_id');
+
+         $this->db->join('tbl_admin', 'tbl_admin.id= tbl_standard_writing_competition_online.evaluator_id');
 
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id= tbl_standards_writting_online.availability_id');
 
@@ -820,9 +823,11 @@ public function getAllManageQuiz()
             tbl_standards_writting_online.title,
             tbl_standards_writting_online.comp_id as comp,
             tbl_standards_writting_online.standard,
-            tbl_standards_writting_online.total_mark');
+            tbl_standards_writting_online.total_mark,
+            tbl_admin.name as eval_name, tbl_admin.email_id as eval_email');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_standards_writting_online', 'tbl_standards_writting_online.id =tbl_standard_writing_competition_online.comp_id');
+        $this->db->join('tbl_admin', 'tbl_admin.id= tbl_standard_writing_competition_online.evaluator_id');
         $this->db->where('tbl_standard_writing_competition_online.id', $id);
         $query = $this->db->get();
         return $query->row_array();
@@ -856,5 +861,11 @@ public function getAllManageQuiz()
         $this->db->where('user_id ', $user_id);
         $this->db->where('comp_id ', $comp_id);
         return $this->db->get('tbl_standard_writing_competition_online')->result_array();
+    }
+
+    public function getUserDetails($id)
+    {
+        $this->db->where('user_id', $id);
+        return $quiz = $this->db->get('tbl_users')->row_array();
     }
 }

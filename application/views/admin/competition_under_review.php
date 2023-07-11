@@ -85,7 +85,8 @@
                                 <td><?php echo $list['total_reviewed']; ?></td>
                                 
                                 <td>
-                                <a href="<?php echo base_url().'Standardswritting/view_submission_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
+                                <!-- <a href="<?php echo base_url().'Standardswritting/view_submission_competition/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a> -->
+                                <a href="<?php echo base_url().'Standardswritting/view_comp_unser_review/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <!-- <a href="<?php echo base_url(); ?>" class="btn btn-primary btn-sm mr-2" >View Details</a> -->
                                  <a href="<?php echo base_url().'Standardswritting/view_competition/'.$list['comp_id']; ?>" class="btn btn-info btn-sm mr-2" >View Details</a>
                                 </td>

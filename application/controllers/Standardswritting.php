@@ -222,6 +222,13 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/view_submission_competition',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function view_comp_unser_review($comp_id){
+        $data['competition']=$this->Miscellaneous_competition->SubmittedAttemptsUnderReview($comp_id);
+        // print_r($data); die;
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('Miscellaneous/view_comp_under_review',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function updateMisComStatusAllEvaluators(){
         try {
             
@@ -252,7 +259,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[$eva];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -281,7 +288,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[$eva];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -304,7 +311,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[0];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -312,6 +319,7 @@ class Standardswritting extends CI_Controller
                     }
                   
             } 
+            
             echo json_encode([
                 'status' => '1',
                 'message' => "Review assigned successfully.",
@@ -773,7 +781,8 @@ class Standardswritting extends CI_Controller
             // $formdata['branch'] = $this->input->post('Branch');
             $formdata['available_for'] = $this->input->post('Available');
           //  $formdata['thumbnail'] = $thumbnail_imglocation;
-            // $formdata['status'] = "0";
+            $formdata['status'] = "0";
+            $formdata['reject_reason'] = "";
 
 
             if($formdata['comp_level']=='2'){
@@ -1022,7 +1031,8 @@ if($id){
     }
     public function revised_competition_list()
     {
-        $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
+        // $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
+        $data['competition']=$this->Miscellaneous_competition->compToBeReciewed();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/revised_competition_list',$data);
@@ -1112,7 +1122,7 @@ if($id){
             $formdata['title_hindi'] = $this->input->post('title_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
-            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['qualifying_mark'] = 0; 
             $formdata['total_mark'] = $this->input->post('total_mark');
             $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
@@ -1310,7 +1320,7 @@ if($id){
             $formdata['title_hindi'] = $this->input->post('title_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
-            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['qualifying_mark'] = 0; 
             $formdata['total_mark'] = $this->input->post('total_mark');
             $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");

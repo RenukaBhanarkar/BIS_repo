@@ -84,7 +84,8 @@ class Miscellaneouscompetition extends CI_Controller
         $this->load->view('admin/footers/admin_footer');
     }
     public function CompetitionUnderReview(){
-        $data['competition']=$this->Miscellaneous_competition->underReviewedCompetition();
+        // $data['competition']=$this->Miscellaneous_competition->underReviewedcompetition();
+        $data['competition']=$this->Miscellaneous_competition->compAssignedEvaluator();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('admin/competition_under_review',$data);

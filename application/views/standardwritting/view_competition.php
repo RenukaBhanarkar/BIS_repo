@@ -69,7 +69,8 @@
                             <label class="d-block text-font">Competition Start Time</label>
                             <div>
                                 
-                                <p><?= date("h:m:s", strtotime($quizdata['start_time']));?></p>
+                                <!-- <p><?= date("h:i:sa", strtotime($quizdata['start_time']));?></p> -->
+                                <p><?= $quizdata['start_time']; ?></p>
                                  
                             </div>
                         </div>
@@ -85,7 +86,7 @@
                             <label class="d-block text-font">Competition End Time</label>
                             <div>
                                 
-                                <p><?= date("h:m:s", strtotime($quizdata['end_time']));?></p>
+                                <p><?= $quizdata['end_time']; ?></p>
                                  
                             </div>
                         </div>
@@ -122,7 +123,7 @@
                             </div>
                         </div> -->
                         <div class="mb-2 col-md-4">
-                            <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
+                            <label class="d-block text-font">Level of Competition</label>
                             <div>
                                 <p><?= $quizdata['title']; ?></p>
                             </div>
@@ -206,9 +207,9 @@
                             <div>
                             <?php if($quizdata['fprize_image']== '') { ?>
                                 <!-- // echo "NA"; -->
-                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:150px;"></p>
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php } else { ?>
-                                  <p><img src="<?php echo base_url().$quizdata['fprize_image']; ?>" style="width:150px;"></p>
+                                  <p><img src="<?php echo base_url().$quizdata['fprize_image']; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php  } ?>
                               
                             </div>
@@ -239,9 +240,9 @@
                             <div>
                             <?php if($quizdata['sprize_image']== '') { ?>
                                 <!-- echo "NA"; -->
-                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php } else { ?>
-                                  <p><img src="<?php echo base_url().$quizdata['sprize_image']; ?>" style="width:200px;"></p>
+                                  <p><img src="<?php echo base_url().$quizdata['sprize_image']; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php  } ?>
                               
                             </div>
@@ -274,9 +275,9 @@
                             <div>
                             <?php if($quizdata['tprize_image']== '') { ?>
                                 <!-- echo "NA"; -->
-                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px; border-radius:9px;"></p>
                            <?php  } else { ?>
-                                  <p><img src="<?php echo base_url().$quizdata['tprize_image']; ?>" style="width:200px;"></p>
+                                  <p><img src="<?php echo base_url().$quizdata['tprize_image']; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php  } ?>
                               
                             </div>
@@ -308,9 +309,9 @@
                             <label class="d-block text-font">Image</label>
                             <div>
                             <?php if($quizdata['cprize_image']== '') { ?>
-                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px;"></p>
+                                <p><img src="<?php echo base_url().'assets/images/prize_2.avif'; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php } else { ?>
-                                  <p><img src="<?php echo base_url().$quizdata['cprize_image']; ?>" style="width:200px;"></p>
+                                  <p><img src="<?php echo base_url().$quizdata['cprize_image']; ?>" style="width:200px; border-radius:9px;"></p>
                             <?php  } ?>
                               
                             </div>

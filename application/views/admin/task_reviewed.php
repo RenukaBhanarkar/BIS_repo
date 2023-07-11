@@ -80,7 +80,7 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-
+    <button onclick="history.back()" class="btn btn-primary btn-sm text-white mr-4 mt-2" style="float:right;">Back</button>
     </div>
     <!-- End of Main Content -->
  

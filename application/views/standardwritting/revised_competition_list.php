@@ -77,7 +77,7 @@
                                 <td><?php echo $list['avai_for']; ?></td>
                                 <td><?php echo $list['title']; ?></td>
                                 <td><?php echo $list['total_task']; ?></td>
-                                <td><?php echo $list['total_task_under_review']; ?></td>
+                                <td><?php echo $list['total_task_assigned']; ?></td>
                                 <td><?php echo $list['total_task_reviewed']; ?></td>
                                 
                                 <td>
