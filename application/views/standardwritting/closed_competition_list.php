@@ -77,7 +77,7 @@
                             <td><?php echo $list['total_task_under_review']; ?></td>
                             <td><?php echo $list['total_task_reviewed']; ?></td>
                             <!-- <td><?php echo $list['status_name'];  ?></td> -->
-                            <td><?php if($list['review_status']==1){ echo "Send for Review"; }else { echo "Closed"; } ;  ?></td>
+                            <td><?php if($list['result_declared']==1){echo "Result Declared"; }else{ if($list['review_status']==1){ echo "Send for Review"; }else { echo "Closed"; } } ;  ?></td>
                             <td>
                             <a href="<?php echo base_url().'standardswritting/competition_submission_view/'.$list['comp_id']; ?>" class="btn btn-primary btn-sm mr-2" >View Submission</a>
                                  <!-- <a href="<?php echo base_url(); ?>" class="btn btn-info btn-sm mr-2" >View Details</a> -->
@@ -87,8 +87,9 @@
                                  <?php }else if($list['review_status']==1){ ?>
                                  <!-- <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_submission/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a> -->
                                  <?php if($list['total_task']=$list['total_task_reviewed']){ ?>
+                                    <?php if($list['result_declared']==0){ ?>
                                  <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_list/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration List</a>
-                                 <?php } ?>
+                                 <?php } } ?>
                                  <?php } ?>
                                 </td>
                              </tr>

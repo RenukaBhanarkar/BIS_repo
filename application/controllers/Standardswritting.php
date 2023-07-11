@@ -252,7 +252,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[$eva];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -281,7 +281,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[$eva];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -304,7 +304,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[0];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -312,6 +312,7 @@ class Standardswritting extends CI_Controller
                     }
                   
             } 
+            
             echo json_encode([
                 'status' => '1',
                 'message' => "Review assigned successfully.",
@@ -773,7 +774,8 @@ class Standardswritting extends CI_Controller
             // $formdata['branch'] = $this->input->post('Branch');
             $formdata['available_for'] = $this->input->post('Available');
           //  $formdata['thumbnail'] = $thumbnail_imglocation;
-            // $formdata['status'] = "0";
+            $formdata['status'] = "0";
+            $formdata['reject_reason'] = "";
 
 
             if($formdata['comp_level']=='2'){

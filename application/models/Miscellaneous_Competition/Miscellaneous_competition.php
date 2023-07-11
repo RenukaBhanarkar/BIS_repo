@@ -629,6 +629,15 @@ class Miscellaneous_competition extends CI_Model {
                         $this->db->select('tucar.*');
                         $this->db->from('tbl_users_competition_attempt_record tucar');
                         $this->db->where('tucar.competiton_id',$row['comp_id']);
+                        $this->db->where('tucar.status','2');
+                        $que=$this->db->get();
+                        $query1=$que->result_array();
+                        // print_r($query[0]['ev_name']); die;
+                        $row['total_task_assigned']=count($query1);
+
+                        $this->db->select('tucar.*');
+                        $this->db->from('tbl_users_competition_attempt_record tucar');
+                        $this->db->where('tucar.competiton_id',$row['comp_id']);
                         $this->db->where('tucar.status','3');
                         $que=$this->db->get();
                         $query1=$que->result_array();
@@ -688,7 +697,7 @@ class Miscellaneous_competition extends CI_Model {
     //   $this->db->where('tucar.evaluator',$data);
     //  $this->db->where('tucar.status !=','3');
 
-     $this->db->select('tucar.*,tucar.score as marks,tmcd.competiton_name,tu.StdClubMemberClass,ta.name');
+     $this->db->select('tucar.*,tucar.score as marks,tmcd.competiton_name,tu.StdClubMemberClass,ta.name,tmcd.score as total_marks');
      $this->db->from('tbl_users_competition_attempt_record tucar');
      $this->db->join('tbl_mst_competition_detail tmcd','tmcd.comp_id=tucar.competiton_id','left');
      $this->db->join('tbl_users tu','tu.user_id=tucar.user_id','left');
@@ -896,8 +905,9 @@ class Miscellaneous_competition extends CI_Model {
     public function updateResultDeclaration($quiz_id, $data)
     {
 
-        $this->db->where('id', $quiz_id);
+        $this->db->where('quiz_id', $quiz_id);
         if ($this->db->update('tbl_comp_result_declaration', $data)) {
+            $this->db->update('tbl_mst_competition_detail',['result_declared'=>'1'],['comp_id'=>$quiz_id]);
             return true;
         } else {
             return false;
@@ -1024,7 +1034,8 @@ class Miscellaneous_competition extends CI_Model {
                         $this->db->select('tucar.competiton_id,tucar.score as marks');
                         $this->db->from('tbl_users_competition_attempt_record tucar');
                         $this->db->where('tucar.competiton_id',$row['comp_id']);
-                        $this->db->where('tucar.score !=','0');
+                        // $this->db->where('tucar.score !=','0');
+                        $this->db->where('tucar.status','3');
                         $que=$this->db->get();
                         $query=$que->result_array();
                         // print_r($query[0]['ev_name']); die;
