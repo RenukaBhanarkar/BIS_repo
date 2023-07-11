@@ -31,8 +31,10 @@ class world_of_standard extends CI_Controller
         return true;
     }
 
-    public function abcd(){
-
+    public function projects_in_progress(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/projects_in_progress');
+        $this->load->view('users/footers/footer');
     }
 }
 ?>

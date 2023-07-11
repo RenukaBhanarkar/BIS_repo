@@ -82,34 +82,12 @@
 <script type="text/javascript">
  function viewData(id) 
 { 
-  Swal.fire({
-    title: 'Do you want to View ?',
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'View',
-    denyButtonText: `Cancel`,
-  }).then((result) => { 
-    if (result.isConfirmed) 
-    { 
-      window.location.href = "create_online_view/"+id; 
-    }  
-  })
+  window.location.href = "create_online_view/"+id; 
 }
 
 function viewSubmitData(id) 
 { 
-  Swal.fire({
-    title: 'Do you want to  Assign View ?',
-    showDenyButton: true,
-    showCancelButton: false,
-    confirmButtonText:'View',
-    denyButtonText: `Cancel`,
-  }).then((result) => { 
-    if (result.isConfirmed) 
-    { 
-      window.location.href = "standard_submission_competition/"+id; 
-    }  
-  })
+  window.location.href = "standard_submission_competition/"+id; 
 }
 </script>
 

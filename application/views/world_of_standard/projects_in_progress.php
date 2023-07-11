@@ -23,9 +23,8 @@
   					<ul>
 
   						<li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
-                        <li><a href="<?php echo base_url().'users/research_projects'?>">Research Projects</a></li>
-                        <li><a href="<?php echo base_url().'users/project_offer_list'?>">Project on offer</a></li>
-  						<li><a class="active">Project on offer</a></li>
+                          <li><a href="<?php echo base_url().'users/research_projects'?>">Research Projects</a></li>
+  						<li><a class="active">Projects in progress</a></li>
 
   					</ul>
   				</div>
@@ -33,7 +32,7 @@
     <div class="col-sx-12 col-sm-12 col-md-12" style="border-left: 3px solid cadetblue; padding: 0px 25px;">
         <div class="static-content">
             <div class="bloginfo">
-                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Project on offer</h3>
+                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Projects in progress</h3>
             </div>
             <div class="heading-underline" style="width: 200px;">
                 <div class="left"></div><div class="right"></div>
@@ -47,28 +46,23 @@
                 <thead>
                             		<tr>
                                         <th>Sr.No.</th>
-                            			<th>Title of Project</th>
                             			<th>Technical Department</th>
-                                        <th>Technical Committee</th>
-                                        <th>Date of Approval</th>
-                                        <th>Action</th>
+                            			<th>Project in Progress</th>
                             			
                             		</tr>
                             	</thead>
                             	<tbody>
                             		<tr>
                             			<td>1</td>
-                            			<td>BIS Exchange Forum</td>
-                                        <td>Technical Department</td>
-                                        <td>Technical Committee</td>
-                                        <td>12/03/2023</td>
-                            			<td>
-                                            <a href="" class="btn btn-primary btn-sm mt-2">See the Scope</a>
-                                            <a href="" class="btn btn-warning btn-sm mt-2">See the Tearms of Reference</a>
-                                            <a href="#" class="btn btn-success btn-sm mt-2 apply">Apply</a>
-                                            <a href="" class="btn btn-secondary btn-sm mt-2">Need Information</a>
-                                        </td>
+                            			<td>Department</td>
+                            			<td><a href="#" class="count" style="color:blue;">2</a></td>
                             		</tr>
+                            		<tr>
+                            			<td>2</td>
+                            			<td>Department</td>
+                            			<td><a href="#" class="count" style="color:blue;">3ss</a></td>
+                            		</tr>
+                            		
                             	</tbody>
                             </table>
                         </div>    
@@ -78,27 +72,22 @@
          </div>
     </div>
   </div>
-  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $(document).ready(function () {
-    // $('#example').DataTable();
-    $('#example').DataTable( {
-    // responsive: true,
-    scrollX: 2000
-} );
+    $('#example').DataTable();
     });
-    $('.apply').on('click',function(){
+    $('.count').on('click',function(){
     Swal.fire({
-                    title: 'Are you sure you want to Apply?',
+                    title: 'Are you sure you want to View?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Apply',
+                    confirmButtonText: 'View',
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
+                        // window.location.replace('<?php echo base_url().'users/apply_project_offer'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {

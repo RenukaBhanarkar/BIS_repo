@@ -1114,7 +1114,7 @@ if($id){
             $formdata['title_hindi'] = $this->input->post('title_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
-            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['qualifying_mark'] = 0; 
             $formdata['total_mark'] = $this->input->post('total_mark');
             $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
@@ -1312,7 +1312,7 @@ if($id){
             $formdata['title_hindi'] = $this->input->post('title_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
-            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['qualifying_mark'] = 0; 
             $formdata['total_mark'] = $this->input->post('total_mark');
             $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
