@@ -445,7 +445,8 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                             </ol>
                         </div>
                         <!-- <input type="" name="Submit" class="btn btn-info btn-sm"> -->
-                        <button type="submit" class="btn btn-success w-100" id="submit_button">Submit</button>
+                        <!-- <button type="submit" class="btn btn-success w-100" id="submit_button">Submit</button> -->
+                        <a  class="btn btn-success w-100" id="submit_button">Submit</a>
                     </div>
                 </div>
 
@@ -491,7 +492,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+   
     <script>
         var total_ques = $("#total_que_count").val();
         var app_que_count = 1;
@@ -707,6 +708,24 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             $('#qustions-tab').hide();
             $('#submit_button').hide();
             $('#right-bar-ans-none').hide();
+            // Swal.fire({
+            //         title: 'Are you sure you want to Submit ?',
+            //         showDenyButton: true,
+            //         showCancelButton: false,
+            //         confirmButtonText: 'Submit',
+            //         denyButtonText: `Cancel`,
+            //         }).then((result) => {
+            //         /* Read more about isConfirmed, isDenied below */
+            //         if (result.isConfirmed) {   
+            //             $('#regForm').submit();
+            //             // Swal.fire('Saved!', '', 'success')                                
+            //         } else if (result.isDenied) {
+            //             $('#qustions-tab').show();
+            //             $('#submit_button').show();
+            //             $('#right-bar-ans-none').show();
+            //             // Swal.fire('Changes are not saved', '', 'info')
+            //         }
+            //         })
 
         });
 
@@ -714,6 +733,8 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         jQuery('.show').on('click', function() {
             jQuery('.login_details').toggle();
         });
+
+
     </script>
 
 
@@ -796,8 +817,9 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
         $(document).ready(function() {
 
-            setTimeout(updateUserTime, 5000);
-
+            setTimeout(updateUserTime, 60000);
+            
+          
         });
         // $(document).ready(function(){
         //     var quiz_id = "<?= $quizdata['id']; ?>";
@@ -870,7 +892,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
         setInterval(function() {
             check_session_id();
-        }, 10000);
+        }, 60000);
     </script>
 </body>
 
