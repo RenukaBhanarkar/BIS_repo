@@ -146,7 +146,9 @@
     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/cmsManagenent_dashboard'">Back</a>
 </div> -->
 </div>
-
+<div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
 <div class="modal fade" id="viewImage" tabindex="-1" role="dialog" aria-labelledby="viewImageLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

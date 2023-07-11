@@ -41,7 +41,7 @@
                             <td><?=$value['id']?></td>
                             <td><?=$value['avail']?></td>
                             <td><?= date("d-m-Y h:i:s", strtotime($value['created_on']));?></td>
-                            <td>Name of Evaluator</td>
+                            <td><?=$value['eval_name']?></td>
                             <td><?=$value['total_mark']?></td>
                             <td><?=$value['score']?></td>
 
@@ -57,7 +57,7 @@
                             ?>
                             <td><?=$status?></td>
                             <td class="d-flex">
-                                <a onclick="viewSubmitData('<?= $value['id']?>',1)" class="btn btn-success btn-sm mr-2" title="View">Review</a>
+                                <a onclick="reviewSubmitData('<?= $value['id']?>',1)" class="btn btn-success btn-sm mr-2" title="View">Review</a>
                                 <a onclick="viewSubmitData('<?= $value['id']?>',2)" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                             </td>
                         </tr>
@@ -76,8 +76,8 @@
 <!-- End of Main Content -->
 
 <script type="text/javascript">
-     
-    function viewSubmitData(id,data)
+
+    function reviewSubmitData(id,data)
     {
         if (data==1) 
         {
@@ -101,5 +101,10 @@
     window.location.href = "task_recevied_reviewed/"+id;
     }
     })
+    }
+     
+    function viewSubmitData(id,data)
+    {
+        window.location.href = "task_recevied_reviewed/"+id;
     }
     </script>

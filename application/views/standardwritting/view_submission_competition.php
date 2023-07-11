@@ -66,7 +66,7 @@
 
                                         <td class="d-flex">
                                             <a href="<?php echo base_url() . 'Standardswritting/view_submitted_comp_response/' . $list['id']; ?>" class="btn btn-primary btn-sm mr-2">View</a>
-                                            <?php if ($list['submission_status'] != "3") { ?>
+                                            <?php if (($list['submission_status'] == "1") || ($list['submission_status'] == "0")) { ?>
                                                 <a href="#" class="btn btn-info btn-sm mr-2 abcd" sub-id="<?php echo $list['id']; ?>" comp-id="<?php echo $list['competiton_id']; ?>" user_id="<?php echo $list['user_id']; ?>" data-bs-toggle="modal" data-bs-target="#assignForm">Assign</a>
                                             <?php } ?>
                                         </td>
@@ -79,12 +79,14 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-12 submit_btn p-3">
-                <button class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#assignForm2">Assign for Review</button>
-                <a href="#" class="btn btn-danger btn-sm text-white cancel">Cancel</a>
-            </div>
+            
         </div>
     </div>
+    <div class="col-md-12 submit_btn p-3" >
+    <button class="btn btn-success btn-sm text-white" data-bs-toggle="modal" data-bs-target="#assignForm2">Assign for Review</button>
+                <a href="#" class="btn btn-danger btn-sm text-white cancel">Cancel</a>
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
     <!-- /.container-fluid -->
     <!-- Modal -->
     <div class="modal fade" id="assignForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

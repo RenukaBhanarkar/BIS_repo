@@ -81,11 +81,11 @@
   display: block;
   overflow: hidden;
   /* width: 20em; */
-  height: 90px;
+  /* height: 86px; */
 }
     </style>
 <section>
-        <div class="container-fluid" id="winner-section" style="padding: 19px 37px 50px 37px;">
+        <div class="container-fluid" id="winner-section" style="padding: 19px 25px 50px 25px;">
             <div class="row">
               <div class="col-md-8">
                <div class="static-content">
@@ -123,7 +123,7 @@
                           <div class="title">
                               <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'],"...",110); ?></p>
                           </div>
-                          <div class="field-item even">
+                          <div class="field-item even" style="max-height: 147px; overflow: hidden;"> 
                               <span class="time_left">
                                   <!-- <span class="last-date"><?php echo substr_replace($list['description'],"...",140);  ?> </span> -->
                                   <span class="last-date"><?php echo $list['description'];  ?> </span>
@@ -138,7 +138,7 @@
                               <!-- <div  class="status-open like_<?=$list['id'];?>" wow-id='<?php echo $list['id']; ?>' style="margin-left:10px;" id="<?php echo $list['id']; ?>"><?php echo $list['likes']; ?></div> -->
                               
                           </div>
-                          <div class="col-6" style="    float: right;    text-align: -webkit-right;    color: blue;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a></div>
+                          <div class="col-6" style="    float: right;    text-align: -webkit-right;    color: blue;"><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span class="read_more">Continue Reading</span></a></div>
                           </div>
                   </div>
                           

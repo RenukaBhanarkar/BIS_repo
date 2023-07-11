@@ -323,6 +323,9 @@
     <!-- /.container-fluid -->
     
 </div>
+<div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
 <script type="text/javascript">
 var loadFileThumbnail1 = function(event) 
     {

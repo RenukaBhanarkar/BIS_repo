@@ -73,13 +73,13 @@ span.span_description {
     font-weight: 600;
     padding: 9px;
     margin-top: 5px;
-    display: none;
+    /* display: none; */
     position: absolute;
     width: 100%;
 }
-.view_join_content:hover .discuss_caption{
+/* .view_join_content:hover .discuss_caption{
     display: block;
-}
+} */
 span.date-time {
     font-size: 12px;
     font-weight: 500;

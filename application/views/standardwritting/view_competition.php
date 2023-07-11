@@ -69,7 +69,8 @@
                             <label class="d-block text-font">Competition Start Time</label>
                             <div>
                                 
-                                <p><?= date("h:m:s", strtotime($quizdata['start_time']));?></p>
+                                <!-- <p><?= date("h:i:sa", strtotime($quizdata['start_time']));?></p> -->
+                                <p><?= $quizdata['start_time']; ?></p>
                                  
                             </div>
                         </div>
@@ -85,7 +86,7 @@
                             <label class="d-block text-font">Competition End Time</label>
                             <div>
                                 
-                                <p><?= date("h:m:s", strtotime($quizdata['end_time']));?></p>
+                                <p><?= $quizdata['end_time']; ?></p>
                                  
                             </div>
                         </div>

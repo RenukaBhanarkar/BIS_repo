@@ -13,8 +13,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <meta name="description" content="BIS exchangeforum">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" />
-    <!-- <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap5.min.css" class="">
+    <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap5.min.css" class=""> -->
     <!-- Bootstrap CSS -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,7 +86,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                $en_select='';
                                $hn_select='';
                                $language=''; 
-                                if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+                                if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SESSION['language'])){
                                     $en_select='selected';
                                     $language='en';
                                 }else{
@@ -97,8 +97,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <option value="en" <?php echo $en_select ?>>English</option>
                                     <option value="hn" <?php echo $hn_select ?>>हिन्दी</option>
                                 </select>
-                                 <!-- <li><a href="#" value="hn">हिन्दी</a></li> -->
-                                <!-- <li><a href="#" value="en">English</a></li> -->
+                                 <!-- <li><a href="#" value="hn" >हिन्दी</a></li>
+                                <li><a href="#" value="en">English</a></li> -->
                                 <li><a href="#" onclick="increaseFontSize();" class="me-2">A+</a><a href="#" onclick="normalFontSize();" class="me-2">A</a> <a href="#" onclick="decreaseFontSize();" class="me-2">A-</a></li>
                                 <li>
                                     <a href="#" id="orange_theme"><i class="fa fa-square" aria-hidden="true"></i></i></a>
@@ -112,14 +112,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-lg-7">
                         <div class="accessibility">
                             <ul>
-                                <li> <span class="mr-2 d-none d-lg-inline text-gray-600 small">BIS -
+                                <li> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                         <?php if (isset($_SESSION['admin_name'])) {
                                             echo encryptids("D", $_SESSION['admin_name']);
                                         } ?>
                                     </span>
                                 </li>
                                 <?php if (!isset($_SESSION['admin_name'])) { ?>
-                                <li><a href="#" class="show"><img src="<?php echo base_url(); ?>assets/images/user.png" style="height:31px;"></a></li>
+                                <li>
+                                <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="login_details" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<?php echo base_url(); ?>assets/images/user.png" style="height:31px;">
+                                        </a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="login_details">
+                                            <div class="login_details" style="">
+                                                    <span>Welcome To Bureau of Indian Standards</span>
+                                                    <div class="login-link-wrapper">
+                                                        <a href="<?php echo base_url(); ?>users/login" class="ac-login jquery-once-2-processed" title="Login">Login</a>
+                                                        <a href="https://www.services.bis.gov.in/php/BIS_2.0/outsider-registration" class="ac-register jquery-once-2-processed" title="Register">Register</a>
+                                                    </div>
+                                                </div>
+                                        </ul>
+                                </div>
+                                </li>
                                 <?php } else{ ?>
                                 <li><a href="#" class="after_show"><img src="<?php echo base_url(); ?>assets/images/user.png" style="height:31px;"></a></li>
                                 <?php } ?>
@@ -129,13 +145,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="login_details">
-            <span>Welcome To Bureau of Indian Standards</span>
-            <div class="login-link-wrapper">
-                <a href="<?php echo base_url(); ?>users/login" class="ac-login jquery-once-2-processed" title="Login">Login</a>
-                <a href="https://www.services.bis.gov.in/php/BIS_2.0/outsider-registration" class="ac-register jquery-once-2-processed" title="Register">Register</a>
-            </div>
-        </div>
+        
         <div class="after_login_details">
             <div class="profile-top nodtranslate">
                 <?php if(isset($_SESSION['profile_image'])){ if(encryptids("D", $_SESSION['profile_image'])==""){ ?>
@@ -223,9 +233,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_exchange_forum" style="color: white;"><?php echo $top_nav[$language]['2'] ?></a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url(); ?>users/about_eBIS" style="color: white;">About eBIS</a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
                                      <a class="nav-link " id="publish_pop" aria-current="page" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
@@ -245,19 +255,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <?php  } ?>
                                 <?php if(isset($_SESSION['set_nav'])){ if($_SESSION['set_nav']=1){ ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/consumer_bis" style="color: white;">Consumer and BIS</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/consumer_bis" style="color: white;"><?php echo $top_nav[$language]['8'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;">Standard Promotion</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/standard_promotion" style="color: white;"><?php echo $top_nav[$language]['9'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;">About Standards Club</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/about_standards_club" style="color: white;"><?php echo $top_nav[$language]['10'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="popup2"   style="color: white;">Catalogue of Standards</a>
+                                        <a class="nav-link" id="popup2"   style="color: white;"><?php echo $top_nav[$language]['11'] ?></a>
                                     </li> 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;">Learning Science via Standards</a>
+                                        <a class="nav-link" href="<?php echo base_url(); ?>users/Learning_via_standards" style="color: white;"><?php echo $top_nav[$language]['12'] ?></a>
                                     </li> 
                                 <?php } } ?>
                                 <li class="nav-item">

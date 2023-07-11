@@ -78,6 +78,14 @@
     font-family: #ffc107;
 
 }
+.news_list a{
+    word-break: break-all;
+    color: blue;
+}
+.news_list h3{
+    font-weight: 600;
+    font-size: 17px;
+}
 </style>
 <section>
     <div class=row>
@@ -128,39 +136,38 @@
                 <div class="tab-pane fade active show" id="tab1" role="tabpanel">
                 <div class="whats_new">
                     <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
+                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <p><strong>Date :</strong>12/03/2023</p>
+                        <hr>
                     </div>
-                    <hr>
-                    <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
-                    </div>
-                    <hr>
-                    <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
-                    </div> 
+                    
+                    
                     <div>
-                        <a href="#about" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
                     </div>
                 </div> 
                 </div><!-- End Tab 1 Content -->
@@ -269,17 +276,6 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="World_of_standers_inner_Box  shadow">
-                        <a href="#">
-                        <div class="World_of_standers_image_box">
-                            <img src="<?=base_url();?>assets/images/offer_sustainable.JPEG" class="card-img-top" alt="Discussion Forum">
-                        
-                        </div>
-                        <p class="Title_Section">Join the Sustainability Programme</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="important_draft">
                     <div class="World_of_standers_image_box">
@@ -292,6 +288,18 @@
                        
                 </div>
                 </div>
+                <!-- <div class="col-md-3">
+                    <div class="World_of_standers_inner_Box  shadow">
+                        <a href="#">
+                        <div class="World_of_standers_image_box">
+                            <img src="<?=base_url();?>assets/images/offer_sustainable.JPEG" class="card-img-top" alt="Discussion Forum">
+                        
+                        </div>
+                        <p class="Title_Section">Join the Sustainability Programme</p>
+                        </a>
+                    </div>
+                </div> -->
+                
                 <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
                     <a href="#">

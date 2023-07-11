@@ -267,6 +267,9 @@
        
        
     </div>
+    <div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
     
     <!-- End of Main Content -->
  </body>

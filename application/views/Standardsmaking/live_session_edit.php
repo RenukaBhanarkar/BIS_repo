@@ -16,7 +16,7 @@
     </div>
     <form name="live_session_edit" id="live_session_edit" action="<?php echo base_url().'Standardsmaking/live_session_edit'?>/<?= $liveSession['id']?>" method="post"enctype="multipart/form-data">
         <!-- Content Row -->
-       <div class="row">
+        <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top">
                     <div class="card-body">
@@ -76,7 +76,7 @@
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastImageModal">
                                         View Image
                                         </button>&nbsp;
-                                        <a onclick="deleteLiveSessionFile(' <?= $liveSession['id']?> ',1,11);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <a onclick="deleteLvsFile(' <?= $liveSession['id']?> ',1,11);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastThumbnailModal">
                                         View  Thumbnail
                                         </button>
-                                        <a onclick="deleteLiveSessionFile(' <?= $liveSession['id']?> ',2,11);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <a onclick="deleteLvsFile(' <?= $liveSession['id']?> ',2,11);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         <?php }?>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@
                                         </div>
                                         <?php } else {?>
                                         <a href="<?= base_url()?><?= $liveSession['doc_pdf']?>"class="btn btn-info  btn-sm" target="_blank" >View PDF</a>
-                                        <a onclick="deleteLiveSessionFile(' <?= $liveSession['id']?> ',3,22);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
+                                        <a onclick="deleteLvsFile(' <?= $liveSession['id']?> ',3,22);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
                                         <?php }?>
                                     </div>
                                 </div>
@@ -214,29 +214,59 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="videoDiv">
-                                <div class="mb-2 col-md-4">
-                                    <?php if(empty($liveSession['video'])){?>
-                                    <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
-                                    <div class="d-flex">
-                                        <div>
-                                            <input type="file" id="video" name="video" class="form-control-file"accept="video/mp4,video/mkv" / >
-                                        </div>
-                                        
-                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#videoModal">
-                                        Preview
-                                        </button>
-                                        <?php } else {?>
-                                        <div style="padding:10px;">
-                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastVideoModal">
-                                            View  Video
-                                            </button>
-                                            <a onclick="deleteLiveSessionFile(' <?= $liveSession['id']?> ',4,33);" data-id='<?php echo $value["id"]; ?>' class="btn btn-danger btn-sm mr-2 delete_img">Delete</a>
-                                        </div>
-                                        <?php }?>
-                                    </div>
+
+
+
+                    <div class="row" id="videoDiv">
+                        <div class="mb-12 col-md-12">
+                            <label class="d-block">Select Option<sup class="text-danger">*</sup></label>
+                            <div class="d-flex">
+                                <div>
+                                    
+                                    <input type="radio" id="html" name="option" value="1" <?php if ($liveSession['option']==1) { ?> checked <?php } ?> >
+                                    <label for="html">Upload Video</label><br>
+                                    <input type="radio" id="css" name="option" value="2"<?php if ($liveSession['option']==2) { ?> checked <?php } ?> >
+                                    <label for="css">Upload Video URL</label><br>
                                 </div>
                             </div>
+                            <span id="option_err"> </span>
+                        </div>
+                       
+                       
+                        <?php if(empty($liveSession['video'])){?>
+                            <div class="mb-2 col-md-4"id="videoUpload">
+                                <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
+                                <div class="d-flex">
+                                    <div> <input type="file" id="video" name="video" class="form-control-file"accept="video/mp4,video/mkv"/> </div>
+                                    <div> <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#videoModal"> Preview </button> </div>
+                                </div>
+                            </div>
+                        <?php } else {?>
+                            <div class="mb-2 col-md-4" id="videoUpload2">
+                                <label class="d-block">Upload Video<sup class="text-danger">*</sup></label>
+                                <div class="d-flex"> 
+                                    <div>  <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#LastVideoModal"> View</button></div>
+                                    <div> <a onclick="deleteLvsFile(' <?= $liveSession['id']?> ',4,33);"  class="btn btn-danger btn-sm mr-2 delete_img">Delete</a></div>
+                                </div>
+                            </div>
+                        <?php }?> 
+                        
+                        <div class="mb-2 col-md-8" id="urlUpload">
+                            <label class="d-block">Video Link</label>
+                            <input type="url" id="video_url" name="video_url" class="form-control" value=" <?= $liveSession['video_url']?>" >
+                            <span class="error_text"></span>
+                        </div> 
+                    </div>
+
+
+
+
+
+ 
+
+
+
+
                             <div class="modal fade" id="LastVideoModal" tabindex="-1" aria-labelledby="lastVideoModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" style="max-width:700px;">
                                     <div class="modal-content">
@@ -244,11 +274,10 @@
                                             <h5 class="modal-title" id="lastThumbnailModalLabel">Last Upload Viode</h5>
                                             <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body"> 
                                             
                                             <video width="670" height="500" controls>
-                                                <source src="<?= base_url()?><?= $liveSession['video']?>" type="video/mp4">
-                                                <source src="<?= base_url()?><?= $liveSession['video']?>" type="video/ogg">
+                                                <source src="<?= base_url()?><?= $liveSession['video']?>" type="video/mp4"> 
                                                 Your browser does not support the video tag.
                                             </video>
                                         </div>
@@ -259,6 +288,7 @@
                                 </div>
                             </div>
                             <div class="row" id="video_show">
+
                                 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width:700px;">
                                         <div class="modal-content">
@@ -329,6 +359,23 @@
         <script>
         $(document).ready(function ()
         {
+            option='<?= $liveSession["option"]?>';
+
+            if (option==1) 
+                {
+                    $("#video_show2").show();
+                    $("#videoUpload").show();
+                    $("#urlUpload").hide(); 
+                }
+                if (option == '2') 
+                {
+
+                    $("#video_show2").show();
+                    $("#urlUpload").show(); 
+                    $("#videoUpload").hide();
+                   
+                }
+
         CKEDITOR.replace('description');
         
         
@@ -534,44 +581,12 @@
         }
         }
         }
-        var videodata="<?= $liveSession['video']?>";
-        if (type_of_post==2 && videodata=='')
-        {
-        var video=$("#video").val();
-        if (video == "" || video== null) {
-        if ($("#video").next(".validation").length == 0) // only add if not added
-        {
-        $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>Please  Upload video </div>");
-        }
-        if (!focusSet) { $("#video").focus(); }
-        allfields = false;
-        } else {
-        $("#video").next(".validation").remove(); // remove it
-        }
-        if ($("#video").val() != '')
-        {
-        var validExtensions = ['mp4','mkv']; //array of valid extensions
-        var fileName = $("#video").val();;
-        var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-        $("#video").next(".validation").remove();
-        if ($.inArray(fileNameExt, validExtensions) == -1)
-        {
-        if ($("#video").next(".validation").length == 0) // only add if not added
-        {
-        $("#video").after("<div class='validation' style='color:red;margin-bottom:15px;'>Only MP4, MKV  file allowed. </div>");
-        }
-        allfields = false;
-        if (!focusSet)
-        {
-        $("#video").focus();
-        }
-        }
-        else
-        {
-        $("#video").next(".validation").remove(); // remove it
-        }
-        }
-        }
+
+
+        
+
+
+         
         
         
         if (allfields) {
@@ -595,7 +610,7 @@
         
         </script>
         <script type="text/javascript">
-        function deleteLiveSessionFile(id,val,del)
+        function deleteLvsFile(id,val,del)
         {
         if (del==11)  { data= "Image"; }
         if (del==22)  { data= "PDF"; }
@@ -748,3 +763,26 @@
         
         };
         </script>
+
+        <script type="text/javascript">
+        $('input:radio[name="option"]').change(
+            function(){
+                if (this.checked && this.value == '1') 
+                {
+                    $("#video_show2").show();
+                    $("#videoUpload").show();
+                    $("#urlUpload").hide(); 
+                     $("#videoUpload2").show();
+
+
+                }
+                if (this.checked && this.value == '2') 
+                {
+                    $("#video_show2").show();
+                    $("#urlUpload").show(); 
+                    $("#videoUpload").hide();
+                     $("#videoUpload2").hide();
+
+                }
+    });
+    </script>

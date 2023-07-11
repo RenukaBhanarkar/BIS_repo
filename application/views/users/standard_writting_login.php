@@ -2,14 +2,12 @@
 <?php
 // new code start R
 //session_start();
-if(!isset($_SESSION['user_session_id'])){ 
-    
-    
-   redirect(base_url() . "Users/login", 'refresh');
+if(!isset($_SESSION['user_session_id']))
+{
+redirect(base_url() . "Users/login", 'refresh');
 }
-$start_time = $_SESSION['start_time'] = date('h:i:s'); 
-
-?> 
+$start_time = $_SESSION['start_time'] = date('h:i:s');
+?>
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -234,25 +232,40 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
     <div class="container">
         <div class="row">
             <!-- <div class="standard_name"> -->
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h4 style="color: darkblue;"><?=$getData['title']?></h4>
             </div>
-            <div class="col-md-3">
-                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span>
+            <div class="col-md-4">
+                <img src="<?php echo base_url(); ?>assets/images/user_1.png" style="height:31px;"><span style="margin-left: 10px;"><?= encryptids("D", $_SESSION['admin_name'])?></span><br>
+                
+                Name of Institute:- <?= $userData['standard_club_name']?><br>
+                Member ID:- <?= $userData['member_id']?><br>
+                Time left : <span class="timer" style="background-color: green; border-radius: 4px;"> <span class="countdown" style="padding: 10px; color: white;"></span></span>
+                
+            </div>
+            <div class="time-left">
                 
             </div>
             <!-- </div> -->
         </div>
         <div class="bg-light p-3">
             
-        
-
-                 <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            
+            <form name="standard_writting_login" id="standard_writting_login" action="<?php echo base_url() . 'users/standard_writting_login/'?><?=$getData['id']?>" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate indian>
                 <input type="hidden" name="comp_id" id="comp_id" value="<?=$getData['id']?>">
                 <div class="row">
                     <input type="hidden" value="<?= $start_time; ?>" name="start_time">
-                     
                     <div class="mb-2 col-sm-12">
+                        <div class="form-group" id="yourWall_des"><br>
+                            <label class="d-block text-font">Select Answer Type<sup class="text-danger">*</sup></label><br>
+                            <input type="radio"  name="uploadtype" value="1" checked>
+                            <label for="textupload">Text Upload</label><br>
+                            <input type="radio" name="uploadtype" value="2">
+                            <label for="fileupload">File Upload</label><br>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-2 col-sm-12" id="textupload">
                         <div class="form-group" id="yourWall_des"><br>
                             <label class="d-block text-font">Enter Details<sup class="text-danger">*</sup></label><br>
                             <textarea class="form-control  w-100"  placeholder="" name="details" id="details"></textarea required>
@@ -261,15 +274,22 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
                             </div>
                         </div>
                     </div>
+                    <div class="mb-2 col-sm-12" id="fileupload">
+                        <div class="form-group" id="yourWall_des"><br>
+                            <label class="d-block text-font">Select File<sup class="text-danger">*</sup></label><br>
+                            <input type="file" name="file" id="file" accept="application/pdf, image/jpg,image/jpeg,image/png" class="file-control" onchange="loadVideo(event)">
+                        </div>
+                    </div>
+                    
                     
                 </div>
                 <div class="col-md-12 row">
                     <div class="button-group float-end mt-3" style="text-align: end;">
-                        <button  type="submit" class="btn btn-success submit">Submit</button>
+                        <a class="btn btn-success submit btnbtn" onclick="submitCompetition()">Submit</a>
                         
-                        <button class="btn btn-danger cancel" >Cancel</button> 
-                    <a href="<?= base_url()?>"  class="btn btn-danger">Back</a>
-                 
+                        <a class="btn btn-danger btnbtn" onclick="cancle()" >Cancel</a>
+                        <!-- <a href="<?= base_url()?>"  class="btn btn-danger">Back</a> -->
+                        
                     </div>
                 </div>
             </form>
@@ -285,7 +305,7 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
     <script>
-    CKEDITOR.replace('details'); 
+    CKEDITOR.replace('details');
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
     'use strict'
@@ -303,141 +323,252 @@ $start_time = $_SESSION['start_time'] = date('h:i:s');
     }, false)
     })
     })()
-    </script> 
-
-
+    </script>
     <script type="text/javascript">CKEDITOR.replace('details',{
-   height: '300',
-   maxlength: '5000'
-});
-</script>
-<script> 
+    height: '300',
+    maxlength: '5000'
+    });
+    </script>
+    <script>
     $(document).ready(function(){
-$('#abcd').show();
-$('.pqr').hide();
-$('#abcd').click(function(){
+    // $("#textupload").hide();
+    $("#fileupload").hide();
+    $('#abcd').show();
+    $('.pqr').hide();
+    $('#abcd').click(function(){
     $('#abcd').hide();
     $('.pqr').show();
-})
-var editAbstract=CKEDITOR.instances.details;
-
-editAbstract.on("key",function(e) {      
-                        
-   var maxLength=e.editor.config.maxlength;
-      
-   e.editor.document.on("keyup",function() {KeyUp(e.editor,maxLength,"letterCount");});
-   e.editor.document.on("paste",function() {KeyUp(e.editor,maxLength,"letterCount");});
-   e.editor.document.on("blur",function() {KeyUp(e.editor,maxLength,"letterCount");});
-},editAbstract.element.$);
-
-//function to handle the count check
-function KeyUp(editorID,maxLimit,infoID) {
-
-   //If you want it to count all html code then just remove everything from and after '.replace...'
-   var text=editorID.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/^\s+|\s+$/g, '');
-   $("#"+infoID).text(text.length);
-
-   if(text.length>maxLimit) {   
-      Swal.fire("You cannot have more than "+maxLimit+" characters");         
-      editorID.setData(text.substr(0,maxLimit));
-      editor.cancel();
-   } else if (text.length==maxLimit-1) {
-      alert("WARNING:\nYou are one character away from your limit.\nIf you continue you could lose any formatting");
-      editor.cancel();
-   }
-}   
-
-});
-    // $(".file-upload-wrapper").hide();  
-    $(document).ready(function () 
-    { 
-       
-        $("#text_hide").click(function(){
-         $(".file-upload-wrapper").show();
-      });
-
-
+    })
+    var editAbstract=CKEDITOR.instances.details;
+    editAbstract.on("key",function(e) {
+    
+    var maxLength=e.editor.config.maxlength;
+    
+    e.editor.document.on("keyup",function() {KeyUp(e.editor,maxLength,"letterCount");});
+    e.editor.document.on("paste",function() {KeyUp(e.editor,maxLength,"letterCount");});
+    e.editor.document.on("blur",function() {KeyUp(e.editor,maxLength,"letterCount");});
+    },editAbstract.element.$);
+    //function to handle the count check
+    function KeyUp(editorID,maxLimit,infoID) {
+    //If you want it to count all html code then just remove everything from and after '.replace...'
+    var text=editorID.getData().replace(/<("[^"]*"|'[^']*'|[^'">])*>/gi, '').replace(/^\s+|\s+$/g, '');
+    $("#"+infoID).text(text.length);
+    if(text.length>maxLimit) {
+    Swal.fire("You cannot have more than "+maxLimit+" characters");
+    editorID.setData(text.substr(0,maxLimit));
+    editor.cancel();
+    } else if (text.length==maxLimit-1) {
+    alert("WARNING:\nYou are one character away from your limit.\nIf you continue you could lose any formatting");
+    editor.cancel();
+    }
+    }
     });
-   // $(".file-upload-wrapper").hide();
-  //  $("#file_show").click(function(){
- // $(".file-upload-wrapper").show();
-//});
-function submitCompetition(event){
-    event.preventDefault();
-var isValid=true;
-//    var answer =$('#details').val();
-   var answer = CKEDITOR.instances['details'].getData();
+    // $(".file-upload-wrapper").hide();
+    $(document).ready(function ()
+    {
+    
+    $("#text_hide").click(function(){
+    $(".file-upload-wrapper").show();
+    });
+    });
+    // $(".file-upload-wrapper").hide();
+    //  $("#file_show").click(function(){
+    // $(".file-upload-wrapper").show();
+    //});
+    function submitCompetition(){
+    
+    var isValid=true;
+    //    var answer =$('#details').val();
+    var answer = CKEDITOR.instances['details'].getData();
+    var file = $("#file").val();
+    var uploadtype = $('input[name="uploadtype"]:checked').val();
+    if (uploadtype==1) {
     if(answer==""){
-        Swal.fire("Please enter answer");
-        // alert('enter response');
-        isValid=false;
+    Swal.fire("Please enter answer");
+    // alert('enter response');
+    isValid=false;
     }else if(answer.length > 5000){
-        isValid=false;
-        Swal.fire("Only 5000 characters allowed");
+    isValid=false;
+    Swal.fire("Only 5000 characters allowed");
     }else{
-        
+    
     }
-
+    }
+    if (uploadtype==2)
+    {
+    if(file==""){
+    Swal.fire("Please select file");
+    // alert('enter response');
+    isValid=false;
+    }else if(file.length > 5000){
+    isValid=false;
+    Swal.fire("Only 5000 characters allowed");
+    }else{
+    
+    }
+    }
     if(isValid){
-        Swal.fire({
-                    title: 'Are you sure you want to Submit?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Submit',
-                    denyButtonText: `Cancel`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {                       
-                        $('#comp_form').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-        // alert('kjh');
-       
-        return true;
+    Swal.fire({
+    title: 'Are you sure you want to Submit?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Submit',
+    denyButtonText: `Cancel`,
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+    $('#standard_writting_login').submit();
+    // Swal.fire('Saved!', '', 'success')
+    } else if (result.isDenied) {
+    // Swal.fire('Changes are not saved', '', 'info')
     }
-}
-</script>
-<script>
+    })
+    // alert('kjh');
+    
+    return true;
+    }
+    }
+    </script>
+    <script type="text/javascript">
+    function cancle() {
+    Swal.fire({
+    title: 'Are you sure you want to Cancle?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Cancle',
+    denyButtonText: `No`,
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed)
+    {
+    // window.location.href = "standard_writting_details";
+    window.history.back()
+    }
+    else if (result.isDenied) {
+    // Swal.fire('Changes are not saved', '', 'info')
+    }
+    })
+    }
+    </script>
+    <script>
     $('textarea').keyup(function() {
     
     var characterCount = $(this).val().length,
-        current = $('#current'),
-        maximum = $('#maximum'),
-        theCount = $('#the-count');
-      
+    current = $('#current'),
+    maximum = $('#maximum'),
+    theCount = $('#the-count');
+    
     current.text(characterCount);
-   
+    
     
     /*This isn't entirely necessary, just playin around*/
     if (characterCount < 70) {
-      current.css('color', '#666');
+    current.css('color', '#666');
     }
     if (characterCount > 70 && characterCount < 90) {
-      current.css('color', '#6d5555');
+    current.css('color', '#6d5555');
     }
     if (characterCount > 90 && characterCount < 100) {
-      current.css('color', '#793535');
+    current.css('color', '#793535');
     }
     if (characterCount > 100 && characterCount < 120) {
-      current.css('color', '#841c1c');
+    current.css('color', '#841c1c');
     }
     if (characterCount > 120 && characterCount < 139) {
-      current.css('color', '#8f0001');
+    current.css('color', '#8f0001');
     }
     
     if (characterCount >= 140) {
-      maximum.css('color', '#8f0001');
-      current.css('color', '#8f0001');
-      theCount.css('font-weight','bold');
+    maximum.css('color', '#8f0001');
+    current.css('color', '#8f0001');
+    theCount.css('font-weight','bold');
     } else {
-      maximum.css('color','#666');
-      theCount.css('font-weight','normal');
+    maximum.css('color','#666');
+    theCount.css('font-weight','normal');
     }
     
-        
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    });
+    </script>
+
+    <?php 
+    $olddateTime=$getData['end_date'].' '.$getData['end_time'];
+    $nowDate=date('Y-m-d H:i:s');
+    $to_time = strtotime($nowDate);
+    $from_time = strtotime($olddateTime);
+    $newTime = round(abs($to_time - $from_time) / 60);
+
+    if ($getData['duration'] >= $newTime) 
+        {  $timer=$newTime; }
+    else
+        { $timer=$getData['duration'];}   
+    ?>
+
+
+    <script type="text/javascript">
+    var timer2 = "<?=$timer?>:00";
+    var interval = setInterval(function() {
+    var timer = timer2.split(':');
+    //by parsing integer, I avoid all extra string processing
+    var minutes = parseInt(timer[0], 10);
+    var seconds = parseInt(timer[1], 10);
+    --seconds;
+    minutes = (seconds < 0) ? --minutes : minutes;
+    if (minutes < 0) clearInterval(interval);
+    seconds = (seconds < 0) ? 59 : seconds;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
+    //minutes = (minutes < 10) ?  minutes : minutes;
+    $('.countdown').html(minutes + ':' + seconds);
+    timer2 = minutes + ':' + seconds;
+    if (timer2 == '0:00') {
+    $('#standard_writting_login').submit();
+    }
+    }, 1000);
+    </script>
+    <script type="text/javascript">
+    $('input:radio[name="uploadtype"]').change(
+    function(){
+    if (this.checked && this.value == '1')
+    {
+    $("#textupload").show();
+    $("#fileupload").hide();
+    $(".btnbtn").show();
+    }
+    if (this.checked && this.value == '2')
+    {
+    $("#textupload").hide();
+    $("#fileupload").show();
+    $(".btnbtn").show();
+    }
+    });
+    </script>
+    <script>
+    var loadVideo = function(event) {
+    var fileSize = $('#file')[0].files[0].size;
+    var validExtensions = ['PDF','pdf','JPG','jpg','JPEG','jpeg','PNG','png']; //array of valid extensions
+    var fileName = $("#file").val();;
+    var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
+    
+    console.log(fileSize);
+    if(fileSize < 0){
+    $('#file').val('');
+    Swal.fire('File size up to 5MB')
+    }else if(fileSize > 335544320){
+    $('#file').val('');
+    Swal.fire('File size should be between 5MB to 40MB')
+    //   $('#err_icon_file').text('This value is required');
+    }else if($.inArray(fileNameExt, validExtensions) == -1){
+    $('#file').val('');
+    Swal.fire('Only PDF and Images allowed')
+    $('#err_icon_file').text('This value is required');
+    }else{
+    $('#err_icon_file').text('');
+    }
+    var loadThumbnail = document.getElementById('outputvideo');
+    loadThumbnail.src = URL.createObjectURL(event.target.files[0]);
+    loadThumbnail.onload = function() {
+    URL.revokeObjectURL(loadThumbnail.src);
+    }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

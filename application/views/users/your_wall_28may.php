@@ -154,6 +154,9 @@
         display: inline-block;
         line-height: 1;
     }
+    .sorting_asc{
+        display: none;
+    }
 </style>
 
 <section>
@@ -212,6 +215,7 @@
                                                         <div class="meta-top">
                                                             <ul>
                                                                 <li class="d-flex align-items-center"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $list['user_name']; ?></li>
+                                                                <li class="d-flex align-items-center" style="margin-left:10px;"><i class="fa fa-university" aria-hidden="true"></i> <?php echo $list['standard_club_name']; ?></li>
                                                                 <li class="d-flex align-items-center" style="margin-left:10px;"><i class="fa fa-calendar" aria-hidden="true"></i> <time datetime="2020-01-01"><?= date("d M Y", strtotime($list['created_on'])); ?></time></li>
                                                                 
                                                             </ul>
@@ -229,8 +233,12 @@
                 </table>
             </div>
         </div>
-
+        <div class="" style="text-align:end;">
+                <!-- <a href="http://43.231.124.177/BIS/BIS_repo/users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2"><a href="<?php echo base_url() . 'users/standard'; ?>">Back</a></button>
+            </div>
     </div>
+    
 </section>
 
 

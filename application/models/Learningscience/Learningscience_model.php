@@ -6,6 +6,7 @@ class Learningscience_model extends CI_Model {
     public function getlsvstandardslist()
     {  
         $this->db->where('status ',0);   
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC');
         return $this->db->get('tbl_learning_science_via_standards')->result_array();  
     }
 
@@ -14,11 +15,12 @@ class Learningscience_model extends CI_Model {
         $this->db->insert('tbl_learning_science_via_standards',$formdata); 
         return $insert_id = $this->db->insert_id();
     }
-    public function getlsvManageStandardsList()
+    public function getlsvManageStandardsList() 
     {   
         $this->db->select('tbl_learning_science_via_standards.*,tbl_mst_status.status_name'); 
          $this->db->where_not_in('status ',9); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_learning_science_via_standards.status'); 
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC');
         return $this->db->get('tbl_learning_science_via_standards')->result_array();  
     }
     public function getPublishLsvStandardsList()
@@ -26,6 +28,7 @@ class Learningscience_model extends CI_Model {
         $this->db->select('tbl_learning_science_via_standards.*,tbl_mst_status.status_name'); 
          $this->db->where('status ',5); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_learning_science_via_standards.status'); 
+         $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC');
         return $this->db->get('tbl_learning_science_via_standards')->result_array();  
     } 
 
@@ -34,6 +37,7 @@ class Learningscience_model extends CI_Model {
         $this->db->select('tbl_learning_science_via_standards.*,tbl_mst_status.status_name'); 
          $this->db->where('status ',9); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_learning_science_via_standards.status'); 
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC');
         return $this->db->get('tbl_learning_science_via_standards')->result_array();  
     }
     public function lsvStandardsView($id)
@@ -73,27 +77,32 @@ class Learningscience_model extends CI_Model {
     }
     public function getnewRequest()
     { 
-        $this->db->where('status ',2);  
+        $this->db->where('status ',2); 
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC'); 
         return $this->db->get('tbl_learning_science_via_standards')->result_array();
     }
     public function getApprovedRequest()
     { 
         $this->db->where('status ',3);  
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC'); 
         return $this->db->get('tbl_learning_science_via_standards')->result_array();
     }
     public function getRejectedRequest()
     { 
-        $this->db->where('status ',4);  
+        $this->db->where('status ',4); 
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC');  
         return $this->db->get('tbl_learning_science_via_standards')->result_array();
     }
     public function getPublishedRequest()
     { 
-        $this->db->where('status ',5);  
+        $this->db->where('status ',5);
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC');  
         return $this->db->get('tbl_learning_science_via_standards')->result_array();
     }
     public function getArchiveRequest()
     { 
-        $this->db->where('status ',9);  
+        $this->db->where('status ',9); 
+        $this->db->order_by('tbl_learning_science_via_standards.id', 'DESC'); 
         return $this->db->get('tbl_learning_science_via_standards')->result_array();
     }
     public function lsvStandardsViewAdmin($id)

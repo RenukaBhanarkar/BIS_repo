@@ -210,7 +210,7 @@ header .navbar-light .navbar-nav .nav-link {
 	}
 }
 li.nav-item {
-	padding: 0px 12px;
+	padding: 0px 11px;
 }
 li.nav-item:hover {
 	background-color: #f15559;
@@ -483,9 +483,7 @@ section#welcome_text p span {
 
 /* bottom CSS start */
 
-#bottom_content {
-	background-image: url("../images/livedata.jpg");
-}
+
 
 .row.table_data {
 	display: flex;
@@ -955,6 +953,11 @@ footer .main_footer .f_contact ul li i {
 }
 
 /* media mobile start */
+@media (min-width: 200px) and (max-width: 320px) {
+.read_more{
+    font-size: 12px;
+}
+}
 @media (min-width: 320px) and (max-width: 576px) {
 	.logo_name {
 		display: none;
@@ -1075,6 +1078,16 @@ footer .main_footer .f_contact ul li i {
 	}
     .text_standard{
         /* padding-top: 46px; */
+    }
+    .responsive_content_1{
+        width: 40%
+    }
+    .responsive_content_2{
+        width: 60%
+    }
+    .responsive_content_3{
+        width: 48%;
+        margin-top: -17px;
     }
 }
 @media (min-width: 577px) and (max-width: 767.98px) {
@@ -1339,6 +1352,10 @@ footer .main_footer .f_contact ul li i {
 		font-size: 20px;
 		margin: 0px;
 	}
+    /* .navbar-collapse{
+        font-size: 13px;
+    } */
+    
 }
 @media (min-width: 1199px) and (max-width: 1300px) {
 	.logo_name span {
@@ -1659,14 +1676,10 @@ footer .main_footer .f_contact ul li i {
 .social-content a:hover {
 	background-color: black;
 }
+
 .login_details {
-	position: absolute;
-	right: 20px;
-	top: 7%;
-	width: 290px;
-	z-index: 10;
+    width: 290px;
 	padding: 20px;
-	display: none;
 	box-shadow: 0 2px 3px rgb(0 0 0 / 30%);
 	background: linear-gradient(
 		133.16deg,

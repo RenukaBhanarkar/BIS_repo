@@ -204,7 +204,7 @@ section.background_coming {
                     <a href="learning_standerd_informative_video_all" class="view-btn" title="View All">View All</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 " style="background: linear-gradient(180.83deg, rgb(143 0 229 / 73%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%);">
+            <div class="col-lg-4 col-md-4 " style="background: linear-gradient(180.83deg, rgb(143 0 229 / 73%) 1.43%, rgba(194, 87, 155, 0.1) 98.57%); position: relative;">
                 <div class="live_content" style="padding: 47px;">
                     <div class="live_section_title">
                         <h2 style="font-weight: 600;">Join Live Classroom</h2>
@@ -229,9 +229,9 @@ section.background_coming {
                     </div>
                     <a href="learning_standerd_sessions_view_all" class="view-btn" title="View All">View All</a>
                 </div>
-                <div class="" style="text-align:end;">
+                <div class="">
                 <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
-                <button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right; margin-bottom: 10px;"><a href="<?php echo base_url(); ?>users/standard">Back</a></button>
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="top: 90%; left: 85%; position: absolute;"><a href="<?php echo base_url(); ?>users/standard">Back</a></button>
             </div>
             </div>
         </div>    

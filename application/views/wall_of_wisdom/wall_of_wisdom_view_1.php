@@ -76,15 +76,19 @@
 }
 
 .filter-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     background: #dedede;
-    padding: 15px 14px;
+    /* padding: 15px 14px; */
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     /* display: flex; */
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between
+    justify-content: space-between;
 }
 .filter_label {
     margin-left: 9px;
@@ -112,23 +116,26 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 28%;
+    /* width: 28%; */
 }
 .last-date{
     /* text-overflow: ellipsis;
   white-space: nowrap; */
-  display: block;
+  /* display: block; */
   overflow: hidden;
   /* width: 20em; */
   height: 86px;
 }
 .new_select{
-    margin-left: 17px;
+    /* margin-left: 17px; */
     border: 1px solid black;
     border-radius: 5px;
     padding: 1px;
-    width: 116px;
+    /* width: 116px; */
     background: none;
+}
+.search_content{
+    margin: 14px;
 }
     </style>
 <section>
@@ -145,7 +152,7 @@
                 </div>
               </div>
               <div class="col-md-9">
-                <div class="col-md-12">
+                
                 <div class="row">
                 <?php
                     if ($this->session->flashdata('MSG')) {
@@ -154,6 +161,8 @@
                     ?>
                     <form id="wow_search" action="<?php echo base_url(); ?>users/searchWow" method="post">
                        <div class="filter-content">
+                        <div class="col-md-4 responsive_content_1">
+                            <div class="search_content">
                            <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
                            <label class="sector_label">Under</label>
@@ -165,6 +174,10 @@
                                         <option value="2">Last Month</option>
                                         <option value="3">Last Year</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 responsive_content_2">
+                        <div class="search_content">
                                 <div class="input-group search_icon" style="top: -2px;">
                                        
                                         <input class="form-control border-end-0 border rounded-pill" type="text" placeholder="search" name="search_text" id="search_text">
@@ -175,7 +188,11 @@
                                             </button>
                                         </span>
                                 </div>
-                                <label class="sector_label" style="margin-left: -141px;">Sort By:</label>
+                        </div>
+                        </div>
+                        <div class="col-md-4 responsive_content_3" style="text-align: end;">
+                        <div class="search_content">
+                                <label class="sector_label">Sort By:</label>
 
                          
                                 <select class="new_select" aria-label="Default select example" name="select_type" id="select_type">
@@ -184,10 +201,12 @@
                                         <option value="2">Oldest First</option>
                                        
                                 </select>
+                        </div>
+                        </div>
                        </div>
 </form>
                 </div>
-                </div>
+               
              </div>
               
             </div>
@@ -212,11 +231,12 @@
                             </a>
                             <div class="row d-flex">
                                 <div id="abcd" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"  class="col-6 node-status like_review">
-                                    <span><i onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;"></i>
+                                    <span><i id="abcd1" onclick="myFunction(this)" class="<?php if($list['is_like']==1){ echo "fa fa-heart"; }else{ echo "fa fa-heart fa-heart-o"; } ?>" style="width:18px; font-size: 21px; color:red;" ct="<?php echo $list['is_like']; ?>" u-id="<?php if(!isset($_SESSION['admin_id'])){ echo "0"; }else{ echo $_SESSION['admin_id']; } ?>" data-likes="<?php echo $list['likes']; ?>" lid="like_<?=$list['id'];?>" c-id="<?php echo $list['id']; ?>"></i>
                                     </span>
                                     <span class="span" style="    margin-left: 10px;font-size: 15px;">Like</span>
-                                    <div class="" style="    float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
-                                    </div>
+                                    
+                                </div>
+                                <div class="col-6" style="float: right; text-align: end;   color: blue; "><a href="<?php echo base_url().'users/wall_of_wisdom_view/'.$list['id']; ?>"><span>Continue Reading</span></a>
                                 </div>
                              
                             
@@ -255,7 +275,7 @@
   crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
-            $('#wow_card').delegate('#abcd','click',function(){
+            $('#wow_card').delegate('#abcd1','click',function(){
     uid=$(this).attr('u-id')
     cid=$(this).attr('c-id')
     cardstatus=$(this).attr('ct');

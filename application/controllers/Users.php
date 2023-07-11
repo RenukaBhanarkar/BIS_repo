@@ -675,8 +675,8 @@ class Users extends CI_Controller
           
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
-                // CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
-               CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
+                CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
+               // CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
            // CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
               
                 CURLOPT_RETURNTRANSFER => true,
@@ -1066,8 +1066,8 @@ if($user_details['change_password']==0){
         $data['banner_data'] = $this->Admin_model->bannerAllData();
         $data['images'] = $this->Admin_model->images();
         $data['videos'] = $this->Admin_model->videos();
-        $data['news'] = $this->Admin_model->news();
-        $data['events'] = $this->Admin_model->events();
+        // $data['news'] = $this->Admin_model->news();
+        // $data['events'] = $this->Admin_model->events();
         $allquize = $this->Users_model->getStdClubQuizAll();
  
         $data['Winnerwall'] = $this->Users_model->getWinnerWall();
@@ -1547,8 +1547,8 @@ if($user_details['change_password']==0){
         // $this->load->model('Admin/Wall_of_wisdom_model wow');
         $data['wow'] = $this->wow->get_wow($id);
         // print_r($data['wow']); die;
-        $data['news'] = $this->Admin_model->news();
-        $data['events'] = $this->Admin_model->events();
+        // $data['news'] = $this->Admin_model->news();
+        // $data['events'] = $this->Admin_model->events();
         $this->load->view('users/headers/header');
         $this->load->view('wall_of_wisdom/wall_of_wisdom_description', $data);
         $this->load->view('users/footers/footer');
@@ -1582,6 +1582,22 @@ if($user_details['change_password']==0){
         //   print_r($data); die;
           $this->load->view('users/headers/header');
           $this->load->view('wall_of_wisdom/wall_of_wisdom_view_1',$data);
+          $this->load->view('users/footers/footer');
+      }
+      public function searchBtm(){
+        if(isset($_SESSION['admin_id'])){
+            $uid=encryptids("D",$_SESSION['admin_id']);
+        }else{
+            $uid="";
+        }
+        $select_period =  $this->input->post('select_period');
+        $search_text =  $this->input->post('search_text');
+        $select_type =  $this->input->post('select_type');
+        $limit=100;
+          $data['by_the_mentor']=$this->by_the_mentor_model->searchByTheMentor($uid,$limit,$select_period,$search_text,$select_type);
+        //   print_r($data); die;
+          $this->load->view('users/headers/header');
+          $this->load->view('users/all_by_the_mentors',$data);
           $this->load->view('users/footers/footer');
       }
     public function all_by_the_mentors()
@@ -1751,8 +1767,8 @@ if($user_details['change_password']==0){
     }
     public function yourwallview($id)
     {
-        $data['news'] = $this->Admin_model->news();
-        $data['events'] = $this->Admin_model->events();
+        // $data['news'] = $this->Admin_model->news();
+        // $data['events'] = $this->Admin_model->events();
         $this->load->model('admin/your_wall_model');
         $data['published_wall'] = $this->your_wall_model->get_yourwallData($id);
         $this->load->view('users/headers/header');
@@ -1926,20 +1942,29 @@ if($user_details['change_password']==0){
         // if(!$admin_id){
         //     redirect(base_url() . "users/login", 'refresh');
         // }
-        $banner_img = "yourwall" . time() . '.jpg';
-        $config['upload_path'] = './uploads/your_wall/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg';
-        $config['max_size']    = '10000';
-        $config['max_width']  = '3024';
-        $config['max_height']  = '2024';
-
-        $config['file_name'] = $banner_img;
-
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('image')) {
-            $data['status'] = 0;
-            $data['message'] = $this->upload->display_errors();
+        if (!($_FILES['image']['name']) == "") {            
+            $btm_path = "uploads/your_wall/";
+            $banner_img = "yourwall" . time() .  $_FILES['image']['name']; 
+            $banner_img1 = $btm_path . "yourwall" . time() .  $_FILES['image']['name'];            
+            move_uploaded_file($_FILES["image"]["tmp_name"], $banner_img1);
+            // die;
+        } else {
+            $banner_img = "";
         }
+        // $banner_img = "yourwall" . time() . '.jpg';
+        // $config['upload_path'] = './uploads/your_wall/';
+        // $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        // $config['max_size']    = '10000';
+        // $config['max_width']  = '3024';
+        // $config['max_height']  = '2024';
+
+        // $config['file_name'] = $banner_img;
+
+        // $this->load->library('upload', $config);
+        // if (!$this->upload->do_upload('image')) {
+        //     $data['status'] = 0;
+        //     $data['message'] = $this->upload->display_errors();
+        // }
 
 
         $formdata['title'] = $this->input->post('title');
@@ -2592,8 +2617,8 @@ if($user_details['change_password']==0){
     }
     public function by_the_mentor_detail($id)
     {
-        $data['news'] = $this->Admin_model->news();
-        $data['events'] = $this->Admin_model->events();
+        // $data['news'] = $this->Admin_model->news();
+        // $data['events'] = $this->Admin_model->events();
         $this->load->model('Admin/by_the_mentor_model');
         $data['by_the_mentor'] = $this->by_the_mentor_model->get_btm($id);
         //print_r($data); die;
@@ -3674,6 +3699,8 @@ if ($availability==1)
          $user_id = encryptids("D", $_SESSION['admin_id']);
          
          $attempt = $this->Standardswritting_model->checkAttemptCompetitionOnline($user_id,$id); 
+
+         $userData = $this->Standardswritting_model->getUserDetails($user_id);
          if (!empty($attempt)) 
          {
             $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
@@ -3688,10 +3715,13 @@ if ($availability==1)
         $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
         $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $getdata=$this->Standardswritting_model->create_online_view($id);
-
+        $getdata=$this->Standardswritting_model->create_online_view($id); 
         $data['getData']=$getdata;
         $data['attempt']=$attempt;
+        $data['userData']=$userData;
+
+         
+
         // $data['allFilds1']=$allFilds1;
         // $data['allFilds2']=$allFilds2;
 
@@ -3785,6 +3815,35 @@ if ($availability==1)
             $formdata['user_id'] = encryptids("D", $_SESSION['admin_id']);
             $formdata['comp_id'] = $this->input->post('comp_id');
             $formdata['details'] = $this->input->post('details');
+            $uploadtype = $this->input->post('uploadtype');
+            $formdata['uploadtype'] = $uploadtype;
+            if ($uploadtype==1) {
+                $formdata['details'] = $this->input->post('details');
+                $formdata['file'] = "";
+            }
+            if ($uploadtype==2) {
+                $formdata['details'] = "";
+
+                if (!file_exists('uploads/standardswritting/file')) { mkdir('uploads/standardswritting/file', 0777, true); }
+
+                $filepath = 'uploads/standardswritting/file/'; 
+                $filelocation = $filepath . time() .'file'. $_FILES['file']['name']; 
+                move_uploaded_file($_FILES['file']['tmp_name'], $filelocation);
+                $formdata['file'] =$filelocation;
+
+                $ext = pathinfo($filelocation, PATHINFO_EXTENSION);
+
+                if ($ext=='pdf' || $ext=='PDF') 
+                {
+                   $formdata['filetype']='pdf';
+                }
+                else
+                {
+                    $formdata['filetype']='image';
+                }
+
+             
+            }
             $formdata['start_time'] = $start_time;
             $formdata['end_time'] = $end_t;
             $formdata['time_taken'] = $time_taken;
@@ -4000,6 +4059,35 @@ if ($availability==1)
       public function membership_panels(){
         $this->load->view('users/headers/header');
         $this->load->view('users/membership_panels');
+        $this->load->view('users/footers/footer');
+      }
+      public function language_set($id){
+        $_SESSION['language']=$id;
+        return true;
+      }
+      public function news_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/news_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function event_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/event_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function project_offer_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/project_offer_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function apply_project_offer(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/apply_project_offer');
+        $this->load->view('users/footers/footer');
+      }
+      public function apply_project_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/apply_project_list');
         $this->load->view('users/footers/footer');
       }
 }

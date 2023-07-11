@@ -82,27 +82,28 @@
 
                                 
                             <?php }?>
-                            <?php 
-                             if ($lsvStandardsView['type_of_post']==2) {?>
-                                <div class="row">   
+                            <?php   if ($lsvStandardsView['type_of_post']==2) { 
+                           if ($lsvStandardsView['option']==1) {?>
+                            <div class="row">   
                                 <div class="mb-2 col-md-12">
-                                    <label class="d-block text-font">Upload Thumbnail</label>
+                                    <label class="d-block text-font">Video</label>
                                     <div>
                                     <video width="100%" height="100%" controls>
                                             <source src="<?= base_url()?><?= $lsvStandardsView['video']?>" type="video/mp4">
                                             <source src="movie.ogg" type="video/ogg">
-                                           
-                                    </video>
+                                            </video>
                                     </div>    
                                 </div>
                             </div>
-                            <?php if (!empty($lsvStandardsView['video_url'])) {?>
+
+
+                            <?php } if ($lsvStandardsView['option']==2) {?>  
                                 
                             <div class="row">   
                                     <div class="mb-2 col-md-12">
                                         <label class="d-block text-font btn-sm"> Viedo Link</label>
                                         <div> 
-                                            <a href="<?= base_url()?><?= $lsvStandardsView['video_url']?>" class="btn btn-primary btn-sm" target="_blank">Play</a>
+                                            <a href="<?= $lsvStandardsView['video_url']?>" class="btn btn-primary btn-sm" target="_blank">Click Here</a>
                                         </div> 
                                     </div>
                                 </div>
@@ -113,7 +114,7 @@
                                 <div class="mb-2 col-md-12">
                                     <label class="d-block text-font">Live Session Link</label>
                                     <div>
-                                        <p><?= $lsvStandardsView['session_link']?></p>
+                                        <p><a href="<?= $lsvStandardsView['session_link']?>"><?= $lsvStandardsView['session_link']?></a></p>
                                     </div>    
                                 </div>
                             </div>

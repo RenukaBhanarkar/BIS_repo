@@ -70,6 +70,10 @@
                                 <input type="time" class="form-control input-font" name="end_time"  id="end_time"  value="" >
                             </div>
                             <div class="mb-2 col-md-4">
+                                <label class="d-block text-font">Duration<sup class="text-danger">*</sup></label>
+                                <input type="text" class="form-control input-font" name="duration"  id="duration"  value="" >
+                            </div>
+                            <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Upload Thumbnail<sup class="text-danger">*</sup></label>
                                 <div class="d-flex">
                                 <div class="col-9">
@@ -91,10 +95,10 @@
                                 <label class="d-block text-font">Total Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="total_mark" id="total_mark" placeholder="Enter Total Marks" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
-                            <div class="mb-2 col-md-4">
+                            <!-- <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">Qualifying Marks<sup class="text-danger">*</sup></label>
                                 <input type="text" class="form-control input-font" name="qualifying_mark" id="qualifying_mark" placeholder="Enter Qualifying Marks" value="" oninput="this.value = this.value.replace(/[^0-9]/, '')">
-                            </div>
+                            </div> -->
                             <div class="mb-2 col-4">
                                 <label class="d-block text-font">Level of Competition<sup class="text-danger">*</sup></label>
                                 
@@ -721,18 +725,7 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             $("#terms_conditions_error").hide();
         }
 
-        var qualifying_mark = $("#qualifying_mark").val();
-        if (qualifying_mark == "" || qualifying_mark == null) {
-            if ($("#qualifying_mark").next(".validation").length == 0) {
-                $("#qualifying_mark").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required.</div>");
-            }
-            if (!focusSet) {
-                $("#qualifying_mark").focus();
-            }
-            allfields = false;
-        } else {
-            $("#qualifying_mark").next(".validation").remove();
-        }
+         
 
         var total_mark = $("#total_mark").val();
         if (total_mark == "" || total_mark == null) {
@@ -745,6 +738,19 @@ document.getElementsByName("end_date")[0].setAttribute('min', today);
             allfields = false;
         } else {
             $("#total_mark").next(".validation").remove();
+        }
+
+        var duration = $("#duration").val();
+        if (duration == "" || duration == null) {
+            if ($("#duration").next(".validation").length == 0) {
+                $("#duration").after("<div class='validation' style='color:red;margin-bottom:15px;'>This value is required. </div>");
+            }
+            if (!focusSet) {
+                $("#duration").focus();
+            }
+            allfields = false;
+        } else {
+            $("#duration").next(".validation").remove();
         }
 
         

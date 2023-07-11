@@ -252,7 +252,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[$eva];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -281,7 +281,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[$eva];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -304,7 +304,7 @@ class Standardswritting extends CI_Controller
 
                         ///////////////////////
                         $formdata['evaluator'] = $evaluator[0];
-                        $formdata['status']="1";
+                        $formdata['status']="2";
                         $formdata['ev_assigned_on']=date("Y-m-d H:i:s"); 
         
                         $id = $this->Standardswritting_model->updateMisceCompetition($row['id'],$formdata);
@@ -312,6 +312,7 @@ class Standardswritting extends CI_Controller
                     }
                   
             } 
+            
             echo json_encode([
                 'status' => '1',
                 'message' => "Review assigned successfully.",
@@ -383,6 +384,11 @@ class Standardswritting extends CI_Controller
         $data=array();
         $data['getEvaluator']=$this->Standardswritting_model->getEvaluator();
         $data['getData']=$this->Standardswritting_model->standard_submission_competition($id);
+
+        $mydata=$this->Standardswritting_model->create_online_view($id);
+        $data['resultStatus']=$mydata['result_declared'];
+
+
 
        // print_r( $data['getData']); die;
         $data['ids']=$id;
@@ -768,7 +774,8 @@ class Standardswritting extends CI_Controller
             // $formdata['branch'] = $this->input->post('Branch');
             $formdata['available_for'] = $this->input->post('Available');
           //  $formdata['thumbnail'] = $thumbnail_imglocation;
-            // $formdata['status'] = "0";
+            $formdata['status'] = "0";
+            $formdata['reject_reason'] = "";
 
 
             if($formdata['comp_level']=='2'){
@@ -1107,8 +1114,9 @@ if($id){
             $formdata['title_hindi'] = $this->input->post('title_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
-            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['qualifying_mark'] = 0; 
             $formdata['total_mark'] = $this->input->post('total_mark');
+            $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
             $formdata['updated_on'] = date("Y-m-d h:i:s");
 
@@ -1304,8 +1312,9 @@ if($id){
             $formdata['title_hindi'] = $this->input->post('title_hindi');
             $formdata['description'] = $this->input->post('description');
             $formdata['terms_conditions'] = $this->input->post('terms_conditions');
-            $formdata['qualifying_mark'] = $this->input->post('qualifying_mark'); 
+            $formdata['qualifying_mark'] = 0; 
             $formdata['total_mark'] = $this->input->post('total_mark');
+            $formdata['duration'] = $this->input->post('duration');
             $formdata['created_on'] = date("Y-m-d h:i:s");
             $formdata['updated_on'] = date("Y-m-d h:i:s");
 
@@ -1319,7 +1328,7 @@ if($id){
             $formdata['status'] = 1;
              $mysts=1;
 
-        }
+        }  
 
 
 
@@ -1431,7 +1440,7 @@ if($id){
         } 
         $this->load->view('admin/footers/admin_footer');
     }
-
+ 
      public function admin_manage_online_list()
     {
         $data=array();
@@ -1757,17 +1766,35 @@ if($id){
                 $formdata['second_paticipant'] = $this->input->post('second_paticipant'); 
                 $formdata['second_file'] = $second_filelocation; 
             }
+            else
+            {
+                $formdata['second_paticipant'] = "";
+                $formdata['second_file'] = "";
+            }
+            
             if($this->input->post('third_paticipant')!= "")
             { 
                 $formdata['third_paticipant'] = $this->input->post('third_paticipant');
                  $formdata['third_file'] = $third_filelocation;
              }
-             if($this->input->post('consolation_paticipant')!= "")
-             { 
+
+             else
+            {
+                $formdata['third_paticipant'] = "";
+                $formdata['third_file'] = "";
+            }
+
+            if($this->input->post('consolation_paticipant')!= "")
+            { 
                 $formdata['consolation_paticipant'] = $this->input->post('consolation_paticipant');
                 $formdata['consolation_file'] = $consolation_filelocation; 
+            }
+            else
+            {
+                $formdata['consolation_paticipant'] = "";
+                $formdata['consolation_file'] = "";
             } 
-           
+
             $id = $this->Standardswritting_model->StandardswrittingUpdate($formdata,$formid);
             if ($id)
             {
@@ -1911,7 +1938,7 @@ if($id){
         $this->load->view('admin/footers/admin_footer');
     }
     public function task_reviewed()
-    {
+    { 
 
          $encAdminId = $this->session->userdata('admin_id');
          $evaluator_id = encryptids("D", $encAdminId);

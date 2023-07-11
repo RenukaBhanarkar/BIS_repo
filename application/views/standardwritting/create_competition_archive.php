@@ -58,7 +58,8 @@
                             <td><?php echo $list['start_date']; ?></td>
                             <td><?php echo $list['end_date']; ?></td>
                             <td><img src="<?php echo base_url().$list['thumbnail']; ?>" alt="#" class="" width="100%"></td>
-                            <td><?php if($list['status']==1){ echo "Created"; } ?></td>
+                            <!-- <td><?php if($list['status']==1){ echo "Created"; } ?></td> -->
+                            <td>Archived</td>
                             <td>
 
                             <!-- <button href="<?php echo base_url().'standardswritting/view_competition/'.$list['id']; ?>" class="btn btn-primary btn-sm mr-2" >View</button> -->
@@ -73,6 +74,9 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
     <!-- /.container-fluid -->
 
     </div>

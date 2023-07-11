@@ -1,145 +1,11 @@
-<style>
-.inner_gallery_box {
-border-radius: 5px;
-}
-.inner_gallery_box img {
-border-radius: 5px;
-object-fit: fill;
-}
-p {
-text-align: center;
-}
-/* .item {
-height: 319px;
-} */
-#owl-caraousal_standard .owl-theme .owl-dots {
-text-align: center;
--webkit-tap-highlight-color: transparent;
-display: none;
-}
-#events_slider .owl-dots,
-#news_slider .owl-dots {
-position: absolute;
-top: -45px;
-right: 0px;
-}
-#events_slider .owl-nav,
-#news_slider .owl-nav {
-display: none;
-}
-.owl-carousel .owl-item img {
-  width: 75%;
-height: 193px;
-display: inherit;
-}
-.get-involved-links {
-display: flex;
-justify-content: space-between;
-border-bottom: 1px solid #DDDDDD;
-}
-/* .get-involved-links li{
-margin-bottom: 30px;
-width: 9%;
-background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
-border-radius: 2px;
-position: relative;
-} */
-.tab-link {
-margin-bottom: 30px;
-min-width: 19%;
-background: #FFFFFF;
-box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.12);
-border-radius: 2px;
-position: relative;
-height: 153px;
-padding-right: 0px;
-    padding-left: 0px;
-}
-.nav-link.active:before {
-display: block;
-}
-.nav-link:before {
-content: "";
-display: none;
-border-left: 7px solid transparent;
-border-right: 7px solid transparent;
-border-bottom: 7px solid #50606C;
-position: absolute;
-bottom: -30px;
-left: 50%;
-margin-left: -4px;
-}
-.nav-link.active:after {
-width: 100%;
-}
-.nav-link:after {
-content: "";
-width: 0px;
-display: block;
-background: #50606C;
-height: 4px;
-position: absolute;
-bottom: -32px;
-left: 0px;
-}
-.nav-link {
-text-align: center;
-height: 100%;
-text-decoration: none;
-color: darkblue
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-color: white;
-background-color: #0d6efd;
-}
-/* li.tab-link:hover {
-background: gold;
-} */
-.owl-nav{
-display: none;
-}
-.owl-dots{
-display: none;
-}
-li.tab-link:hover {
-transition: all .5s;
-transform: scale(1.2);
-z-index: 1;
-}
-.row1 >* {
-padding-right: 0;
-padding-left: 0;
-}
-#banner-align{
-padding-right: 5px;
-padding-left: 5px;
-}
-.quiz-text{
-  font-weight: 600;
-    font-size: 16px;
-}
-
-#start-quiz{
-  padding: 66px;
-}
-
-@media (max-width: 768px){
-  #start-quiz{
-  padding: 10px !important;
-}
-.tab-link{
-  height: auto;
-}
-}
-</style>
+<link href="<?php echo base_url(); ?>assets/css/standard_club.css" rel="stylesheet">
 <?php
 // include('C:\xampp\htdocs\BIS\BIS_repo\application\views\users\language.php');
 require(APPPATH.'views/users/language.php');
 $en_select='';
 $hn_select='';
 $language=''; 
-if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['language'])){
+if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SESSION['language'])){
     $en_select='selected';
     $language='en';
 }else{
@@ -224,7 +90,7 @@ if((isset($_GET['language']) && $_GET['language']=='en') || !isset($_GET['langua
             <div class="carousel-item <?php if ($list == 0) {
               echo "active";
               } ?>">
-              <a href="https://<?php echo $key['url']; ?>" target="_blank">
+              <a <?php if(!empty($key['url'])){ ?>href="https://<?php echo $key['url']; ?>"<?php } ?> target="_blank">
               <img src="<?= base_url() . 'uploads/cms/banner/' . $key['banner_images']; ?>" class="background-banner-image">
               </a>
             </div>

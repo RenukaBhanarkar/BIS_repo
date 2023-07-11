@@ -44,7 +44,7 @@
                                 <th>Available For</th>
                                 <th>Level of Competition</th>
                                 <th>Status</th>
-                                <th>Reject Reasone</th>
+                                <th>Reason of Rejection</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

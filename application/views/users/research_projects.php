@@ -1,5 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> -->
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" /> -->
 <style>
   
 .World_of_standers_inner_Box {
@@ -78,15 +78,39 @@
     font-family: #ffc107;
 
 }
+.breadcrums ul {
+    list-style: none;
+    display: block;
+    text-align: end;
+    margin: 0px;
+}
+.breadcrums ul li {
+    display: inline-block;
+}
+.breadcrums ul li:not(:last-child)::after {
+    content: '\f105';
+    font-family: 'fontAwesome';
+    margin: 0px 10px;
+}
 </style>
 
-<section id="quality-outer my-5" style="padding-top: 49px;">
+<section id="quality-outer my-5" style="padding-top: 5px;">
     <div class="quality_section">
         <div class="container-fluid">
-            <div class="row">
+            <div class="col-12">
+  				<div class="breadcrums">
+  					<ul>
+
+  						<li><a href="<?php echo base_url().'users/quality_index'?>">home</a></li>
+  						<li><a class="active">Research Projects</a></li>
+
+  					</ul>
+  				</div>
+  			</div>
+            <div class="row" style="padding-top: 11px;">
                 <div class="col-md-3">
                    <div class="World_of_standers_inner_Box  shadow">
-                    <a href="#">
+                    <a href="<?php echo base_url().'users/project_offer_list'?>">
                     <div class="World_of_standers_image_box">
                         <img src="<?=base_url();?>assets/images/startup.JPEG" class="card-img-top" alt="Discussion Forum">
                        
@@ -97,7 +121,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="World_of_standers_inner_Box  shadow">
-                        <a href="#">
+                        <a href="<?php echo base_url().'world_of_standard/projects_in_progress'?>">
                         <div class="World_of_standers_image_box">
                             <img src="<?=base_url();?>assets/images/research_project.jpeg" class="card-img-top" alt="Discussion Forum">
                         
@@ -135,7 +159,7 @@
                             <img src="<?=base_url();?>assets/images/membership_pannel.jpeg" class="card-img-top" alt="Discussion Forum">
                         
                         </div>
-                        <p class="Title_Section">Share Publications</p>
+                        <p class="Title_Section">Our Publications</p>
                         </a>
                     </div>
                 </div>

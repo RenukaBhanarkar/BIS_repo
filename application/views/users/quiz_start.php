@@ -33,117 +33,14 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/bis_logo.png" type="image/x-icon">
     <link href="<?= base_url(); ?>assets/css/quiz_start.css" rel="stylesheet" />
+    <link href="<?= base_url(); ?>assets/css/start_quiz_page.css" rel="stylesheet" />
     <!-- <script type="text/javascript">
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
     </script> -->
 </head>
-<style>
-    h3.quiz_title_heading {
 
-        font-weight: 600;
-        color: crimson;
-    }
-
-    .yellow {
-        background-color: #ffc107 !important;
-        color: white;
-    }
-
-    .ans-yellow {
-        background-color: #ffc107;
-        color: white;
-    }
-
-    .name_time_m {
-        display: none;
-    }
-
-    .minheight_left {
-        min-height: 100vh;
-    }
-
-    .savennextbtn {
-        position: absolute;
-        bottom: 20px;
-        right: 10px;
-    }
-    .mrkfrw{
-        position: absolute;
-        bottom: 20px;
-    }
-
-    @media (max-width: 990px) {
-        .name_time_m {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .name_time_d {
-            display: none;
-        }
-
-        .name_time_m {
-            margin: 15px 0px;
-        }
-
-        #submit_button {
-            order: 3;
-        }
-
-    }
-
-    @media (max-width: 768px) {
-        .minheight_left {
-            min-height: auto !important;
-        }
-
-
-        .quiz-left-side {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .quiz-left-side #right-bar-ans-none {
-            order: 2;
-        }
-
-        .quiz-left-side .as-color ol li {
-            display: inline;
-            margin-right: 15px;
-        }
-        .quiz-right-side-main{
-            padding: 15px 11.25px;
-        }
-        .as-color ol{
-            margin-bottom: 0px;
-        }
-        .quiz-left-side #afterSubmitHide span{
-            margin-bottom: 0px !important;
-        }
-        .quiz-ans-section p{
-            margin: 0px !important;
-            padding: 0px 10px !important;
-        }
-        .quiz-option{
-            padding: 0px !important;
-        }
-        #right-bar-ans-none{
-            background: none;
-        }
-    }
-
-    @media (min-width: 991px) {
-        .name_time_d {
-            display: block;
-        }
-
-        .quiz_title_heading {
-            margin-top: 15px !important;
-        }
-    }
-</style>
 
 <body>
 

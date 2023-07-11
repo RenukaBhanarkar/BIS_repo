@@ -77,7 +77,7 @@
                                 <td><?php echo $list['avai_for']; ?></td>
                                 <td><?php echo $list['title']; ?></td>
                                 <td><?php echo $list['total_task']; ?></td>
-                                <td><?php echo $list['total_task_under_review']; ?></td>
+                                <td><?php echo $list['total_task_assigned']; ?></td>
                                 <td><?php echo $list['total_task_reviewed']; ?></td>
                                 
                                 <td>
@@ -94,6 +94,9 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12 submit_btn p-3" >
+                               <a class="btn btn-primary btn-sm text-white" style=" margin-right: 37px;" onclick="history.back()">Back</a>
+                          </div>
     <!-- /.container-fluid -->
 
     </div>

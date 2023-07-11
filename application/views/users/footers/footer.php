@@ -7,7 +7,7 @@ require(APPPATH . 'views/users/language.php');
 $en_select = '';
 $hn_select = '';
 $language = '';
-if ((isset($_GET['language']) && $_GET['language'] == 'en') || !isset($_GET['language'])) {
+if ((isset($_SESSION['language']) && $_SESSION['language'] == 'en') || !isset($_SESSION['language'])) {
     $en_select = 'selected';
     $language = 'en';
 } else {
@@ -183,9 +183,9 @@ if (!function_exists('count_visitor')) {
 
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.bundle.js"></script>
 
-<!-- <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/font_resize.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/dark_mode.js"></script>
@@ -359,6 +359,9 @@ window.onhashchange = function (event) {
         loop: true,
         margin: 10,
         nav: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
         responsive: {
             0: {
                 items: 1
@@ -391,6 +394,9 @@ window.onhashchange = function (event) {
         loop: true,
         margin: 10,
         nav: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
         responsive: {
             0: {
                 items: 1
@@ -407,6 +413,9 @@ window.onhashchange = function (event) {
         loop: true,
         margin: 10,
         nav: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
         responsive: {
             0: {
                 items: 1
@@ -470,10 +479,10 @@ window.onhashchange = function (event) {
             }
         }
     })
-    $('.login_details').hide()
-    jQuery('.show').on('click', function() {
-        jQuery('.login_details').toggle();
-    });
+    // $('.login_details').hide()
+    // jQuery('.show').on('click', function() {
+    //     jQuery('.login_details').toggle();
+    // });
     $('.after_login_details').hide()
     jQuery('.after_show').on('click', function() {
         jQuery('.after_login_details').toggle();
@@ -581,8 +590,19 @@ window.onhashchange = function (event) {
 
     function set_language() {
         var language = jQuery('#language').val();
-        window.location.href = '?language=' + language;
+        // window.location.href = '?language=' + language;
+        $.ajax({
+            url: "<?php echo base_url(); ?>users/language_set/"+language,
+            // type: "JSON",
+            method: "get",
+            success: function(result) {
+               location.reload(); 
+            },
+            error: function(res) {
+                alert("Error,FollowUs Links Not Load.");
+            }
 
+        });
     }
 
     $(document).ready(function() {

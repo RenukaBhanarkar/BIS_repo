@@ -33,8 +33,8 @@
     /* border: 1px solid rgba(0,0,0,.125); */
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
     border-radius: 0.25rem;
-    
-    height: 100%;
+    /* height: 371px; */
+    /* height: 100%; */
     transition: transform 250ms;
    
 }
@@ -48,6 +48,8 @@
     font-size: 13px;
     line-height: 1.2;
     font-weight: 600;
+    max-height: 48px;
+    overflow: hidden;
 }
 .node-status span{
     font-size: 13px;
@@ -110,7 +112,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 28%;
+    /* width: 28%; */
 }
 .last-date{
     /* text-overflow: ellipsis;
@@ -136,44 +138,53 @@
               </div>
               <div class="col-md-9">
                 <div class="row">
+                       
+                       <form id="wow_search" action="<?php echo base_url(); ?>users/searchBtm" method="post">
                        <div class="filter-content">
-                           <img src="http://localhost/BIS/BIS_repo/assets/images/filter_icon.png">
+                        <div class="col-md-4 responsive_content_1">
+                            <div class="search_content">
+                           <img src="<?php echo base_url(); ?>assets/images/filter_icon.png">
                            <label class="filter_label">Filters : </label>
                            <label class="sector_label">Under</label>
                            
-                           <!-- Example single danger button -->
-                                <div class="btn-group">
-                                     <button type="button" class="filter-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">All Sector</button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                            </ul>
-                                </div>
-                                <div class="input-group search_icon" style="margin-right: 272px; top: -2px;">
-                                        <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
+                         
+                                <select class="new_select" name="select_period" id="select_period" aria-label="Default select example">
+                                        <option value="0" readonly>Select Period</option>
+                                        <option value="1">Last Week</option>
+                                        <option value="2">Last Month</option>
+                                        <option value="3">Last Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 responsive_content_2">
+                        <div class="search_content">
+                                <div class="input-group search_icon" style="top: -2px;">
+                                       
+                                        <input class="form-control border-end-0 border rounded-pill" type="text" placeholder="search" name="search_text" id="search_text">
+
                                         <span class="input-group-append">
-                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                                            <button class="search_button btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="submit" id="search_btn"  >
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
                                 </div>
-                                <label class="sector_label" style="margin-left: -141px;">Sort By:</label>
-                           
-                           <!-- Example single danger button -->
-                                <div class="btn-group">
-                                     <button type="button" class="filter-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Newest First</button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Newest First</a></li>
-                                                <li><a class="dropdown-item" href="#">Oldest First</a></li>
-                                                <li><a class="dropdown-item" href="#">Most Popular</a></li>
-                                                <li><hr class="dropdown-divider"></li>
-                                                
-                                            </ul>
-                                </div>
+                        </div>
+                        </div>
+                        <div class="col-md-4 responsive_content_3" style="text-align: end;">
+                        <div class="search_content">
+                                <label class="sector_label">Sort By:</label>
+
+                         
+                                <select class="new_select" aria-label="Default select example" name="select_type" id="select_type">
+                                        <option value="0" readonly>Select Order</option>
+                                        <option value="1">Newest First</option>
+                                        <option value="2">Oldest First</option>
+                                       
+                                </select>
+                        </div>
+                        </div>
                        </div>
+</form>
                 </div>
              </div> 
             </div>
@@ -189,12 +200,12 @@
                                     <div class="status-open">Open</div>
                                 </div> -->
                                 
-                                <div class="title">
-                                    <p title="Inviting suggestion on Vivad se Vishwas II – Settling Contractual ..."><?php echo substr_replace($list['title'],"...",130); ?></p>
+                                <div class="title"> 
+                                    <p><?php echo substr_replace($list['title'],"...",70); ?></p>
                                 </div>
                                 <div class="field-item even">
                                     <span class="time_left">
-                                        <span class="last-date"><?php echo substr_replace($list['description'],"...",140); ?></span>
+                                        <span class="last-date"><?php echo ($list['description']); ?></span>
                                     </span>
                                  </div>
                                  <div class="node-status like_review"><span></span>
@@ -210,10 +221,21 @@
            
         </div>
         
-        
+        <div class="" style="text-align:end;">
+                <!-- <a href="http://43.231.124.177/BIS/BIS_repo/users/standard" class="btn-primary btn-sm">Back</a> -->
+                <button class="btn btn-primary btn-sm text-white mr-3 mt-2"><a href="<?php echo base_url() . 'users/byTheMentor'; ?>">Back</a></button>
+            </div>
             
             
              </div>
-            
+             
         
     </section>
+    <script>
+        
+$("#select_type").change(function () { 
+    if($("#select_type").val() != 0 ){$("#wow_search").submit(); }});
+$("#select_period").change(function () { 
+    if($("#select_period").val() != 0 ){$("#wow_search").submit(); }});
+
+    </script>

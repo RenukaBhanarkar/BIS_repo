@@ -72,7 +72,7 @@
                                  <a href="<?php echo base_url(); ?>Miscellaneouscompetition/viewRecord/<?php echo encryptids('E', $list['id']) ?>" class="btn btn-primary btn-sm mr-2" title="View">View</a>
                               </td>
                               </tr>
-                          <?php } } ?>
+                          <?php $i++; } } ?>
                         </tbody>
                     </table>
                 </div>

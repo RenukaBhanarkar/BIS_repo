@@ -330,6 +330,7 @@ class Standardswritting_model extends CI_Model
     public function create_standard_list()
     {
         $this->db->where('status ', 0);
+        $this->db->order_by('tbl_standards_writting_offline.id', 'DESC');
         return $this->db->get('tbl_standards_writting_offline')->result_array();
     }
     public function manage_standard_list()
@@ -338,6 +339,7 @@ class Standardswritting_model extends CI_Model
         $this->db->where_not_in('status ', 0);
         $this->db->where_not_in('status ', 9);
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_offline.status');
+        $this->db->order_by('tbl_standards_writting_offline.id', 'DESC');
         return $this->db->get('tbl_standards_writting_offline')->result_array();
     }
     public function admin_manage_standard_list()
@@ -345,6 +347,7 @@ class Standardswritting_model extends CI_Model
         $this->db->select('tbl_standards_writting_offline.*,tbl_mst_status.status_name');
         $this->db->where_in('status ', array(2,3,4,5,6,7,8,9)) ; 
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_offline.status');
+        $this->db->order_by('tbl_standards_writting_offline.id', 'DESC');
         return $this->db->get('tbl_standards_writting_offline')->result_array();
     }
     public function view_standards($id)
@@ -389,6 +392,7 @@ class Standardswritting_model extends CI_Model
         $this->db->select('tbl_standards_writting_offline.*,tbl_mst_status.status_name');
         $this->db->where('status ', 3);
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_offline.status');
+        $this->db->order_by('tbl_standards_writting_offline.id', 'DESC');
         return $this->db->get('tbl_standards_writting_offline')->result_array();
     }
 
@@ -407,6 +411,7 @@ class Standardswritting_model extends CI_Model
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
+        $this->db->order_by('tbl_standards_writting_online.id', 'DESC');
         return $this->db->get('tbl_standards_writting_online')->result_array();
     }
 
@@ -421,19 +426,50 @@ class Standardswritting_model extends CI_Model
         $this->db->where('id', $id);
         return $this->db->delete('tbl_standards_writting_online');
     }
+public function getAllManageQuiz()
+    { 
 
+    }
     public function Manage_online_list()
-    {
+    { 
+
+
+        $t=time();
+        $current_time = (date("H:i:s",$t));
+        $rs = array();
+
         $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
-        $this->db->where_not_in('status ', 7);
-        $this->db->where_not_in('status ', 8);
-        $this->db->where_not_in('status ', 9);
-        $this->db->where_not_in('status ', 10);
+        $this->db->where_in('tbl_standards_writting_online.status',array(2,3,4,5,6,1));
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
-        $this->db->order_by('tbl_standards_writting_online.id', 'DESC');
-        return $this->db->get('tbl_standards_writting_online')->result_array();
+        $this->db->where('tbl_standards_writting_online.end_date >=' ,date("Y-m-d")); 
+        $this->db->order_by('tbl_standards_writting_online.id','desc');
+        $res = $this->db->get('tbl_standards_writting_online')->result_array(); 
+            foreach($res as $row){
+               if($row['end_date'] == date("Y-m-d") ){
+                    if($row['end_time'] >= $current_time){
+                        array_push($rs,$row);
+                    }
+                }else{
+                    array_push($rs,$row);
+                }
+            }
+            return $rs;
+
+
+
+
+        // $this->db->select('tbl_standards_writting_online.*,tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
+        // $this->db->where_not_in('status ', 7);
+        // $this->db->where_not_in('status ', 8);
+        // $this->db->where_not_in('status ', 9);
+        // $this->db->where_not_in('status ', 10);
+        // $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
+        // $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
+        // $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
+        // $this->db->order_by('tbl_standards_writting_online.id', 'DESC');
+        // return $this->db->get('tbl_standards_writting_online')->result_array();
     }
 
      
@@ -512,6 +548,7 @@ class Standardswritting_model extends CI_Model
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
+        $this->db->order_by('tbl_standards_writting_online.created_on', 'DESC');
         // $query = $this->db->get('tbl_standards_writting_online')->result_array();
        // $this->db->limit(4);
 
@@ -594,6 +631,7 @@ class Standardswritting_model extends CI_Model
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
+        $this->db->order_by('tbl_standards_writting_online.id', 'DESC');
         $query = $this->db->get('tbl_standards_writting_online')->result_array();
         $rs = array();
         if (!(empty($query))) {
@@ -669,6 +707,7 @@ class Standardswritting_model extends CI_Model
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
         $this->db->where('tbl_standards_writting_online.status', 5);
         $this->db->where('tbl_standards_writting_online.end_date <=', date("Y-m-d"));
+        $this->db->order_by('tbl_standards_writting_online.id', 'DESC');
         $res = array();
         $rs = array();
         $query = $this->db->get('tbl_standards_writting_online');
@@ -742,9 +781,12 @@ class Standardswritting_model extends CI_Model
             tbl_standards_writting_online.title,
             tbl_standards_writting_online.total_mark,
             tbl_mst_quiz_availability.title as avail,
+            tbl_admin.name as eval_name, tbl_admin.email_id as eval_email
             ');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_standards_writting_online', 'tbl_standards_writting_online.id= tbl_standard_writing_competition_online.comp_id');
+
+         $this->db->join('tbl_admin', 'tbl_admin.id= tbl_standard_writing_competition_online.evaluator_id');
 
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id= tbl_standards_writting_online.availability_id');
 
@@ -781,9 +823,11 @@ class Standardswritting_model extends CI_Model
             tbl_standards_writting_online.title,
             tbl_standards_writting_online.comp_id as comp,
             tbl_standards_writting_online.standard,
-            tbl_standards_writting_online.total_mark');
+            tbl_standards_writting_online.total_mark,
+            tbl_admin.name as eval_name, tbl_admin.email_id as eval_email');
         $this->db->from('tbl_standard_writing_competition_online');
         $this->db->join('tbl_standards_writting_online', 'tbl_standards_writting_online.id =tbl_standard_writing_competition_online.comp_id');
+        $this->db->join('tbl_admin', 'tbl_admin.id= tbl_standard_writing_competition_online.evaluator_id');
         $this->db->where('tbl_standard_writing_competition_online.id', $id);
         $query = $this->db->get();
         return $query->row_array();
@@ -817,5 +861,11 @@ class Standardswritting_model extends CI_Model
         $this->db->where('user_id ', $user_id);
         $this->db->where('comp_id ', $comp_id);
         return $this->db->get('tbl_standard_writing_competition_online')->result_array();
+    }
+
+    public function getUserDetails($id)
+    {
+        $this->db->where('user_id', $id);
+        return $quiz = $this->db->get('tbl_users')->row_array();
     }
 }
