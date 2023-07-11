@@ -693,7 +693,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
         $(document).ready(function() {
 
-            setTimeout(updateUserTime, 5000);
+            setTimeout(updateUserTime, 60000);
 
         });
         // $(document).ready(function(){
@@ -767,7 +767,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
         setInterval(function() {
             check_session_id();
-        }, 10000);
+        }, 60000);
     </script>
 </body>
 
