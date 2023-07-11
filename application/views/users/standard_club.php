@@ -144,7 +144,7 @@ if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SES
               <div class="row" id="banner-align">
                 <?php if (empty($allquize)) { ?>
                 <div class="alert alert-danger">
-                  <strong>Sorry!</strong> Quizes are not available.
+                  <strong><?php echo $quiz_error[$language]['0'] ?></strong> <?php echo $quiz_error[$language]['1'] ?>
                 </div>
                 <?php  } else {  ?>
                 
@@ -222,7 +222,7 @@ if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SES
                   <div class="row">
                     <?php if (empty($essy_writing)) { ?>
                     <div class="alert alert-danger">
-                      <strong>Sorry!</strong> Competition are not available.
+                      <strong><?php echo $competition_error[$language]['0'] ?></strong> <?php echo $competition_error[$language]['1'] ?>
                     </div>
                     <?php  } else {  ?>
                     <div class="row">
@@ -262,7 +262,7 @@ if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SES
                     <div class="row">
                       <?php if (empty($poster)) { ?>
                       <div class="alert alert-danger">
-                        <strong>Sorry!</strong> Competition are not available.
+                        <strong><?php echo $competition_error[$language]['0'] ?></strong> <?php echo $competition_error[$language]['1'] ?>
                       </div>
                       <?php  } else {  ?>
                       <div class="row">
@@ -302,7 +302,7 @@ if((isset($_SESSION['language']) && $_SESSION['language']=='en') || !isset($_SES
                       <div class="row">
                         <?php if (empty($competition)) { ?>
                         <div class="alert alert-danger">
-                          <strong>Sorry!</strong> Competitions are not available.
+                          <strong><?php echo $competition_error[$language]['0'] ?></strong> <?php echo $competition_error[$language]['1'] ?>
                         </div>
                         <?php  } else {  ?>
                         <div class="row">

@@ -1,4 +1,25 @@
-
+<style>
+    .cap-img {
+    background-image: url('<?= base_url(); ?>assets/images/captcha-bg.png');
+}
+.position-relative {
+    position: relative!important;
+}
+.captcha_img {
+    width: 70%;
+    letter-spacing: 17px;
+    font-size: 22px;
+    text-align: center;
+    /* background-image: url(/HPPERC/resources/assets/img/captcha 1.jpg); */
+}
+.captcha_button {
+    margin-left: 72%;
+    margin-top: -33px;
+}
+.pd-top-1 {
+    padding-top: 15px;
+}
+</style>    
 <div class="container">
 <div class="feedback_content">
 <?php if($this->session->flashdata()){
@@ -40,6 +61,21 @@
                 <textarea type="text" class="form-control input-font" name="description" id="description" placeholder="Enter Description" required></textarea>
                 <span class="text-danger" id="err_description"></span>
             </div>
+            <div class="col-md-4 mb-2">
+								<div class="form-group">
+									<label class="d-block text-font">Captcha<sup class="text-danger">*</sup></label>
+										 <div class="captcha_img position-relative cap-img">           
+                <span id="captchaDiv">sk8PeK</span>               
+                </div>
+               <div class="captcha_button">
+                <button class="btn btn-primary mar-left-1" type="button" onclick="refreshCaptcha()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                </div>
+                <div class="pd-top-1">									
+										<input type="text" id="captchaCode" name="captchaCode" class="form-control" placeholder="Enter Captcha" onkeyup="chkCaptcha('captchaCode');" maxlength="6" fdprocessedid="rw6f4e">
+									</div>
+									 <span id="captchaCode_error" class="validationError"></span>
+								</div>
+							</div>
     </div>
     <div class="row">
             <div class="col-md-12 p-3 text-end">
