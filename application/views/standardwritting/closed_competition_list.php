@@ -86,7 +86,7 @@
                                  <button comp-id="<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2 send_for_review" >Send for review</button>
                                  <?php }else if($list['review_status']==1){ ?>
                                  <!-- <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_submission/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration</a> -->
-                                 <?php if($list['total_task']=$list['total_task_reviewed']){ ?>
+                                 <?php if(($list['total_task'])==($list['total_task_reviewed'])){ ?>
                                     <?php if($list['result_declared']==0){ ?>
                                  <a href="<?php echo base_url(); ?>Miscellaneouscompetition/result_declared_list/<?php echo $list['comp_id']; ?>" class="btn btn-success btn-sm mr-2" >Result Declaration List</a>
                                  <?php } } ?>

@@ -222,6 +222,13 @@ class Standardswritting extends CI_Controller
         $this->load->view('standardwritting/view_submission_competition',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function view_comp_unser_review($comp_id){
+        $data['competition']=$this->Miscellaneous_competition->SubmittedAttemptsUnderReview($comp_id);
+        // print_r($data); die;
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('Miscellaneous/view_comp_under_review',$data);
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function updateMisComStatusAllEvaluators(){
         try {
             
@@ -1024,7 +1031,8 @@ if($id){
     }
     public function revised_competition_list()
     {
-        $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
+        // $data['competition']=$this->Miscellaneous_competition->reviewCompetition();
+        $data['competition']=$this->Miscellaneous_competition->compToBeReciewed();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
         $this->load->view('standardwritting/revised_competition_list',$data);
