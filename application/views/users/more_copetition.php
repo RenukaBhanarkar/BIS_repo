@@ -154,7 +154,7 @@ a.quizplay-btn:hover {
 
     </style>
 <section>
-        <div class="container pb-5 pt-5" id="winner-section">
+        <div class="container-fluid" id="winner-section" style="padding: 38px;">
             
             <div class="row">
                 <?php  foreach ($more_copetition as $key => $AllQuize) {?> 
