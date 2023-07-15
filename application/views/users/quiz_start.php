@@ -20,18 +20,20 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <meta name="keywords" content="Bureau of Indian standard">
     <meta name="description" content="Bureau of Indian standard">
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/font_awesome.min.css" crossorigin="anonymous" />
     <!-- Bootstrap CSS -->
     <title>Bureau of Indian standard | Quiz Start</title>
     <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> -->
+    <link href="<?= base_url(); ?>assets/css/googleapis.css" rel="stylesheet">
     <link href="<?= base_url(); ?>" rel="stylesheet">
     <!-- CSS File -->
-    <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" />
-    <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/bis_logo.png" type="image/x-icon">
+
+    <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" />   
     <link href="<?= base_url(); ?>assets/css/quiz_start.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>assets/css/start_quiz_page.css" rel="stylesheet" />
     <!-- <script type="text/javascript">
@@ -623,7 +625,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
             //             // Swal.fire('Changes are not saved', '', 'info')
             //         }
             //         })
-
+            $('#regForm').submit();
         });
 
         $('.login_details').hide()
@@ -703,7 +705,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
                 },
                 complete: function(data) {
-                    setTimeout(updateUserTime, 5000);
+                    setTimeout(updateUserTime, 60000);
                 },
                 error: function(result) {
                    // alert("Error,Please try again.");

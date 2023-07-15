@@ -3,14 +3,17 @@
     <div class="row">
         <div class="col-lg-9">
             <section id="banner-section">
+            <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
+                if ($user_type != "") { ?>
                 <?php if ($quizdata['language_id'] == 3) { ?>
                     <div class="float-end" id="QuizLang">
-                        <label class="d-block text-font mr-3">Select Language</label>
+                        <label class="d-block text-font mr-3">Please Select Language</label>
                         <select class="form-control input-font" id="selectedLang" id="selectedLang" placeholder="Language">
                             <option value="1">English</option>
                             <option value="2">Hindi</option>
                         </select>
                     </div>
+                <?php } ?>
                 <?php } ?>
 
                 <div class="row">
@@ -116,7 +119,7 @@
                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                         <?php  }
                                     } else { ?>
-                                        <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                        <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E",$quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                         <?php }
                                 }
                             }
@@ -128,13 +131,13 @@
 
                                     if ($user_type != "") {
                                         if ($quizdata['language_id'] != 3) { ?>
-                                            <a href="<?= base_url(); ?>users/quiz_start/<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
+                                            <a href="<?= base_url(); ?>users/quiz_start/<?= encryptids("E",$quizdata['id']); ?>" class="btn startQuiz"> <span>Start Quiz </span></a>
                                         <?php  } else { ?>
 
                                             <a href="#" class="btn startQuiz" id="startQuizLang"> <span>Start Quiz </span></a>
                                         <?php  }
                                     } else { ?>
-                                        <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E", $quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
+                                        <a href="<?= base_url(); ?>users/loginQuiz/<?= encryptids("E",$quizdata['id']); ?>" class="btn startQuiz"> <span>Login to Participate </span></a>
                                         <?php }
                                 }
                             }
@@ -392,6 +395,7 @@
 <script>
     $('.Quiz_text').on('click', '#startQuizLang', function(e) {
         e.preventDefault();
+
         var lang = $('#selectedLang').val();
 
         $.post("<?php echo base_url(); ?>users/setSelectedLang/", {
@@ -401,7 +405,9 @@
                 $('.errorbox').show().text("Error,Please try again.");
             } else {
 
-                window.location.replace("<?= base_url(); ?>users/quiz_start/<?= $quizdata['id']; ?>");
+               // window.location.replace("<?= base_url(); ?>users/quiz_start/<?= $quizdata['id']; ?>");
+               window.location.replace("<?= base_url(); ?>users/quiz_start/<?= encryptids("E", $quizdata['id']); ?>");
+               <?= encryptids("E", $quizdata['id']); ?>
             }
         });
 
