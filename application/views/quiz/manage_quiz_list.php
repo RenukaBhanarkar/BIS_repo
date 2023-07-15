@@ -114,7 +114,9 @@
 
                           <?php if(in_array(3,$permissions)){ ?>  
                           <?php if ($quiz['status'] == 1 || $quiz['status'] == 3 || $quiz['status'] == 4 || $quiz['status'] == 10) { ?>
-                            <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>                            
+                            <!-- <a href="editquiz/<?= $quiz['id'] ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>                             -->
+                            <a href="editquiz/<?= encryptids('E', $quiz['id']); ?>" class="btn btn-info btn-sm mr-2 text-white">Edit</a>   
+                            
                           <?php } }?>
 
                           <?php if(in_array(4,$permissions)){ ?>  
