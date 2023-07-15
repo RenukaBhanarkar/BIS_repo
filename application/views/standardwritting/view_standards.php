@@ -73,7 +73,7 @@
                     <?php if($getData['second_paticipant']!='' || !empty($getData['second_paticipant'])) {?>
                     <div class="row mt-2">
                         <div class="col-md-4 prizes-section">
-                            <h4 class="m-2">2<sup>nd</sup>Prizes</h4>
+                            <h4 class="m-2">2<sup>nd</sup> Prize</h4>
                         </div>
                     </div>
                     <div class="row mt-3">

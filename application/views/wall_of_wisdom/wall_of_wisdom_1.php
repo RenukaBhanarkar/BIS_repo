@@ -48,7 +48,7 @@
     padding: 10px 0;
     font-family: "poppinssemibold", sans-serif;
     font-size: 13px;
-    line-height: 1.2;
+    /* line-height: 1.2; */
     font-weight: 600;
 }
 .node-status span{
@@ -121,7 +121,7 @@
                               <div class="status-open">Open</div>
                           </div> -->
                           <div class="title">
-                              <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify; font-size: 17px;"><?php echo substr_replace($list['title'],"...",110); ?></p>
+                              <p style="height:41px; overflow:hidden; margin-bottom:0px; text-align: justify;"><?php echo substr_replace($list['title'],"...",200); ?></p>
                           </div>
                           <div class="field-item even" style="max-height: 147px; overflow: hidden;"> 
                               <span class="time_left">

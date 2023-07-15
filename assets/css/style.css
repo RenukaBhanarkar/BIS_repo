@@ -209,6 +209,16 @@ header .navbar-light .navbar-nav .nav-link {
 		width: 100%;
 	}
 }
+@media (min-width: 1004px) and (max-width: 1226px) {
+	.tabl_title{
+        font-size: 20px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1003px) {
+	.tabl_title{
+        font-size: 18px;
+    }
+}
 li.nav-item {
 	padding: 0px 11px;
 }

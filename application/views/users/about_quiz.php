@@ -2,6 +2,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-9">
+        <div class="helf-line">
+            <p style="margin-bottom: 4px; margin-top: 2px;">Helpdesk no : +91-9810526033/ +91-9028017809</p>
+        </div>
             <section id="banner-section">
             <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
                 if ($user_type != "") { ?>

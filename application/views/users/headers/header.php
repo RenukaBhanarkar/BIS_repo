@@ -227,7 +227,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 </li>
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link" id="popup" style="color: white;"><?php echo $top_nav[$language]['1'] ?></a>
+                                     <a class="nav-link" id="popup" style="color: white; cursor:pointer;"><?php echo $top_nav[$language]['1'] ?></a>
                                 </li>
                                 <?php if(!isset($_SESSION['set_nav'])){  ?>
                                 <li class="nav-item">
@@ -238,13 +238,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 </li> -->
                                 <li class="nav-item">
                                     <!-- <a class="nav-link active" target="_blank" aria-current="page" href="https://www.bis.gov.in/" style="color: white;">BIS</a> -->
-                                     <a class="nav-link " id="publish_pop" aria-current="page" style="color: white;"><?php echo $top_nav[$language]['3'] ?></a>
+                                     <a class="nav-link " id="publish_pop" aria-current="page" style="color: white; cursor:pointer;"><?php echo $top_nav[$language]['3'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" target="_blank" id="know_pop" style="color: white;"><?php echo $top_nav[$language]['4'] ?></a>
+                                    <a class="nav-link" target="_blank" id="know_pop" style="color: white; cursor: pointer;""><?php echo $top_nav[$language]['4'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" target="_blank"  id="snap" style="color: white;"><?php echo $top_nav[$language]['5'] ?></a>
+                                    <a class="nav-link" target="_blank"  id="snap" style="color: white; cursor: pointer;"><?php echo $top_nav[$language]['5'] ?></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" target="_blank" href="https://www.bis.gov.in/wp-content/uploads/2023/02/Brochure_NBC_10022023.pdf" style="color: white;">NBC</a>
