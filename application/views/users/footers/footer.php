@@ -14,28 +14,28 @@ if ((isset($_SESSION['language']) && $_SESSION['language'] == 'en') || !isset($_
     $hn_select = 'selected';
     $language = 'hn';
 }
-if (!function_exists('count_visitor')) {
-    function count_visitor()
-    {
-        if (!isset($_SESSION['hasVisited'])) {
-            $_SESSION['hasVisited'] = "yes";
-            $filecounter = (APPPATH . 'counter.txt');
-            $kunjungan = file($filecounter);
-            $kunjungan[0]++;
-            $file = fopen($filecounter, 'w');
-            fputs($file, $kunjungan[0]);
-            fclose($file);
-            $_SESSION['visiter_counter'] = $kunjungan[0];
-            return $_SESSION['visiter_counter'];
-        } else {
-            $filecounter = (APPPATH . 'counter.txt');
-            $kunjungan = file($filecounter);
-            $_SESSION['visiter_counter'] = $kunjungan[0];
-            return $_SESSION['visiter_counter'];
-        }
-    }
-    count_visitor();
-}
+// if (!function_exists('count_visitor')) {
+//     function count_visitor()
+//     {
+//         if (!isset($_SESSION['hasVisited'])) {
+//             $_SESSION['hasVisited'] = "yes";
+//             $filecounter = (APPPATH . 'counter.txt');
+//             $kunjungan = file($filecounter);
+//             $kunjungan[0]++;
+//             $file = fopen($filecounter, 'w');
+//             fputs($file, $kunjungan[0]);
+//             fclose($file);
+//             $_SESSION['visiter_counter'] = $kunjungan[0];
+//             return $_SESSION['visiter_counter'];
+//         } else {
+//             $filecounter = (APPPATH . 'counter.txt');
+//             $kunjungan = file($filecounter);
+//             $_SESSION['visiter_counter'] = $kunjungan[0];
+//             return $_SESSION['visiter_counter'];
+//         }
+//     }
+//     count_visitor();
+// }
 
 ?>
 <style class="">
@@ -166,14 +166,14 @@ if (!function_exists('count_visitor')) {
                         All rights reserved</p>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12" style="text-align: center;">
                     <div class="visitfooter"><span class="visit_count">Total Visitors : <?php echo $_SESSION['visiter_counter']; ?></span></div>
                 </div>
-                <!-- <div class="col-md-6">
+                <!- <div class="col-md-6">
                             <div class="visitfooter"><span class="visit_count">Today's Visits : 1000</span></div>                                                             
-                    </div> -->
-            </div>
+                    </div> ->
+            </div> -->
         </div>
     </div>
     </div>
