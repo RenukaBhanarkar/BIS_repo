@@ -604,28 +604,28 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         }
         $('#submit_button').click(function() {
 
-            $('#qustions-tab').hide();
-            $('#submit_button').hide();
-            $('#right-bar-ans-none').hide();
-            // Swal.fire({
-            //         title: 'Are you sure you want to Submit ?',
-            //         showDenyButton: true,
-            //         showCancelButton: false,
-            //         confirmButtonText: 'Submit',
-            //         denyButtonText: `Cancel`,
-            //         }).then((result) => {
-            //         /* Read more about isConfirmed, isDenied below */
-            //         if (result.isConfirmed) {   
-            //             $('#regForm').submit();
-            //             // Swal.fire('Saved!', '', 'success')                                
-            //         } else if (result.isDenied) {
-            //             $('#qustions-tab').show();
-            //             $('#submit_button').show();
-            //             $('#right-bar-ans-none').show();
-            //             // Swal.fire('Changes are not saved', '', 'info')
-            //         }
-            //         })
-            $('#regForm').submit();
+            // $('#qustions-tab').hide();
+            // $('#submit_button').hide();
+            // $('#right-bar-ans-none').hide();
+            Swal.fire({
+                    title: 'Are you sure you want to Submit ?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {   
+                        $('#regForm').submit();
+                        // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        $('#qustions-tab').show();
+                        $('#submit_button').show();
+                        $('#right-bar-ans-none').show();
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+            //$('#regForm').submit();
         });
 
         $('.login_details').hide()
