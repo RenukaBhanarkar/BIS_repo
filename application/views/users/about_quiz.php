@@ -2,10 +2,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-9">
+        <div class="helf-line">
+            <p style="margin-bottom: 4px; margin-top: 2px;">Helpdesk no : +91-9810526033/ +91-9028017809</p>
+        </div>
             <section id="banner-section">
                 <?php if ($quizdata['language_id'] == 3) { ?>
                     <div class="float-end" id="QuizLang">
-                        <label class="d-block text-font mr-3">Select Language</label>
+                        <label class="d-block text-font mr-3">Please select your Language</label>
                         <select class="form-control input-font" id="selectedLang" id="selectedLang" placeholder="Language">
                             <option value="1">English</option>
                             <option value="2">Hindi</option>
