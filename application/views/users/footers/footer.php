@@ -70,7 +70,7 @@ if ((isset($_SESSION['language']) && $_SESSION['language'] == 'en') || !isset($_
                                 <i class="fa fa-chevron-down" aria-hidden="true"></i>
                             </div>
                             <ul id="toggle_show" style="display:none;">
-                                <li><a href="<?php echo base_url(); ?>users/feedback_form"><?php echo $footer_content[$language]['1'] ?></a></li>
+                                <!-- <li><a href="<?php echo base_url(); ?>users/feedback_form"><?php echo $footer_content[$language]['1'] ?></a></li> -->
                                 <li><a href="<?php echo base_url(); ?>users/help"><?php echo $footer_content[$language]['2'] ?></a></li>
                                 <li><a href="<?php echo base_url(); ?>users/sitemap"><?php echo $footer_content[$language]['3'] ?></a></li>
                                 <!-- <li><a href="#">Accessibility</a></li> -->
@@ -505,7 +505,7 @@ window.onhashchange = function (event) {
                 $(".usefull-links").html(row);
             },
             error: function(res) {
-                alert("Error,Useful Links Not Load.");
+                // alert("Error,Useful Links Not Load.");
             }
 
         });
@@ -529,7 +529,7 @@ window.onhashchange = function (event) {
                 $(".social-content").html(row);
             },
             error: function(res) {
-                alert("Error,FollowUs Links Not Load.");
+                // alert("Error,FollowUs Links Not Load.");
             }
 
         });
@@ -599,7 +599,7 @@ window.onhashchange = function (event) {
                location.reload(); 
             },
             error: function(res) {
-                alert("Error,FollowUs Links Not Load.");
+                // alert("Error,FollowUs Links Not Load.");
             }
 
         });

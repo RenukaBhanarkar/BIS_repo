@@ -106,11 +106,20 @@ span.incorrect_answer:after {
                                 <div class="mb-2 col-md-12 d-flex">
                                     <label class="d-block text-font mt-2">Question <?= $j ?> :</label>
                                     <div class="ml-2 mt-2">
-                                        <?php if ($row['language_id'] == 1 || $row['language_id'] == 3) { ?>
-                                            <div class="qustion-ans"> <?= $row['que'] ?> </div>
-                                        <?php } else { ?>
-                                            <div class="qustion-ans"> <?= $row['que_h'] ?> </div>
-                                        <?php }   ?>
+                                    <?php if ($row['selected_lang'] == 0) {
+                                                if ($row['language_id'] == 1) {?>
+                                                    <div class="qustion-ans"> <?= $row['que']; ?> </div>
+                                               <?php } else { ?>
+                                                <div class="qustion-ans"> <?= $row['que_h']; ?> </div>
+                                               <?php  }
+                                            } else if ($row['selected_lang'] == 1) { ?>
+                                                <div class="qustion-ans"> <?= $row['que']; ?></div>
+                                               
+                                            <?php } else { ?>
+                                                <div class="qustion-ans"> <?= $row['que_h']; ?> </div>
+                                               
+                                            <?php } ?>
+                                      
                                         <?php if ($row['que_type'] == 2 || $row['que_type'] == 3) { ?>
 
                                             <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $row['que_bank_id']; ?>/<?php echo $row['image']; ?>">
@@ -213,7 +222,7 @@ span.incorrect_answer:after {
                                     } else {
 
                                         if ($row['opt4_e'] != "") {
-                                            $opt4_h = $row['opt4_e'];
+                                            $opt4_h = $row['opt4_h'];
                                         } else {
                                             $opt4_h = "NA";
                                         }
@@ -270,11 +279,7 @@ span.incorrect_answer:after {
                                             $incorrect4 = 0;
                                             $correct5 = 0;
                                             $incorrect5 = 0;
-
-
                                             ?>
-
-
                                             <li <?php if ($row['corr_opt_e'] == 1) {
                                                     echo "class='greenBorder'";
                                                     $correct1++;

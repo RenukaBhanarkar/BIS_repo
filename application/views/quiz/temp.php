@@ -1,48 +1,38 @@
 <style>
-    .green {color:darkgreen !important;}
-    .red {color:red !important;}
-    .greenBorder {border:2px solid green; padding:10px;}
-    .redBorder{border:2px solid red; padding:10px;}
+    .green {
+        color: darkgreen !important;
+    }
+
+    .greenBorder {
+        border: 2px solid green;
+        padding: 10px;
+    }
+
+    .redBorder {
+        border: 2px solid red;
+        padding: 10px;
+    }
+
+    .red {
+        color: red !important;
+    }
+
     .card-body {
-    padding: 21px 21px 20px 94px;
-}
-.proposal_view {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #e3e6f0;
-    border-radius: 0.35rem;
-    border-top: 3px solid #2957a3!important;
-}
-.card-body {
-    padding: 21px 39px 40px 137px;
-}
-.correct_answer {
+        padding: 21px 21px 20px 114px;
+    }
+
+    .correct_answer {
     position: absolute;
-    margin-left: -163px;
+    margin-left: -166px;
     margin-top: -5px;
-    padding: 4px;
+    padding: 5px;
     /* border: 2px solid green; */
     border-radius: 0px 9px 9px 0px;
     background: green;
     color: white;
-    width: 123px;
     text-align: center;
-}
-.incorrect_answer {
-    position: absolute;
-    margin-left: -163px;
-    margin-top: -5px;
-    padding: 4px;
-    /* border: 2px solid green; */
-    border-radius: 0px 9px 9px 0px;
-    background: red;
-    color: white;
-    text-align: center;
+    width: 118px;
+    
 }
 span.correct_answer:after {
     content: '';
@@ -55,6 +45,17 @@ span.correct_answer:after {
     border-color: transparent transparent transparent #008000;
     border-style: solid;
     border-width: 10px;
+}
+.incorrect_answer {
+    position: absolute;
+    margin-left: -166px;
+    margin-top: -5px;
+    padding: 5px;
+    /* border: 2px solid green; */
+    border-radius: 0px 9px 9px 0px;
+    background: red;
+    color: white;
+    text-align: center;
 }
 span.incorrect_answer:after {
     content: '';
@@ -71,21 +72,32 @@ span.incorrect_answer:after {
 </style>
 <div class="container-fluid">
     <!-- Page Heading -->
-    
-    <div class="row">
-        <div class="col-md-12" style="text-align: end;">
-            <!-- <a class="btn btn-primary btn-sm mr-2">Export as PDF</a> -->
-            <button class="btn btn-info btn-sm mr-2" id="sudo" onclick="print_current_page()" style="margin-top: 25px; margin-right: 70px;">Print</button >
-        </div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Answer Key List</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'Admin/dashboard'; ?>">Sub Admin Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'admin/exchange_forum'; ?>">Exchange Forum</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/organizing_quiz'; ?>">Competitions</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/quiz_dashboard'; ?>">Quiz Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url() . 'quiz/result_declaration_list'; ?>">Quiz Result Declaration</a></li>
+                <!-- <li class="breadcrumb-item active" aria-current="page">Quiz Result Declaration View</li> -->
+
+            </ol>
+        </nav>
+
     </div>
+    <!-- <div class="row">
+        <div class="col-md-12" style="text-align: end;">
+            <a class="btn btn-primary btn-sm mr-2">Export as PDF</a>
+            <a class="btn btn-info btn-sm mr-2">Print</a>
+        </div>
+    </div> -->
     <!-- Content Row -->
-    <div class="row" id="result">
-    <div class="bloginfo">
-                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Answer Key</h3>
-            </div>
+    <div class="row">
         <div class="col-12 mt-3">
             <div class="card border-top">
-            <?php if (!empty($answerKey)) { ?>
+                <?php if (!empty($answerKey)) { ?>
                     <div class="card-body">
                         <?php
                         $j = 1;
@@ -94,22 +106,12 @@ span.incorrect_answer:after {
                                 <div class="mb-2 col-md-12 d-flex">
                                     <label class="d-block text-font mt-2">Question <?= $j ?> :</label>
                                     <div class="ml-2 mt-2">
-                                        <?php if ($row['selected_lang'] == 0) {
-                                                if ($row['language_id'] == 1) {?>
-                                                    <div class="qustion-ans"> <?= $row['que']; ?> </div>
-                                               <?php } else { ?>
-                                                <div class="qustion-ans"> <?= $row['que_h']; ?> </div>
-                                               <?php  }
-                                            } else if ($row['selected_lang'] == 1) { ?>
-                                                <div class="qustion-ans"> <?= $row['que']; ?></div>
-                                               
-                                            <?php } else { ?>
-                                                <div class="qustion-ans"> <?= $row['que_h']; ?> </div>
-                                               
-                                            <?php } ?>
-                                      
+                                        <?php if ($row['language_id'] == 1 || $row['language_id'] == 3) { ?>
+                                            <div class="qustion-ans"> <?= $row['que'] ?> </div>
+                                        <?php } else { ?>
+                                            <div class="qustion-ans"> <?= $row['que_h'] ?> </div>
+                                        <?php }   ?>
                                         <?php if ($row['que_type'] == 2 || $row['que_type'] == 3) { ?>
-
                                             <img width="100" src="<?php echo base_url(); ?>uploads/que_img/bankid<?php echo $row['que_bank_id']; ?>/<?php echo $row['image']; ?>">
                                         <?php }  ?>
                                     </div>
@@ -210,7 +212,7 @@ span.incorrect_answer:after {
                                     } else {
 
                                         if ($row['opt4_e'] != "") {
-                                            $opt4_h = $row['opt4_h'];
+                                            $opt4_h = $row['opt4_e'];
                                         } else {
                                             $opt4_h = "NA";
                                         }
@@ -285,14 +287,16 @@ span.incorrect_answer:after {
                                                 $incorrect1++;
                                             } ?>>
 
-                                               
+                                                
                                                 <?php if ($correct1 > 0) { ?>
                                                     <span class="correct_answer">Correct Answer</span>
                                                 <?php } ?>
                                                 <?php if ($incorrect1 > 0) { ?>
                                                     <span class="incorrect_answer">Incorrect Answer</span>
                                                 <?php } ?>
+
                                                 <?php echo  $option1; ?>
+
 
                                             </li>
 
@@ -314,16 +318,14 @@ span.incorrect_answer:after {
                                                 echo "class='redBorder'";
                                                 $incorrect2++;
                                             } ?>>
+
                                                 <?php if ($correct2 > 0) { ?>
                                                     <span class="correct_answer">Correct Answer</span>
                                                 <?php } ?>
                                                 <?php if ($incorrect2 > 0) { ?>
                                                     <span class="incorrect_answer">Incorrect Answer</span>
                                                 <?php } ?>
-
                                                 <?php echo  $option2; ?>
-
-
                                             </li>
 
 
@@ -365,8 +367,7 @@ span.incorrect_answer:after {
                                             if (($row['corr_opt_e'] != $row['selected_op']) && ($row['selected_op'] == 4)) {
                                                 echo "class='redBorder'";
                                                 $incorrect4++;
-                                            } ?>>
-
+                                            } ?>> 
                                                 <?php if ($correct4 > 0) { ?>
                                                     <span class="correct_answer">Correct Answer</span>
                                                 <?php } ?>
@@ -374,6 +375,7 @@ span.incorrect_answer:after {
                                                     <span class="incorrect_answer">Incorrect Answer</span>
                                                 <?php } ?>
                                                 <?php echo  $option4; ?>
+
                                             </li>
 
 
@@ -394,6 +396,7 @@ span.incorrect_answer:after {
                                                 echo "class='redBorder '";
                                                 $incorrect5++;
                                             } ?>> 
+
                                                 <?php if ($correct5 > 0) { ?>
                                                     <span class="correct_answer">Correct Answer</span>
                                                 <?php } ?>
@@ -401,8 +404,19 @@ span.incorrect_answer:after {
                                                     <span class="incorrect_answer">Incorrect Answer</span>
                                                 <?php } ?>
                                                 <?php echo  $option5; ?>
+                                            </li>
 
-                                            </li>                                        
+
+                                            <!-- <li class="greenBorder">Mango<span class="correct_answer">Correct Answer</span></li>
+                                    <li>NA</li>
+                                    <li class="redBorder">Apple<span class="incorrect_answer">Correct Answer</span></li>
+                                    <li>NA</li> -->
+
+
+
+
+
+
                                         </ol>
                                     </div>
                                 </div>
@@ -430,14 +444,58 @@ span.incorrect_answer:after {
                         <?php $j++;
                         } ?>
 
-                       
+                        <!-- <div class="row" style="background: aliceblue;">
+                        <div class="mb-2 col-md-12 d-flex">
+                            <label class="d-block text-font mt-2">Question 2  :</label>
+                            <div class="ml-2 mt-2">
+                                <p class="qustion-ans"> sdds </p>        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-2 col-md-12">
+                            <label class="d-block text-font">Options :</label>
+                                                        <div>
+                                <ol>
+                                    <li>fwewef</li>
+                                    <li style="border:2px solid green; padding:10px;">Mango<span class="correct_answer">Correct Answer</span></li>
+                                    <li>NA</li>
+                                    <li style="border:2px solid red; padding:10px;">Apple<span class="incorrect_answer">Correct Answer</span></li>
+                                    <li>NA</li>
+                                </ol>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-2 col-md-4 d-flex">
+                            <div class="d-flex">
+                            <label class="d-block text-font">Correct Option :</label>
+                            <div class="ml-2">
+                                <p>1</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="mb-2 col-md-4 d-flex">
+                        <div class="d-flex">
+                            <label class="d-block text-font">Selected Option:</label>
+                            <div class="ml-2">
+                                <p>1</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div> -->
 
                     </div>
-                   
+                    <div class="col-md-12 submit_btn p-3">
+                        <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url(); ?>Quiz/closed_quiz_submission/<?= encryptids('E', $row['quiz_id']); ?>'">Back</a>
+                    </div>
 
                 <?php } else {  ?>
                     <p>Records are not available</p>
                 <?php } ?>
+
+
             </div>
         </div>
     </div>
@@ -446,26 +504,3 @@ span.incorrect_answer:after {
 
 </div>
 <!-- End of Main Content -->
-<!-- <script>
-    $('#sudo).click(function(){
-    window.print();
-    return false;
-});
-</script> -->
-<script>
-    $('#sudo').on('click',function(){
-    //     window.print();
-    // return false;
-    function printDiv() 
-{
-  var divToPrint=document.getElementById('result');
- var newWin=window.open('','Print-Window');
-  newWin.document.open();
-  newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
-  newWin.document.close();
-  setTimeout(function(){newWin.close();},10);
-}
-printDiv();
-    })
-    
-</script>

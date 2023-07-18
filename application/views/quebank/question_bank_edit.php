@@ -712,14 +712,20 @@
 
             var lan= '<?php echo  $row['language'];?>';
          
-             if(lan == 1 || lan == 3){
+             if(lan == 1 ){
                 $('#question-eng').show();
                 $('#question-hindi').hide();
                 CKEDITOR.replace('que');
              }
-             if(lan == 2 || lan == 3){
+             if(lan == 2 ){
                 $('#question-eng').hide();
                 $('#question-hindi').show();
+               CKEDITOR.replace('que_h');
+             }
+             if( lan == 3){
+                $('#question-eng').show();
+                $('#question-hindi').show();
+                CKEDITOR.replace('que');
                CKEDITOR.replace('que_h');
              }
            
@@ -1535,7 +1541,7 @@
                     if (language == 2 || language == 3) {
                         if (que_type == 1 || que_type == 3) {
                             //var que_h = $("#que_h").val();
-                            var que = CKEDITOR.instances['que'].getData();
+                            var que_h = CKEDITOR.instances['que_h'].getData();
                             if (que_h == "") {
                                 if ($("#que_h").next(".validation").length == 0) {
                                     $("#que_h").after("<div class='validation' style='color:red;margin-bottom:15px;'> This value is required.</div>");

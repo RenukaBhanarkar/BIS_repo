@@ -209,7 +209,7 @@ public function updateQuiz($id,$formdata)
     }
     public function getAnswerKeyForUser($user_id,$quiz_id){
 
-         $this->db->select(' 
+        $this->db->select(' 
         tbl_user_quiz.selected_op,tbl_user_quiz.quiz_id,tbl_user_quiz.user_id,
         tbl_que_details.*,
         tbl_quiz_details.language_id,
