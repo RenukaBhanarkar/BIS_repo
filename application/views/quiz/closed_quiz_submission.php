@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-12 mt-3">
             <div class="card border-top card-body table-responsive">
-                <table id="example" class="hover table-bordered" style="width:100%">
+                <table id="example_quiz" class="hover table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <!-- <th><input class="form-control-input" type="checkbox" value="" id="flexCheckDefault"></th> -->
@@ -92,4 +92,17 @@
     <!-- /.container-fluid -->
 
 </div>
+<script>
+    $(document).ready(function(){
+            $('#example_quiz').DataTable({
+            // scrollX:true,
+            // responsive:true
+            dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel'
+        ]
+        
+        });
+        })
+</script>
 <!-- End of Main Content -->

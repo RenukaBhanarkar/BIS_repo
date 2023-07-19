@@ -103,7 +103,7 @@
                     <?php } ?>
                     <div class="row">
                         <div class="col-12 mt-3 table-responsive">
-                            <table id="example" class="table-bordered display nowrap" style="width:100%">
+                            <table id="result_quiz" class="table-bordered display nowrap" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
@@ -195,3 +195,16 @@
 </div>
 </div>
 <!-- End of Main Content -->
+<script>
+    $(document).ready(function(){
+            $('#result_quiz').DataTable({
+            // scrollX:true,
+            // responsive:true
+            dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel'
+        ]
+        
+        });
+        })
+</script>
