@@ -1,3 +1,5 @@
+
+<!-- <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet"> -->
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -45,7 +47,7 @@
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top card-body">
-                    <table id="wow_table" class="table-bordered table-responsive nowrap">
+                    <table id="exampleDataTable" class="table-bordered table-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -540,8 +542,8 @@
             </div>
         </div>
     </div>
-
-
+    <!-- <script href="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+   
     <script type="text/javascript">
 $('#addpostform').removeClass('was-validated');
 $('.save').on('click',function(){
@@ -796,9 +798,14 @@ var loadFileThumbnail = function(event)
     </script>
     <script>
         $(document).ready(function(){
-            $('#wow_table').DataTable({
+            $('#exampleDataTable').DataTable({
             // scrollX:true,
-            responsive:true
+            // responsive:true
+            dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel'
+        ]
+        
         });
         })
         
