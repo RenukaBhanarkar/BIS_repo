@@ -30,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url();?>assets/admin/css/dashboard.css" rel="stylesheet">
     <script src="<?php echo base_url();?>assets/admin/js/jquery-3.5.1.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
+    <link href="<?php echo base_url();?>assets/admin/css/loader.css" rel="stylesheet">
     <!-- <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script> -->
     <!-- <script src="<?php echo base_url();?>assets/admin/vendor/jquery/jquery.min.js"></script>
  

@@ -157,6 +157,46 @@
     .sorting_asc{
         display: none;
     }
+
+    .loader-div{
+        display: none;
+        position: fixed;
+        margin: 0px;
+        padding: 0px;
+        right: 0px;
+        top:0px;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 300001;
+        opacity: 0.8;
+    }
+    .loader-img{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left:0;
+        right: 0;
+        margin: auto;
+    }
+    .loader{
+            /* display: none; */
+        position: fixed;
+        margin: 0px;
+        padding: 0px;
+        right: 0px;
+        top:0px;
+    width: 100%;
+height: 100%;
+background-color: #fff;
+z-index: 300001;
+opacity: 0.2;
+/* background:url('https://i.gifer.com/ZKZg.gif') 50% 50% no-repeat; */
+
+
+        }
+        
+    </style>
 </style>
 
 <section>
@@ -394,7 +434,12 @@
             </div>
         </div>
     </div>
-
+    <div class="loader-div">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="kjhjklhkh" style="height:120px; width:auto;" />
+        </div>
+        <div class="loader">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="kjhjklhkh" style="height:120px; width:auto;" />
+        </div>
 
 
 
@@ -800,7 +845,8 @@
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    Swal.fire('Saved!', '', 'success')
+                    $('.loader-div').show(); // Loder Display
+                    // Swal.fire('Saved!', '', 'success')
                     // return true;
                     $('#addwall').submit();
                     // return true
@@ -822,6 +868,10 @@
 
 
     }
+    $(document).ready(function(e){
+$(".loader").fadeOut("slow");
+// $('.loader-div').fadeOut("slow");
+        });
 </script>
 <script>
     $('#image_src2').on('change', function() {

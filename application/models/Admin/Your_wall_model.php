@@ -103,7 +103,8 @@ class Your_wall_model extends CI_Model {
         $this->db->update('tbl_your_wall',['status'=>'6'],['id'=>$id]);
     }
     public function all_archievd(){
-        $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        // $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        $this->db->select('tyw.id,tyw.status,tyw.user_id,tyw.title,tyw.image,tyw.reject_reason,tyw.created_on,tms.status_name,tu.user_name,tu.email');
         $this->db->from('tbl_your_wall tyw'); 
         $this->db->join('tbl_mst_status tms','tms.id=tyw.status');      
         $this->db->join('tbl_users tu','tu.user_id=tyw.user_id'); 
@@ -114,7 +115,8 @@ class Your_wall_model extends CI_Model {
         return $res;
     }
     public function allbycreated(){
-        $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        // $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        $this->db->select('tyw.id,tyw.status,tyw.user_id,tyw.title,tyw.image,tyw.reject_reason,tyw.created_on,tms.status_name,tu.user_name,tu.email');
         $this->db->from('tbl_your_wall tyw'); 
         $this->db->join('tbl_mst_status tms','tms.id=tyw.status');      
         $this->db->join('tbl_users tu','tu.user_id=tyw.user_id'); 
@@ -125,7 +127,8 @@ class Your_wall_model extends CI_Model {
         return $res;
     }
     public function allbyapproved(){
-        $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        // $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        $this->db->select('tyw.id,tyw.status,tyw.user_id,tyw.title,tyw.image,tyw.reject_reason,tyw.created_on,tms.status_name,tu.user_name,tu.email');
         $this->db->from('tbl_your_wall tyw'); 
         $this->db->join('tbl_mst_status tms','tms.id=tyw.status');      
         $this->db->join('tbl_users tu','tu.user_id=tyw.user_id'); 
@@ -138,7 +141,8 @@ class Your_wall_model extends CI_Model {
         return $res;
     }
     public function allbyrejected(){
-        $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        // $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.email');
+        $this->db->select('tyw.id,tyw.status,tyw.user_id,tyw.title,tyw.image,tyw.reject_reason,tyw.created_on,tms.status_name,tu.user_name,tu.email');
         $this->db->from('tbl_your_wall tyw'); 
         $this->db->join('tbl_mst_status tms','tms.id=tyw.status');      
         $this->db->join('tbl_users tu','tu.user_id=tyw.user_id'); 
@@ -185,7 +189,8 @@ class Your_wall_model extends CI_Model {
     }
     public function ckeckDailyLimit($user_id){
         $from=date('Y-m-d');
-        $query="select * from `tbl_your_wall` where `user_id`=".$user_id." AND `created_on` LIKE "."'%".date('Y-m-d')."%'";
+        // $query="select * from `tbl_your_wall` where `user_id`=".$user_id." AND `created_on` LIKE "."'%".date('Y-m-d')."%'";
+        $query="select `id` from `tbl_your_wall` where `user_id`=".$user_id." AND `created_on` LIKE "."'%".date('Y-m-d')."%'";
         $query1=$this->db->query($query);
          $res=$query1->result_array();
         //  return count($result);
