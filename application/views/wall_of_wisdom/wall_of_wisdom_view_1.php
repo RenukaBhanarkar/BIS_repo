@@ -253,7 +253,7 @@
                     <?php } ?>
                     <div class="" style="text-align:end;">
                 <!-- <a href="<?php echo base_url(); ?>users/standard" class="btn-primary btn-sm">Back</a> -->
-                <button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;"><a href="<?php echo base_url(); ?>wall_of_wisdom/wallOfWisdom">Back</a></button>
+                <a href="<?php echo base_url(); ?>wall_of_wisdom/wallOfWisdom"><button class="btn btn-primary btn-sm text-white mr-3 mt-2" style="float:right;">Back</button></a>
             </div>
                     </div>
                 </div>
@@ -292,6 +292,7 @@
     }
 
     if(cardstatus==1){
+        $(this).attr('ct',0);
         $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url(); ?>Wall_of_wisdom/unlikes',
@@ -309,7 +310,7 @@
                     }
                 });
     }else{
-
+        $(this).attr('ct',1);
                 console.log(cid);
             $.ajax({
                     type: 'POST',

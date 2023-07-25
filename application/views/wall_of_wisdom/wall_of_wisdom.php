@@ -1,3 +1,5 @@
+
+<!-- <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet"> -->
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -45,7 +47,7 @@
         <div class="row">
             <div class="col-12 mt-3">
                 <div class="card border-top card-body">
-                    <table id="wow_table" class="table-bordered table-responsive nowrap">
+                    <table id="exampleDataTable" class="table-bordered table-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -540,14 +542,22 @@
             </div>
         </div>
     </div>
-
-
+    <div class="loader-div">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="kjhjklhkh" style="height:120px; width:auto;" />
+        </div>
+        <div class="loader">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="kjhjklhkh" style="height:120px; width:auto;" />
+        </div>
+    <!-- <script href="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+   
     <script type="text/javascript">
 $('#addpostform').removeClass('was-validated');
 $('.save').on('click',function(){
     $('#addpostform').addClass('was-validated');
 })
-
+$(document).ready(function(e){
+    $(".loader").fadeOut("slow");
+});
 // function sendArchive(que_id) {
             
 //                 $('#archive').modal('show');
@@ -782,6 +792,7 @@ var loadFileThumbnail = function(event)
                             if (result.isConfirmed) {
                              //  Swal.fire('Saved!', '', 'success') 
                                 // return true;
+                                $('.loader-div').show();
                                 $('#addpostform').submit();
                                 // return true;
                             } else if (result.isDenied) {
@@ -796,9 +807,14 @@ var loadFileThumbnail = function(event)
     </script>
     <script>
         $(document).ready(function(){
-            $('#wow_table').DataTable({
+            $('#exampleDataTable').DataTable({
             // scrollX:true,
-            responsive:true
+            // responsive:true
+            dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel'
+        ]
+        
         });
         })
         
@@ -940,6 +956,7 @@ var loadFileThumbnail = function(event)
                             }).then((result) => {
                             /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
+                                $('.loader-div').show();
                              //  Swal.fire('Saved!', '', 'success') 
                                 // return true;
                                 $('#updatepost').submit();
@@ -1062,7 +1079,7 @@ var loadFileThumbnail = function(event)
 
         //     })
         // }
-        $('#wow_table').on('click','.approve',function(){
+        $('#exampleDataTable').on('click','.approve',function(){
             var id = $(this).attr('data-id');
             Swal.fire({
                     title: 'Are you sure you want to approve?',
@@ -1231,7 +1248,7 @@ var loadFileThumbnail = function(event)
                 </script>
 
     <script>
-        $('#wow_table').on('click','.delete',function(){
+        $('#exampleDataTable').on('click','.delete',function(){
             var id=$(this).attr('data-id');
             
             Swal.fire({
@@ -1265,7 +1282,7 @@ var loadFileThumbnail = function(event)
 
         });
 
-        $('#wow_table').on('click','.unpublish_record',function(){
+        $('#exampleDataTable').on('click','.unpublish_record',function(){
             var id=$(this).attr('data-id');
             
             Swal.fire({
@@ -1299,7 +1316,7 @@ var loadFileThumbnail = function(event)
 
         });
 
-        $('#wow_table').on('click','.publish',function(){
+        $('#exampleDataTable').on('click','.publish',function(){
             var id=$(this).attr('data-id');
             
             Swal.fire({
@@ -1333,7 +1350,7 @@ var loadFileThumbnail = function(event)
 
         });
 
-        $('#wow_table').on('click','.archive',function(){
+        $('#exampleDataTable').on('click','.archive',function(){
             var id=$(this).attr('data-id');
             
             Swal.fire({
@@ -1367,7 +1384,7 @@ var loadFileThumbnail = function(event)
 
         });
 
-        $('#wow_table').on('click','.send_approval',function(){
+        $('#exampleDataTable').on('click','.send_approval',function(){
             var id=$(this).attr('data-id');
             
             Swal.fire({
@@ -1378,7 +1395,8 @@ var loadFileThumbnail = function(event)
                     denyButtonText: `Cancel`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {   
+                    if (result.isConfirmed) { 
+                        $('.loader-div').show();  
                         $.ajax({
                              type: 'POST',
                             url: '<?php echo base_url(); ?>Wall_of_wisdom/approvewall_of_wisdom',

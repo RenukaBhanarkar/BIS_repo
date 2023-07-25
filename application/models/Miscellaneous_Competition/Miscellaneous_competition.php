@@ -35,7 +35,9 @@ class Miscellaneous_competition extends CI_Model {
     }
     public function getCompetition($id){
         //echo $id; die;
-        $this->db->select('tmcd.*,tms.status_name,tmql.title,tmql.title,tmqa.title as avai_for,tmct.comp_type_name');
+        // commented for indexing below line
+        // $this->db->select('tmcd.*,tms.status_name,tmql.title,tmql.title,tmqa.title as avai_for,tmct.comp_type_name');
+        $this->db->select('tmcd.id,tmcd.comp_id,tmcd.competiton_name,tmcd.start_date,tmcd.end_date,tmcd.start_time,tmcd.end_time,tmcd.thumbnail,tmcd.status,tms.status_name,tmql.title,tmql.title,tmqa.title as avai_for,tmct.comp_type_name');
         $this->db->from('tbl_mst_competition_detail tmcd');
         $this->db->join('tbl_mst_status tms','tms.id=tmcd.status','left');
         //$this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
@@ -59,11 +61,12 @@ class Miscellaneous_competition extends CI_Model {
             return false;
         }
     }
-    public function manageCompetition(){
+    public function manageCompetition_old_before_index(){
         $t=time();
         $current_time = (date("H:i:s",$t));
 
-        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); 
+        // $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); //commented for indexing
+        $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name');
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
         $this->db->where_in('tbl_mst_competition_detail.status',array(2,3,4,5,6,1));
         $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tbl_mst_competition_detail.comp_level');
@@ -76,6 +79,36 @@ class Miscellaneous_competition extends CI_Model {
         // return $this->db->get('tbl_mst_competition_detail')->result_array();
         $rs=array();
         $res=$this->db->get('tbl_mst_competition_detail')->result_array();
+
+        foreach($res as $row){
+            if($row['end_date'] == date("Y-m-d") ){
+                 if($row['end_time'] >= $current_time){
+                     array_push($rs,$row);
+                 }
+             }else{
+                 array_push($rs,$row);
+             }
+         }
+         return $rs;
+    }
+    public function manageCompetition(){
+        $t=time();
+        $current_time = (date("H:i:s",$t));
+
+        // $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name'); //commented for indexing
+        $this->db->select('tmcd.id,tmcd.comp_id,tmcd.competiton_name,tmcd.start_date,tmcd.end_date,tmcd.start_time,tmcd.end_time,tmcd.thumbnail,tmcd.type,tmcd.available_for,tmcd.comp_level,tmcd.status,tmcd.reject_reason,tbl_mst_status.status_name,tmql.title,tmqa.title as avai_for,tmct.comp_type_name');
+        $this->db->join('tbl_mst_status','tbl_mst_status.id = tmcd.status'); 
+        $this->db->where_in('tmcd.status',array(2,3,4,5,6,1));
+        $this->db->join('tbl_mst_quiz_level tmql','tmql.id=tmcd.comp_level');
+        $this->db->join('tbl_mst_quiz_availability tmqa','tmqa.id=tmcd.available_for');
+        $this->db->join('tbl_mst_competition_type tmct','tmct.id=tmcd.type');
+        $this->db->where('tmcd.end_date >=' ,date("Y-m-d"));
+        $this->db->order_by('created_on','desc');
+
+       // $this->db->where('tbl_mst_competition_detail.start_date >=' ,date("Y-m-d")); 
+        // return $this->db->get('tbl_mst_competition_detail')->result_array();
+        $rs=array();
+        $res=$this->db->get('tbl_mst_competition_detail tmcd')->result_array();
 
         foreach($res as $row){
             if($row['end_date'] == date("Y-m-d") ){

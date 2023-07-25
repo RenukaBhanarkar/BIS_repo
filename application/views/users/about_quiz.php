@@ -6,10 +6,20 @@
             <p style="margin-bottom: 4px; margin-top: 2px;">Helpdesk no : +91-9810526033/ +91-9028017809</p>
         </div>
             <section id="banner-section">
-            <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
+            
+
+                <div class="row">
+                    
+                    <div class="col-md-5">
+                        <div class="quiz-image shadow">
+                            <img src="../../<?= $quizdata['banner_img']; ?>" class="image-section" alt="Bis Quiz Images" />
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                    <?php $user_type = encryptids("D", $this->session->userdata('admin_type'));
                 if ($user_type != "") { ?>
                 <?php if ($quizdata['language_id'] == 3) { ?>
-                    <div class="float-end" id="QuizLang">
+                    <div class="" id="QuizLang">
                         <label class="d-block text-font mr-3">Please Select Language</label>
                         <select class="form-control input-font" id="selectedLang" id="selectedLang" placeholder="Language">
                             <option value="1">English</option>
@@ -18,14 +28,6 @@
                     </div>
                 <?php } ?>
                 <?php } ?>
-
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="quiz-image shadow">
-                            <img src="../../<?= $quizdata['banner_img']; ?>" class="image-section" alt="Bis Quiz Images" />
-                        </div>
-                    </div>
-                    <div class="col-md-7">
                         <div class="Quiz_text">
                             <h3 class="main-title"><?= $quizdata['title']; ?></h3>
                             <p class="time-and-qus" style="color:white;">

@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url();?>assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/admin/css/jquery.dataTables.min.css" rel="stylesheet">
-    
+    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -30,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url();?>assets/admin/css/dashboard.css" rel="stylesheet">
     <script src="<?php echo base_url();?>assets/admin/js/jquery-3.5.1.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/ckeditor/ckeditor.js"></script>
+    <link href="<?php echo base_url();?>assets/admin/css/loader.css" rel="stylesheet">
     <!-- <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script> -->
     <!-- <script src="<?php echo base_url();?>assets/admin/vendor/jquery/jquery.min.js"></script>
  

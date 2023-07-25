@@ -11,7 +11,8 @@ class Wall_of_wisdom_model extends CI_Model {
         }
     }
     public function getAllWOW(){
-        $this->db->select('wow.*,tms.status_name');
+        // $this->db->select('wow.*,tms.status_name');
+        $this->db->select('wow.id,wow.title,wow.image,wow.created_on,wow.reject_reason,wow.likes,wow.status,tms.status_name');
         $this->db->from('tbl_wall_of_wisdom wow');
         $this->db->join('tbl_mst_status tms','tms.id=wow.status');
         $this->db->where('status!=',9); 
@@ -154,7 +155,8 @@ class Wall_of_wisdom_model extends CI_Model {
          return $result[0];
     }
     public function archive(){
-        $this->db->select('wow.*,tms.status_name');
+        // $this->db->select('wow.*,tms.status_name');
+        $this->db->select('wow.id,wow.title,wow.image,wow.created_on,wow.reject_reason,wow.likes,wow.status,tms.status_name');
         $this->db->from('tbl_wall_of_wisdom wow');
         $this->db->join('tbl_mst_status tms','tms.id=wow.status');   
         $this->db->where('status',9);    
@@ -290,7 +292,8 @@ class Wall_of_wisdom_model extends CI_Model {
         $rs=array();
         if(!empty($res)){
             foreach($res as $list){
-                $this->db->select('*');
+                // $this->db->select('*');
+                $this->db->select('id');
                 $this->db->from('tbl_wall_of_wisdom_likes');
                 $this->db->where('card_id',$list['id']);
                 $this->db->where('user_id',$uid);

@@ -961,6 +961,9 @@ footer .main_footer .f_contact ul li i {
 	object-fit: cover;
 	border-radius: 6px;
 }
+/* #QuizLang{
+	float: right!important;
+} */
 
 /* media mobile start */
 @media (min-width: 200px) and (max-width: 320px) {
@@ -968,6 +971,11 @@ footer .main_footer .f_contact ul li i {
     font-size: 12px;
 }
 }
+@media (min-width: 768px) and (max-width: 1921px) {
+	#QuizLang{
+		float: right!important;
+	}
+	}
 @media (min-width: 320px) and (max-width: 576px) {
 	.logo_name {
 		display: none;

@@ -29,7 +29,7 @@
                             </div>
                     </div> -->
                             <hr>
-                    <table id="example" class="hover table-bordered" style="width:100%">
+                    <table id="example_log" class="hover table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
@@ -68,8 +68,19 @@
     <!-- /.container-fluid -->
 
     </div>
-    <!-- End of Main Content -->
- <!-- </body> -->
+<script>
+    $(document).ready(function(){
+            $('#example_log').DataTable({
+            // scrollX:true,
+            // responsive:true
+            dom: 'Bfrtip',
+        buttons: [
+            'csv', 'excel'
+        ]
+        
+        });
+        })
+</script>
                                 
                                   
                                     
