@@ -73,8 +73,6 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                             <input type="hidden" value="<?= $user_id; ?>" name="user_id">
                             <input type="hidden" value="<?= $quizdata['id'] ?>" name="quiz_id">
 
-
-
                             <?php $i = 1;
                             $marks = $quizdata['total_mark'] / $quizdata['total_question'];
                             ?>
