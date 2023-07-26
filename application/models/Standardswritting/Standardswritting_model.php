@@ -548,38 +548,21 @@ public function getAllManageQuiz()
         $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
         $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
         $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
-        $this->db->order_by('tbl_standards_writting_online.created_on', 'DESC');
-        // $query = $this->db->get('tbl_standards_writting_online')->result_array();
-       // $this->db->limit(4);
-
-            // $rs = array();
-            // $query = $this->db->get();
-            // if ($query->num_rows() > 0) {
-            //     $rs = $query->result_array();
-            // }
-            // return $rs;
+        $this->db->order_by('tbl_standards_writting_online.created_on', 'DESC'); 
             $res = array();
             $rs = array();
-            $query=$this->db->get();
-            // echo $query->num_rows();
-            // exit();
+            $query=$this->db->get(); 
             if($query->num_rows() > 0){
                 $res = $query->result_array();
-
-                //echo json_encode($res);exit();
                 foreach($res as $row){
                     if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
-                        // if(($row['start_time'] >= $current_time) && ($row['end_time'] >= $current_time) ){
-                        //     array_push($rs,$row);
-                        // }
+
                         if(($row['end_time'] >= $current_time) ){
                             array_push($rs,$row);
                         }
                     }
-                    if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){
-                        // if($row['start_time'] <= $current_time){
-                            array_push($rs,$row);
-                       // }
+                    if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){ 
+                            array_push($rs,$row); 
                     }
                     if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
                        
@@ -596,10 +579,7 @@ public function getAllManageQuiz()
                         array_push($rs,$row);
                     
                 }
-                    // else{
-                    //     array_push($rs,$row);
-                    // }
-                }
+            }
             }
             $res = array();
             if(count($rs) > 4){
@@ -611,8 +591,6 @@ public function getAllManageQuiz()
             }else {
                 return $rs;
             }
-            
-            
         }
     public function StandardswrittingCompSave($formdata)
     {
@@ -856,16 +834,94 @@ public function getAllManageQuiz()
         return $query->result_array();
     }
 
+    
+
+
+
+
+    // Front End pages Code
     public function checkAttemptCompetitionOnline($user_id,$comp_id)
     {
+        $this->db->select('user_id,comp_id');
         $this->db->where('user_id ', $user_id);
         $this->db->where('comp_id ', $comp_id);
         return $this->db->get('tbl_standard_writing_competition_online')->result_array();
     }
-
-    public function getUserDetails($id)
+public function getUserDetails($id)
     {
+        $this->db->select('standard_club_name,member_id');
+        $this->db->from('tbl_standards_writting_online');
         $this->db->where('user_id', $id);
         return $quiz = $this->db->get('tbl_users')->row_array();
+    }
+
+    public function getFrontPublishedOnlineCompitation()
+    {
+        $t = time();
+        $current_time = (date("H:i:s", $t));
+        $this->db->select('tbl_standards_writting_online.banner_img,
+            tbl_standards_writting_online.id,
+            tbl_standards_writting_online.title,
+            tbl_standards_writting_online.start_date,
+            tbl_standards_writting_online.end_date,
+            tbl_mst_status.status_name,tbl_mst_quiz_availability.title as availability,tbl_mst_quiz_level.title as level');
+        $this->db->from('tbl_standards_writting_online');
+        $this->db->where('status ', 5);
+        $this->db->where('end_date >=', date("Y-m-d"));
+        // $this->db->where('start_date <=', date("Y-m-d"));
+        $this->db->join('tbl_mst_status', 'tbl_mst_status.id = tbl_standards_writting_online.status');
+        $this->db->join('tbl_mst_quiz_level', 'tbl_mst_quiz_level.id = tbl_standards_writting_online.quiz_level_id');
+        $this->db->join('tbl_mst_quiz_availability', 'tbl_mst_quiz_availability.id = tbl_standards_writting_online.availability_id');
+        $this->db->order_by('tbl_standards_writting_online.created_on', 'DESC'); 
+            $res = array();
+            $rs = array();
+            $query=$this->db->get(); 
+            if($query->num_rows() > 0){
+                $res = $query->result_array();
+                foreach($res as $row){
+                    if(($row['start_date'] == date("Y-m-d") &&  $row['end_date'] == date("Y-m-d")) ){
+
+                        if(($row['end_time'] >= $current_time) ){
+                            array_push($rs,$row);
+                        }
+                    }
+                    if(($row['start_date'] == date("Y-m-d") ) &&  $row['end_date'] > date("Y-m-d")){ 
+                            array_push($rs,$row); 
+                    }
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                       
+                            array_push($rs,$row);
+                        
+                    }
+                    if(($row['start_date'] < date("Y-m-d") ) && ($row['end_date'] == date("Y-m-d") )){
+                        if($row['end_time'] >= $current_time){
+                            array_push($rs,$row);
+                        }
+                    }
+                    if(($row['start_date'] > date("Y-m-d") ) && ($row['end_date'] > date("Y-m-d") )){
+                      
+                        array_push($rs,$row);
+                    
+                }
+            }
+            }
+            $res = array();
+            if(count($rs) > 4){
+                array_push($res,$rs[0]);
+                array_push($res,$rs[1]);
+                array_push($res,$rs[2]);
+                array_push($res,$rs[3]);
+                return $res;  
+            }else {
+                return $rs;
+            }
+        }
+
+
+        public function getOnlineData($id)
+    {
+        $this->db->select('id,title,start_date,end_date,duration,quiz_level_id,region_id,branch_id,state_id,availability_id,standard,end_date,end_time,start_date,end_date');
+        $this->db->where('id ', $id);  
+        return $this->db->get('tbl_standards_writting_online')->row_array();
     }
 }
