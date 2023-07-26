@@ -1991,6 +1991,10 @@ class Admin extends CI_Controller
         $formdata['banner_images'] = $banner_img;
 
         $this->Admin_model->bannerinsertData($formdata);
+        $this->db->cache_delete('admin', 'banner_image_list');
+        $this->db->cache_delete('users', 'standard');
+        $this->db->cache_delete('admin', 'cmsManagenent_dashboard');
+        // $this->db->cache_delete('admin', 'index');
         $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
         redirect(base_url() . "admin/banner_image_list", 'refresh');
     }
@@ -2454,6 +2458,7 @@ class Admin extends CI_Controller
     }
     public function unset_useful(){
         $this->session->unset_userdata('usefullinks');
+        $this->session->unset_userdata('followus_links');
     }
     public function add_useful_links()
     {

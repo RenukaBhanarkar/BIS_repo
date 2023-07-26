@@ -53,7 +53,7 @@ class Miscellaneous_competition extends CI_Model {
        // return $this->db->get("tbl_que_bank")->where('status',$id)->result_array();
     }
     public function update_status($data){
-
+        $this->db->cache_delete('users','standard'); //cached data deleted when changes 
         if($this->db->where('comp_id',$data['comp_id'])){
             $this->db->update('tbl_mst_competition_detail',$data);
             return true;
@@ -320,6 +320,7 @@ class Miscellaneous_competition extends CI_Model {
         return $rs;  
     }
     public function getPublishedComp1($limit,$type){
+        $this->db->cache_on();
         $t = time();
 
         $current_time = (date("H:i:s", $t));
@@ -389,6 +390,7 @@ class Miscellaneous_competition extends CI_Model {
             }
         }
         }
+        $this->db->cache_off();
         return $rs;  
     }
 
