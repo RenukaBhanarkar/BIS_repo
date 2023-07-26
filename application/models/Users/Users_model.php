@@ -114,6 +114,19 @@
             }
             return $row;
         }
+        public function getUsersDetailsByUserIdNew($user_id)
+        {
+            $this->db->select('id');
+            $this->db->where('user_id', $user_id);
+            $this->db->where('status_id', 1);
+            $query = $this->db->get('tbl_users');
+            $row = array();
+            if ($query->num_rows() > 0) {
+                $row = $query->row_array();
+            }
+            return $row;
+        }
+        
         public function prizeDetails($quiz_id)
         {
             $this->db->where('quiz_id', $quiz_id);
@@ -140,14 +153,59 @@
 
         // }
        
-       
-        
-        public function insertQuestion($formdata)
-        {
-            $this->db->insert('tbl_user_quiz', $formdata);
-            return $insert_id = $this->db->insert_id();
-        }
+        public function  toCheckExistedQuestionNew($user_id,$quiz_id,$ques_id,$selected_op,$corr_opt){
+            $this->db->select('user_id');
+            $this->db->from('tbl_user_quiz');
+            $this->db->where('user_id',$user_id);
+            $this->db->where('quiz_id',$quiz_id);
+            $this->db->where('ques_id',$ques_id);
+            $query = $this->db->get();
+           
+            $rs = array();
+            if($query->num_rows() >0 ) {
+                //return true;  
+                $formdata = array();
+                      
+                $formdata['selected_op'] = $selected_op;
+                $formdata['corr_opt'] = $corr_opt; 
 
+                 $this->db->where('user_id', $user_id);
+                $this->db->where('quiz_id', $quiz_id);
+                $this->db->where('ques_id', $ques_id);
+                    if ($this->db->update('tbl_user_quiz', $formdata)) {
+                        return true;
+                    } else {
+                        return false;
+                    }                
+            }else{
+                //return false;
+                     $formdata = array();
+                    $formdata['user_id'] = $user_id;
+                    $formdata['quiz_id'] = $quiz_id;
+                    $formdata['ques_id'] = $ques_id;
+                    $formdata['selected_op'] = $selected_op;
+                    $formdata['corr_opt'] = $corr_opt;
+                    $this->db->insert('tbl_user_quiz', $formdata);
+                    return $insert_id = $this->db->insert_id();
+            }
+         }
+        
+        // public function insertQuestion($formdata)
+        // {
+        //     $this->db->insert('tbl_user_quiz', $formdata);
+        //     return $insert_id = $this->db->insert_id();
+        // }
+        // public function updateQuestionOfUserNew($user_id,$quiz_id,$ques_id,$data){
+
+        //     $this->db->where('user_id', $user_id);
+        //     $this->db->where('quiz_id', $quiz_id);
+        //     $this->db->where('ques_id', $ques_id);
+        //         if ($this->db->update('tbl_user_quiz', $data)) {
+        //             return true;
+        //         } else {
+        //             return false;
+        //         }
+        //  }
 
         public function getAllQuize()
         {
@@ -1305,6 +1363,14 @@
             $current_time = date("Y-m-d H:i:s");
 
             $query = $this->db->query("SELECT * FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id' AND quiz_end_time > '$current_time'");
+            return $query->row_array();
+        }
+        public function CheckUserPartiallyAppearNewQuery($quiz_id, $user_id)
+        {
+                     
+            $current_time = date("Y-m-d H:i:s");
+
+            $query = $this->db->query("SELECT user_id FROM  tbl_users_quiz_que_list WHERE user_id='$user_id' AND quiz_id='$quiz_id' AND quiz_end_time > '$current_time'");
             return $query->row_array();
         }
 
