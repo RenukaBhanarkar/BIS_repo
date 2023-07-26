@@ -10,6 +10,40 @@
         margin-top: -25px;
         margin-right: 16px;
     }
+    #captcha{
+        margin-top: -35px;
+    margin-left: -58px;
+    margin-bottom: -68px;
+    z-index: -3;
+    }
+    .captcha{
+        display: flex;
+    }
+    #refreshButton{
+        margin: 7px;
+    }
+    /* .captcha {
+    height: 50px;
+    width: 162px;
+    z-index: -1;
+}
+.captcha {
+    position: absolute;
+    bottom: -55px;
+    display: flex;
+}
+.captcha #captcha {
+    height: fit-content;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 185px;
+}
+#refreshButton {
+    position: relative;
+    left: 150px;
+} */
 </style>
 <div id="login_main_section">
     <div class="container-fluid">
@@ -46,6 +80,19 @@
                                 <i class="fa fa-eye-slash password"></i>
                                 <span id="err_password" class="text-danger"></span>
                             </div>
+                            <div class="captcha">
+                                    <canvas id="captcha">captcha text</canvas>
+                                    <button class="btn btn-secondary" id="refreshButton" type="button"
+                                        title="Refresh Captcha"><i class="fa fa-refresh"></i></button>
+                                </div>
+                            <div class="from-group mb-2">
+                                <input type="text" class="form-control form-control-md" name="text" id="textBox" autocomplete="off"
+                                    oninput="this.value = this.value.replace(/[^A-Za-z0-9]/, '')" maxlength="7">
+                                <span class="focus-border focus_p"></span>
+                                
+
+                                <span class="text-danger" id="output"></span>
+                            </div>
                             <?php if(isset($id) && !empty($id)){ ?>
                                 <input type="hidden" id="quizid" name="quizid" value="<?= $id;?>"/>
                             <?php }else if(isset($comp_id) && !empty($comp_id)){ ?>
@@ -55,7 +102,7 @@
 
                             <!-- <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a> -->
                             <a href="https://www.services.bis.gov.in/php/BIS_2.0/forget-password" class="forgetPassword">Forgot Password ?</a>
-
+                            
                             <div class="button_section text-center mt-3" style="margin-bottom: 13px; padding-top: 10px;">
                                 <button class="btn btn_green" onclick="return submitButton()" type="submit">
                                     log in
@@ -194,5 +241,62 @@ document.onmousedown = rtclickcheck;
                 ele.classList.remove('fa-eye');
             }
         });
+    });
+
+     // captcha start 
+
+    // document.querySelector() is used to select an element from the document using its ID
+    let captchaText = document.querySelector('#captcha');
+    var ctx = captchaText.getContext("2d");
+    ctx.font = "40px Roboto";
+    ctx.fillStyle = "#000000";
+    let userText = document.querySelector('#textBox');
+
+    let output = document.querySelector('#output');
+    let refreshButton = document.querySelector('#refreshButton');
+
+
+    // alphaNums contains the characters with which you want to create the CAPTCHA
+    let alphaNums = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '2', '3', '4', '5', '6', '7', '8', '9'];
+    let emptyArr = [];
+
+    // This loop generates a random string of 7 characters using alphaNums
+    // Further this string is displayed as a CAPTCHA
+    for (let i = 1; i <= 7; i++) {
+        emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+    }
+    var c = emptyArr.join('');
+    ctx.fillText(emptyArr.join(''), captchaText.width / 4, captchaText.height / 2);
+
+
+    // This event listener is stimulated whenever the user press the "Enter" button
+    // "Correct!" or "Incorrect, please try again" message is
+    // displayed after validating the input text with CAPTCHA
+    userText.addEventListener('keyup', function (e) {
+        // Key Code Value of "Enter" Button is 13
+        if (e.keyCode === 13) {
+            if (userText.value !== c) {
+                output.classList.add("incorrectCaptcha");
+                output.innerHTML = "Incorrect, please try again";
+            }
+            // if (userText.value === c) {
+            //     output.classList.add("correctCaptcha");
+            //     output.innerHTML = "Correct!";
+            // } else {
+            //     output.classList.add("incorrectCaptcha");
+            //     output.innerHTML = "Incorrect, please try again";
+            // }
+        }
+    });
+    refreshButton.addEventListener('click', function () {
+        userText.value = "";
+        let refreshArr = [];
+        for (let j = 1; j <= 7; j++) {
+            refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+        }
+        ctx.clearRect(0, 0, captchaText.width, captchaText.height);
+        c = refreshArr.join('');
+        ctx.fillText(refreshArr.join(''), captchaText.width / 4, captchaText.height / 2);
+        output.innerHTML = "";
     });
 </script>
