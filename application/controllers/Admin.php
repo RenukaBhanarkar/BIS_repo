@@ -2439,9 +2439,21 @@ class Admin extends CI_Controller
     }
     public function useful_links_web()
     {
-        $this->load->model('admin_model');
-        $data = $this->admin_model->useful_links_web();
-        echo $data;
+        // $this->load->model('admin_model');
+        // $data = $this->admin_model->useful_links_web();
+        // print_r($data); die;
+        // echo $data;        
+        if(isset($_SESSION['usefullinks'])){            
+            echo $_SESSION['usefullinks'];           
+        }else{           
+            $this->load->model('admin_model');
+            $data = $this->admin_model->useful_links_web(); 
+            $_SESSION['usefullinks']=$data;                 
+            echo $_SESSION['usefullinks'];
+        }
+    }
+    public function unset_useful(){
+        $this->session->unset_userdata('usefullinks');
     }
     public function add_useful_links()
     {
@@ -2586,10 +2598,20 @@ class Admin extends CI_Controller
     }
     public function followus_links_web()
     {
-        $this->load->model('admin_model');
+        if(isset($_SESSION['followus_links'])){
+            echo $_SESSION['followus_links'];
+        }else{
+            $this->load->model('admin_model');
         $data = $this->admin_model->followus_links_web();
         // print_r($data); 
+        $_SESSION['followus_links']=$data;
         echo $data;
+        }
+        // -----old method-----without storing session
+        // $this->load->model('admin_model');
+        // $data = $this->admin_model->followus_links_web();
+        // // print_r($data); 
+        // echo $data;
     }
     public function add_follow_us()
     {
