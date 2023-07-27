@@ -86,7 +86,7 @@
                             </div>
                             <div class="from-group mb-2">
                                 <input type="text" class="form-control form-control-md" name="text" id="textBox" autocomplete="off"
-                                    oninput="this.value = this.value.replace(/[^A-Za-z0-9]/, '')" maxlength="7">
+                                    oninput="this.value = this.value.replace(/[^A-Za-z0-9]/, '')" maxlength="7" placeholder="Enter Captcha">
                                 <span class="focus-border focus_p"></span>
                                 
 

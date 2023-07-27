@@ -921,7 +921,7 @@ footer .main_footer .f_contact ul li i {
 	}
 }
 .navbar-collapse {
-	z-index: 1;
+	z-index: 5;
 }
 
 #header_section {
@@ -2678,9 +2678,7 @@ label.d-block.text-font {
 	.language_font{
 		font-size: 12px;
 	}
-	header .sub_header ul li a {
-		font-size: 12px;
-	}
+	
 	.accessibility{
 		padding-top:8px;
 	  }
