@@ -57,7 +57,11 @@ function rtclickcheck(keyp) {
         return false;
     }
 }
+$(document).ready(function(e){
+    $(".loader").fadeOut("fast");
+});
 </script>
+
     <!-- Scroll to Top Button-->
   
 

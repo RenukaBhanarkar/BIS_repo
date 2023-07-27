@@ -38,7 +38,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body id="page-top">
-
+<div class="loader-div">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.." />
+        </div>
+        <div class="loader">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.."/>
+        </div>
 <!-- Page Wrapper -->
 <div id="wrapper">
         <?php 
