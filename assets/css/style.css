@@ -1023,9 +1023,9 @@ footer .main_footer .f_contact ul li i {
 		background: #07070a;
 	}
 	.navbar-collapse {
-		background: #000000e6;
+		background: #6a5acd;
 		position: absolute;
-		top: 59px;
+		/* top: 59px; */
 		right: 0px;
 	}
 	.navbar-light .navbar-nav .nav-link {
