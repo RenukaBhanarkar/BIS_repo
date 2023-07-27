@@ -524,13 +524,17 @@ class Admin_model extends CI_Model {
 
      public function  bannerAllData()
      {
+        $this->db->cache_on();
         $myQuery = "SELECT * FROM  tbl_banner_img ";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();
+        $this->db->cache_off();
         return $result;
      }
 
      public function deleteBanner($id){
+        $this->db->cache_delete('admin', 'banner_image_list');
+        $this->db->cache_delete('users', 'standard');
         $this->db->where('id', $id);
          if ($this->db->delete('tbl_banner_img')) {
              return true;
@@ -660,9 +664,11 @@ class Admin_model extends CI_Model {
         return $result;
      }
      public function useful_links_web(){
+        $this->db->cache_on();
         $myQuery = "SELECT * FROM  tbl_useful_links";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();
+        $this->db->cache_off();
         return json_encode($result);
      }
 
@@ -676,6 +682,8 @@ class Admin_model extends CI_Model {
      }
 
      public function updateUsefulLinks($data){
+        $this->db->cache_delete('admin', 'useful_links_web');
+        
         $this->db->where('id', $data['id']);
         if ($this->db->update('tbl_useful_links', $data)) {
             return true;
@@ -685,6 +693,7 @@ class Admin_model extends CI_Model {
      }
 
      public function add_useful_links($data){
+        $this->db->cache_delete('admin', 'useful_links_web');
         if ($this->db->insert('tbl_useful_links', $data)) {
             return $this->db->insert_id();
         } else {
@@ -692,6 +701,7 @@ class Admin_model extends CI_Model {
         }
      }
      public function deleteUsefulLinks($id){
+        $this->db->cache_delete('admin', 'useful_links_web');
         $this->db->where('id', $id);
          if ($this->db->delete('tbl_useful_links')) {
              return true;
@@ -708,6 +718,7 @@ class Admin_model extends CI_Model {
      }
 
      public function add_follow_us($data){
+        $this->db->cache_delete('admin', 'followus_links_web');
         if ($this->db->insert('tbl_follow_us_link', $data)) {
             return $this->db->insert_id();
         } else {
@@ -728,6 +739,7 @@ class Admin_model extends CI_Model {
         
      }
      public function updateFollowUs($data){
+        $this->db->cache_delete('admin', 'followus_links_web');
         $this->db->where('id', $data['id']);
         if ($this->db->update('tbl_follow_us_link', $data)) {
             return true;
@@ -738,6 +750,7 @@ class Admin_model extends CI_Model {
 
      public function deleteFollowUs($id)
      {
+        $this->db->cache_delete('admin', 'followus_links_web');
          $this->db->where('id', $id);
          if ($this->db->delete('tbl_follow_us_link')) {
              return true;
@@ -746,9 +759,11 @@ class Admin_model extends CI_Model {
          }
      }
      public function followus_links_web(){
+        $this->db->cache_on();
         $myQuery = "SELECT * FROM  tbl_follow_us_link";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();
+        $this->db->cache_off();
         return json_encode($result);
      }
 
@@ -763,12 +778,13 @@ class Admin_model extends CI_Model {
         // $this->db->insert('tbl_photos', $data) 
         //     return $this->db->insert_id();
         // print_r($formdata);
-
+        $this->db->cache_delete('users','standard');
             $this->db->insert('tbl_photos',$formdata); 
         return $insert_id = $this->db->insert_id();
          
      }
      public function deletePhotos($id){
+        $this->db->cache_delete('users','standard');
         $this->db->where('id', $id);
          if ($this->db->delete('tbl_photos')) {
              return true;
@@ -1008,25 +1024,34 @@ class Admin_model extends CI_Model {
         return $rs;  
     }
     public function images(){
+        $this->db->cache_on();
         $this->db->select('*');
         $this->db->from('tbl_photos');
         $this->db->order_by('created_on','desc');
         $this->db->limit('8');
         $query=$this->db->get();
         if($query->num_rows() > 0){
-            return $query->result_array();
+            // return $query->result_array();
+            $data=$query->result_array();
+            $this->db->cache_off();
+            return $data;
         }else{
+            $this->db->cache_off();
             return FALSE;
         }
     }
     public function videos(){
+        $this->db->cache_on();
         $this->db->select('*');
         $this->db->from('tbl_videos');
         $this->db->order_by('created_on','desc');
         $this->db->limit('8');
         $query=$this->db->get();
         if($query->num_rows() > 0){
-            return $query->result_array();
+            // return $query->result_array(); // commented old code for caching
+            $data=$query->result_array();
+            $this->db->cache_off();
+            return $data;
         }else{
             return FALSE;
         }

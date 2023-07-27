@@ -12,7 +12,7 @@ class Users extends CI_Controller
         $this->load->model('Quiz/quiz_model');
         $this->load->model('Users/Users_model');
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
-        $this->load->model('Winnerwall/Winnerwall_model');
+        $this->load->model('winnerwall/Winnerwall_model');
 
         $this->load->model('Winnerwall/Miscellaneous_winnerwall_model');
         $this->load->model('Winnerwall/Standard_winnerwall_model');
@@ -1079,7 +1079,7 @@ class Users extends CI_Controller
         $data['poster']=$this->Miscellaneous_competition->getPublishedComp1('4',array(2));
         $data['competition']=$this->Miscellaneous_competition->getPublishedComp1('4',array(3,4,5)); 
 
-        $data['getOnlineCompData']=$this->Standardswritting_model->getPublishedOnlineCompitation();
+        $data['getOnlineCompData']=$this->Standardswritting_model->getFrontPublishedOnlineCompitation();
         //print_r($data['competition']); die;
         // $data1['set_nav']="1";
         $_SESSION["set_nav"]="1";
@@ -1731,12 +1731,12 @@ class Users extends CI_Controller
 
     public function miscellaneous_winners()
     {
-        $masterWinners= $this->Miscellaneous_winnerwall_model->getWinnerWallListFront();
+        $masterWinners= $this->Users_model->getWinnerWallListFront();
         $masterArr = array();   
         foreach($masterWinners as $row)
         {
             $quiz_id= $row['quiz_id'];
-            $WinnersArr= $this->Miscellaneous_winnerwall_model->getWinners($quiz_id);
+            $WinnersArr= $this->Users_model->getWinners($quiz_id);
             $row['Winners'] = $WinnersArr;
             array_push($masterArr, $row);
         } 
@@ -2790,9 +2790,9 @@ class Users extends CI_Controller
     public function learning_standerd()
     {
         $data = array();
-        $data['LiveSessions'] = $this->Users_model->getlearningStanderdSessions();
-        $data['LatestPosts'] = $this->Users_model->getlearningStanderdPosts();
-        $data['InformativeVideo'] = $this->Users_model->getlearningStanderdInformativeVideo();
+        $data['LiveSessions'] = $this->Users_model->getlearningStanderdSessionsFront();
+        $data['LatestPosts'] = $this->Users_model->getlearningStanderdPostsFront();
+        $data['InformativeVideo'] = $this->Users_model->getlearningStanderdInformativeVideoFront();
         $this->load->view('users/headers/header');
         $this->load->view('users/learning_standerd', $data);
         $this->load->view('users/footers/footer');
@@ -2800,7 +2800,7 @@ class Users extends CI_Controller
     public function learning_standerd_sessions_view_all()
     {
         $data = array();
-        $data['LiveSessions'] = $this->Users_model->getlearningStanderdSessions();
+        $data['LiveSessions'] = $this->Users_model->getlearningStanderdSessionsFront();
         $this->load->view('users/headers/header');
         $this->load->view('users/learning_standerd_sessions_view_all', $data);
         $this->load->view('users/footers/footer');
@@ -2833,7 +2833,7 @@ class Users extends CI_Controller
     public function learning_standerd_posts_all()
     {
         $data = array();
-        $data['letestPostView'] = $this->Users_model->getlearningStanderdPosts();
+        $data['letestPostView'] = $this->Users_model->getlearningStanderdPostsFront();
         $this->load->view('users/headers/header');
         $this->load->view('users/learning_standerd_posts_all', $data);
         $this->load->view('users/footers/footer');
@@ -2861,7 +2861,7 @@ class Users extends CI_Controller
     public function learning_standerd_informative_video_all()
     {
         $data = array();
-        $data['informativeVideos'] = $this->Users_model->getlearningStanderdInformativeVideo();
+        $data['informativeVideos'] = $this->Users_model->getlearningStanderdInformativeVideoFront();
         $this->load->view('users/headers/header');
         $this->load->view('users/learning_standerd_informative_video_all', $data);
         $this->load->view('users/footers/footer');
@@ -4089,9 +4089,9 @@ if ($availability==1)
         $aval_for = encryptids("D", $this->session->userdata('standard_club_category'));
         $standard = encryptids("D", $this->session->userdata('standard'));
         $data=array();
-        $getdata=$this->Standardswritting_model->create_online_view($id); 
+        $getdata=$this->Standardswritting_model->getOnlineData($id); 
         $data['getData']=$getdata;
-        $data['attempt']=$attempt;
+        // $data['attempt']=$attempt;
         $data['userData']=$userData;
 
          
