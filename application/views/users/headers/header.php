@@ -76,10 +76,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="sub_header">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block">
+                    <div class="col-sm-6 mobile_width">
                         <div class="contact">
                             <ul>
-                                <select onchange="set_language()" name="language" id="language">
+                                <select onchange="set_language()" name="language" id="language" class="language_font">
                                 <?php
                                
                                 require(APPPATH.'views/users/language.php');
@@ -109,9 +109,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-sm-6 mobile_width">
                         <div class="accessibility">
-                            <ul>
+                            <ul class="mobile_login">
                                 <li> <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                         <?php if (isset($_SESSION['admin_name'])) {
                                             echo encryptids("D", $_SESSION['admin_name']);

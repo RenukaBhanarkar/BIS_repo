@@ -1023,10 +1023,14 @@ footer .main_footer .f_contact ul li i {
 		background: #07070a;
 	}
 	.navbar-collapse {
-		background: #6a5acd;
-		position: absolute;
-		/* top: 59px; */
-		right: 0px;
+		background: #575467; 
+        position: absolute;
+    /* top: 59px; */
+    /* right: 0px; */
+    /* width: 100%; */
+    /* margin: 0px; */
+    /* padding: 0px; */
+    background-image: linear-gradient(to right, rgb(102, 0, 204) 0%, rgb(255, 102, 0) 100%);
 	}
 	.navbar-light .navbar-nav .nav-link {
 		font-weight: 500;
@@ -2666,5 +2670,24 @@ label.d-block.text-font {
     color: white;
     font-weight: bold;
 }
-
+@media (min-width: 297px) and (max-width: 575px) {
+	.mobile_width{
+		flex: 0 0 auto;
+        width: 50%;
+	}
+	.language_font{
+		font-size: 12px;
+	}
+	header .sub_header ul li a {
+		font-size: 12px;
+	}
+	.accessibility{
+		padding-top:8px;
+	  }
+	}
+	@media (min-width: 297px) and (max-width: 575px) {
+		.main_logo{
+			width: 93%
+		}
+	}
 
