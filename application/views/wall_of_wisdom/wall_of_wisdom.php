@@ -542,12 +542,12 @@
             </div>
         </div>
     </div>
-    <div class="loader-div">
-            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="kjhjklhkh" style="height:120px; width:auto;" />
+    <!-- <div class="loader-div">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.." />
         </div>
         <div class="loader">
-            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="kjhjklhkh" style="height:120px; width:auto;" />
-        </div>
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.."/>
+        </div> -->
     <!-- <script href="https://code.jquery.com/jquery-3.7.0.js"></script> -->
    
     <script type="text/javascript">
@@ -555,9 +555,9 @@ $('#addpostform').removeClass('was-validated');
 $('.save').on('click',function(){
     $('#addpostform').addClass('was-validated');
 })
-$(document).ready(function(e){
-    $(".loader").fadeOut("slow");
-});
+// $(document).ready(function(e){
+//     $(".loader").fadeOut("slow");
+// });
 // function sendArchive(que_id) {
             
 //                 $('#archive').modal('show');
