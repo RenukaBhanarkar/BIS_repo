@@ -11,10 +11,11 @@
         margin-right: 16px;
     }
     #captcha{
-        margin-top: -35px;
-    margin-left: -58px;
-    margin-bottom: -68px;
+        margin-top: -10px;
+    margin-left: -42px;
+    margin-bottom: -41px;
     z-index: -3;
+    height: 84px;
     }
     .captcha{
         display: flex;
@@ -80,11 +81,9 @@
                                 <i class="fa fa-eye-slash password"></i>
                                 <span id="err_password" class="text-danger"></span>
                             </div>
-                            <div class="captcha">
-                                    <canvas id="captcha">captcha text</canvas>
-                                    <button class="btn btn-secondary" id="refreshButton" type="button"
-                                        title="Refresh Captcha"><i class="fa fa-refresh"></i></button>
-                                </div>
+                            <div class="from-group mb-2" style="text-align: end;">
+                            <a href="https://www.services.bis.gov.in/php/BIS_2.0/forget-password" class="">Forgot Password ?</a>
+                            </div>
                             <div class="from-group mb-2">
                                 <input type="text" class="form-control form-control-md" name="text" id="textBox" autocomplete="off"
                                     oninput="this.value = this.value.replace(/[^A-Za-z0-9]/, '')" maxlength="7">
@@ -93,6 +92,12 @@
 
                                 <span class="text-danger" id="output"></span>
                             </div>
+                            <div class="captcha">
+                                    <canvas id="captcha">captcha text</canvas>
+                                    <button class="btn btn-secondary" id="refreshButton" type="button"
+                                        title="Refresh Captcha"><i class="fa fa-refresh"></i></button>
+                                </div>
+                            
                             <?php if(isset($id) && !empty($id)){ ?>
                                 <input type="hidden" id="quizid" name="quizid" value="<?= $id;?>"/>
                             <?php }else if(isset($comp_id) && !empty($comp_id)){ ?>
@@ -101,7 +106,7 @@
                          
 
                             <!-- <a href="<?php echo base_url(); ?>users/forget_password" class="forgetPassword">Forgot Password ?</a> -->
-                            <a href="https://www.services.bis.gov.in/php/BIS_2.0/forget-password" class="forgetPassword">Forgot Password ?</a>
+                            
                             
                             <div class="button_section text-center mt-3" style="margin-bottom: 13px; padding-top: 10px;">
                                 <button class="btn btn_green" onclick="return submitButton()" type="submit">

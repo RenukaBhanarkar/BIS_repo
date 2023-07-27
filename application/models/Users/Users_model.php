@@ -658,32 +658,11 @@
         {
             $this->db->where('id', $id);
             return $quiz = $this->db->get('tbl_join_the_classroom')->row_array();
-        }
+        }  
         // Join The classroom Function End For FrontEnd
+ 
 
-        // learning Standerd Function Start For FrontEnd
-        public function getlearningStanderdSessions()
-        {
-            $this->db->where('type_of_post', 3);
-            $this->db->where('status ', 5);
-            $this->db->order_by('created_on', 'desc');
-            return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
-        }
-
-        public function getlearningStanderdPosts()
-        {
-            $this->db->where('type_of_post', 1);
-            $this->db->where('status ', 5);
-            $this->db->order_by('created_on', 'desc');
-            return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
-        }
-        public function getlearningStanderdInformativeVideo()
-        {
-            $this->db->where('type_of_post', 2);
-            $this->db->where('status ', 5);
-            $this->db->order_by('created_on', 'desc');
-            return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
-        }
+        
 
         public function getContaintlearningStanderd($id)
         {
@@ -1600,31 +1579,7 @@
     //     $this->db->where('id',$id);  
     //     return $quiz = $this->db->get('tbl_join_the_classroom')->row_array();
     // } 
-    // Join The classroom Function End For FrontEnd
-
-    // learning Standerd Function Start For FrontEnd
-    // public function getlearningStanderdSessions()
-    // {
-    //     $this->db->where('type_of_post',3); 
-    //     $this->db->where('status ',5); 
-    //     $this->db->order_by('created_on', 'desc'); 
-    //    return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
-    // }
-
-    // public function getlearningStanderdPosts()
-    // {
-    //     $this->db->where('type_of_post',1); 
-    //     $this->db->where('status ',5); 
-    //     $this->db->order_by('created_on', 'desc'); 
-    //    return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
-    // }
-    // public function getlearningStanderdInformativeVideo()
-    // {
-    //     $this->db->where('type_of_post',2); 
-    //     $this->db->where('status ',5); 
-    //     $this->db->order_by('created_on', 'desc'); 
-    //    return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
-    // }
+     
 
     // public function getContaintlearningStanderd($id)
     // {   
@@ -1940,6 +1895,7 @@
 
     public function getWinnerWall()
     {
+        $this->db->select('id,name,location,image');
         return $this->db->get('tbl_winner_wall_details')->result_array(); 
     }
     public function isCompetitionForThisUser($user_id, $quiz_id)
@@ -2148,6 +2104,50 @@
             return $this->db->update('tbl_join_the_classroom_info', $formdata);
         }
     }
+
+
+     public function getlearningStanderdSessionsFront()
+        {
+            $this->db->select('id,thumbnail,title,created_on');
+            $this->db->where('type_of_post', 3);
+            $this->db->where('status ', 5);
+            $this->db->order_by('created_on', 'desc');
+            return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
+        }
+
+        public function getlearningStanderdPostsFront()
+        {
+            $this->db->select('id,thumbnail,title,doc_pdf,created_on');
+            $this->db->where('type_of_post', 1);
+            $this->db->where('status ', 5);
+            $this->db->order_by('created_on', 'desc');
+            return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
+        }
+
+        public function getlearningStanderdInformativeVideoFront()
+        {
+            $this->db->select('id,thumbnail,title,created_on');
+            $this->db->where('type_of_post', 2);
+            $this->db->where('status ', 5);
+            $this->db->order_by('created_on', 'desc');
+            return $quiz = $this->db->get('tbl_learning_science_via_standards')->result_array();
+        }
+
+
+    public function getWinnerWallListFront()
+    { 
+        $this->db->select('wall_title,quiz_id,id'); 
+        $this->db->where('status ',5);  
+        return $this->db->get('tbl_mst_miscellaneous_winner_wall')->result_array();  
+    }
+
+    public function getWinners($quiz_id)
+    {
+        $this->db->select('name,id,location,image,prize'); 
+
+        $this->db->where('quiz_id',$quiz_id);    
+        return $this->db->get('tbl_miscellaneous_winner_wall_details')->result_array(); 
+    }
+
 }
-// =======
-// >>>>>>> 068af7e12f46c89299a5665cd129d7be617b43b1
+ 
