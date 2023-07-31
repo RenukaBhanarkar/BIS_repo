@@ -108,7 +108,9 @@
                                 </div> -->
                                 <?php  foreach($banner_data as $list=>$key){ ?>
                                 <div class="carousel-item <?php if($list==0){echo "active"; } ?>">
+                                <a <?php if(!empty($key['link'])){ ?>href="https://<?php echo $key['link']; ?>"<?php } ?> target="_blank">
                                 <img src="<?=base_url().'uploads/cms/banner/'.$key['banner_images'];?>" class="d-block w-100 standard_banner_scroll"  alt="...">
+                                </a>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -136,7 +138,12 @@
                 <div class="tab-pane fade active show" id="tab1" role="tabpanel">
                 <div class="whats_new">
                     <div class="news_list">
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                        <?php if(!empty($news)){ foreach($news as $news_list){ ?>
+                        <p><a href=""><?php echo $news_list['title']; ?></a></p>
+                        <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($news_list['created_on'])); ?></p>
+                        <hr>
+                        <?php  }} ?>
+                        <!-- <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
                         <hr>
                         <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
@@ -159,10 +166,7 @@
                         <hr>
                         <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
+                        <hr> -->
                     </div>
                     
                     
@@ -175,7 +179,12 @@
               <div class="tab-pane fade" id="tab2" role="tabpanel">
               <div class="whats_new">
                     <div class="news_list">
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
+                    <?php if(!empty($events)){ foreach($events as $events_list){ ?>
+                        <p><a href=""><?php echo $events_list['title']; ?></a></p>
+                        <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($events_list['created_on'])); ?></p>
+                        <hr>
+                    <?php } } ?>
+                        <!-- <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
                         <hr>
                         <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
@@ -198,10 +207,7 @@
                         <hr>
                         <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
                         <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
+                        <hr> -->
                     </div>
                     
                     
@@ -223,7 +229,7 @@
                    <div class="World_of_standers_inner_Box  shadow">
                     <a href="<?php echo base_url().'users/meeting_startup'?>">
                     <div class="World_of_standers_image_box">
-                        <img src="<?=base_url();?>assets/images/startup.JPEG" class="card-img-top" alt="Discussion Forum">
+                        <img src="<?=base_url();?>assets/images/startup.jpeg" class="card-img-top" alt="Discussion Forum">
                        
                     </div>
                     <p class="Title_Section">Meeting the Start-ups</p>
