@@ -12,7 +12,7 @@
     }
     #captcha{
         margin-top: -10px;
-    margin-left: -42px;
+    margin-left: 40px;
     margin-bottom: -41px;
     z-index: -3;
     height: 84px;
@@ -22,6 +22,8 @@
     }
     #refreshButton{
         margin: 7px;
+        margin-left: 70px;
+        height: 31px;
     }
     /* .captcha {
     height: 50px;
@@ -45,7 +47,22 @@
     position: relative;
     left: 150px;
 } */
+@media (min-width: 297px) and (max-width: 461px) {
+		#captcha{
+			margin-left: -33px;
+		}
+        .hide_mobile{
+			display: none;
+		}
+        .main_logo{
+            margin: 0px auto 19px;
+        }
+        .left_side{
+            margin: 13px auto 0px;
+        }
+	}
 </style>
+<link href="<?php echo base_url();?>assets/admin/css/loader.css" rel="stylesheet">
 <div id="login_main_section">
     <div class="container-fluid">
         <div class="row">
@@ -71,15 +88,15 @@
                             echo $this->session->flashdata('MSG');
                         }
                         ?>
-                        <form action="<?php echo base_url(); ?>users/authUser" method="post">
-                            <div class="from-group mb-4">
+                        <form action="<?php echo base_url(); ?>users/authUser" method="post" id="login_form">
+                            <div class="from-group mb-3">
                                 <input type="text" class="form-control form-control-md" name="username" id="username" placeholder="Email">
-                                <span id="err_username" class="text-danger"></span>
+                                <span id="err_username" class="text-danger" style="font-size: 11px;"></span>
                             </div>
                             <div class="from-group mb-2">
                                 <input type="password" class="form-control form-control-md show-hide-password" name="password" id="password" placeholder="Password">
                                 <i class="fa fa-eye-slash password"></i>
-                                <span id="err_password" class="text-danger"></span>
+                                <span id="err_password" class="text-danger" style="font-size: 11px;"></span>
                             </div>
                             <div class="from-group mb-2" style="text-align: end;">
                             <a href="https://www.services.bis.gov.in/php/BIS_2.0/forget-password" class="">Forgot Password ?</a>
@@ -90,9 +107,9 @@
                                 <span class="focus-border focus_p"></span>
                                 
 
-                                <span class="text-danger" id="output"></span>
+                                <span class="text-danger" id="output" style="font-size: 11px;"></span>
                             </div>
-                            <div class="captcha">
+                            <div class="captcha" style="border: 1px solid #ced4da; border-radius: 0.25rem;">
                                     <canvas id="captcha">captcha text</canvas>
                                     <button class="btn btn-secondary" id="refreshButton" type="button"
                                         title="Refresh Captcha"><i class="fa fa-refresh"></i></button>
@@ -109,7 +126,7 @@
                             
                             
                             <div class="button_section text-center mt-3" style="margin-bottom: 13px; padding-top: 10px;">
-                                <button class="btn btn_green" onclick="return submitButton()" type="submit">
+                                <button class="btn btn_green" onclick="return submitButton(event)" type="button">
                                     log in
                                 </button>
                                 <a class="btn btn-primary" href="<?php echo base_url().'users/welcome/'; ?>">Back to Home</a>
@@ -118,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8 px-0">
+            <div class="col-sm-8 px-0 hide_mobile">
                 <div class="right_side">
                     <div class="blue_color">
                         <div class="text_title">
@@ -131,7 +148,10 @@
         </div>
     </div>
 </div>
-<!-- <script src="<?php echo base_url();?>assets/js/jquery-3.5.1.js"></script> -->
+<div class="loader" style="display: none;">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.."/>
+        </div>
+<script src="<?php echo base_url();?>assets/js/jquery-3.5.1.js"></script>
 <script>
      var message = "Not Allowed Right Click";
 
@@ -148,14 +168,16 @@ function rtclickcheck(keyp) {
     }
 }
 document.onmousedown = rtclickcheck;
-    function submitButton() {
-
+    function submitButton(event) {
+        event.preventDefault();
         var username = $("#username").val();
         var password = $("#password").val();
         var is_valid = true;
         var numbers = /[0-9]/g;
         var upperCaseLetters = /[A-Z]/g;
         var lowerCaseLetters = /[a-z]/g;
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var textBox = $("#textBox").val();
         //var random = $("#random").val();
         //random = random.trim();
         //var getSelectedValue = document.querySelector('input[name="lg_type"]:checked');
@@ -170,6 +192,10 @@ document.onmousedown = rtclickcheck;
             is_valid = false;
         } else if (!(username.length > 2)) {
             $("#err_username").text("Please Enter minimum 3 Characters");
+            $("#u_email").focus();
+            is_valid = false;
+        }else if(!(username.match(validRegex))){
+            $("#err_username").text("Please Enter Valid Email address");
             $("#u_email").focus();
             is_valid = false;
         } else {
@@ -188,6 +214,8 @@ document.onmousedown = rtclickcheck;
             $("#password").focus();
             is_valid = false;
         }
+
+        
         /*
         else if (!(password.match(upperCaseLetters))) {
             $("#err_password").text("Please Enter atleast one Capital Letter");
@@ -200,6 +228,20 @@ document.onmousedown = rtclickcheck;
         }*/
         else {
             $("#err_password").text("");
+        }
+
+        if (textBox == "") {
+            $("#output").addClass("incorrectCaptcha");
+            $("#output").text("Please Enter Captcha");
+            $("#textBox").focus();
+            is_valid = false;
+        } else {
+            $("#output").text("");
+            if (userText.value !== c) {
+                output.classList.add("incorrectCaptcha");
+                output.innerHTML = "Incorrect captcha, please try again";
+                is_valid = false;
+            }
         }
 
         // if (textBox == "") {
@@ -215,7 +257,8 @@ document.onmousedown = rtclickcheck;
         // }
 
         if (is_valid) {
-
+            $('.loader').show();
+            $('#login_form').submit();
             /*var u_email = $("#u_email").val();
             var password= $("#password").val();
 
