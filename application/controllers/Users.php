@@ -1101,6 +1101,9 @@ class Users extends CI_Controller
         $data['banner_data'] = $this->Admin_model->bannerwosAllData();
         $data['images'] = $this->Admin_model->images();
         $data['videos'] = $this->Admin_model->videos();
+        $data['news'] = $this->Admin_model->news();
+        $data['events'] = $this->Admin_model->events();
+        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/world_of_standards', $data);
         $this->load->view('users/footers/footer');
@@ -4463,6 +4466,9 @@ if ($availability==1)
         $this->load->view('users/headers/header');
         $this->load->view('users/apply_project_list');
         $this->load->view('users/footers/footer');
+      }
+      public function del_cache(){
+        $this->db->cache_delete_all();
       }
 
         /*public function quiz_start($quiz_id)
