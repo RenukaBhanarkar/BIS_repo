@@ -332,7 +332,7 @@
 
 
 
-            <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
             <?php  if(in_array(27,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/letest_news">
@@ -359,8 +359,8 @@
                 </div>
                 </a>
             </div>
-                <?php } ?> -->
-            <!-- <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
+                <?php } ?>
+            <?php if (encryptids("D", $_SESSION['admin_type']) == 3) { ?>
             <?php  if(in_array(28,$permissions)){ ?>
             <div class="col-xl-3 col-md-6 mb-4">
                 <a href="<?php echo base_url(); ?>admin/upcoming_events">
@@ -387,7 +387,7 @@
                 </div>
                 </a>
             </div>
-                <?php } ?> -->
+                <?php } ?>
 
 
           </div>

@@ -27,7 +27,7 @@
             <div class="card border-top card-body">
                 <div>
                     <button type="button" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#newform">Add New Banner</button>
-                    <form id="add_admin" class="was-validated" action="<?php echo base_url(); ?>subadmin/addbannerimg" method="post" enctype="multipart/form-data">
+                    <form id="add_admin" class="" action="<?php echo base_url(); ?>subadmin/addbannerimg" method="post" enctype="multipart/form-data">
                         <div class="modal fade " id="newform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
@@ -42,20 +42,20 @@
                                             <div class="mb-2 col-md-6">
                                                 <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
                                                 <div class="row">
-                                                <div class="col-6">
-                                                <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="bannerimg" onchange="loadFileThumbnail1(event)" required="">
-                                                <span class="text-danger">
-                                                </span>
-                                                <div class="invalid-feedback">
-                                                    This value is required
+                                                    <div class="col-6">
+                                                    <input type="file" class="form-control input-font" accept="image/jpeg,image/png,image/jpg" name="bannerimg" id="bannerimg" onchange="loadFileThumbnail1(event)" required="">
+                                                    <span class="text-danger">
+                                                    </span>
+                                                    <div class="invalid-feedback">
+                                                        This value is required
+                                                    </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" id="preview123456" class="btn btn-primary btn-sm ml-2" data-bs-toggle="modal" data-bs-target="#Previewimg1">
+                                                            Preview
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                            <button type="button" id="preview123456" class="btn btn-primary btn-sm ml-2" data-bs-toggle="modal" data-bs-target="#Previewimg1">
-                                            Preview
-                                        </button>
-                                            </div>
-                                            </div>
                                             </div>
                                             
                                             <div class="mb-2 col-md-4">
@@ -69,10 +69,22 @@
                                                                         This value require
                                                                         </div>
                                             </div>
+                                            <div class="mb-2 col-md-4">
+                                                <label class="d-block text-font">Link</label>
+                                                <input type="text" class="form-control input-font" name="banner_link" id="banner_link">
+                                                <span class="error_text">
+                                                    <?php //echo form_error('title'); 
+                                                    ?>
+                                                </span>
+                                                <div class="invalid-feedback">
+                                                                        This value require
+                                                                        </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button class="btn btn-primary">Submit</button>
+                                            <!-- <button class="btn btn-primary">Submit</button> -->
+                                            <a class="btn btn-primary submit">Submit</a>
                                         </div>
                                     </div>
                                 </div>
@@ -97,6 +109,7 @@
                                 <th>Sr. No.</th>
                                 <th>Image</th>
                                 <th>Caption</th>
+                                <th>Link</th>
                                 <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                 <th>Action</th>
                                 <?php } ?>
@@ -115,6 +128,7 @@
                                             } ?>
                                         </td>
                                         <td><?php echo $list_banner['caption']; ?></td>
+                                        <td><?php echo $list_banner['link']; ?></td>
                                         <?php if (encryptids("D", $_SESSION['admin_type']) == 3) {   ?>
                                         <td class="d-flex border-bottom-0">
                                         <?php  if(in_array(3,$permissions)){ ?>
@@ -197,7 +211,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="<?php echo base_url(); ?>subadmin/update_bannnerimage" class="was-validated" method="post" enctype="multipart/form-data" >
+            <form action="<?php echo base_url(); ?>subadmin/update_bannnerimage" class="was-validated" method="post" enctype="multipart/form-data" id="update_banner" >
                 <div class="row">
                     <div class="mb-2 col-md-4">
                         <label class="d-block text-font">Upload Image<sup class="text-danger">*</sup></label>
@@ -274,11 +288,25 @@
                             <?php //echo form_error('title'); 
                             ?>
                         </span>
+                        <div class="invalid-feedback">
+                            This value is required
+                        </div>
                     </div>
+                    <div class="mb-2 col-md-4">
+                                                <label class="d-block text-font">Link</label>
+                                                <input type="text" class="form-control input-font" name="banner_link" id="banner_link_edit">
+                                                <span class="error_text">
+                                                    <?php //echo form_error('title'); 
+                                                    ?>
+                                                </span>
+                                                <div class="invalid-feedback">
+                                                                        This value require
+                                                                        </div>
+                                            </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary">Update</button>
+                    <a class="btn btn-primary update">Update</a>
                 </div>
             </form>
             </div>
@@ -450,6 +478,7 @@ var loadFileThumbnail = function(event)
                                 $('#id1').val(res.id);
                                 $('#bannerimg1').val(res.banner_images);
                                 $('#caption1').val(res.caption);
+                                $('#banner_link_edit').val(res.link);
                                 
                                
                               var img=res.image;
@@ -494,5 +523,87 @@ var loadFileThumbnail = function(event)
                     })
 
     })
+
+    $('#add_admin').click(function(){
+        $(this).addClass('was-validated');
+    });
+    $('.submit').click(function(){
+        var bannerImage = $('#bannerimg').val();
+        var bannerCaption = $('#banner_caption').val();
+        var is_valid = true;
+
+        if(bannerImage==""){
+            var is_valid = false;
+        }else{
+
+        }
+
+        if(bannerCaption==""){
+            var is_valid = false;
+        }else{
+
+        }
+
+        if(is_valid){
+            Swal.fire({
+                    title: 'Do you want to Submit?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {   
+                        $('.loader-div').show(); 
+                        $('#add_admin').submit(); 
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        }
+    });
+
+    $('.update').click(function(){
+        // alert("jhgjh");
+        var bannerImage = $('#icon_file').val();
+        var bannerCaption = $('#caption1').val();
+        var atribute =$('#icon_file').attr('required');
+        var is_valid = true;
+
+        // alert(atribute);
+
+        if(atribute=='required'){
+            if(bannerImage==""){
+            var is_valid = false;
+            }else{
+
+            }
+        }
+
+        if(bannerCaption==""){
+            var is_valid = false;
+        }else{
+
+        }
+
+        if(is_valid){
+            // alert("jhgjh");
+            Swal.fire({
+                    title: 'Do you want to Update?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Update',
+                    denyButtonText: `Cancel`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {   
+                        $('.loader-div').show(); 
+                        $('#update_banner').submit(); 
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+        }
+    });
 
 </script>
