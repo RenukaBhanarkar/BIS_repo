@@ -132,7 +132,7 @@
                 </div>
                 <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
-                        <a href="#">
+                        <a href="<?php echo base_url().'world_of_standard/project_complete'?>">
                         <div class="World_of_standers_image_box">
                             <img src="<?=base_url();?>assets/images/seminar.jpeg" class="card-img-top" alt="Discussion Forum">
                         

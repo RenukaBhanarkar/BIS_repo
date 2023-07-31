@@ -36,5 +36,30 @@ class world_of_standard extends CI_Controller
         $this->load->view('world_of_standard/projects_in_progress');
         $this->load->view('users/footers/footer');
     }
+    public function progress_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/progress_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function project_complete(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/project_complete');
+        $this->load->view('users/footers/footer');
+      }
+      public function project_complete_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/project_complete_list');
+        $this->load->view('users/footers/footer');
+      }
+      public function upcoming_workshop(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/upcoming_workshop');
+        $this->load->view('users/footers/footer');
+      }
+      public function upcoming_workshop_details(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/upcoming_workshop_details');
+        $this->load->view('users/footers/footer');
+      }
 }
 ?>
