@@ -41,6 +41,16 @@
 .right_content h3 {
     font-family: 'Georgia', serif;
 }
+.sidebar{
+	height: 37%;
+    border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.right_content{
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px;
+	border-radius: 5px;
+}
 </style>
 <section id="main_content">
   	<div class="container-xxl">

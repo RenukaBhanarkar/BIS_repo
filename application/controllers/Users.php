@@ -4464,6 +4464,11 @@ if ($availability==1)
         $this->load->view('users/apply_project_list');
         $this->load->view('users/footers/footer');
       }
+      public function news_view(){
+        $this->load->view('users/headers/header');
+        $this->load->view('users/news_view');
+        $this->load->view('users/footers/footer');
+      }
 
         /*public function quiz_start($quiz_id)
     {
