@@ -93,12 +93,14 @@
 								</tr>
 							</thead>
 							<tbody>
+								<?php if(!empty($news)){ foreach($news as $list_news){ ?>
 								<tr>
-									<td><a href="<?php echo base_url().'users/news_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
-									<td>12/03/2023</td>
+									<td><a href="<?php echo base_url().'users/news_view/'.encryptids('E',$list_news['id']);?>"  style="color: #0000FF;"><?php echo $list_news['title']; ?></a></td>
+									<td><?php echo date('d-m-Y',strtotime($list_news['created_on'])); ?></td>
 										
 								</tr>
-								<tr>
+								<?php }} ?>
+								<!-- <tr>
 									<td><a href="<?php echo base_url().'users/news_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
 									<td>12/03/2023</td>
 										
@@ -117,7 +119,7 @@
 									<td><a href="<?php echo base_url().'users/news_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
 									<td>12/03/2023</td>
 										
-								</tr>
+								</tr> -->
 							
 										
 		
@@ -130,3 +132,17 @@
   		
   	</div>
   </section>
+  <script>
+	$(document).ready(function(){
+		$('#example').DataTable({
+			"bSort": false,
+                "bStateSave":true,
+                // "aoColumns": [ 
+                //    { "bSortable": false },
+                //    { "bSortable": false },
+                //    { "bSortable": false } ] 
+		});
+		
+	})
+	
+  </script>

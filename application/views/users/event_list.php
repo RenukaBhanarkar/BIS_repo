@@ -84,7 +84,7 @@
 	  				
 	  			
 				<div class="col-md-12">
-						<table id="example" class="table-bordered table-responsive" style="border-collapse: collapse;">
+						<table id="anis" class="table-bordered table-responsive" style="border-collapse: collapse;">
 							<thead>
 								<tr style="text-align: center;">
 									<th style="text-align: center;">Title</th>
@@ -92,12 +92,14 @@
 								</tr>
 							</thead>
 							<tbody>
+								<?php if(!empty($events)){ foreach($events as $list_events){?>
 								<tr>
-									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
-									<td>12/03/2023</td>
+									<td><a href="<?php echo base_url().'users/event_view/'.encryptids("E",$list_events['id']); ?>"  style="color: #0000FF;"><?php echo $list_events['title']; ?></a></td>
+									<td><?php echo date('d-m-Y',strtotime($list_events['created_on'])); ?></td>
 										
 								</tr>
-								<tr>
+								<?php  } } ?>
+								<!-- <tr>
 									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
 									<td>12/03/2023</td>
 										
@@ -116,7 +118,7 @@
 									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
 									<td>12/03/2023</td>
 										
-								</tr>
+								</tr> -->
 							
 										
 		
@@ -128,3 +130,17 @@
   		</div>
   	</div>
   </section>
+  <script>
+	$(document).ready(function(){
+		$('#anis').DataTable({
+			"bSort": false,
+                "bStateSave":true,
+                // "aoColumns": [ 
+                //    { "bSortable": false },
+                //    { "bSortable": false },
+                //    { "bSortable": false } ] 
+		});
+		
+	})
+	
+  </script>

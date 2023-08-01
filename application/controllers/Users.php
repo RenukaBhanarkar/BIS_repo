@@ -9,7 +9,7 @@ class Users extends CI_Controller
 
         parent::__construct();
         $this->load->model('Admin/Admin_model');
-        $this->load->model('Quiz/quiz_model');
+        $this->load->model('Quiz/Quiz_model');
         $this->load->model('Users/Users_model');
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         $this->load->model('winnerwall/Winnerwall_model');
@@ -4443,13 +4443,16 @@ if ($availability==1)
         return true;
       }
       public function news_list(){
+        $data['news'] = $this->Admin_model->getLetestNews();
         $this->load->view('users/headers/header');
-        $this->load->view('users/news_list');
+        $this->load->view('users/news_list',$data);
         $this->load->view('users/footers/footer');
       }
       public function event_list(){
+        $data['events'] = $this->Admin_model->getEvent();
+        // print_r($data); die;
         $this->load->view('users/headers/header');
-        $this->load->view('users/event_list');
+        $this->load->view('users/event_list',$data);
         $this->load->view('users/footers/footer');
       }
       public function project_offer_list(){
@@ -4467,14 +4470,24 @@ if ($availability==1)
         $this->load->view('users/apply_project_list');
         $this->load->view('users/footers/footer');
       }
-      public function news_view(){
+      public function news_view($id){
+        $news_id=encryptids("D",$id);
+        $data=$this->Admin_model->editLetestNews($news_id);
+        $data1['news_detail']=json_decode($data,TRUE);
+        // var_dump($data);
+        // echo $data1['id'];
+        // // print_r($data);
+        //  die;
         $this->load->view('users/headers/header');
-        $this->load->view('users/news_view');
+        $this->load->view('users/news_view',$data1);
         $this->load->view('users/footers/footer');
       }
-      public function event_view(){
+      public function event_view($id){
+        $event_id=encryptids("D",$id);
+        $data=$this->Admin_model->editEvents($event_id);
+        $data1['event_detail']=json_decode($data,TRUE);
         $this->load->view('users/headers/header');
-        $this->load->view('users/event_view');
+        $this->load->view('users/event_view',$data1);
         $this->load->view('users/footers/footer');
       }
       public function del_cache(){

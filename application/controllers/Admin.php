@@ -13,7 +13,7 @@ class Admin extends CI_Controller
         //     redirect(base_url() . "Users/logout", 'refresh');
         // }
         $this->load->model('Admin/Admin_model');
-        $this->load->model('subadmin/Que_bank_model');
+        $this->load->model('Subadmin/Que_bank_model');
         $this->load->model('Subadmin/Questions_model');
         $this->load->model('Admin/Your_wall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
@@ -1227,15 +1227,16 @@ class Admin extends CI_Controller
 
     public function addEvents()
     {
-
+// print_r($_POST); die;
         $data['title'] =  $this->input->post('title');
         $data['link'] =  $this->input->post('link');
+        $data['description'] =  $this->input->post('description');
 
         if (!file_exists('uploads/cms/events')) {
             mkdir('uploads/cms/events', 0777, true);
         }
 
-        $banner_img = "events" . time() . '.jpg';
+        $banner_img = "events" . time() . $_FILES['thumbnail']['name'];
         $config['upload_path'] = './uploads/cms/events';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '204800';

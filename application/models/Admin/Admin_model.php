@@ -1293,7 +1293,7 @@ class Admin_model extends CI_Model {
         $this->db->from('tbl_latest_news');
        $this->db->where('status','5');
        $this->db->order_by('created_on','desc');
-       $this->db->limit('2');
+       $this->db->limit('10');
         $query= $this->db->get();       
         $result=$query->result_array();
        
@@ -1398,7 +1398,7 @@ class Admin_model extends CI_Model {
         $this->db->from('tbl_mst_events');
        $this->db->where('status','5');
        $this->db->order_by('created_on','desc');
-    //    $this->db->limit('2');
+       $this->db->limit('10');
         $query= $this->db->get();       
         $result=$query->result_array();
        

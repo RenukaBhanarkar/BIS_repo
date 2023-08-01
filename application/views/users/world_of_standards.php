@@ -139,7 +139,7 @@
                 <div class="whats_new">
                     <div class="news_list">
                         <?php if(!empty($news)){ foreach($news as $news_list){ ?>
-                        <p><a href="<?php echo base_url().'users/news_view'?>"><?php echo $news_list['title']; ?></a></p>
+                        <p><a href="<?php echo base_url().'users/news_view/'.encryptids('E',$news_list['id']);?>"><?php echo $news_list['title']; ?></a></p>
                         <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($news_list['created_on'])); ?></p>
                         <hr>
                         <?php  }} ?>
@@ -180,7 +180,7 @@
               <div class="whats_new">
                     <div class="news_list">
                     <?php if(!empty($events)){ foreach($events as $events_list){ ?>
-                        <p><a href="<?php echo base_url().'users/event_view'?>"><?php echo $events_list['title']; ?></a></p>
+                        <p><a href="<?php echo base_url().'users/event_view/'.encryptids('E',$events_list['id']); ?>"><?php echo $events_list['title']; ?></a></p>
                         <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($events_list['created_on'])); ?></p>
                         <hr>
                     <?php } } ?>
