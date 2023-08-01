@@ -87,7 +87,7 @@
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        // window.location.replace('<?php echo base_url().'users/apply_project_offer'?>');                   
+                        window.location.replace('<?php echo base_url().'world_of_standard/progress_list'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
