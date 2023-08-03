@@ -61,7 +61,7 @@
                                         <td>Technical Committee</td>
                                         <td>Department</td>
                                         <td>
-                                            <a href="" class="btn btn-primary btn-sm mt-2">Confirm Your Participation</a>
+                                            <a href="#" class="btn btn-primary btn-sm mt-2 confirm">Confirm Your Participation</a>
                                         </td>
                             		</tr>
                             	</tbody>
@@ -83,17 +83,17 @@
     // scrollX: 5000
 } );
     });
-    $('.apply').on('click',function(){
+    $('.confirm').on('click',function(){
     Swal.fire({
-                    title: 'Are you sure you want to Apply?',
+                    title: 'Are you sure you want to confirm your participation?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Apply',
+                    confirmButtonText: 'Yes Confirm',
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
+                        // window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {

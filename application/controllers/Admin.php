@@ -2468,7 +2468,7 @@ class Admin extends CI_Controller
         }
 
 
-        $banner_img = "useful_links" . time() . '.jpg';
+        $banner_img = "useful_links" . time() . $_FILES['image']['name'];
         $config['upload_path'] = './uploads/cms/useful_links';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size']    = '500';
@@ -2624,7 +2624,7 @@ class Admin extends CI_Controller
         if (!file_exists('uploads/cms/followus')) {
             mkdir('uploads/cms/followus', 0777, true);
         }
-        $banner_img = "follow_us" . time() . '.jpg';
+        $banner_img = "follow_us" . time() . $_FILES['follow_us']['name'];
         $config['upload_path'] = './uploads/cms/followus';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
@@ -2670,7 +2670,7 @@ class Admin extends CI_Controller
         $document = "";
 
         if (!empty($_FILES['follow_us']['tmp_name'])) {
-            $document = "banner_image" . time() . '.jpg';
+            $document = "banner_image" . time() . $_FILES['follow_us']['name'];
             $config['upload_path'] = './uploads/cms/followus';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '100000';
@@ -2771,7 +2771,7 @@ class Admin extends CI_Controller
             mkdir('uploads/cms/gallary/photo', 0777, true);
         }
         //    print_r($_POST); die;
-        $banner_img = "photos" . time() . '.jpg';
+        $banner_img = "photos" . time() . $_FILES['image']['name'];
         $config['upload_path'] = './uploads/cms/gallary/photo';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '500';
