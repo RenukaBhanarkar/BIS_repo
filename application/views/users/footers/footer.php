@@ -612,6 +612,10 @@ window.onhashchange = function (event) {
             }, 0);
         });
     });
+    // loader_added
+    $(document).ready(function(e){
+    $(".loader").fadeOut("fast");
+});
 </script>
 </body>
 

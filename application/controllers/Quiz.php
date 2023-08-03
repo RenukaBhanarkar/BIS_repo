@@ -95,7 +95,7 @@ class Quiz extends CI_Controller
             $data['permissions'] =  $permissions;
         }
         $this->load->view('admin/headers/admin_header');;
-        $this->load->view('Quiz/ongoing_quiz_list', $data);
+        $this->load->view('quiz/ongoing_quiz_list', $data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function ongoing_quiz_view() 
@@ -106,7 +106,7 @@ class Quiz extends CI_Controller
         // $data['quizdata']=$quiz; 
         
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('Quiz/ongoing_quiz_view'); 
+        $this->load->view('quiz/ongoing_quiz_view'); 
         $this->load->view('admin/footers/admin_footer');
     }
     public function closed_quiz_list()
@@ -124,7 +124,7 @@ class Quiz extends CI_Controller
         }
 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('Quiz/closed_quiz_list',$data);
+        $this->load->view('quiz/closed_quiz_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
    
@@ -1710,7 +1710,7 @@ class Quiz extends CI_Controller
         $data['fourthprize']=$prize;
 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('Quiz/manage_quiz_view',$data);
+        $this->load->view('quiz/manage_quiz_view',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     
@@ -1723,7 +1723,7 @@ class Quiz extends CI_Controller
         $data['UsersDetails']=$users; 
 
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('Quiz/closed_quiz_submission',$data);
+        $this->load->view('quiz/closed_quiz_submission',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
@@ -1742,7 +1742,7 @@ class Quiz extends CI_Controller
             $data['permissions'] =  $permissions;
         }
         $this->load->view('admin/headers/admin_header');;
-        $this->load->view('Quiz/result_declaration_list',$data);
+        $this->load->view('quiz/result_declaration_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     // public function answer_key_list($user_id,$quiz_id){
@@ -1759,7 +1759,7 @@ class Quiz extends CI_Controller
         $answerKey = $this->Quiz_model->getAnswerKeyForUser($user_id,$quiz_id); 
         $data['answerKey']=$answerKey; 
         $this->load->view('admin/headers/admin_header');;
-        $this->load->view('Quiz/answer_key_new',$data);
+        $this->load->view('quiz/answer_key_new',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
@@ -1772,7 +1772,7 @@ class Quiz extends CI_Controller
         $data = array();
         $data['allRecords'] = $this->Quiz_model->getListOfArchiveQuiz();
         $this->load->view('admin/headers/admin_header');;
-        $this->load->view('Quiz/quiz_archive',$data);
+        $this->load->view('quiz/quiz_archive',$data);
         $this->load->view('admin/footers/admin_footer');
     }
    
@@ -1900,7 +1900,7 @@ class Quiz extends CI_Controller
         // }
         // print_r($data);exit;
         $this->load->view('admin/headers/admin_header');;
-        $this->load->view('Quiz/close_declaration_list',$data);
+        $this->load->view('quiz/close_declaration_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
 
