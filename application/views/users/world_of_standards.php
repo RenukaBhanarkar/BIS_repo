@@ -86,6 +86,26 @@
     font-weight: 600;
     font-size: 17px;
 }
+div#scroll_css::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+div#scroll_css::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 8px;
+}
+ 
+/* Handle */
+div#scroll_css::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+div#scroll_css::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
 </style>
 <section>
     <div class=row>
@@ -136,7 +156,7 @@
         </div>
         <div class="tab-content">
                 <div class="tab-pane fade active show" id="tab1" role="tabpanel">
-                <div class="whats_new">
+                <div class="whats_new" id="scroll_css">
                     <div class="news_list">
                         <?php if(!empty($news)){ foreach($news as $news_list){ ?>
                         <p><a href="<?php echo base_url().'users/news_view/'.encryptids('E',$news_list['id']);?>"><?php echo $news_list['title']; ?></a></p>
@@ -177,7 +197,7 @@
                 </div><!-- End Tab 1 Content -->
 
               <div class="tab-pane fade" id="tab2" role="tabpanel">
-              <div class="whats_new">
+              <div class="whats_new" id="scroll_css">
                     <div class="news_list">
                     <?php if(!empty($events)){ foreach($events as $events_list){ ?>
                         <p><a href="<?php echo base_url().'users/event_view/'.encryptids('E',$events_list['id']); ?>"><?php echo $events_list['title']; ?></a></p>
