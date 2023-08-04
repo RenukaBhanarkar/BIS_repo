@@ -126,7 +126,7 @@ class Miscellaneous_competition extends CI_Model {
 
         $current_time = (date("H:i:s", $t));
         // $this->db->select('tbl_mst_competition_detail.*,tbl_mst_status.status_name'); 
-        $this->db->select('tbl_mst_competition_detail.id,tbl_mst_competition_detail.start_date,tbl_mst_competition_detail.end_date,tbl_mst_competition_detail.end_time,tbl_mst_competition_detail.comp_id,tbl_mst_competition_detail.competiton_name,tbl_mst_competition_detail.thumbnail,tbl_mst_competition_detail.result_declared,tbl_mst_competition_detail.review_status,tbl_mst_status.status_name'); 
+        $this->db->select('tbl_mst_competition_detail.id,tbl_mst_competition_detail.start_time,tbl_mst_competition_detail.start_date,tbl_mst_competition_detail.end_date,tbl_mst_competition_detail.end_time,tbl_mst_competition_detail.comp_id,tbl_mst_competition_detail.competiton_name,tbl_mst_competition_detail.thumbnail,tbl_mst_competition_detail.result_declared,tbl_mst_competition_detail.review_status,tbl_mst_status.status_name'); 
         $this->db->join('tbl_mst_status','tbl_mst_status.id = tbl_mst_competition_detail.status'); 
         $this->db->where_in('tbl_mst_competition_detail.status',array(2,3,4,5,6,1));
 

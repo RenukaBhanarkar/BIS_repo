@@ -662,6 +662,29 @@ class Users extends CI_Controller
             //$quizid = encryptids("D", $quiz_id);
             
             //////////////////////START/////////////
+            $data_input=array();
+            $user_credentials=array(
+                'username'=> $username,
+                'password'=> $password
+            );
+            $requests_array=json_encode($user_credentials);
+            //    print_r($_SERVER);
+            //    die;
+            // $ip=$_SERVER['HTTP_USER_AGENT'];
+            // echo $ip; die;
+            $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+ 
+            if($isMob){                
+                $agent='mobile';
+            }else{ 
+                $agent='desktop';
+            }
+            $data_input['request_ip']     = $_SERVER['REMOTE_ADDR'];    
+            $data_input['user_agent']     = $agent;
+            $data_input['request_inputs'] = $requests_array; 
+            
+            $log_id=$this->Users_model->save_request($data_input);
+           
             $curl_req = curl_init();
             // commented $parameters = json_encode(array("userid" => $username, "password" => $password));
 
@@ -690,7 +713,16 @@ class Users extends CI_Controller
             ));
             $response = curl_exec($curl_req);
             curl_close($curl_req);
+            
+
             $output = json_decode($response, true);
+            $data_output['response_output']     = $output['result'];     // Api Response , Complete JSON 
+            $data_output['response_msg']        = $output['message'];  // Api MSG 
+            $data_output['response_code']       = $output['status_code'];  //   API status code
+            if($log_id!=FALSE){
+                $this->Users_model->update_request($log_id,$data_output);
+            }
+            
             //print_r($output); die;
             $userData = array();
 
@@ -3367,7 +3399,7 @@ class Users extends CI_Controller
     }
 
     // for_one_day_
-    public function quiz_start($quiz_id)
+    public function quiz_start_final_4_8_23($quiz_id)
     {
         
         $quiz_id = encryptids("D",$quiz_id);  
@@ -3509,6 +3541,132 @@ class Users extends CI_Controller
                                            
                                             $this->load->view('users/quiz_start', $data);
                                         }
+                                      
+                                    /// end                                  
+                                   
+                                }
+
+                            }else{
+                                $this->session->set_flashdata('MSG', ShowAlert("You can not appear for this quiz as you are not authenticated.", "DD"));
+                                redirect(base_url() . "users/about_quiz/".encryptids('E', $quiz_id), 'refresh');
+
+                            }
+                        }   else{
+                            $this->session->set_flashdata('MSG', ShowAlert("You can not appear for this quiz as you are not authenticated.", "DD"));
+                            redirect(base_url() . "users/about_quiz/".encryptids('E', $quiz_id), 'refresh');
+
+                        }                  
+                        
+                    } else {
+                        redirect(base_url() . "Users/login", 'refresh');
+                    }
+                }else{
+                    $this->session->set_flashdata('MSG', ShowAlert("You can not appear for quiz as you are not authenticated.", "DD"));
+                    redirect(base_url() . "users/about_quiz/".encryptids('E', $quiz_id), 'refresh');
+                }
+        }else{
+            $this->session->set_flashdata('MSG', ShowAlert("Please Login.", "SS"));
+            redirect(base_url() . "users/about_quiz/".encryptids('E', $quiz_id), 'refresh');
+        }
+
+
+
+
+        ///////////////////////////////////
+      
+       
+    }
+    //
+    public function quiz_start($quiz_id)
+    {
+        
+        $quiz_id = encryptids("D",$quiz_id);  
+       
+        $UserId = $this->session->userdata('admin_id');
+        $user_id = encryptids("D", $UserId);
+        $data = array();
+        $userQuiz = array();
+        ///////////////////// check available quiz ////////////////
+       
+           
+            if (isset($_SESSION['admin_type']) && !empty($_SESSION['admin_type'])) {
+    
+                $sess_admin_type = encryptids("D", $this->session->userdata('admin_type'));
+                $sess_is_admin = encryptids("D", $this->session->userdata('is_admin'));
+                 //if Already login
+                if ($sess_is_admin == 0) {                  
+                   
+                    if ($this->Users_model->checkAdminLogin()) {
+                       
+                        if ($sess_admin_type == 2) {                    
+                             
+                            $userQuiz = $this->Users_model->isQuizForThisUser($user_id,$quiz_id);
+                            if(!empty($userQuiz)){
+                                $checkUserAvailable = $this->Users_model->checkUserAvailable($quiz_id, $user_id);
+                                if ($checkUserAvailable > 0) {
+                                    $this->session->set_flashdata('MSG', ShowAlert("You have already appeared for this Quiz.", "SS"));
+                                    redirect(base_url() . "users/about_quiz/".encryptids('E', $quiz_id), 'refresh');
+                                } else {
+                                    
+                                       
+                                            // first time
+                                            $que_details = $this->Users_model->viewQuestion($quiz_id);
+                                            $data['que_details'] = $que_details;
+                                          
+                                            $quiz = $this->Users_model->viewQuiz($quiz_id);
+                                            $data['quizdata'] = $quiz;
+                                            $data['user_id'] = $user_id;
+                                           // $data['duration'] =  $quiz['duration'];
+                                           $current_time_new = date("Y-m-d H:i:s");
+                                           $quiz_final_time = $quiz['end_date'].' '.$quiz['end_time'];
+                                          // echo $quiz_final_time."<br>";;
+                                           $remaining_time = strtotime($quiz_final_time)-strtotime($current_time_new);
+                                          // echo $remaining_time."<br>";
+                                           $minutes_taken  = $remaining_time / 60;
+                                           $seconds_taken  = $remaining_time % 60;
+                                          // echo $minutes_taken ."<br>";
+                                          //      echo $seconds_taken."<br>";
+                                         //  exit();
+                                           $data['minutes'] =  $minutes_taken;
+                                           $data['seconds'] =  $seconds_taken;
+                                          
+                                          // $data['minutes'] =  $quiz['duration'];
+                                          // $data['seconds'] =  '01';
+                                           $data['msg'] =  "First Time";
+                                            // new code to save ques for future reference
+                                           
+                                            $que_id_array = array();
+                                            foreach ($que_details as $row){
+                                                array_push($que_id_array, $row['que_id']);
+                                            }
+                                            $quistions_list_id = implode(",",$que_id_array);
+                                            $quiz_details_new = $this->Users_model->quizDetailsByQuizId($quiz_id);
+
+                                            //$t = time();
+                                            //$current_time = (date("H:i:s", $t));
+                                            $current_time = date("Y-m-d H:i:s");
+                                            $quiz_duration_new =  $quiz['duration'];
+                                            ///////////
+                                           // $time = strtotime($current_time);
+                                           $time = strtotime(date("Y-m-d H:i:s"));
+                                            $quiz_end_time = date("Y-m-d H:i:s", strtotime('+'.$quiz_duration_new.' minutes', $time));
+
+                                            ///////////////////
+                                          
+                                            $dataObj = array(
+                                                'user_id'=> $user_id,
+                                                'quiz_id'=> $quiz_id,
+                                                'question_list_id'=> $quistions_list_id,
+                                                'que_bank_id'=> $quiz_details_new['que_bank_id'],
+                                                'quiz_duration'=> $quiz_details_new['duration'],
+                                                'user_quiz_start_time'=> $current_time,
+                                                'quiz_end_time'=> $quiz_end_time
+                                            );
+                                            $result= $this->Users_model->insertQuizData($dataObj);
+                                            // end     
+                                           
+                                            $this->load->view('users/quiz_start', $data);
+                                        
                                       
                                     /// end                                  
                                    
@@ -3777,9 +3935,11 @@ class Users extends CI_Controller
                    
                     $successCount++;
                     if ($successCount == $number) {
-                        $wrong_ques = $this->Users_model->getWrongAns($quiz_id, $user_id);
-                        $correct_ques = $this->Users_model->getCorrectAns($quiz_id, $user_id);
-                        $not_ans_ques = $this->Users_model->getNotSelected($quiz_id, $user_id);
+                        // $wrong_ques = $this->Users_model->getWrongAns($quiz_id, $user_id);
+                        // $correct_ques = $this->Users_model->getCorrectAns($quiz_id, $user_id);
+                        // $not_ans_ques = $this->Users_model->getNotSelected($quiz_id, $user_id);
+                        $data = $this->Users_model->getUsersAnswers($quiz_id, $user_id);
+
                         $quiz = $this->Users_model->getTotalmarkAndQuestion($quiz_id);
 
                         $formdata2 = array();
@@ -3805,15 +3965,15 @@ class Users extends CI_Controller
 
 
 
-                        $formdata2['correct_ques'] = $correct_ques;
-                        $formdata2['wrong_ques'] = $wrong_ques;
-                        $formdata2['not_ans_ques'] = $not_ans_ques;
+                        $formdata2['correct_ques'] = $data['correct_ques'];
+                        $formdata2['wrong_ques'] = $data['wrong_ques'];
+                        $formdata2['not_ans_ques'] = $data['not_ans_ques'];
                         $formdata2['selected_lang'] = $selected_lang;
                         $formdata2['time_taken'] = $time_taken;
 
                         $ans = $total_mark / $total_question;
                         
-                        $score = $ans * $correct_ques;
+                        $score = $ans * $data['correct_ques'];
                         
                         $formdata2['score'] = $score;                    
                         

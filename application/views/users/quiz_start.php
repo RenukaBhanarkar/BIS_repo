@@ -36,6 +36,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet" />   
     <link href="<?= base_url(); ?>assets/css/quiz_start.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>assets/css/start_quiz_page.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/admin/css/loader.css" rel="stylesheet">
     <!-- <script type="text/javascript">
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
@@ -351,6 +352,12 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
         </div>
         </form>
     </section>
+    <div class="loader-div">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.." />
+    </div>
+    <!-- <div class="loader" >
+        <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.."/>
+    </div> -->
 
 
     <script src="<?= base_url(); ?>assets/js/bootstrap.bundle.js"></script>
@@ -449,24 +456,24 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                     if (selected_op == undefined) {
                         selected_op = 0;
                     }
-                    $.ajax({
-                        type: 'POST',
-                        url: '<?php echo base_url(); ?>users/saveAttemptedQuesDetailsOfUser',
-                        data: {
-                            quiz_id: quiz_id,
-                            user_id: user_id,
-                            ques_id: ques_id,
-                            selected_op: selected_op,
-                            mark_review_id: mark_review_id
-                        },
-                        success: function(result) {
-                            console.log("Success");
+                    // $.ajax({
+                    //     type: 'POST',
+                    //     url: '<?php echo base_url(); ?>users/saveAttemptedQuesDetailsOfUser',
+                    //     data: {
+                    //         quiz_id: quiz_id,
+                    //         user_id: user_id,
+                    //         ques_id: ques_id,
+                    //         selected_op: selected_op,
+                    //         mark_review_id: mark_review_id
+                    //     },
+                    //     success: function(result) {
+                    //         console.log("Success");
 
-                        },
-                        error: function(result) {
-                            console.log("Error,Please try again.");
-                        }
-                    });
+                    //     },
+                    //     error: function(result) {
+                    //         console.log("Error,Please try again.");
+                    //     }
+                    // });
 
 
 
@@ -614,6 +621,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {   
+                        $(".loader-div").show();
                         $('#regForm').submit();
                         // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
@@ -686,38 +694,39 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
     </script>
 
     <script>
-        function updateUserTime() {
-            var quiz_id = "<?= $quizdata['id']; ?>";
-            var user_id = "<?= $user_id; ?>";
+        // function updateUserTime() {
+        //     var quiz_id = "<?= $quizdata['id']; ?>";
+        //     var user_id = "<?= $user_id; ?>";
 
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo base_url(); ?>users/updateUserTime',
-                data: {
-                    quiz_id: quiz_id,
-                    user_id: user_id
-                },
-                success: function(result) {
-                    // var res = JSON.parse(result);
-                    console.log("Success");
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '<?php echo base_url(); ?>users/updateUserTime',
+        //         data: {
+        //             quiz_id: quiz_id,
+        //             user_id: user_id
+        //         },
+        //         success: function(result) {
+        //             // var res = JSON.parse(result);
+        //             console.log("Success");
 
-                },
-                complete: function(data) {
-                    setTimeout(updateUserTime, 60000);
-                },
-                error: function(result) {
-                   // alert("Error,Please try again.");
-                }
-            });
+        //         },
+        //         complete: function(data) {
+        //             setTimeout(updateUserTime, 60000);
+        //         },
+        //         error: function(result) {
+        //            // alert("Error,Please try again.");
+        //         }
+        //     });
 
-        }
+        // }
 
-        $(document).ready(function() {
+        // $(document).ready(function() {
 
-            setTimeout(updateUserTime, 60000);
+        //     setTimeout(updateUserTime, 60000);
             
           
-        });
+        // });
+//-----commented for 12 Aug quiz-----
         // $(document).ready(function(){
         //     var quiz_id = "<?= $quizdata['id']; ?>";
         //     var user_id = "<?= $user_id; ?>"
@@ -789,7 +798,7 @@ $quiz_start_time = $_SESSION['quiz_start_time'] = date('h:i:s');
 
         setInterval(function() {
             check_session_id();
-        }, 60000);
+        }, 180000);
     </script>
 </body>
 

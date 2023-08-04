@@ -223,21 +223,42 @@
             $this->db->insert('tbl_quiz_submission_details', $formdata);
             return $insert_id = $this->db->insert_id();
         }
-        public function getCorrectAns($quiz_id, $user_id)
-        {
-            $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
-            return $query->num_rows();
-        }
-        public function getWrongAns($quiz_id, $user_id)
-        {
-            $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op!=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
-            return $query->num_rows();
-        }
+        // public function getCorrectAns($quiz_id, $user_id)
+        // {
+        //     $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+        //     return $query->num_rows();
+        // }
+        // public function getWrongAns($quiz_id, $user_id)
+        // {
+        //     $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op!=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+        //     return $query->num_rows();
+        // }
 
-        public function getNotSelected($quiz_id, $user_id)
-        {
-            $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=0 AND user_id='$user_id' AND quiz_id='$quiz_id'");
-            return $query->num_rows();
+        // public function getNotSelected($quiz_id, $user_id)
+        // {
+        //     $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=0 AND user_id='$user_id' AND quiz_id='$quiz_id'");
+        //     return $query->num_rows();
+        // }
+        public function getUsersAnswers($quiz_id, $user_id){
+            $query = $this->db->query("SELECT count('id') as cnt FROM tbl_user_quiz WHERE selected_op=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+            $data1=$query->row_array();
+            $getCorrectAns= $data1['cnt'];
+
+            $query1 = $this->db->query("SELECT count('id') as cnt FROM tbl_user_quiz WHERE selected_op!=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+            $data2=$query1->row_array();
+            $getWrongAns= $data2['cnt'];
+
+            $query3 = $this->db->query("SELECT count('id') as cnt FROM tbl_user_quiz WHERE selected_op=0 AND user_id='$user_id' AND quiz_id='$quiz_id'");
+            $data3=$query3->row_array();
+            $getNotSelected = $data3['cnt'];            
+
+            $data=array(
+                'wrong_ques'=>$getWrongAns,
+                'correct_ques'=>$getCorrectAns,
+                'not_ans_ques'=>$getNotSelected,
+            );
+            return $data;
+
         }
         public function getTotalmarkAndQuestion($id)
         {
@@ -2180,6 +2201,22 @@
         $result=$query->result_array();
        
         return $result;
+    }
+    public function save_request($data){
+        // print_r($data); die;
+            if ($this->db->insert('ef_api_logs', $data)) {
+                return $this->db->insert_id();
+            } else{
+                return false;
+            }
+    }
+    public function update_request($id,$data){
+        $this->db->where('id', $id);        
+        if ($this->db->update('ef_api_logs', $data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
