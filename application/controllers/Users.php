@@ -14,8 +14,8 @@ class Users extends CI_Controller
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         $this->load->model('winnerwall/Winnerwall_model');
 
-        $this->load->model('Winnerwall/Miscellaneous_winnerwall_model');
-        $this->load->model('Winnerwall/Standard_winnerwall_model');
+        $this->load->model('winnerwall/Miscellaneous_winnerwall_model');
+        $this->load->model('winnerwall/Standard_winnerwall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $this->load->model('Admin/your_wall_model');
@@ -4444,13 +4444,13 @@ if ($availability==1)
         return true;
       }
       public function news_list(){
-        $data['news'] = $this->Admin_model->getLetestNews();
+        $data['news'] = $this->Users_model->getLetestNews();
         $this->load->view('users/headers/header');
         $this->load->view('users/news_list',$data);
         $this->load->view('users/footers/footer');
       }
       public function event_list(){
-        $data['events'] = $this->Admin_model->getEvent();
+        $data['events'] = $this->Users_model->getEvent();
         // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/event_list',$data);

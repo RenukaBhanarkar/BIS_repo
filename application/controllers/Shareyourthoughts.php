@@ -30,7 +30,7 @@ class Shareyourthoughts extends CI_Controller
     public function share_your_thoughts_dashboard()
     {
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('Shareyourthoughts/share_your_thoughts_dashboard');
+        $this->load->view('shareyourthoughts/share_your_thoughts_dashboard');
         $this->load->view('admin/footers/admin_footer');
     }
     public function item_proposal_list()

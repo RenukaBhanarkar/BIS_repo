@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="" rel="stylesheet">
+    <!-- <link href="" rel="stylesheet"> -->
     <link href="<?php echo base_url();?>assets/admin/css/loader.css" rel="stylesheet">
 
     <!-- CSS File -->
@@ -331,5 +331,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
             else{   
             }
         })
-    </script>
-    
+    </script>   

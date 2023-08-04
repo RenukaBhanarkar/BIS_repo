@@ -162,36 +162,14 @@ div#scroll_css::-webkit-scrollbar-thumb:hover {
                         <p><a href="<?php echo base_url().'users/news_view/'.encryptids('E',$news_list['id']);?>"><?php echo $news_list['title']; ?></a></p>
                         <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($news_list['created_on'])); ?></p>
                         <hr>
-                        <?php  }} ?>
-                        <!-- <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr> -->
+                        <?php  }} ?>                        
                     </div>
                     
                     
                     <div>
-                        <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <?php if(!empty($news)){if(count($news) > 9){ ?>
+                            <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <?php }} ?>
                     </div>
                 </div> 
                 </div><!-- End Tab 1 Content -->
@@ -203,36 +181,14 @@ div#scroll_css::-webkit-scrollbar-thumb:hover {
                         <p><a href="<?php echo base_url().'users/event_view/'.encryptids('E',$events_list['id']); ?>"><?php echo $events_list['title']; ?></a></p>
                         <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($events_list['created_on'])); ?></p>
                         <hr>
-                    <?php } } ?>
-                        <!-- <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr> -->
+                    <?php } } ?>                        
                     </div>
                     
                     
                     <div>
+                    <?php if(!empty($events)){if(count($events) > 9){ ?>
                         <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <?php }} ?>
                     </div>
                 </div>
                </div><!-- End Tab 2 Content -->
