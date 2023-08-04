@@ -71,5 +71,15 @@ class world_of_standard extends CI_Controller
         $this->load->view('world_of_standard/workshop_seminars_list');
         $this->load->view('users/footers/footer');
       }
+      public function membership_panels_form(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/membership_panels_form');
+        $this->load->view('users/footers/footer');
+      }
+      public function need_information(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/need_information');
+        $this->load->view('users/footers/footer');
+      }
 }
 ?>
