@@ -1903,8 +1903,13 @@
 
     public function getWinnerWall()
     {
+        $this->db->cache_on();
         $this->db->select('id,name,location,image');
-        return $this->db->get('tbl_winner_wall_details')->result_array(); 
+        // return $this->db->get('tbl_winner_wall_details')->result_array(); // commented for caching
+        $data=array();
+        $data=$this->db->get('tbl_winner_wall_details')->result_array(); 
+        $this->db->cache_off();
+        return $data;
     }
     public function isCompetitionForThisUser($user_id, $quiz_id)
         {

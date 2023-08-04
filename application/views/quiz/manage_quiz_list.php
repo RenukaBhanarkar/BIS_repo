@@ -353,7 +353,7 @@
                                       // Swal.fire(res.message);
                                       location.reload();
                                     } else {
-                                      alert(res.message);
+                                      // alert(res.message);
                                       window.location.replace("<?php echo base_url(); ?>quiz/manage_quiz_list");
                                     }
                                   },
@@ -386,7 +386,7 @@
                                       // Swal.fire(res.message);
                                       location.reload();
                                     } else {
-                                      alert(res.message);
+                                      // alert(res.message);
                                       window.location.replace("<?php echo base_url(); ?>quiz/manage_quiz_list");
                                     }
                                   },

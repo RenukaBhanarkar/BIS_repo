@@ -1134,9 +1134,11 @@ class Admin_model extends CI_Model {
         }
     }
     public function bannerwosAllData(){
+        $this->db->cache_on();
         $myQuery = "SELECT * FROM  tbl_wos_banner ";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();
+        $this->db->cache_off();
         return $result;
     }
     public function  wowInsertBanner($data)
@@ -1289,6 +1291,7 @@ class Admin_model extends CI_Model {
         } 
     }
     public function news(){
+        $this->db->cache_on();
         $this->db->select('*');
         $this->db->from('tbl_latest_news');
        $this->db->where('status','5');
@@ -1296,7 +1299,7 @@ class Admin_model extends CI_Model {
        $this->db->limit('10');
         $query= $this->db->get();       
         $result=$query->result_array();
-       
+       $this->db->cache_off();
         return $result;
     }
     public function editLetestNews($id){
@@ -1394,6 +1397,7 @@ class Admin_model extends CI_Model {
         return $result;
     }
     public function events(){
+        $this->db->cache_on();
         $this->db->select('*');
         $this->db->from('tbl_mst_events');
        $this->db->where('status','5');
@@ -1401,7 +1405,7 @@ class Admin_model extends CI_Model {
        $this->db->limit('10');
         $query= $this->db->get();       
         $result=$query->result_array();
-       
+       $this->db->cache_off();
         return $result;
     }
     public function editEvents($id){

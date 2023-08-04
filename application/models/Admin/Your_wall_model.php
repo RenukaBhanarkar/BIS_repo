@@ -58,6 +58,7 @@ class Your_wall_model extends CI_Model {
         $this->db->update('tbl_your_wall',['status'=>'5'],['id'=>$id]);
     }
     public function getPublishedWall(){
+        $this->db->cache_on();
         $this->db->select('tyw.*,tms.status_name,tu.user_name,tu.standard_club_name');
         $this->db->from('tbl_your_wall tyw'); 
         $this->db->join('tbl_mst_status tms','tms.id=tyw.status');      
@@ -71,6 +72,7 @@ class Your_wall_model extends CI_Model {
         $this->db->order_by('tyw.created_on','desc');
         $query=$this->db->get();
         $res=$query->result_array();
+        $this->db->cache_off();
         return $res;
     }
     public function getSelfPublishedWall($user_id){
