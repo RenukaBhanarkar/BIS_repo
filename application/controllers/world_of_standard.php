@@ -66,5 +66,10 @@ class world_of_standard extends CI_Controller
         $this->load->view('world_of_standard/workshop_seminars');
         $this->load->view('users/footers/footer');
       }
+      public function workshop_seminars_list(){
+        $this->load->view('users/headers/header');
+        $this->load->view('world_of_standard/workshop_seminars_list');
+        $this->load->view('users/footers/footer');
+      }
 }
 ?>

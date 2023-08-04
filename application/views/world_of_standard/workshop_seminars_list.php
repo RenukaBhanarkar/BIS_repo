@@ -20,9 +20,9 @@
 <div id="privacy-content" class="container">
 <div class="col-12 mt-1">
   				<div class="breadcrums">
-  					<ul>
-
-  						<li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
+                  <ul>
+                        <li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
+                          <li><a href="<?php echo base_url().'users/workshops_seminars'?>">Workshops and Seminars</a></li>
                         <li><a class="active">Workshops/Seminars held</a></li>
 
   					</ul>
@@ -41,27 +41,29 @@
                             <p>You shall also find links to videos of speeches, interviews given by Chairman of PMRDA at national and international events such as conferences. The videos are drawn from Aadhaar Channel in YouTube.</p> -->
             <div class="col-md-12 mb-3">
             
-                <table class="table hover table-bordered pt-2" id="example">
+                <table class="table hover table-bordered pt-2 table-responsive" id="example">
                 <thead>
                             		<tr>
                                         <th>Sr.No.</th>
-                            			<th>Department</th>
-                            			<th>Upcoming Workshops/Seminars</th>
+                            			<th>Name of Workshops/seminar</th>
+                            			<th>Date & Time</th>
+                                        <th>Venue</th>
+                                        <th>Organized By</th>
+                                        <th>Report</th>
                             			
                             		</tr>
                             	</thead>
                             	<tbody>
                             		<tr>
                             			<td>1</td>
-                            			<td>Department</td>
-                            			<td><a href="#" class="count" style="color:blue;">count</a></td>
+                            			<td>BIS Exchange Forum</td>
+                                        <td>12/03/2023 12:00:00</td>
+                                        <td>Technical Committee</td>
+                                        <td>Department</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-sm mt-2">View</a>
+                                        </td>
                             		</tr>
-                            		<tr>
-                            			<td>2</td>
-                            			<td>Department</td>
-                            			<td><a href="#" class="count" style="color:blue;">count</a></td>
-                            		</tr>
-                            		
                             	</tbody>
                             </table>
                         </div>    
@@ -71,22 +73,27 @@
          </div>
     </div>
   </div>
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $(document).ready(function () {
-    $('#example').DataTable();
+    // $('#example').DataTable();
+    $('#example').DataTable( {
+    // responsive: true,
+    // scrollX: 5000
+} );
     });
-    $('.count').on('click',function(){
+    $('.confirm').on('click',function(){
     Swal.fire({
-                    title: 'Are you sure you want to View?',
+                    title: 'Are you sure you want to confirm your participation?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'View',
+                    confirmButtonText: 'Yes Confirm',
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'world_of_standard/workshop_seminars_list'?>');                   
+                        // window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
