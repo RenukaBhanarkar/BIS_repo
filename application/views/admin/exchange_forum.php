@@ -318,18 +318,18 @@
                 </div>
                 </a>
             </div>
-            <!-- <div class="col-xl-3 col-md-6 mb-4">
-                <a href="<?php echo base_url().'admin/about_eBIS_list'; ?>"> 
+            <div class="col-xl-3 col-md-6 mb-4">
+                <a href="<?php echo base_url().'membership_panel/working_panel_dashboard'; ?>"> 
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center d-flex">
-                            <h5 class="font-weight-bold text-success mb-1">About eBIS</h5>
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <h5 class="font-weight-bold text-success mb-1">Offers for the Membership of Working Panels</h5>
+                            <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
                         </div>
                     </div>
                 </div>
                 </a>
-            </div> -->
+            </div>
             <?php } ?>
            <?php }else{  ?> 
                       

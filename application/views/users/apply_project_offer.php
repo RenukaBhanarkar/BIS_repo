@@ -66,7 +66,7 @@
                                             <a href="" class="btn btn-primary btn-sm mt-2">See the Scope</a>
                                             <a href="" class="btn btn-warning btn-sm mt-2">See the Tearms of Reference</a>
                                             <a href="#" class="btn btn-success btn-sm mt-2 apply">Apply</a>
-                                            <a href="" class="btn btn-secondary btn-sm mt-2">Need Information</a>
+                                            <a href="#" class="btn btn-secondary btn-sm mt-2 need">Need Information</a>
                                         </td>
                             		</tr>
                             	</tbody>
@@ -98,7 +98,25 @@
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
+                        window.location.replace('<?php echo base_url().'users/apply_project_list'?>');              
+                        //$('#competition_edit').submit();
+                       // Swal.fire('Saved!', '', 'success')                                
+                    } else if (result.isDenied) {
+                        // Swal.fire('Changes are not saved', '', 'info')
+                    }
+                    })
+})
+$('.need').on('click',function(){
+    Swal.fire({
+                    title: 'Are you sure you want to Need Information?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Apply',
+                    denyButtonText: `Close`,
+                    }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {    
+                        window.location.replace('<?php echo base_url().'world_of_standard/need_information'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {
