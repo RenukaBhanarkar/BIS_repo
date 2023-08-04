@@ -13,8 +13,8 @@ class Standardsmaking extends CI_Controller
         //     redirect(base_url() . "Users/logout", 'refresh');
         // }
         $this->load->model('Admin/Admin_model');
-        $this->load->model('subadmin/Que_bank_model');
-        $this->load->model('subadmin/Questions_model');
+        $this->load->model('Subadmin/Que_bank_model');
+        $this->load->model('Subadmin/Questions_model');
         $this->load->model('Admin/Your_wall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         date_default_timezone_set("Asia/Calcutta");

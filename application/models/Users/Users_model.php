@@ -1,4 +1,4 @@
- <?php
+<?php
     defined('BASEPATH') or exit('No direct script access allowed');
 
     class Users_model extends CI_Model
@@ -129,6 +129,7 @@
         
         public function prizeDetails($quiz_id)
         {
+            $this->db->cache_on();
             $this->db->where('quiz_id', $quiz_id);
             $query = $this->db->get('tbl_prizes');
             $rs = array();
@@ -137,6 +138,7 @@
                     array_push($rs, $row);
                 }
             }
+            $this->db->cache_off();
             return $rs;
         }
         // public function getLoginUsers($username,$password)
@@ -1474,6 +1476,7 @@
          }
          public function viewQuiz($id)
          {
+            $this->db->cache_on();
              $this->db->select('tbl_quiz_details.*,
              tbl_mst_language.title as language,
              tbl_mst_quiz_availability.title as availability,
@@ -1490,7 +1493,12 @@
              $this->db->join('tbl_mst_regions', 'tbl_mst_regions.pki_region_id = tbl_quiz_details.region_id', 'left');
              $this->db->join('tbl_mst_branch', 'tbl_mst_branch.pki_id= tbl_quiz_details.branch_id', 'left');
              $this->db->join('tbl_mst_states', 'tbl_mst_states.state_id= tbl_quiz_details.state_id', 'left');
-             return $this->db->get('tbl_quiz_details')->row_array();
+            //  return $this->db->get('tbl_quiz_details')->row_array();
+            $data=array();
+            $data=$this->db->get('tbl_quiz_details')->row_array();
+            $this->db->cache_off();
+            return $data;
+
          }
 
          public function  toCheckExistedQuestion($user_id,$quiz_id,$ques_id){
@@ -2147,6 +2155,26 @@
 
         $this->db->where('quiz_id',$quiz_id);    
         return $this->db->get('tbl_miscellaneous_winner_wall_details')->result_array(); 
+    }
+    public function getLetestNews(){
+        $this->db->select('title,created_on,id');
+        $this->db->from('tbl_latest_news');
+        $this->db->order_by('created_on','desc');
+       $this->db->where('status','5');
+        $query= $this->db->get();       
+        $result=$query->result_array();
+       
+        return $result;
+    }
+    public function getEvent(){
+        $this->db->select('title,created_on,id');
+        $this->db->from('tbl_mst_events');
+       $this->db->where('status','5');
+       $this->db->order_by('created_on','desc');
+        $query= $this->db->get();       
+        $result=$query->result_array();
+       
+        return $result;
     }
 
 }

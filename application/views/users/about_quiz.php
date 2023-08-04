@@ -417,6 +417,9 @@
         });
 
     });
+    $('.startQuiz').click(function(){
+        $('.loader').show();
+    })
 </script>
 <!-- countdown code -->
 <script>

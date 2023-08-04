@@ -1,5 +1,4 @@
-
-    <!-- Begin Page Content -->
+<!-- Begin Page Content -->
     <div class="container">
         <!-- Content Row --> 
         <div class="row">
@@ -47,4 +46,3 @@
         </div>
        </div>
     <!-- /.container-fluid -->
-   
