@@ -496,10 +496,19 @@ class Standardswritting extends CI_Controller
         }
         $result=$this->Miscellaneous_competition->update_status($data);
         if($result){
-            return true;
+            // return true;
+                $data1['status'] = 1;
+                $data1['message'] = 'Status Updated.';
+            // echo "1";
         }else{
-            return false;
+            $data1['status'] = 0;
+            $data1['message'] = 'Something went wrong Status not updated.';
+            // echo "0";
+            // return false;
         }
+        echo  json_encode($data1);
+            return true;
+        // return $data;
 
     }
     public function update_competition_status(){

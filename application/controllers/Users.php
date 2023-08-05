@@ -9,13 +9,13 @@ class Users extends CI_Controller
 
         parent::__construct();
         $this->load->model('Admin/Admin_model');
-        $this->load->model('Quiz/quiz_model');
+        $this->load->model('Quiz/Quiz_model');
         $this->load->model('Users/Users_model');
         $this->load->model('Admin/Wall_of_wisdom_model', 'wow');
         $this->load->model('winnerwall/Winnerwall_model');
 
-        $this->load->model('Winnerwall/Miscellaneous_winnerwall_model');
-        $this->load->model('Winnerwall/Standard_winnerwall_model');
+        $this->load->model('winnerwall/Miscellaneous_winnerwall_model');
+        $this->load->model('winnerwall/Standard_winnerwall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Miscellaneous_Competition/Miscellaneous_competition');
         $this->load->model('Admin/your_wall_model');
@@ -662,6 +662,29 @@ class Users extends CI_Controller
             //$quizid = encryptids("D", $quiz_id);
             
             //////////////////////START/////////////
+            $data_input=array();
+            $user_credentials=array(
+                'username'=> $username,
+                'password'=> $password
+            );
+            $requests_array=json_encode($user_credentials);
+            //    print_r($_SERVER);
+            //    die;
+            // $ip=$_SERVER['HTTP_USER_AGENT'];
+            // echo $ip; die;
+            $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile")); 
+ 
+            if($isMob){                
+                $agent='mobile';
+            }else{ 
+                $agent='desktop';
+            }
+            $data_input['request_ip']     = $_SERVER['REMOTE_ADDR'];    
+            $data_input['user_agent']     = $agent;
+            $data_input['request_inputs'] = $requests_array; 
+            
+            $log_id=$this->Users_model->save_request($data_input);
+           
             $curl_req = curl_init();
             // commented $parameters = json_encode(array("userid" => $username, "password" => $password));
 
@@ -669,9 +692,10 @@ class Users extends CI_Controller
           
             $parameters  = "userid=" . $username . "&password=" . $password;
             curl_setopt_array($curl_req, array(
-                CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
+                // CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/Auth/login',
                // CURLOPT_URL => 'http://203.153.41.213:8071/php/BIS_2.0/dgdashboard/Auth/login',
            // CURLOPT_URL => ' http://10.53.100.49/php/BIS_2.0/dgdashboard/Auth/login',
+           CURLOPT_URL => 'https://www.services.bis.gov.in/php/BIS_2.0/EF_Api/Auth/login',
               
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
@@ -689,7 +713,16 @@ class Users extends CI_Controller
             ));
             $response = curl_exec($curl_req);
             curl_close($curl_req);
+            
+
             $output = json_decode($response, true);
+            $data_output['response_output']     = $output['result'];     // Api Response , Complete JSON 
+            $data_output['response_msg']        = $output['message'];  // Api MSG 
+            $data_output['response_code']       = $output['status_code'];  //   API status code
+            if($log_id!=FALSE){
+                $this->Users_model->update_request($log_id,$data_output);
+            }
+            
             //print_r($output); die;
             $userData = array();
 
@@ -1101,6 +1134,9 @@ class Users extends CI_Controller
         $data['banner_data'] = $this->Admin_model->bannerwosAllData();
         $data['images'] = $this->Admin_model->images();
         $data['videos'] = $this->Admin_model->videos();
+        $data['news'] = $this->Admin_model->news();
+        $data['events'] = $this->Admin_model->events();
+        // print_r($data); die;
         $this->load->view('users/headers/header');
         $this->load->view('users/world_of_standards', $data);
         $this->load->view('users/footers/footer');
@@ -3898,9 +3934,11 @@ class Users extends CI_Controller
                    
                     $successCount++;
                     if ($successCount == $number) {
-                        $wrong_ques = $this->Users_model->getWrongAns($quiz_id, $user_id);
-                        $correct_ques = $this->Users_model->getCorrectAns($quiz_id, $user_id);
-                        $not_ans_ques = $this->Users_model->getNotSelected($quiz_id, $user_id);
+                        // $wrong_ques = $this->Users_model->getWrongAns($quiz_id, $user_id);
+                        // $correct_ques = $this->Users_model->getCorrectAns($quiz_id, $user_id);
+                        // $not_ans_ques = $this->Users_model->getNotSelected($quiz_id, $user_id);
+                        $data = $this->Users_model->getUsersAnswers($quiz_id, $user_id);
+
                         $quiz = $this->Users_model->getTotalmarkAndQuestion($quiz_id);
 
                         $formdata2 = array();
@@ -3926,15 +3964,15 @@ class Users extends CI_Controller
 
 
 
-                        $formdata2['correct_ques'] = $correct_ques;
-                        $formdata2['wrong_ques'] = $wrong_ques;
-                        $formdata2['not_ans_ques'] = $not_ans_ques;
+                        $formdata2['correct_ques'] = $data['correct_ques'];
+                        $formdata2['wrong_ques'] = $data['wrong_ques'];
+                        $formdata2['not_ans_ques'] = $data['not_ans_ques'];
                         $formdata2['selected_lang'] = $selected_lang;
                         $formdata2['time_taken'] = $time_taken;
 
                         $ans = $total_mark / $total_question;
                         
-                        $score = $ans * $correct_ques;
+                        $score = $ans * $data['correct_ques'];
                         
                         $formdata2['score'] = $score;                    
                         
@@ -4565,13 +4603,16 @@ if ($availability==1)
         return true;
       }
       public function news_list(){
+        $data['news'] = $this->Users_model->getLetestNews();
         $this->load->view('users/headers/header');
-        $this->load->view('users/news_list');
+        $this->load->view('users/news_list',$data);
         $this->load->view('users/footers/footer');
       }
       public function event_list(){
+        $data['events'] = $this->Users_model->getEvent();
+        // print_r($data); die;
         $this->load->view('users/headers/header');
-        $this->load->view('users/event_list');
+        $this->load->view('users/event_list',$data);
         $this->load->view('users/footers/footer');
       }
       public function project_offer_list(){
@@ -4588,6 +4629,29 @@ if ($availability==1)
         $this->load->view('users/headers/header');
         $this->load->view('users/apply_project_list');
         $this->load->view('users/footers/footer');
+      }
+      public function news_view($id){
+        $news_id=encryptids("D",$id);
+        $data=$this->Admin_model->editLetestNews($news_id);
+        $data1['news_detail']=json_decode($data,TRUE);
+        // var_dump($data);
+        // echo $data1['id'];
+        // // print_r($data);
+        //  die;
+        $this->load->view('users/headers/header');
+        $this->load->view('users/news_view',$data1);
+        $this->load->view('users/footers/footer');
+      }
+      public function event_view($id){
+        $event_id=encryptids("D",$id);
+        $data=$this->Admin_model->editEvents($event_id);
+        $data1['event_detail']=json_decode($data,TRUE);
+        $this->load->view('users/headers/header');
+        $this->load->view('users/event_view',$data1);
+        $this->load->view('users/footers/footer');
+      }
+      public function del_cache(){
+        $this->db->cache_delete_all();
       }
 
         /*public function quiz_start($quiz_id)

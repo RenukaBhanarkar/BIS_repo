@@ -19,7 +19,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="" rel="stylesheet">
+    <!-- <link href="" rel="stylesheet"> -->
+    <link href="<?php echo base_url();?>assets/admin/css/loader.css" rel="stylesheet">
+
     <!-- CSS File -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/footer_page.css" rel="stylesheet">
@@ -72,6 +74,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </head>
 
 <body style="overflow-x: hidden;">
+<!-- loader_added -->
+<div class="loader-div">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.." />
+        </div>
+        <div class="loader">
+            <img class="loader-img" src="https://i.gifer.com/ZKZg.gif" alt="Loading.."/>
+        </div>
+ <!-- loader_end --> 
     <header>
         <div class="sub_header">
             <div class="container-fluid">
@@ -321,5 +331,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
             else{   
             }
         })
-    </script>
-    
+    </script>   

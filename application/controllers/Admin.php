@@ -13,8 +13,8 @@ class Admin extends CI_Controller
         //     redirect(base_url() . "Users/logout", 'refresh');
         // }
         $this->load->model('Admin/Admin_model');
-        $this->load->model('subadmin/Que_bank_model');
-        $this->load->model('subadmin/Questions_model');
+        $this->load->model('Subadmin/Que_bank_model');
+        $this->load->model('Subadmin/Questions_model');
         $this->load->model('Admin/Your_wall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Learningscience/Learningscience_model');
@@ -1227,15 +1227,16 @@ class Admin extends CI_Controller
 
     public function addEvents()
     {
-
+// print_r($_POST); die;
         $data['title'] =  $this->input->post('title');
         $data['link'] =  $this->input->post('link');
+        $data['description'] =  $this->input->post('description');
 
         if (!file_exists('uploads/cms/events')) {
             mkdir('uploads/cms/events', 0777, true);
         }
 
-        $banner_img = "events" . time() . '.jpg';
+        $banner_img = "events" . time() . $_FILES['thumbnail']['name'];
         $config['upload_path'] = './uploads/cms/events';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '204800';
@@ -2467,7 +2468,7 @@ class Admin extends CI_Controller
         }
 
 
-        $banner_img = "useful_links" . time() . '.jpg';
+        $banner_img = "useful_links" . time() . $_FILES['image']['name'];
         $config['upload_path'] = './uploads/cms/useful_links';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size']    = '500';
@@ -2623,7 +2624,7 @@ class Admin extends CI_Controller
         if (!file_exists('uploads/cms/followus')) {
             mkdir('uploads/cms/followus', 0777, true);
         }
-        $banner_img = "follow_us" . time() . '.jpg';
+        $banner_img = "follow_us" . time() . $_FILES['follow_us']['name'];
         $config['upload_path'] = './uploads/cms/followus';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
@@ -2669,7 +2670,7 @@ class Admin extends CI_Controller
         $document = "";
 
         if (!empty($_FILES['follow_us']['tmp_name'])) {
-            $document = "banner_image" . time() . '.jpg';
+            $document = "banner_image" . time() . $_FILES['follow_us']['name'];
             $config['upload_path'] = './uploads/cms/followus';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size']    = '100000';
@@ -2770,7 +2771,7 @@ class Admin extends CI_Controller
             mkdir('uploads/cms/gallary/photo', 0777, true);
         }
         //    print_r($_POST); die;
-        $banner_img = "photos" . time() . '.jpg';
+        $banner_img = "photos" . time() . $_FILES['image']['name'];
         $config['upload_path'] = './uploads/cms/gallary/photo';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '500';

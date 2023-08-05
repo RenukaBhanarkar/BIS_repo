@@ -46,7 +46,8 @@ class Wall_of_wisdom extends CI_Controller
            $document = "";
    
            if (!empty($_FILES['document']['tmp_name'])) {
-               $document = "Admin_PIC_" . time() . '.jpg';
+            //    $document = "Admin_PIC_" . time() . '.jpg';
+               $document = "Admin_PIC_" . time() . $_FILES['document']['name']; // Linux chnges
                $config['upload_path'] = './uploads/admin/wall_of_wisdom/';
                $config['allowed_types'] = 'gif|jpg|png|jpeg';
                $config['max_size']    = '10000';
@@ -264,7 +265,8 @@ class Wall_of_wisdom extends CI_Controller
        $document = "";
 
             if (!empty($_FILES['document']['tmp_name'])) {
-                $document = "wall_of_wisdom" . time() . '.jpg';
+                // $document = "wall_of_wisdom" . time() . '.jpg';
+                $document = "wall_of_wisdom" . time() . $_FILES['document']['name'];
                 $config['upload_path'] = './uploads/admin/wall_of_wisdom/';
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']    = '10000';

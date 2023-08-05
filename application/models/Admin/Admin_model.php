@@ -1134,9 +1134,11 @@ class Admin_model extends CI_Model {
         }
     }
     public function bannerwosAllData(){
+        $this->db->cache_on();
         $myQuery = "SELECT * FROM  tbl_wos_banner ";
         $query = $this->db->query($myQuery);
         $result=$query->result_array();
+        $this->db->cache_off();
         return $result;
     }
     public function  wowInsertBanner($data)
@@ -1205,7 +1207,7 @@ class Admin_model extends CI_Model {
     }
 
     public function addLetestNews($data){
-        $result=$this->db->insert('tbl_mst_letest_news',$data);
+        $result=$this->db->insert('tbl_latest_news',$data);
         if($result){
             return true;
         }else{
@@ -1214,7 +1216,7 @@ class Admin_model extends CI_Model {
     }
     public function getLetestNews(){
         $this->db->select('*');
-        $this->db->from('tbl_mst_letest_news');
+        $this->db->from('tbl_latest_news');
         $this->db->order_by('created_on','desc');
        $this->db->where('status!=','9');
         $query= $this->db->get();       
@@ -1224,7 +1226,7 @@ class Admin_model extends CI_Model {
     }
     public function getLetestNewsDetail($id){
         $this->db->select('*');
-        $this->db->from('tbl_mst_letest_news');
+        $this->db->from('tbl_latest_news');
        $this->db->where('id',$id);
         $query= $this->db->get();       
         $result=$query->result_array();
@@ -1233,7 +1235,7 @@ class Admin_model extends CI_Model {
     }
 
     public function deleteLetestNews($id){
-        $result=$this->db->delete('tbl_mst_letest_news',['id'=>$id]);
+        $result=$this->db->delete('tbl_latest_news',['id'=>$id]);
         if($result){
             return true;
         }else{
@@ -1243,7 +1245,7 @@ class Admin_model extends CI_Model {
     public function publishLetestNews($id){
         //echo $id; die;
         $this->db->where('id',$id);
-        $result=$this->db->update('tbl_mst_letest_news',['status'=>'5']);
+        $result=$this->db->update('tbl_latest_news',['status'=>'5']);
         if($result){
             return true;
         }else{
@@ -1253,7 +1255,7 @@ class Admin_model extends CI_Model {
     public function unpublishLetestNews($id){
 
         $this->db->where('id',$id);
-        $result=$this->db->update('tbl_mst_letest_news',['status'=>'6']);
+        $result=$this->db->update('tbl_latest_news',['status'=>'6']);
         if($result){
             return true;
         }else{
@@ -1262,7 +1264,7 @@ class Admin_model extends CI_Model {
     }
     public function archiveLetestNews($id){
         $this->db->where('id',$id);
-        $result=$this->db->update('tbl_mst_letest_news',['status'=>'9']);
+        $result=$this->db->update('tbl_latest_news',['status'=>'9']);
         if($result){
             return true;
         }else{
@@ -1271,7 +1273,7 @@ class Admin_model extends CI_Model {
     }
     public function archivedLetestNews(){
         $this->db->select('*');
-        $this->db->from('tbl_mst_letest_news');
+        $this->db->from('tbl_latest_news');
        $this->db->where('status','9');
        $this->db->order_by('created_on','desc');
         $query= $this->db->get();       
@@ -1281,7 +1283,7 @@ class Admin_model extends CI_Model {
     }
     public function restoreLetestNews($id){
         $this->db->where('id',$id);
-        $result=$this->db->update('tbl_mst_letest_news',['status'=>'1']);
+        $result=$this->db->update('tbl_latest_news',['status'=>'1']);
         if($result){
             return true;
         }else{
@@ -1289,19 +1291,20 @@ class Admin_model extends CI_Model {
         } 
     }
     public function news(){
+        $this->db->cache_on();
         $this->db->select('*');
-        $this->db->from('tbl_mst_letest_news');
+        $this->db->from('tbl_latest_news');
        $this->db->where('status','5');
        $this->db->order_by('created_on','desc');
-       $this->db->limit('2');
+       $this->db->limit('10');
         $query= $this->db->get();       
         $result=$query->result_array();
-       
+       $this->db->cache_off();
         return $result;
     }
     public function editLetestNews($id){
         $this->db->select('*');
-        $this->db->from('tbl_mst_letest_news');   
+        $this->db->from('tbl_latest_news');   
         $this->db->where('id',$id);   
         $query= $this->db->get();       
         $result=$query->result_array();
@@ -1311,7 +1314,7 @@ class Admin_model extends CI_Model {
     }
     public function updateLetestNews($data){
         $this->db->where('id', $data['id']);
-        if ($this->db->update('tbl_mst_letest_news', $data)) {
+        if ($this->db->update('tbl_latest_news', $data)) {
             return true;
         } else {
             return false;
@@ -1394,14 +1397,15 @@ class Admin_model extends CI_Model {
         return $result;
     }
     public function events(){
+        $this->db->cache_on();
         $this->db->select('*');
         $this->db->from('tbl_mst_events');
        $this->db->where('status','5');
        $this->db->order_by('created_on','desc');
-    //    $this->db->limit('2');
+       $this->db->limit('10');
         $query= $this->db->get();       
         $result=$query->result_array();
-       
+       $this->db->cache_off();
         return $result;
     }
     public function editEvents($id){

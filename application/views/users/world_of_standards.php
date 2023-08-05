@@ -1,5 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> -->
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" /> -->
 <style>
   
 .World_of_standers_inner_Box {
@@ -86,6 +86,26 @@
     font-weight: 600;
     font-size: 17px;
 }
+div#scroll_css::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+div#scroll_css::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 8px;
+}
+ 
+/* Handle */
+div#scroll_css::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+div#scroll_css::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
 </style>
 <section>
     <div class=row>
@@ -108,7 +128,9 @@
                                 </div> -->
                                 <?php  foreach($banner_data as $list=>$key){ ?>
                                 <div class="carousel-item <?php if($list==0){echo "active"; } ?>">
+                                <a <?php if(!empty($key['link'])){ ?>href="https://<?php echo $key['link']; ?>"<?php } ?> target="_blank">
                                 <img src="<?=base_url().'uploads/cms/banner/'.$key['banner_images'];?>" class="d-block w-100 standard_banner_scroll"  alt="...">
+                                </a>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -134,80 +156,39 @@
         </div>
         <div class="tab-content">
                 <div class="tab-pane fade active show" id="tab1" role="tabpanel">
-                <div class="whats_new">
+                <div class="whats_new" id="scroll_css">
                     <div class="news_list">
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
+                        <?php if(!empty($news)){ foreach($news as $news_list){ ?>
+                        <p><a href="<?php echo base_url().'users/news_view/'.encryptids('E',$news_list['id']);?>"><?php echo $news_list['title']; ?></a></p>
+                        <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($news_list['created_on'])); ?></p>
                         <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
-                        <p><a href="http://43.231.124.177/BIS/BIS_repo/users/standard">Metropolitan Commissioner News And Events</a></p>
-                        <p><strong>Date :</strong>12/03/2023</p>
-                        <hr>
+                        <?php  }} ?>                        
                     </div>
                     
                     
                     <div>
-                        <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <?php if(!empty($news)){if(count($news) > 9){ ?>
+                            <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <?php }} ?>
                     </div>
                 </div> 
                 </div><!-- End Tab 1 Content -->
 
               <div class="tab-pane fade" id="tab2" role="tabpanel">
-              <div class="whats_new">
+              <div class="whats_new" id="scroll_css">
                     <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
+                    <?php if(!empty($events)){ foreach($events as $events_list){ ?>
+                        <p><a href="<?php echo base_url().'users/event_view/'.encryptids('E',$events_list['id']); ?>"><?php echo $events_list['title']; ?></a></p>
+                        <p><strong>Date :</strong><?php echo date('d-m-Y',strtotime($events_list['created_on'])); ?></p>
+                        <hr>
+                    <?php } } ?>                        
                     </div>
-                    <hr>
-                    <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
-                    </div>
-                    <hr>
-                    <div class="news_list">
-                        <a href="#"> <img src="<?php echo base_url(); ?>/assets/images/whats_news.jpg" width="100%" alt="#" class="news_img"/>
-                        </a>
-                         <div class="news__details">
-                                <div class="title">
-                                    <h3><a href="#">The Great Wall reflects collision and exchanges between agricultural civilizations and nomadic civilizations</a></h3>
-                                    <span>10M Views</span>
-                                </div>
-                            </div> 
-                    </div> 
+                    
+                    
                     <div>
-                        <a href="#about" class="btn-sm get-started" style="text-align: end;">View All</a>
+                    <?php if(!empty($events)){if(count($events) > 9){ ?>
+                        <a href="<?php echo base_url().'users/news_list'?>" class="btn-sm get-started" style="text-align: end;">View All</a>
+                        <?php }} ?>
                     </div>
                 </div>
                </div><!-- End Tab 2 Content -->
@@ -224,7 +205,7 @@
                    <div class="World_of_standers_inner_Box  shadow">
                     <a href="<?php echo base_url().'users/meeting_startup'?>">
                     <div class="World_of_standers_image_box">
-                        <img src="<?=base_url();?>assets/images/startup.JPEG" class="card-img-top" alt="Discussion Forum">
+                        <img src="<?=base_url();?>assets/images/startup.jpeg" class="card-img-top" alt="Discussion Forum">
                        
                     </div>
                     <p class="Title_Section">Meeting the Start-ups</p>
@@ -321,6 +302,19 @@
                        
                     </div>
                     <p class="Title_Section">New Work Item Proposals (ISO/IEC)</p>
+                    </a>
+                  
+                       
+                </div>
+                </div>
+                <div class="col-md-3">
+                <div class="World_of_standers_inner_Box  shadow">
+                    <a href="item_proposal_list">
+                    <div class="World_of_standers_image_box">
+                        <img src="<?=base_url();?>assets/images/item_proposal.jpeg" class="card-img-top" alt="Discussion Forum">
+                       
+                    </div>
+                    <p class="Title_Section">Communication Window</p>
                     </a>
                   
                        
@@ -479,12 +473,12 @@
       </div>
   </div> 
     
-    <script src="<?=base_url();?>assets/js/bootstrap.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script>
-    <script src="<?=base_url();?>assets/js/font_resize.js"></script>
-    <script src="<?=base_url();?>assets/js/dark_mode.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+    <!-- <script src="<?=base_url();?>assets/js/bootstrap.bundle.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="<?=base_url();?>assets/js/owl.carousel.min.js"></script> -->
+    <!-- <script src="<?=base_url();?>assets/js/font_resize.js"></script> -->
+    <!-- <script src="<?=base_url();?>assets/js/dark_mode.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script> -->
     <script>
         function publish_pop(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");

@@ -41,6 +41,16 @@
 .right_content h3 {
     font-family: 'Georgia', serif;
 }
+.sidebar{
+	height: 37%;
+    border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.right_content{
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px;
+	border-radius: 5px;
+}
 </style>
 <section id="main_content">
   	<div class="container-xxl">
@@ -55,8 +65,10 @@
   					</ul>
   				</div>
   			</div>
+			</div>
+			<div class="row">
   			<div class="col-md-3">
-  				<div class="sidebar">
+  				<div class="sidebar p-2">
   					<div class="related_links">
   						<h5>Navigation</h5>
   						<ul>
@@ -66,12 +78,69 @@
   					</div>
                 </div>
   			</div>
-	  		<div class="col-md-9">
+	  		<div class="col-md-9" style="padding: 0px 13px 12px 0px">
 	  			<div class="right_content">
 	  				<h3>Events</h3>
 	  				
-	  			</div>
+	  			
+				<div class="col-md-12">
+						<table id="anis" class="table-bordered table-responsive" style="border-collapse: collapse;">
+							<thead>
+								<tr style="text-align: center;">
+									<th style="text-align: center;">Title</th>
+									<th style="text-align: center;">Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php if(!empty($events)){ foreach($events as $list_events){?>
+								<tr>
+									<td><a href="<?php echo base_url().'users/event_view/'.encryptids("E",$list_events['id']); ?>"  style="color: #0000FF;"><?php echo $list_events['title']; ?></a></td>
+									<td><?php echo date('d-m-Y',strtotime($list_events['created_on'])); ?></td>
+										
+								</tr>
+								<?php  } } ?>
+								<!-- <tr>
+									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
+									<td>12/03/2023</td>
+										
+								</tr>
+								<tr>
+									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
+									<td>12/03/2023</td>
+										
+								</tr>
+								<tr>
+									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
+									<td>12/03/2023</td>
+										
+								</tr>
+								<tr>
+									<td><a href="<?php echo base_url().'users/event_view'?>"  style="color: #0000FF;">Final order in Case No. 02 of 2021 Dr. Nivedita Rao &amp; others Versus Maharishi Markandeshwar University</a></td>
+									<td>12/03/2023</td>
+										
+								</tr> -->
+							
+										
+		
+							</tbody>
+						</table>
+				</div>
+				</div>
 	  		</div>
   		</div>
   	</div>
   </section>
+  <script>
+	$(document).ready(function(){
+		$('#anis').DataTable({
+			"bSort": false,
+                "bStateSave":true,
+                // "aoColumns": [ 
+                //    { "bSortable": false },
+                //    { "bSortable": false },
+                //    { "bSortable": false } ] 
+		});
+		
+	})
+	
+  </script>

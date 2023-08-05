@@ -1,4 +1,4 @@
- <?php
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Quiz_model extends CI_Model {

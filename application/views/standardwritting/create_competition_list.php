@@ -266,7 +266,8 @@ location.reload();
                         denyButtonText: `Cancel`,
                         }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {                       
+                        if (result.isConfirmed) {      
+                            $('.loader').show();                 
                             jQuery.ajax({
                                         type: "POST",
                                         url: '<?php echo base_url(); ?>Standardswritting/update_status',
@@ -276,7 +277,12 @@ location.reload();
                                         "status": 1
                                         },
                                         success: function(res) {
-                                        if (res) {
+                                          var res=JSON.parse(res);
+                                            // console.log(res.status);
+                                            // alert(res.message);
+                                        if (res.status==1) {
+                                            $('.loader').hide();
+                                            Swal.fire("Competition Created Successfully!");
                                             location.reload();
                                         } else {
                                             alert("error");

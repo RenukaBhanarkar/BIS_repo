@@ -23,8 +23,7 @@
   					<ul>
 
   						<li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
-                          <li><a href="<?php echo base_url().'users/research_projects'?>">Research Projects</a></li>
-  						<li><a class="active">Projects in progress</a></li>
+                        <li><a class="active">Workshops/Seminars held</a></li>
 
   					</ul>
   				</div>
@@ -32,7 +31,7 @@
     <div class="col-sx-12 col-sm-12 col-md-12" style="border-left: 3px solid cadetblue; padding: 0px 25px;">
         <div class="static-content">
             <div class="bloginfo">
-                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Projects in progress</h3>
+                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Workshops/Seminars held</h3>
             </div>
             <div class="heading-underline" style="width: 200px;">
                 <div class="left"></div><div class="right"></div>
@@ -46,8 +45,8 @@
                 <thead>
                             		<tr>
                                         <th>Sr.No.</th>
-                            			<th>Technical Department</th>
-                            			<th>Project in Progress</th>
+                            			<th>Department</th>
+                            			<th>Upcoming Workshops/Seminars</th>
                             			
                             		</tr>
                             	</thead>
@@ -55,12 +54,12 @@
                             		<tr>
                             			<td>1</td>
                             			<td>Department</td>
-                            			<td><a href="#" class="count" style="color:blue;">2</a></td>
+                            			<td><a href="#" class="count" style="color:blue;">count</a></td>
                             		</tr>
                             		<tr>
                             			<td>2</td>
                             			<td>Department</td>
-                            			<td><a href="#" class="count" style="color:blue;">3ss</a></td>
+                            			<td><a href="#" class="count" style="color:blue;">count</a></td>
                             		</tr>
                             		
                             	</tbody>
@@ -87,7 +86,7 @@
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'world_of_standard/progress_list'?>');                   
+                        window.location.replace('<?php echo base_url().'world_of_standard/workshop_seminars_list'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {

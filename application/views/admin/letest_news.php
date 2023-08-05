@@ -66,7 +66,7 @@
                                                                 <input type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/png, image/jpeg,image/jpg" onchange="loadThumbnail(event)">
                                                                 <span class="text-danger" id="err_thumbnail"></span>
                                                             </div>
-                                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg" fdprocessedid="3a6f0r">
+                                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Previewimg_add" fdprocessedid="3a6f0r">
                                                                 Preview 
                                                             </button>
                                                             </div>
@@ -283,7 +283,7 @@
     <a class="btn btn-primary btn-sm text-white" onclick="location.href='<?php echo base_url();?>admin/cmsManagenent_dashboard'">Back</a>
 </div>
 </div>
-<div class="modal fade" id="Previewimg" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
+<div class="modal fade" id="Previewimg_add" tabindex="-1" aria-labelledby="PreviewimgLabel" aria-hidden="true">
                                     <div class="modal-dialog" style="max-width:700px;">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -292,7 +292,7 @@
                                         <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span></button>
                                         </div>
                                         <div class="modal-body">
-                                        <img id="outputThumbnail" width="100%"/>
+                                        <img id="outputThumbnail_add" width="100%"/>
                                         </div>
                                         <div class="modal-footer">
                                         <!-- <button type="button"  onclick="resetbanner()" class="btn btn-secondary" data-bs-dismiss="modal">ReSet</button>
@@ -306,7 +306,7 @@
     var loadThumbnail = function(event) 
     {
        //  $("#Previewimg").show();
-        var outputThumbnail = document.getElementById('outputThumbnail');
+        var outputThumbnail = document.getElementById('outputThumbnail_add');
         
         outputThumbnail.src = URL.createObjectURL(event.target.files[0]);
         console.log(outputThumbnail.src);

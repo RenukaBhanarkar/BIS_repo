@@ -20,12 +20,10 @@
 <div id="privacy-content" class="container">
 <div class="col-12 mt-1">
   				<div class="breadcrums">
-  					<ul>
-
-  						<li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
-                        <li><a href="<?php echo base_url().'users/research_projects'?>">Research Projects</a></li>
-                        <li><a href="<?php echo base_url().'users/project_offer_list'?>">Project on offer</a></li>
-  						<li><a class="active">Project on offer</a></li>
+                  <ul>
+                        <li><a href="<?php echo base_url().'users/quality_index'?>">Home</a></li>
+                          <li><a href="<?php echo base_url().'users/workshops_seminars'?>">Workshops and Seminars</a></li>
+                        <li><a class="active">Workshops/Seminars held</a></li>
 
   					</ul>
   				</div>
@@ -33,7 +31,7 @@
     <div class="col-sx-12 col-sm-12 col-md-12" style="border-left: 3px solid cadetblue; padding: 0px 25px;">
         <div class="static-content">
             <div class="bloginfo">
-                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Project on offer</h3>
+                <h3 style="margin-bottom: 0px;margin-top:20px;color: #0086b2!important;font-weight: 600;">Workshops/Seminars held</h3>
             </div>
             <div class="heading-underline" style="width: 200px;">
                 <div class="left"></div><div class="right"></div>
@@ -43,15 +41,15 @@
                             <p>You shall also find links to videos of speeches, interviews given by Chairman of PMRDA at national and international events such as conferences. The videos are drawn from Aadhaar Channel in YouTube.</p> -->
             <div class="col-md-12 mb-3">
             
-                <table class="table hover table-bordered pt-2" id="example">
+                <table class="table hover table-bordered pt-2 table-responsive" id="example">
                 <thead>
                             		<tr>
                                         <th>Sr.No.</th>
-                            			<th>Title of Project</th>
-                            			<th>Technical Department</th>
-                                        <th>Technical Committee</th>
-                                        <th>Date of Approval</th>
-                                        <th>Action</th>
+                            			<th>Name of Workshops/seminar</th>
+                            			<th>Date & Time</th>
+                                        <th>Venue</th>
+                                        <th>Organized By</th>
+                                        <th>Report</th>
                             			
                             		</tr>
                             	</thead>
@@ -59,14 +57,11 @@
                             		<tr>
                             			<td>1</td>
                             			<td>BIS Exchange Forum</td>
-                                        <td>Technical Department</td>
+                                        <td>12/03/2023 12:00:00</td>
                                         <td>Technical Committee</td>
-                                        <td>12/03/2023</td>
-                            			<td>
-                                            <a href="" class="btn btn-primary btn-sm mt-2">See the Scope</a>
-                                            <a href="" class="btn btn-warning btn-sm mt-2">See the Tearms of Reference</a>
-                                            <a href="#" class="btn btn-success btn-sm mt-2 apply">Apply</a>
-                                            <a href="#" class="btn btn-secondary btn-sm mt-2 need">Need Information</a>
+                                        <td>Department</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-sm mt-2">View</a>
                                         </td>
                             		</tr>
                             	</tbody>
@@ -85,38 +80,20 @@
     // $('#example').DataTable();
     $('#example').DataTable( {
     // responsive: true,
-    scrollX: 2000
+    // scrollX: 5000
 } );
     });
-    $('.apply').on('click',function(){
+    $('.confirm').on('click',function(){
     Swal.fire({
-                    title: 'Are you sure you want to Apply?',
+                    title: 'Are you sure you want to confirm your participation?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Apply',
+                    confirmButtonText: 'Yes Confirm',
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'users/apply_project_list'?>');              
-                        //$('#competition_edit').submit();
-                       // Swal.fire('Saved!', '', 'success')                                
-                    } else if (result.isDenied) {
-                        // Swal.fire('Changes are not saved', '', 'info')
-                    }
-                    })
-})
-$('.need').on('click',function(){
-    Swal.fire({
-                    title: 'Are you sure you want to Need Information?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Apply',
-                    denyButtonText: `Close`,
-                    }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {    
-                        window.location.replace('<?php echo base_url().'world_of_standard/need_information'?>');                   
+                        // window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {

@@ -1244,6 +1244,7 @@ class Subadmin extends CI_Controller
             $data['message'] = $this->upload->display_errors();
         }
         $formdata['caption'] = $this->input->post('banner_caption');
+        $formdata['link'] = $this->input->post('banner_link');
         $formdata['banner_images'] = $banner_img;
    
         $this->Admin_model->wowInsertBanner($formdata);
@@ -1282,7 +1283,7 @@ class Subadmin extends CI_Controller
          $formdata['id'] = $this->input->post('id');
          //$formdata['title'] = $this->input->post('title');
          $formdata['caption'] = $this->input->post('banner_caption');  
-       //  $formdata['image'] = $this->input->post('old_doc');   
+        $formdata['link'] = $this->input->post('banner_link');   
  
         $oldDocument = "";
         $oldDocument = $this->input->post('old_img');

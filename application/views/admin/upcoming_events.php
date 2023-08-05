@@ -42,7 +42,7 @@
                                                 <div class="modal-body">
                                                    <div class="row">
                                                         <div class="mb-2 col-md-4">
-                                                            <label class="d-block text-font">Event Title</label>
+                                                            <label class="d-block text-font">Event Title<sup class="text-danger">*</sup></label>
                                                             <input type="text" class="form-control input-font" name="title" id="title" placeholder="Enter event Title" minlength="3" maxlength="200" value="" required>
                                                             <span class="text-danger" id="err_title"></span>
                                                         </div>
@@ -60,13 +60,19 @@
                                                             </div>
                                                             </div>
                                                    </div>
-                                                   </div>
-                                                   <div class="row">
-                                                        <div class="mb-2 col-md-4">
+                                                   <div class="mb-2 col-md-4">
                                                             <label class="d-block text-font">Link (if any)</label>
                                                             <input type="text" class="form-control input-font" name="link" id="link" value="" required>
-                                                        </div>
+                                                    </div>
+                                                    <div class="mb-2 col-md-12">
+                                                            <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
+                                                            <textarea type="text" class="form-control input-font" name="description" id="description" placeholder="Enter description" value="" required></textarea>
+                                                            <span class="text-danger" id="err_description"></span>
+                                                    </div>
                                                    </div>
+                                                   
+                                                   
+                                                   
                                                 </div>
                                                 <div class="modal-footer">
                                                 <button onclick="return submitButton(event)" type="submit" type="button" class="btn btn-success" >Submit</button>
@@ -280,7 +286,7 @@
 
 <script>
                         CKEDITOR.replace( 'description' );
-                        CKEDITOR.replace( 'description_1' );
+                     
 
 </script>
 <script>
@@ -394,7 +400,7 @@
            var title = $("#title").val();
         //    var links = $("#link").val();
            // var description = $("#description").val();
-        //    var description= CKEDITOR.instances['description'].getData(); 
+           var description= CKEDITOR.instances['description'].getData(); 
            var is_valid = true;
            //var numbers = /[0-9]/g;
            //var upperCaseLetters = /[A-Z]/g;
@@ -408,12 +414,28 @@
                $("#err_title").text("Please Enter minimum 5 Characters");
                $("#title").focus();
                 is_valid = false;
-           }else if (title.length > 250) {
-               $("#err_title").text("Maximum 250 characters allowed");
+           }else if (title.length > 1000) {
+               $("#err_title").text("Maximum 1000 characters allowed");
                $("#title").focus();
                 is_valid = false;
            } else {
                $("#err_title").text("");
+           }
+
+           if (description == "") {
+               $("#err_description").text("This value is required");
+            //    $("#title").focus();
+                 is_valid = false;
+           } else if (!(description.length > 4)) {
+               $("#err_description").text("Please Enter minimum 5 Characters");
+            //    $("#title").focus();
+                is_valid = false;
+           }else if (description.length > 20000) {
+               $("#err_description").text("Maximum 20000 characters allowed");
+            //    $("#title").focus();
+                is_valid = false;
+           } else {
+               $("#err_description").text("");
            }
           
            

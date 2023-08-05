@@ -1,4 +1,4 @@
- <?php
+<?php
     defined('BASEPATH') or exit('No direct script access allowed');
 
     class Users_model extends CI_Model
@@ -129,6 +129,7 @@
         
         public function prizeDetails($quiz_id)
         {
+            $this->db->cache_on();
             $this->db->where('quiz_id', $quiz_id);
             $query = $this->db->get('tbl_prizes');
             $rs = array();
@@ -137,6 +138,7 @@
                     array_push($rs, $row);
                 }
             }
+            $this->db->cache_off();
             return $rs;
         }
         // public function getLoginUsers($username,$password)
@@ -221,21 +223,42 @@
             $this->db->insert('tbl_quiz_submission_details', $formdata);
             return $insert_id = $this->db->insert_id();
         }
-        public function getCorrectAns($quiz_id, $user_id)
-        {
-            $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
-            return $query->num_rows();
-        }
-        public function getWrongAns($quiz_id, $user_id)
-        {
-            $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op!=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
-            return $query->num_rows();
-        }
+        // public function getCorrectAns($quiz_id, $user_id)
+        // {
+        //     $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+        //     return $query->num_rows();
+        // }
+        // public function getWrongAns($quiz_id, $user_id)
+        // {
+        //     $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op!=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+        //     return $query->num_rows();
+        // }
 
-        public function getNotSelected($quiz_id, $user_id)
-        {
-            $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=0 AND user_id='$user_id' AND quiz_id='$quiz_id'");
-            return $query->num_rows();
+        // public function getNotSelected($quiz_id, $user_id)
+        // {
+        //     $query = $this->db->query("SELECT * FROM tbl_user_quiz WHERE selected_op=0 AND user_id='$user_id' AND quiz_id='$quiz_id'");
+        //     return $query->num_rows();
+        // }
+        public function getUsersAnswers($quiz_id, $user_id){
+            $query = $this->db->query("SELECT count('id') as cnt FROM tbl_user_quiz WHERE selected_op=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+            $data1=$query->row_array();
+            $getCorrectAns= $data1['cnt'];
+
+            $query1 = $this->db->query("SELECT count('id') as cnt FROM tbl_user_quiz WHERE selected_op!=corr_opt AND user_id='$user_id' AND quiz_id='$quiz_id'");
+            $data2=$query1->row_array();
+            $getWrongAns= $data2['cnt'];
+
+            $query3 = $this->db->query("SELECT count('id') as cnt FROM tbl_user_quiz WHERE selected_op=0 AND user_id='$user_id' AND quiz_id='$quiz_id'");
+            $data3=$query3->row_array();
+            $getNotSelected = $data3['cnt'];            
+
+            $data=array(
+                'wrong_ques'=>$getWrongAns,
+                'correct_ques'=>$getCorrectAns,
+                'not_ans_ques'=>$getNotSelected,
+            );
+            return $data;
+
         }
         public function getTotalmarkAndQuestion($id)
         {
@@ -1474,6 +1497,7 @@
          }
          public function viewQuiz($id)
          {
+            $this->db->cache_on();
              $this->db->select('tbl_quiz_details.*,
              tbl_mst_language.title as language,
              tbl_mst_quiz_availability.title as availability,
@@ -1490,7 +1514,12 @@
              $this->db->join('tbl_mst_regions', 'tbl_mst_regions.pki_region_id = tbl_quiz_details.region_id', 'left');
              $this->db->join('tbl_mst_branch', 'tbl_mst_branch.pki_id= tbl_quiz_details.branch_id', 'left');
              $this->db->join('tbl_mst_states', 'tbl_mst_states.state_id= tbl_quiz_details.state_id', 'left');
-             return $this->db->get('tbl_quiz_details')->row_array();
+            //  return $this->db->get('tbl_quiz_details')->row_array();
+            $data=array();
+            $data=$this->db->get('tbl_quiz_details')->row_array();
+            $this->db->cache_off();
+            return $data;
+
          }
 
          public function  toCheckExistedQuestion($user_id,$quiz_id,$ques_id){
@@ -1895,8 +1924,13 @@
 
     public function getWinnerWall()
     {
+        $this->db->cache_on();
         $this->db->select('id,name,location,image');
-        return $this->db->get('tbl_winner_wall_details')->result_array(); 
+        // return $this->db->get('tbl_winner_wall_details')->result_array(); // commented for caching
+        $data=array();
+        $data=$this->db->get('tbl_winner_wall_details')->result_array(); 
+        $this->db->cache_off();
+        return $data;
     }
     public function isCompetitionForThisUser($user_id, $quiz_id)
         {
@@ -2147,6 +2181,42 @@
 
         $this->db->where('quiz_id',$quiz_id);    
         return $this->db->get('tbl_miscellaneous_winner_wall_details')->result_array(); 
+    }
+    public function getLetestNews(){
+        $this->db->select('title,created_on,id');
+        $this->db->from('tbl_latest_news');
+        $this->db->order_by('created_on','desc');
+       $this->db->where('status','5');
+        $query= $this->db->get();       
+        $result=$query->result_array();
+       
+        return $result;
+    }
+    public function getEvent(){
+        $this->db->select('title,created_on,id');
+        $this->db->from('tbl_mst_events');
+       $this->db->where('status','5');
+       $this->db->order_by('created_on','desc');
+        $query= $this->db->get();       
+        $result=$query->result_array();
+       
+        return $result;
+    }
+    public function save_request($data){
+        // print_r($data); die;
+            if ($this->db->insert('ef_api_logs', $data)) {
+                return $this->db->insert_id();
+            } else{
+                return false;
+            }
+    }
+    public function update_request($id,$data){
+        $this->db->where('id', $id);        
+        if ($this->db->update('ef_api_logs', $data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -86,18 +86,18 @@
             <div class="row">
                 <div class="col-md-3">
                    <div class="World_of_standers_inner_Box  shadow">
-                    <a href="#">
+                    <a href="<?php echo base_url().'world_of_standard/upcoming_workshop'?>">
                     <div class="World_of_standers_image_box">
                         <img src="<?=base_url();?>assets/images/startup.JPEG" class="card-img-top" alt="Discussion Forum">
                        
                     </div>
-                    <p class="Title_Section">Upcoming workshops/seminar</p>
+                    <p class="Title_Section">Upcoming Workshops/seminar</p>
                     </a>
                   </div>
                 </div>
                 <div class="col-md-3">
                     <div class="World_of_standers_inner_Box  shadow">
-                        <a href="#">
+                        <a href="<?php echo base_url().'world_of_standard/workshop_seminars'?>">
                         <div class="World_of_standers_image_box">
                             <img src="<?=base_url();?>assets/images/research_project.jpeg" class="card-img-top" alt="Discussion Forum">
                         

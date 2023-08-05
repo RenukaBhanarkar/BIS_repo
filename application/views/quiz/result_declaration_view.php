@@ -67,7 +67,7 @@
                             <div class="mb-2 col-md-4">
                                 <label class="d-block text-font">region</label>
                                     <div>
-                                        <p><?=$row['Region']?></p>
+                                        <p><?=$row['region']?></p>
                                     </div>
                             </div>
                         <?php } ?>

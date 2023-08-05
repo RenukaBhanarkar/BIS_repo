@@ -112,7 +112,7 @@
                    <div class="World_of_standers_inner_Box  shadow">
                     <a href="<?php echo base_url().'users/project_offer_list'?>">
                     <div class="World_of_standers_image_box">
-                        <img src="<?=base_url();?>assets/images/startup.JPEG" class="card-img-top" alt="Discussion Forum">
+                        <img src="<?=base_url();?>assets/images/startup.jpeg" class="card-img-top" alt="Discussion Forum">
                        
                     </div>
                     <p class="Title_Section">Projects on offer</p>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="col-md-3">
                 <div class="World_of_standers_inner_Box  shadow">
-                        <a href="#">
+                        <a href="<?php echo base_url().'world_of_standard/project_complete'?>">
                         <div class="World_of_standers_image_box">
                             <img src="<?=base_url();?>assets/images/seminar.jpeg" class="card-img-top" alt="Discussion Forum">
                         

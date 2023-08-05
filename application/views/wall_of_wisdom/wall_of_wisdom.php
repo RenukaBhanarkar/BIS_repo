@@ -693,20 +693,24 @@ var loadFileThumbnail = function(event)
                 $("#description").focus();
                 var is_valid = false;
             } else if ((description.length < 10)) {
-                $("#err_description").text("Description size should be 10 to 20000 characters");
+                // $("#err_description").text("Description size should be 10 to 20000 characters");
+                $("#err_description").text("Description size should more than 10 characters");
                 $("#description").focus();
                  is_valid = false;
-            } else if ((description.length > 20000)) {
-                is_valid = false;
-                // alert('Description length must be less than 2000 characters ');
-                //$("#err_description").text("Maximum 5000 characters allowed");
-                $("#err_description").text("You entered "+description.length+" Characters. Description size should be 10 to 20000 characters");
-                $("#description").focus();
-                //  is_valid = false;
+            } 
+            // else if ((description.length > 20000)) {
+            //     is_valid = false;
+            //     // alert('Description length must be less than 2000 characters ');
+            //     //$("#err_description").text("Maximum 5000 characters allowed");
+            //     $("#err_description").text("You entered "+description.length+" Characters. Description size should be 10 to 20000 characters");
+            //     $("#description").focus();
+            //     //  is_valid = false;
                 
-            } else {
-                var remain = 20000-description.length;
-                $("#err_description").text("You can enter "+remain+" more characters");
+            // } 
+            else {
+                // var remain = 20000-description.length;
+                // $("#err_description").text("You can enter "+remain+" more characters");
+                $("#err_description").text("");
             }
             
 
@@ -851,19 +855,22 @@ var loadFileThumbnail = function(event)
                var is_valid = false;
            } else if ((description.length < 10)) {
             $("#err_description1").addClass("text-danger"); 
-               $("#err_description1").text("Please Enter minimum 5 Characters");
+            //    $("#err_description1").text("Please Enter minimum 5 Characters");
+               $("#err_description1").text("Description size should more than 10 characters");
                $("#description").focus();
                var is_valid = false;
-           } else if ((description.length > 20000)) {
-            $("#err_description1").addClass("text-danger"); 
-               $("#err_description1").text("Maximum 20000 characters allowed");
-               $("#description").focus();
-               var is_valid = false;
-           } else {
-               $("#err_description1").removeClass("text-danger");               
-                var remain = 20000-description.length;                
-                $("#err_description1").text("You can enter "+remain+" more characters");
-            
+           } 
+        //    else if ((description.length > 20000)) {
+        //     $("#err_description1").addClass("text-danger"); 
+        //        $("#err_description1").text("Maximum 20000 characters allowed");
+        //        $("#description").focus();
+        //        var is_valid = false;
+        //    } 
+           else {
+            //    $("#err_description1").removeClass("text-danger");               
+            //     var remain = 20000-description.length;                
+            //     $("#err_description1").text("You can enter "+remain+" more characters");
+            $("#err_description1").text("");
            }
 
            var abcd=$('#document2').attr('required');

@@ -14,8 +14,8 @@ class Cms extends CI_Controller
         // }
         $this->load->model('Admin/Cms_model');
         $this->load->model('Admin/Admin_model');
-        $this->load->model('subadmin/Que_bank_model');
-        $this->load->model('subadmin/Questions_model');
+        $this->load->model('Subadmin/Que_bank_model');
+        $this->load->model('Subadmin/Questions_model');
         $this->load->model('Admin/Your_wall_model');
         $this->load->model('Standards_Making/Standards_Making_model');
         $this->load->model('Learningscience/Learningscience_model');
@@ -50,19 +50,19 @@ class Cms extends CI_Controller
         $data['aboutConsumerBisData'] = $this->Cms_model->aboutConsumerBisData();
         // print_r($data); die;
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('cms/consumer_list',$data);
+        $this->load->view('Cms/consumer_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function add_consumer_list()    
     {
      
-        if (!file_exists('uploads/cms/consumer_bis')) {
-            mkdir('uploads/cms/consumer_bis', 0777, true);
+        if (!file_exists('uploads/Cms/consumer_bis')) {
+            mkdir('uploads/Cms/consumer_bis', 0777, true);
         }
 
 
         $banner_img = "consumer_bis" . time() . '.jpg';
-        $config['upload_path'] = './uploads/cms/consumer_bis';
+        $config['upload_path'] = './uploads/Cms/consumer_bis';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
         $config['max_width']  = '3024';
@@ -81,12 +81,12 @@ class Cms extends CI_Controller
 
         $this->Cms_model->consumerBisinsertData($formdata);
         $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-        redirect(base_url() . "cms/consumer_list", 'refresh');
+        redirect(base_url() . "Cms/consumer_list", 'refresh');
     }
     public function update_consumer_list()
     {
-        if (!file_exists('uploads/cms/consumer_bis')) {
-            mkdir('uploads/cms/consumer_bis', 0777, true);
+        if (!file_exists('uploads/Cms/consumer_bis')) {
+            mkdir('uploads/Cms/consumer_bis', 0777, true);
         }
         //print_r([$_POST['old_image']]); die;
         $formdata['id'] = $this->input->post('id');
@@ -100,7 +100,7 @@ class Cms extends CI_Controller
 
         if (!empty($_FILES['image']['tmp_name'])) {
             $document = "consumer_bis" . time() . '.jpg';
-            $config['upload_path'] = './uploads/cms/consumer_bis';
+            $config['upload_path'] = './uploads/Cms/consumer_bis';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size']    = '250';
             $config['max_width']  = '3024';
@@ -129,10 +129,10 @@ class Cms extends CI_Controller
         $id = $this->Cms_model->consumerBisupdatedateData($formdata);
         if ($id) {
             $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
-            redirect(base_url() . "cms/consumer_list", 'refresh');
+            redirect(base_url() . "Cms/consumer_list", 'refresh');
         } else {
             $this->session->set_flashdata('MSG', ShowAlert("Failed to update record,Please try again", "DD"));
-            redirect(base_url() . "cms/consumer_list", 'refresh');
+            redirect(base_url() . "Cms/consumer_list", 'refresh');
         }
     }
     public function delet_consumer_list()
@@ -140,7 +140,7 @@ class Cms extends CI_Controller
         try {
             $que_id = $this->input->post('que_id');
             $image = $this->input->post('banner');
-            $image1= 'uploads/cms/ebis/'.$image;
+            $image1= 'uploads/Cms/ebis/'.$image;
             $id = $this->Cms_model->deletconsumerBis($que_id);
             if ($id) {
                 $data['status'] = 1;
@@ -178,7 +178,7 @@ class Cms extends CI_Controller
 
         $data['aboutConsumerBisData'] = $this->Cms_model->standardPromotionList();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('cms/standard_promotion_list',$data);
+        $this->load->view('Cms/standard_promotion_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function add_standard_promotion_list()    
@@ -188,7 +188,7 @@ class Cms extends CI_Controller
 
         $this->Cms_model->standardPromotioninsertData($formdata);
         $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-        redirect(base_url() . "cms/standard_promotion_list", 'refresh');
+        redirect(base_url() . "Cms/standard_promotion_list", 'refresh');
     }
     public function update_standard_promotion_list()
     {
@@ -197,10 +197,10 @@ class Cms extends CI_Controller
         $id = $this->Cms_model->aboutStandardClubUpdateData($formdata);
         if ($id) {
             $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
-            redirect(base_url() . "cms/standard_promotion_list", 'refresh');
+            redirect(base_url() . "Cms/standard_promotion_list", 'refresh');
         } else {
             $this->session->set_flashdata('MSG', ShowAlert("Failed to update record,Please try again", "DD"));
-            redirect(base_url() . "cms/standard_promotion_list", 'refresh');
+            redirect(base_url() . "Cms/standard_promotion_list", 'refresh');
         }
     }
     public function delet_standard_promotion_list()
@@ -245,19 +245,19 @@ class Cms extends CI_Controller
 
         $data['aboutConsumerBisData'] = $this->Cms_model->aboutStandardClub();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('cms/about_standard_club',$data);
+        $this->load->view('Cms/about_standard_club',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function add_about_standard_club()    
     {
      
-        if (!file_exists('uploads/cms/about_standard_club')) {
-            mkdir('uploads/cms/about_standard_club', 0777, true);
+        if (!file_exists('uploads/Cms/about_standard_club')) {
+            mkdir('uploads/Cms/about_standard_club', 0777, true);
         }
 
 
         $banner_img = "consumer_bis" . time() . '.jpg';
-        $config['upload_path'] = './uploads/cms/about_standard_club';
+        $config['upload_path'] = './uploads/Cms/about_standard_club';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size']    = '10000';
         $config['max_width']  = '3024';
@@ -276,12 +276,12 @@ class Cms extends CI_Controller
 
         $this->Cms_model->aboutStandardClubinsertData($formdata);
         $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-        redirect(base_url() . "cms/about_standard_club", 'refresh');
+        redirect(base_url() . "Cms/about_standard_club", 'refresh');
     }
     public function update_about_standard_club()
     {
-        if (!file_exists('uploads/cms/about_standard_club')) {
-            mkdir('uploads/cms/about_standard_club', 0777, true);
+        if (!file_exists('uploads/Cms/about_standard_club')) {
+            mkdir('uploads/Cms/about_standard_club', 0777, true);
         }
         //print_r([$_POST['old_image']]); die;
         $formdata['id'] = $this->input->post('id');
@@ -295,7 +295,7 @@ class Cms extends CI_Controller
 
         if (!empty($_FILES['image']['tmp_name'])) {
             $document = "consumer_bis" . time() . '.jpg';
-            $config['upload_path'] = './uploads/cms/about_standard_club';
+            $config['upload_path'] = './uploads/Cms/about_standard_club';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size']    = '250';
             $config['max_width']  = '3024';
@@ -324,10 +324,10 @@ class Cms extends CI_Controller
         $id = $this->Cms_model->aboutStandardClubUpdateData($formdata);
         if ($id) {
             $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
-            redirect(base_url() . "cms/about_standard_club", 'refresh');
+            redirect(base_url() . "Cms/about_standard_club", 'refresh');
         } else {
             $this->session->set_flashdata('MSG', ShowAlert("Failed to update record,Please try again", "DD"));
-            redirect(base_url() . "cms/about_standard_club", 'refresh');
+            redirect(base_url() . "Cms/about_standard_club", 'refresh');
         }
     }
     public function delet_about_standard_club()
@@ -335,7 +335,7 @@ class Cms extends CI_Controller
         try {
             $que_id = $this->input->post('que_id');
             $image = $this->input->post('banner');
-            $image1= 'uploads/cms/ebis/'.$image;
+            $image1= 'uploads/Cms/ebis/'.$image;
             $id = $this->Cms_model->deletaboutStandardClub($que_id);
             if ($id) {
                 $data['status'] = 1;
@@ -372,7 +372,7 @@ class Cms extends CI_Controller
         }
         $data['aboutConsumerBisData'] = $this->Cms_model->learningScienceVia();
         $this->load->view('admin/headers/admin_header');
-        $this->load->view('cms/learning_science_via',$data);
+        $this->load->view('Cms/learning_science_via',$data);
         $this->load->view('admin/footers/admin_footer');
     }
     public function add_learning_science_via()    
@@ -382,7 +382,7 @@ class Cms extends CI_Controller
 
         $this->Cms_model->standardPromotioninsertData($formdata);
         $this->session->set_flashdata('MSG', ShowAlert("Record Inserted Successfully", "SS"));
-        redirect(base_url() . "cms/learning_science_via", 'refresh');
+        redirect(base_url() . "Cms/learning_science_via", 'refresh');
     }
     public function update_learning_science_via()
     {
@@ -391,10 +391,10 @@ class Cms extends CI_Controller
         $id = $this->Cms_model->aboutStandardClubUpdateData($formdata);
         if ($id) {
             $this->session->set_flashdata('MSG', ShowAlert("Record Updated Successfully", "SS"));
-            redirect(base_url() . "cms/learning_science_via", 'refresh');
+            redirect(base_url() . "Cms/learning_science_via", 'refresh');
         } else {
             $this->session->set_flashdata('MSG', ShowAlert("Failed to update record,Please try again", "DD"));
-            redirect(base_url() . "cms/learning_science_via", 'refresh');
+            redirect(base_url() . "Cms/learning_science_via", 'refresh');
         }
     }
     public function delet_learning_science_via()
