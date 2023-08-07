@@ -3399,7 +3399,7 @@ class Users extends CI_Controller
     }
 
     // for_one_day_
-    public function quiz_start_final_4_8_23($quiz_id)
+    public function quiz_start($quiz_id)
     {
         
         $quiz_id = encryptids("D",$quiz_id);  
@@ -3576,8 +3576,7 @@ class Users extends CI_Controller
       
        
     }
-    //
-    public function quiz_start($quiz_id)
+    public function every_time_new_quiz_start($quiz_id)
     {
         
         $quiz_id = encryptids("D",$quiz_id);  

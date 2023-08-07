@@ -9,17 +9,17 @@
             <div class="heading-underline" style="width: 200px;">
                 <div class="left"></div><div class="right"></div>
              </div>
-            <div class="col-md-12 mt-3">
+            <div class="col-md-12 col-sm-12 col-lg-12 mt-3">
             <div class="card card-body">
-                <table id="example" class="table hover table-bordered table-responsive">
+                <table id="example_1" class="table hover table-bordered nowrap table-responsive" style="display: -webkit-box;">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
-                            <th>Date and Time</th>
-                            <th>Type</th>
-                            <th>Name of activity</th>
-                            <th>Score</th>
-                            <th>Action</th>
+                            <th style="width: 215px;">Date and Time</th>
+                            <th style="width: 68px;">Type</th>
+                            <th style="width: 702px;">Name of activity</th>
+                            <th style="width: 93px;">Score</th>
+                            <th style="width: 119px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,4 +95,13 @@
         </div>
        </div>
     <!-- /.container-fluid -->
+<script>
+    $(document).ready(function () {
+    // $('#example').DataTable();
+    $('#example_1').DataTable( {
+    // responsive: true,
+    // scrollX: 5000
+} );
+    });
+</script>
    
