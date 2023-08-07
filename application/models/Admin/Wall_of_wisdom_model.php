@@ -20,6 +20,7 @@ class Wall_of_wisdom_model extends CI_Model {
        // $this->db->order_by('id', 'ASC');
        $this->db->order_by('wow.created_on','desc');
          $query = $this->db->get();
+        //  $query= $this->db->query("CALL GetAllWollOfWisdomAdmin"); // using store procedure
         $rs = array();
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row) {
