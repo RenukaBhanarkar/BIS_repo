@@ -13,7 +13,7 @@
                     <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
               <?php  } ?>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/news_event_dashboard';?>" >News and Events</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Latest News</li>
             </ol>
         </nav>
@@ -43,7 +43,7 @@
                                                 <div class="modal-body">
                                                    <div class="row">
                                                         <div class="mb-2 col-md-4">
-                                                            <label class="d-block text-font">Title</label>
+                                                            <label class="d-block text-font">Title<sup class="text-danger">*</sup></label>
                                                             <input type="text" class="form-control input-font" name="title" id="banner_caption" placeholder="Enter Title" value="" minlength="2" maxlength="200" required>
                                                             <!-- <span class="text-danger" id="err_title"></span> -->
                                                                 <div class="invalid-feedback">
@@ -53,7 +53,7 @@
                                                    </div>
                                                    <div class="row">
                                                         <div class="mb-2 col-md-12">
-                                                            <label class="d-block text-font">Description</label>
+                                                            <label class="d-block text-font">Description<sup class="text-danger">*</sup></label>
                                                             <textarea type="text" class="form-control input-font" name="description" id="description" placeholder="Enter description" value="" required></textarea>
                                                             <span class="text-danger" id="err_description"></span>
                                                             

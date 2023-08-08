@@ -53,7 +53,7 @@
 }
 </style>
 <section id="main_content">
-  	<div class="container-xxl">
+  	<div class="container-fluid">
   		<div class="row">
   			<div class="col-12">
   				<div class="breadcrums">

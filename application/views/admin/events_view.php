@@ -6,7 +6,8 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/';?>" >Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
+                <!-- <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/news_event_dashboard';?>" >News and Events</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/letest_news';?>" >Latest News</a></li>
                 <li class="breadcrumb-item active" aria-current="page">View</li>
             </ol>

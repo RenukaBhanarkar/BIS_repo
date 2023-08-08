@@ -18,7 +18,7 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 </style>    
-<div class="container">
+<div class="container-fluid">
 <div class="feedback_content">
 <div class="col-12 mt-1">
   				<div class="breadcrums">
@@ -31,7 +31,7 @@
   					</ul> -->
   				</div>
   			</div>
-<form action="<?php echo base_url(); ?>users/add_feedback_form_data" name="project" id="project" method="post" class="">
+<form  name="project" id="project" method="post" class="">
 
 <div class="bloginfo">
     
@@ -45,7 +45,7 @@
                     <div class="card border-top card-body">
                         <div class="d-flex">
                         <h3 style="margin-bottom: 0px;color: #0086b2!important;font-weight: 600; font-size: 20px;">Write us here : </h3>
-                                <button type="button" class="btn btn-primary btn-sm mr-2" data-bs-toggle="modal" data-bs-target="#click_here" style="margin-left: 12px;">Click Here</button>
+                                <button type="button" class="btn btn-success  mr-2" data-bs-toggle="modal" data-bs-target="#click_here" style="margin-left: 12px;">Click Here</button>
                                 <!-- <a href="http://localhost/BIS/BIS_repo/wall_of_wisdom/archive" type="button" class="btn btn-primary btn-sm mr-2">Archive</a> -->
                         </div>
                     </div>
@@ -63,11 +63,11 @@
       <div class="modal-body">
       <div class="row">
             <div class="mb-2 col-md-12">
-                <label class="d-block text-font">Enter your query Here<sup class="text-danger">*</sup></label>
+                <label class="d-block text-font">Enter your query here<sup class="text-danger">*</sup></label>
                 <textarea type="text" class="form-control input-font" name="query" id="query" required></textarea>
                 <!-- <span class="text-danger" id="err_subject"></span> -->
                 <div class="invalid-feedback">
-                       This Value is Required
+                       This value is required
                 </div>
             </div>  
       </div>
@@ -106,7 +106,7 @@
                                         <td>12/03/2023 12:00:00</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-sm mt-2">View</a>
-                                            <a href="#" class="btn btn-primary btn-sm mt-2">View Reply</a>
+                                            <a href="#" class="btn btn-warning btn-sm mt-2">View Reply</a>
                                         </td>
                             		</tr>
                             	</tbody>
@@ -132,15 +132,15 @@
     if(isvalid){
         
     Swal.fire({
-                    title: 'Are you sure you want to Apply?',
+                    title: 'Are you sure you want to Submit?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Apply',
+                    confirmButtonText: 'Submit',
                     denyButtonText: `Close`,
                     }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {    
-                        // window.location.replace('<?php echo base_url().'users/apply_project_list'?>');                   
+                        window.location.replace('<?php echo base_url().'world_of_standard/need_information'?>');                   
                         //$('#competition_edit').submit();
                        // Swal.fire('Saved!', '', 'success')                                
                     } else if (result.isDenied) {

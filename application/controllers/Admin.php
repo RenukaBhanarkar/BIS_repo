@@ -3865,6 +3865,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/about_eBIS_list',$data);
         $this->load->view('admin/footers/admin_footer');
     }
+    public function news_event_dashboard()
+    {
+        $this->load->view('admin/headers/admin_header');
+        $this->load->view('admin/news_event_dashboard');
+        $this->load->view('admin/footers/admin_footer');
+    }
     public function add_ebis()
     {
         if (!file_exists('uploads/cms/ebis')) {

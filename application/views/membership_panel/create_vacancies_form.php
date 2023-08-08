@@ -79,8 +79,8 @@
                                         </div>
                                     </div>
                         <div class="mb-2 col-md-12">
-                            <label class="d-block text-font">Task Assigned<sup class="text-danger">*</sup></label>
-                            <textarea type="text" class="form-control input-font" name="assigned" id="assigned" placeholder="Enter Title"></textarea>
+                            <label class="d-block text-font">Detailed of Task Assigned<sup class="text-danger">*</sup></label>
+                            <textarea type="text" class="form-control input-font" name="assigned" id="assigned" placeholder="Enter Detailed of Task Assigned"></textarea>
                         </div>
                     </div>
                     <div class="row">

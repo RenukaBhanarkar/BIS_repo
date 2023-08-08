@@ -1,5 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script> -->
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" /> -->
 <style>
   
 .World_of_standers_inner_Box {
@@ -58,7 +58,7 @@
                        
                 </div>
                 <div class="World_of_standers_inner_Box  shadow">
-                    <a href="https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/draft/wcdraftDepartment" target="_blank" onclick="wide_pop()">
+                    <a  target="_blank" id="wide_pop" style="cursor:pointer;">
                     <div class="World_of_standers_image_box">
                         <img src="<?=base_url();?>assets/images/world_stander/Draft1.png" class="card-img-top" alt="Discussion Forum">
                        
@@ -181,11 +181,19 @@
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
     </script>
-    <script>
+    <!-- <script>
         function wide_pop(){
             alert("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
         }
-    </script>
+    </script> -->
+    <script>
+    $('#wide_pop').click(function() {
+        var answer = confirm("You are being redirected to an external website. Please note that BIS Website cannot be held responsible for external websites content & privacy policies.");
+        if (answer) {
+            window.open('https://www.services.bis.gov.in/php/BIS_2.0/dgdashboard/draft/wcdraftDepartment', '_blank');
+        } else {}
+    })
+</script>
 
 <script>
     

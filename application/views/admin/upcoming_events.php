@@ -12,7 +12,8 @@
                     <li class="breadcrumb-item"><a href="<?php echo base_url().'admin/dashboard';?>" >Admin Dashboard</a></li>
               <?php  } ?>
                 <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/exchange_forum';?>" >Exchange Forum</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li>
+                <!-- <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/cmsManagenent_dashboard';?>" >CMS</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url().'admin/news_event_dashboard';?>" >News and Events</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Upcoming Events</li>
             </ol>
         </nav>

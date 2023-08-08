@@ -45,22 +45,22 @@
                 <table class="table hover table-bordered pt-2" id="example">
                 <thead>
                             		<tr>
-                                        <th>Sr.No.</th>
-                            			<th>Technical Department</th>
-                            			<th>Project on offer</th>
+                                        <th style="text-align: center;">Sr.No.</th>
+                            			<th style="text-align: center;">Technical Department</th>
+                            			<th style="text-align: center;">Project on offer</th>
                             			
                             		</tr>
                             	</thead>
                             	<tbody>
                             		<tr>
-                            			<td>1</td>
-                            			<td>Department</td>
-                            			<td><a href="#" class="count" style="color:blue;">2</a></td>
+                            			<td style="text-align: center;">1</td>
+                            			<td style="text-align: center;">Department</td>
+                            			<td style="text-align: center;"><a href="#" class="count" style="color:blue;">2</a></td>
                             		</tr>
                             		<tr>
-                            			<td>2</td>
-                            			<td>Department</td>
-                            			<td><a href="<?php echo base_url().'users/apply_project_offer'?>" class="count" style="color:blue;">3ss</a></td>
+                            			<td style="text-align: center;">2</td>
+                            			<td style="text-align: center;">Department</td>
+                            			<td style="text-align: center;"><a href="<?php echo base_url().'users/apply_project_offer'?>" class="count" style="color:blue;">3ss</a></td>
                             		</tr>
                             		
                             	</tbody>

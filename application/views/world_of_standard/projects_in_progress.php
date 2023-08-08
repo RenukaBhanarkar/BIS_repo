@@ -42,12 +42,12 @@
                             <p>You shall also find links to videos of speeches, interviews given by Chairman of PMRDA at national and international events such as conferences. The videos are drawn from Aadhaar Channel in YouTube.</p> -->
             <div class="col-md-12 mb-3">
             
-                <table class="table hover table-bordered pt-2" id="example">
+                <table class="table hover table-bordered pt-2" id="example" style="text-align: center;">
                 <thead>
                             		<tr>
-                                        <th>Sr.No.</th>
-                            			<th>Technical Department</th>
-                            			<th>Project in Progress</th>
+                                        <th style="text-align: center;">Sr.No.</th>
+                            			<th style="text-align: center;">Technical Department</th>
+                            			<th style="text-align: center;">Project in Progress</th>
                             			
                             		</tr>
                             	</thead>
