@@ -124,7 +124,12 @@ img.news_img {
                     <div class="title-text"> 
                         <h3><?= $WatchNow['title']?></h3> 
                          <img style="height: 411px; width: 100%;" src="<?php echo base_url(); ?><?= $WatchNow['thumbnail']?>" alt="" class="join_img">
-                       <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p>
+                       <?php  $admin_id = encryptids("D", $this->session->userdata('admin_id')); 
+                        if($admin_id==''){?>
+                            <p style="padding: 10px;"> <a href="../login" class="btn btn-info btn-sm" >Join The Session</a></p>
+                        <?php } else { ?>
+                             <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p>
+                        <?php } ?>
                          
 
                         <span><?= $WatchNow['views']?> Views • <?= time_elapsed_string($WatchNow['created_on'])?></span>

@@ -131,7 +131,12 @@ img.news_img {
                         <span><i class="fa fa-calendar icons"> <?= date("d/m/Y h:i A", strtotime($WatchNow['created_on']));?></i></span>
                     </div>
                     <div class="play_video">
-                            <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p> 
+                           <?php  $admin_id = encryptids("D", $this->session->userdata('admin_id')); 
+                        if($admin_id==''){?>
+                            <p style="padding: 10px;"> <a href="../login" class="btn btn-info btn-sm" >Join The Session</a></p>
+                        <?php } else { ?>
+                             <p style="padding: 10px;"> <a href="<?= $WatchNow['session_link']?>" class="btn btn-info btn-sm" >Join The Session</a></p>
+                        <?php } ?>
                         </div>
 
 
